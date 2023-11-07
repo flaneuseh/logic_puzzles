@@ -305,9 +305,11 @@ class Puzzle:
     index = category.entities.index(ent)
 
     for cat2 in self.categories:
-      relations[cat2.title]["true"] = None
-      relations[cat2.title]["false"] = []
-      relations[cat2.title]["nil"] = []
+      relations[cat2] = {
+        "true": None,
+        "false": [],
+        "nil": [],
+      }
       if cat2 != category:
         if self._to_key(category, cat2) in self.grids:
           grid = self.grids[self._to_key(category, cat2)]
@@ -319,13 +321,11 @@ class Puzzle:
 
         for i, val in enumerate(answers):
           if val == "0":
-            relations[cat2.title]["true"] = cat2.entities[i]
+            relations[cat2]["true"] = cat2.entities[i]
           elif val == "X":
-            relations[cat2.title]["false"].append(cat2.entities[i])
+            relations[cat2]["false"].append(cat2.entities[i])
           else:
-            relations[cat2.title]["nil"].append(cat2.entities[i])
-        if "O" in answers:
-            relations[cat2.title] = cat2.entities[answers.index("O")]
+            relations[cat2]["nil"].append(cat2.entities[i])
 
     return relations
 
@@ -435,7 +435,7 @@ def _per_complete_grid(self, grid):
   s = 0
   l = 0 
   for row in grid: 
-    s += row.count(\"X\") + row.count(\"O\")
+    s += row.count("X") + row.count("O")
     l += len(row)
   return s / l
 
@@ -827,45 +827,45 @@ def find_transitives(puzzle):
   for catA in puzzle.categories:
     for entA in catA.entities:
       entA_relations = puzzle.get_known_relations(catA, entA)
-      for catB, catB_relations in enumerate(entA_relations):
+      for catB, catB_relations in entA_relations.items():
         entB = catB_relations["true"]
         if entB != None:
           entB_relations = puzzle.get_known_relations(catB, entB)
-          for catC, catC_relations in enumerate(entB_relations):
+          for catC, catC_relations in entB_relations.items():
             entC = catC_relations["true"]
             if entC != None:
-              sy = puzzle.get_symbol(catA, entA, catC, entC)
+              sy = puzzle.get_symbol(catA, catC, entA, entC)
               if sy == "*":
                 applied = True
-                puzzle.answer(catA, entA, catC, entC, "O")
+                puzzle.answer(catA, catC, entA, entC, "O")
                 is_valid = cross_out(puzzle, catA, catC, entA, entC)
               elif sy == "X":
                 # Can't link A to C
                 is_valid = False
             for entC in catC_relations["false"]:
-              sy = puzzle.get_symbol(catA, entA, catC, entC)
+              sy = puzzle.get_symbol(catA, catC, entA, entC)
               if sy == "*":
                 applied = True
-                puzzle.answer(catA, entA, catC, entC, "X")
+                puzzle.answer(catA, catC, entA, entC, "X")
               elif sy == "O":
                 # Can't reject A to C
                 is_valid = False
-          for catC, catC_relations in enumerate(entA_relations):
+          for catC, catC_relations in entA_relations.items():
             entC = catC_relations["true"]
             if entC != None:
-              sy = puzzle.get_symbol(catB, entB, catC, entC)
+              sy = puzzle.get_symbol(catB, catC, entB, entC)
               if sy == "*":
                 applied = True
-                puzzle.answer(catB, entB, catC, entC, "O")
+                puzzle.answer(catB, catC, entB, entC, "O")
                 is_valid = cross_out(puzzle, catB, catC, entB, entC)
               elif sy == "X":
                 # Can't link A to C
                 is_valid = False
             for entC in catC_relations["false"]:
-              sy = puzzle.get_symbol(catB, entB, catC, entC)
+              sy = puzzle.get_symbol(catB, catC, entB, entC)
               if sy == "*":
                 applied = True
-                puzzle.answer(catB, entB, catC, entC, "X")
+                puzzle.answer(catB, catC, entB, entC, "X")
               elif sy == "O":
                 # Can't reject A to C
                 is_valid = False
@@ -887,21 +887,25 @@ def find_openings(puzzle):
           # If there is only 1 blank value:
           if len(blanks) == 1:
             ent1 = cat1.entities[blanks[0]]
-            ent2 = cat2[i]
+            ent2 = cat2.entities[i]
+            print(cat1, cat1.entities, ent1)
+            print(cat2, cat2.entities, ent2)
             applied = True
             # Answer it as 0.
-            puzzle.answer(cat1, ent1, cat2, ent2, "0")
+            puzzle.answer(cat1, cat2, ent1, ent2, "0")
             is_valid = cross_out(puzzle, cat1, cat2, ent1, ent2)
         # For each column:
         for j in range(len(grid[0])):
           blanks = [i for i in range(len(grid)) if grid[i][j] == "*"]
           # If there is only one blank value:
           if len(blanks) == 1:
-            ent1 = cat1[j]
-            ent2 = cat2[blanks[0]]
+            ent1 = cat1.entities[j]
+            ent2 = cat2.entities[blanks[0]]
+            print(cat1, cat1.entities, ent1)
+            print(cat2, cat2.entities, ent2)
             applied = True
             # Answer it as 0.
-            puzzle.answer(cat1, ent1, cat2, ent2, "0")
+            puzzle.answer(cat1, cat2, ent1, ent2, "0")
             is_valid = cross_out(puzzle, cat1, cat2, ent1, ent2)
         
   return applied, is_valid, complete
@@ -942,6 +946,7 @@ def apply_not(puzzle, terms):
   Apply the not rule to puzzle, will always complete in one step
   return: applied, is_valid, complete
   """
+  print(terms)
   applied = False
   is_valid = True
   complete = True # this rule can only be applied once
@@ -1260,13 +1265,13 @@ def apply_hint(puzzle, hint):
   if rule == "is":
     return apply_is(puzzle, terms)
   elif rule == "not":
-    return apply_not(puzzle, terms)
+    return apply_not(puzzle, terms[0]["is"])
   elif rule == "before":
     return apply_before(puzzle, terms)
   elif rule == "simple_or":
     return apply_simple_or(puzzle, terms)
   elif rule == "compound_or":
-    return apply_compound_or(puzzle, terms)
+    return apply_compound_or(puzzle, [terms[0]["is"], terms[1]["is"]])
   else:
     print("This hint has no apply rules! Something has gone horribly wrong. The offending hint: " + str_hint(hint))
 
@@ -1285,5 +1290,6 @@ for i in range(30):
   print(find_openings(puzzle))
   print(find_transitives(puzzle))
   print(puzzle.print_grid())
-  print("The ME should update!!")
 
+
+# %%
