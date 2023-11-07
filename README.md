@@ -10,7 +10,6 @@ Version Control: (from https://github.com/mwouts/jupytext)
 JupyterLab using Conda (can also use pip for universal environments)
 1. Install JupyterLab ```conda install jupyterlab -c conda-forge```
 2. Install Jupytext ```conda install jupytext -c conda-forge```
-3. ```jupyter lab```
-4. Create/update text file based on notebook: ```jupytext --set-formats ipynb,py:percent notebook.ipynb```
-5. Edit the notebook using JupyterLab, and LogicPuzzles.py will auto-update (and vice versa, though be sure to keep only ONE open in Jupyter Lab at a time) At least in theory. .
-6. Happy Coding!
+3. ```jupyter lab``` to open the notebook/py editor
+4. Edit the notebook using JupyterLab, and LogicPuzzles.py will auto-update (and vice versa, though be sure to keep only ONE open in Jupyter Lab at a time) At least in theory. .
+5. Happy Coding!
