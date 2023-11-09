@@ -13,6 +13,10 @@
 #     name: python3
 # ---
 
+# %%
+# Update this version to verify that .py and .ipynb are in sync.
+# Version: 2.0
+
 # %% colab={"base_uri": "https://localhost:8080/"} id="u9fPlqt1JIrO" outputId="046eb385-7b0d-4f86-ed8d-ccf802682a2d"
 # !pip install parsimonious
 
@@ -787,9 +791,6 @@ print(str_hint(generate_hint(puzzle)))
 #
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
-def find_contradictions(puzzle):
-  return
-
 def cross_out(puzzle, cat1, cat2, ent1, ent2):
   """
   places Xs in the all the rows and columns
@@ -815,6 +816,8 @@ def cross_out(puzzle, cat1, cat2, ent1, ent2):
             is_valid = False
   return is_valid
 
+
+# %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
 # If A is B and B is C then A is C
 # If A is B and B is not C then A is not C
 def find_transitives(puzzle):
@@ -871,7 +874,13 @@ def find_transitives(puzzle):
                 is_valid = False
   return applied, is_valid, complete
 
+
+# %%
+# Test find_transitives
+
+# %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
 # If a row/column has 1 * and the rest are X then fill out a O there.
+# If a row/column is all X then contradiction.
 def find_openings(puzzle):
   applied = False
   complete = False
@@ -888,12 +897,18 @@ def find_openings(puzzle):
           if len(blanks) == 1:
             ent1 = cat1.entities[blanks[0]]
             ent2 = cat2.entities[i]
-            print(cat1, cat1.entities, ent1)
-            print(cat2, cat2.entities, ent2)
             applied = True
             # Answer it as 0.
             puzzle.answer(cat1, cat2, ent1, ent2, "0")
             is_valid = cross_out(puzzle, cat1, cat2, ent1, ent2)
+            if not is_valid:
+              return applied, is_valid, complete
+          # Check if all values are X
+          truths = [i for i in range(len(row)) if row[i] == "O"]
+          if len(blanks) == 0 and len(truths) == 0:
+            # There are no openings! Contradiction
+            is_valid = False
+            return applied, is_valid, complete
         # For each column:
         for j in range(len(grid[0])):
           blanks = [i for i in range(len(grid)) if grid[i][j] == "*"]
@@ -901,15 +916,24 @@ def find_openings(puzzle):
           if len(blanks) == 1:
             ent1 = cat1.entities[j]
             ent2 = cat2.entities[blanks[0]]
-            print(cat1, cat1.entities, ent1)
-            print(cat2, cat2.entities, ent2)
             applied = True
             # Answer it as 0.
             puzzle.answer(cat1, cat2, ent1, ent2, "0")
             is_valid = cross_out(puzzle, cat1, cat2, ent1, ent2)
+          # Check if all values are X
+          truths = [i for i in range(len(grid)) if grid[i][j] == "O"]
+          if len(blanks) == 0 and len(truths) == 0:
+            # There are no openings! Contradiction
+            is_valid = False
+            return applied, is_valid, complete
         
   return applied, is_valid, complete
 
+
+# %%
+# Test find_openings
+
+# %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
 def apply_is(puzzle, terms):
   """
   Apply the is rule to puzzle, will always complete in one step
@@ -941,12 +965,44 @@ def apply_is(puzzle, terms):
 
   return applied, is_valid, complete
 
+
+# %%
+# Test is
+
+puzzle = Puzzle([suspects, weapons, rooms, time])
+print(puzzle.print_grid())
+
+# Apply when it is still blank
+print("Testing IS")
+print("New IS: Scarlet IS Knife")
+terms = [suspects, "Scarlet", weapons, "Knife"]
+applied, is_valid, complete = apply_is(puzzle, terms)
+assert (applied, is_valid, complete) == (True, True, True)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+
+# Skip when it has already been answered O
+print("PreAnswered: Scarlet IS Knife")
+applied, is_valid, complete = apply_is(puzzle, terms)
+assert (applied, is_valid, complete) == (False, True, True)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+
+# Contradiction when it has already been answered X
+print("Contradiction: Scarlet IS Rope")
+terms[3] = "Rope"
+applied, is_valid, complete = apply_is(puzzle, terms)
+assert (applied, is_valid, complete) == (False, False, True)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+
+
+# %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
 def apply_not(puzzle, terms):
   """
   Apply the not rule to puzzle, will always complete in one step
   return: applied, is_valid, complete
   """
-  print(terms)
   applied = False
   is_valid = True
   complete = True # this rule can only be applied once
@@ -968,11 +1024,45 @@ def apply_not(puzzle, terms):
 
   return applied, is_valid, complete
 
+
+# %%
+# Test not
+
+puzzle = Puzzle([suspects, weapons, rooms, time])
+print(puzzle.print_grid())
+
+terms = [suspects, "Scarlet", weapons, "Knife"]
+
+# Apply when it is still blank
+print("Testing NOT")
+print("New NOT: Scarlet NOT Knife")
+applied, is_valid, complete = apply_not(puzzle, terms)
+assert (applied, is_valid, complete) == (True, True, True)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+
+# Skip when it has already been answered O
+print("PreAnswered: Scarlet NOT Knife")
+applied, is_valid, complete = apply_not(puzzle, terms)
+assert (applied, is_valid, complete) == (False, True, True)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+
+# Contradiction when it has already been answered X
+print("Set Plum is Knife")
+terms[1] = "Plum"
+apply_is(puzzle, terms)
+print("Contradiction: Plum NOT Knife")
+applied, is_valid, complete = apply_not(puzzle, terms)
+assert (applied, is_valid, complete) == (False, False, True)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+
+
+# %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
 def apply_before(puzzle, terms):
   """
   apply the before rule to the puzzle
-
-  Not fully implemented!
   """
   applied = False
   complete = False
@@ -980,7 +1070,7 @@ def apply_before(puzzle, terms):
   numbered = len(terms) == 6
 
   bef_cat = terms[0]
-  bef_ent = terms[1] # bef entity is before the after entity
+  bef_ent = terms[1] # bef entity is before aft_ent
   aft_cat = terms[2]
   aft_ent = terms[3]
 
@@ -989,6 +1079,18 @@ def apply_before(puzzle, terms):
   num = 1
   if numbered:
     num = terms[5]
+
+  # If A < B and A, B are not in the same category, then A is not B.
+  if bef_cat != aft_cat:
+    sy = puzzle.get_symbol(bef_cat, aft_cat, bef_ent, aft_ent)
+    if sy == "*":
+      applied = True
+      puzzle.answer(bef_cat, aft_cat, bef_ent, aft_ent, "X")
+    elif sy == "O":
+      # Contradiction
+      complete = True
+      is_valid = False
+      return applied, is_valid, complete
 
   # Get all the current symbols for the two entities in the num category
   before_symbols = [puzzle.get_symbol(bef_cat, num_cat, bef_ent, ent) for ent in num_cat.entities]
@@ -1004,6 +1106,7 @@ def apply_before(puzzle, terms):
     elif sy == "O":
       complete = True
       is_valid = False
+      return applied, is_valid, complete
   # And the inverse is true for the after entity
   for i in range(0, num):
     sy = puzzle.get_symbol(aft_cat, num_cat, aft_ent, num_cat.entities[i])
@@ -1013,21 +1116,24 @@ def apply_before(puzzle, terms):
     elif sy == "O":
       complete = True
       is_valid = False
+      return applied, is_valid, complete
 
-  # if both entities have answer, we can deterimine if this rule valid
+  # if both entities have answer, we can determine if this rule valid
   if "O" in before_symbols and "O" in after_symbols:
     applied = False
+    complete = True
     if numbered:
       is_valid = after_symbols.index("O") - before_symbols.index("O") == num
     else:
       is_valid = before_symbols.index("O") < after_symbols.index("O")
+    return applied, is_valid, complete
 
   # determine the possible after entities if the before entity is solved
   if "O" in before_symbols:
     bef_index = before_symbols.index("O")
     if numbered:
       if after_symbols[bef_index + num] == "*":
-        pos_aft_index =  [bef_index + num]
+        pos_aft_index = [bef_index + num]
       else:
         pos_aft_index = []
     else:
@@ -1036,12 +1142,15 @@ def apply_before(puzzle, terms):
     if len(pos_aft_index) == 0:
       complete = True
       is_valid = False
+      return applied, is_valid, complete
     elif len(pos_aft_index) == 1:
       complete = True
       aft_index = pos_aft_index[0]
       applied = True
       puzzle.answer(aft_cat, num_cat, aft_ent, num_cat.entities[aft_index], "O")
       is_valid = cross_out(puzzle, aft_cat, num_cat, aft_ent, num_cat.entities[aft_index])
+      if not is_valid:
+        return applied, is_valid, complete
     else:
       for i in range(0, bef_index):
         sy = puzzle.get_symbol(aft_cat, num_cat, aft_ent, num_cat.entities[i])
@@ -1051,8 +1160,9 @@ def apply_before(puzzle, terms):
         elif sy == "O":
           complete = True
           is_valid = False
+          return applied, is_valid, complete
 
-  # determine the possible after entities if the after entity is solved
+  # determine the possible after entities if the after before is solved
   if "O" in after_symbols:
     aft_index = after_symbols.index("O")
     if numbered:
@@ -1066,12 +1176,15 @@ def apply_before(puzzle, terms):
     if len(pos_bef_index) == 0:
       complete = True
       is_valid = False
+      return applied, is_valid, complete
     elif len(pos_bef_index) == 1:
       complete = True
       bef_index = pos_bef_index[0]
       applied = True
       puzzle.answer(bef_cat, num_cat, bef_ent, num_cat.entities[bef_index], "O")
       is_valid = cross_out(puzzle, bef_cat, num_cat, bef_ent, num_cat.entities[bef_index])
+      if not is_valid:
+        return applied, is_valid, complete
     else:
       for i in range(aft_index, len(before_symbols)):
         sy = puzzle.get_symbol(bef_cat, num_cat, bef_ent, num_cat.entities[i])
@@ -1081,51 +1194,175 @@ def apply_before(puzzle, terms):
         elif sy == "O":
           complete = True
           is_valid = False
+          return applied, is_valid, complete
 
-    if "X" in before_symbols or "X" in after_symbols:
+  # Determine possible answers with constraints on either entity
+  if "X" in before_symbols or "X" in after_symbols:
+    if numbered:
+      # All Xs for the before entity where the index is valid (i+num exists).
       before_Xs = [i for i in range(len(before_symbols)) if before_symbols[i] == "X" and i+num < len(before_symbols) - 1]
+      # All Xs for the after entity where the index is valid (i-num exists).
       after_Xs = [i for i in range(len(after_symbols)) if after_symbols[i] == "X" and i-num > -1]
-
-      if numbered:
-        # For a position to be a valid answer, the corresponding position +/- num must be valid for the other entity
-        for i in before_Xs:
-          sy = puzzle.get_symbol(aft_cat, num_cat, aft_ent, num_cat.entities[i+num])
-          if sy == "*":
-            applied = True
-            puzzle.answer(aft_cat, num_cat, aft_ent, num_cat.entities[i+num], "X")
-        for i in after_Xs:
-          sy = puzzle.get_symbol(bef_cat, num_cat, bef_ent, num_cat.entities[i-num])
-          if sy == "*":
-            applied = True
-            puzzle.answer(bef_cat, num_cat, bef_ent, num_cat.entities[i-num], "X")
-
-      # A streak of Xs at the beginning/end forces the first available position for the other entity to shift.
-      for i in range(len(before_symbols) - 1):
-        if before_symbols[i] != "X":
-          break
-        sy = puzzle.get_symbol(aft_cat, num_cat, aft_ent, num_cat.entities[i+1])
+      
+      # For a position to be a valid answer, the corresponding position +/- num must be valid for the other entity
+      for i in before_Xs:
+        sy = puzzle.get_symbol(aft_cat, num_cat, aft_ent, num_cat.entities[i+num])
         if sy == "*":
           applied = True
-          puzzle.answer(aft_cat, num_cat, aft_ent, num_cat.entities[i+1], "X")
-
-      for i in range(len(before_symbols) - 1):
-        if before_symbols[i] != "X":
-          break
-        sy = puzzle.get_symbol(bef_cat, num_cat, bef_ent, num_cat.entities[i-1])
+          puzzle.answer(aft_cat, num_cat, aft_ent, num_cat.entities[i+num], "X")
+      for i in after_Xs:
+        sy = puzzle.get_symbol(bef_cat, num_cat, bef_ent, num_cat.entities[i-num])
         if sy == "*":
           applied = True
-          puzzle.answer(aft_cat, num_cat, aft_ent, num_cat.entities[i-1], "X")
+          puzzle.answer(bef_cat, num_cat, bef_ent, num_cat.entities[i-num], "X")
+
+    # A streak of Xs at the beginning/end forces the first available position for the other entity to shift.
+    for i in range(len(before_symbols) - 1):
+      if before_symbols[i] != "X":
+        break
+      sy = puzzle.get_symbol(aft_cat, num_cat, aft_ent, num_cat.entities[i+1])
+      if sy == "*":
+        applied = True
+        puzzle.answer(aft_cat, num_cat, aft_ent, num_cat.entities[i+1], "X")
+
+    for i in range(len(after_symbols) - 1, 1, -1):
+      if after_symbols[i] != "X":
+        break
+      sy = puzzle.get_symbol(bef_cat, num_cat, bef_ent, num_cat.entities[i-1])
+      if sy == "*":
+        applied = True
+        puzzle.answer(bef_cat, num_cat, bef_ent, num_cat.entities[i-1], "X")
   return applied, is_valid, complete
 
 
+# %%
+# Test before
+print("Testing simple BEFORE")
+puzzle = Puzzle([suspects, weapons, rooms, time])
+print(puzzle.print_grid())
+terms = [suspects, "Scarlet", suspects, "White", time]
+
+# No current information; simple before
+print("Scarlet BEFORE White")
+applied, is_valid, complete = apply_before(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+assert (applied, is_valid, complete) == (True, True, False)
+print(puzzle.print_grid())
+
+# Additional constraint on After's time
+print("White NOT 4:00 => Scarlet NOT 3:00")
+apply_not(puzzle, [suspects, "White", time, "4:00"])
+applied, is_valid, complete = apply_before(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (True, True, False)
+
+# After is set
+print("White IS 2:00 => Scarlet IS 1:00; finished hint")
+apply_is(puzzle, [suspects, "White", time, "2:00"])
+applied, is_valid, complete = apply_before(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (True, True, True)
+
+# Already satisfied
+print("Already satisfied; no further changes")
+applied, is_valid, complete = apply_before(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (False, True, True)
+
+# Constraints on both
+print("Mustard BEFORE Plum => narrow down both")
+terms[1] = "Mustard"
+terms[3] = "Plum"
+applied, is_valid, complete = apply_before(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (True, True, False)
+
+# Single answer
+print("Plum IS 4:00 => Mustard IS 3:00")
+apply_is(puzzle, [suspects, "Plum", time, "4:00"])
+applied, is_valid, complete = apply_before(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (True, True, True)
+
+print("Candle Stick IS 3:00 and Candle Stick BEFORE Rope => Rope IS 4:00")
+apply_is(puzzle, [weapons, "Candle Stick", time, "3:00"])
+applied, is_valid, complete = apply_before(puzzle, [weapons, "Candle Stick", weapons, "Rope", time])
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (True, True, True)
+
+puzzle = Puzzle([suspects, weapons, rooms, time])
+print(puzzle.print_grid())
+# Constraint on Before's time.
+print("Knife before Rope; Knife NOT 1:00 => Rope NOT 2:00")
+terms = [weapons, "Knife", weapons, "Rope", time]
+apply_not(puzzle, [weapons, "Knife", time, "1:00"])
+applied, is_valid, complete = apply_before(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (True, True, False)
+
+# Simple contradiction
+print("Candle is 3:00 and Wrench is 2:00; Candle BEFORE Wrench is contradictory")
+apply_is(puzzle, [weapons, "Candle Stick", time, "3:00"])
+apply_is(puzzle, [weapons, "Wrench", time, "2:00"])
+applied, is_valid, complete = apply_before(puzzle, [weapons, "Candle Stick", weapons, "Wrench", time])
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (False, False, True)
+
+# If A and B are not in the same category, A is not B
+print("White is before Ballroom, so White is not Ballroom")
+applied, is_valid, complete = apply_before(puzzle, [suspects, "White", rooms, "Ball room", time])
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (True, True, False)
+
+# Contradiction for before O
+print("Kitchen IS 4:00, so Kitchen before Study contradicts")
+apply_is(puzzle, [rooms, "Kitchen", time, "4:00"])
+applied, is_valid, complete = apply_before(puzzle, [rooms, "Kitchen", rooms, "Study", time])
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (False, False, True)
+
+# Contradiction for afer 0
+print("Living room IS 1:00, so Study before Living room contradicts")
+apply_is(puzzle, [rooms, "Living Room", time, "1:00"])
+applied, is_valid, complete = apply_before(puzzle, [rooms, "Study", rooms, "Living Room", time])
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (False, False, True)
+
+# Numerical or tests
+print("Test numbered BEFORE")
+puzzle = Puzzle([suspects, weapons, rooms, time])
+print(puzzle.print_grid())
+terms = [suspects, "Scarlet", suspects, "White", time, 2]
+
+# No current info, numbered
+print("Scarlet 2 BEFORE White")
+applied, is_valid, complete = apply_before(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+assert (applied, is_valid, complete) == (True, True, False)
+print(puzzle.print_grid())
+
+# 
+
+# %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
 def apply_simple_or(puzzle, terms):
   """
   Apply the or rule to puzzle, will be incomplete if not enough information is known
   return: applied, is_valid, complete
   """
   applied = False
-  complete = False
   is_valid = True
+  complete = False
 
   pos_cat1 = terms[0]
   pos_ent1 = terms[1] # either ent1 or ent2 = ans_ent
@@ -1134,6 +1371,26 @@ def apply_simple_or(puzzle, terms):
 
   ans_cat = terms[4]
   ans_ent = terms[5]
+
+  if pos_cat1 != pos_cat2:
+    # A and B are in different categories
+    # If A or B is C then A is not B
+    applied, is_valid, complete = apply_not(puzzle, [ pos_cat1, pos_ent1, pos_cat2, pos_ent2 ])
+    if not is_valid:
+      return applied, is_valid, complete
+  else:
+    # A and B are in the same category
+    # If A or B from category 0 is C then no other entity from category 0 is C
+    for ent in pos_cat1.entities:
+      if ent not in [pos_ent1, pos_ent2]:
+        sy = puzzle.get_symbol(pos_cat1, ans_cat, ent, ans_ent)
+        if sy == "O":
+          # Logical error.
+          is_valid = False
+          return applied, complete, is_valid
+        elif sy == "*":
+          # No other entity from cat1 is ans_ent
+          puzzle.answer(pos_cat1, ans_cat, ent, ans_ent, "X")
 
   pos_symb1 = puzzle.get_symbol(pos_cat1, ans_cat, pos_ent1, ans_ent)
   pos_symb2 = puzzle.get_symbol(pos_cat2, ans_cat, pos_ent2, ans_ent)
@@ -1147,20 +1404,17 @@ def apply_simple_or(puzzle, terms):
     applied = False
     complete = False
     is_valid = False
-
   elif pos_symb1 == "O":
     # hint says that ent2 cannot be the answer ent
     if pos_symb2 == "*":
       # we can change game state
       applied = True
       complete = True
-      is_valid = True
       puzzle.answer(pos_cat2, ans_cat, pos_ent2, ans_ent, "X")
     elif pos_symb2 == "X":
       # game state is correct, but nothing to change
       applied = False
       complete = True
-      is_valid = True
   elif pos_symb1 == "X":
     # hint says that ent2 must be the answer ent
     if pos_symb2 == "*":
@@ -1181,7 +1435,7 @@ def apply_simple_or(puzzle, terms):
       complete = True
       is_valid = True
       puzzle.answer(pos_cat1, ans_cat, pos_ent1, ans_ent, "X")
-    elif pos_symb2 == "x":
+    elif pos_symb2 == "X":
       # hint says ent1 is ans_ent and we can change this
       applied = True
       complete = True
@@ -1189,6 +1443,8 @@ def apply_simple_or(puzzle, terms):
       is_valid = cross_out(puzzle, pos_cat1, ans_cat, pos_ent1, ans_ent)
   return applied, is_valid, complete
 
+
+# %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
 def apply_compound_or(puzzle, options):
   """
   Apply the compound or rule to puzzle, will be incomplete if not enough information is known
@@ -1244,14 +1500,16 @@ def apply_compound_or(puzzle, options):
 
   return applied, is_valid, complete
 
+
+# %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
 def apply_hint(puzzle, hint):
   """
    Given a hint dictionary and a puzzle, apply next step of the hint to the puzzle
 
    return:
-    applied = whether the hint changed the state
-    complete = whether the hint as no more information to offer
-    is_valid = whether hint could apply to current puzzle state
+    applied  = whether the hint changed the state
+    complete = whether the hint has no more information to offer
+    is_valid = whether the hint contradicts the current state
   """
 
   applied = False
@@ -1285,11 +1543,12 @@ print(puzzle.print_grid())
 
 for i in range(30):
   hint = generate_hint(puzzle)
-  print(str_hint(hint))
-  print(apply_hint(puzzle, hint))
-  print(find_openings(puzzle))
-  print(find_transitives(puzzle))
+  print("Hint: ", str_hint(hint))
+  print("(Applied, Is Valid, Complete)")
+  applied, is_valid, complete = apply_hint(puzzle, hint)
+  print("Apply: ", (applied, is_valid, complete))
+  if applied:
+    print("Openings: ", find_openings(puzzle))
+    print("Transitives: ", find_transitives(puzzle))
   print(puzzle.print_grid())
 
-
-# %%
