@@ -15,7 +15,7 @@
 
 # %%
 # Update this version to verify that .py and .ipynb are in sync.
-# Version: 3.0
+# Version: 4.0
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="u9fPlqt1JIrO" outputId="046eb385-7b0d-4f86-ed8d-ccf802682a2d"
 # !pip install parsimonious
@@ -1641,30 +1641,30 @@ def apply_compound_or(puzzle, options):
     if currentA != "*":
       # Both can't be true or false, something has gone wrong.
       is_valid = False
+      complete = True
     # There is no info to apply.
     return applied, is_valid, complete
+
+  # At least one term is answered; the hint is guaranteed complete.
+  complete = True
 
   currents = [currentA, currentB]
   if "X" in currents and "O" in currents:
     # Someone already answered.
     return applied, is_valid, complete
 
+  # One is answered and the other is not; we are guaranteed to apply.
+  applied = True
+  
   if currentA == "X":
-    applied = True
     puzzle.answer(catB1, catB2, entB1, entB2, "O")
     is_valid = cross_out(puzzle, catB1, catB2, entB1, entB2)
-
-  if currentB == "X":
-    applied = True
+  elif currentB == "X":
     puzzle.answer(catA1, catA2, entA1, entA2, "O")
     is_valid = cross_out(puzzle, catA1, catA2, entA1, entA2)
-
-  if currentA == "O":
-    applied = True
+  elif currentA == "O":
     puzzle.answer(catB1, catB2, entB1, entB2, "X")
-
-  if currentB == "O":
-    applied = True
+  elif currentB == "O":
     puzzle.answer(catA1, catA2, entA1, entA2, "X")
 
   return applied, is_valid, complete
@@ -1675,6 +1675,67 @@ def apply_compound_or(puzzle, options):
 print("Testing compound OR")
 puzzle = Puzzle([suspects, weapons, rooms, time])
 print(puzzle.print_grid())
+terms = [[suspects, "White", rooms, "Kitchen"], [weapons, "Knife", time, "2:00"]]
+
+# No info
+print("Either White is in the Kitchen OR the Knife is at 2:00; no info")
+applied, is_valid, complete = apply_compound_or(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (False, True, False)
+
+# A and B are both true => contradiction
+print("White IS Kitchen and Knife IS 2:00; Either White is in the Kitchen OR the Knife is at 2:00 => contradiction")
+apply_is(puzzle, [suspects, "White", rooms, "Kitchen"])
+apply_is(puzzle, [weapons, "Knife", time, "2:00"])
+applied, is_valid, complete = apply_compound_or(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (False, False, True)
+
+# A is O and B is * => Set B to X
+puzzle = Puzzle([suspects, weapons, rooms, time])
+print("White IS Kitchen; Either White is in the Kitchen OR the Knife is at 2:00 => Knife is not 2:00")
+apply_is(puzzle, [suspects, "White", rooms, "Kitchen"])
+applied, is_valid, complete = apply_compound_or(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (True, True, True)
+
+# A is O and B is X => ok
+print("Either White is in the Kitchen OR the Knife is at 2:00; already applied")
+apply_is(puzzle, [suspects, "White", rooms, "Kitchen"])
+applied, is_valid, complete = apply_compound_or(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (False, True, True)
+
+# A is X and B is * => Set B to O
+puzzle = Puzzle([suspects, weapons, rooms, time])
+print("White is NOT Kitchen; Either White is in the Kitchen OR the Knife is at 2:00 => Knife is 2:00")
+apply_not(puzzle, [suspects, "White", rooms, "Kitchen"])
+applied, is_valid, complete = apply_compound_or(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (True, True, True)
+
+# A is * and B is O => Set A to X
+puzzle = Puzzle([suspects, weapons, rooms, time])
+print("Knife is 2:00; Either White is in the Kitchen OR the Knife is at 2:00 => White is not in the Kitchen")
+apply_is(puzzle, [weapons, "Knife", time, "2:00"])
+applied, is_valid, complete = apply_compound_or(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (True, True, True)
+
+# A is * and B is X => Set A to O
+puzzle = Puzzle([suspects, weapons, rooms, time])
+print("Knife is not 2:00; Either White is in the Kitchen OR the Knife is at 2:00 => White is in the Kitchen")
+apply_not(puzzle, [weapons, "Knife", time, "2:00"])
+applied, is_valid, complete = apply_compound_or(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (True, True, True)
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
