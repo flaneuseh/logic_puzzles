@@ -19,8 +19,8 @@
 # %% id="AzB0GRIux4lQ"
 # Imports for DAAAYS
 import itertools
-from parsimonious.grammar import Grammar
-from parsimonious.nodes import NodeVisitor
+#from parsimonious.grammar import Grammar
+#from parsimonious.nodes import NodeVisitor
 import random
 from copy import deepcopy
 
@@ -435,7 +435,7 @@ def _per_complete_grid(self, grid):
   s = 0
   l = 0 
   for row in grid: 
-    s += row.count(\"X\") + row.count(\"O\")
+    s += row.count("X") + row.count("O")
     l += len(row)
   return s / l
 
@@ -465,64 +465,72 @@ def apply_hints(self, hints):
 # %% [markdown] id="wGi_U2rSy8Iu"
 # ### Test puzzles
 
-# %% id="YVzai91mLX_9"
-suspects = Category("suspects", ["Scarlet", "White", "Mustard", "Plum"], False)
-weapons = Category("weapons", ["Knife", "Rope", "Candle Stick", "Wrench"], False)
-rooms = Category("rooms", ["Ball room", "Living Room", "Kitchen", "Study"], False)
-time = Category("Time", ["1:00", "2:00", "3:00", "4:00"], True)
 
-puzzle = Puzzle([suspects, weapons, rooms, time])
+# %% id="YVzai91mLX_9"
+if __name__ == "__main__":
+  suspects = Category("suspects", ["Scarlet", "White", "Mustard", "Plum"], False)
+  weapons = Category("weapons", ["Knife", "Rope", "Candle Stick", "Wrench"], False)
+  rooms = Category("rooms", ["Ball room", "Living Room", "Kitchen", "Study"], False)
+  time = Category("Time", ["1:00", "2:00", "3:00", "4:00"], True)
+
+  puzzle = Puzzle([suspects, weapons, rooms, time])
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="i0iWKiURMcWG" outputId="c37df34f-453d-4128-8966-e66129961c3d"
-print(" " * 7 + " ".join([str(ent) for ent in puzzle.left_right]))
-print("\n".join([str(ent) for ent in puzzle.top_buttom]))
+if __name__ == "__main__":
+  print(" " * 7 + " ".join([str(ent) for ent in puzzle.left_right]))
+  print("\n".join([str(ent) for ent in puzzle.top_buttom]))
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="tMBRR7f3PO7G" outputId="a1e70faa-0efc-4226-efcc-783cb3af82ee"
-print(puzzle.print_grid())
+if __name__ == "__main__":
+  print(puzzle.print_grid())
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="5y0jCd1KcEO3" outputId="0c5dae69-7b4f-4467-e76e-291ebb128933"
-puzzle.answer(weapons, rooms, "Knife", "Study", "O")
-puzzle.answer(weapons, suspects, "Knife", "Scarlet", "O")
+if __name__ == "__main__":
+  puzzle.answer(weapons, rooms, "Knife", "Study", "O")
+  puzzle.answer(weapons, suspects, "Knife", "Scarlet", "O")
 
-#puzzle.answer(weapons, rooms, "Knife", "Ball room", "O")
-print(puzzle.print_grid())
-print("\n")
+  #puzzle.answer(weapons, rooms, "Knife", "Ball room", "O")
+  print(puzzle.print_grid())
+  print("\n")
 
-print(puzzle.find_truths(weapons, "Knife"))
-print("\n")
-print(puzzle.find_truths(rooms, "Study"))
-print("\n")
-print(puzzle.is_valid())
-print(puzzle.is_complete())
+  print(puzzle.find_truths(weapons, "Knife"))
+  print("\n")
+  print(puzzle.find_truths(rooms, "Study"))
+  print("\n")
+  print(puzzle.is_valid())
+  print(puzzle.is_complete())
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="HZ-W4nrF0PUo" outputId="aa2427a3-a09d-4ac3-8709-a7f90ab02187"
-puzzle.answer(rooms, suspects, "Study", "White", "O")
-print(puzzle.print_grid())
-print(puzzle._truths_valid())
+if __name__ == "__main__":
+  puzzle.answer(rooms, suspects, "Study", "White", "O")
+  print(puzzle.print_grid())
+  print(puzzle._truths_valid())
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="NnIeuhBBcHWS" outputId="b6239c41-3d1f-41f6-e2b5-587f79017ed3"
-suspects2 = Category("suspects", ["Scarlet", "White", "Mustard"], False)
-weapons2 = Category("weapons", ["Knife", "Rope", "Candle Stick"], False)
-rooms2 = Category("rooms", ["Ball room", "Living Room", "Kitchen"], False)
+if __name__ == "__main__":
+  suspects2 = Category("suspects", ["Scarlet", "White", "Mustard"], False)
+  weapons2 = Category("weapons", ["Knife", "Rope", "Candle Stick"], False)
+  rooms2 = Category("rooms", ["Ball room", "Living Room", "Kitchen"], False)
 
 
-puzzle2 = Puzzle([suspects2, weapons2, rooms2])
-print(puzzle2.print_grid())
+  puzzle2 = Puzzle([suspects2, weapons2, rooms2])
+  print(puzzle2.print_grid())
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="eTC-G36i3Tgs" outputId="be584ad7-9b58-43a0-aebd-32cb6b65097a"
-puzzle2.answer(rooms2, suspects2, "Ball room", "White", "O")
-puzzle2.answer(rooms2, suspects2, "Living Room", "Mustard", "O")
-puzzle2.answer(rooms2, suspects2, "Kitchen", "Scarlet", "O")
+if __name__ == "__main__":
+  puzzle2.answer(rooms2, suspects2, "Ball room", "White", "O")
+  puzzle2.answer(rooms2, suspects2, "Living Room", "Mustard", "O")
+  puzzle2.answer(rooms2, suspects2, "Kitchen", "Scarlet", "O")
 
-puzzle2.answer(rooms2, weapons2, "Ball room", "Knife", "O")
-puzzle2.answer(rooms2, weapons2, "Living Room", "Rope", "O")
-puzzle2.answer(rooms2,weapons2, "Kitchen", "Candle Stick", "O")
+  puzzle2.answer(rooms2, weapons2, "Ball room", "Knife", "O")
+  puzzle2.answer(rooms2, weapons2, "Living Room", "Rope", "O")
+  puzzle2.answer(rooms2,weapons2, "Kitchen", "Candle Stick", "O")
 
-puzzle2.answer(suspects2, weapons2, "White", "Knife", "O")
-puzzle2.answer(suspects2, weapons2, "Mustard", "Rope", "O")
-puzzle2.answer(suspects2,weapons2, "Scarlet", "Candle Stick", "O")
-print(puzzle2.print_grid())
-print(puzzle2.is_complete())
+  puzzle2.answer(suspects2, weapons2, "White", "Knife", "O")
+  puzzle2.answer(suspects2, weapons2, "Mustard", "Rope", "O")
+  puzzle2.answer(suspects2,weapons2, "Scarlet", "Candle Stick", "O")
+  print(puzzle2.print_grid())
+  print(puzzle2.is_complete())
 
 # %% [markdown] id="c75UQI2AKbXn"
 # ## Hint Grammar
@@ -759,8 +767,8 @@ def str_hint(hint, str_so_far = ""):
     str_so_far += str(hint)
   return str_so_far
 
-
-print(str_hint(generate_hint(puzzle)))
+if __name__ == "__main__":
+  print(str_hint(generate_hint(puzzle)))
 
 
 
@@ -1275,15 +1283,16 @@ def apply_hint(puzzle, hint):
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="cIlFA0mXSH5R" outputId="274d1a0b-cd33-4b36-c0eb-6214b679cec5"
 # apply some randomly generated hints and print results
-puzzle = Puzzle([suspects, weapons, rooms, time])
-print(puzzle.print_grid())
-
-for i in range(30):
-  hint = generate_hint(puzzle)
-  print(str_hint(hint))
-  print(apply_hint(puzzle, hint))
-  print(find_openings(puzzle))
-  print(find_transitives(puzzle))
+if __name__ == "__main__":
+  puzzle = Puzzle([suspects, weapons, rooms, time])
   print(puzzle.print_grid())
-  print("The ME should update!!")
+
+  for i in range(30):
+    hint = generate_hint(puzzle)
+    print(str_hint(hint))
+    print(apply_hint(puzzle, hint))
+    print(find_openings(puzzle))
+    print(find_transitives(puzzle))
+    print(puzzle.print_grid())
+    print("The ME should update!!")
 
