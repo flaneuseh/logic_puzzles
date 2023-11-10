@@ -1459,9 +1459,11 @@ def apply_simple_or(puzzle, terms):
         if sy == "O":
           # Logical error.
           is_valid = False
-          return applied, complete, is_valid
+          complete = True
+          return applied, is_valid, complete
         elif sy == "*":
           # No other entity from cat1 is ans_ent
+          applied = True
           puzzle.answer(pos_cat1, ans_cat, ent, ans_ent, "X")
 
   pos_symb1 = puzzle.get_symbol(pos_cat1, ans_cat, pos_ent1, ans_ent)
@@ -1469,13 +1471,12 @@ def apply_simple_or(puzzle, terms):
 
   if pos_symb1 == "*" and pos_symb2 == "*":
     # we can't apply hint yet (don't have enough information)
-    applied = False
     complete = False
   elif pos_symb1 == pos_symb2:
-    # this rule can't be applied (both are true or false)
-    applied = False
-    complete = False
+    # this rule can't be applied (both are true or both are false)
+    complete = True
     is_valid = False
+    return applied, is_valid, complete
   elif pos_symb1 == "O":
     # hint says that ent2 cannot be the answer ent
     if pos_symb2 == "*":
@@ -1485,7 +1486,6 @@ def apply_simple_or(puzzle, terms):
       puzzle.answer(pos_cat2, ans_cat, pos_ent2, ans_ent, "X")
     elif pos_symb2 == "X":
       # game state is correct, but nothing to change
-      applied = False
       complete = True
   elif pos_symb1 == "X":
     # hint says that ent2 must be the answer ent
@@ -1495,25 +1495,122 @@ def apply_simple_or(puzzle, terms):
       complete = True
       puzzle.answer(pos_cat2, ans_cat, pos_ent2, ans_ent, "O")
       is_valid = cross_out(puzzle, pos_cat2, ans_cat, pos_ent2, ans_ent)
+      if not is_valid:
+        return applied, is_valid, complete
     elif pos_symb2 == "O":
       # game state is correct, but we cannot change
-      applied = False
       complete = True
-      is_valid = True
   elif pos_symb1 == "*":
     if pos_symb2 == "O":
       # hint says ent1 is not ans_ent and we can change this
       applied = True
       complete = True
-      is_valid = True
       puzzle.answer(pos_cat1, ans_cat, pos_ent1, ans_ent, "X")
     elif pos_symb2 == "X":
       # hint says ent1 is ans_ent and we can change this
       applied = True
       complete = True
-      puzzle.answer(pos_cat1, ans_cat, pos_cat1, ans_ent, "O")
+      puzzle.answer(pos_cat1, ans_cat, pos_ent1, ans_ent, "O")
       is_valid = cross_out(puzzle, pos_cat1, ans_cat, pos_ent1, ans_ent)
+      if not is_valid:
+        return applied, is_valid, complete
   return applied, is_valid, complete
+
+
+# %%
+# Test simple or
+print("Testing simple OR")
+puzzle = Puzzle([suspects, weapons, rooms, time])
+print(puzzle.print_grid())
+
+# A and B in diff categories; no info
+terms = [suspects, "White", weapons, "Knife", rooms, "Study"]
+print("Either Mrs. White OR the Knife was in the Study => Mrs. White did NOT have the Knife")
+applied, is_valid, complete = apply_simple_or(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (True, True, False)
+
+# A and B in same category; no info
+terms = [rooms, "Kitchen", rooms, "Study", time, "1:00"]
+print("Either the Kitchen OR the Study was at 1:00 => no other room can be at 1:00")
+applied, is_valid, complete = apply_simple_or(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (True, True, False)
+
+# A and B in same category and a different item has the value.
+print("Knife was at 1:00 and Rope OR Wrench was at 1:00 => contradiction")
+apply_is(puzzle, [weapons, "Knife", time, "1:00"])
+terms = [weapons, "Rope", weapons, "Wrench", time, "1:00"]
+applied, is_valid, complete = apply_simple_or(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (False, False, True)
+
+# A and B are both true => contradiction
+print("White IS 2:00 and Rope IS 2:00; Either White OR Rope is 2:00 => contradiction")
+apply_is(puzzle, [suspects, "White", time, "2:00"])
+apply_is(puzzle, [weapons, "Rope", time, "2:00"])
+terms = [weapons, "Rope", suspects, "White", time, "2:00"]
+applied, is_valid, complete = apply_simple_or(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (True, False, True)
+
+terms = [suspects, "Scarlet", rooms, "Kitchen", weapons, "Knife"]
+# A is O and B is * => Set B to X
+print("Scarlet has the Knife and either Scarlet OR Kitchen has the Knife => Kitchen does not have the Knife")
+puzzle = Puzzle([suspects, weapons, rooms, time])
+apply_is(puzzle, [suspects, "Scarlet", weapons, "Knife"])
+applied, is_valid, complete = apply_simple_or(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (True, True, True)
+
+# A is O and B is X => ok
+print("Scarlet or Kitchen has the Knife; already applied")
+applied, is_valid, complete = apply_simple_or(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (False, True, True)
+
+# A is X and B is * => Set B to O
+puzzle = Puzzle([suspects, weapons, rooms, time])
+print("Scarlet does not have the Knife and either Scarlet OR Kitchen has the Knife => Kitchen has the Knife")
+puzzle = Puzzle([suspects, weapons, rooms, time])
+apply_not(puzzle, [suspects, "Scarlet", weapons, "Knife"])
+applied, is_valid, complete = apply_simple_or(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (True, True, True)
+
+# A is X and B is O => ok
+print("Scarlet or Kitchen has the Knife; already applied")
+applied, is_valid, complete = apply_simple_or(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (False, True, True)
+
+# A is * and B is X => Set A to O
+puzzle = Puzzle([suspects, weapons, rooms, time])
+print("Kitchen does not have the Knife and either Scarlet OR Kitchen has the Knife => Scarlet has the Knife")
+puzzle = Puzzle([suspects, weapons, rooms, time])
+apply_not(puzzle, [rooms, "Kitchen", weapons, "Knife"])
+applied, is_valid, complete = apply_simple_or(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (True, True, True)
+
+# A is * and B is O => Set A to X
+puzzle = Puzzle([suspects, weapons, rooms, time])
+print("Kitchen has the Knife and either Scarlet OR Kitchen has the Knife => Scarlet does not have the Knife")
+puzzle = Puzzle([suspects, weapons, rooms, time])
+apply_is(puzzle, [rooms, "Kitchen", weapons, "Knife"])
+applied, is_valid, complete = apply_simple_or(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (True, True, True)
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
@@ -1571,6 +1668,13 @@ def apply_compound_or(puzzle, options):
     puzzle.answer(catA1, catA2, entA1, entA2, "X")
 
   return applied, is_valid, complete
+
+
+# %%
+# Test compound or
+print("Testing compound OR")
+puzzle = Puzzle([suspects, weapons, rooms, time])
+print(puzzle.print_grid())
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
