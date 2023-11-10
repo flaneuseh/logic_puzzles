@@ -15,7 +15,7 @@
 
 # %%
 # Update this version to verify that .py and .ipynb are in sync.
-# Version: 2.0
+# Version: 3.0
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="u9fPlqt1JIrO" outputId="046eb385-7b0d-4f86-ed8d-ccf802682a2d"
 # !pip install parsimonious
@@ -1296,8 +1296,10 @@ print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
 print(puzzle.print_grid())
 assert (applied, is_valid, complete) == (True, True, True)
 
+# Reset puzzle
 puzzle = Puzzle([suspects, weapons, rooms, time])
 print(puzzle.print_grid())
+
 # Constraint on Before's time.
 print("Knife before Rope; Knife NOT 1:00 => Rope NOT 2:00")
 terms = [weapons, "Knife", weapons, "Rope", time]
@@ -1331,7 +1333,7 @@ print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
 print(puzzle.print_grid())
 assert (applied, is_valid, complete) == (False, False, True)
 
-# Contradiction for afer 0
+# Contradiction for after 0
 print("Living room IS 1:00, so Study before Living room contradicts")
 apply_is(puzzle, [rooms, "Living Room", time, "1:00"])
 applied, is_valid, complete = apply_before(puzzle, [rooms, "Study", rooms, "Living Room", time])
@@ -1352,7 +1354,77 @@ print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
 assert (applied, is_valid, complete) == (True, True, False)
 print(puzzle.print_grid())
 
-# 
+# Before entity has X
+print("Scarlet NOT 1:00 and Scarlet 2 BEFORE White")
+apply_not(puzzle, [suspects, "Scarlet", time, "1:00"])
+applied, is_valid, complete = apply_before(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+assert (applied, is_valid, complete) == (True, True, False)
+print(puzzle.print_grid())
+
+# Before entity is set
+print("Scarlet IS 2:00 and Scarlet 2 BEFORE White")
+apply_is(puzzle, [suspects, "Scarlet", time, "2:00"])
+applied, is_valid, complete = apply_before(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+assert (applied, is_valid, complete) == (True, True, True)
+print(puzzle.print_grid())
+
+# After entity has X
+terms[1] = "Mustard"
+terms[3] = "Plum"
+print("Plum NOT 4:00 and Mustard 2 before Plum")
+apply_not(puzzle, [suspects, "Plum", time, "4:00"])
+applied, is_valid, complete = apply_before(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+assert (applied, is_valid, complete) == (True, True, False)
+print(puzzle.print_grid())
+
+# After entity is set
+print("Plum IS 3:00 and Mustard 2 before Plum")
+apply_is(puzzle, [suspects, "Plum", time, "3:00"])
+applied, is_valid, complete = apply_before(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+assert (applied, is_valid, complete) == (True, True, True)
+print(puzzle.print_grid())
+
+# Both set, ok
+print("Both set; Mustard 2 before Plum")
+applied, is_valid, complete = apply_before(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+assert (applied, is_valid, complete) == (False, True, True)
+print(puzzle.print_grid())
+
+# Before set, contradiction
+print("Knife IS 2:00; Rope NOT 4:00; Knife 2 before Rope => contradiction")
+terms = [weapons, "Knife", weapons, "Rope", time, 2]
+apply_is(puzzle, [weapons, "Knife", time, "2:00"])
+apply_not(puzzle, [weapons, "Rope", time, "4:00"])
+applied, is_valid, complete = apply_before(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (True, False, True)
+
+# After set, contradiction
+print("Wrench IS 3:00; Candle Stick NOT 1:00; Candle Stick 2 before Wrench => contradiction")
+terms[1] = "Candle Stick"
+terms[3] = "Wrench"
+apply_is(puzzle, [weapons, "Wrench", time, "3:00"])
+apply_not(puzzle, [weapons, "Candle Stick", time, "1:00"])
+applied, is_valid, complete = apply_before(puzzle, terms)
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (True, False, True)
+
+# Both set, contradiction
+print("Kitchen IS 1:00, Study IS 2:00; Kitchen 2 before Study is contradictory")
+apply_is(puzzle, [rooms, "Kitchen", time, "1:00"])
+apply_is(puzzle, [rooms, "Study", time, "2:00"])
+applied, is_valid, complete = apply_before(puzzle, [rooms, "Kitchen", rooms, "Study", time, 2])
+print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+print(puzzle.print_grid())
+assert (applied, is_valid, complete) == (False, False, True)
+
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
 def apply_simple_or(puzzle, terms):
