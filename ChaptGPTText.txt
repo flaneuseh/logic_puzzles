@@ -85,3 +85,224 @@ In summary, we are confronted with a timeline intricately woven with locations a
 Let us proceed with scrutiny and diligence, for within these seemingly innocuous details lies the key to solving the enigma that haunts this mansion.
 
 Feel free to adapt and customize this testimony to fit the atmosphere and theme of your murder mystery game! 
+
+
+[new chat]
+
+prompt: "I am writing am murder mystery game. I need the testmony of Ms. White, she knows the following information (and nothing else): 
+    1. The hour 1:00 pm in  is the room Kitchen
+    2. Either the room Ball room is the hour 2:00 pm or The suspect Ms. White is the hour 3:00 pm 
+    3. The room Kitchen is at least 1 hour before the suspect Prof Plum  " 
+
+response: 
+"Ladies and gentlemen, thank you for having me here to provide my testimony regarding the events in question. I would like to share the information I have:
+
+At 1:00 pm, I was in the Kitchen. I can confirm this without a doubt.
+
+Either the Ball Room was occupied at 2:00 pm or, alternatively, the suspect, Ms. White, was present at 3:00 pm. I don't have information about both occurrences; it's one or the other.
+
+The Kitchen, where I was at 1:00 pm, precedes the time of the suspect Prof Plum by at least 1 hour. So, if Prof Plum was in the Kitchen, it must have been after 2:00 pm.
+
+I hope this information helps in solving the mystery. If there are any further questions, please feel free to ask." 
+
+[new chat]
+ "I am writing am murder mystery game. The players need to figure out which suspect was in what room, at what time, with what weapon. I need the testmony of Ms. White, she knows the following information (and nothing else): 
+    1. The hour 1:00 pm in  is the room Kitchen
+    2. Either the room Ball room is the hour 2:00 pm or The suspect Ms. White is the hour 3:00 pm 
+    3. The room Kitchen is at least 1 hour before the suspect Prof Plum  " 
+
+reponse: 
+Certainly! Here is the testimony of Ms. White:
+
+"I can provide you with some key information to help unravel this mystery:
+
+At 1:00 pm, I was in the Kitchen. That's where you'll find me at that hour.
+
+Either the Ball Room is the location at 2:00 pm or I, Ms. White, can be found somewhere else at 3:00 pm. One of these statements is true, but not both.
+
+You can be sure that the Kitchen is occupied at least 1 hour before Prof Plum is in there. So, if you figure out when Prof Plum is in the Kitchen, you can determine when I was there as well.
+
+Use this information wisely, and the truth of this mysterious event will start to unfold. Good luck, detectives!" 
+
+[new chat]
+
+I am writing am murder mystery game. The players need to figure out which suspect was in what room, at what time, with what weapon. Can you write the following information as clues for my game?: 
+    1. The hour 1:00 pm in  is the room Kitchen
+    2. Either the room Ball room is the hour 2:00 pm or The suspect Ms. White is the hour 3:00 pm 
+    3. The room Kitchen is at least 1 hour before the suspect Prof Plum 
+
+repsonse: 
+
+Certainly! Here are the clues for your murder mystery game:
+
+At 1:00 pm, the room in question is the Kitchen.
+
+Either the Ballroom is occupied at 2:00 pm, or Ms. White is present at 3:00 pm.
+
+The Kitchen is occupied at least one hour before Prof Plum enters any room.
+
+Feel free to use these clues to create an engaging and challenging mystery for your players! 
+
+[new chat]
+prompt: 
+
+I am writing am murder mystery game. The players need to figure out which suspect was in what room, at what time, with what weapon. The suspect "Ms. Scarlet" knows the following information "The hour 1:00 pm in is the room Kitchen"
+
+Can you give a reason why she would know this? 
+
+response: 
+
+Certainly! Here's a possible reason why Ms. Scarlet would know that "The hour 1:00 pm is in the room Kitchen":
+
+Ms. Scarlet is the caterer for an important event taking place in the mansion. As part of her responsibilities, she has to carefully plan and coordinate the preparation and serving of meals. On the day of the murder, the schedule is tight, and she needs to ensure that everything runs smoothly.
+
+At 1:00 pm, the main course for the event is scheduled to be prepared and plated in the Kitchen. Ms. Scarlet is overseeing the kitchen staff and making sure that the meal is being prepared according to the event's timeline. The importance of timing and the coordination of the event's schedule have made her acutely aware of the specific activities happening in the Kitchen at different hours, including 1:00 pm. Therefore, she has this specific information about the Kitchen at that particular time.
+
+[new chat] 
+
+prompt: 
+I am writing a Murder Mystery game. The players need to figure out which suspect was in what room, at what time, with what weapon. The following information is true:
+1. Col Mustard was in the study, with the knife, at 1:00PM
+2. Ms. White was in the dinning room, with the rope, at 2:00 PM 
+3. Prof Plum was in the living room, with the candlestick, at 3:00 PM 
+4. Ms. Scarlet was in the kitchen, with the wrench, at 4:00 PM 
+
+Can you write the testimony of Ms. Scarlet, where she reveals the following information (and nothing else):
+    1. Either the suspect Col Mustard or the suspect Ms. White was the room study 
+    2. the suspect Prof. Plum  was not the weapon rope 
+    3. the suspect Col Mustard was the hour 1:00PM 
+
+response: 
+Statement of Ms. Scarlet:
+
+Ladies and gentlemen, I must share my account of the events on that fateful day. At 4:00 PM, I found myself in the kitchen, wrestling with a wrench. However, my focus lies not only on my actions but also on the revelations regarding the others.
+
+Firstly, it's pertinent to note that the elusive study housed either the cunning Col Mustard or the mysterious Ms. White. The shadows of suspicion fall upon them within those four walls.
+
+Secondly, the distinguished Prof. Plum was nowhere near the rope, eliminating him as the possessor of that particular weapon. The strands of the rope were entangled in a different mystery.
+
+Lastly, and quite notably, Col Mustard found himself entwined with the enigma of the study at precisely 1:00 PM. A revelation that sheds light on the timeline of events.
+
+I hope this information aids in unraveling the intricate web of this murder mystery. 
+
+[new chat]
+prompt: 
+
+I am writing a Murder Mystery game. The players need to figure out which suspect was in what room, at what time, with what weapon. The following information is true:
+1. Col Mustard was in the study, with the knife, at 1:00PM
+2. Ms. White was in the dinning room, with the rope, at 2:00 PM 
+3. Prof Plum was in the living room, with the candlestick, at 3:00 PM 
+4. Ms. Scarlet was in the kitchen, with the wrench, at 4:00 PM 
+
+The suspect "Ms Scarlet" knows the following information:
+    1. Either the suspect Col Mustard or the suspect Ms. White was the room study 
+    2. the suspect Prof. Plum  was not the weapon rope 
+    3. the suspect Col Mustard was the hour 1:00PM 
+
+Can you tell me why she would know this? 
+
+reponse: 
+Certainly! Let's analyze the information provided and see why Ms. Scarlet would know these details:
+
+Either Col Mustard or Ms. White was in the study:
+
+We know that Col Mustard was in the study at 1:00 PM with the knife. So, Ms. White must have been in a different room at that time. Since Ms. Scarlet has this information, she knows that Col Mustard was in the study.
+Prof. Plum was not the one with the rope:
+
+Prof. Plum was in the living room with the candlestick at 3:00 PM. This means he couldn't have been the one with the rope at 2:00 PM. Since Ms. Scarlet knows this, she can eliminate Prof. Plum as the one with the rope.
+Col Mustard was in the study at 1:00 PM:
+
+Ms. Scarlet knows that Col Mustard was in the study at 1:00 PM with the knife. This is a specific piece of information about Col Mustard's location and the weapon used at a particular time.
+In summary, Ms. Scarlet can deduce this information based on the details provided, allowing her to eliminate Prof. Plum as the one with the rope, identify that Col Mustard was in the study, and specify that he was there at 1:00 PM with the knife \
+
+
+[new chat]
+I am writing a Murder Mystery game. The players need to figure out which suspect was in what room, at what time, with what weapon. The following information is true:
+1. Col Mustard was in the study, with the knife, at 1:00PM
+2. Ms. White was in the dinning room, with the rope, at 2:00 PM 
+3. Prof Plum was in the living room, with the candlestick, at 3:00 PM 
+4. Ms. Scarlet was in the kitchen, with the wrench, at 4:00 PM 
+
+The suspect "Ms Scarlet" knows the following information:
+    1. Either the suspect Col Mustard or the suspect Ms. White was the room study 
+    2. the suspect Prof. Plum  was not the weapon rope 
+    3. the suspect Col Mustard was the hour 1:00PM 
+
+Can give a narrative reason why Ms Scarlet would have this information? 
+
+response: 
+
+Certainly! Let's create a narrative reason for Ms. Scarlet to have this information:
+
+Ms. Scarlet, known for her sharp wit and keen observation skills, happened to be hosting a high-stakes poker game in the mansion on the day of the murder. As a skilled manipulator, she had strategically positioned herself at the center of the action, listening to the conversations and gathering information discreetly.
+
+As the evening progressed, she noticed Col Mustard and Ms. White engaged in a heated discussion near the study. Intrigued by their conversation, Ms. Scarlet couldn't resist eavesdropping on their exchange. It was during this clandestine moment that she overheard Col Mustard mentioning his presence in the study at 1:00 PM. This tidbit of information immediately caught Ms. Scarlet's attention, as she had a knack for remembering crucial details.
+
+Later on, as she moved through the mansion, Ms. Scarlet discreetly observed Prof Plum in the living room, holding the candlestick at 3:00 PM. This detail stuck in her mind because of its unusual nature.
+
+Finally, during the poker game's intermission, Ms. Scarlet strategically engaged in a conversation with Ms. White, subtly steering the discussion toward the events of the day. It was during this conversation that Ms. White inadvertently revealed her presence in the dining room with the rope at 2:00 PM.
+
+Combining these puzzle pieces, Ms. Scarlet deduced key elements of the crime, allowing her to create a strategic advantage for herself. Now, she holds this valuable information close, using it as leverage or a bargaining chip in the unfolding murder mystery game. 
+
+[new chat]
+I am writing a Murder Mystery game. The players need to figure out which suspect was in what room, at what time, with what weapon. Ms. Scarlet was in the kitchen, with the wrench, at 4:00 PM 
+
+The suspect "Ms Scarlet" knows the following information:
+    1. Either the suspect Col Mustard or the suspect Ms. White was the room study 
+    2. the suspect Prof. Plum  was not the weapon rope 
+    3. the suspect Col Mustard was the hour 1:00PM 
+
+Can give a narrative reason why Ms Scarlet would have this information? 
+
+response: 
+Certainly! Here's a narrative reason why Ms. Scarlet would have the information provided:
+
+Ms. Scarlet, a seasoned socialite and master of observation, had been discreetly eavesdropping on conversations during a high-profile dinner party at the grand mansion. Known for her cunning ways, she skillfully maneuvered through the crowd, strategically positioning herself near key points of interest.
+
+As the evening unfolded, Ms. Scarlet overheard Col. Mustard bragging about his punctuality, mentioning proudly that he had been in the study at precisely 1:00 PM. Meanwhile, she caught wind of Ms. White expressing her admiration for the elegant decor of the study, implying that it was her chosen room for a quiet retreat.
+
+During a brief encounter with Prof. Plum, Ms. Scarlet managed to engage him in conversation about various topics, subtly steering it towards the murder mystery game. Plum, unaware of Ms. Scarlet's ulterior motives, let slip that the weapon he detested the most was the rope.
+
+As the night progressed, Ms. Scarlet discreetly observed the interactions and behaviors of the suspects. She spotted Col. Mustard leaving the kitchen just before 4:00 PM, muttering something about an important appointment, and she took note of the wrench he left behind.
+
+By piecing together these fragments of information, Ms. Scarlet now holds a valuable set of clues that could aid the players in solving the mystery: Col. Mustard was in the study at 1:00 PM, Prof. Plum abhorred the rope, and Ms. White had a fondness for the study. This knowledge becomes a crucial asset as the players work to unravel the intricate web of the murder mystery. 
+
+[new chat]
+I am writing a Murder Mystery game. The players need to figure out which suspect was in what room, at what time, with what weapon. Ms. Scarlet was in the kitchen, with the wrench, at 4:00 PM 
+
+The suspect "Ms Scarlet" knows the following information:
+    1. Either the suspect Col Mustard or the suspect Ms. White was the room study 
+    2. the suspect Prof. Plum  was not the weapon rope 
+    3. the suspect Col Mustard was the hour 1:00PM 
+
+Can give a narrative reason why Ms Scarlet would have this information from the prospective of Ms Scarlet? 
+
+prompt: 
+
+Ms. Scarlet, an enigmatic and cunning character, had found herself entangled in a web of mystery and intrigue that fateful afternoon. She had been in the kitchen, her favorite spot for concocting delectable delicacies, when she overheard snippets of conversation echoing through the mansion's dimly lit corridors.
+
+As she expertly diced vegetables for her signature stew, she couldn't help but eavesdrop on a hushed conversation between Col Mustard and Ms. White. The study, a room of particular interest to Scarlet for its cozy ambiance, seemed to be at the center of their discussion. Col Mustard had mentioned his presence in the study at 1:00 PM, a detail that piqued Scarlet's curiosity.
+
+Later, as she continued her culinary escapades, she happened upon Prof. Plum in the hallway. His demeanor was unusually serious, and the topic of conversation revolved around weapons. Prof. Plum made a remark about how the rope was not his preferred tool, a piece of information that Ms. Scarlet filed away in the recesses of her sharp mind.
+
+With the fragments of information gathered from these chance encounters, Ms. Scarlet couldn't resist the temptation to piece together the puzzle herself. She realized that her knowledge could be instrumental in unraveling the mystery that shrouded the mansion. As she sharpened her wits and prepared to engage in the intricate dance of deduction, she became a key player in the unfolding drama, weaving her own narrative within the tapestry of the murder mystery. 
+
+[new chat]
+I am writing a Murder Mystery game.Can you have Ms. Scarlet explain how she knows that "Either the suspect Col Mustard or the suspect Ms. White was the room study" ? 
+
+response: 
+Certainly! In your Murder Mystery game, you can have Ms. Scarlet explain her reasoning as follows:
+
+"Detective, it's elementary, really. As I was passing through the hallway, I overheard a hushed conversation coming from the study. The voices were muffled, but I distinctly recognized Col. Mustard and Ms. White. They were discussing something rather secretive, and from the tone of their voices, it seemed crucial. Now, considering the gravity of the situation and the fact that the study is an isolated room, it's clear that either Col. Mustard or Ms. White is linked to the crime. They must have been up to something in there, and I suggest we interrogate them further to get to the bottom of this mystery."
+
+[new chat]
+I am writing a Murder Mystery game.Can you have Ms. Scarlet explain how she knows that "Either (but not boh) the suspect Col Mustard or the suspect Ms. White was the room study" ? 
+
+response: 
+Certainly! Here's a possible explanation from Ms. Scarlet:
+
+"Well, it's elementary, my dear. You see, I happened to be passing by the study when I overheard a hushed conversation between Col. Mustard and Ms. White. They were discussing something rather suspicious, and I couldn't help but eavesdrop a little. Col. Mustard was adamant that the study was the perfect place for their clandestine meeting, while Ms. White seemed equally insistent that it was the ideal location for their discussion.
+
+Now, it struck me as peculiar that they were so fixated on the study, but what really caught my attention was their emphasis on it being the exclusive choice for their rendezvous. It's as if they were deliberately avoiding being seen together elsewhere. So, putting two and two together, I deduced that either Col. Mustard or Ms. White must have been in the study, but not both. They were trying to keep their association discreet, and that pointed a rather incriminating finger in their direction. It's all about observation and deduction, my dear, just like a game of chess."
+
+Feel free to modify and adapt the explanation to fit the tone and style of your murder mystery game! 
