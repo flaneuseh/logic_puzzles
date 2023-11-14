@@ -1014,182 +1014,182 @@ def find_transitives(puzzle):
 
 # %%
 # Test find_transitives
+if __name__ == "__main__":
+  # A -> B and B -> C, so A -> C
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  apply_is(puzzle, [suspects, "Scarlet", time, "1:00"])
+  apply_is(puzzle, [time, "1:00", rooms, "Study"])
+  print(puzzle.print_grid())
 
-# A -> B and B -> C, so A -> C
-puzzle = Puzzle([suspects, weapons, rooms, time])
-apply_is(puzzle, [suspects, "Scarlet", time, "1:00"])
-apply_is(puzzle, [time, "1:00", rooms, "Study"])
-print(puzzle.print_grid())
+  print("Scarlet -> 1:00 and 1:00 -> Study so Scarlet -> Study")
+  applied, is_valid, complete = find_transitives(puzzle)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, False)
 
-print("Scarlet -> 1:00 and 1:00 -> Study so Scarlet -> Study")
-applied, is_valid, complete = find_transitives(puzzle)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, False)
+  # A -> B and B -> C, but can't A -> C => contradiction
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  apply_is(puzzle, [suspects, "Scarlet", time, "1:00"])
+  apply_is(puzzle, [time, "1:00", rooms, "Study"])
+  apply_not(puzzle, [suspects, "Scarlet", rooms, "Study"])
+  print(puzzle.print_grid())
 
-# A -> B and B -> C, but can't A -> C => contradiction
-puzzle = Puzzle([suspects, weapons, rooms, time])
-apply_is(puzzle, [suspects, "Scarlet", time, "1:00"])
-apply_is(puzzle, [time, "1:00", rooms, "Study"])
-apply_not(puzzle, [suspects, "Scarlet", rooms, "Study"])
-print(puzzle.print_grid())
+  print("Scarlet -> 1:00 and 1:00 -> Study but Scarlet !> Study => contradiction")
+  applied, is_valid, complete = find_transitives(puzzle)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, False, False)
 
-print("Scarlet -> 1:00 and 1:00 -> Study but Scarlet !> Study => contradiction")
-applied, is_valid, complete = find_transitives(puzzle)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, False, False)
+  # A -> B and B !> C, so A !> C
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  apply_is(puzzle, [suspects, "Scarlet", time, "1:00"])
+  apply_not(puzzle, [time, "1:00", rooms, "Study"])
+  print(puzzle.print_grid())
 
-# A -> B and B !> C, so A !> C
-puzzle = Puzzle([suspects, weapons, rooms, time])
-apply_is(puzzle, [suspects, "Scarlet", time, "1:00"])
-apply_not(puzzle, [time, "1:00", rooms, "Study"])
-print(puzzle.print_grid())
+  print("Scarlet -> 1:00 and 1:00 !> Study so Scarlet !> Study")
+  applied, is_valid, complete = find_transitives(puzzle)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, False)
 
-print("Scarlet -> 1:00 and 1:00 !> Study so Scarlet !> Study")
-applied, is_valid, complete = find_transitives(puzzle)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, False)
+  # A -> B and B !> C, but can't A !> C => contradiction
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  apply_is(puzzle, [suspects, "Scarlet", time, "1:00"])
+  apply_not(puzzle, [time, "1:00", rooms, "Study"])
+  apply_is(puzzle, [suspects, "Scarlet", rooms, "Study"])
+  print(puzzle.print_grid())
 
-# A -> B and B !> C, but can't A !> C => contradiction
-puzzle = Puzzle([suspects, weapons, rooms, time])
-apply_is(puzzle, [suspects, "Scarlet", time, "1:00"])
-apply_not(puzzle, [time, "1:00", rooms, "Study"])
-apply_is(puzzle, [suspects, "Scarlet", rooms, "Study"])
-print(puzzle.print_grid())
+  print("Scarlet -> 1:00 and 1:00 !> Study but Scarlet !> Study => contradiction")
+  applied, is_valid, complete = find_transitives(puzzle)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (False, False, False)
 
-print("Scarlet -> 1:00 and 1:00 !> Study but Scarlet !> Study => contradiction")
-applied, is_valid, complete = find_transitives(puzzle)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (False, False, False)
+  # A -> B and A -> C so B -> C
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  apply_is(puzzle, [suspects, "Scarlet", time, "1:00"])
+  apply_is(puzzle, [suspects, "Scarlet", rooms, "Study"])
+  print(puzzle.print_grid())
 
-# A -> B and A -> C so B -> C
-puzzle = Puzzle([suspects, weapons, rooms, time])
-apply_is(puzzle, [suspects, "Scarlet", time, "1:00"])
-apply_is(puzzle, [suspects, "Scarlet", rooms, "Study"])
-print(puzzle.print_grid())
+  print("Scarlet -> 1:00 and Scarlet -> Study so 1:00 -> Study")
+  applied, is_valid, complete = find_transitives(puzzle)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, False)
 
-print("Scarlet -> 1:00 and Scarlet -> Study so 1:00 -> Study")
-applied, is_valid, complete = find_transitives(puzzle)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, False)
+  # A -> B and A -> C, but can't B -> C => contradiction
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  apply_is(puzzle, [suspects, "Scarlet", time, "1:00"])
+  apply_is(puzzle, [suspects, "Scarlet", rooms, "Study"])
+  apply_not(puzzle, [time, "1:00", rooms, "Study"])
+  print(puzzle.print_grid())
 
-# A -> B and A -> C, but can't B -> C => contradiction
-puzzle = Puzzle([suspects, weapons, rooms, time])
-apply_is(puzzle, [suspects, "Scarlet", time, "1:00"])
-apply_is(puzzle, [suspects, "Scarlet", rooms, "Study"])
-apply_not(puzzle, [time, "1:00", rooms, "Study"])
-print(puzzle.print_grid())
+  print("Scarlet -> 1:00 and Scarlet -> Study but 1:00 !> Study => contradiction")
+  applied, is_valid, complete = find_transitives(puzzle)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (False, False, False)
 
-print("Scarlet -> 1:00 and Scarlet -> Study but 1:00 !> Study => contradiction")
-applied, is_valid, complete = find_transitives(puzzle)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (False, False, False)
+  # A -> B and A !> C so B !> C
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  apply_is(puzzle, [suspects, "Scarlet", time, "1:00"])
+  apply_not(puzzle, [suspects, "Scarlet", rooms, "Study"])
+  print(puzzle.print_grid())
 
-# A -> B and A !> C so B !> C
-puzzle = Puzzle([suspects, weapons, rooms, time])
-apply_is(puzzle, [suspects, "Scarlet", time, "1:00"])
-apply_not(puzzle, [suspects, "Scarlet", rooms, "Study"])
-print(puzzle.print_grid())
+  print("Scarlet -> 1:00 and Scarlet !> Study so 1:00 !> Study")
+  applied, is_valid, complete = find_transitives(puzzle)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, False)
 
-print("Scarlet -> 1:00 and Scarlet !> Study so 1:00 !> Study")
-applied, is_valid, complete = find_transitives(puzzle)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, False)
+  # A -> B and A !> C, but can't B !> C => contradiction
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  apply_is(puzzle, [suspects, "Scarlet", time, "1:00"])
+  apply_not(puzzle, [suspects, "Scarlet", rooms, "Study"])
+  apply_is(puzzle, [time, "1:00", rooms, "Study"])
+  print(puzzle.print_grid())
 
-# A -> B and A !> C, but can't B !> C => contradiction
-puzzle = Puzzle([suspects, weapons, rooms, time])
-apply_is(puzzle, [suspects, "Scarlet", time, "1:00"])
-apply_not(puzzle, [suspects, "Scarlet", rooms, "Study"])
-apply_is(puzzle, [time, "1:00", rooms, "Study"])
-print(puzzle.print_grid())
+  print("Scarlet -> 1:00 and Scarlet !> Study but 1:00 -> Study => contradiction")
+  applied, is_valid, complete = find_transitives(puzzle)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, False, False)
 
-print("Scarlet -> 1:00 and Scarlet !> Study but 1:00 -> Study => contradiction")
-applied, is_valid, complete = find_transitives(puzzle)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, False, False)
+  # A !> B and B -> C, so A !> C
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  apply_not(puzzle, [suspects, "Scarlet", time, "1:00"])
+  apply_is(puzzle, [time, "1:00", rooms, "Study"])
+  print(puzzle.print_grid())
 
-# A !> B and B -> C, so A !> C
-puzzle = Puzzle([suspects, weapons, rooms, time])
-apply_not(puzzle, [suspects, "Scarlet", time, "1:00"])
-apply_is(puzzle, [time, "1:00", rooms, "Study"])
-print(puzzle.print_grid())
+  print("Scarlet !> 1:00 and 1:00 -> Study so Scarlet !> Study")
+  applied, is_valid, complete = find_transitives(puzzle)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, False)
 
-print("Scarlet !> 1:00 and 1:00 -> Study so Scarlet !> Study")
-applied, is_valid, complete = find_transitives(puzzle)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, False)
+  # A !> B and B -> C, , but can't reject A to C => contradiction
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  apply_not(puzzle, [suspects, "Scarlet", time, "1:00"])
+  apply_is(puzzle, [time, "1:00", rooms, "Study"])
+  apply_is(puzzle, [suspects, "Scarlet", rooms, "Study"])
+  print(puzzle.print_grid())
 
-# A !> B and B -> C, , but can't reject A to C => contradiction
-puzzle = Puzzle([suspects, weapons, rooms, time])
-apply_not(puzzle, [suspects, "Scarlet", time, "1:00"])
-apply_is(puzzle, [time, "1:00", rooms, "Study"])
-apply_is(puzzle, [suspects, "Scarlet", rooms, "Study"])
-print(puzzle.print_grid())
+  print("Scarlet !> 1:00 and 1:00 -> Study, but Scarlet !> Study => contradiction")
+  applied, is_valid, complete = find_transitives(puzzle)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (False, False, False)
 
-print("Scarlet !> 1:00 and 1:00 -> Study, but Scarlet !> Study => contradiction")
-applied, is_valid, complete = find_transitives(puzzle)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (False, False, False)
+  # A !> B and A -> C so B !> C
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  apply_not(puzzle, [suspects, "Scarlet", time, "1:00"])
+  apply_is(puzzle, [suspects, "Scarlet", rooms, "Study"])
+  print(puzzle.print_grid())
 
-# A !> B and A -> C so B !> C
-puzzle = Puzzle([suspects, weapons, rooms, time])
-apply_not(puzzle, [suspects, "Scarlet", time, "1:00"])
-apply_is(puzzle, [suspects, "Scarlet", rooms, "Study"])
-print(puzzle.print_grid())
+  print("Scarlet !> 1:00 and Scarlet -> Study so 1:00 !> Study")
+  applied, is_valid, complete = find_transitives(puzzle)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, False)
 
-print("Scarlet !> 1:00 and Scarlet -> Study so 1:00 !> Study")
-applied, is_valid, complete = find_transitives(puzzle)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, False)
+  # A !> B and A -> C so B !> C, but can't reject B to C => contradiction
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  apply_not(puzzle, [suspects, "Scarlet", time, "1:00"])
+  apply_is(puzzle, [suspects, "Scarlet", rooms, "Study"])
+  apply_is(puzzle, [time, "1:00", rooms, "Study"])
+  print(puzzle.print_grid())
 
-# A !> B and A -> C so B !> C, but can't reject B to C => contradiction
-puzzle = Puzzle([suspects, weapons, rooms, time])
-apply_not(puzzle, [suspects, "Scarlet", time, "1:00"])
-apply_is(puzzle, [suspects, "Scarlet", rooms, "Study"])
-apply_is(puzzle, [time, "1:00", rooms, "Study"])
-print(puzzle.print_grid())
+  print("Scarlet !> 1:00 and Scarlet -> Study, but 1:00 !> Study => contradiction")
+  applied, is_valid, complete = find_transitives(puzzle)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (False, False, False)
 
-print("Scarlet !> 1:00 and Scarlet -> Study, but 1:00 !> Study => contradiction")
-applied, is_valid, complete = find_transitives(puzzle)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (False, False, False)
+  # A and B don't share any possibilities; A !> B
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  apply_not(puzzle, [suspects, "Scarlet", time, "1:00"])
+  apply_not(puzzle, [suspects, "Scarlet", time, "2:00"])
+  apply_not(puzzle, [weapons, "Rope", time, "3:00"])
+  apply_not(puzzle, [weapons, "Rope", time, "4:00"])
 
-# A and B don't share any possibilities; A !> B
-puzzle = Puzzle([suspects, weapons, rooms, time])
-apply_not(puzzle, [suspects, "Scarlet", time, "1:00"])
-apply_not(puzzle, [suspects, "Scarlet", time, "2:00"])
-apply_not(puzzle, [weapons, "Rope", time, "3:00"])
-apply_not(puzzle, [weapons, "Rope", time, "4:00"])
+  print(puzzle.print_grid())
 
-print(puzzle.print_grid())
+  ## Neither Scarlet nor Rope has a O time
+  print("Scarlet and Rope don't share any compatible times, so Scarlet !> Rope")
+  applied, is_valid, complete = find_transitives(puzzle)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, False)
 
-## Neither Scarlet nor Rope has a O time
-print("Scarlet and Rope don't share any compatible times, so Scarlet !> Rope")
-applied, is_valid, complete = find_transitives(puzzle)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, False)
+  # Wrench has a O time and Scarlet can't go to that time.
+  apply_is(puzzle, [weapons, "Wrench", time, "1:00"])
+  print(puzzle.print_grid())
 
-# Wrench has a O time and Scarlet can't go to that time.
-apply_is(puzzle, [weapons, "Wrench", time, "1:00"])
-print(puzzle.print_grid())
-
-print("Scarlet and Wrench don't share any compatible times, so Scarlet !> Wrench")
-applied, is_valid, complete = find_transitives(puzzle)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, False)
+  print("Scarlet and Wrench don't share any compatible times, so Scarlet !> Wrench")
+  applied, is_valid, complete = find_transitives(puzzle)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, False)
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
