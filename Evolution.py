@@ -25,9 +25,12 @@
 # Imports Baby 
 import import_ipynb 
 from LogicPuzzles import Puzzle, generate_hint, Category, apply_hint, find_openings, find_transitives  
+from HintToEnglish import hint_to_english  
+from DataVisualization import plot_history
 import random 
 import math 
 import numpy.random as npr
+import pickle 
 
 
 # %%
@@ -88,9 +91,9 @@ def apply_hints(puzzle, hints):
 
             # Apply additional logic 
             if a: 
-                #a_3, is_valid, complete = find_transitives(copy)
+                a_3, is_valid, complete = find_transitives(copy)
                 a_2, is_valid, complete = find_openings(copy)
-                applied = applied or a_2 # test if anything was changed 
+                applied = applied or a_2 or a_3# test if anything was changed 
         
         queue = backlog 
         backlog = [] 
@@ -150,7 +153,30 @@ class HintSet:
                 rule = list(hint.keys())[0]
             score += HINT_VALUES[rule] 
         
-        return (0.3 * score / len(self.hints)) + (0.7 * (1 - (len(self.hints) / 20)))
+        return (0.5 * score / len(self.hints)) + (0.5 * (1 - (len(self.hints) / 20)))
+
+class History:
+    def __init__(self):
+        self.num_feasible = []
+        self.feasible_fitness = []
+        self.infeasible_fitness = []
+
+    def update_history(self, feasible, infeasible):
+        self.num_feasible.append(len(feasible))
+
+        if len(feasible) == 0:
+            self.feasible_fitness.append(0)
+        else: 
+            self.feasible_fitness.append(feasible[0][0])
+        
+        if len(infeasible) == 0:
+            self.infeasible_fitness.append(0)
+        else: 
+            self.infeasible_fitness.append(infeasible[0][0])
+
+
+
+
 
 
 # %%
@@ -190,6 +216,7 @@ def _add_child(hints, feasible, infeasible):
 def evolve(puzzle, generations, pop_size, x_rate, mut_rate, add_rate, elits):
     feasible = []
     infeasible = []
+    history = History()
 
     # Create initial population 
     for i in range(pop_size):
@@ -205,7 +232,9 @@ def evolve(puzzle, generations, pop_size, x_rate, mut_rate, add_rate, elits):
         feasible.sort(reverse= True, key = lambda a: a[0])
         infeasible.sort(reverse= True, key = lambda a: a[0]) 
 
-        if gen % 300 == 0: 
+        history.update_history(feasible, infeasible)
+
+        if gen % 50 == 0: 
             if len(infeasible) > 0:
                 print("Infeasible")
                 print(infeasible[0])
@@ -258,28 +287,32 @@ def evolve(puzzle, generations, pop_size, x_rate, mut_rate, add_rate, elits):
                 
         feasible = new_feasible
         infeasible = new_infeasible 
-    return feasible, infeasible
+    return feasible, infeasible, history 
 
 
 # %%
 if __name__ == "__main__":
-    suspects = Category("suspects", ["Scarlet", "White", "Mustard", "Plum"], False)
-    weapons = Category("weapons", ["Knife", "Rope", "Candle Stick", "Wrench"], False)
-    rooms = Category("rooms", ["Ball room", "Living Room", "Kitchen", "Study"], False)
-    time = Category("Time", ["1:00", "2:00", "3:00", "4:00"], True)
+    suspects = Category("suspect", ["Scarlet", "White", "Mustard", "Plum"], False)
+    weapons = Category("weapon", ["Knife", "Rope", "Candle Stick", "Wrench"], False)
+    rooms = Category("room", ["Ball room", "Living Room", "Kitchen", "Study"], False)
+    time = Category("hour", ["1:00", "2:00", "3:00", "4:00"], True)
 
     puzzle = Puzzle([suspects, weapons, rooms, time]) 
 
-    pop = evolve(puzzle, 10000,100, 0.2, 1, 0.5, 2) 
+    pop = evolve(puzzle, 100,50, 0.2, 1, 0.5, 2) 
 
 # %%
 if __name__ == "__main__":
+    file = open("Experiement1/pop1.p", "wb")
+    pickle.dump(pop, file)
     feasible = pop[0]
     infeasible = pop[1]
+    history = pop[2]
 
     print(feasible)
     print(feasible[0][1].completed_puzzle.print_grid())
     print(len(feasible[0][1].hints))
-    print(feasible[0][1].hints)
+    print([hint_to_english(hint) for hint in feasible[0][1].hints])
     print("\n\n")
     print(infeasible)
+    plot_history(history, "Experiement1")
