@@ -435,98 +435,106 @@ class Puzzle:
     else:
       return False
 
-def _per_complete_grid(self, grid):
-  s = 0
-  l = 0 
-  for row in grid: 
-    s += row.count("X") + row.count("O")
-    l += len(row)
-  return s / l
+  def _per_complete_grid(self, grid):
+    s = 0
+    l = 0 
+    for row in grid: 
+      s += row.count("X") + row.count("O")
+      l += len(row)
+    return s / l
 
-def percent_complete(self):
-  """
-        return the ratio of cells that
-        have an "X" or "O"
-  """
-  grid_sums = 0 
-  grid_len = 0 
-  for grid in self.grids.values(): 
-    grid_sums += self._per_complete_grid(grid)
-    grid_len += 1
-    return grid_sums / grid_len
+  def percent_complete(self):
+    """
+          return the ratio of cells that
+          have an "X" or "O"
+    """
+    grid_sums = 0 
+    grid_len = 0 
+    for grid in self.grids.values(): 
+      grid_sums += self._per_complete_grid(grid)
+      grid_len += 1
+      return grid_sums / grid_len
 
-def apply_hints(self, hints):
-  """
-  Return a copy of the puzzle
-  here all hints in a list are
-  applied
-  Starts with a blank verison
-  of the puzzle (i.e. does not copy grids)
-  """
-  return
+  def apply_hints(self, hints):
+    """
+    Return a copy of the puzzle
+    here all hints in a list are
+    applied
+    Starts with a blank verison
+    of the puzzle (i.e. does not copy grids)
+    """
+    return
 
 
 # %% [markdown] id="wGi_U2rSy8Iu"
 # ### Test puzzles
 
-# %% id="YVzai91mLX_9"
-suspects = Category("suspects", ["Scarlet", "White", "Mustard", "Plum"], False)
-weapons = Category("weapons", ["Knife", "Rope", "Candle Stick", "Wrench"], False)
-rooms = Category("rooms", ["Ball room", "Living Room", "Kitchen", "Study"], False)
-time = Category("Time", ["1:00", "2:00", "3:00", "4:00"], True)
 
-puzzle = Puzzle([suspects, weapons, rooms, time])
+# %% id="YVzai91mLX_9"
+if __name__ == "__main__":
+  suspects = Category("suspects", ["Scarlet", "White", "Mustard", "Plum"], False)
+  weapons = Category("weapons", ["Knife", "Rope", "Candle Stick", "Wrench"], False)
+  rooms = Category("rooms", ["Ball room", "Living Room", "Kitchen", "Study"], False)
+  time = Category("Time", ["1:00", "2:00", "3:00", "4:00"], True)
+
+  puzzle = Puzzle([suspects, weapons, rooms, time])
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="i0iWKiURMcWG" outputId="c37df34f-453d-4128-8966-e66129961c3d"
-print(" " * 7 + " ".join([str(ent) for ent in puzzle.left_right]))
-print("\n".join([str(ent) for ent in puzzle.top_buttom]))
+if __name__ == "__main__": 
+  print(" " * 7 + " ".join([str(ent) for ent in puzzle.left_right]))
+  print("\n".join([str(ent) for ent in puzzle.top_buttom]))
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="tMBRR7f3PO7G" outputId="a1e70faa-0efc-4226-efcc-783cb3af82ee"
-print(puzzle.print_grid())
+if __name__ == "__main__": 
+  print(puzzle.print_grid())
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="5y0jCd1KcEO3" outputId="0c5dae69-7b4f-4467-e76e-291ebb128933"
-puzzle.answer(weapons, rooms, "Knife", "Study", "O")
-puzzle.answer(weapons, suspects, "Knife", "Scarlet", "O")
+if __name__ == "__main__": 
+  puzzle.answer(weapons, rooms, "Knife", "Study", "O")
+  puzzle.answer(weapons, suspects, "Knife", "Scarlet", "O")
 
-#puzzle.answer(weapons, rooms, "Knife", "Ball room", "O")
-print(puzzle.print_grid())
-print("\n")
+  #puzzle.answer(weapons, rooms, "Knife", "Ball room", "O")
+  print(puzzle.print_grid())
+  print("\n")
 
-print(puzzle.find_truths(weapons, "Knife"))
-print("\n")
-print(puzzle.find_truths(rooms, "Study"))
-print("\n")
-print(puzzle.is_valid())
-print(puzzle.is_complete())
+  print(puzzle.find_truths(weapons, "Knife"))
+  print("\n")
+  print(puzzle.find_truths(rooms, "Study"))
+  print("\n")
+  print(puzzle.is_valid())
+  print(puzzle.is_complete())
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="HZ-W4nrF0PUo" outputId="aa2427a3-a09d-4ac3-8709-a7f90ab02187"
-puzzle.answer(rooms, suspects, "Study", "White", "O")
-print(puzzle.print_grid())
-print(puzzle._truths_valid())
+if __name__ == "__main__": 
+  puzzle.answer(rooms, suspects, "Study", "White", "O")
+  print(puzzle.print_grid())
+  print(puzzle._truths_valid())
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="NnIeuhBBcHWS" outputId="b6239c41-3d1f-41f6-e2b5-587f79017ed3"
-suspects2 = Category("suspects", ["Scarlet", "White", "Mustard"], False)
-weapons2 = Category("weapons", ["Knife", "Rope", "Candle Stick"], False)
-rooms2 = Category("rooms", ["Ball room", "Living Room", "Kitchen"], False)
+if __name__ == "__main__": 
+  suspects2 = Category("suspects", ["Scarlet", "White", "Mustard"], False)
+  weapons2 = Category("weapons", ["Knife", "Rope", "Candle Stick"], False)
+  rooms2 = Category("rooms", ["Ball room", "Living Room", "Kitchen"], False)
 
 
-puzzle2 = Puzzle([suspects2, weapons2, rooms2])
-print(puzzle2.print_grid())
+  puzzle2 = Puzzle([suspects2, weapons2, rooms2])
+  print(puzzle2.print_grid())
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="eTC-G36i3Tgs" outputId="be584ad7-9b58-43a0-aebd-32cb6b65097a"
-puzzle2.answer(rooms2, suspects2, "Ball room", "White", "O")
-puzzle2.answer(rooms2, suspects2, "Living Room", "Mustard", "O")
-puzzle2.answer(rooms2, suspects2, "Kitchen", "Scarlet", "O")
+if __name__ == "__main__": 
+  puzzle2.answer(rooms2, suspects2, "Ball room", "White", "O")
+  puzzle2.answer(rooms2, suspects2, "Living Room", "Mustard", "O")
+  puzzle2.answer(rooms2, suspects2, "Kitchen", "Scarlet", "O")
 
-puzzle2.answer(rooms2, weapons2, "Ball room", "Knife", "O")
-puzzle2.answer(rooms2, weapons2, "Living Room", "Rope", "O")
-puzzle2.answer(rooms2,weapons2, "Kitchen", "Candle Stick", "O")
+  puzzle2.answer(rooms2, weapons2, "Ball room", "Knife", "O")
+  puzzle2.answer(rooms2, weapons2, "Living Room", "Rope", "O")
+  puzzle2.answer(rooms2,weapons2, "Kitchen", "Candle Stick", "O")
 
-puzzle2.answer(suspects2, weapons2, "White", "Knife", "O")
-puzzle2.answer(suspects2, weapons2, "Mustard", "Rope", "O")
-puzzle2.answer(suspects2,weapons2, "Scarlet", "Candle Stick", "O")
-print(puzzle2.print_grid())
-print(puzzle2.is_complete())
+  puzzle2.answer(suspects2, weapons2, "White", "Knife", "O")
+  puzzle2.answer(suspects2, weapons2, "Mustard", "Rope", "O")
+  puzzle2.answer(suspects2,weapons2, "Scarlet", "Candle Stick", "O")
+  print(puzzle2.print_grid())
+  print(puzzle2.is_complete())
 
 # %% [markdown] id="c75UQI2AKbXn"
 # ## Hint Grammar
@@ -543,12 +551,13 @@ print(puzzle2.is_complete())
 
 # %% id="xeRLVh4VKj8A"
 # Test puzzle
-suspects = Category("suspects", ["Scarlet", "White", "Mustard", "Plum"], False)
-weapons = Category("weapons", ["Knife", "Rope", "Candle Stick", "Wrench"], False)
-rooms = Category("rooms", ["Ball room", "Living Room", "Kitchen", "Study"], False)
-time = Category("Time", ["1:00", "2:00", "3:00", "4:00"], True)
+if __name__ == "__main__": 
+  suspects = Category("suspects", ["Scarlet", "White", "Mustard", "Plum"], False)
+  weapons = Category("weapons", ["Knife", "Rope", "Candle Stick", "Wrench"], False)
+  rooms = Category("rooms", ["Ball room", "Living Room", "Kitchen", "Study"], False)
+  time = Category("Time", ["1:00", "2:00", "3:00", "4:00"], True)
 
-puzzle = Puzzle([suspects, weapons, rooms, time])
+  puzzle = Puzzle([suspects, weapons, rooms, time])
 
 # %% id="wLYt5NqArCIt"
 # define this grammar
@@ -764,7 +773,8 @@ def str_hint(hint, str_so_far = ""):
   return str_so_far
 
 
-print(str_hint(generate_hint(puzzle)))
+if __name__ == "__main__": 
+  print(str_hint(generate_hint(puzzle)))
 
 
 
@@ -1016,66 +1026,67 @@ def find_openings(puzzle):
 
 # %%
 # Test find_openings
-puzzle = Puzzle([suspects, weapons, rooms, time])
-print(puzzle.print_grid())
+if __name__ == "__main__": 
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  print(puzzle.print_grid())
 
-print("Set up find openings")
-apply_not(puzzle, [suspects, "Scarlet", time, "1:00"])
-apply_not(puzzle, [suspects, "Scarlet", time, "4:00"])
-apply_not(puzzle, [weapons, "Knife", time, "1:00"])
-apply_not(puzzle, [weapons, "Rope", time, "1:00"])
-print(puzzle.print_grid())
+  print("Set up find openings")
+  apply_not(puzzle, [suspects, "Scarlet", time, "1:00"])
+  apply_not(puzzle, [suspects, "Scarlet", time, "4:00"])
+  apply_not(puzzle, [weapons, "Knife", time, "1:00"])
+  apply_not(puzzle, [weapons, "Rope", time, "1:00"])
+  print(puzzle.print_grid())
 
-# Find openings when there are no openings
-print("Find openings when there are no openings")
-applied, is_valid, complete = find_openings(puzzle)
-assert (applied, is_valid, complete) == (False, True, False)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
+  # Find openings when there are no openings
+  print("Find openings when there are no openings")
+  applied, is_valid, complete = find_openings(puzzle)
+  assert (applied, is_valid, complete) == (False, True, False)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
 
-# There is an opening in a column
-print("Set Mustard to 2:00")
-apply_is(puzzle, [suspects, "Mustard", time, "2:00"])
-print(puzzle.print_grid())
-print("Find an opening in a column")
-applied, is_valid, complete = find_openings(puzzle)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, False)
+  # There is an opening in a column
+  print("Set Mustard to 2:00")
+  apply_is(puzzle, [suspects, "Mustard", time, "2:00"])
+  print(puzzle.print_grid())
+  print("Find an opening in a column")
+  applied, is_valid, complete = find_openings(puzzle)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, False)
 
-# There is an opening in a row
-print("Set Wrench to 3:00")
-apply_is(puzzle, [weapons, "Wrench", time, "3:00"])
-print(puzzle.print_grid())
-print("Find an opening in a row")
-applied, is_valid, complete = find_openings(puzzle)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, False)
+  # There is an opening in a row
+  print("Set Wrench to 3:00")
+  apply_is(puzzle, [weapons, "Wrench", time, "3:00"])
+  print(puzzle.print_grid())
+  print("Find an opening in a row")
+  applied, is_valid, complete = find_openings(puzzle)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, False)
 
-# There is a row of all X => contradiction
-print("Set row to all X => contradiction")
-puzzle = Puzzle([suspects, weapons, rooms, time])
-apply_not(puzzle, [suspects, "Scarlet", time, "1:00"])
-apply_not(puzzle, [suspects, "White", time, "1:00"])
-apply_not(puzzle, [suspects, "Mustard", time, "1:00"])
-apply_not(puzzle, [suspects, "Plum", time, "1:00"])
-applied, is_valid, complete = find_openings(puzzle)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (False, False, False)
+  # There is a row of all X => contradiction
+  print("Set row to all X => contradiction")
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  apply_not(puzzle, [suspects, "Scarlet", time, "1:00"])
+  apply_not(puzzle, [suspects, "White", time, "1:00"])
+  apply_not(puzzle, [suspects, "Mustard", time, "1:00"])
+  apply_not(puzzle, [suspects, "Plum", time, "1:00"])
+  applied, is_valid, complete = find_openings(puzzle)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (False, False, False)
 
-# There is a column of all X => contradiction
-print("Set col to all X => contradiction")
-puzzle = Puzzle([suspects, weapons, rooms, time])
-apply_not(puzzle, [suspects, "Scarlet", time, "1:00"])
-apply_not(puzzle, [suspects, "Scarlet", time, "2:00"])
-apply_not(puzzle, [suspects, "Scarlet", time, "3:00"])
-apply_not(puzzle, [suspects, "Scarlet", time, "4:00"])
-applied, is_valid, complete = find_openings(puzzle)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (False, False, False)
+  # There is a column of all X => contradiction
+  print("Set col to all X => contradiction")
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  apply_not(puzzle, [suspects, "Scarlet", time, "1:00"])
+  apply_not(puzzle, [suspects, "Scarlet", time, "2:00"])
+  apply_not(puzzle, [suspects, "Scarlet", time, "3:00"])
+  apply_not(puzzle, [suspects, "Scarlet", time, "4:00"])
+  applied, is_valid, complete = find_openings(puzzle)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (False, False, False)
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
@@ -1113,33 +1124,33 @@ def apply_is(puzzle, terms):
 
 # %%
 # Test is
+if __name__ == "__main__": 
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  print(puzzle.print_grid())
 
-puzzle = Puzzle([suspects, weapons, rooms, time])
-print(puzzle.print_grid())
+  # Apply when it is still blank
+  print("Testing IS")
+  print("New IS: Scarlet IS Knife")
+  terms = [suspects, "Scarlet", weapons, "Knife"]
+  applied, is_valid, complete = apply_is(puzzle, terms)
+  assert (applied, is_valid, complete) == (True, True, True)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
 
-# Apply when it is still blank
-print("Testing IS")
-print("New IS: Scarlet IS Knife")
-terms = [suspects, "Scarlet", weapons, "Knife"]
-applied, is_valid, complete = apply_is(puzzle, terms)
-assert (applied, is_valid, complete) == (True, True, True)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
+  # Skip when it has already been answered O
+  print("PreAnswered: Scarlet IS Knife")
+  applied, is_valid, complete = apply_is(puzzle, terms)
+  assert (applied, is_valid, complete) == (False, True, True)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
 
-# Skip when it has already been answered O
-print("PreAnswered: Scarlet IS Knife")
-applied, is_valid, complete = apply_is(puzzle, terms)
-assert (applied, is_valid, complete) == (False, True, True)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-
-# Contradiction when it has already been answered X
-print("Contradiction: Scarlet IS Rope")
-terms[3] = "Rope"
-applied, is_valid, complete = apply_is(puzzle, terms)
-assert (applied, is_valid, complete) == (False, False, True)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
+  # Contradiction when it has already been answered X
+  print("Contradiction: Scarlet IS Rope")
+  terms[3] = "Rope"
+  applied, is_valid, complete = apply_is(puzzle, terms)
+  assert (applied, is_valid, complete) == (False, False, True)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
@@ -1172,36 +1183,36 @@ def apply_not(puzzle, terms):
 
 # %%
 # Test not
+if __name__ == "__main__": 
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  print(puzzle.print_grid())
 
-puzzle = Puzzle([suspects, weapons, rooms, time])
-print(puzzle.print_grid())
+  terms = [suspects, "Scarlet", weapons, "Knife"]
 
-terms = [suspects, "Scarlet", weapons, "Knife"]
+  # Apply when it is still blank
+  print("Testing NOT")
+  print("New NOT: Scarlet NOT Knife")
+  applied, is_valid, complete = apply_not(puzzle, terms)
+  assert (applied, is_valid, complete) == (True, True, True)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
 
-# Apply when it is still blank
-print("Testing NOT")
-print("New NOT: Scarlet NOT Knife")
-applied, is_valid, complete = apply_not(puzzle, terms)
-assert (applied, is_valid, complete) == (True, True, True)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
+  # Skip when it has already been answered O
+  print("PreAnswered: Scarlet NOT Knife")
+  applied, is_valid, complete = apply_not(puzzle, terms)
+  assert (applied, is_valid, complete) == (False, True, True)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
 
-# Skip when it has already been answered O
-print("PreAnswered: Scarlet NOT Knife")
-applied, is_valid, complete = apply_not(puzzle, terms)
-assert (applied, is_valid, complete) == (False, True, True)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-
-# Contradiction when it has already been answered X
-print("Set Plum is Knife")
-terms[1] = "Plum"
-apply_is(puzzle, terms)
-print("Contradiction: Plum NOT Knife")
-applied, is_valid, complete = apply_not(puzzle, terms)
-assert (applied, is_valid, complete) == (False, False, True)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
+  # Contradiction when it has already been answered X
+  print("Set Plum is Knife")
+  terms[1] = "Plum"
+  apply_is(puzzle, terms)
+  print("Contradiction: Plum NOT Knife")
+  applied, is_valid, complete = apply_not(puzzle, terms)
+  assert (applied, is_valid, complete) == (False, False, True)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
@@ -1382,193 +1393,194 @@ def apply_before(puzzle, terms):
 
 # %%
 # Test before
-print("Testing simple BEFORE")
-puzzle = Puzzle([suspects, weapons, rooms, time])
-print(puzzle.print_grid())
-terms = [suspects, "Scarlet", suspects, "White", time]
+if __name__ == "__main__": 
+  print("Testing simple BEFORE")
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  print(puzzle.print_grid())
+  terms = [suspects, "Scarlet", suspects, "White", time]
 
-# No current information; simple before
-print("Scarlet BEFORE White")
-applied, is_valid, complete = apply_before(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-assert (applied, is_valid, complete) == (True, True, False)
-print(puzzle.print_grid())
+  # No current information; simple before
+  print("Scarlet BEFORE White")
+  applied, is_valid, complete = apply_before(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  assert (applied, is_valid, complete) == (True, True, False)
+  print(puzzle.print_grid())
 
-# Additional constraint on After's time
-print("White NOT 4:00 => Scarlet NOT 3:00")
-apply_not(puzzle, [suspects, "White", time, "4:00"])
-applied, is_valid, complete = apply_before(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, False)
+  # Additional constraint on After's time
+  print("White NOT 4:00 => Scarlet NOT 3:00")
+  apply_not(puzzle, [suspects, "White", time, "4:00"])
+  applied, is_valid, complete = apply_before(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, False)
 
-# After is set
-print("White IS 2:00 => Scarlet IS 1:00; finished hint")
-apply_is(puzzle, [suspects, "White", time, "2:00"])
-applied, is_valid, complete = apply_before(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, True)
+  # After is set
+  print("White IS 2:00 => Scarlet IS 1:00; finished hint")
+  apply_is(puzzle, [suspects, "White", time, "2:00"])
+  applied, is_valid, complete = apply_before(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, True)
 
-# Already satisfied
-print("Already satisfied; no further changes")
-applied, is_valid, complete = apply_before(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (False, True, True)
+  # Already satisfied
+  print("Already satisfied; no further changes")
+  applied, is_valid, complete = apply_before(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (False, True, True)
 
-# Constraints on both
-print("Mustard BEFORE Plum => narrow down both")
-terms[1] = "Mustard"
-terms[3] = "Plum"
-applied, is_valid, complete = apply_before(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, False)
+  # Constraints on both
+  print("Mustard BEFORE Plum => narrow down both")
+  terms[1] = "Mustard"
+  terms[3] = "Plum"
+  applied, is_valid, complete = apply_before(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, False)
 
-# Single answer
-print("Plum IS 4:00 => Mustard IS 3:00")
-apply_is(puzzle, [suspects, "Plum", time, "4:00"])
-applied, is_valid, complete = apply_before(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, True)
+  # Single answer
+  print("Plum IS 4:00 => Mustard IS 3:00")
+  apply_is(puzzle, [suspects, "Plum", time, "4:00"])
+  applied, is_valid, complete = apply_before(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, True)
 
-print("Candle Stick IS 3:00 and Candle Stick BEFORE Rope => Rope IS 4:00")
-apply_is(puzzle, [weapons, "Candle Stick", time, "3:00"])
-applied, is_valid, complete = apply_before(puzzle, [weapons, "Candle Stick", weapons, "Rope", time])
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, True)
+  print("Candle Stick IS 3:00 and Candle Stick BEFORE Rope => Rope IS 4:00")
+  apply_is(puzzle, [weapons, "Candle Stick", time, "3:00"])
+  applied, is_valid, complete = apply_before(puzzle, [weapons, "Candle Stick", weapons, "Rope", time])
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, True)
 
-# Reset puzzle
-puzzle = Puzzle([suspects, weapons, rooms, time])
-print(puzzle.print_grid())
+  # Reset puzzle
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  print(puzzle.print_grid())
 
-# Constraint on Before's time.
-print("Knife before Rope; Knife NOT 1:00 => Rope NOT 2:00")
-terms = [weapons, "Knife", weapons, "Rope", time]
-apply_not(puzzle, [weapons, "Knife", time, "1:00"])
-applied, is_valid, complete = apply_before(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, False)
+  # Constraint on Before's time.
+  print("Knife before Rope; Knife NOT 1:00 => Rope NOT 2:00")
+  terms = [weapons, "Knife", weapons, "Rope", time]
+  apply_not(puzzle, [weapons, "Knife", time, "1:00"])
+  applied, is_valid, complete = apply_before(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, False)
 
-# Simple contradiction
-print("Candle is 3:00 and Wrench is 2:00; Candle BEFORE Wrench is contradictory")
-apply_is(puzzle, [weapons, "Candle Stick", time, "3:00"])
-apply_is(puzzle, [weapons, "Wrench", time, "2:00"])
-applied, is_valid, complete = apply_before(puzzle, [weapons, "Candle Stick", weapons, "Wrench", time])
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (False, False, True)
+  # Simple contradiction
+  print("Candle is 3:00 and Wrench is 2:00; Candle BEFORE Wrench is contradictory")
+  apply_is(puzzle, [weapons, "Candle Stick", time, "3:00"])
+  apply_is(puzzle, [weapons, "Wrench", time, "2:00"])
+  applied, is_valid, complete = apply_before(puzzle, [weapons, "Candle Stick", weapons, "Wrench", time])
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (False, False, True)
 
-# If A and B are not in the same category, A is not B
-print("White is before Ballroom, so White is not Ballroom")
-applied, is_valid, complete = apply_before(puzzle, [suspects, "White", rooms, "Ball room", time])
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, False)
+  # If A and B are not in the same category, A is not B
+  print("White is before Ballroom, so White is not Ballroom")
+  applied, is_valid, complete = apply_before(puzzle, [suspects, "White", rooms, "Ball room", time])
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, False)
 
-# Contradiction for before O
-print("Kitchen IS 4:00, so Kitchen before Study contradicts")
-apply_is(puzzle, [rooms, "Kitchen", time, "4:00"])
-applied, is_valid, complete = apply_before(puzzle, [rooms, "Kitchen", rooms, "Study", time])
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (False, False, True)
+  # Contradiction for before O
+  print("Kitchen IS 4:00, so Kitchen before Study contradicts")
+  apply_is(puzzle, [rooms, "Kitchen", time, "4:00"])
+  applied, is_valid, complete = apply_before(puzzle, [rooms, "Kitchen", rooms, "Study", time])
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (False, False, True)
 
-# Contradiction for after 0
-print("Living room IS 1:00, so Study before Living room contradicts")
-apply_is(puzzle, [rooms, "Living Room", time, "1:00"])
-applied, is_valid, complete = apply_before(puzzle, [rooms, "Study", rooms, "Living Room", time])
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (False, False, True)
+  # Contradiction for after 0
+  print("Living room IS 1:00, so Study before Living room contradicts")
+  apply_is(puzzle, [rooms, "Living Room", time, "1:00"])
+  applied, is_valid, complete = apply_before(puzzle, [rooms, "Study", rooms, "Living Room", time])
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (False, False, True)
 
-# Numerical or tests
-print("Test numbered BEFORE")
-puzzle = Puzzle([suspects, weapons, rooms, time])
-print(puzzle.print_grid())
-terms = [suspects, "Scarlet", suspects, "White", time, 2]
+  # Numerical or tests
+  print("Test numbered BEFORE")
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  print(puzzle.print_grid())
+  terms = [suspects, "Scarlet", suspects, "White", time, 2]
 
-# No current info, numbered
-print("Scarlet 2 BEFORE White")
-applied, is_valid, complete = apply_before(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-assert (applied, is_valid, complete) == (True, True, False)
-print(puzzle.print_grid())
+  # No current info, numbered
+  print("Scarlet 2 BEFORE White")
+  applied, is_valid, complete = apply_before(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  assert (applied, is_valid, complete) == (True, True, False)
+  print(puzzle.print_grid())
 
-# Before entity has X
-print("Scarlet NOT 1:00 and Scarlet 2 BEFORE White")
-apply_not(puzzle, [suspects, "Scarlet", time, "1:00"])
-applied, is_valid, complete = apply_before(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-assert (applied, is_valid, complete) == (True, True, False)
-print(puzzle.print_grid())
+  # Before entity has X
+  print("Scarlet NOT 1:00 and Scarlet 2 BEFORE White")
+  apply_not(puzzle, [suspects, "Scarlet", time, "1:00"])
+  applied, is_valid, complete = apply_before(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  assert (applied, is_valid, complete) == (True, True, False)
+  print(puzzle.print_grid())
 
-# Before entity is set
-print("Scarlet IS 2:00 and Scarlet 2 BEFORE White")
-apply_is(puzzle, [suspects, "Scarlet", time, "2:00"])
-applied, is_valid, complete = apply_before(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-assert (applied, is_valid, complete) == (True, True, True)
-print(puzzle.print_grid())
+  # Before entity is set
+  print("Scarlet IS 2:00 and Scarlet 2 BEFORE White")
+  apply_is(puzzle, [suspects, "Scarlet", time, "2:00"])
+  applied, is_valid, complete = apply_before(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  assert (applied, is_valid, complete) == (True, True, True)
+  print(puzzle.print_grid())
 
-# After entity has X
-terms[1] = "Mustard"
-terms[3] = "Plum"
-print("Plum NOT 4:00 and Mustard 2 before Plum")
-apply_not(puzzle, [suspects, "Plum", time, "4:00"])
-applied, is_valid, complete = apply_before(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-assert (applied, is_valid, complete) == (True, True, False)
-print(puzzle.print_grid())
+  # After entity has X
+  terms[1] = "Mustard"
+  terms[3] = "Plum"
+  print("Plum NOT 4:00 and Mustard 2 before Plum")
+  apply_not(puzzle, [suspects, "Plum", time, "4:00"])
+  applied, is_valid, complete = apply_before(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  assert (applied, is_valid, complete) == (True, True, False)
+  print(puzzle.print_grid())
 
-# After entity is set
-print("Plum IS 3:00 and Mustard 2 before Plum")
-apply_is(puzzle, [suspects, "Plum", time, "3:00"])
-applied, is_valid, complete = apply_before(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-assert (applied, is_valid, complete) == (True, True, True)
-print(puzzle.print_grid())
+  # After entity is set
+  print("Plum IS 3:00 and Mustard 2 before Plum")
+  apply_is(puzzle, [suspects, "Plum", time, "3:00"])
+  applied, is_valid, complete = apply_before(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  assert (applied, is_valid, complete) == (True, True, True)
+  print(puzzle.print_grid())
 
-# Both set, ok
-print("Both set; Mustard 2 before Plum")
-applied, is_valid, complete = apply_before(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-assert (applied, is_valid, complete) == (False, True, True)
-print(puzzle.print_grid())
+  # Both set, ok
+  print("Both set; Mustard 2 before Plum")
+  applied, is_valid, complete = apply_before(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  assert (applied, is_valid, complete) == (False, True, True)
+  print(puzzle.print_grid())
 
-# Before set, contradiction
-print("Knife IS 2:00; Rope NOT 4:00; Knife 2 before Rope => contradiction")
-terms = [weapons, "Knife", weapons, "Rope", time, 2]
-apply_is(puzzle, [weapons, "Knife", time, "2:00"])
-apply_not(puzzle, [weapons, "Rope", time, "4:00"])
-applied, is_valid, complete = apply_before(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, False, True)
+  # Before set, contradiction
+  print("Knife IS 2:00; Rope NOT 4:00; Knife 2 before Rope => contradiction")
+  terms = [weapons, "Knife", weapons, "Rope", time, 2]
+  apply_is(puzzle, [weapons, "Knife", time, "2:00"])
+  apply_not(puzzle, [weapons, "Rope", time, "4:00"])
+  applied, is_valid, complete = apply_before(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, False, True)
 
-# After set, contradiction
-print("Wrench IS 3:00; Candle Stick NOT 1:00; Candle Stick 2 before Wrench => contradiction")
-terms[1] = "Candle Stick"
-terms[3] = "Wrench"
-apply_is(puzzle, [weapons, "Wrench", time, "3:00"])
-apply_not(puzzle, [weapons, "Candle Stick", time, "1:00"])
-applied, is_valid, complete = apply_before(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, False, True)
+  # After set, contradiction
+  print("Wrench IS 3:00; Candle Stick NOT 1:00; Candle Stick 2 before Wrench => contradiction")
+  terms[1] = "Candle Stick"
+  terms[3] = "Wrench"
+  apply_is(puzzle, [weapons, "Wrench", time, "3:00"])
+  apply_not(puzzle, [weapons, "Candle Stick", time, "1:00"])
+  applied, is_valid, complete = apply_before(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, False, True)
 
-# Both set, contradiction
-print("Kitchen IS 1:00, Study IS 2:00; Kitchen 2 before Study is contradictory")
-apply_is(puzzle, [rooms, "Kitchen", time, "1:00"])
-apply_is(puzzle, [rooms, "Study", time, "2:00"])
-applied, is_valid, complete = apply_before(puzzle, [rooms, "Kitchen", rooms, "Study", time, 2])
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (False, False, True)
+  # Both set, contradiction
+  print("Kitchen IS 1:00, Study IS 2:00; Kitchen 2 before Study is contradictory")
+  apply_is(puzzle, [rooms, "Kitchen", time, "1:00"])
+  apply_is(puzzle, [rooms, "Study", time, "2:00"])
+  applied, is_valid, complete = apply_before(puzzle, [rooms, "Kitchen", rooms, "Study", time, 2])
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (False, False, True)
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
@@ -1663,99 +1675,100 @@ def apply_simple_or(puzzle, terms):
 
 
 # %%
-# Test simple or
-print("Testing simple OR")
-puzzle = Puzzle([suspects, weapons, rooms, time])
-print(puzzle.print_grid())
+if __name__ == "__main__": 
+  # Test simple or
+  print("Testing simple OR")
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  print(puzzle.print_grid())
 
-# A and B in diff categories; no info
-terms = [suspects, "White", weapons, "Knife", rooms, "Study"]
-print("Either Mrs. White OR the Knife was in the Study => Mrs. White did NOT have the Knife")
-applied, is_valid, complete = apply_simple_or(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, False)
+  # A and B in diff categories; no info
+  terms = [suspects, "White", weapons, "Knife", rooms, "Study"]
+  print("Either Mrs. White OR the Knife was in the Study => Mrs. White did NOT have the Knife")
+  applied, is_valid, complete = apply_simple_or(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, False)
 
-# A and B in same category; no info
-terms = [rooms, "Kitchen", rooms, "Study", time, "1:00"]
-print("Either the Kitchen OR the Study was at 1:00 => no other room can be at 1:00")
-applied, is_valid, complete = apply_simple_or(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, False)
+  # A and B in same category; no info
+  terms = [rooms, "Kitchen", rooms, "Study", time, "1:00"]
+  print("Either the Kitchen OR the Study was at 1:00 => no other room can be at 1:00")
+  applied, is_valid, complete = apply_simple_or(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, False)
 
-# A and B in same category and a different item has the value.
-print("Knife was at 1:00 and Rope OR Wrench was at 1:00 => contradiction")
-apply_is(puzzle, [weapons, "Knife", time, "1:00"])
-terms = [weapons, "Rope", weapons, "Wrench", time, "1:00"]
-applied, is_valid, complete = apply_simple_or(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (False, False, True)
+  # A and B in same category and a different item has the value.
+  print("Knife was at 1:00 and Rope OR Wrench was at 1:00 => contradiction")
+  apply_is(puzzle, [weapons, "Knife", time, "1:00"])
+  terms = [weapons, "Rope", weapons, "Wrench", time, "1:00"]
+  applied, is_valid, complete = apply_simple_or(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (False, False, True)
 
-# A and B are both true => contradiction
-print("White IS 2:00 and Rope IS 2:00; Either White OR Rope is 2:00 => contradiction")
-apply_is(puzzle, [suspects, "White", time, "2:00"])
-apply_is(puzzle, [weapons, "Rope", time, "2:00"])
-terms = [weapons, "Rope", suspects, "White", time, "2:00"]
-applied, is_valid, complete = apply_simple_or(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, False, True)
+  # A and B are both true => contradiction
+  print("White IS 2:00 and Rope IS 2:00; Either White OR Rope is 2:00 => contradiction")
+  apply_is(puzzle, [suspects, "White", time, "2:00"])
+  apply_is(puzzle, [weapons, "Rope", time, "2:00"])
+  terms = [weapons, "Rope", suspects, "White", time, "2:00"]
+  applied, is_valid, complete = apply_simple_or(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, False, True)
 
-terms = [suspects, "Scarlet", rooms, "Kitchen", weapons, "Knife"]
-# A is O and B is * => Set B to X
-print("Scarlet has the Knife and either Scarlet OR Kitchen has the Knife => Kitchen does not have the Knife")
-puzzle = Puzzle([suspects, weapons, rooms, time])
-apply_is(puzzle, [suspects, "Scarlet", weapons, "Knife"])
-applied, is_valid, complete = apply_simple_or(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, True)
+  terms = [suspects, "Scarlet", rooms, "Kitchen", weapons, "Knife"]
+  # A is O and B is * => Set B to X
+  print("Scarlet has the Knife and either Scarlet OR Kitchen has the Knife => Kitchen does not have the Knife")
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  apply_is(puzzle, [suspects, "Scarlet", weapons, "Knife"])
+  applied, is_valid, complete = apply_simple_or(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, True)
 
-# A is O and B is X => ok
-print("Scarlet or Kitchen has the Knife; already applied")
-applied, is_valid, complete = apply_simple_or(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (False, True, True)
+  # A is O and B is X => ok
+  print("Scarlet or Kitchen has the Knife; already applied")
+  applied, is_valid, complete = apply_simple_or(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (False, True, True)
 
-# A is X and B is * => Set B to O
-puzzle = Puzzle([suspects, weapons, rooms, time])
-print("Scarlet does not have the Knife and either Scarlet OR Kitchen has the Knife => Kitchen has the Knife")
-puzzle = Puzzle([suspects, weapons, rooms, time])
-apply_not(puzzle, [suspects, "Scarlet", weapons, "Knife"])
-applied, is_valid, complete = apply_simple_or(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, True)
+  # A is X and B is * => Set B to O
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  print("Scarlet does not have the Knife and either Scarlet OR Kitchen has the Knife => Kitchen has the Knife")
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  apply_not(puzzle, [suspects, "Scarlet", weapons, "Knife"])
+  applied, is_valid, complete = apply_simple_or(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, True)
 
-# A is X and B is O => ok
-print("Scarlet or Kitchen has the Knife; already applied")
-applied, is_valid, complete = apply_simple_or(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (False, True, True)
+  # A is X and B is O => ok
+  print("Scarlet or Kitchen has the Knife; already applied")
+  applied, is_valid, complete = apply_simple_or(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (False, True, True)
 
-# A is * and B is X => Set A to O
-puzzle = Puzzle([suspects, weapons, rooms, time])
-print("Kitchen does not have the Knife and either Scarlet OR Kitchen has the Knife => Scarlet has the Knife")
-puzzle = Puzzle([suspects, weapons, rooms, time])
-apply_not(puzzle, [rooms, "Kitchen", weapons, "Knife"])
-applied, is_valid, complete = apply_simple_or(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, True)
+  # A is * and B is X => Set A to O
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  print("Kitchen does not have the Knife and either Scarlet OR Kitchen has the Knife => Scarlet has the Knife")
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  apply_not(puzzle, [rooms, "Kitchen", weapons, "Knife"])
+  applied, is_valid, complete = apply_simple_or(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, True)
 
-# A is * and B is O => Set A to X
-puzzle = Puzzle([suspects, weapons, rooms, time])
-print("Kitchen has the Knife and either Scarlet OR Kitchen has the Knife => Scarlet does not have the Knife")
-puzzle = Puzzle([suspects, weapons, rooms, time])
-apply_is(puzzle, [rooms, "Kitchen", weapons, "Knife"])
-applied, is_valid, complete = apply_simple_or(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, True)
+  # A is * and B is O => Set A to X
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  print("Kitchen has the Knife and either Scarlet OR Kitchen has the Knife => Scarlet does not have the Knife")
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  apply_is(puzzle, [rooms, "Kitchen", weapons, "Knife"])
+  applied, is_valid, complete = apply_simple_or(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, True)
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
@@ -1816,71 +1829,72 @@ def apply_compound_or(puzzle, options):
 
 
 # %%
-# Test compound or
-print("Testing compound OR")
-puzzle = Puzzle([suspects, weapons, rooms, time])
-print(puzzle.print_grid())
-terms = [[suspects, "White", rooms, "Kitchen"], [weapons, "Knife", time, "2:00"]]
+if __name__ == "__main__": 
+  # Test compound or
+  print("Testing compound OR")
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  print(puzzle.print_grid())
+  terms = [[suspects, "White", rooms, "Kitchen"], [weapons, "Knife", time, "2:00"]]
 
-# No info
-print("Either White is in the Kitchen OR the Knife is at 2:00; no info")
-applied, is_valid, complete = apply_compound_or(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (False, True, False)
+  # No info
+  print("Either White is in the Kitchen OR the Knife is at 2:00; no info")
+  applied, is_valid, complete = apply_compound_or(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (False, True, False)
 
-# A and B are both true => contradiction
-print("White IS Kitchen and Knife IS 2:00; Either White is in the Kitchen OR the Knife is at 2:00 => contradiction")
-apply_is(puzzle, [suspects, "White", rooms, "Kitchen"])
-apply_is(puzzle, [weapons, "Knife", time, "2:00"])
-applied, is_valid, complete = apply_compound_or(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (False, False, True)
+  # A and B are both true => contradiction
+  print("White IS Kitchen and Knife IS 2:00; Either White is in the Kitchen OR the Knife is at 2:00 => contradiction")
+  apply_is(puzzle, [suspects, "White", rooms, "Kitchen"])
+  apply_is(puzzle, [weapons, "Knife", time, "2:00"])
+  applied, is_valid, complete = apply_compound_or(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (False, False, True)
 
-# A is O and B is * => Set B to X
-puzzle = Puzzle([suspects, weapons, rooms, time])
-print("White IS Kitchen; Either White is in the Kitchen OR the Knife is at 2:00 => Knife is not 2:00")
-apply_is(puzzle, [suspects, "White", rooms, "Kitchen"])
-applied, is_valid, complete = apply_compound_or(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, True)
+  # A is O and B is * => Set B to X
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  print("White IS Kitchen; Either White is in the Kitchen OR the Knife is at 2:00 => Knife is not 2:00")
+  apply_is(puzzle, [suspects, "White", rooms, "Kitchen"])
+  applied, is_valid, complete = apply_compound_or(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, True)
 
-# A is O and B is X => ok
-print("Either White is in the Kitchen OR the Knife is at 2:00; already applied")
-apply_is(puzzle, [suspects, "White", rooms, "Kitchen"])
-applied, is_valid, complete = apply_compound_or(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (False, True, True)
+  # A is O and B is X => ok
+  print("Either White is in the Kitchen OR the Knife is at 2:00; already applied")
+  apply_is(puzzle, [suspects, "White", rooms, "Kitchen"])
+  applied, is_valid, complete = apply_compound_or(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (False, True, True)
 
-# A is X and B is * => Set B to O
-puzzle = Puzzle([suspects, weapons, rooms, time])
-print("White is NOT Kitchen; Either White is in the Kitchen OR the Knife is at 2:00 => Knife is 2:00")
-apply_not(puzzle, [suspects, "White", rooms, "Kitchen"])
-applied, is_valid, complete = apply_compound_or(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, True)
+  # A is X and B is * => Set B to O
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  print("White is NOT Kitchen; Either White is in the Kitchen OR the Knife is at 2:00 => Knife is 2:00")
+  apply_not(puzzle, [suspects, "White", rooms, "Kitchen"])
+  applied, is_valid, complete = apply_compound_or(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, True)
 
-# A is * and B is O => Set A to X
-puzzle = Puzzle([suspects, weapons, rooms, time])
-print("Knife is 2:00; Either White is in the Kitchen OR the Knife is at 2:00 => White is not in the Kitchen")
-apply_is(puzzle, [weapons, "Knife", time, "2:00"])
-applied, is_valid, complete = apply_compound_or(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, True)
+  # A is * and B is O => Set A to X
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  print("Knife is 2:00; Either White is in the Kitchen OR the Knife is at 2:00 => White is not in the Kitchen")
+  apply_is(puzzle, [weapons, "Knife", time, "2:00"])
+  applied, is_valid, complete = apply_compound_or(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, True)
 
-# A is * and B is X => Set A to O
-puzzle = Puzzle([suspects, weapons, rooms, time])
-print("Knife is not 2:00; Either White is in the Kitchen OR the Knife is at 2:00 => White is in the Kitchen")
-apply_not(puzzle, [weapons, "Knife", time, "2:00"])
-applied, is_valid, complete = apply_compound_or(puzzle, terms)
-print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
-print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (True, True, True)
+  # A is * and B is X => Set A to O
+  puzzle = Puzzle([suspects, weapons, rooms, time])
+  print("Knife is not 2:00; Either White is in the Kitchen OR the Knife is at 2:00 => White is in the Kitchen")
+  apply_not(puzzle, [weapons, "Knife", time, "2:00"])
+  applied, is_valid, complete = apply_compound_or(puzzle, terms)
+  print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
+  print(puzzle.print_grid())
+  assert (applied, is_valid, complete) == (True, True, True)
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
@@ -1920,17 +1934,19 @@ def apply_hint(puzzle, hint):
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="cIlFA0mXSH5R" outputId="274d1a0b-cd33-4b36-c0eb-6214b679cec5"
 # apply some randomly generated hints and print results
-puzzle = Puzzle([suspects, weapons, rooms, time])
-print(puzzle.print_grid())
 
-for i in range(30):
-  hint = generate_hint(puzzle)
-  print("Hint: ", str_hint(hint))
-  print("(Applied, Is Valid, Complete)")
-  applied, is_valid, complete = apply_hint(puzzle, hint)
-  print("Apply: ", (applied, is_valid, complete))
-  if applied:
-    print("Openings: ", find_openings(puzzle))
-    print("Transitives: ", find_transitives(puzzle))
+if __name__ == "__main__": 
+  puzzle = Puzzle([suspects, weapons, rooms, time])
   print(puzzle.print_grid())
+
+  for i in range(30):
+    hint = generate_hint(puzzle)
+    print("Hint: ", str_hint(hint))
+    print("(Applied, Is Valid, Complete)")
+    applied, is_valid, complete = apply_hint(puzzle, hint)
+    print("Apply: ", (applied, is_valid, complete))
+    if applied:
+      print("Openings: ", find_openings(puzzle))
+      print("Transitives: ", find_transitives(puzzle))
+    print(puzzle.print_grid())
 
