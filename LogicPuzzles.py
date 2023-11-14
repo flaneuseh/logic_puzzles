@@ -324,7 +324,7 @@ class Puzzle:
           answers = grid[index]
 
         for i, val in enumerate(answers):
-          if val == "0":
+          if val == "O":
             relations[cat2]["true"] = cat2.entities[i]
           elif val == "X":
             relations[cat2]["false"].append(cat2.entities[i])
@@ -853,10 +853,11 @@ def find_transitives(puzzle):
           # A is related to B, so A and B share relations for all other categories
           # Get all realations for B
           entB_relations = puzzle.get_known_relations(catB, entB)
+          
           # Relate A to B's truth and false values.
           for catC, catC_relations in entB_relations.items():
             entC = catC_relations["true"]
-            if entC != None:
+            if entC != None and entC != entA:
               # A -> B and B -> C, so A -> C
               sy = puzzle.get_symbol(catA, catC, entA, entC)
               if sy == "*":
@@ -880,95 +881,96 @@ def find_transitives(puzzle):
                 # Can't reject A to C
                 is_valid = False
                 return applied, is_valid, complete
-          # Relate B to A's truth and false values
-          for catC, catC_relations in entA_relations.items():
-            entC = catC_relations["true"]
-            if entC != None:
-              # A -> B and A -> C so B -> C
-              sy = puzzle.get_symbol(catB, catC, entB, entC)
-              if sy == "*":
-                applied = True
-                puzzle.answer(catB, catC, entB, entC, "O")
-                is_valid = cross_out(puzzle, catB, catC, entB, entC)
-                if not is_valid:
-                  return applied, is_valid, complete
-              elif sy == "X":
-                # Can't link B to C
-                is_valid = False
-                return applied, is_valid, complete
-            for entC in catC_relations["false"]:
-              # A -> B and A !> C so B !> C
-              sy = puzzle.get_symbol(catB, catC, entB, entC)
-              if sy == "*":
-                applied = True
-                puzzle.answer(catB, catC, entB, entC, "X")
-              elif sy == "O":
-                # Can't reject B to C
-                is_valid = False
-                return applied, is_valid, complete    
-
-        # for A's false values in category B, A is negatively related to anything B is related to.
-        for entB in catB_relations["false"]:
-          # A is not related to B, A is not related to anything B is related to.
-          # Get all relations for B
-          entB_relations = puzzle.get_known_relations(catB, entB)
-          # Relate A to B's truth and false values.
-          for catC, catC_relations in entB_relations.items():
-            entC = catC_relations["true"]
-            if entC != None:
-              # A !> B and B -> C, so A !> C
-              sy = puzzle.get_symbol(catA, catC, entA, entC)
-              if sy == "*":
-                applied = True
-                puzzle.answer(catA, catC, entA, entC, "X")
-              elif sy == "O":
-                # Can't reject A to C
-                is_valid = False
-                return applied, is_valid, complete
-            
-          # Relate B to A's truth and false values
-          for catC, catC_relations in entA_relations.items():
-            entC = catC_relations["true"]
-            if entC != None:
-              # A !> B and A -> C so B !> C
-              sy = puzzle.get_symbol(catB, catC, entB, entC)
-              if sy == "*":
-                applied = True
-                puzzle.answer(catB, catC, entB, entC, "X")
-              elif sy == "O":
-                # Can't reject B to C
-                is_valid = False
-
         # for A's indeterminate values in category B, if A and B can't be related in some category, then A !> B
         for entB in catB_relations["nil"]:
           # All relations for B
           entB_relations = puzzle.get_known_relations(catB, entB)
           for catC, catCA_relations in entA_relations.items():
-            # catCA_relations are A's relations for category C.
-            # catCB_relations are B's relations for category C.
-            catCB_relations = entB_relations[catC]
-
-            A_possibles = catCA_relations["nil"].copy()
-            B_possibles = catCB_relations["nil"].copy()
-            
-            entCA = catCA_relations["true"]
-            entCB = catCB_relations["true"]
-            if entCA != None:
-              A_possibles.append(entCA)
-            if entCB != None: 
-              B_possibles.append(entCB)
+            if catC not in [catA, catB]:
+              # catCA_relations are A's relations for category C.
+              # catCB_relations are B's relations for category C.
+              catCB_relations = entB_relations[catC]
+  
+              A_possibles = catCA_relations["nil"].copy()
+              B_possibles = catCB_relations["nil"].copy()
               
-            # Now possibles include all positive or nil values for category C
-            # If A and B don't share any entities in their possible lists, then A !> B
-            setA = set(A_possibles)
-            setB = set(B_possibles)
-            if not (setA & setB):
-              # A and B don't share any possibilities; A !> B
-              applied = True
-              puzzle.answer(catA, catB, entA, entB, "X")
+              entCA = catCA_relations["true"]
+              entCB = catCB_relations["true"]
+              if entCA != None:
+                A_possibles.append(entCA)
+              if entCB != None: 
+                B_possibles.append(entCB)
+                
+              # Now possibles include all positive or nil values for category C
+              # If A and B don't share any entities in their possible lists, then A !> B
+              setA = set(A_possibles)
+              setB = set(B_possibles)
+              if not (setA & setB):
+                # A and B don't share any possibilities; A !> B
+                applied = True
+                puzzle.answer(catA, catB, entA, entB, "X")
+
+
+          #   # Relate B to A's truth and false values
+        #   for catC, catC_relations in entA_relations.items():
+        #     entC = catC_relations["true"]
+        #     if entC != None:
+        #       # A -> B and A -> C so B -> C
+        #       sy = puzzle.get_symbol(catB, catC, entB, entC)
+        #       if sy == "*":
+        #         applied = True
+        #         puzzle.answer(catB, catC, entB, entC, "O")
+        #         is_valid = cross_out(puzzle, catB, catC, entB, entC)
+        #         if not is_valid:
+        #           return applied, is_valid, complete
+        #       elif sy == "X":
+        #         # Can't link B to C
+        #         is_valid = False
+        #         return applied, is_valid, complete
+        #     for entC in catC_relations["false"]:
+        #       # A -> B and A !> C so B !> C
+        #       sy = puzzle.get_symbol(catB, catC, entB, entC)
+        #       if sy == "*":
+        #         applied = True
+        #         puzzle.answer(catB, catC, entB, entC, "X")
+        #       elif sy == "O":
+        #         # Can't reject B to C
+        #         is_valid = False
+        #         return applied, is_valid, complete    
+
+        # # for A's false values in category B, A is negatively related to anything B is related to.
+        # for entB in catB_relations["false"]:
+        #   # A is not related to B, A is not related to anything B is related to.
+        #   # Get all relations for B
+        #   entB_relations = puzzle.get_known_relations(catB, entB)
+        #   # Relate A to B's truth and false values.
+        #   for catC, catC_relations in entB_relations.items():
+        #     entC = catC_relations["true"]
+        #     if entC != None:
+        #       # A !> B and B -> C, so A !> C
+        #       sy = puzzle.get_symbol(catA, catC, entA, entC)
+        #       if sy == "*":
+        #         applied = True
+        #         puzzle.answer(catA, catC, entA, entC, "X")
+        #       elif sy == "O":
+        #         # Can't reject A to C
+        #         is_valid = False
+        #         return applied, is_valid, complete
+            
+        #   # Relate B to A's truth and false values
+        #   for catC, catC_relations in entA_relations.items():
+        #     entC = catC_relations["true"]
+        #     if entC != None:
+        #       # A !> B and A -> C so B !> C
+        #       sy = puzzle.get_symbol(catB, catC, entB, entC)
+        #       if sy == "*":
+        #         applied = True
+        #         puzzle.answer(catB, catC, entB, entC, "X")
+        #       elif sy == "O":
+        #         # Can't reject B to C
+        #         is_valid = False
           
   return applied, is_valid, complete
-
 
 # %%
 # Test find_transitives
@@ -996,7 +998,7 @@ print("Scarlet -> 1:00 and 1:00 -> Study but Scarlet !> Study => contradiction")
 applied, is_valid, complete = find_transitives(puzzle)
 print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
 print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (False, False, False)
+assert (applied, is_valid, complete) == (True, False, False)
 
 # A -> B and B !> C, so A !> C
 puzzle = Puzzle([suspects, weapons, rooms, time])
@@ -1017,7 +1019,7 @@ apply_not(puzzle, [time, "1:00", rooms, "Study"])
 apply_is(puzzle, [suspects, "Scarlet", rooms, "Study"])
 print(puzzle.print_grid())
 
-print("Scarlet -> 1:00 and 1:00 -> Study but Scarlet !> Study => contradiction")
+print("Scarlet -> 1:00 and 1:00 !> Study but Scarlet !> Study => contradiction")
 applied, is_valid, complete = find_transitives(puzzle)
 print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
 print(puzzle.print_grid())
@@ -1071,7 +1073,7 @@ print("Scarlet -> 1:00 and Scarlet !> Study but 1:00 -> Study => contradiction")
 applied, is_valid, complete = find_transitives(puzzle)
 print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
 print(puzzle.print_grid())
-assert (applied, is_valid, complete) == (False, False, False)
+assert (applied, is_valid, complete) == (True, False, False)
 
 # A !> B and B -> C, so A !> C
 puzzle = Puzzle([suspects, weapons, rooms, time])
@@ -1092,7 +1094,7 @@ apply_is(puzzle, [time, "1:00", rooms, "Study"])
 apply_is(puzzle, [suspects, "Scarlet", rooms, "Study"])
 print(puzzle.print_grid())
 
-print("Scarlet !> 1:00 and 1:00 -> Study, but Scarlet -> Study => contradiction")
+print("Scarlet !> 1:00 and 1:00 -> Study, but Scarlet !> Study => contradiction")
 applied, is_valid, complete = find_transitives(puzzle)
 print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
 print(puzzle.print_grid())
@@ -1117,7 +1119,7 @@ apply_is(puzzle, [suspects, "Scarlet", rooms, "Study"])
 apply_is(puzzle, [time, "1:00", rooms, "Study"])
 print(puzzle.print_grid())
 
-print("Scarlet !> 1:00 and Scarlet -> Study, but 1:00 -> Study => contradiction")
+print("Scarlet !> 1:00 and Scarlet -> Study, but 1:00 !> Study => contradiction")
 applied, is_valid, complete = find_transitives(puzzle)
 print("(Applied, Is Valid, Complete): ", (applied, is_valid, complete))
 print(puzzle.print_grid())
@@ -1140,7 +1142,7 @@ print(puzzle.print_grid())
 assert (applied, is_valid, complete) == (True, True, False)
 
 # Wrench has a O time and Scarlet can't go to that time.
-apply_is(weapons, "Wrench", time, "1:00")
+apply_is(puzzle, [weapons, "Wrench", time, "1:00"])
 print(puzzle.print_grid())
 
 print("Scarlet and Wrench don't share any compatible times, so Scarlet !> Wrench")
