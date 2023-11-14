@@ -24,7 +24,7 @@
 # %%
 # Imports Baby 
 import import_ipynb 
-from LogicPuzzles import Puzzle, generate_hint, Category 
+from LogicPuzzles import Puzzle, generate_hint, Category, apply_hint, find_openings, find_transitives  
 import random 
 import math 
 import numpy.random as npr
@@ -72,12 +72,28 @@ def apply_hints(puzzle, hints):
     just for testing 
     """
     copy = Puzzle(puzzle.categories)
-    entities = copy._all_ents()
-    for hint in hints:
-        ent1 = random.choice(entities)
- 
-        ent2 = random.choice(entities)
-        copy.answer(ent1[0], ent2[0], ent1[1], ent2[1], "X")
+    queue = hints[:]
+    backlog = []
+    applied = True 
+    is_valid = True
+    while is_valid  and applied and len(queue) > 0:
+        applied = False 
+        for hint in queue: 
+            a, is_valid, complete = apply_hint(copy, hint)
+            applied = applied or a
+            if not complete: 
+                backlog.append(hint)
+            if not is_valid:
+                break 
+
+            # Apply additional logic 
+            if a: 
+                #a_3, is_valid, complete = find_transitives(copy)
+                a_2, is_valid, complete = find_openings(copy)
+                applied = applied or a_2 # test if anything was changed 
+        
+        queue = backlog 
+        backlog = [] 
     return copy 
 
 
@@ -90,12 +106,13 @@ class HintSet:
 
     def mutate(self, add_rate):
         hint_copy = self.hints[:]
-        if(decide(add_rate)):
+        if((decide(add_rate)) and len(hint_copy) <= 20) or  len(hint_copy) <= 0:
             new_hint = generate_hint(self.puzzle)
             hint_copy.append(new_hint)
         else:
             index = random.randint(0, len(hint_copy) - 1)
             del hint_copy[index] 
+            
         
         return HintSet(hint_copy, self.puzzle)
     
@@ -107,11 +124,22 @@ class HintSet:
         return HintSet(hints[0:threshold], self.puzzle), HintSet(hints[threshold: len(hints)], self.puzzle)
     
     def is_valid(self):
-        return len(self.hints) > 0 and self.completed_puzzle.is_valid()
+        return len(self.hints) > 0 and self.completed_puzzle.is_complete()
+
+    def _violations_fun(self, violations):
+        if violations > 10:
+            return 0 
+        elif violations <= 0:
+            return 1 
+        else:
+            return 1 - (violations / 10 ) 
     
     def feasibility(self):
-        return 1 - self.completed_puzzle.percent_complete()
-    
+        complete, valid = self.completed_puzzle.percent_complete()
+        violations = self.completed_puzzle.num_violations()
+ 
+        return (0.33 * complete) + (0.33 * valid) + (0.33 * self._violations_fun(violations))
+     
     def optimize_func(self):
         if len(self.hints) == 0:
             return 0 
@@ -122,7 +150,7 @@ class HintSet:
                 rule = list(hint.keys())[0]
             score += HINT_VALUES[rule] 
         
-        return score / len(self.hints)
+        return (0.3 * score / len(self.hints)) + (0.7 * (1 - (len(self.hints) / 20)))
 
 
 # %%
@@ -152,7 +180,7 @@ def _add_child(hints, feasible, infeasible):
     if hint set is valid, add to feasible pop with optmiziation fitness, 
     otherwise add to infeasible pop with feasibility fitness 
     """
-    if hints.is_valid:
+    if hints.is_valid():
         fitness = hints.optimize_func()
         feasible.append((fitness, hints))
     else:
@@ -168,18 +196,30 @@ def evolve(puzzle, generations, pop_size, x_rate, mut_rate, add_rate, elits):
         hints = random_hint_set(puzzle)
         _add_child(hints, feasible, infeasible)
         
-
     for gen in range(generations):
+     
         new_feasible = []
         new_infeasible = []
 
-        # elitism 
+        
         feasible.sort(reverse= True, key = lambda a: a[0])
         infeasible.sort(reverse= True, key = lambda a: a[0]) 
 
-        if len(feasible) > elits:
+        if gen % 300 == 0: 
+            if len(infeasible) > 0:
+                print("Infeasible")
+                print(infeasible[0])
+                print(infeasible[0][1].completed_puzzle.print_grid())
+                print(infeasible[0][1].completed_puzzle.num_violations())
+            if len(feasible) > 0 :
+                print("feasible:")
+                print(feasible[0])
+                print(feasible[0][1].completed_puzzle.print_grid())
+
+        # elitism 
+        if len(feasible) > 0:
             new_feasible = feasible[:elits]
-        if len(infeasible) > elits:
+        if len(infeasible) > 0:
             new_infeasible = infeasible[:elits]
 
         #create new population 
@@ -222,19 +262,24 @@ def evolve(puzzle, generations, pop_size, x_rate, mut_rate, add_rate, elits):
 
 
 # %%
-suspects = Category("suspects", ["Scarlet", "White", "Mustard", "Plum"], False)
-weapons = Category("weapons", ["Knife", "Rope", "Candle Stick", "Wrench"], False)
-rooms = Category("rooms", ["Ball room", "Living Room", "Kitchen", "Study"], False)
-time = Category("Time", ["1:00", "2:00", "3:00", "4:00"], True)
+if __name__ == "__main__":
+    suspects = Category("suspects", ["Scarlet", "White", "Mustard", "Plum"], False)
+    weapons = Category("weapons", ["Knife", "Rope", "Candle Stick", "Wrench"], False)
+    rooms = Category("rooms", ["Ball room", "Living Room", "Kitchen", "Study"], False)
+    time = Category("Time", ["1:00", "2:00", "3:00", "4:00"], True)
 
-puzzle = Puzzle([suspects, weapons, rooms, time]) 
+    puzzle = Puzzle([suspects, weapons, rooms, time]) 
 
-pop = evolve(puzzle, 1000,10, 0.2, 0.7, 0.5, 1) 
+    pop = evolve(puzzle, 10000,100, 0.2, 1, 0.5, 2) 
 
 # %%
-feasible = pop[0]
-infeasible = pop[1]
+if __name__ == "__main__":
+    feasible = pop[0]
+    infeasible = pop[1]
 
-print(feasible[0][1].hints)
-
-print(infeasible[0][1].hints)
+    print(feasible)
+    print(feasible[0][1].completed_puzzle.print_grid())
+    print(len(feasible[0][1].hints))
+    print(feasible[0][1].hints)
+    print("\n\n")
+    print(infeasible)
