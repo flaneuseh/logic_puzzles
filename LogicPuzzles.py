@@ -435,35 +435,35 @@ class Puzzle:
     else:
       return False
 
-def _per_complete_grid(self, grid):
-  s = 0
-  l = 0 
-  for row in grid: 
-    s += row.count("X") + row.count("O")
-    l += len(row)
-  return s / l
+  def _per_complete_grid(self, grid):
+    s = 0
+    l = 0 
+    for row in grid: 
+      s += row.count("X") + row.count("O")
+      l += len(row)
+    return s / l
 
-def percent_complete(self):
-  """
-        return the ratio of cells that
-        have an "X" or "O"
-  """
-  grid_sums = 0 
-  grid_len = 0 
-  for grid in self.grids.values(): 
-    grid_sums += self._per_complete_grid(grid)
-    grid_len += 1
-    return grid_sums / grid_len
+  def percent_complete(self):
+    """
+          return the ratio of cells that
+          have an "X" or "O"
+    """
+    grid_sums = 0 
+    grid_len = 0 
+    for grid in self.grids.values(): 
+      grid_sums += self._per_complete_grid(grid)
+      grid_len += 1
+      return grid_sums / grid_len
 
-def apply_hints(self, hints):
-  """
-  Return a copy of the puzzle
-  here all hints in a list are
-  applied
-  Starts with a blank verison
-  of the puzzle (i.e. does not copy grids)
-  """
-  return
+  def apply_hints(self, hints):
+    """
+    Return a copy of the puzzle
+    here all hints in a list are
+    applied
+    Starts with a blank verison
+    of the puzzle (i.e. does not copy grids)
+    """
+    return
 
 
 # %% [markdown] id="wGi_U2rSy8Iu"
