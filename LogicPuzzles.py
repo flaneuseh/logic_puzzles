@@ -23,8 +23,8 @@
 # %% id="AzB0GRIux4lQ"
 # Imports for DAAAYS
 import itertools
-from parsimonious.grammar import Grammar
-from parsimonious.nodes import NodeVisitor
+#from parsimonious.grammar import Grammar
+#from parsimonious.nodes import NodeVisitor
 import random
 from copy import deepcopy
 
@@ -468,7 +468,6 @@ class Puzzle:
       return True
     else:
       return False
-
   def _per_complete_grid(self, grid):
     s = 0
     v = 0 # amount of rows with exactly 1 "O"
@@ -506,6 +505,7 @@ class Puzzle:
     return
 
 
+
 # %% [markdown] id="wGi_U2rSy8Iu"
 # ### Test puzzles
 
@@ -520,11 +520,14 @@ if __name__ == "__main__":
   puzzle = Puzzle([suspects, weapons, rooms, time])
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="i0iWKiURMcWG" outputId="c37df34f-453d-4128-8966-e66129961c3d"
+
 if __name__ == "__main__": 
+
   print(" " * 7 + " ".join([str(ent) for ent in puzzle.left_right]))
   print("\n".join([str(ent) for ent in puzzle.top_buttom]))
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="tMBRR7f3PO7G" outputId="a1e70faa-0efc-4226-efcc-783cb3af82ee"
+
 if __name__ == "__main__": 
   print(puzzle.print_grid())
 
@@ -545,6 +548,7 @@ if __name__ == "__main__":
   print(puzzle.is_complete())
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="HZ-W4nrF0PUo" outputId="aa2427a3-a09d-4ac3-8709-a7f90ab02187"
+
 if __name__ == "__main__": 
   puzzle.answer(rooms, suspects, "Study", "White", "O")
   print(puzzle.print_grid())
@@ -2156,6 +2160,7 @@ def apply_hint(puzzle, hint):
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="cIlFA0mXSH5R" outputId="274d1a0b-cd33-4b36-c0eb-6214b679cec5"
 # apply some randomly generated hints and print results
+
 
 if __name__ == "__main__": 
   puzzle = Puzzle([suspects, weapons, rooms, time])
