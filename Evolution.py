@@ -60,11 +60,11 @@ def decide(rate):
 
 # %%
 HINT_VALUES = {
-    "is": 0.1,
-    "not": 0.1,
-    "before": 0.5,
-    "simple_or": 0.5,
-    "compound_or": 1
+    "is": 0.2,
+    "not": 0.4,
+    "before": 0.7,
+    "simple_or": 0.7,
+    "compound_or": 0.1
   }
 
 
