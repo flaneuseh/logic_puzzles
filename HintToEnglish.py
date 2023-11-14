@@ -14,7 +14,7 @@ def is_to_english(attributes):
     cat2 = attributes[2]
     ent2 = attributes[3]
 
-    s = "The entity {} in the category {} is the entity {} in the category {}".format(ent1, cat1.title, ent2, cat2.title)
+    s = "The {} {} is the {} {}".format(cat1.title, ent1, cat2.title, ent2)
     return s 
 
 def not_to_english(attributes):
@@ -24,7 +24,7 @@ def not_to_english(attributes):
     cat2 = attributes[2]
     ent2 = attributes[3]
 
-    s = "The entity {} in the category {} is not the entity {} in the category {}".format(ent1, cat1.title, ent2, cat2.title)
+    s = "The {} {} is not the {} in the category {}".format( cat1.title, ent1, cat2.title, ent2)
     return s  
 
 def before_to_english(attributes):
@@ -39,9 +39,9 @@ def before_to_english(attributes):
     if timed:
         amount  = attributes[5] 
     if not timed: 
-        s = "The entity {} in the category {} is at least 1 {} before the entity {} in the category {}".format(ent1, cat1.title, num_cat.title, ent2, cat2.title)
+        s = "The {} {} is at least 1 {} before the {} {}".format(cat1.title, ent1, num_cat.title, cat2.title, ent2)
     else:
-        s = "The entity {} in the category {} is at {} {}s before the entity {} in the category {}".format(ent1, cat1.title, amount,  num_cat.title, ent2, cat2.title)
+        s = "The {} {} is {} {}s before the {} {}".format(cat1.title, ent1, amount,  num_cat.title, cat2.title,  ent2)
     return s  
 
 def simple_or_to_english(attributes):
@@ -53,7 +53,7 @@ def simple_or_to_english(attributes):
     is_cat = attributes[4]
     is_ent = attributes[5] 
 
-    s = "Either the entity {} in the category {} or the entity {} in the category {} is the entity {} in the category {}".format(ent1, cat1.title, ent2, cat2.title, is_ent, is_cat)
+    s = "Either the {} {} or the {} {} is the {} {}".format( cat1.title, ent1, cat2.title, ent2, is_cat, is_ent, )
     return s 
 
 def compound_or_to_english(attributes):
@@ -78,42 +78,42 @@ def hint_to_english(hint):
         return compound_or_to_english(hint[kind])
     else:
         return "NOT IMPLEMENTED YET"
+if __name__ == "__main__":
+    is_hint = generate_hint(puzzle)
+    print(is_hint)
+    print(hint_to_english(is_hint))
+    print("")
 
-is_hint = generate_hint(puzzle)
-print(is_hint)
-print(hint_to_english(is_hint))
-print("")
+    compond_or_hint = generate_hint(puzzle)
+    print(hint_to_english(compond_or_hint))
+    print("")
 
-compond_or_hint = generate_hint(puzzle)
-print(hint_to_english(compond_or_hint))
-print("")
+    before_hint = generate_hint(puzzle)
+    print(before_hint)
+    print(hint_to_english(before_hint))
+    print("")
 
-before_hint = generate_hint(puzzle)
-print(before_hint)
-print(hint_to_english(before_hint))
-print("")
+    hint = generate_hint(puzzle)
+    hint = generate_hint(puzzle)
 
-hint = generate_hint(puzzle)
-hint = generate_hint(puzzle)
+    not_hint = generate_hint(puzzle)
+    print(not_hint)
+    print(hint_to_english(not_hint))
+    print("")
 
-not_hint = generate_hint(puzzle)
-print(not_hint)
-print(hint_to_english(not_hint))
-print("")
+    hint = generate_hint(puzzle)
+    hint = generate_hint(puzzle)
+    hint = generate_hint(puzzle)
+    hint = generate_hint(puzzle)
+    hint = generate_hint(puzzle)
+    hint = generate_hint(puzzle)
+    hint = generate_hint(puzzle)
+    hint = generate_hint(puzzle)
 
-hint = generate_hint(puzzle)
-hint = generate_hint(puzzle)
-hint = generate_hint(puzzle)
-hint = generate_hint(puzzle)
-hint = generate_hint(puzzle)
-hint = generate_hint(puzzle)
-hint = generate_hint(puzzle)
-hint = generate_hint(puzzle)
-
-simple_or_hint = generate_hint(puzzle)
-print(simple_or_hint)
-print(hint_to_english(simple_or_hint))
-print("")
+    simple_or_hint = generate_hint(puzzle)
+    print(simple_or_hint)
+    print(hint_to_english(simple_or_hint))
+    print("")
 
 
 
