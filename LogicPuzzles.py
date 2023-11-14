@@ -368,6 +368,40 @@ class Puzzle:
 
     return ents
 
+  def num_violations(self):
+     """
+     Return the number of truth violations 
+     in the puzzle 
+     """
+     violations = 0 
+     count = 0 
+     for cat, ent in self._all_ents():
+      truths = self.find_truths(cat, ent)
+      if len(truths) >= 2:
+        pairs = list(itertools.combinations(truths.keys(), 2)) 
+        count += len(pairs)
+        for first, second in pairs:
+
+          # if these two entites are in the truth of ent
+          # then they should also be true
+          cat1 = self.get_category(first)
+          cat2 = self.get_category(second)
+          ent1 = truths[first]
+          ent2 = truths[second]
+
+          # The symbol should be "O" or empty ("*")
+          if self.get_symbol(cat1, cat2, ent1, ent2) == "X":
+            violations += 1 
+
+          #make sure there is not a truth somehwere else
+          truths1 = self.find_truths(cat1, ent1)
+          if cat2.title in truths1 and truths1[cat2.title] != ent2:
+              violations += 1 
+          truths2 = self.find_truths(cat2, ent2)
+          if cat1.title in truths2 and truths2[cat1.title] != ent1:
+              violations += 1 
+     return violations 
+
   def _truths_valid(self):
     """
     Make sure there is not violations in
@@ -437,11 +471,14 @@ class Puzzle:
 
   def _per_complete_grid(self, grid):
     s = 0
+    v = 0 # amount of rows with exactly 1 "O"
     l = 0 
     for row in grid: 
       s += row.count("X") + row.count("O")
+      if (row.count("O")) == 1:
+        v += 1 
       l += len(row)
-    return s / l
+    return s / l, v / (len(grid))
 
   def percent_complete(self):
     """
@@ -450,10 +487,13 @@ class Puzzle:
     """
     grid_sums = 0 
     grid_len = 0 
+    valid_sums = 0 
     for grid in self.grids.values(): 
-      grid_sums += self._per_complete_grid(grid)
+      s, valid = self._per_complete_grid(grid)
+      grid_sums += s 
+      valid_sums += valid
       grid_len += 1
-      return grid_sums / grid_len
+    return grid_sums / grid_len, valid_sums / grid_len 
 
   def apply_hints(self, hints):
     """
