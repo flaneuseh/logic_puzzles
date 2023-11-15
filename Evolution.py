@@ -235,6 +235,9 @@ def evolve(puzzle, generations, pop_size, x_rate, mut_rate, add_rate, elits):
         history.update_history(feasible, infeasible)
 
         if gen % 50 == 0: 
+            print("-"* 40) 
+            print("GENERATION " + str(gen))
+            print("-"* 80)
             if len(infeasible) > 0:
                 print("Infeasible")
                 print(infeasible[0])
@@ -244,6 +247,7 @@ def evolve(puzzle, generations, pop_size, x_rate, mut_rate, add_rate, elits):
                 print("feasible:")
                 print(feasible[0])
                 print(feasible[0][1].completed_puzzle.print_grid())
+            print("-"* 80)
 
         # elitism 
         if len(feasible) > 0:
