@@ -34,6 +34,7 @@ def create_agg_plot(trials, color, label):
     plt.plot(x, trial_avg, color = color, label = label)
     plt.legend()
     plt.fill_between(x, trial_min, trial_max, color=color, alpha=0.1)
+    return trial_avg
 
 
 def plot_histories(histories, folder):
@@ -41,8 +42,8 @@ def plot_histories(histories, folder):
     infeasible = [history.infeasible_fitness for history in histories]
     num_feasible = [history.num_feasible for history in histories]
 
-    create_agg_plot(feasible, "red", "Feasible Fitness")
-    create_agg_plot(infeasible, "blue", "Infeasible Fitness")
+    fes_average = create_agg_plot(feasible, "red", "Feasible Fitness")
+    infes_average = create_agg_plot(infeasible, "blue", "Infeasible Fitness")
     plt.xlabel("Generation")
     plt.ylabel("Fitness")
     plt.title("Fitness over generations")
@@ -55,6 +56,14 @@ def plot_histories(histories, folder):
     plt.ylabel("Number of Feasible Indivuals")
     plt.title("Feasible solutions over Evolution")
     plt.savefig(folder + '/feasible.png')
+
+    return fes_average, infes_average
+
+def first_feasible(histories): 
+    num_feasible = [history.num_feasible for history in histories]
+    first_feasible = [[ n for n,i in enumerate(li) if i>0.7 ][0] for li in num_feasible]
+
+    return sum(first_feasible) / len(first_feasible), min(first_feasible), max(first_feasible)
 
 
 def process_folder(experiement_folder, num_trials):
@@ -69,7 +78,23 @@ def process_folder(experiement_folder, num_trials):
         if len(infeasible) > 0: 
             infeasible_pops.append(infeasible[0])
     
-    plot_histories(histories, experiement_folder)
+    fes_average, infes_average = plot_histories(histories, experiement_folder)
+    avg_first, min_first, max_first = first_feasible(histories) 
+
+    data_file = open(experiement_folder + "/data.txt", "w")
+    data_file.write("Average first feasible solution found in the {} generation \n".format(avg_first + 1))
+    data_file.write("Min first feasible solution found in the {} generation \n".format(min_first + 1))
+    data_file.write("Max first feasible solution found in the {} generation \n".format(max_first + 1))
+
+
+
+    data_file.write("\n\nAverage Feasible Fitness in Generation 500:{}\n".format(fes_average[-1]))
+    data_file.write("Average Infeasible Fitness in Generation 500:{}\n".format(infes_average[-1]))
+
+    data_file.write("\n\nAverage Feasible Fitness for all gens:{}\n".format(fes_average))
+    data_file.write("Average Infeasible Fitness for all gens:{}\n".format(infes_average))
+
+    data_file.close()
 
     hint_file = open(experiement_folder + "/hints.txt", "w")
     sol_file = open(experiement_folder + "/solutions.txt", "w")
