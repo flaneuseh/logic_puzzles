@@ -788,7 +788,7 @@ def fill_in_word(puzzle, word):
             else:
               new_terms.append(last_cat[1][2])
           elif term == "int":
-            new_terms.append(random.randrange(1, len(last_cat[1])))
+            new_terms.append(random.randrange(1, len(last_cat[1]) -1)) # 2 spaces to make decision  
       filled_word[key] = new_terms
   return filled_word
 
