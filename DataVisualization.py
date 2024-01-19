@@ -70,6 +70,10 @@ def process_folder(experiement_folder, num_trials):
     histories = [] 
     feasible_pops = [] 
     infeasible_pops =[]
+
+    total_counts = {}
+    per_puzzle_counts = {}
+    hint_sizes = []  
     for i in range(num_trials): 
         feasible, infeasible, history = pickle.load( open(experiement_folder + "/pop" + str(i) + ".p", "rb" ) )
         histories.append(history)
@@ -94,25 +98,64 @@ def process_folder(experiement_folder, num_trials):
     data_file.write("\n\nAverage Feasible Fitness for all gens:{}\n".format(fes_average))
     data_file.write("Average Infeasible Fitness for all gens:{}\n".format(infes_average))
 
-    data_file.close()
+    
 
     hint_file = open(experiement_folder + "/hints.txt", "w")
     sol_file = open(experiement_folder + "/solutions.txt", "w")
     num = 1 
     for fitness, hint_set in feasible_pops: 
         hints = hint_set.hints 
+        hint_sizes.append(len(hints)) 
+
+        types_counts = {}
         hint_file.write("Hints for puzzle:{}\n".format(num))
         hint_num = 1 
         for hint in hints:
             hint_file.write("\t{}. {}\n".format(hint_num, hint_to_english(hint)))
             hint_num += 1 
+
+            #type anal 
+            kind = next(iter(hint)) 
+            if kind in types_counts:
+                types_counts[kind] += 1 
+            else:
+                types_counts[kind] = 1 
+            
+            if kind in total_counts:
+                total_counts[kind] += 1 
+            else:
+                total_counts[kind] = 1  
+
         hint_file.write("\n\n")
+
+
+        for key in types_counts: 
+            if key in per_puzzle_counts:
+                per_puzzle_counts[key].append(types_counts[key])
+            else:
+                per_puzzle_counts[key] = [types_counts[key]] 
 
         sol_file.write("Solution for puzzle:{}\n".format(num))
         sol_file.write(hint_set.completed_puzzle.print_grid())
         sol_file.write("\n\n")
 
         num+=1 
+
+    data_file.write("\n\nAverage clue length:{}".format(sum(hint_sizes) / len(hint_sizes)))
+    data_file.write("\nMin clue size:{}".format(min(hint_sizes)))
+    data_file.write("\nMax Clue Size:{}".format(max(hint_sizes)))
+
+    data_file.write("\n\nTotal Clue Amounts")
+    for key in total_counts:
+        data_file.write("\n\t{}:{}".format(key, total_counts[key]))
+    
+    data_file.write("\n\nClues per Puzzles")
+    for key in per_puzzle_counts:
+        avg = sum(per_puzzle_counts[key]) / len(per_puzzle_counts[key])
+        data_file.write("\n\t{}:{}".format(key, avg))
+    
+    
+    data_file.close()
     
     hint_file.close()
     sol_file.close()
