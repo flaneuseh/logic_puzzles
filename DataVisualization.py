@@ -119,4 +119,4 @@ def process_folder(experiement_folder, num_trials):
     
 
 if __name__ == "__main__":
-    process_folder("Experiements4", 30)
+    process_folder("ExperimentsKaylah2", 30)

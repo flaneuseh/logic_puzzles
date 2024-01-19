@@ -24,7 +24,7 @@
 # %%
 # Imports Baby 
 import import_ipynb 
-from LogicPuzzles import Puzzle, generate_hint, Category, apply_hint, find_openings, find_transitives  
+from LogicPuzzles import Puzzle, generate_hint, str_hint, Category, apply_hint, find_openings, find_transitives  
 from HintToEnglish import hint_to_english  
 from DataVisualization import plot_history
 import random 
@@ -71,17 +71,22 @@ HINT_VALUES = {
 # %%
 def apply_hints(puzzle, hints):
     """
-    not fully implemented 
-    just for testing 
+    solver 
     """
     copy = Puzzle(puzzle.categories)
     queue = hints[:]
+    trace = {}
     backlog = []
     applied = True 
     is_valid = True
-    while is_valid  and applied and len(queue) > 0:
+    step = 0
+    while is_valid and applied and len(queue) > 0:
         applied = False 
         for hint in queue: 
+            step += 1
+            if str_hint(hint) not in trace:
+                trace[str_hint(hint)] = []
+            trace[str_hint(hint)].append(step)
             a, is_valid, complete = apply_hint(copy, hint)
             applied = applied or a
             if not complete: 
@@ -97,7 +102,7 @@ def apply_hints(puzzle, hints):
         
         queue = backlog 
         backlog = [] 
-    return copy 
+    return copy, trace
 
 
 # %%
@@ -105,7 +110,7 @@ class HintSet:
     def __init__(self, hints, puzzle) -> None:
         self.hints = hints 
         self.puzzle = puzzle # assumed to be blank 
-        self.completed_puzzle = apply_hints(self.puzzle, self.hints)
+        self.completed_puzzle, self.trace = apply_hints(self.puzzle, self.hints)
 
     def mutate(self, add_rate):
         hint_copy = self.hints[:]
@@ -147,13 +152,14 @@ class HintSet:
         if len(self.hints) == 0:
             return 0 
         score = 0 
-        for hint in self.hints:
-            rule = list(hint.keys())[0]
-            if rule == "simple_hint":
-                rule = list(hint.keys())[0]
-            score += HINT_VALUES[rule] 
+        # for hint in self.hints:
+        #     rule = list(hint.keys())[0]
+        #     if rule == "simple_hint":
+        #         rule = list(hint.keys())[0]
+        #     score += HINT_VALUES[rule] 
+        num_loops = max(len(hint_trace) for hint_trace in self.trace.values())
         
-        return (0.5 * score / len(self.hints)) + (0.5 * (1 - (len(self.hints) / 20)))
+        return (0.5 * min(num_loops, 5) / 5) + (0.5 * (1 - (len(self.hints) / 20)))
 
 class History:
     def __init__(self):
