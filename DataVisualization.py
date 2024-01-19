@@ -74,6 +74,9 @@ def process_folder(experiement_folder, num_trials):
     total_counts = {}
     per_puzzle_counts = {}
     hint_sizes = []  
+    num_loops = []
+    per_puzzle_duplicates = []
+    total_duplicates = 0
     for i in range(num_trials): 
         feasible, infeasible, history = pickle.load( open(experiement_folder + "/pop" + str(i) + ".p", "rb" ) )
         histories.append(history)
@@ -106,13 +109,21 @@ def process_folder(experiement_folder, num_trials):
     for fitness, hint_set in feasible_pops: 
         hints = hint_set.hints 
         hint_sizes.append(len(hints)) 
+        num_loops.append(max(len(hint_trace) for hint_trace in hint_set.trace.values()))
 
+        duplicate_counts = {}
         types_counts = {}
         hint_file.write("Hints for puzzle:{}\n".format(num))
         hint_num = 1 
         for hint in hints:
-            hint_file.write("\t{}. {}\n".format(hint_num, hint_to_english(hint)))
+            english = hint_to_english(hint)
+            hint_file.write("\t{}. {}\n".format(hint_num, english))
             hint_num += 1 
+
+            if english in duplicate_counts:
+                duplicate_counts[english] += 1
+            else:
+                duplicate_counts[english] = 0
 
             #type anal 
             kind = next(iter(hint)) 
@@ -135,6 +146,10 @@ def process_folder(experiement_folder, num_trials):
             else:
                 per_puzzle_counts[key] = [types_counts[key]] 
 
+        num_duplicates = sum(duplicate_counts.values())
+        total_duplicates += num_duplicates
+        per_puzzle_duplicates.append(num_duplicates)
+
         sol_file.write("Solution for puzzle:{}\n".format(num))
         sol_file.write(hint_set.completed_puzzle.print_grid())
         sol_file.write("\n\n")
@@ -145,6 +160,10 @@ def process_folder(experiement_folder, num_trials):
     data_file.write("\nMin clue size:{}".format(min(hint_sizes)))
     data_file.write("\nMax Clue Size:{}".format(max(hint_sizes)))
 
+    data_file.write("\n\nAverage num loops:{}".format(sum(num_loops) / len(num_loops)))
+    data_file.write("\nMin num loops:{}".format(min(num_loops)))
+    data_file.write("\nMax num loops:{}".format(max(num_loops)))
+
     data_file.write("\n\nTotal Clue Amounts")
     for key in total_counts:
         data_file.write("\n\t{}:{}".format(key, total_counts[key]))
@@ -154,6 +173,10 @@ def process_folder(experiement_folder, num_trials):
         avg = sum(per_puzzle_counts[key]) / len(per_puzzle_counts[key])
         data_file.write("\n\t{}:{}".format(key, avg))
     
+    data_file.write("\n\nTotal duplicates:{}".format(total_duplicates))
+    data_file.write("\nAverage duplicates:{}".format(sum(per_puzzle_duplicates) / len(per_puzzle_duplicates)))
+    data_file.write("\nMin duplicates:{}".format(min(per_puzzle_duplicates)))
+    data_file.write("\nMax duplicates:{}".format(max(per_puzzle_duplicates)))
     
     data_file.close()
     
@@ -162,4 +185,4 @@ def process_folder(experiement_folder, num_trials):
     
 
 if __name__ == "__main__":
-    process_folder("ExperimentsKaylah2", 30)
+    process_folder("ExperimentsKaylah5", 30)

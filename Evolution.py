@@ -79,14 +79,15 @@ def apply_hints(puzzle, hints):
     backlog = []
     applied = True 
     is_valid = True
-    step = 0
+    loop = 0
     while is_valid and applied and len(queue) > 0:
         applied = False 
+        loop += 1
         for hint in queue: 
-            step += 1
             if str_hint(hint) not in trace:
                 trace[str_hint(hint)] = []
-            trace[str_hint(hint)].append(step)
+            if loop not in trace[str_hint(hint)]:
+                trace[str_hint(hint)].append(loop)
             a, is_valid, complete = apply_hint(copy, hint)
             applied = applied or a
             if not complete: 
@@ -159,7 +160,7 @@ class HintSet:
         #     score += HINT_VALUES[rule] 
         num_loops = max(len(hint_trace) for hint_trace in self.trace.values())
         
-        return (0.5 * min(num_loops, 5) / 5) + (0.5 * (1 - (len(self.hints) / 20)))
+        return (0.5 * min(num_loops, 7) / 7) + (0.5 * (1 - (len(self.hints) / 20)))
 
 class History:
     def __init__(self):
