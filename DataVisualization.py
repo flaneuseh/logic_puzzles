@@ -175,6 +175,8 @@ def process_folder(experiement_folder, num_trials):
 
         loops = max(len(hint_trace) for hint_trace in hint_set_trace.values())
         per_puzzle_loops.append(loops)
+        print(hint_set_trace)
+        print(loops)
         
         duplicate_counts = {}
         types_counts = {
