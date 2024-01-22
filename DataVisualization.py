@@ -65,26 +65,29 @@ def plot_hint_type_averages(averages, folder):
     def var_to_english(hint_type):
         return hint_type.replace("_", " ")
     plt.clf()
+    plt.title("Average Hints per Puzzle")
     plt.pie(averages.values(), labels=list(map(var_to_english, averages.keys())), autopct='%1.1f%%')
     plt.savefig(folder + '/hint_types_pie.png')
 
 def plot_type_vs_loops(loops, hint_pcts, folder):
-    print(len(loops))
     def var_to_english(hint_type):
         return hint_type.replace("_", " ")
     colors = ['b', 'g', 'r', 'c', 'm']
     plt.clf()
+    plt.title("Loops by Hint Type")
+    plt.xlabel("Percent Hint Type in Puzzle")
+    plt.ylabel("Number of Solver Loops")
     i = 0
     for hint_type, pcts in hint_pcts.items():
         x = pcts
         y = loops
         z = np.polyfit(x, y, 1)
         p = np.poly1d(z)
-        # plt.scatter(x, y, label=var_to_english(hint_type), color=colors[i])
         plt.plot(x, p(x), color=colors[i], label=var_to_english(hint_type))
         plt.legend()
         i += 1
 
+    # plt.yticks(range(min(loops), max(loops)))
     plt.savefig(folder + '/hint_types_vs_loops.png')
 
 def first_feasible(histories): 
@@ -157,7 +160,6 @@ def process_folder(experiement_folder, num_trials):
     num = 1 
     for fitness, hint_set in feasible_pops: 
         hints = hint_set.hints 
-        hint_sizes.append(len(hints)) 
 
         hint_set_trace = {}
         try:
@@ -194,10 +196,10 @@ def process_folder(experiement_folder, num_trials):
             else:
                 duplicate_counts[english] = 0
 
-            #type anal 
-            kind = next(iter(hint)) 
-            types_counts[kind] += 1           
-            total_counts[kind] += 1 
+                #type anal 
+                kind = next(iter(hint)) 
+                types_counts[kind] += 1           
+                total_counts[kind] += 1 
 
         hint_file.write("\n\n")
 
@@ -209,6 +211,7 @@ def process_folder(experiement_folder, num_trials):
 
 
         num_duplicates = sum(duplicate_counts.values())
+        hint_sizes.append(len(hints) - num_duplicates) 
         total_duplicates += num_duplicates
         per_puzzle_duplicates.append(num_duplicates)
 
@@ -257,3 +260,4 @@ def process_folder(experiement_folder, num_trials):
 
 if __name__ == "__main__":
     process_folder("ExperimentsKaylah6", 30)
+    process_folder("ExperimentsKaylah7", 30)
