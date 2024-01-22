@@ -1,6 +1,6 @@
-folder = "ExperimentsKaylah5"
+folder = "ExperimentsKaylah7"
 num_trials = 30 
-gen_len = 300 
+gen_len = 1000 
 pop_size = 50 
 mut_rate = 0.8 
 x_rate = 0.3 

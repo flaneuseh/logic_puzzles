@@ -1,21 +1,23 @@
 import matplotlib.pyplot as plt 
+import numpy as np
 import pickle 
 from HintToEnglish import hint_to_english
+from Evolution import Category, Puzzle, apply_hints
 
-def plot_history(history, folder):
-    plt.plot(history.num_feasible)
-    plt.xlabel("Generation")
-    plt.ylabel("Number of Feasible Indivuals")
-    plt.title("Feasible solutions over Evolution")
-    plt.savefig(folder + '/feasible.png')
-    plt.clf()
-    plt.plot(history.feasible_fitness, label = "Feasible")
-    plt.plot(history.infeasible_fitness, label = "Infeasible")
-    plt.xlabel("Generation")
-    plt.ylabel("Fitness")
-    plt.title("Fitness over generations")
-    plt.legend()
-    plt.savefig(folder + '/fitness.png')
+# def plot_history(history, folder):
+#     plt.plot(history.num_feasible)
+#     plt.xlabel("Generation")
+#     plt.ylabel("Number of Feasible Indivuals")
+#     plt.title("Feasible solutions over Evolution")
+#     plt.savefig(folder + '/feasible.png')
+#     plt.clf()
+#     plt.plot(history.feasible_fitness, label = "Feasible")
+#     plt.plot(history.infeasible_fitness, label = "Infeasible")
+#     plt.xlabel("Generation")
+#     plt.ylabel("Fitness")
+#     plt.title("Fitness over generations")
+#     plt.legend()
+#     plt.savefig(folder + '/fitness.png')
 
 
 def create_agg_plot(trials, color, label):
@@ -59,6 +61,32 @@ def plot_histories(histories, folder):
 
     return fes_average, infes_average
 
+def plot_hint_type_averages(averages, folder):
+    def var_to_english(hint_type):
+        return hint_type.replace("_", " ")
+    plt.clf()
+    plt.pie(averages.values(), labels=list(map(var_to_english, averages.keys())), autopct='%1.1f%%')
+    plt.savefig(folder + '/hint_types_pie.png')
+
+def plot_type_vs_loops(loops, hint_pcts, folder):
+    print(len(loops))
+    def var_to_english(hint_type):
+        return hint_type.replace("_", " ")
+    colors = ['b', 'g', 'r', 'c', 'm']
+    plt.clf()
+    i = 0
+    for hint_type, pcts in hint_pcts.items():
+        x = pcts
+        y = loops
+        z = np.polyfit(x, y, 1)
+        p = np.poly1d(z)
+        # plt.scatter(x, y, label=var_to_english(hint_type), color=colors[i])
+        plt.plot(x, p(x), color=colors[i], label=var_to_english(hint_type))
+        plt.legend()
+        i += 1
+
+    plt.savefig(folder + '/hint_types_vs_loops.png')
+
 def first_feasible(histories): 
     num_feasible = [history.num_feasible for history in histories]
     first_feasible = [[ n for n,i in enumerate(li) if i>0.7 ][0] for li in num_feasible]
@@ -71,12 +99,33 @@ def process_folder(experiement_folder, num_trials):
     feasible_pops = [] 
     infeasible_pops =[]
 
-    total_counts = {}
-    per_puzzle_counts = {}
+    total_counts = {
+        'is': 0,
+        'not': 0,
+        'before': 0,
+        'simple_or': 0,
+        'compound_or': 0
+    }
+    per_puzzle_counts = {
+        'is': [],
+        'not': [],
+        'before': [],
+        'simple_or': [],
+        'compound_or': []
+    }
+    per_puzzle_pcts = {
+        'is': [],
+        'not': [],
+        'before': [],
+        'simple_or': [],
+        'compound_or': []
+    }
     hint_sizes = []  
-    num_loops = []
+    
+    per_puzzle_loops = []
     per_puzzle_duplicates = []
     total_duplicates = 0
+
     for i in range(num_trials): 
         feasible, infeasible, history = pickle.load( open(experiement_folder + "/pop" + str(i) + ".p", "rb" ) )
         histories.append(history)
@@ -109,10 +158,30 @@ def process_folder(experiement_folder, num_trials):
     for fitness, hint_set in feasible_pops: 
         hints = hint_set.hints 
         hint_sizes.append(len(hints)) 
-        num_loops.append(max(len(hint_trace) for hint_trace in hint_set.trace.values()))
 
+        hint_set_trace = {}
+        try:
+            hint_set_trace = hint_set.trace
+        except AttributeError:
+            suspects = Category("suspect", ["Ms. carlet", "Mrs. White", "Col. Mustard", "Prof. Plum"], False)
+            weapons = Category("weapon", ["Knife", "Rope", "Candle Stick", "Wrench"], False)
+            rooms = Category("room", ["Ball room", "Living Room", "Kitchen", "Study"], False)
+            time = Category("hour", ["1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"], True)
+
+            puzzle = Puzzle([suspects, weapons, rooms, time]) 
+            _, hint_set_trace = apply_hints(puzzle, hints)
+
+        loops = max(len(hint_trace) for hint_trace in hint_set_trace.values())
+        per_puzzle_loops.append(loops)
+        
         duplicate_counts = {}
-        types_counts = {}
+        types_counts = {
+            'is': 0,
+            'not': 0,
+            'before': 0,
+            'simple_or': 0,
+            'compound_or': 0
+        }
         hint_file.write("Hints for puzzle:{}\n".format(num))
         hint_num = 1 
         for hint in hints:
@@ -127,24 +196,17 @@ def process_folder(experiement_folder, num_trials):
 
             #type anal 
             kind = next(iter(hint)) 
-            if kind in types_counts:
-                types_counts[kind] += 1 
-            else:
-                types_counts[kind] = 1 
-            
-            if kind in total_counts:
-                total_counts[kind] += 1 
-            else:
-                total_counts[kind] = 1  
+            types_counts[kind] += 1           
+            total_counts[kind] += 1 
 
         hint_file.write("\n\n")
 
-
         for key in types_counts: 
-            if key in per_puzzle_counts:
-                per_puzzle_counts[key].append(types_counts[key])
-            else:
-                per_puzzle_counts[key] = [types_counts[key]] 
+            count = types_counts[key]
+            pct = count/len(hints)
+            per_puzzle_counts[key].append(count)
+            per_puzzle_pcts[key].append(pct)
+
 
         num_duplicates = sum(duplicate_counts.values())
         total_duplicates += num_duplicates
@@ -160,18 +222,27 @@ def process_folder(experiement_folder, num_trials):
     data_file.write("\nMin clue size:{}".format(min(hint_sizes)))
     data_file.write("\nMax Clue Size:{}".format(max(hint_sizes)))
 
-    data_file.write("\n\nAverage num loops:{}".format(sum(num_loops) / len(num_loops)))
-    data_file.write("\nMin num loops:{}".format(min(num_loops)))
-    data_file.write("\nMax num loops:{}".format(max(num_loops)))
+    data_file.write("\n\nAverage num loops:{}".format(sum(per_puzzle_loops) / len(per_puzzle_loops)))
+    data_file.write("\nMin num loops:{}".format(min(per_puzzle_loops)))
+    data_file.write("\nMax num loops:{}".format(max(per_puzzle_loops)))
 
     data_file.write("\n\nTotal Clue Amounts")
     for key in total_counts:
         data_file.write("\n\t{}:{}".format(key, total_counts[key]))
     
-    data_file.write("\n\nClues per Puzzles")
-    for key in per_puzzle_counts:
-        avg = sum(per_puzzle_counts[key]) / len(per_puzzle_counts[key])
-        data_file.write("\n\t{}:{}".format(key, avg))
+    data_file.write("\n\nAverages")
+    hint_type_averages = {}
+    for key in total_counts:
+        key_avg = total_counts[key]/len(feasible_pops)
+        hint_type_averages[key] = key_avg
+        data_file.write("\n\t{}:{}".format(key, key_avg))
+    plot_hint_type_averages(hint_type_averages, experiement_folder)
+    plot_type_vs_loops(per_puzzle_loops, per_puzzle_pcts, experiement_folder)
+    
+    # data_file.write("\n\nClues per Puzzle when Hint Type is included")
+    # for key in per_puzzle_counts:
+    #     avg = sum(per_puzzle_counts[key]) / len(per_puzzle_counts[key])
+    #     data_file.write("\n\t{}:{}".format(key, avg))
     
     data_file.write("\n\nTotal duplicates:{}".format(total_duplicates))
     data_file.write("\nAverage duplicates:{}".format(sum(per_puzzle_duplicates) / len(per_puzzle_duplicates)))
@@ -185,4 +256,4 @@ def process_folder(experiement_folder, num_trials):
     
 
 if __name__ == "__main__":
-    process_folder("ExperimentsKaylah5", 30)
+    process_folder("ExperimentsKaylah6", 30)
