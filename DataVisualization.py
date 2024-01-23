@@ -40,6 +40,7 @@ def create_agg_plot(trials, color, label):
 
 
 def plot_histories(histories, folder):
+    plt.clf()
     feasible = [history.feasible_fitness for history in histories]
     infeasible = [history.infeasible_fitness for history in histories]
     num_feasible = [history.num_feasible for history in histories]
@@ -175,8 +176,6 @@ def process_folder(experiement_folder, num_trials):
 
         loops = max(len(hint_trace) for hint_trace in hint_set_trace.values())
         per_puzzle_loops.append(loops)
-        print(hint_set_trace)
-        print(loops)
         
         duplicate_counts = {}
         types_counts = {
@@ -261,5 +260,4 @@ def process_folder(experiement_folder, num_trials):
     
 
 if __name__ == "__main__":
-    process_folder("ExperimentsKaylah6", 30)
-    process_folder("ExperimentsKaylah7", 30)
+    process_folder("ExperimentsKaylah8", 30)
