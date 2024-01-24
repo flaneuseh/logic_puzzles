@@ -3,6 +3,7 @@ import numpy as np
 import pickle 
 from HintToEnglish import hint_to_english
 from Evolution import Category, Puzzle, apply_hints
+from LogicPuzzles import str_hint
 
 # def plot_history(history, folder):
 #     plt.plot(history.num_feasible)
@@ -20,7 +21,7 @@ from Evolution import Category, Puzzle, apply_hints
 #     plt.savefig(folder + '/fitness.png')
 
 
-def create_agg_plot(trials, color, label):
+def create_agg_plot(trials, color, label, normalize=False):
     x = list(range(0, len(trials[0])))
     
     trial_avg  = [] 
@@ -29,6 +30,8 @@ def create_agg_plot(trials, color, label):
 
     for gen in x:
         fitness = [trials[i][gen] for i in range(len(trials))]
+        if normalize and max(fitness) > 1:
+            fitness = list(map(lambda f: f/10, fitness))
         trial_avg.append(sum(fitness) / len(fitness))
         trial_max.append(max(fitness))
         trial_min.append(min(fitness))
@@ -45,7 +48,7 @@ def plot_histories(histories, folder):
     infeasible = [history.infeasible_fitness for history in histories]
     num_feasible = [history.num_feasible for history in histories]
 
-    fes_average = create_agg_plot(feasible, "red", "Feasible Fitness")
+    fes_average = create_agg_plot(feasible, "red", "Feasible Fitness", True)
     infes_average = create_agg_plot(infeasible, "blue", "Infeasible Fitness")
     plt.xlabel("Generation")
     plt.ylabel("Fitness")
@@ -91,6 +94,31 @@ def plot_type_vs_loops(loops, hint_pcts, folder):
     # plt.yticks(range(min(loops), max(loops)))
     plt.savefig(folder + '/hint_types_vs_loops.png')
 
+def plot_types_over_solve_time(hint_type_loops, folder):
+    def var_to_english(hint_type):
+        return hint_type.replace("_", " ")
+    plt.clf()
+
+    _, ax = plt.subplots()
+
+    max_loops = len(hint_type_loops["is"])
+    labels = []
+    for l in range(max_loops):
+        labels.append(str(l+1))
+
+    bottom = np.zeros(max_loops)
+    for hint_type, loops in hint_type_loops.items():
+        ax.bar(labels, loops, bottom=bottom, label=var_to_english(hint_type))
+        bottom += loops
+
+    ax.set_title("Hint types used by each solve loop")
+    ax.legend()
+    plt.ylabel("Hints Remaining in Solve Queue")
+    plt.xlabel("Solve Loop")
+
+    plt.savefig(folder + '/types_over_solve_time.png')
+
+
 def first_feasible(histories): 
     num_feasible = [history.num_feasible for history in histories]
     first_feasible = [[ n for n,i in enumerate(li) if i>0.7 ][0] for li in num_feasible]
@@ -129,6 +157,14 @@ def process_folder(experiement_folder, num_trials):
     per_puzzle_loops = []
     per_puzzle_duplicates = []
     total_duplicates = 0
+
+    hint_type_loops = {
+        'is': [],
+        'not': [],
+        'before': [],
+        'simple_or': [],
+        'compound_or': []
+    }
 
     for i in range(num_trials): 
         feasible, infeasible, history = pickle.load( open(experiement_folder + "/pop" + str(i) + ".p", "rb" ) )
@@ -202,6 +238,13 @@ def process_folder(experiement_folder, num_trials):
                 types_counts[kind] += 1           
                 total_counts[kind] += 1 
 
+                trace_key = str_hint(hint)
+                trace = hint_set_trace[trace_key]
+                while len(hint_type_loops[kind]) < loops:
+                    hint_type_loops[kind].append(0)
+                for l in trace:
+                    hint_type_loops[kind][l-1] += 1
+
         hint_file.write("\n\n")
 
         for key in types_counts: 
@@ -242,6 +285,11 @@ def process_folder(experiement_folder, num_trials):
         data_file.write("\n\t{}:{}".format(key, key_avg))
     plot_hint_type_averages(hint_type_averages, experiement_folder)
     plot_type_vs_loops(per_puzzle_loops, per_puzzle_pcts, experiement_folder)
+
+    for kind in hint_type_loops.keys():
+        while len(hint_type_loops[kind]) < max(per_puzzle_loops):
+            hint_type_loops[kind].append(0)
+    plot_types_over_solve_time(hint_type_loops, experiement_folder)
     
     # data_file.write("\n\nClues per Puzzle when Hint Type is included")
     # for key in per_puzzle_counts:
