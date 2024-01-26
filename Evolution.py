@@ -148,6 +148,12 @@ class HintSet:
         violations = self.completed_puzzle.num_violations()
  
         return (0.33 * complete) + (0.33 * valid) + (0.33 * self._violations_fun(violations))
+
+    def feasiblity_parts(self):
+        complete, valid = self.completed_puzzle.percent_complete()
+        violations = self.completed_puzzle.num_violations()
+ 
+        return complete ,  valid ,  self._violations_fun(violations) 
      
     def optimize_func(self):
         if len(self.hints) == 0:
@@ -176,6 +182,7 @@ class History:
         self.num_feasible = []
         self.feasible_fitness = []
         self.infeasible_fitness = []
+        self.feasible_parts = []
 
     def update_history(self, feasible, infeasible):
         self.num_feasible.append(len(feasible))
@@ -189,6 +196,14 @@ class History:
             self.infeasible_fitness.append(0)
         else: 
             self.infeasible_fitness.append(infeasible[0][0])
+
+            parts_li = []
+
+            for hint in infeasible:
+                parts = hint[1].feasiblity_parts()
+                parts_li.append(parts)
+            self.feasible_parts.append(parts_li)
+
 
 
 
@@ -319,7 +334,8 @@ if __name__ == "__main__":
 
     puzzle = Puzzle([suspects, weapons, rooms, time]) 
 
-    pop = evolve(puzzle, 100,50, 0.2, 1, 0.5, 2) 
+    pop = evolve(puzzle, 50,50, 0.2, 1, 0.5, 2) 
+    print(pop[2].feasible_parts[0])
 
 # %%
 # if __name__ == "__main__":
