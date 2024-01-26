@@ -23,10 +23,10 @@
 
 # %%
 # Imports Baby 
-import import_ipynb 
-from LogicPuzzles import Puzzle, generate_hint, Category, apply_hint, find_openings, find_transitives  
+#import import_ipynb 
+from LogicPuzzles import Puzzle, generate_hint, str_hint, Category, apply_hint, find_openings, find_transitives  
 from HintToEnglish import hint_to_english  
-from DataVisualization import plot_history
+# from DataVisualization import plot_history
 import random 
 import math 
 import numpy.random as npr
@@ -71,17 +71,23 @@ HINT_VALUES = {
 # %%
 def apply_hints(puzzle, hints):
     """
-    not fully implemented 
-    just for testing 
+    solver 
     """
     copy = Puzzle(puzzle.categories)
     queue = hints[:]
+    trace = {}
     backlog = []
     applied = True 
     is_valid = True
-    while is_valid  and applied and len(queue) > 0:
+    loop = 0
+    while is_valid and applied and len(queue) > 0:
         applied = False 
+        loop += 1
         for hint in queue: 
+            if str_hint(hint) not in trace:
+                trace[str_hint(hint)] = []
+            if loop not in trace[str_hint(hint)]:
+                trace[str_hint(hint)].append(loop)
             a, is_valid, complete = apply_hint(copy, hint)
             applied = applied or a
             if not complete: 
@@ -97,7 +103,7 @@ def apply_hints(puzzle, hints):
         
         queue = backlog 
         backlog = [] 
-    return copy 
+    return copy, trace
 
 
 # %%
@@ -105,7 +111,7 @@ class HintSet:
     def __init__(self, hints, puzzle) -> None:
         self.hints = hints 
         self.puzzle = puzzle # assumed to be blank 
-        self.completed_puzzle = apply_hints(self.puzzle, self.hints)
+        self.completed_puzzle, self.trace = apply_hints(self.puzzle, self.hints)
 
     def mutate(self, add_rate):
         hint_copy = self.hints[:]
@@ -146,6 +152,7 @@ class HintSet:
     def optimize_func(self):
         if len(self.hints) == 0:
             return 0 
+       
         score = 0 
         for hint in self.hints:
             rule = list(hint.keys())[0]
@@ -153,7 +160,16 @@ class HintSet:
                 rule = list(hint.keys())[0]
             score += HINT_VALUES[rule] 
         
-        return (0.5 * score / len(self.hints)) + (0.5 * (1 - (len(self.hints) / 20)))
+        num_loops = max(len(hint_trace) for hint_trace in self.trace.values())
+       
+        # Fn 1: optimize by hint type and number of hints
+        # return (0.5 * score / len(self.hints)) + (0.5 * (1 - (len(self.hints) / 20)))
+        
+        # Fn 2: optimize by number of loops and number of hints
+        # return (0.5 * min(num_loops, 10) / 10) + (0.5 * (1 - (len(self.hints) / 20)))
+        
+        # Fn 3: optimize by number of loops
+        return num_loops
 
 class History:
     def __init__(self):
@@ -306,17 +322,17 @@ if __name__ == "__main__":
     pop = evolve(puzzle, 100,50, 0.2, 1, 0.5, 2) 
 
 # %%
-if __name__ == "__main__":
-    file = open("Experiement1/pop1.p", "wb")
-    pickle.dump(pop, file)
-    feasible = pop[0]
-    infeasible = pop[1]
-    history = pop[2]
+# if __name__ == "__main__":
+#     file = open("Experiement1/pop1.p", "wb")
+#     pickle.dump(pop, file)
+#     feasible = pop[0]
+#     infeasible = pop[1]
+#     history = pop[2]
 
-    print(feasible)
-    print(feasible[0][1].completed_puzzle.print_grid())
-    print(len(feasible[0][1].hints))
-    print([hint_to_english(hint) for hint in feasible[0][1].hints])
-    print("\n\n")
-    print(infeasible)
-    plot_history(history, "Experiement1")
+#     print(feasible)
+#     print(feasible[0][1].completed_puzzle.print_grid())
+#     print(len(feasible[0][1].hints))
+#     print([hint_to_english(hint) for hint in feasible[0][1].hints])
+#     print("\n\n")
+#     print(infeasible)
+#     plot_history(history, "Experiement1")

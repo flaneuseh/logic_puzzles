@@ -1,0 +1,346 @@
+Hints for puzzle:1
+	1. The suspect Prof. Plum is 1 hours before the room Study
+	2. The suspect Prof. Plum is 1 hours before the room Study
+	3. The suspect Prof. Plum is the weapon Candle Stick
+	4. Either The weapon Rope is the room Living Room or The hour 2:00 PM is the weapon Wrench
+	5. Either the weapon Knife or the suspect Ms. carlet is the room Kitchen
+	6. The suspect Prof. Plum is 1 hours before the room Study
+	7. Either the hour 3:00 PM or the room Ball room is the suspect Ms. carlet
+	8. The suspect Prof. Plum is 1 hours before the room Study
+	9. The hour 3:00 PM is the suspect Col. Mustard
+
+
+Hints for puzzle:2
+	1. The weapon Knife is the room Ball room
+	2. Either The room Study is the suspect Prof. Plum or The suspect Ms. carlet is the hour 2:00 PM
+	3. The weapon Candle Stick is 2 hours before the weapon Rope
+	4. The weapon Candle Stick is 2 hours before the weapon Rope
+	5. The suspect Mrs. White is the hour 3:00 PM
+	6. Either the hour 4:00 PM or the room Ball room is the suspect Ms. carlet
+	7. The suspect Ms. carlet is the room Living Room
+	8. The weapon Candle Stick is 2 hours before the weapon Rope
+	9. Either the weapon Rope or the room Study is the hour 3:00 PM
+
+
+Hints for puzzle:3
+	1. The weapon Rope is 2 hours before the room Ball room
+	2. Either the weapon Candle Stick or the weapon Wrench is the suspect Col. Mustard
+	3. The weapon Rope is 2 hours before the room Ball room
+	4. The weapon Rope is 2 hours before the room Ball room
+	5. The suspect Ms. carlet is 2 hours before the room Kitchen
+	6. The suspect Mrs. White is at least 1 hour before the room Study
+	7. The hour 4:00 PM is not the suspect in the category Col. Mustard
+	8. Either the suspect Col. Mustard or the weapon Candle Stick is the room Kitchen
+
+
+Hints for puzzle:4
+	1. Either The hour 1:00 PM is the suspect Prof. Plum or The room Study is the suspect Mrs. White
+	2. The weapon Wrench is 1 hours before the weapon Rope
+	3. The room Kitchen is 2 hours before the suspect Ms. carlet
+	4. Either the room Ball room or the hour 4:00 PM is the weapon Rope
+	5. The room Study is at least 1 hour before the suspect Mrs. White
+	6. The weapon Wrench is 1 hours before the weapon Rope
+	7. The room Ball room is 2 hours before the weapon Knife
+
+
+Hints for puzzle:5
+	1. Either the suspect Mrs. White or the room Study is the hour 1:00 PM
+	2. The room Kitchen is 2 hours before the weapon Knife
+	3. The weapon Rope is at least 1 hour before the suspect Col. Mustard
+	4. The weapon Rope is at least 1 hour before the suspect Col. Mustard
+	5. The weapon Rope is at least 1 hour before the suspect Col. Mustard
+	6. The weapon Rope is at least 1 hour before the suspect Col. Mustard
+	7. The suspect Prof. Plum is the hour 3:00 PM
+	8. The room Living Room is at least 1 hour before the suspect Mrs. White
+	9. Either The room Study is the suspect Mrs. White or The weapon Wrench is the hour 3:00 PM
+
+
+Hints for puzzle:6
+	1. Either The hour 3:00 PM is the room Living Room or The suspect Col. Mustard is the room Ball room
+	2. The weapon Wrench is 1 hours before the room Living Room
+	3. Either the suspect Ms. carlet or the suspect Mrs. White is the weapon Wrench
+	4. The room Study is 1 hours before the weapon Candle Stick
+	5. Either The room Kitchen is the weapon Rope or The suspect Mrs. White is the hour 3:00 PM
+	6. The suspect Mrs. White is the hour 4:00 PM
+	7. Either The hour 3:00 PM is the room Living Room or The suspect Col. Mustard is the room Ball room
+	8. The hour 2:00 PM is the room Kitchen
+
+
+Hints for puzzle:7
+	1. Either the weapon Wrench or the suspect Ms. carlet is the hour 2:00 PM
+	2. The room Study is 2 hours before the weapon Wrench
+	3. The weapon Knife is at least 1 hour before the weapon Candle Stick
+	4. The weapon Knife is at least 1 hour before the weapon Candle Stick
+	5. The room Living Room is not the hour in the category 3:00 PM
+	6. The room Kitchen is at least 1 hour before the weapon Knife
+	7. The suspect Mrs. White is 2 hours before the suspect Col. Mustard
+
+
+Hints for puzzle:8
+	1. The suspect Ms. carlet is 2 hours before the suspect Mrs. White
+	2. The suspect Ms. carlet is 2 hours before the suspect Mrs. White
+	3. Either the hour 4:00 PM or the room Living Room is the weapon Candle Stick
+	4. The weapon Rope is 1 hours before the room Study
+	5. Either the room Living Room or the room Kitchen is the weapon Wrench
+	6. The weapon Candle Stick is the hour 3:00 PM
+	7. Either The room Kitchen is the suspect Prof. Plum or The hour 2:00 PM is the weapon Candle Stick
+
+
+Hints for puzzle:9
+	1. The weapon Wrench is the suspect Col. Mustard
+	2. The suspect Ms. carlet is 2 hours before the weapon Knife
+	3. Either The room Study is the hour 3:00 PM or The room Kitchen is the weapon Wrench
+	4. Either the suspect Col. Mustard or the suspect Ms. carlet is the room Ball room
+	5. The suspect Col. Mustard is at least 1 hour before the room Study
+	6. Either the suspect Col. Mustard or the suspect Ms. carlet is the room Ball room
+	7. Either the room Kitchen or the suspect Mrs. White is the hour 1:00 PM
+	8. Either the hour 3:00 PM or the hour 2:00 PM is the weapon Rope
+	9. Either the suspect Col. Mustard or the suspect Ms. carlet is the room Ball room
+	10. The hour 1:00 PM is the room Living Room
+	11. Either the suspect Col. Mustard or the suspect Ms. carlet is the room Ball room
+	12. Either the suspect Col. Mustard or the suspect Ms. carlet is the room Ball room
+
+
+Hints for puzzle:10
+	1. Either the weapon Knife or the weapon Wrench is the suspect Ms. carlet
+	2. Either the hour 2:00 PM or the hour 4:00 PM is the room Kitchen
+	3. The suspect Prof. Plum is at least 1 hour before the weapon Wrench
+	4. Either the weapon Knife or the weapon Wrench is the suspect Ms. carlet
+	5. Either The suspect Ms. carlet is the hour 1:00 PM or The room Study is the weapon Wrench
+	6. The suspect Col. Mustard is the hour 2:00 PM
+	7. Either The room Study is the suspect Col. Mustard or The weapon Candle Stick is the room Study
+	8. Either the weapon Knife or the weapon Wrench is the suspect Ms. carlet
+	9. The room Living Room is the hour 4:00 PM
+
+
+Hints for puzzle:11
+	1. Either the weapon Knife or the hour 4:00 PM is the room Ball room
+	2. Either The hour 2:00 PM is the weapon Rope or The hour 2:00 PM is the room Kitchen
+	3. The suspect Mrs. White is at least 1 hour before the suspect Col. Mustard
+	4. The weapon Wrench is at least 1 hour before the suspect Mrs. White
+	5. The weapon Wrench is 2 hours before the weapon Candle Stick
+	6. The suspect Mrs. White is at least 1 hour before the suspect Col. Mustard
+	7. The room Living Room is 2 hours before the suspect Ms. carlet
+	8. The suspect Mrs. White is at least 1 hour before the suspect Col. Mustard
+
+
+Hints for puzzle:12
+	1. Either The room Kitchen is the weapon Candle Stick or The hour 4:00 PM is the suspect Col. Mustard
+	2. Either The room Kitchen is the weapon Candle Stick or The hour 4:00 PM is the suspect Col. Mustard
+	3. Either The room Kitchen is the weapon Candle Stick or The hour 4:00 PM is the suspect Col. Mustard
+	4. The room Kitchen is 1 hours before the suspect Prof. Plum
+	5. Either the weapon Rope or the room Ball room is the suspect Mrs. White
+	6. Either the weapon Knife or the weapon Rope is the suspect Col. Mustard
+	7. Either The room Kitchen is the weapon Candle Stick or The hour 4:00 PM is the suspect Col. Mustard
+	8. The room Ball room is at least 1 hour before the weapon Wrench
+	9. Either The room Ball room is the suspect Prof. Plum or The room Study is the weapon Knife
+	10. The weapon Wrench is the room Study
+
+
+Hints for puzzle:13
+	1. The room Kitchen is the weapon Knife
+	2. The suspect Col. Mustard is the room Living Room
+	3. The room Ball room is 2 hours before the suspect Prof. Plum
+	4. The room Ball room is 2 hours before the suspect Prof. Plum
+	5. The room Ball room is 2 hours before the suspect Prof. Plum
+	6. The weapon Rope is the suspect Mrs. White
+	7. The suspect Ms. carlet is 2 hours before the room Living Room
+	8. The weapon Wrench is the hour 2:00 PM
+
+
+Hints for puzzle:14
+	1. The suspect Prof. Plum is the hour 1:00 PM
+	2. The room Living Room is at least 1 hour before the weapon Wrench
+	3. Either the room Kitchen or the room Ball room is the hour 2:00 PM
+	4. Either the room Kitchen or the room Ball room is the hour 2:00 PM
+	5. Either the room Kitchen or the room Ball room is the hour 2:00 PM
+	6. The room Kitchen is at least 1 hour before the suspect Col. Mustard
+	7. Either the weapon Knife or the weapon Candle Stick is the suspect Mrs. White
+	8. Either The weapon Wrench is the room Study or The suspect Mrs. White is the hour 4:00 PM
+	9. Either The room Kitchen is the weapon Rope or The room Study is the suspect Prof. Plum
+	10. The weapon Wrench is at least 1 hour before the weapon Knife
+
+
+Hints for puzzle:15
+	1. Either The suspect Ms. carlet is the room Kitchen or The suspect Prof. Plum is the room Living Room
+	2. The room Kitchen is 1 hours before the weapon Candle Stick
+	3. The room Kitchen is 1 hours before the weapon Candle Stick
+	4. Either The room Living Room is the hour 2:00 PM or The room Study is the weapon Rope
+	5. The room Kitchen is 1 hours before the weapon Candle Stick
+	6. The hour 4:00 PM is the room Living Room
+	7. The room Kitchen is 2 hours before the suspect Ms. carlet
+	8. Either the room Ball room or the suspect Mrs. White is the weapon Knife
+
+
+Hints for puzzle:16
+	1. The room Ball room is 2 hours before the room Living Room
+	2. Either the hour 4:00 PM or the weapon Knife is the suspect Ms. carlet
+	3. The room Ball room is 2 hours before the room Living Room
+	4. The room Ball room is 1 hours before the weapon Rope
+	5. Either the suspect Ms. carlet or the weapon Wrench is the room Kitchen
+	6. Either the weapon Candle Stick or the hour 3:00 PM is the suspect Mrs. White
+	7. The weapon Knife is not the suspect in the category Col. Mustard
+	8. The suspect Mrs. White is the weapon Wrench
+	9. The room Ball room is 2 hours before the room Living Room
+
+
+Hints for puzzle:17
+	1. Either the weapon Wrench or the suspect Col. Mustard is the hour 3:00 PM
+	2. The room Kitchen is 1 hours before the weapon Rope
+	3. Either The room Kitchen is the suspect Prof. Plum or The suspect Ms. carlet is the room Living Room
+	4. The room Kitchen is 1 hours before the weapon Rope
+	5. The hour 3:00 PM is the suspect Mrs. White
+	6. Either The room Kitchen is the suspect Col. Mustard or The room Kitchen is the weapon Knife
+	7. The room Kitchen is 1 hours before the weapon Rope
+	8. The room Study is the weapon Rope
+	9. The room Kitchen is 1 hours before the weapon Rope
+	10. The room Kitchen is 1 hours before the weapon Rope
+	11. The room Kitchen is 1 hours before the weapon Rope
+	12. Either The weapon Candle Stick is the hour 1:00 PM or The hour 3:00 PM is the weapon Candle Stick
+
+
+Hints for puzzle:18
+	1. The suspect Col. Mustard is 2 hours before the weapon Wrench
+	2. Either The suspect Ms. carlet is the weapon Candle Stick or The suspect Mrs. White is the hour 1:00 PM
+	3. The room Kitchen is 1 hours before the room Living Room
+	4. The room Kitchen is 1 hours before the room Living Room
+	5. The weapon Knife is 1 hours before the suspect Col. Mustard
+	6. The suspect Prof. Plum is 2 hours before the room Ball room
+	7. The room Kitchen is 1 hours before the room Living Room
+
+
+Hints for puzzle:19
+	1. Either the suspect Col. Mustard or the weapon Wrench is the room Living Room
+	2. The room Kitchen is 1 hours before the weapon Wrench
+	3. Either The suspect Prof. Plum is the weapon Knife or The hour 2:00 PM is the weapon Rope
+	4. The weapon Rope is 1 hours before the room Study
+	5. Either the suspect Col. Mustard or the weapon Wrench is the room Living Room
+	6. The suspect Prof. Plum is the weapon Candle Stick
+	7. The suspect Prof. Plum is not the hour in the category 1:00 PM
+	8. Either the suspect Ms. carlet or the room Kitchen is the weapon Wrench
+
+
+Hints for puzzle:20
+	1. Either the weapon Knife or the suspect Col. Mustard is the room Ball room
+	2. The weapon Rope is the suspect Ms. carlet
+	3. Either the room Kitchen or the weapon Candle Stick is the suspect Prof. Plum
+	4. The room Living Room is 2 hours before the weapon Rope
+	5. The room Living Room is 2 hours before the weapon Rope
+	6. The weapon Knife is 1 hours before the room Ball room
+	7. Either the weapon Wrench or the suspect Col. Mustard is the hour 1:00 PM
+	8. The room Living Room is 2 hours before the weapon Rope
+
+
+Hints for puzzle:21
+	1. Either The room Ball room is the weapon Rope or The suspect Col. Mustard is the room Ball room
+	2. Either the hour 1:00 PM or the room Kitchen is the weapon Wrench
+	3. Either The suspect Col. Mustard is the hour 3:00 PM or The weapon Rope is the room Kitchen
+	4. Either The room Ball room is the weapon Rope or The suspect Col. Mustard is the room Ball room
+	5. Either The suspect Mrs. White is the hour 2:00 PM or The hour 1:00 PM is the room Ball room
+	6. Either the room Kitchen or the hour 1:00 PM is the weapon Candle Stick
+	7. The weapon Candle Stick is 1 hours before the room Living Room
+	8. The room Kitchen is 2 hours before the suspect Ms. carlet
+
+
+Hints for puzzle:22
+	1. Either The suspect Prof. Plum is the weapon Candle Stick or The room Living Room is the weapon Knife
+	2. Either the suspect Prof. Plum or the weapon Knife is the hour 3:00 PM
+	3. Either the weapon Wrench or the suspect Mrs. White is the room Study
+	4. Either the weapon Wrench or the suspect Mrs. White is the room Study
+	5. The suspect Mrs. White is 1 hours before the weapon Knife
+	6. Either the hour 2:00 PM or the suspect Mrs. White is the room Kitchen
+	7. Either the hour 2:00 PM or the weapon Wrench is the suspect Prof. Plum
+	8. Either the room Ball room or the weapon Candle Stick is the suspect Ms. carlet
+
+
+Hints for puzzle:23
+	1. Either the suspect Prof. Plum or the room Study is the weapon Wrench
+	2. Either The weapon Knife is the hour 3:00 PM or The suspect Prof. Plum is the weapon Candle Stick
+	3. Either the suspect Prof. Plum or the room Study is the weapon Wrench
+	4. Either the suspect Prof. Plum or the room Study is the weapon Wrench
+	5. Either the suspect Prof. Plum or the room Study is the weapon Wrench
+	6. Either the suspect Prof. Plum or the room Study is the weapon Wrench
+	7. The weapon Rope is 1 hours before the suspect Ms. carlet
+	8. The suspect Prof. Plum is 2 hours before the weapon Candle Stick
+	9. Either The suspect Col. Mustard is the room Living Room or The suspect Prof. Plum is the room Ball room
+	10. Either The hour 3:00 PM is the suspect Mrs. White or The room Ball room is the weapon Knife
+
+
+Hints for puzzle:24
+	1. The room Kitchen is 2 hours before the room Living Room
+	2. The room Kitchen is 2 hours before the room Living Room
+	3. The weapon Rope is the suspect Prof. Plum
+	4. The room Kitchen is 2 hours before the room Living Room
+	5. Either The suspect Mrs. White is the hour 4:00 PM or The weapon Wrench is the suspect Col. Mustard
+	6. The weapon Knife is 2 hours before the suspect Mrs. White
+	7. The hour 2:00 PM is the suspect Prof. Plum
+	8. The room Study is the suspect Col. Mustard
+
+
+Hints for puzzle:25
+	1. The room Kitchen is the weapon Rope
+	2. The suspect Col. Mustard is 1 hours before the weapon Wrench
+	3. The suspect Col. Mustard is 1 hours before the weapon Wrench
+	4. The room Ball room is the weapon Candle Stick
+	5. The room Study is at least 1 hour before the suspect Ms. carlet
+	6. The room Living Room is 1 hours before the room Ball room
+	7. The suspect Prof. Plum is at least 1 hour before the room Study
+	8. The suspect Ms. carlet is the room Ball room
+
+
+Hints for puzzle:26
+	1. The room Study is 2 hours before the room Living Room
+	2. The room Study is 2 hours before the suspect Prof. Plum
+	3. The suspect Col. Mustard is the hour 1:00 PM
+	4. Either The hour 4:00 PM is the suspect Mrs. White or The room Kitchen is the hour 2:00 PM
+	5. The weapon Rope is 1 hours before the weapon Candle Stick
+	6. The weapon Wrench is 2 hours before the room Kitchen
+	7. The weapon Rope is 1 hours before the weapon Candle Stick
+
+
+Hints for puzzle:27
+	1. Either the weapon Knife or the weapon Wrench is the hour 3:00 PM
+	2. The suspect Prof. Plum is 1 hours before the suspect Mrs. White
+	3. Either the suspect Col. Mustard or the room Living Room is the hour 4:00 PM
+	4. The weapon Candle Stick is the suspect Ms. carlet
+	5. The room Kitchen is the weapon Candle Stick
+	6. Either the weapon Knife or the weapon Wrench is the hour 3:00 PM
+	7. The room Living Room is 2 hours before the weapon Knife
+	8. The weapon Wrench is the room Study
+
+
+Hints for puzzle:28
+	1. Either the suspect Prof. Plum or the weapon Wrench is the hour 2:00 PM
+	2. The suspect Col. Mustard is at least 1 hour before the weapon Wrench
+	3. Either the room Ball room or the hour 2:00 PM is the weapon Knife
+	4. The weapon Rope is 1 hours before the room Ball room
+	5. The weapon Rope is 1 hours before the room Ball room
+	6. Either The suspect Prof. Plum is the room Study or The weapon Knife is the suspect Ms. carlet
+	7. The room Living Room is the suspect Mrs. White
+	8. The suspect Prof. Plum is 2 hours before the room Kitchen
+	9. The weapon Rope is 1 hours before the room Ball room
+
+
+Hints for puzzle:29
+	1. Either The hour 2:00 PM is the weapon Wrench or The weapon Candle Stick is the suspect Ms. carlet
+	2. Either The room Kitchen is the suspect Col. Mustard or The hour 3:00 PM is the room Study
+	3. Either The room Kitchen is the suspect Col. Mustard or The hour 3:00 PM is the room Study
+	4. Either The room Kitchen is the suspect Col. Mustard or The hour 3:00 PM is the room Study
+	5. Either The weapon Rope is the room Living Room or The suspect Col. Mustard is the weapon Wrench
+	6. Either the weapon Rope or the suspect Mrs. White is the room Kitchen
+	7. Either the suspect Mrs. White or the weapon Wrench is the room Ball room
+	8. The weapon Candle Stick is the hour 3:00 PM
+	9. The weapon Wrench is 1 hours before the room Ball room
+
+
+Hints for puzzle:30
+	1. The weapon Rope is 2 hours before the room Ball room
+	2. The weapon Rope is the room Kitchen
+	3. Either The suspect Prof. Plum is the hour 2:00 PM or The weapon Wrench is the hour 2:00 PM
+	4. The weapon Rope is 2 hours before the room Ball room
+	5. Either the hour 3:00 PM or the suspect Col. Mustard is the weapon Wrench
+	6. The suspect Ms. carlet is at least 1 hour before the suspect Prof. Plum
+	7. The weapon Knife is the suspect Col. Mustard
+	8. The room Living Room is the suspect Col. Mustard
+
+
