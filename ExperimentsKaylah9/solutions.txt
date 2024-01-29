@@ -1,0 +1,65 @@
+Solution for puzzle:1
+      Mrs  Col  Pro  Rop  Can  Wre
+    ------------------------------
+2:0|  O    X    X  | X    X    O  |
+3:0|  X    O    X  | O    X    X  |
+4:0|  X    X    O  | X    O    X  |
+    ------------------------------
+Rop|  X    O    X  |
+Can|  X    X    O  |
+Wre|  O    X    X  |
+    ---------------
+
+
+Solution for puzzle:2
+      Mrs  Col  Pro  Rop  Can  Wre
+    ------------------------------
+2:0|  X    O    X  | X    O    X  |
+3:0|  O    X    X  | O    X    X  |
+4:0|  X    X    O  | X    X    O  |
+    ------------------------------
+Rop|  O    X    X  |
+Can|  X    O    X  |
+Wre|  X    X    O  |
+    ---------------
+
+
+Solution for puzzle:3
+      Mrs  Col  Pro  Rop  Can  Wre
+    ------------------------------
+2:0|  X    X    O  | O    X    X  |
+3:0|  X    O    X  | X    O    X  |
+4:0|  O    X    X  | X    X    O  |
+    ------------------------------
+Rop|  X    X    O  |
+Can|  X    O    X  |
+Wre|  O    X    X  |
+    ---------------
+
+
+Solution for puzzle:4
+      Mrs  Col  Pro  Rop  Can  Wre
+    ------------------------------
+2:0|  X    O    X  | O    X    X  |
+3:0|  O    X    X  | X    X    O  |
+4:0|  X    X    O  | X    O    X  |
+    ------------------------------
+Rop|  X    O    X  |
+Can|  X    X    O  |
+Wre|  O    X    X  |
+    ---------------
+
+
+Solution for puzzle:5
+      Mrs  Col  Pro  Rop  Can  Wre
+    ------------------------------
+2:0|  O    X    X  | X    X    O  |
+3:0|  X    O    X  | X    O    X  |
+4:0|  X    X    O  | O    X    X  |
+    ------------------------------
+Rop|  X    X    O  |
+Can|  X    O    X  |
+Wre|  O    X    X  |
+    ---------------
+
+

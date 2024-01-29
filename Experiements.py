@@ -1,6 +1,6 @@
-folder = "ExperimentsKaylah8"
-num_trials = 30 
-gen_len = 2000 
+folder = "ExperimentsKaylah9"
+num_trials = 5 
+gen_len = 100 
 pop_size = 50 
 mut_rate = 0.8 
 x_rate = 0.3 
@@ -14,12 +14,17 @@ import pickle
 
 for trial in range(num_trials):
     print("Running trial: {}".format(trial))
-    suspects = Category("suspect", ["Ms. carlet", "Mrs. White", "Col. Mustard", "Prof. Plum"], False)
-    weapons = Category("weapon", ["Knife", "Rope", "Candle Stick", "Wrench"], False)
-    rooms = Category("room", ["Ball room", "Living Room", "Kitchen", "Study"], False)
-    time = Category("hour", ["1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"], True)
+    # suspects = Category("suspect", ["Ms. carlet", "Mrs. White", "Col. Mustard", "Prof. Plum"], False)
+    # weapons = Category("weapon", ["Knife", "Rope", "Candle Stick", "Wrench"], False)
+    # rooms = Category("room", ["Ball room", "Living Room", "Kitchen", "Study"], False)
+    # time = Category("hour", ["1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"], True)
+    # puzzle = Puzzle([suspects, weapons, rooms, time]) 
 
-    puzzle = Puzzle([suspects, weapons, rooms, time]) 
+    # Mini puzzle
+    suspects = Category("suspect", ["Mrs. White", "Col. Mustard", "Prof. Plum"], False)
+    weapons = Category("weapon", ["Rope", "Candle Stick", "Wrench"], False)
+    time = Category("hour", ["2:00 PM", "3:00 PM", "4:00 PM"], True)
+    puzzle = Puzzle([suspects, weapons, time]) 
 
     pop = evolve(puzzle, gen_len,pop_size, x_rate, mut_rate, add_rate, elits) 
 
