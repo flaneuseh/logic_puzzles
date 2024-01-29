@@ -1,6 +1,6 @@
 folder = "ExperimentsKaylah9"
 num_trials = 5 
-gen_len = 100 
+gen_len = 150
 pop_size = 50 
 mut_rate = 0.8 
 x_rate = 0.3 
