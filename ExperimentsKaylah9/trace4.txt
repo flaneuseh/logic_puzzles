@@ -1,0 +1,1 @@
+{'simple_or: [ suspect, Ms. Scarlet, suspect, Col. Mustard, weapon, Knife ]': [1, 2, 3, 4], 'before: [ suspect, Mrs. White, suspect, Ms. Scarlet, hour, 1 ]': [1, 2, 3, 4, 5], 'simple_or: [ suspect, Prof. Plum, weapon, Candle Stick, hour, 2:00 PM ]': [1, 2, 3], 'before: [ weapon, Rope, weapon, Wrench, hour, 1 ]': [1, 2], 'is: [ weapon, Rope, hour, 3:00 PM ]': [1]}
