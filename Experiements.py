@@ -21,9 +21,9 @@ for trial in range(num_trials):
     # puzzle = Puzzle([suspects, weapons, rooms, time]) 
 
     # Mini puzzle
-    suspects = Category("suspect", ["Mrs. White", "Col. Mustard", "Prof. Plum"], False)
-    weapons = Category("weapon", ["Rope", "Candle Stick", "Wrench"], False)
-    time = Category("hour", ["2:00 PM", "3:00 PM", "4:00 PM"], True)
+    suspects = Category("suspect", ["Ms. Scarlet", "Mrs. White", "Col. Mustard", "Prof. Plum"], False)
+    weapons = Category("weapon", ["Knife", "Rope", "Candle Stick", "Wrench"], False)
+    time = Category("hour", ["1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"], True)
     puzzle = Puzzle([suspects, weapons, time]) 
 
     pop = evolve(puzzle, gen_len,pop_size, x_rate, mut_rate, add_rate, elits) 
