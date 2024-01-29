@@ -1,5 +1,6 @@
 import pickle 
 import matplotlib.pyplot as plt 
+from colorPalette import COLOR1, COLOR2, COLOR3, COLOR4, COLOR5, LINE1, LINE2, LINE3, LINE4, LINE5 
 all_components_folder = "FitnessExperiements/full"
 nothing_folder = "FitnessExperiements/nothing"
 complete_folder = "FitnessExperiements/complete"
@@ -50,10 +51,10 @@ def avg_min_max(list_of_lists):
     return avg, minimum, maximum 
 
 
-def plot_avg(average, mininum, maximum, color, label):
+def plot_avg(average, mininum, maximum, color, linestyle,  label):
 
     x = list(range(len(average)))
-    plt.plot(x, average, color = color, label = label)
+    plt.plot(x, average, color = color, linestyle = linestyle, label = label)
     plt.legend()
     #plt.fill_between(x, mininum, maximum, color=color, alpha=0.1)
 
@@ -61,25 +62,25 @@ def plot_avg(average, mininum, maximum, color, label):
 if __name__ == "__main__":
     feasible = get_num_feasible(all_components_folder, 30) 
     a, m_0, m_1 = avg_min_max(feasible)
-    plot_avg(a, m_0, m_1, "green", "Full Fitness")
+    plot_avg(a, m_0, m_1, COLOR1, LINE1, "Full Fitness")
 
     feasible = get_num_feasible(complete_folder, 30) 
     a, m_0, m_1 = avg_min_max(feasible)
-    plot_avg(a, m_0, m_1, "orange", "No Completetion")
+    plot_avg(a, m_0, m_1, COLOR2, LINE2,  "No Completetion")
 
     feasible = get_num_feasible(valid_folder, 30) 
     a, m_0, m_1 = avg_min_max(feasible)
-    plot_avg(a, m_0, m_1, "blue", "No Valid")
+    plot_avg(a, m_0, m_1, COLOR3, LINE3, "No Valid")
 
     feasible = get_num_feasible(violation_folder, 30) 
     a, m_0, m_1 = avg_min_max(feasible)
-    plot_avg(a, m_0, m_1, "purple", "No Violations")
+    plot_avg(a, m_0, m_1, COLOR4, LINE4, "No Violations")
     
 
     feasible = get_num_feasible(nothing_folder, 30) 
     a, m_0, m_1 = avg_min_max(feasible)
     print(m_1)
-    plot_avg(a, m_0, m_1, "red", "Random Search")
+    plot_avg(a, m_0, m_1, COLOR5, LINE5, "Random Search")
     plt.title("Feasible Indivuals Found by Fitness Function")
     plt.ylabel("Number of feasible Indivuals")
     plt.xlabel("Generation")
