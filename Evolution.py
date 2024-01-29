@@ -137,6 +137,13 @@ class HintSet:
         else:
             return 1 - (violations / 10 ) 
     
+    def weighted_feasiblility(self, complete_w, valid_w, violation_w):
+        complete, valid = self.completed_puzzle.percent_complete()
+        violations = self.completed_puzzle.num_violations()
+ 
+        return (complete_w * complete) + (valid_w* valid) + (violation_w * self._violations_fun(violations))
+
+    
     def feasibility(self):
         complete, valid = self.completed_puzzle.percent_complete()
         violations = self.completed_puzzle.num_violations()
