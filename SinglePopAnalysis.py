@@ -15,6 +15,26 @@ def get_num_feasible(folder, trial_length):
         num_feasible.append(history.num_feasible)
     return num_feasible
 
+
+def get_num_violation(folder, trial_length, generation_length):
+    violations = []
+    for i in range(generation_length):
+        violations.append([])
+    
+    for i in range(trial_length): 
+        file = open(folder + "/pop" + str(i) + ".p", "rb") 
+        pop, history  = pickle.load(file) 
+        all_pops = history.all_populations 
+        for j in range(len(all_pops)):
+            indivual = all_pops[j][0][1]
+            v = indivual.completed_puzzle.num_violations()
+            violations[j].append(v)
+    
+    return violations
+
+
+
+
 def avg_min_max(list_of_lists):
 
     avg = []
@@ -54,14 +74,18 @@ if __name__ == "__main__":
     feasible = get_num_feasible(violation_folder, 30) 
     a, m_0, m_1 = avg_min_max(feasible)
     plot_avg(a, m_0, m_1, "purple", "No Violations")
+    
 
     feasible = get_num_feasible(nothing_folder, 30) 
     a, m_0, m_1 = avg_min_max(feasible)
+    print(m_1)
     plot_avg(a, m_0, m_1, "red", "Random Search")
     plt.title("Feasible Indivuals Found by Fitness Function")
     plt.ylabel("Number of feasible Indivuals")
     plt.xlabel("Generation")
     plt.show()
+
+    #print(get_num_violation(violation_folder, 30, 100))
 
 
 
