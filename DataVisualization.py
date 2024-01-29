@@ -230,17 +230,6 @@ def process_folder(experiement_folder, num_trials):
     sol_file = open(experiement_folder + "/solutions.txt", "w")
     num = 1 
 
-
-    suspects = Category("suspect", ["Ms. carlet", "Mrs. White", "Col. Mustard", "Prof. Plum"], False)
-    weapons = Category("weapon", ["Knife", "Rope", "Candle Stick", "Wrench"], False)
-    rooms = Category("room", ["Ball room", "Living Room", "Kitchen", "Study"], False)
-    time = Category("hour", ["1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"], True)
-
-    puzzle = Puzzle([suspects, weapons, rooms, time]) 
-    fitness, hint_set = feasible_pops[3]
-    _, hint_set_trace = apply_hints(puzzle, hint_set.hints, print_soln=True)
-    print(hint_set_trace)
-
     for fitness, hint_set in feasible_pops: 
         hints = hint_set.hints 
 
