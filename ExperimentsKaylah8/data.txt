@@ -33,6 +33,14 @@ Averages
 	simple_or:1.9
 	compound_or:2.5
 
+Percent Numeric
+	Overall: 0.6823104693140795
+	is:0.36
+	not:0.3902439024390244
+	before:1.0
+	simple_or:0.5964912280701754
+	compound_or:0.68
+
 Total duplicates:32
 Average duplicates:1.0666666666666667
 Min duplicates:0
