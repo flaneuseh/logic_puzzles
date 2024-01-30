@@ -1,0 +1,69 @@
+Hints for puzzle:1
+	1. Either the suspect Ms. carlet or the weapon Wrench is the room Study
+	2. Either The hour 4:00 PM is the room Kitchen or The room Ball room is the weapon Knife
+	3. The room Living Room is the weapon Rope
+	4. The suspect Prof. Plum is 1 hours before the room Ball room
+	5. The suspect Prof. Plum is not the room in the category Ball room
+	6. Either The hour 3:00 PM is the suspect Mrs. White or The suspect Ms. carlet is the hour 1:00 PM
+	7. The suspect Ms. carlet is not the hour in the category 1:00 PM
+	8. Either the suspect Ms. carlet or the suspect Mrs. White is the weapon Candle Stick
+	9. Either The suspect Prof. Plum is the room Living Room or The weapon Candle Stick is the suspect Mrs. White
+	10. Either the weapon Candle Stick or the weapon Rope is the suspect Col. Mustard
+	11. The suspect Col. Mustard is at least 1 hour before the room Ball room
+
+
+Hints for puzzle:2
+	1. Either the room Living Room or the suspect Prof. Plum is the weapon Rope
+	2. Either The room Living Room is the weapon Candle Stick or The room Study is the hour 3:00 PM
+	3. The suspect Col. Mustard is at least 1 hour before the room Living Room
+	4. Either The suspect Ms. carlet is the hour 3:00 PM or The hour 1:00 PM is the room Study
+	5. The suspect Col. Mustard is 1 hours before the room Ball room
+	6. Either The room Kitchen is the weapon Wrench or The weapon Rope is the hour 1:00 PM
+	7. The suspect Mrs. White is the hour 3:00 PM
+	8. Either The suspect Prof. Plum is the weapon Rope or The suspect Prof. Plum is the room Study
+	9. The weapon Knife is not the suspect in the category Prof. Plum
+	10. The room Ball room is 1 hours before the room Living Room
+
+
+Hints for puzzle:3
+	1. The weapon Wrench is at least 1 hour before the weapon Rope
+	2. Either the room Study or the room Living Room is the suspect Prof. Plum
+	3. The room Living Room is 1 hours before the weapon Candle Stick
+	4. The room Living Room is 1 hours before the weapon Candle Stick
+	5. Either The room Study is the hour 3:00 PM or The weapon Knife is the room Study
+	6. The room Study is 1 hours before the suspect Prof. Plum
+	7. Either The hour 1:00 PM is the weapon Knife or The weapon Rope is the room Ball room
+	8. The weapon Wrench is at least 1 hour before the weapon Rope
+	9. The suspect Col. Mustard is not the weapon in the category Knife
+	10. Either The weapon Rope is the room Ball room or The weapon Knife is the suspect Mrs. White
+	11. Either The suspect Ms. carlet is the weapon Candle Stick or The hour 4:00 PM is the weapon Knife
+	12. The hour 4:00 PM is not the room in the category Living Room
+
+
+Hints for puzzle:4
+	1. The weapon Wrench is the suspect Ms. carlet
+	2. The suspect Prof. Plum is at least 1 hour before the weapon Knife
+	3. The weapon Rope is 2 hours before the weapon Candle Stick
+	4. Either the suspect Mrs. White or the room Kitchen is the weapon Knife
+	5. Either The room Kitchen is the suspect Prof. Plum or The weapon Candle Stick is the room Ball room
+	6. The room Ball room is not the hour in the category 3:00 PM
+	7. Either The room Kitchen is the suspect Prof. Plum or The weapon Candle Stick is the room Ball room
+	8. The suspect Prof. Plum is at least 1 hour before the weapon Knife
+	9. Either The weapon Rope is the room Kitchen or The suspect Col. Mustard is the room Living Room
+	10. Either The suspect Col. Mustard is the hour 4:00 PM or The hour 3:00 PM is the room Kitchen
+	11. The hour 2:00 PM is the room Kitchen
+	12. The suspect Mrs. White is not the weapon in the category Rope
+
+
+Hints for puzzle:5
+	1. Either the weapon Wrench or the weapon Rope is the suspect Col. Mustard
+	2. The room Living Room is the suspect Ms. carlet
+	3. Either The hour 2:00 PM is the weapon Rope or The suspect Prof. Plum is the room Study
+	4. Either The room Kitchen is the weapon Rope or The room Living Room is the weapon Wrench
+	5. Either The hour 2:00 PM is the room Living Room or The hour 4:00 PM is the suspect Prof. Plum
+	6. The room Living Room is 2 hours before the room Ball room
+	7. The weapon Knife is the room Study
+	8. The room Living Room is not the suspect in the category Prof. Plum
+	9. The room Ball room is 1 hours before the room Study
+
+

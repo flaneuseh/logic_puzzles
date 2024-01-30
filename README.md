@@ -4,7 +4,7 @@ This is a project for generating new logic grid puzzle. It uses a FI-2Pop geneti
 ## Quick Start 
 
 ### Playing generated puzzles 
-The generated puzzles are located in the [ENTER FOLDER HERE] and [ENTER FOLDER HERE] folders. The [ENTER FOLDER HERE] contains puzzles that were optimized both for difficulty and for small hint sizes, where the [ENTER FOLDER HERE] contians puzzles that were optimized for difficulty only. Each folder contains a hint.txt that contains the hints for each puzzle. For the puzzles you can use the [ENTER IMAGE HERE] to mark the your answers. You can check your solutions agains't the solutions in the solutions.txt file that is each both folders. 
+The generated puzzles are located in the Difficulty-Only and Hints-And-Difficulty folders. The Hints-and-Difficulty contains puzzles that were optimized both for difficulty and for small hint sizes, where the Difficulty-Only contians puzzles that were optimized for difficulty only. Each folder contains a hint.txt that contains the hints for each puzzle. For the puzzles you can use the BlankPuzzle.png to mark the your answers. You can check your solutions agains't the solutions in the solutions.txt file that is each both folders. 
 
 ### Looking at Experiment data 
 Each experiment folder also contains several visualizations about the generated puzzles and the generation process. The "data.txt" file also contains key information from the experiment. Each "pop_<i>.p" file contains a pickled version of the feasible and infeasible population of the last generation for that trial, along with a history object, which tracks fitness over generations. 
@@ -49,6 +49,74 @@ The "apply_hint(hint, puzzle)" will take a hint dictionary and apply any logic t
 * applied: whether the hint changed the state 
 * is_valid: whether there was a contradiction in the state 
 * complete: true if the hint cannot change state anymore 
+
+
+### Evolution.py 
+
+#### apply_hints(puzzle, hints)
+This is the main solver for logic puzzles. This functions takes in a puzzle and and list of hints, and attempts to solve the puzzle using the hints. It will create a copy of the puzzle and update it with any logic contained in the hints. If this puzzle copy has empty space that means the puzzle was unsolvable. Note the returned puzzle may still not be valid. 
+
+#### Hint Set 
+This class the indivuals for evolution. There are three important attributes in hint set: 
+* hints: a list of hints (given at intialization)
+* puzzle: an empty puzzle state (given at initalization)
+* completed_puzzle: a puzzle state which was attempted to be solved with hints 
+
+There are also several important methods in hint set. 
+
+##### mutate(add_rate)
+Returns a new hint set that is mutated once. There are two types of mutation that can occur 
+
+* addition: a new random hint is added 
+* deletion: a random hint is removed 
+
+The probability of the mutation being addition is specified with the add_rate parameter. However, if there are over 20 hints only deletion will be chosen. 
+
+###### cross_over(other) 
+Crossover combines the hint lists of two puzzle and randomly shuffles them between two children. Each child gets an equal number of hints (except if there is an odd number). 
+
+##### is_valid()
+Returns true if this hint set represents a solvable puzzle. 
+
+##### feasiblity()
+This is the fitness function for infeasible (unsolvable) puzzles. It will return a number between 0 and 1, where 1 represents a solvable puzzle. There are three components to this fitness function: 
+
+* completion: percentage of filled-in cells 
+* validity: percentages of rows with exactly one "O" 
+* violaitons: number of transitive violations (lower numbers are rewarded)
+
+##### optimize_fun()
+This is the fitness function for feasible (solvable) puzzles. This deines the optimization criteria for the puzzle. Several fitness functions are present, and can be uncommented out to change. 
+
+#### evolve(puzzle, generations, pop_size, x_rate, mut_rate, add_rate, elits)
+This is the function for the FI-2Pop genetic algorithm that generated new puzzles. 
+
+Parameters: 
+* puzzle: a blank puzzle to generate hints for 
+* generations: number of generations to run for 
+* pop_size: the size of population (this will be the sum of the feasible and infeasible populations)
+* x_rate: rate of cross over 
+* mut_rate: ratio of children to mutate 
+* add_rate: ratio of mutations that should be addition 
+* elits: number of elites to keep in each population 
+
+Returns: 
+* feasible: the feasible population at the last generation
+* infeasible: the infeasible popuation at the last generation 
+* history: a history object that tracks fitness over time 
+
+Note: the feasible and infeasible populations are returned as list of tuples where the first item in the tuple is the fitness and the second item is the HintSet 
+
+## Other Files 
+
+### SinglePopulationEvolution 
+A single population GA that selects based on the infeasible fitness criteria. You can run new experiments for a single population GA by modifying and running the SinglePopExperiements.py, and running the SinglePopAnalysis.py file on the resulting folder. Data collected from these experiments is in the FitnessExperiements folder. 
+
+### FeasbilityTests.py 
+This file contains a single popualtion GA that finds the first N feasible induvals. Those indivuals are mutated several times. This was done to test how likely feasible indivuals are to become infesible. Results from that are anaylsised with VisualizeMutations.py file and data is stored in the MutationData folder. 
+
+### DataVisualization.py 
+This file is used to create graphs and preform data anaylsis on experiments from the FI-2Pop genetic algorithm. 
 
 ### Version control for jupyter notebooks 
 Version Control: (from https://github.com/mwouts/jupytext)
