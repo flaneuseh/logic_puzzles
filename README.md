@@ -14,6 +14,41 @@ New experiements can be run by modifying the "Experiments.py" file. At the top, 
 
 After the experiement finishes running, you will need to run the "DataVisualisation.py" file, with the updated folder. This will produce "hint.txt" and "solutions.txt" files, of which you can look at and play your generated puzzles. 
 
+## Important Files 
+
+### LogicPuzzle.py 
+This file defines the objects and logics for logic puzzles. 
+
+#### Category 
+A category object is a set of entities, that is either numerical or categorical. To create a new category, you need to provide a title for the category, list of string names for the entities, and whether the category is numerical or categorical.
+
+```
+suspects = Category("suspect", ["Ms. carlet", "Mrs. White", "Col. Mustard", "Prof. Plum"], False) 
+```
+
+#### Puzzle 
+One you haves a set of categories, you can create an empty puzzle. 
+
+```
+puzzle = Puzzle([suspects, weapons, rooms, time]) 
+```
+
+These puzzles can be updated using the " answer(self, cat1, cat2, ent1, ent2, new_symbol)" method. This will put the string "new_symbol" in the cell location of ent1 in cat1 and ent2 in cat2. 
+
+Given a partially or completelty solved puzzle, there are several methods that are use full. 
+
+* print_grid: return a string of the grid 
+* is_valid: returns true if there are no logical contradictions in the puzzle 
+* is_complete: returns true if the puzzle is valid and all cells are filled 
+
+#### Hint Grammar 
+The hint grammar is defined as a nested dictionary. You can generated a random hint for a given puzzle using the "generate_hint(puzzle)" function. This hint will be returned as a dictionary, but can be translated to a string in English using "hint_to_english" function in "HintToEnglish.py" 
+
+#### Apply Hint 
+The "apply_hint(hint, puzzle)" will take a hint dictionary and apply any logic to the current game state. It will return three booleans 
+* applied: whether the hint changed the state 
+* is_valid: whether there was a contradiction in the state 
+* complete: true if the hint cannot change state anymore 
 
 ### Version control for jupyter notebooks 
 Version Control: (from https://github.com/mwouts/jupytext)
