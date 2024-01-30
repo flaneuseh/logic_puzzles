@@ -1,0 +1,100 @@
+Solution for puzzle:1
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  X    X    X    O  | X    X    O    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    O    X    X  | O    X    X    X  |
+3:0|  O    X    X    X  | X    X    X    O  | X    O    X    X  |
+4:0|  X    X    O    X  | O    X    X    X  | X    X    X    O  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    O    X    X  |
+Liv|  O    X    X    X  | X    X    X    O  |
+Kit|  X    X    X    O  | X    X    O    X  |
+Stu|  X    X    O    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  X    X    O    X  |
+Rop|  X    O    X    X  |
+Can|  X    X    X    O  |
+Wre|  O    X    X    X  |
+    --------------------
+
+
+Solution for puzzle:2
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  X    O    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  O    X    X    X  | X    O    X    X  | X    O    X    X  |
+3:0|  X    X    X    O  | X    X    X    O  | X    X    O    X  |
+4:0|  X    X    O    X  | X    X    O    X  | O    X    X    X  |
+    ------------------------------------------------------------
+Bal|  X    X    O    X  | X    X    O    X  |
+Liv|  O    X    X    X  | X    O    X    X  |
+Kit|  X    X    X    O  | X    X    X    O  |
+Stu|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  X    O    X    X  |
+Rop|  O    X    X    X  |
+Can|  X    X    O    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for puzzle:3
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  X    X    O    X  | X    X    O    X  | O    X    X    X  |
+2:0|  X    X    X    O  | O    X    X    X  | X    X    O    X  |
+3:0|  O    X    X    X  | X    X    X    O  | X    O    X    X  |
+4:0|  X    O    X    X  | X    O    X    X  | X    X    X    O  |
+    ------------------------------------------------------------
+Bal|  X    X    O    X  | X    X    O    X  |
+Liv|  O    X    X    X  | X    X    X    O  |
+Kit|  X    X    X    O  | O    X    X    X  |
+Stu|  X    O    X    X  | X    O    X    X  |
+    ----------------------------------------
+Kni|  X    X    X    O  |
+Rop|  X    O    X    X  |
+Can|  X    X    O    X  |
+Wre|  O    X    X    X  |
+    --------------------
+
+
+Solution for puzzle:4
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  X    X    O    X  | X    X    X    O  | X    O    X    X  |
+2:0|  O    X    X    X  | O    X    X    X  | O    X    X    X  |
+3:0|  X    X    X    O  | X    X    O    X  | X    X    X    O  |
+4:0|  X    O    X    X  | X    O    X    X  | X    X    O    X  |
+    ------------------------------------------------------------
+Bal|  O    X    X    X  | O    X    X    X  |
+Liv|  X    X    O    X  | X    X    X    O  |
+Kit|  X    O    X    X  | X    O    X    X  |
+Stu|  X    X    X    O  | X    X    O    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    O    X    X  |
+Can|  X    X    X    O  |
+Wre|  X    X    O    X  |
+    --------------------
+
+
+Solution for puzzle:5
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  X    X    O    X  | X    O    X    X  | X    X    X    O  |
+2:0|  X    O    X    X  | O    X    X    X  | X    O    X    X  |
+3:0|  X    X    X    O  | X    X    O    X  | O    X    X    X  |
+4:0|  O    X    X    X  | X    X    X    O  | X    X    O    X  |
+    ------------------------------------------------------------
+Bal|  X    X    X    O  | X    X    O    X  |
+Liv|  X    O    X    X  | O    X    X    X  |
+Kit|  O    X    X    X  | X    X    X    O  |
+Stu|  X    X    O    X  | X    O    X    X  |
+    ----------------------------------------
+Kni|  X    O    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    X    X    O  |
+Wre|  O    X    X    X  |
+    --------------------
+
+
