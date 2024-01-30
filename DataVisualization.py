@@ -49,8 +49,8 @@ def plot_histories(histories, folder):
     infeasible = [history.infeasible_fitness for history in histories]
     num_feasible = [history.num_feasible for history in histories]
 
-    fes_average = create_agg_plot(feasible, "red", "Feasible Fitness", True)
-    infes_average = create_agg_plot(infeasible, "blue", "Infeasible Fitness")
+    fes_average = create_agg_plot(feasible, COLOR1, "Feasible Fitness", True)
+    infes_average = create_agg_plot(infeasible, COLOR5, "Infeasible Fitness")
     plt.xlabel("Generation")
     plt.ylabel("Fitness")
     plt.title("Fitness over generations")
@@ -360,4 +360,4 @@ def process_folder(experiement_folder, num_trials):
 if __name__ == "__main__":
     # process_folder("ExperimentsKaylah5", 30)
     # process_folder("ExperimentsKaylah8", 30)
-    process_folder("ExperimentsKaylah9", 5)
+    process_folder("ExperimentsKaylah8", 5)
