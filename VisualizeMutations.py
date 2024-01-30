@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt  
 import pickle 
 from statistics import stdev, mean 
+from colorPalette import COLOR5 
 
 
 def format_fits(fits, indexes):
@@ -41,7 +42,7 @@ print(avgs)
 print(stds)
 
 
-plt.bar(mutations, avgs, yerr = stds, capsize=4)
+plt.bar(mutations, avgs, color = COLOR5, yerr = stds, capsize=4)
 plt.title("Amount of feasible indivuals after mutations")
 plt.ylabel("Ratio of feasible indivuals")
 plt.xlabel("Number of mutations")
