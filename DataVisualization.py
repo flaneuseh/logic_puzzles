@@ -4,7 +4,7 @@ import pickle
 from HintToEnglish import hint_to_english
 from Evolution import Category, Puzzle, apply_hints
 from LogicPuzzles import str_hint
-from colorPalette import COLOR1, COLOR5, COLORS
+from colorPalette import COLOR1, COLOR3, COLOR5, COLORS 
 
 # def plot_history(history, folder):
 #     plt.plot(history.num_feasible)
@@ -49,7 +49,7 @@ def plot_histories(histories, folder):
     infeasible = [history.infeasible_fitness for history in histories]
     num_feasible = [history.num_feasible for history in histories]
 
-    fes_average = create_agg_plot(feasible, COLOR1, "Feasible Fitness", True)
+    fes_average = create_agg_plot(feasible, COLOR3, "Feasible Fitness", True)
     infes_average = create_agg_plot(infeasible, COLOR5, "Infeasible Fitness")
     plt.xlabel("Generation")
     plt.ylabel("Fitness")
@@ -58,7 +58,7 @@ def plot_histories(histories, folder):
     plt.savefig(folder + '/fitness.png')
 
     plt.clf()
-    create_agg_plot(num_feasible, "red", "number of feasible")
+    create_agg_plot(num_feasible, COLOR5, "number of feasible")
     plt.xlabel("Generation")
     plt.ylabel("Number of Feasible Indivuals")
     plt.title("Feasible solutions over Evolution")
