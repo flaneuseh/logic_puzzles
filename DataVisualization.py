@@ -4,6 +4,7 @@ import pickle
 from HintToEnglish import hint_to_english
 from Evolution import Category, Puzzle, apply_hints
 from LogicPuzzles import str_hint
+from colorPalette import COLOR1, COLOR5, COLORS
 
 # def plot_history(history, folder):
 #     plt.plot(history.num_feasible)
@@ -70,29 +71,28 @@ def plot_hint_type_averages(averages, folder):
         return hint_type.replace("_", " ")
     plt.clf()
     plt.title("Average Hints per Puzzle")
-    plt.pie(averages.values(), labels=list(map(var_to_english, averages.keys())), autopct='%1.1f%%')
+    plt.pie(averages.values(), labels=list(map(var_to_english, averages.keys())), autopct='%1.1f%%', colors=COLORS)
     plt.savefig(folder + '/hint_types_pie.png')
 
-def plot_type_vs_loops(loops, hint_pcts, folder):
-    def var_to_english(hint_type):
-        return hint_type.replace("_", " ")
-    colors = ['b', 'g', 'r', 'c', 'm']
-    plt.clf()
-    plt.title("Loops by Hint Type")
-    plt.xlabel("Percent Hint Type in Puzzle")
-    plt.ylabel("Number of Solver Loops")
-    i = 0
-    for hint_type, pcts in hint_pcts.items():
-        x = pcts
-        y = loops
-        z = np.polyfit(x, y, 1)
-        p = np.poly1d(z)
-        plt.plot(x, p(x), color=colors[i], label=var_to_english(hint_type))
-        plt.legend()
-        i += 1
+# def plot_type_vs_loops(loops, hint_pcts, folder):
+#     def var_to_english(hint_type):
+#         return hint_type.replace("_", " ")
+#     plt.clf()
+#     plt.title("Loops by Hint Type")
+#     plt.xlabel("Percent Hint Type in Puzzle")
+#     plt.ylabel("Number of Solver Loops")
+#     i = 0
+#     for hint_type, pcts in hint_pcts.items():
+#         x = pcts
+#         y = loops
+#         z = np.polyfit(x, y, 1)
+#         p = np.poly1d(z)
+#         plt.plot(x, p(x), color=COLORS[i], label=var_to_english(hint_type))
+#         plt.legend()
+#         i += 1
 
-    # plt.yticks(range(min(loops), max(loops)))
-    plt.savefig(folder + '/hint_types_vs_loops.png')
+#     # plt.yticks(range(min(loops), max(loops)))
+#     plt.savefig(folder + '/hint_types_vs_loops.png')
 
 def plot_types_over_solve_time(hint_type_loops, folder):
     def var_to_english(hint_type):
@@ -107,8 +107,10 @@ def plot_types_over_solve_time(hint_type_loops, folder):
         labels.append(str(l+1))
 
     bottom = np.zeros(max_loops)
+    c = 0
     for hint_type, loops in hint_type_loops.items():
-        ax.bar(labels, loops, bottom=bottom, label=var_to_english(hint_type))
+        ax.bar(labels, loops, bottom=bottom, label=var_to_english(hint_type), color=COLORS[c])
+        c += 1
         bottom += loops
 
     ax.set_title("Hint types used by each solve loop")
@@ -118,6 +120,29 @@ def plot_types_over_solve_time(hint_type_loops, folder):
 
     plt.savefig(folder + '/types_over_solve_time.png')
 
+# def plot_numeric_hint_types(total_counts, numeric_counts, folder):
+#     def var_to_english(hint_type):
+#         return hint_type.replace("_", " ")
+#     plt.clf()
+
+#     _, ax = plt.subplots()
+
+#     labels = list(total_counts.keys())
+
+#     totals = np.array(list(total_counts.values()))
+#     numerics = np.array(list(numeric_counts.values()))
+#     non_numerics = totals - numerics 
+
+#     bottom = np.zeros(len(labels))
+#     ax.bar(labels, non_numerics, bottom=bottom, label="non-numeric", color=COLOR1)
+
+#     bottom += non_numerics
+#     ax.bar(labels, numerics, bottom=bottom, label="numeric", color=COLOR5)
+
+#     ax.set_title("Ratio of Numeric to Non-Numeric Hints")
+#     ax.legend()
+
+#     plt.savefig(folder + '/numeric_hint_types.png')
 
 def first_feasible(histories): 
     num_feasible = [history.num_feasible for history in histories]
@@ -138,6 +163,14 @@ def process_folder(experiement_folder, num_trials):
         'simple_or': 0,
         'compound_or': 0
     }
+    numeric_counts = {
+        'is': 0,
+        'not': 0,
+        'before': 0,
+        'simple_or': 0,
+        'compound_or': 0
+    }
+
     per_puzzle_counts = {
         'is': [],
         'not': [],
@@ -157,6 +190,7 @@ def process_folder(experiement_folder, num_trials):
     per_puzzle_loops = []
     per_puzzle_duplicates = []
     total_duplicates = 0
+    
 
     hint_type_loops = {
         'is': [],
@@ -195,6 +229,7 @@ def process_folder(experiement_folder, num_trials):
     hint_file = open(experiement_folder + "/hints.txt", "w")
     sol_file = open(experiement_folder + "/solutions.txt", "w")
     num = 1 
+
     for fitness, hint_set in feasible_pops: 
         hints = hint_set.hints 
 
@@ -238,6 +273,9 @@ def process_folder(experiement_folder, num_trials):
                 types_counts[kind] += 1           
                 total_counts[kind] += 1 
 
+                if english.find("hour") != -1:
+                    numeric_counts[kind] += 1
+
                 trace_key = str_hint(hint)
                 trace = hint_set_trace[trace_key]
                 while len(hint_type_loops[kind]) < loops:
@@ -247,18 +285,20 @@ def process_folder(experiement_folder, num_trials):
 
         hint_file.write("\n\n")
 
-        for key in types_counts: 
-            count = types_counts[key]
-            pct = count/len(hints)
-            per_puzzle_counts[key].append(count)
-            per_puzzle_pcts[key].append(pct)
-
-
         num_duplicates = sum(duplicate_counts.values())
-        hint_sizes.append(len(hints) - num_duplicates) 
         total_duplicates += num_duplicates
         per_puzzle_duplicates.append(num_duplicates)
 
+        size = len(hints) - num_duplicates
+        hint_sizes.append(size) 
+        
+        for key in types_counts: 
+            count = types_counts[key]
+            pct = count/(size)
+            per_puzzle_counts[key].append(count)
+            per_puzzle_pcts[key].append(pct)
+        
+        
         sol_file.write("Solution for puzzle:{}\n".format(num))
         sol_file.write(hint_set.completed_puzzle.print_grid())
         sol_file.write("\n\n")
@@ -284,7 +324,17 @@ def process_folder(experiement_folder, num_trials):
         hint_type_averages[key] = key_avg
         data_file.write("\n\t{}:{}".format(key, key_avg))
     plot_hint_type_averages(hint_type_averages, experiement_folder)
-    plot_type_vs_loops(per_puzzle_loops, per_puzzle_pcts, experiement_folder)
+    # plot_type_vs_loops(per_puzzle_loops, per_puzzle_pcts, experiement_folder)
+
+    data_file.write("\n\nPercent Numeric")
+    count_numeric_overall = sum(numeric_counts.values())
+    count_overall = sum(total_counts.values())
+    data_file.write("\n\tOverall: {}".format(count_numeric_overall/count_overall))
+    for key in total_counts:
+        numeric_pct = numeric_counts[key]/total_counts[key]
+        data_file.write("\n\t{}:{}".format(key, numeric_pct))
+
+    # plot_numeric_hint_types(total_counts, numeric_counts, experiement_folder)
 
     for kind in hint_type_loops.keys():
         while len(hint_type_loops[kind]) < max(per_puzzle_loops):
@@ -308,4 +358,6 @@ def process_folder(experiement_folder, num_trials):
     
 
 if __name__ == "__main__":
-    process_folder("ExperimentsKaylah6", 30)
+    # process_folder("ExperimentsKaylah5", 30)
+    # process_folder("ExperimentsKaylah8", 30)
+    process_folder("ExperimentsKaylah9", 5)

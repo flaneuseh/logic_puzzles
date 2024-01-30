@@ -69,7 +69,7 @@ HINT_VALUES = {
 
 
 # %%
-def apply_hints(puzzle, hints):
+def apply_hints(puzzle, hints, print_soln=False):
     """
     solver 
     """
@@ -100,7 +100,8 @@ def apply_hints(puzzle, hints):
                 a_3, is_valid, complete = find_transitives(copy)
                 a_2, is_valid, complete = find_openings(copy)
                 applied = applied or a_2 or a_3# test if anything was changed 
-        
+            if print_soln:
+                print(copy.print_grid())
         queue = backlog 
         backlog = [] 
     return copy, trace
