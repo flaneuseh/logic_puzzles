@@ -1,0 +1,35 @@
+Hints for puzzle:1
+	1. The suspect Mrs. White is 2 hours before the suspect Ms. Scarlet
+	2. Either The hour 3:00 PM is the suspect Col. Mustard or The hour 3:00 PM is the weapon Wrench
+	3. The weapon Candle Stick is the hour 1:00 PM
+	4. The suspect Col. Mustard is 2 hours before the weapon Rope
+
+
+Hints for puzzle:2
+	1. The weapon Knife is 2 hours before the weapon Rope
+	2. Either The weapon Rope is the hour 1:00 PM or The weapon Candle Stick is the suspect Prof. Plum
+	3. The suspect Ms. Scarlet is 1 hours before the suspect Col. Mustard
+	4. The suspect Prof. Plum is 2 hours before the suspect Ms. Scarlet
+
+
+Hints for puzzle:3
+	1. The suspect Col. Mustard is 2 hours before the weapon Knife
+	2. Either the weapon Wrench or the suspect Mrs. White is the hour 2:00 PM
+	3. The suspect Ms. Scarlet is 1 hours before the suspect Mrs. White
+	4. The suspect Mrs. White is 1 hours before the weapon Rope
+
+
+Hints for puzzle:4
+	1. Either the suspect Prof. Plum or the weapon Rope is the hour 4:00 PM
+	2. The suspect Col. Mustard is 2 hours before the weapon Knife
+	3. The suspect Mrs. White is at least 1 hour before the weapon Wrench
+	4. The weapon Rope is the hour 3:00 PM
+
+
+Hints for puzzle:5
+	1. The weapon Knife is 2 hours before the suspect Prof. Plum
+	2. The weapon Wrench is at least 1 hour before the suspect Col. Mustard
+	3. The weapon Rope is 2 hours before the weapon Wrench
+	4. The suspect Mrs. White is the hour 1:00 PM
+
+
