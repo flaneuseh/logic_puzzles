@@ -177,7 +177,10 @@ class HintSet:
         # return (0.5 * min(num_loops, 10) / 10) + (0.5 * (1 - (len(self.hints) / 20)))
         
         # Fn 3: optimize by number of loops
-        return num_loops
+        # return num_loops
+
+        # Fn 4: optimize by hint size
+        return 1 - (len(self.hints) / 20)
 
 class History:
     def __init__(self):

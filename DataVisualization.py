@@ -360,4 +360,4 @@ def process_folder(experiement_folder, num_trials):
 if __name__ == "__main__":
     # process_folder("ExperimentsKaylah5", 30)
     # process_folder("ExperimentsKaylah8", 30)
-    process_folder("ExperimentsKaylah9", 5)
+    process_folder("ExperimentsKaylah10", 5)

@@ -1,4 +1,4 @@
-folder = "ExperimentsKaylah9"
+folder = "ExperimentsKaylah10"
 num_trials = 5 
 gen_len = 150
 pop_size = 50 
