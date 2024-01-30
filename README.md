@@ -72,7 +72,7 @@ Returns a new hint set that is mutated once. There are two types of mutation tha
 
 The probability of the mutation being addition is specified with the add_rate parameter. However, if there are over 20 hints only deletion will be chosen. 
 
-###### cross_over(other) 
+##### cross_over(other) 
 Crossover combines the hint lists of two puzzle and randomly shuffles them between two children. Each child gets an equal number of hints (except if there is an odd number). 
 
 ##### is_valid()
