@@ -22,7 +22,17 @@ from colorPalette import COLOR1, COLOR3, COLOR5, COLORS
 #     plt.savefig(folder + '/fitness.png')
 
 
-def create_agg_plot(trials, color, label, normalize=False):
+def set_font_sizes(small, medium, large):
+    plt.rc('font', size=medium)          # controls default text sizes
+    plt.rc('axes', titlesize=small)     # fontsize of the axes title
+    plt.rc('axes', labelsize=medium)    # fontsize of the x and y labels
+    plt.rc('axes', titlesize=large)
+    plt.rc('xtick', labelsize=small)    # fontsize of the tick labels
+    plt.rc('ytick', labelsize=small)    # fontsize of the tick labels
+    plt.rc('legend', fontsize=small)    # legend fontsize
+    plt.rc('figure', titlesize=large)  # fontsize of the figure title
+
+def create_agg_plot(trials, color, label, normalize=False, legend = True):
     x = list(range(0, len(trials[0])))
     
     trial_avg  = [] 
@@ -38,7 +48,8 @@ def create_agg_plot(trials, color, label, normalize=False):
         trial_min.append(min(fitness))
         
     plt.plot(x, trial_avg, color = color, label = label)
-    plt.legend()
+    if legend: 
+        plt.legend()
     plt.fill_between(x, trial_min, trial_max, color=color, alpha=0.1)
     return trial_avg
 
@@ -55,14 +66,14 @@ def plot_histories(histories, folder):
     plt.ylabel("Fitness")
     plt.title("Fitness over generations")
     plt.legend()
-    plt.savefig(folder + '/fitness.png')
+    plt.savefig(folder + '/fitness.png', bbox_inches = "tight")
 
     plt.clf()
-    create_agg_plot(num_feasible, COLOR5, "number of feasible")
+    create_agg_plot(num_feasible, COLOR5, "number of feasible", legend=False)
     plt.xlabel("Generation")
     plt.ylabel("Number of Feasible Indivuals")
     plt.title("Feasible solutions over Evolution")
-    plt.savefig(folder + '/feasible.png')
+    plt.savefig(folder + '/feasible.png', bbox_inches = "tight")
 
     return fes_average, infes_average
 
@@ -72,7 +83,7 @@ def plot_hint_type_averages(averages, folder):
     plt.clf()
     plt.title("Average Hints per Puzzle")
     plt.pie(averages.values(), labels=list(map(var_to_english, averages.keys())), autopct='%1.1f%%', colors=COLORS)
-    plt.savefig(folder + '/hint_types_pie.png')
+    plt.savefig(folder + '/hint_types_pie.png',  bbox_inches = "tight")
 
 # def plot_type_vs_loops(loops, hint_pcts, folder):
 #     def var_to_english(hint_type):
@@ -118,7 +129,7 @@ def plot_types_over_solve_time(hint_type_loops, folder):
     plt.ylabel("Hints Remaining in Solve Queue")
     plt.xlabel("Solve Loop")
 
-    plt.savefig(folder + '/types_over_solve_time.png')
+    plt.savefig(folder + '/types_over_solve_time.png',  bbox_inches = "tight")
 
 # def plot_numeric_hint_types(total_counts, numeric_counts, folder):
 #     def var_to_english(hint_type):
@@ -208,8 +219,11 @@ def process_folder(experiement_folder, num_trials):
         if len(infeasible) > 0: 
             infeasible_pops.append(infeasible[0])
     
-    fes_average, infes_average = plot_histories(histories, experiement_folder)
+    set_font_sizes(18, 20, 22) 
+    fes_average, infes_average = plot_histories(histories, experiement_folder) 
     avg_first, min_first, max_first = first_feasible(histories) 
+
+    set_font_sizes(14, 16, 18) 
 
     data_file = open(experiement_folder + "/data.txt", "w")
     data_file.write("Average first feasible solution found in the {} generation \n".format(avg_first + 1))
@@ -324,7 +338,7 @@ def process_folder(experiement_folder, num_trials):
         hint_type_averages[key] = key_avg
         data_file.write("\n\t{}:{}".format(key, key_avg))
     plot_hint_type_averages(hint_type_averages, experiement_folder)
-    # plot_type_vs_loops(per_puzzle_loops, per_puzzle_pcts, experiement_folder)
+    #plot_type_vs_loops(per_puzzle_loops, per_puzzle_pcts, experiement_folder)
 
     data_file.write("\n\nPercent Numeric")
     count_numeric_overall = sum(numeric_counts.values())
@@ -334,7 +348,7 @@ def process_folder(experiement_folder, num_trials):
         numeric_pct = numeric_counts[key]/total_counts[key]
         data_file.write("\n\t{}:{}".format(key, numeric_pct))
 
-    # plot_numeric_hint_types(total_counts, numeric_counts, experiement_folder)
+    #plot_numeric_hint_types(total_counts, numeric_counts, experiement_folder)
 
     for kind in hint_type_loops.keys():
         while len(hint_type_loops[kind]) < max(per_puzzle_loops):
@@ -355,9 +369,11 @@ def process_folder(experiement_folder, num_trials):
     
     hint_file.close()
     sol_file.close()
+
+    # fitness plots 
+    
     
 
 if __name__ == "__main__":
-    # process_folder("ExperimentsKaylah5", 30)
-    # process_folder("ExperimentsKaylah8", 30)
-    process_folder("ExperimentsKaylah10", 5)
+    process_folder("DifficultyOnly", 30)
+    #rocess_folder("Hints-And-Difficulty", 30)

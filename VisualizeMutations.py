@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import pickle 
 from statistics import stdev, mean 
 from colorPalette import COLOR5 
+from DataVisualization import set_font_sizes 
 
 
 def format_fits(fits, indexes):
@@ -32,6 +33,7 @@ def avg_std(ratios, indexes):
 
 
 
+set_font_sizes(14,16,18)
 ratios = pickle.load( open("MutationData/ratios.p", "rb" ) )
 fits = pickle.load( open("MutationData/fits.p", "rb" ) )
 

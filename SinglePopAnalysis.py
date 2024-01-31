@@ -1,6 +1,7 @@
 import pickle 
 import matplotlib.pyplot as plt 
 from colorPalette import COLOR1, COLOR2, COLOR3, COLOR4, COLOR5, LINE1, LINE2, LINE3, LINE4, LINE5 
+from DataVisualization import set_font_sizes  
 all_components_folder = "FitnessExperiements/full"
 nothing_folder = "FitnessExperiements/nothing"
 complete_folder = "FitnessExperiements/complete"
@@ -60,6 +61,7 @@ def plot_avg(average, mininum, maximum, color, linestyle,  label):
 
 
 if __name__ == "__main__":
+    set_font_sizes(14,16,18)
     feasible = get_num_feasible(all_components_folder, 30) 
     a, m_0, m_1 = avg_min_max(feasible)
     plot_avg(a, m_0, m_1, COLOR1, LINE1, "Full Fitness")
@@ -70,7 +72,7 @@ if __name__ == "__main__":
 
     feasible = get_num_feasible(valid_folder, 30) 
     a, m_0, m_1 = avg_min_max(feasible)
-    plot_avg(a, m_0, m_1, COLOR3, LINE3, "No Valid")
+    plot_avg(a, m_0, m_1, COLOR3, LINE3, "No Row Validity")
 
     feasible = get_num_feasible(violation_folder, 30) 
     a, m_0, m_1 = avg_min_max(feasible)
