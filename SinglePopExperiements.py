@@ -1,8 +1,7 @@
-full_folder = "FitnessExperiements/full"
-no_valid_folder = "FitnessExperiements/valid"
-no_violation_folder = "FitnessExperiements/violation"
-no_complete_folder = "FitnessExperiements/complete"
-nothing_folder = "FitnessExperiements/nothing"
+full_folder = "ViolationsExperiement/full"
+no_vio_folder = "ViolationsExperiement/noVio"
+half_vio_folder = "ViolationsExperiement/halfVio"
+forth_vio_folder = "ViolationsExperiement/forthVio"
 num_trials = 30
 gen_len = 100
 pop_size = 50
@@ -26,7 +25,7 @@ puzzle = Puzzle([suspects, weapons, rooms, time])
 for trial in range(num_trials):
     print("RUNNING TRIAL: {}".format(trial))
 
-    # all weighted 
+    # violations 1/3 
     pop = evolve(puzzle, gen_len,pop_size, x_rate, mut_rate, add_rate, elits) 
 
     file = open(full_folder + "/pop" + str(trial) + ".p", "wb")
@@ -35,25 +34,19 @@ for trial in range(num_trials):
     # no violations 
     pop = evolve(puzzle, gen_len,pop_size, x_rate, mut_rate, add_rate, elits, weights=[0.5, 0.5, 0]) 
 
-    file = open(no_violation_folder + "/pop" + str(trial) + ".p", "wb")
+    file = open(no_vio_folder + "/pop" + str(trial) + ".p", "wb")
     pickle.dump(pop, file)
 
-    # no valid
-    pop = evolve(puzzle, gen_len,pop_size, x_rate, mut_rate, add_rate, elits, weights=[0.5, 0, 0.5]) 
+    # violations 1/6 of fitness 
+    pop = evolve(puzzle, gen_len,pop_size, x_rate, mut_rate, add_rate, elits, weights=[0.4166, 0.4166, 0.1666]) 
 
-    file = open(no_valid_folder + "/pop" + str(trial) + ".p", "wb")
+    file = open(half_vio_folder + "/pop" + str(trial) + ".p", "wb")
     pickle.dump(pop, file)
 
-    # no complete 
-    pop = evolve(puzzle, gen_len,pop_size, x_rate, mut_rate, add_rate, elits, weights=[0, 0.5, 0.5]) 
+    # violations 1/12
+    pop = evolve(puzzle, gen_len,pop_size, x_rate, mut_rate, add_rate, elits, weights=[0.4583, 0.4583, 0.0833]) 
 
-    file = open(no_complete_folder + "/pop" + str(trial) + ".p", "wb")
-    pickle.dump(pop, file)
-
-    # no fitness 
-    pop = evolve(puzzle, gen_len,pop_size, x_rate, mut_rate, add_rate, elits, weights=[0, 0, 0]) 
-
-    file = open(nothing_folder + "/pop" + str(trial) + ".p", "wb")
+    file = open(forth_vio_folder + "/pop" + str(trial) + ".p", "wb")
     pickle.dump(pop, file)
 
 

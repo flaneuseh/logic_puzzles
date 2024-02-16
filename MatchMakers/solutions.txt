@@ -1,0 +1,300 @@
+Solution for puzzle:1
+      Luc  Per  Rub  Jam  Jas  Ann  Bri  Mar  mov  ice  bow  boa
+    ------------------------------------------------------------
+Thu|  X    O    X    X  | O    X    X    X  | O    X    X    X  |
+Fri|  X    X    X    O  | X    X    O    X  | X    X    O    X  |
+Sat|  O    X    X    X  | X    X    X    O  | X    X    X    O  |
+Sun|  X    X    O    X  | X    O    X    X  | X    O    X    X  |
+    ------------------------------------------------------------
+mov|  X    O    X    X  | O    X    X    X  |
+ice|  X    X    O    X  | X    O    X    X  |
+bow|  X    X    X    O  | X    X    O    X  |
+boa|  O    X    X    X  | X    X    X    O  |
+    ----------------------------------------
+Jas|  X    O    X    X  |
+Ann|  X    X    O    X  |
+Bri|  X    X    X    O  |
+Mar|  O    X    X    X  |
+    --------------------
+
+
+Solution for puzzle:2
+      Luc  Per  Rub  Jam  Jas  Ann  Bri  Mar  mov  ice  bow  boa
+    ------------------------------------------------------------
+Thu|  X    O    X    X  | X    X    X    O  | X    X    X    O  |
+Fri|  X    X    O    X  | O    X    X    X  | X    O    X    X  |
+Sat|  X    X    X    O  | X    O    X    X  | O    X    X    X  |
+Sun|  O    X    X    X  | X    X    O    X  | X    X    O    X  |
+    ------------------------------------------------------------
+mov|  X    X    X    O  | X    O    X    X  |
+ice|  X    X    O    X  | O    X    X    X  |
+bow|  O    X    X    X  | X    X    O    X  |
+boa|  X    O    X    X  | X    X    X    O  |
+    ----------------------------------------
+Jas|  X    X    O    X  |
+Ann|  X    X    X    O  |
+Bri|  O    X    X    X  |
+Mar|  X    O    X    X  |
+    --------------------
+
+
+Solution for puzzle:3
+      Luc  Per  Rub  Jam  Jas  Ann  Bri  Mar  mov  ice  bow  boa
+    ------------------------------------------------------------
+Thu|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+Fri|  X    O    X    X  | O    X    X    X  | X    X    O    X  |
+Sat|  X    X    O    X  | X    X    O    X  | O    X    X    X  |
+Sun|  O    X    X    X  | X    O    X    X  | X    X    X    O  |
+    ------------------------------------------------------------
+mov|  X    X    O    X  | X    X    O    X  |
+ice|  X    X    X    O  | X    X    X    O  |
+bow|  X    O    X    X  | O    X    X    X  |
+boa|  O    X    X    X  | X    O    X    X  |
+    ----------------------------------------
+Jas|  X    O    X    X  |
+Ann|  O    X    X    X  |
+Bri|  X    X    O    X  |
+Mar|  X    X    X    O  |
+    --------------------
+
+
+Solution for puzzle:4
+      Luc  Per  Rub  Jam  Jas  Ann  Bri  Mar  mov  ice  bow  boa
+    ------------------------------------------------------------
+Thu|  X    X    O    X  | O    X    X    X  | X    O    X    X  |
+Fri|  X    X    X    O  | X    O    X    X  | X    X    O    X  |
+Sat|  O    X    X    X  | X    X    O    X  | O    X    X    X  |
+Sun|  X    O    X    X  | X    X    X    O  | X    X    X    O  |
+    ------------------------------------------------------------
+mov|  O    X    X    X  | X    X    O    X  |
+ice|  X    X    O    X  | O    X    X    X  |
+bow|  X    X    X    O  | X    O    X    X  |
+boa|  X    O    X    X  | X    X    X    O  |
+    ----------------------------------------
+Jas|  X    X    O    X  |
+Ann|  X    X    X    O  |
+Bri|  O    X    X    X  |
+Mar|  X    O    X    X  |
+    --------------------
+
+
+Solution for puzzle:5
+      Luc  Per  Rub  Jam  Jas  Ann  Bri  Mar  mov  ice  bow  boa
+    ------------------------------------------------------------
+Thu|  X    X    O    X  | X    O    X    X  | X    O    X    X  |
+Fri|  X    O    X    X  | X    X    O    X  | X    X    X    O  |
+Sat|  X    X    X    O  | X    X    X    O  | O    X    X    X  |
+Sun|  O    X    X    X  | O    X    X    X  | X    X    O    X  |
+    ------------------------------------------------------------
+mov|  X    X    X    O  | X    X    X    O  |
+ice|  X    X    O    X  | X    O    X    X  |
+bow|  O    X    X    X  | O    X    X    X  |
+boa|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Jas|  O    X    X    X  |
+Ann|  X    X    O    X  |
+Bri|  X    O    X    X  |
+Mar|  X    X    X    O  |
+    --------------------
+
+
+Solution for puzzle:6
+      Luc  Per  Rub  Jam  Jas  Ann  Bri  Mar  mov  ice  bow  boa
+    ------------------------------------------------------------
+Thu|  O    X    X    X  | X    X    X    O  | X    X    X    O  |
+Fri|  X    X    X    O  | X    X    O    X  | X    O    X    X  |
+Sat|  X    O    X    X  | X    O    X    X  | O    X    X    X  |
+Sun|  X    X    O    X  | O    X    X    X  | X    X    O    X  |
+    ------------------------------------------------------------
+mov|  X    O    X    X  | X    O    X    X  |
+ice|  X    X    X    O  | X    X    O    X  |
+bow|  X    X    O    X  | O    X    X    X  |
+boa|  O    X    X    X  | X    X    X    O  |
+    ----------------------------------------
+Jas|  X    X    O    X  |
+Ann|  X    O    X    X  |
+Bri|  X    X    X    O  |
+Mar|  O    X    X    X  |
+    --------------------
+
+
+Solution for puzzle:7
+      Luc  Per  Rub  Jam  Jas  Ann  Bri  Mar  mov  ice  bow  boa
+    ------------------------------------------------------------
+Thu|  X    X    X    O  | X    X    X    O  | X    X    X    O  |
+Fri|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+Sat|  O    X    X    X  | O    X    X    X  | X    X    O    X  |
+Sun|  X    X    O    X  | X    O    X    X  | X    O    X    X  |
+    ------------------------------------------------------------
+mov|  X    O    X    X  | X    X    O    X  |
+ice|  X    X    O    X  | X    O    X    X  |
+bow|  O    X    X    X  | O    X    X    X  |
+boa|  X    X    X    O  | X    X    X    O  |
+    ----------------------------------------
+Jas|  O    X    X    X  |
+Ann|  X    X    O    X  |
+Bri|  X    O    X    X  |
+Mar|  X    X    X    O  |
+    --------------------
+
+
+Solution for puzzle:8
+      Luc  Per  Rub  Jam  Jas  Ann  Bri  Mar  mov  ice  bow  boa
+    ------------------------------------------------------------
+Thu|  X    X    X    O  | X    O    X    X  | X    O    X    X  |
+Fri|  X    O    X    X  | O    X    X    X  | X    X    O    X  |
+Sat|  O    X    X    X  | X    X    X    O  | O    X    X    X  |
+Sun|  X    X    O    X  | X    X    O    X  | X    X    X    O  |
+    ------------------------------------------------------------
+mov|  O    X    X    X  | X    X    X    O  |
+ice|  X    X    X    O  | X    O    X    X  |
+bow|  X    O    X    X  | O    X    X    X  |
+boa|  X    X    O    X  | X    X    O    X  |
+    ----------------------------------------
+Jas|  X    O    X    X  |
+Ann|  X    X    X    O  |
+Bri|  X    X    O    X  |
+Mar|  O    X    X    X  |
+    --------------------
+
+
+Solution for puzzle:9
+      Luc  Per  Rub  Jam  Jas  Ann  Bri  Mar  mov  ice  bow  boa
+    ------------------------------------------------------------
+Thu|  X    O    X    X  | X    X    X    O  | X    X    X    O  |
+Fri|  X    X    X    O  | O    X    X    X  | X    O    X    X  |
+Sat|  O    X    X    X  | X    X    O    X  | O    X    X    X  |
+Sun|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+    ------------------------------------------------------------
+mov|  O    X    X    X  | X    X    O    X  |
+ice|  X    X    X    O  | O    X    X    X  |
+bow|  X    X    O    X  | X    O    X    X  |
+boa|  X    O    X    X  | X    X    X    O  |
+    ----------------------------------------
+Jas|  X    X    X    O  |
+Ann|  X    X    O    X  |
+Bri|  O    X    X    X  |
+Mar|  X    O    X    X  |
+    --------------------
+
+
+Solution for puzzle:10
+      Luc  Per  Rub  Jam  Jas  Ann  Bri  Mar  mov  ice  bow  boa
+    ------------------------------------------------------------
+Thu|  X    X    X    O  | O    X    X    X  | X    X    O    X  |
+Fri|  X    X    O    X  | X    O    X    X  | X    O    X    X  |
+Sat|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+Sun|  O    X    X    X  | X    X    X    O  | X    X    X    O  |
+    ------------------------------------------------------------
+mov|  X    O    X    X  | X    X    O    X  |
+ice|  X    X    O    X  | X    O    X    X  |
+bow|  X    X    X    O  | O    X    X    X  |
+boa|  O    X    X    X  | X    X    X    O  |
+    ----------------------------------------
+Jas|  X    X    X    O  |
+Ann|  X    X    O    X  |
+Bri|  X    O    X    X  |
+Mar|  O    X    X    X  |
+    --------------------
+
+
+Solution for puzzle:11
+      Luc  Per  Rub  Jam  Jas  Ann  Bri  Mar  mov  ice  bow  boa
+    ------------------------------------------------------------
+Thu|  X    O    X    X  | X    X    O    X  | X    X    X    O  |
+Fri|  X    X    O    X  | O    X    X    X  | X    O    X    X  |
+Sat|  O    X    X    X  | X    O    X    X  | O    X    X    X  |
+Sun|  X    X    X    O  | X    X    X    O  | X    X    O    X  |
+    ------------------------------------------------------------
+mov|  O    X    X    X  | X    O    X    X  |
+ice|  X    X    O    X  | O    X    X    X  |
+bow|  X    X    X    O  | X    X    X    O  |
+boa|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Jas|  X    X    O    X  |
+Ann|  O    X    X    X  |
+Bri|  X    O    X    X  |
+Mar|  X    X    X    O  |
+    --------------------
+
+
+Solution for puzzle:12
+      Luc  Per  Rub  Jam  Jas  Ann  Bri  Mar  mov  ice  bow  boa
+    ------------------------------------------------------------
+Thu|  X    O    X    X  | X    X    O    X  | X    X    O    X  |
+Fri|  O    X    X    X  | X    O    X    X  | X    O    X    X  |
+Sat|  X    X    O    X  | X    X    X    O  | O    X    X    X  |
+Sun|  X    X    X    O  | O    X    X    X  | X    X    X    O  |
+    ------------------------------------------------------------
+mov|  X    X    O    X  | X    X    X    O  |
+ice|  O    X    X    X  | X    O    X    X  |
+bow|  X    O    X    X  | X    X    O    X  |
+boa|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Jas|  X    X    X    O  |
+Ann|  O    X    X    X  |
+Bri|  X    O    X    X  |
+Mar|  X    X    O    X  |
+    --------------------
+
+
+Solution for puzzle:13
+      Luc  Per  Rub  Jam  Jas  Ann  Bri  Mar  mov  ice  bow  boa
+    ------------------------------------------------------------
+Thu|  X    O    X    X  | X    X    O    X  | X    X    X    O  |
+Fri|  O    X    X    X  | X    X    X    O  | X    O    X    X  |
+Sat|  X    X    X    O  | X    O    X    X  | X    X    O    X  |
+Sun|  X    X    O    X  | O    X    X    X  | O    X    X    X  |
+    ------------------------------------------------------------
+mov|  X    X    O    X  | O    X    X    X  |
+ice|  O    X    X    X  | X    X    X    O  |
+bow|  X    X    X    O  | X    O    X    X  |
+boa|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Jas|  X    X    O    X  |
+Ann|  X    X    X    O  |
+Bri|  X    O    X    X  |
+Mar|  O    X    X    X  |
+    --------------------
+
+
+Solution for puzzle:14
+      Luc  Per  Rub  Jam  Jas  Ann  Bri  Mar  mov  ice  bow  boa
+    ------------------------------------------------------------
+Thu|  X    X    O    X  | O    X    X    X  | X    O    X    X  |
+Fri|  O    X    X    X  | X    X    O    X  | O    X    X    X  |
+Sat|  X    X    X    O  | X    X    X    O  | X    X    O    X  |
+Sun|  X    O    X    X  | X    O    X    X  | X    X    X    O  |
+    ------------------------------------------------------------
+mov|  O    X    X    X  | X    X    O    X  |
+ice|  X    X    O    X  | O    X    X    X  |
+bow|  X    X    X    O  | X    X    X    O  |
+boa|  X    O    X    X  | X    O    X    X  |
+    ----------------------------------------
+Jas|  X    X    O    X  |
+Ann|  X    O    X    X  |
+Bri|  O    X    X    X  |
+Mar|  X    X    X    O  |
+    --------------------
+
+
+Solution for puzzle:15
+      Luc  Per  Rub  Jam  Jas  Ann  Bri  Mar  mov  ice  bow  boa
+    ------------------------------------------------------------
+Thu|  O    X    X    X  | X    X    X    O  | X    O    X    X  |
+Fri|  X    X    O    X  | X    X    O    X  | O    X    X    X  |
+Sat|  X    O    X    X  | X    O    X    X  | X    X    X    O  |
+Sun|  X    X    X    O  | O    X    X    X  | X    X    O    X  |
+    ------------------------------------------------------------
+mov|  X    X    O    X  | X    X    O    X  |
+ice|  O    X    X    X  | X    X    X    O  |
+bow|  X    X    X    O  | O    X    X    X  |
+boa|  X    O    X    X  | X    O    X    X  |
+    ----------------------------------------
+Jas|  X    X    X    O  |
+Ann|  X    O    X    X  |
+Bri|  X    X    O    X  |
+Mar|  O    X    X    X  |
+    --------------------
+
+

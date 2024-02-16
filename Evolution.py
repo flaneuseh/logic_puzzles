@@ -31,6 +31,7 @@ import random
 import math 
 import numpy.random as npr
 import pickle 
+from itertools import combinations 
 
 
 # %%
@@ -133,6 +134,35 @@ class HintSet:
 
         return HintSet(hints[0:threshold], self.puzzle), HintSet(hints[threshold: len(hints)], self.puzzle)
     
+    def get_hint_counts(self):
+        total_counts = {
+        'is': 0,
+        'not': 0,
+        'before': 0,
+        'simple_or': 0,
+        'compound_or': 0
+        }
+
+        for hint in self.hints:
+            kind = next(iter(hint)) 
+            total_counts[kind] += 1 
+        
+        return total_counts 
+
+    def hint_ratios(self):
+        counts = self.get_hint_counts() 
+        pairs = combinations(counts.keys(), 2)
+
+        diff_sum = 0 
+        l = 0 
+
+        for first, second in pairs:
+            diff_sum += abs((counts[first] / len(self.hints)) - (counts[second] / len(self.hints)))
+            l += 1
+        
+        return diff_sum / l
+
+    
     def is_valid(self):
         return len(self.hints) > 0 and self.completed_puzzle.is_complete()
 
@@ -156,6 +186,16 @@ class HintSet:
         violations = self.completed_puzzle.num_violations()
  
         return (0.33 * complete) + (0.33 * valid) + (0.33 * self._violations_fun(violations))
+
+    def solver_loops(self):
+        if len(self.hints) == 0:
+            return 0 
+        
+        num_loops = max(len(hint_trace) for hint_trace in self.trace.values())
+        return num_loops 
+
+    def hint_size(self):
+        return len(self.hints)
      
     def optimize_func(self):
         if len(self.hints) == 0:
@@ -174,13 +214,13 @@ class HintSet:
         # return (0.5 * score / len(self.hints)) + (0.5 * (1 - (len(self.hints) / 20)))
         
         # Fn 2: optimize by number of loops and number of hints
-        # return (0.5 * min(num_loops, 10) / 10) + (0.5 * (1 - (len(self.hints) / 20)))
+        return (0.5 * min(num_loops, 10) / 10) + (0.5 * (1 - (len(self.hints) / 20)))
         
         # Fn 3: optimize by number of loops
         # return num_loops
 
         # Fn 4: optimize by hint size
-        return 1 - (len(self.hints) / 20)
+        #return 1 - (len(self.hints) / 20)
 
 class History:
     def __init__(self):
@@ -330,8 +370,14 @@ if __name__ == "__main__":
 
     puzzle = Puzzle([suspects, weapons, rooms, time]) 
 
-    pop = evolve(puzzle, 100,50, 0.2, 1, 0.5, 2) 
+    #pop = evolve(puzzle, 100,50, 0.2, 1, 0.5, 2) 
 
+    hints = random_hint_set(puzzle) 
+    for hint in hints.hints:
+        print(hint)
+    
+    print(hints.hint_ratios())
+    
 # %%
 # if __name__ == "__main__":
 #     file = open("Experiement1/pop1.p", "wb")

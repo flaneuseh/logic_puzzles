@@ -24,7 +24,7 @@ def not_to_english(attributes):
     cat2 = attributes[2]
     ent2 = attributes[3]
 
-    s = "The {} {} is not the {} in the category {}".format( cat1.title, ent1, cat2.title, ent2)
+    s = "The {} {} is not the {} {}".format( cat1.title, ent1, ent2, cat2.title)
     return s  
 
 def before_to_english(attributes):

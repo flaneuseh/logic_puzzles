@@ -1,0 +1,152 @@
+Hints for puzzle:1
+	1. The activity board game cafe is at least 1 day before the match B Ann
+	2. Either The activity bowling is the match B Jason or The day Thursday is the match A Percy
+	3. Either The day Friday is the activity ice skating or The activity movie is the match B Jason
+	4. The match A James is 2 days before the match A Ruby
+	5. The activity bowling is at least 1 day before the match A Lucia
+	6. The activity movie is 2 days before the match B Marie
+
+
+Hints for puzzle:2
+	1. The match A Ruby is 2 days before the match A Lucia
+	2. The match A Percy is at least 1 day before the match A Ruby
+	3. The activity movie is at least 1 day before the match B Brian
+	4. The activity ice skating is at least 1 day before the match B Ann
+	5. The activity board game cafe is 2 days before the match A James
+	6. Either the match B Ann or the match B Jason is the activity ice skating
+
+
+Hints for puzzle:3
+	1. The match B Brian is at least 1 day before the match A Lucia
+	2. The match A Percy is 1 days before the activity movie
+	3. The match B Marie is 1 days before the activity bowling
+	4. The match B Marie is the day Thursday
+	5. The match A Ruby is 1 days before the match A Lucia
+	6. Either The match A Ruby is the activity movie or The activity bowling is the match B Brian
+	7. Either The activity board game cafe is the match B Ann or The activity bowling is the match A Ruby
+
+
+Hints for puzzle:4
+	1. The activity movie is at least 1 day before the match A Percy
+	2. The match A Lucia is at least 1 day before the match B Marie
+	3. The match A Ruby is 1 days before the activity bowling
+	4. Either The match A Percy is the activity bowling or The activity ice skating is the match B Jason
+	5. Either the activity movie or the activity board game cafe is the day Saturday
+	6. Either the match A Lucia or the day Friday is the activity bowling
+	7. Either the day Friday or the match B Brian is the activity movie
+	8. Either The match A James is the day Friday or The activity ice skating is the match B Brian
+
+
+Hints for puzzle:5
+	1. The match B Ann is at least 1 day before the match A James
+	2. The day Sunday is the match B Jason
+	3. The match A Percy is 2 days before the match A Lucia
+	4. The activity ice skating is the match B Ann
+	5. Either the activity board game cafe or the match B Ann is the match A Ruby
+	6. The match A Percy is the activity board game cafe
+	7. Either the match B Brian or the activity movie is the match A James
+	8. Either The match B Marie is the match A Ruby or The match B Jason is the activity bowling
+
+
+Hints for puzzle:6
+	1. Either the match B Jason or the match B Brian is the activity ice skating
+	2. Either the match B Brian or the match B Jason is the day Sunday
+	3. Either The match B Ann is the activity board game cafe or The match A James is the day Friday
+	4. Either The match A Ruby is the match B Ann or The match B Jason is the day Sunday
+	5. The activity board game cafe is 1 days before the match B Ann
+	6. The match A Lucia is 2 days before the match A Percy
+	7. Either The match B Brian is the match A Ruby or The day Friday is the activity ice skating
+	8. Either the match B Jason or the day Friday is the activity bowling
+
+
+Hints for puzzle:7
+	1. Either the day Thursday or the day Sunday is the activity board game cafe
+	2. The match B Jason is the activity bowling
+	3. The match B Ann is not the James match A
+	4. Either The match B Brian is the match A Percy or The match A Ruby is the match B Jason
+	5. The day Friday is the match A Percy
+	6. Either The activity ice skating is the match A Ruby or The activity board game cafe is the match A Lucia
+	7. Either The match B Ann is the day Sunday or The match B Marie is the match A Percy
+	8. The activity board game cafe is not the Lucia match A
+
+
+Hints for puzzle:8
+	1. The match A Lucia is 1 days before the activity board game cafe
+	2. The day Saturday is the match B Marie
+	3. Either The match B Brian is the activity bowling or The match B Marie is the activity movie
+	4. Either the day Friday or the match A James is the activity ice skating
+	5. The activity ice skating is the day Thursday
+	6. Either The match B Ann is the activity ice skating or The activity board game cafe is the day Friday
+	7. The activity movie is 1 days before the match A Ruby
+	8. Either the match A James or the activity bowling is the match B Jason
+
+
+Hints for puzzle:9
+	1. Either the activity bowling or the day Thursday is the match B Ann
+	2. Either The match B Jason is the day Friday or The day Thursday is the activity bowling
+	3. Either the match A Lucia or the day Friday is the activity movie
+	4. Either The match A Percy is the match B Marie or The activity bowling is the match B Brian
+	5. Either the day Saturday or the match B Ann is the activity movie
+	6. The match A Percy is at least 1 day before the match A James
+	7. Either the match B Brian or the activity ice skating is the match A James
+	8. The match B Brian is at least 1 day before the activity bowling
+
+
+Hints for puzzle:10
+	1. Either The match A Ruby is the day Friday or The activity bowling is the day Sunday
+	2. The match A James is at least 1 day before the activity board game cafe
+	3. Either The day Thursday is the match A Ruby or The match A Lucia is the match B Marie
+	4. Either The match A Ruby is the activity ice skating or The match B Jason is the match A Percy
+	5. The match A Percy is the activity movie
+	6. Either the match A Percy or the match B Jason is the activity bowling
+	7. Either The match B Brian is the day Saturday or The match A Lucia is the activity bowling
+
+
+Hints for puzzle:11
+	1. Either The match A Lucia is the activity movie or The match B Marie is the day Friday
+	2. Either the match B Jason or the activity board game cafe is the day Friday
+	3. Either The day Friday is the match B Ann or The day Thursday is the activity board game cafe
+	4. The activity ice skating is not the James match A
+	5. The match B Brian is 2 days before the match B Ann
+	6. The match A Ruby is 2 days before the match A James
+	7. The match A Percy is 1 days before the activity ice skating
+
+
+Hints for puzzle:12
+	1. Either The match B Marie is the day Saturday or The match A Lucia is the day Saturday
+	2. The activity bowling is 1 days before the match B Ann
+	3. The activity movie is 1 days before the match A James
+	4. Either The activity board game cafe is the match B Jason or The match B Ann is the match A James
+	5. Either the match A Ruby or the match B Ann is the day Saturday
+	6. The match A Lucia is 2 days before the activity board game cafe
+
+
+Hints for puzzle:13
+	1. The match B Marie is 2 days before the match A Ruby
+	2. Either The day Friday is the activity bowling or The match B Ann is the activity bowling
+	3. The activity ice skating is 2 days before the match B Jason
+	4. The activity board game cafe is 2 days before the match A James
+	5. Either The activity movie is the match A Percy or The match A Percy is the day Thursday
+	6. The activity board game cafe is not the Lucia match A
+
+
+Hints for puzzle:14
+	1. Either the match B Ann or the activity movie is the match A Lucia
+	2. The match A Ruby is 2 days before the activity bowling
+	3. The match B Marie is at least 1 day before the match A Percy
+	4. The day Sunday is the match B Ann
+	5. The activity ice skating is the match B Jason
+	6. Either The activity bowling is the day Sunday or The day Friday is the match B Brian
+	7. The match B Brian is 2 days before the match B Ann
+
+
+Hints for puzzle:15
+	1. Either The activity bowling is the match A James or The day Thursday is the match A James
+	2. The match B Marie is the day Thursday
+	3. Either the match A Lucia or the match A James is the activity ice skating
+	4. The match B Ann is 1 days before the match B Jason
+	5. The match A Ruby is at least 1 day before the activity board game cafe
+	6. Either The match A James is the day Sunday or The activity ice skating is the match B Brian
+	7. The activity ice skating is 2 days before the match B Ann
+
+

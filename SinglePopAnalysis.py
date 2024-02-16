@@ -2,12 +2,10 @@ import pickle
 import matplotlib.pyplot as plt 
 from colorPalette import COLOR1, COLOR2, COLOR3, COLOR4, COLOR5, LINE1, LINE2, LINE3, LINE4, LINE5 
 from DataVisualization import set_font_sizes  
-all_components_folder = "FitnessExperiements/full"
-nothing_folder = "FitnessExperiements/nothing"
-complete_folder = "FitnessExperiements/complete"
-valid_folder = "FitnessExperiements/valid"
-violation_folder = "FitnessExperiements/violation" 
-
+full_folder = "ViolationsExperiement/full"
+no_vio_folder = "ViolationsExperiement/noVio"
+half_vio_folder = "ViolationsExperiement/halfVio"
+forth_vio_folder = "ViolationsExperiement/forthVio"
 
 def get_num_feasible(folder, trial_length):
     num_feasible = []
@@ -62,28 +60,24 @@ def plot_avg(average, mininum, maximum, color, linestyle,  label):
 
 if __name__ == "__main__":
     set_font_sizes(14,16,18)
-    feasible = get_num_feasible(all_components_folder, 30) 
+    feasible = get_num_feasible(full_folder, 27) 
     a, m_0, m_1 = avg_min_max(feasible)
-    plot_avg(a, m_0, m_1, COLOR1, LINE1, "Full Fitness")
+    plot_avg(a, m_0, m_1, COLOR1, LINE1, "1/3")
 
-    feasible = get_num_feasible(complete_folder, 30) 
+    feasible = get_num_feasible(half_vio_folder, 27) 
     a, m_0, m_1 = avg_min_max(feasible)
-    plot_avg(a, m_0, m_1, COLOR2, LINE2,  "No Completetion")
+    plot_avg(a, m_0, m_1, COLOR2, LINE2,  "1/6")
 
-    feasible = get_num_feasible(valid_folder, 30) 
+    feasible = get_num_feasible(forth_vio_folder, 27) 
     a, m_0, m_1 = avg_min_max(feasible)
-    plot_avg(a, m_0, m_1, COLOR3, LINE3, "No Row Validity")
+    plot_avg(a, m_0, m_1, COLOR3, LINE3, "1/12")
 
-    feasible = get_num_feasible(violation_folder, 30) 
+    feasible = get_num_feasible(no_vio_folder, 27) 
     a, m_0, m_1 = avg_min_max(feasible)
-    plot_avg(a, m_0, m_1, COLOR4, LINE4, "No Violations")
-    
-
-    feasible = get_num_feasible(nothing_folder, 30) 
-    a, m_0, m_1 = avg_min_max(feasible)
-    print(m_1)
-    plot_avg(a, m_0, m_1, COLOR5, LINE5, "Random Search")
-    plt.title("Feasible Indivuals Found by Fitness Function")
+    plot_avg(a, m_0, m_1, COLOR4, LINE4, "0")
+   
+  
+    plt.title("Feasible Indivuals Found by Violation Weight")
     plt.ylabel("Number of feasible Indivuals")
     plt.xlabel("Generation")
     plt.show()
