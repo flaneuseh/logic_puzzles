@@ -151,16 +151,18 @@ class HintSet:
 
     def hint_ratios(self):
         counts = self.get_hint_counts() 
+        values = list(counts.values())
         pairs = combinations(counts.keys(), 2)
 
         diff_sum = 0 
         l = 0 
 
         for first, second in pairs:
-            diff_sum += abs((counts[first] / len(self.hints)) - (counts[second] / len(self.hints)))
-            l += 1
-        
-        return diff_sum / l
+            diff_sum += abs(counts[first] - counts[second])
+            l += 1 
+            
+        mad = (diff_sum / l) / (sum(values) / len(values))
+        return 0.5 * mad 
 
     
     def is_valid(self):
@@ -183,9 +185,9 @@ class HintSet:
     
     def feasibility(self):
         complete, valid = self.completed_puzzle.percent_complete()
-        violations = self.completed_puzzle.num_violations()
+        #violations = self.completed_puzzle.num_violations()
  
-        return (0.33 * complete) + (0.33 * valid) + (0.33 * self._violations_fun(violations))
+        return (0.5 * complete) + (0.5 * valid)
 
     def solver_loops(self):
         if len(self.hints) == 0:
@@ -371,7 +373,6 @@ if __name__ == "__main__":
     puzzle = Puzzle([suspects, weapons, rooms, time]) 
 
     #pop = evolve(puzzle, 100,50, 0.2, 1, 0.5, 2) 
-
     hints = random_hint_set(puzzle) 
     for hint in hints.hints:
         print(hint)

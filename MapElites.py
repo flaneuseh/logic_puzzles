@@ -1,10 +1,11 @@
 # %%
+import random 
 # Imports Baby 
 #import import_ipynb 
+from copy import deepcopy
 from LogicPuzzles import Puzzle, generate_hint, str_hint, Category, apply_hint, find_openings, find_transitives  
 from HintToEnglish import hint_to_english  
 # from DataVisualization import plot_history
-import random 
 import math 
 import numpy.random as npr
 import pickle 
@@ -43,11 +44,15 @@ class EliteGrid:
         self.width = width 
         self.height = height 
         self.grid = []
+        self.total_children = []
         for i in range(height):
             row = []
+            total_row = []
             for j in range(width):
                 row.append(None)
+                total_row.append(0)
             self.grid.append(row)
+            self.total_children.append(total_row)
         self.pop_size = 0 
     
     def select(self):
@@ -70,6 +75,8 @@ class EliteGrid:
 
         row = min(self._choose_index(hint_set.hint_ratios()), self.height - 1)
         col = min((hint_set.solver_loops() - 1), self.width - 1)
+
+        self.total_children[row][col] += 1 
 
     
 
@@ -94,6 +101,19 @@ class EliteGrid:
         for row in fit_grid:
             row = [str(val).rjust(2) for val in row]
             print(row)
+
+class History:
+    def __init__(self): 
+        self.elit_grids = []
+        self.infes_fits = []
+        self.num_fes = [] 
+        self.total_grid = []
+    
+    def update(self, elit_grid, infeasible):
+        self.infes_fits.append(infeasible[0][0])
+        self.num_fes.append(elit_grid.pop_size)
+        self.elit_grids.append(elit_grid.get_fitness_grid())
+        self.total_grid.append(deepcopy(elit_grid.total_children))
 
 
 
@@ -126,7 +146,7 @@ def _add_child(hints, feasible_grid, infeasible):
 def evolve(puzzle, generations, pop_size, x_rate, mut_rate, add_rate, elits):
     feasible_grid = EliteGrid(10, 10) 
     infeasible = []
-    #history = History()
+    history = History()
 
     # Create initial population 
     for i in range(pop_size):
@@ -140,7 +160,8 @@ def evolve(puzzle, generations, pop_size, x_rate, mut_rate, add_rate, elits):
         
         infeasible.sort(reverse= True, key = lambda a: a[0]) 
 
-        #history.update_history(feasible, infeasible)
+        
+        history.update(feasible_grid, infeasible)
 
         if gen % 50 == 0: 
             print("-"* 40) 
@@ -196,7 +217,7 @@ def evolve(puzzle, generations, pop_size, x_rate, mut_rate, add_rate, elits):
             _add_child(child2, feasible_grid, new_infeasible)
                 
         infeasible = new_infeasible 
-    return feasible_grid, infeasible
+    return feasible_grid, infeasible, history 
 
 
 # %%
@@ -210,6 +231,7 @@ if __name__ == "__main__":
 
     pop = evolve(puzzle, 100,50, 0.2, 1, 0.5, 2) 
     pop[0].print_fit_grid()
+    print(pop[2].total_grid[-1])
 
     
     
