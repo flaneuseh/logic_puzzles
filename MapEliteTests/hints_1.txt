@@ -1,0 +1,375 @@
+Hints for grid cell [0][0]
+	The suspect Col. Mustard is 1 hours before the room Study
+	Either The room Study is the suspect Col. Mustard or The suspect Mrs. White is the hour 3:00
+	The weapon Candlestick is the room Kitchen
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	The suspect Ms. Scarlet is 2 hours before the room Living Room
+	The suspect Ms. Scarlet is the weapon Wrench
+	Either the hour 1:00 or the hour 4:00 is the room Kitchen
+	The room Study is not the Wrench weapon
+	The hour 3:00 is not the Rope weapon
+	Either The hour 4:00 is the room Kitchen or The weapon Candlestick is the hour 3:00
+
+
+Hints for grid cell [0][1]
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	The suspect Col. Mustard is 1 hours before the room Study
+	Either The room Study is the suspect Col. Mustard or The suspect Mrs. White is the hour 3:00
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The weapon Candlestick is the room Kitchen
+	The suspect Ms. Scarlet is the weapon Wrench
+	The weapon Wrench is not the 3:00 hour
+	The room Study is not the Candlestick weapon
+	The weapon Knife is 1 hours before the room Living Room
+	Either The room Living Room is the hour 1:00 or The hour 4:00 is the room Study
+
+
+Hints for grid cell [1][0]
+	The suspect Col. Mustard is 1 hours before the room Study
+	Either The room Study is the suspect Col. Mustard or The suspect Mrs. White is the hour 3:00
+	The weapon Candlestick is the room Kitchen
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	The suspect Ms. Scarlet is 2 hours before the room Living Room
+	The suspect Ms. Scarlet is the weapon Wrench
+	Either the hour 1:00 or the hour 4:00 is the room Kitchen
+	The weapon Candlestick is not the 4:00 hour
+
+
+Hints for grid cell [1][1]
+	The weapon Candlestick is the room Kitchen
+	Either The room Study is the suspect Col. Mustard or The suspect Mrs. White is the hour 3:00
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The hour 4:00 is not the Wrench weapon
+	The suspect Col. Mustard is 1 hours before the room Study
+	The suspect Ms. Scarlet is the weapon Wrench
+	The weapon Rope is 1 hours before the room Study
+
+
+Hints for grid cell [1][2]
+	Either The weapon Rope is the suspect Ms. Scarlet or The room Study is the weapon Knife
+	The suspect Col. Mustard is 1 hours before the room Study
+	The suspect Ms. Scarlet is 2 hours before the room Kitchen
+	The weapon Knife is the room Living Room
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The hour 4:00 is not the Wrench weapon
+
+
+Hints for grid cell [1][3]
+	The suspect Ms. Scarlet is the weapon Wrench
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The suspect Col. Mustard is 1 hours before the room Study
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	The weapon Candlestick is the room Kitchen
+	Either The hour 3:00 is the weapon Knife or The room Ballroom is the weapon Rope
+	The suspect Col. Mustard is 2 hours before the room Ballroom
+	The suspect Ms. Scarlet is not the Rope weapon
+
+
+Hints for grid cell [1][4]
+	The suspect Ms. Scarlet is the weapon Wrench
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The suspect Col. Mustard is 1 hours before the room Study
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	The weapon Candlestick is the room Kitchen
+	Either The hour 3:00 is the weapon Knife or The room Ballroom is the weapon Rope
+	The suspect Ms. Scarlet is not the Candlestick weapon
+	Either The room Study is the hour 4:00 or The hour 4:00 is the room Kitchen
+
+
+Hints for grid cell [2][0]
+	The suspect Col. Mustard is 1 hours before the room Study
+	Either The room Study is the suspect Col. Mustard or The suspect Mrs. White is the hour 3:00
+	The weapon Candlestick is the room Kitchen
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	The suspect Ms. Scarlet is 2 hours before the room Living Room
+	The suspect Ms. Scarlet is the weapon Wrench
+	Either the hour 1:00 or the hour 4:00 is the room Kitchen
+	Either The hour 2:00 is the room Ballroom or The suspect Mrs. White is the weapon Wrench
+
+
+Hints for grid cell [2][1]
+	The weapon Candlestick is the room Kitchen
+	Either The room Study is the suspect Col. Mustard or The suspect Mrs. White is the hour 3:00
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The hour 4:00 is not the Wrench weapon
+	The suspect Ms. Scarlet is the weapon Wrench
+	The weapon Rope is 1 hours before the room Study
+
+
+Hints for grid cell [2][2]
+	The suspect Col. Mustard is 1 hours before the room Study
+	Either The weapon Rope is the suspect Ms. Scarlet or The room Study is the weapon Knife
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The suspect Ms. Scarlet is the weapon Wrench
+	The suspect Ms. Scarlet is 2 hours before the room Kitchen
+	The weapon Candlestick is the hour 2:00
+	The weapon Wrench is not the 2:00 hour
+
+
+Hints for grid cell [2][3]
+	Either The room Study is the suspect Col. Mustard or The suspect Mrs. White is the hour 3:00
+	The suspect Col. Mustard is 1 hours before the room Study
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	The weapon Candlestick is the room Kitchen
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The suspect Ms. Scarlet is the weapon Wrench
+	The hour 3:00 is not the Candlestick weapon
+
+
+Hints for grid cell [2][4]
+	The suspect Ms. Scarlet is the weapon Wrench
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The suspect Col. Mustard is 1 hours before the room Study
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	The weapon Candlestick is the room Kitchen
+	Either The hour 3:00 is the weapon Knife or The room Ballroom is the weapon Rope
+	The suspect Ms. Scarlet is not the Candlestick weapon
+
+
+Hints for grid cell [3][0]
+	The weapon Wrench is the hour 3:00
+	The suspect Ms. Scarlet is 2 hours before the weapon Candlestick
+	The suspect Ms. Scarlet is 2 hours before the room Kitchen
+	The suspect Col. Mustard is 1 hours before the room Study
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The weapon Wrench is not the Prof. Plum suspect
+	Either The hour 1:00 is the weapon Wrench or The hour 2:00 is the weapon Knife
+
+
+Hints for grid cell [3][1]
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	The suspect Col. Mustard is 1 hours before the room Study
+	The weapon Candlestick is the room Kitchen
+	The suspect Ms. Scarlet is 2 hours before the room Living Room
+	Either The room Study is the suspect Col. Mustard or The suspect Mrs. White is the hour 3:00
+	The suspect Ms. Scarlet is the weapon Wrench
+	Either the suspect Ms. Scarlet or the suspect Col. Mustard is the room Ballroom
+
+
+Hints for grid cell [3][2]
+	The suspect Col. Mustard is 1 hours before the room Study
+	Either The hour 3:00 is the weapon Knife or The room Ballroom is the weapon Rope
+	Either The weapon Rope is the suspect Ms. Scarlet or The room Study is the weapon Knife
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The suspect Ms. Scarlet is the weapon Wrench
+	The suspect Ms. Scarlet is 2 hours before the room Kitchen
+	The weapon Candlestick is the hour 2:00
+
+
+Hints for grid cell [3][3]
+	The suspect Ms. Scarlet is the weapon Wrench
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The suspect Col. Mustard is 1 hours before the room Study
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	The weapon Candlestick is the room Kitchen
+	Either The hour 3:00 is the weapon Knife or The room Ballroom is the weapon Rope
+	The suspect Col. Mustard is 2 hours before the room Ballroom
+
+
+Hints for grid cell [3][4]
+	The suspect Ms. Scarlet is the weapon Wrench
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The suspect Col. Mustard is 1 hours before the room Study
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	The weapon Candlestick is the room Kitchen
+	Either The hour 3:00 is the weapon Knife or The room Ballroom is the weapon Rope
+	Either The room Study is the hour 4:00 or The hour 4:00 is the room Kitchen
+
+
+Hints for grid cell [4][0]
+	The weapon Wrench is the hour 3:00
+	The suspect Ms. Scarlet is 2 hours before the weapon Candlestick
+	The suspect Ms. Scarlet is 2 hours before the room Kitchen
+	The suspect Col. Mustard is 1 hours before the room Study
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The room Study is the hour 1:00
+	Either The weapon Rope is the hour 4:00 or The hour 2:00 is the suspect Prof. Plum
+
+
+Hints for grid cell [4][1]
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	The suspect Col. Mustard is 1 hours before the room Study
+	The weapon Candlestick is the room Kitchen
+	The suspect Ms. Scarlet is 2 hours before the room Living Room
+	Either The room Study is the suspect Col. Mustard or The suspect Mrs. White is the hour 3:00
+	The suspect Ms. Scarlet is the weapon Wrench
+
+
+Hints for grid cell [4][2]
+	The suspect Col. Mustard is 1 hours before the room Study
+	Either The weapon Rope is the suspect Ms. Scarlet or The room Study is the weapon Knife
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The suspect Ms. Scarlet is the weapon Wrench
+	The suspect Ms. Scarlet is 2 hours before the room Kitchen
+	The weapon Candlestick is the hour 2:00
+
+
+Hints for grid cell [4][3]
+	Either The room Study is the suspect Col. Mustard or The suspect Mrs. White is the hour 3:00
+	The suspect Col. Mustard is 1 hours before the room Study
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	The weapon Candlestick is the room Kitchen
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The suspect Ms. Scarlet is the weapon Wrench
+
+
+Hints for grid cell [4][4]
+	The suspect Ms. Scarlet is the weapon Wrench
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The suspect Col. Mustard is 1 hours before the room Study
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	The weapon Candlestick is the room Kitchen
+	Either The hour 3:00 is the weapon Knife or The room Ballroom is the weapon Rope
+
+
+Hints for grid cell [5][0]
+	The weapon Wrench is the hour 3:00
+	The suspect Ms. Scarlet is 2 hours before the weapon Candlestick
+	The suspect Ms. Scarlet is 2 hours before the room Kitchen
+	The suspect Col. Mustard is 1 hours before the room Study
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	Either The weapon Rope is the hour 4:00 or The hour 2:00 is the suspect Prof. Plum
+
+
+Hints for grid cell [5][1]
+	The weapon Wrench is the hour 3:00
+	The suspect Ms. Scarlet is 2 hours before the weapon Candlestick
+	The suspect Ms. Scarlet is 2 hours before the room Kitchen
+	The suspect Col. Mustard is 1 hours before the room Study
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	Either The suspect Prof. Plum is the weapon Candlestick or The hour 4:00 is the weapon Knife
+
+
+Hints for grid cell [5][2]
+	Either The weapon Rope is the suspect Ms. Scarlet or The room Study is the weapon Knife
+	The suspect Col. Mustard is 1 hours before the room Study
+	The suspect Ms. Scarlet is 2 hours before the room Kitchen
+	The weapon Knife is the room Living Room
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The room Living Room is 2 hours before the weapon Candlestick
+
+
+Hints for grid cell [5][3]
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The suspect Col. Mustard is not the Rope weapon
+	The suspect Ms. Scarlet is the weapon Wrench
+	The suspect Col. Mustard is 1 hours before the room Study
+	The suspect Ms. Scarlet is 2 hours before the room Living Room
+	The suspect Mrs. White is 2 hours before the suspect Prof. Plum
+
+
+Hints for grid cell [5][4]
+	The suspect Ms. Scarlet is 2 hours before the weapon Candlestick
+	The suspect Col. Mustard is 1 hours before the room Study
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	The weapon Candlestick is the room Kitchen
+	The suspect Ms. Scarlet is the weapon Wrench
+
+
+Hints for grid cell [6][0]
+	The weapon Wrench is the hour 3:00
+	The suspect Ms. Scarlet is 2 hours before the weapon Candlestick
+	The suspect Ms. Scarlet is 2 hours before the room Kitchen
+	The suspect Col. Mustard is 1 hours before the room Study
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	Either the suspect Mrs. White or the hour 4:00 is the room Ballroom
+
+
+Hints for grid cell [6][1]
+	The weapon Wrench is the hour 3:00
+	The suspect Ms. Scarlet is 2 hours before the weapon Candlestick
+	The suspect Ms. Scarlet is 2 hours before the room Kitchen
+	The suspect Col. Mustard is 1 hours before the room Study
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+
+
+Hints for grid cell [6][2]
+	The weapon Candlestick is the room Kitchen
+	The suspect Ms. Scarlet is 2 hours before the weapon Candlestick
+	The suspect Col. Mustard is 1 hours before the room Study
+	The suspect Ms. Scarlet is the weapon Wrench
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The suspect Mrs. White is 2 hours before the suspect Prof. Plum
+
+
+Hints for grid cell [6][3]
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	The suspect Ms. Scarlet is 2 hours before the room Kitchen
+	The suspect Col. Mustard is 1 hours before the room Study
+	The weapon Wrench is the hour 3:00
+	The suspect Ms. Scarlet is 2 hours before the weapon Candlestick
+
+
+Hints for grid cell [7][0]
+	The weapon Wrench is the hour 3:00
+	The suspect Ms. Scarlet is 2 hours before the weapon Candlestick
+	The suspect Ms. Scarlet is 2 hours before the room Kitchen
+	The suspect Col. Mustard is 1 hours before the room Study
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The suspect Mrs. White is 1 hours before the weapon Candlestick
+
+
+Hints for grid cell [7][1]
+	The suspect Ms. Scarlet is 2 hours before the room Kitchen
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The suspect Mrs. White is 2 hours before the suspect Prof. Plum
+	The weapon Wrench is the hour 3:00
+	The suspect Col. Mustard is 1 hours before the room Study
+	The suspect Ms. Scarlet is 2 hours before the weapon Candlestick
+
+
+Hints for grid cell [7][2]
+	The weapon Candlestick is the room Kitchen
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The suspect Ms. Scarlet is 2 hours before the weapon Candlestick
+	The suspect Mrs. White is 2 hours before the suspect Prof. Plum
+	The suspect Col. Mustard is 1 hours before the room Study
+	The weapon Knife is 1 hours before the weapon Rope
+
+
+Hints for grid cell [7][3]
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	The suspect Ms. Scarlet is 2 hours before the weapon Candlestick
+	The suspect Ms. Scarlet is 2 hours before the room Living Room
+	The suspect Col. Mustard is 1 hours before the room Study
+	The suspect Mrs. White is 2 hours before the suspect Prof. Plum
+	The suspect Ms. Scarlet is the weapon Wrench
+
+
+Hints for grid cell [8][1]
+	The suspect Ms. Scarlet is 2 hours before the weapon Candlestick
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	The suspect Col. Mustard is 1 hours before the room Study
+	The suspect Mrs. White is 2 hours before the suspect Prof. Plum
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The weapon Knife is at least 1 hour before the suspect Mrs. White
+
+
+Hints for grid cell [8][2]
+	The suspect Ms. Scarlet is 2 hours before the weapon Candlestick
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	The suspect Col. Mustard is 1 hours before the room Study
+	The suspect Mrs. White is 2 hours before the suspect Prof. Plum
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	The weapon Knife is 1 hours before the weapon Rope
+
+
+Hints for grid cell [8][3]
+	Either the weapon Knife or the suspect Prof. Plum is the room Ballroom
+	Either the room Kitchen or the suspect Col. Mustard is the weapon Rope
+	The suspect Col. Mustard is 1 hours before the room Study
+	The weapon Knife is 1 hours before the weapon Rope
+	The suspect Ms. Scarlet is 2 hours before the weapon Candlestick
+	The suspect Mrs. White is 2 hours before the suspect Prof. Plum
+
+
