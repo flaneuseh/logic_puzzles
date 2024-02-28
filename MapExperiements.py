@@ -9,16 +9,17 @@ time = Category("hour", ["1:00", "2:00", "3:00", "4:00"], True)
 
 puzzle = Puzzle([suspects, weapons, rooms, time]) 
 
-folder = "MapEliteTests"
-num_trials = 30 
-gen_len = 1000 
-pop_size = 50 
+folder = "MapElites10k"
+starting = 10
+num_trials = 15
+gen_len = 10000 
+pop_size = 100
 mut_rate = 0.8 
 x_rate = 0.3 
 add_rate = 0.5 
 elits = 5
 
-for trial in range(num_trials):
+for trial in range(starting, num_trials):
     random.seed(trial)
     print("Starting Trial:{}".format(trial))
     elit_grid, infeasible, history = evolve(puzzle, gen_len, pop_size, x_rate, mut_rate, add_rate, elits)

@@ -4,7 +4,7 @@ import matplotlib as mpl
 import seaborn as sns
 import numpy as np
 from HintToEnglish import hint_to_english 
-def heat_map(grid, reverse, title = "", xlabel = "", ylabel = "", colorbar_label=""):
+def heat_map(grid, reverse, title = "", xlabel = "", ylabel = "", colorbar_label="", vmin = 0):
     
     # create the value mask
     #mask = np.logical_and(grid >= 20, grid < 21)
@@ -17,7 +17,7 @@ def heat_map(grid, reverse, title = "", xlabel = "", ylabel = "", colorbar_label
         cmap = mpl.colormaps["plasma"]
 
     # plot
-    g = sns.heatmap(grid, vmin=0, cmap=cmap, cbar_kws={'label': colorbar_label})
+    g = sns.heatmap(grid, vmin=vmin, cmap=cmap, cbar_kws={'label': colorbar_label})
     # reset the xticklabels to show the correct column labels
     #_ = g.set_xticks(ticks=g.get_xticks(), labels=range(5, 20))
 
@@ -127,24 +127,38 @@ def make_hint_file(map_grid, file_path):
 
     file.close()
 
+def make_solution_file(map_grid, file_path):
+    file = open(file_path, "w") 
+    for row in range(map_grid.height):
+        for col in range(map_grid.width):
+            child = map_grid.grid[row][col]
+            if(not child is None):
+                file.write("Solution for grid cell [{}][{}]\n".format(row, col))
+                file.write(child[1].completed_puzzle.print_grid())
+                file.write("\n\n")
+
+    file.close()
+
+
 
 def write_hint_files(folder, trial_size):
     for trial in range(trial_size):
         json = open( folder + "/map_grid_trial_{}.p".format(trial), "r").read()
         grid = jsonpickle.decode(json) 
         make_hint_file(grid, folder + "/hints_{}.txt".format(trial))
+        make_solution_file(grid, folder + "/solutions_{}.txt".format(trial))
 
 
 if __name__ == "__main__":
-    folder = "MapEliteTests"
-    trials = 30 
-    """agg_grid = get_agg_hint_grids(folder, trials)
-    heat_map(agg_grid, True, title = "Average Hint Size by Cell", ylabel="Gini Coefficent", xlabel="Solver loops", colorbar_label="Average Hint Size")
+    folder = "MapElites10k"
+    trials = 15
+    agg_grid = get_agg_hint_grids(folder, trials)
+    heat_map(agg_grid, True, title = "Average Hint Size by Cell", ylabel="Gini Coefficent", xlabel="Solver loops", colorbar_label="Average Hint Size", vmin = 4)
 
     agg_total_grid = get_agg_children_grids(folder, trials)
     heat_map(agg_total_grid, False, title = "Average Children Produced by Cell", ylabel="Gini Coefficent", xlabel="Solver loops", colorbar_label="Average Children Produced")
 
     agg_grid = get_agg_duplicate_grids(folder, trials)
-    heat_map(agg_grid, True, title = "Average Duplicates by Cell", ylabel="Gini Coefficent", xlabel="Solver loops", colorbar_label="Average Duplicates")""" 
+    heat_map(agg_grid, True, title = "Average Duplicates by Cell", ylabel="Gini Coefficent", xlabel="Solver loops", colorbar_label="Average Duplicates")
 
     write_hint_files(folder, trials)

@@ -108,12 +108,16 @@ class History:
         self.infes_fits = []
         self.num_fes = [] 
         self.total_grid = []
+        self.cycles = 0 
     
     def update(self, elit_grid, infeasible):
+        self.cycles+= 1 
         self.infes_fits.append(infeasible[0][0])
         self.num_fes.append(elit_grid.pop_size)
-        self.elit_grids.append(elit_grid.get_fitness_grid())
-        self.total_grid.append(deepcopy(elit_grid.total_children))
+
+        if(self.cycles % 50 == 0):
+            self.elit_grids.append(elit_grid.get_fitness_grid())
+            self.total_grid.append(deepcopy(elit_grid.total_children))
 
 
 

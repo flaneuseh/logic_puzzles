@@ -1,0 +1,680 @@
+Solution for grid cell [0][1]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | X    O    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | O    X    X    X  | O    X    X    X  |
+3:0|  X    X    X    O  | X    X    X    O  | X    X    O    X  |
+4:0|  X    O    X    X  | X    X    O    X  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    X    O    X  | O    X    X    X  |
+Liv|  X    O    X    X  | X    X    O    X  |
+Kit|  X    X    X    O  | X    X    X    O  |
+Stu|  O    X    X    X  | X    O    X    X  |
+    ----------------------------------------
+Kni|  X    X    O    X  |
+Rop|  O    X    X    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [0][2]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [1][1]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | X    O    X    X  |
+4:0|  X    X    X    O  | O    X    X    X  | O    X    X    X  |
+    ------------------------------------------------------------
+Bal|  X    X    X    O  | O    X    X    X  |
+Liv|  X    O    X    X  | X    X    O    X  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | X    X    X    O  |
+    ----------------------------------------
+Kni|  X    X    X    O  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [1][2]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [1][3]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [1][4]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [2][1]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [2][2]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [2][3]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [2][4]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [3][1]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [3][2]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [3][3]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [3][4]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [4][1]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [4][2]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [4][3]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [4][4]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [5][1]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [5][2]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [5][3]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [5][4]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [6][1]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [6][2]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [6][3]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [6][4]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [7][1]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [7][2]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [7][3]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [7][4]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [8][1]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [8][2]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [8][3]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [8][4]
+      Ms.  Mrs  Col  Pro  Kni  Rop  Can  Wre  Bal  Liv  Kit  Stu
+    ------------------------------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  | X    O    X    X  |
+    ------------------------------------------------------------
+Bal|  X    O    X    X  | X    X    O    X  |
+Liv|  X    X    X    O  | X    X    X    O  |
+Kit|  X    X    O    X  | X    O    X    X  |
+Stu|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Kni|  O    X    X    X  |
+Rop|  X    X    O    X  |
+Can|  X    O    X    X  |
+Wre|  X    X    X    O  |
+    --------------------
+
+
