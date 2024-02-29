@@ -32,6 +32,7 @@ import math
 import numpy.random as npr
 import pickle 
 from itertools import combinations 
+from HintToEnglish import hint_to_english
 
 
 # %%
@@ -76,7 +77,7 @@ def apply_hints(puzzle, hints, print_soln=False):
     """
     copy = Puzzle(puzzle.categories)
     queue = hints[:]
-    trace = {}
+    #trace = {}
     backlog = []
     applied = True 
     is_valid = True
@@ -84,11 +85,8 @@ def apply_hints(puzzle, hints, print_soln=False):
     while is_valid and applied and len(queue) > 0:
         applied = False 
         loop += 1
-        for hint in queue: 
-            if str_hint(hint) not in trace:
-                trace[str_hint(hint)] = []
-            if loop not in trace[str_hint(hint)]:
-                trace[str_hint(hint)].append(loop)
+        
+        for hint in queue:
             a, is_valid, complete = apply_hint(copy, hint)
             applied = applied or a
             if not complete: 
@@ -105,7 +103,7 @@ def apply_hints(puzzle, hints, print_soln=False):
                 print(copy.print_grid())
         queue = backlog 
         backlog = [] 
-    return copy, trace
+    return  copy, is_valid, loop 
 
 
 # %%
@@ -113,7 +111,40 @@ class HintSet:
     def __init__(self, hints, puzzle) -> None:
         self.hints = hints 
         self.puzzle = puzzle # assumed to be blank 
-        self.completed_puzzle, self.trace = apply_hints(self.puzzle, self.hints)
+        self.completed_puzzle, self.valid,  self.loops = apply_hints(self.puzzle, self.non_duplicates())
+    
+    def get_duplicates(self):
+        english_dict = {}
+        for hint in self.hints:
+            english = hint_to_english(hint)
+            if(english in english_dict):
+                english_dict[english] += 1 
+            else:
+                english_dict[english] = 1 
+        duplicates = {}
+        for key, value in english_dict.items():
+            if (value > 1):
+                duplicates[key] = value 
+        
+        return duplicates 
+
+    def num_duplicates(self):
+        duplicates = self.get_duplicates()
+        s = 0 
+        for key in duplicates:
+            s += duplicates[key]
+        
+        return s 
+
+    def non_duplicates(self):
+        new_list = []
+        duplicates = self.get_duplicates()
+        for hint in self.hints:
+            if (not hint_to_english(hint) in duplicates):
+                new_list.append(hint)
+        
+        return new_list
+
 
     def mutate(self, add_rate):
         hint_copy = self.hints[:]
@@ -134,7 +165,7 @@ class HintSet:
 
         return HintSet(hints[0:threshold], self.puzzle), HintSet(hints[threshold: len(hints)], self.puzzle)
     
-    def get_hint_counts(self):
+    def get_hint_counts(self, hints):
         total_counts = {
         'is': 0,
         'not': 0,
@@ -143,14 +174,14 @@ class HintSet:
         'compound_or': 0
         }
 
-        for hint in self.hints:
+        for hint in hints:
             kind = next(iter(hint)) 
             total_counts[kind] += 1 
         
         return total_counts 
 
     def hint_ratios(self):
-        counts = self.get_hint_counts() 
+        counts = self.get_hint_counts(self.non_duplicates()) 
         values = list(counts.values())
         pairs = combinations(counts.keys(), 2)
 
@@ -166,7 +197,7 @@ class HintSet:
 
     
     def is_valid(self):
-        return len(self.hints) > 0 and self.completed_puzzle.is_complete()
+        return  len(self.hints) > 0 and self.valid and self.completed_puzzle.is_complete()
 
     def _violations_fun(self, violations):
         if violations > 10:
@@ -193,8 +224,7 @@ class HintSet:
         if len(self.hints) == 0:
             return 0 
         
-        num_loops = max(len(hint_trace) for hint_trace in self.trace.values())
-        return num_loops 
+        return self.loops 
 
     def hint_size(self):
         return len(self.hints)
@@ -210,7 +240,7 @@ class HintSet:
                 rule = list(hint.keys())[0]
             score += HINT_VALUES[rule] 
         
-        num_loops = max(len(hint_trace) for hint_trace in self.trace.values())
+        num_loops = self.loops
        
         # Fn 1: optimize by hint type and number of hints
         # return (0.5 * score / len(self.hints)) + (0.5 * (1 - (len(self.hints) / 20)))

@@ -190,17 +190,50 @@ class Puzzle:
     return_str += bar
 
     return return_str
+  
+  def _print_row_small(self, top_cats, cat2):
+    """
+    return a singular row for the puzzle,
+    given the columns (top_cats) and the row (cat2)
+    should be used internally
+    """
+
+    top_ents = []
+    for cat in top_cats:
+      top_ents += cat.entities
+
+    return_str = ""
+    bar ="-" * (len(top_ents) + len(top_cats) + 1) + "\n"
+    return_str += bar
+
+    grid1 = self.grids[top_cats[0].title + ":" + cat2.title]
+    for i in range(len(grid1)):
+
+      left_ent =  "|"
+      return_str += left_ent
+      for cat in top_cats:
+        row = self.grids[cat.title + ":" + cat2.title][i]
+        row_str ="".join(row) + "|"
+        return_str += row_str
+      return_str += "\n"
 
 
-  def print_row(self, row):
+
+    return return_str
+
+
+  def print_row(self, row, small = False):
     """
     find the top categories and the vertical categories
     for a single row
     """
     left_cat = self.top_buttom[row]
     num_top = len(self.left_right) - row
-    remove_top = row > 0
-    return self._print_row(self.left_right[0:num_top], left_cat, remove_top)
+    if (not small):
+      remove_top = row > 0
+      return self._print_row(self.left_right[0:num_top], left_cat, remove_top)
+    else:
+      return self._print_row_small(self.left_right[0:num_top], left_cat)
 
   def print_grid(self):
     """
@@ -211,6 +244,18 @@ class Puzzle:
     return_str = ""
     for i in range(len(self.top_buttom)):
       return_str += self.print_row(i)
+
+    return return_str
+  
+  def print_grid_small(self):
+    """
+    return the entire puzzle string
+
+    TODO: add category names?
+    """
+    return_str = ""
+    for i in range(len(self.top_buttom)):
+      return_str += self.print_row(i, True)
 
     return return_str
 
