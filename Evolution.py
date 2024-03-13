@@ -148,15 +148,24 @@ class HintSet:
 
     def mutate(self, add_rate):
         hint_copy = self.hints[:]
-        if((decide(add_rate)) and len(hint_copy) <= 20) or  len(hint_copy) <= 0:
+        if((decide(0.45)) and len(hint_copy) <= 20) or  len(hint_copy) <= 0:
             new_hint = generate_hint(self.puzzle)
             hint_copy.append(new_hint)
+        elif (decide(0.1)):
+            self.swap_hints()
         else:
             index = random.randint(0, len(hint_copy) - 1)
             del hint_copy[index] 
             
         
         return HintSet(hint_copy, self.puzzle)
+
+    def swap_hints(self):
+        i = random.randint(0, len(self.hints) - 1)
+        j = random.randint(0, len(self.hints) - 1) 
+        temp = self.hints[i]
+        self.hints[i] = self.hints[j]
+        self.hints[j] = temp 
     
     def cross_over(self, other):
         hints = self.hints[:] + other.hints[:]
@@ -402,12 +411,13 @@ if __name__ == "__main__":
 
     puzzle = Puzzle([suspects, weapons, rooms, time]) 
 
-    #pop = evolve(puzzle, 100,50, 0.2, 1, 0.5, 2) 
-    hints = random_hint_set(puzzle) 
+    pop = evolve(puzzle, 100,50, 0.2, 1, 0.5, 2) 
+    
+    """hints = random_hint_set(puzzle) 
     for hint in hints.hints:
         print(hint)
     
-    print(hints.hint_ratios())
+    print(hints.hint_ratios())"""
     
 # %%
 # if __name__ == "__main__":
