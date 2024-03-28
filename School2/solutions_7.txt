@@ -1,0 +1,1050 @@
+Solution for grid cell [0][0]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    O    X    X  | O    X    X    X  |
+2:0|  O    X    X    X  | X    O    X    X  |
+3:0|  X    X    X    O  | X    X    X    O  |
+4:0|  X    X    O    X  | X    X    O    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [0][1]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [0][2]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [0][3]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [0][4]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [1][0]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    O    X    X  | O    X    X    X  |
+2:0|  O    X    X    X  | X    O    X    X  |
+3:0|  X    X    X    O  | X    X    X    O  |
+4:0|  X    X    O    X  | X    X    O    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [1][1]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [1][2]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [1][3]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [1][4]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [1][5]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    X    X    O  |
+3:0|  X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [1][6]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    X    X    O  |
+3:0|  X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [2][0]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    O    X    X  | O    X    X    X  |
+2:0|  O    X    X    X  | X    O    X    X  |
+3:0|  X    X    X    O  | X    X    X    O  |
+4:0|  X    X    O    X  | X    X    O    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [2][1]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [2][2]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [2][3]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [2][4]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [2][5]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    X    X    O  |
+3:0|  X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [2][6]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    X    X    O  |
+3:0|  X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [2][7]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    X    X    O  |
+3:0|  X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [3][0]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [3][1]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    X    O    X  |
+3:0|  O    X    X    X  | O    X    X    X  |
+4:0|  X    O    X    X  | X    O    X    X  |
+    ----------------------------------------
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [3][2]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    O    X  |
+2:0|  O    X    X    X  | O    X    X    X  |
+3:0|  X    O    X    X  | X    X    X    O  |
+4:0|  X    X    O    X  | X    O    X    X  |
+    ----------------------------------------
+Ms.|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  X    X    X    O  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [3][3]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    X    X    O  |
+3:0|  X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [3][4]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    X    X    O  |
+3:0|  X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [3][5]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    X    X    O  |
+3:0|  X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [3][6]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    X    X    O  |
+3:0|  X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [3][7]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    X    X    O  |
+3:0|  X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [4][0]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    O    X    X  | O    X    X    X  |
+2:0|  O    X    X    X  | X    O    X    X  |
+3:0|  X    X    X    O  | X    X    X    O  |
+4:0|  X    X    O    X  | X    X    O    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [4][1]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    O    X    X  |
+2:0|  X    X    O    X  | X    X    O    X  |
+3:0|  X    O    X    X  | X    X    X    O  |
+4:0|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    X    X    O  |
+Mr.|  O    X    X    X  |
+Ms.|  X    X    O    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [4][2]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [4][3]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [4][4]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [4][5]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [4][6]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    X    X    O  |
+3:0|  X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [4][7]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    X    X    O  |
+3:0|  X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [5][0]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    X    X    O  |
+3:0|  X    X    O    X  | X    O    X    X  |
+4:0|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [5][1]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | O    X    X    X  |
+3:0|  X    X    O    X  | X    O    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [5][2]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    O    X  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    X    O  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  X    X    X    O  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [5][3]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | O    X    X    X  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    X    O  |
+4:0|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Ms.|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+Ms.|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [5][4]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | O    X    X    X  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    X    O  |
+4:0|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Ms.|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+Ms.|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [5][5]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    X    X    O  |
+3:0|  X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [5][6]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    X    X    O  |
+3:0|  X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [5][7]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    X    X    O  |
+3:0|  X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [6][0]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    O    X    X  | O    X    X    X  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    X    O  |
+4:0|  X    X    X    O  | X    X    O    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  X    X    X    O  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [6][1]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    O    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    X    O  |
+4:0|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    X    X    O  |
+Mr.|  X    O    X    X  |
+Ms.|  X    X    O    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [6][2]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [6][3]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [6][4]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [6][5]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [6][6]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    X    X    O  |
+3:0|  X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [6][7]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    X    X    O  |
+3:0|  X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [7][0]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    O    X  | X    O    X    X  |
+2:0|  X    O    X    X  | X    X    O    X  |
+3:0|  O    X    X    X  | X    X    X    O  |
+4:0|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+Ms.|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [7][1]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | O    X    X    X  |
+3:0|  X    X    O    X  | X    O    X    X  |
+4:0|  X    X    X    O  | X    X    X    O  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [7][2]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [7][3]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | O    X    X    X  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | X    X    X    O  |
+    ----------------------------------------
+Ms.|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [7][4]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | O    X    X    X  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    X    O  |
+4:0|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Ms.|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+Ms.|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [7][5]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | O    X    X    X  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | X    X    X    O  |
+    ----------------------------------------
+Ms.|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [8][0]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  X    O    X    X  | X    X    X    O  |
+4:0|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [8][1]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    O    X  | X    O    X    X  |
+2:0|  X    O    X    X  | X    X    O    X  |
+3:0|  O    X    X    X  | X    X    X    O  |
+4:0|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+Ms.|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [8][2]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    O    X    X  |
+3:0|  O    X    X    X  | X    X    O    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+Ms.|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [8][3]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  |
+2:0|  X    O    X    X  | X    O    X    X  |
+3:0|  X    X    X    O  | X    X    X    O  |
+4:0|  X    X    O    X  | X    X    O    X  |
+    ----------------------------------------
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [8][4]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    O    X    X  |
+2:0|  X    O    X    X  | X    X    O    X  |
+3:0|  X    X    X    O  | X    X    X    O  |
+4:0|  X    X    O    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    X    O    X  |
+Mr.|  O    X    X    X  |
+Ms.|  X    O    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [8][5]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | O    X    X    X  |
+2:0|  X    O    X    X  | X    O    X    X  |
+3:0|  X    X    X    O  | X    X    X    O  |
+4:0|  X    X    O    X  | X    X    O    X  |
+    ----------------------------------------
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [9][0]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    O    X  | X    O    X    X  |
+2:0|  X    O    X    X  | X    X    O    X  |
+3:0|  O    X    X    X  | X    X    X    O  |
+4:0|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+Ms.|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [9][1]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  X    X    X    O  | X    X    X    O  |
+2:0|  X    X    O    X  | X    X    O    X  |
+3:0|  O    X    X    X  | X    O    X    X  |
+4:0|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Ms.|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [9][2]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    X    X    O  |
+3:0|  X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [9][3]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    X    X    O  |
+3:0|  X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [9][4]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    X    X    O  |
+3:0|  X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [9][5]
+      Mat  Sci  Eng  His  Ms.  Mr.  Ms.  Mr.
+    ----------------------------------------
+1:0|  O    X    X    X  | X    X    O    X  |
+2:0|  X    O    X    X  | X    X    X    O  |
+3:0|  X    X    O    X  | O    X    X    X  |
+4:0|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Ms.|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+Ms.|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+

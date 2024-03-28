@@ -1,0 +1,481 @@
+Hints for grid cell [0][0]
+	The hour 3:00 PM is the teacher Ms. Smith
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The hour 2:00 PM is not the Math subject
+
+
+Hints for grid cell [0][1]
+	The hour 3:00 PM is the teacher Ms. Smith
+	The subject Math is 1 hours before the teacher Mr. Baker
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	The hour 2:00 PM is not the Mr. Baker teacher
+
+
+Hints for grid cell [0][2]
+	The subject Math is 1 hours before the teacher Mr. Baker
+	The teacher Mr. Johnson is not the Science subject
+	The hour 3:00 PM is the teacher Ms. Smith
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+
+
+Hints for grid cell [0][3]
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The subject History is at least 1 hour before the teacher Mr. Baker
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	The hour 3:00 PM is the teacher Ms. Smith
+	The teacher Ms. Smith is not the 1:00 PM hour
+
+
+Hints for grid cell [0][4]
+	The hour 2:00 PM is not the Ms. Smith teacher
+	The subject History is at least 1 hour before the teacher Mr. Baker
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The teacher Mr. Johnson is the hour 1:00 PM
+
+
+Hints for grid cell [1][0]
+	The hour 3:00 PM is the teacher Ms. Smith
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The hour 2:00 PM is not the Math subject
+	The subject English is the teacher Mr. Baker
+
+
+Hints for grid cell [1][1]
+	The hour 3:00 PM is the teacher Ms. Smith
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The subject Math is 1 hours before the teacher Mr. Baker
+	The teacher Mr. Johnson is not the History subject
+	The teacher Ms. McDonald is 1 hours before the teacher Ms. Smith
+
+
+Hints for grid cell [1][2]
+	The hour 2:00 PM is not the Ms. Smith teacher
+	The subject History is at least 1 hour before the teacher Mr. Baker
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The teacher Mr. Johnson is the hour 1:00 PM
+	The teacher Ms. McDonald is at least 1 hour before the subject History
+
+
+Hints for grid cell [1][3]
+	The hour 2:00 PM is not the Ms. Smith teacher
+	The subject History is at least 1 hour before the teacher Mr. Baker
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The teacher Mr. Johnson is the hour 1:00 PM
+	The subject Science is at least 1 hour before the subject Math
+
+
+Hints for grid cell [1][4]
+	The hour 2:00 PM is not the Ms. Smith teacher
+	The subject History is at least 1 hour before the teacher Mr. Baker
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The teacher Mr. Johnson is the hour 1:00 PM
+	The hour 3:00 PM is not the Science subject
+
+
+Hints for grid cell [1][5]
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	Either the teacher Mr. Baker or the teacher Ms. McDonald is the hour 4:00 PM
+	The subject Math is 1 hours before the teacher Mr. Baker
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	The subject Math is not the 4:00 PM hour
+	The teacher Mr. Baker is the subject History
+	The teacher Ms. Smith is not the 4:00 PM hour
+
+
+Hints for grid cell [2][0]
+	The hour 3:00 PM is the teacher Ms. Smith
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The hour 2:00 PM is not the Math subject
+	Either The hour 2:00 PM is the teacher Mr. Johnson or The hour 1:00 PM is the teacher Mr. Johnson
+	The subject English is the teacher Mr. Baker
+
+
+Hints for grid cell [2][1]
+	The hour 3:00 PM is the teacher Ms. Smith
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The subject Math is 1 hours before the teacher Mr. Baker
+
+
+Hints for grid cell [2][2]
+	The hour 3:00 PM is the teacher Ms. Smith
+	The subject History is at least 1 hour before the teacher Mr. Baker
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+
+
+Hints for grid cell [2][3]
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The subject History is at least 1 hour before the teacher Mr. Baker
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	The hour 3:00 PM is the teacher Ms. Smith
+
+
+Hints for grid cell [2][4]
+	The hour 2:00 PM is not the Ms. Smith teacher
+	The subject History is at least 1 hour before the teacher Mr. Baker
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The teacher Mr. Johnson is the hour 1:00 PM
+	The hour 3:00 PM is not the Science subject
+	Either the teacher Mr. Baker or the teacher Mr. Johnson is the subject English
+
+
+Hints for grid cell [2][5]
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	Either the teacher Mr. Baker or the teacher Ms. McDonald is the hour 4:00 PM
+	The subject Math is 1 hours before the teacher Mr. Baker
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	The subject Math is not the 4:00 PM hour
+	The teacher Mr. Baker is the subject History
+
+
+Hints for grid cell [3][0]
+	The hour 3:00 PM is the teacher Ms. Smith
+	Either The hour 3:00 PM is the teacher Mr. Baker or The teacher Mr. Baker is the hour 4:00 PM
+	The subject Math is 1 hours before the teacher Mr. Baker
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The subject Math is not the Mr. Johnson teacher
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	The teacher Mr. Baker is the subject English
+
+
+Hints for grid cell [3][1]
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	The subject Math is 1 hours before the teacher Mr. Baker
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	The hour 3:00 PM is the teacher Ms. Smith
+	Either The teacher Ms. Smith is the subject History or The teacher Ms. Smith is the hour 3:00 PM
+	Either The subject Science is the teacher Ms. Smith or The subject Math is the teacher Ms. Smith
+	The teacher Mr. Baker is the subject History
+
+
+Hints for grid cell [3][2]
+	Either The hour 2:00 PM is the teacher Mr. Johnson or The subject Math is the hour 2:00 PM
+	The subject Math is 1 hours before the teacher Mr. Baker
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	The subject History is not the Mr. Johnson teacher
+	The hour 2:00 PM is the teacher Mr. Johnson
+	The teacher Ms. McDonald is not the 2:00 PM hour
+
+
+Hints for grid cell [3][3]
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	Either the teacher Mr. Baker or the teacher Ms. McDonald is the hour 4:00 PM
+	The subject Math is 1 hours before the teacher Mr. Baker
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	The subject Science is not the Mr. Baker teacher
+	Either The hour 2:00 PM is the subject English or The hour 2:00 PM is the subject Math
+
+
+Hints for grid cell [3][4]
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	Either the teacher Mr. Baker or the teacher Ms. McDonald is the hour 4:00 PM
+	The subject Math is 1 hours before the teacher Mr. Baker
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	The subject Science is not the Mr. Baker teacher
+	Either The subject Science is the teacher Ms. McDonald or The hour 1:00 PM is the subject Science
+
+
+Hints for grid cell [3][5]
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	Either the teacher Mr. Baker or the teacher Ms. McDonald is the hour 4:00 PM
+	The subject Math is 1 hours before the teacher Mr. Baker
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	The teacher Mr. Johnson is not the Science subject
+	The hour 2:00 PM is not the History subject
+
+
+Hints for grid cell [4][0]
+	The hour 2:00 PM is the teacher Mr. Johnson
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	The subject History is not the Mr. Johnson teacher
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The subject English is 2 hours before the teacher Ms. Smith
+
+
+Hints for grid cell [4][1]
+	The hour 3:00 PM is the teacher Ms. Smith
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The subject Math is 1 hours before the teacher Mr. Baker
+	Either The hour 2:00 PM is the teacher Mr. Johnson or The subject Science is the teacher Ms. McDonald
+
+
+Hints for grid cell [4][2]
+	The teacher Mr. Johnson is not the Science subject
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	The subject Math is 1 hours before the teacher Mr. Baker
+
+
+Hints for grid cell [4][3]
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The subject Math is 1 hours before the teacher Mr. Baker
+	The teacher Mr. Johnson is not the History subject
+	The teacher Ms. McDonald is 1 hours before the teacher Ms. Smith
+
+
+Hints for grid cell [4][4]
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The subject Math is 1 hours before the teacher Mr. Baker
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	The teacher Mr. Johnson is not the Science subject
+
+
+Hints for grid cell [4][5]
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	Either the teacher Mr. Baker or the teacher Ms. McDonald is the hour 4:00 PM
+	The subject Math is 1 hours before the teacher Mr. Baker
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	The teacher Mr. Johnson is not the Science subject
+
+
+Hints for grid cell [5][0]
+	The subject Math is the hour 2:00 PM
+	The subject Math is 1 hours before the teacher Mr. Baker
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The subject History is at least 1 hour before the teacher Mr. Baker
+	The teacher Ms. Smith is the subject History
+
+
+Hints for grid cell [5][1]
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	The subject Math is 1 hours before the teacher Mr. Baker
+	Either The teacher Mr. Johnson is the hour 4:00 PM or The teacher Mr. Johnson is the subject English
+
+
+Hints for grid cell [5][2]
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	Either The teacher Mr. Johnson is the hour 4:00 PM or The teacher Mr. Johnson is the subject English
+	The subject Math is the hour 2:00 PM
+	The subject History is at least 1 hour before the teacher Mr. Baker
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+
+
+Hints for grid cell [5][3]
+	Either The hour 4:00 PM is the teacher Mr. Johnson or The subject English is the hour 1:00 PM
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	Either the teacher Mr. Baker or the teacher Ms. McDonald is the hour 3:00 PM
+	The subject Math is 1 hours before the teacher Mr. Baker
+
+
+Hints for grid cell [5][4]
+	The subject Math is 1 hours before the teacher Mr. Baker
+	Either The hour 4:00 PM is the teacher Mr. Johnson or The subject English is the hour 1:00 PM
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The hour 4:00 PM is not the Math subject
+
+
+Hints for grid cell [5][5]
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	Either the teacher Mr. Baker or the teacher Ms. McDonald is the hour 4:00 PM
+	The subject Math is 1 hours before the teacher Mr. Baker
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+
+
+Hints for grid cell [6][0]
+	The subject English is the hour 1:00 PM
+	The hour 2:00 PM is the teacher Mr. Johnson
+	Either the hour 3:00 PM or the hour 2:00 PM is the teacher Ms. Smith
+	The subject Math is the hour 2:00 PM
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+
+
+Hints for grid cell [6][1]
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	The subject Math is 1 hours before the teacher Mr. Baker
+
+
+Hints for grid cell [6][2]
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	The subject Math is 1 hours before the teacher Mr. Baker
+
+
+Hints for grid cell [6][3]
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	The subject Math is 1 hours before the teacher Mr. Baker
+	The hour 3:00 PM is the subject History
+
+
+Hints for grid cell [6][4]
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The subject Math is 1 hours before the teacher Mr. Baker
+	Either the subject English or the teacher Ms. Smith is the hour 1:00 PM
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+
+
+Hints for grid cell [6][5]
+	The subject History is at least 1 hour before the teacher Mr. Baker
+	The subject Math is 1 hours before the teacher Mr. Baker
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	Either the teacher Mr. Baker or the teacher Ms. McDonald is the hour 3:00 PM
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+
+
+Hints for grid cell [7][0]
+	The hour 2:00 PM is the teacher Mr. Johnson
+	The hour 3:00 PM is the teacher Ms. Smith
+	The subject English is the hour 1:00 PM
+	The subject Math is the hour 2:00 PM
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The hour 2:00 PM is not the Ms. Smith teacher
+
+
+Hints for grid cell [7][1]
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	Either The hour 4:00 PM is the teacher Mr. Johnson or The subject English is the hour 1:00 PM
+	The subject Math is 1 hours before the teacher Mr. Baker
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+
+
+Hints for grid cell [7][2]
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	Either The hour 4:00 PM is the teacher Mr. Johnson or The subject English is the hour 1:00 PM
+	The subject Math is 1 hours before the teacher Mr. Baker
+
+
+Hints for grid cell [7][3]
+	The subject Math is 1 hours before the teacher Mr. Baker
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	Either The hour 4:00 PM is the teacher Mr. Johnson or The subject English is the hour 1:00 PM
+
+
+Hints for grid cell [7][4]
+	The subject Math is 1 hours before the teacher Mr. Baker
+	Either The hour 4:00 PM is the teacher Mr. Johnson or The subject English is the hour 1:00 PM
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+
+
+Hints for grid cell [7][5]
+	The subject Science is 1 hours before the subject English
+	The subject Math is 1 hours before the teacher Mr. Baker
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	Either the teacher Mr. Baker or the teacher Ms. McDonald is the hour 3:00 PM
+	Either the hour 3:00 PM or the hour 1:00 PM is the subject Math
+	Either the subject Math or the subject English is the hour 3:00 PM
+
+
+Hints for grid cell [8][0]
+	The hour 3:00 PM is the teacher Ms. Smith
+	Either The hour 3:00 PM is the teacher Mr. Baker or The teacher Mr. Baker is the hour 4:00 PM
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+	The subject Math is the hour 2:00 PM
+	Either The hour 3:00 PM is the subject English or The subject History is the teacher Ms. McDonald
+
+
+Hints for grid cell [8][1]
+	The subject Math is the hour 2:00 PM
+	The subject Math is 1 hours before the teacher Mr. Baker
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	The subject Science is 1 hours before the subject English
+
+
+Hints for grid cell [8][2]
+	The subject Math is 1 hours before the teacher Mr. Baker
+	The subject Science is 1 hours before the subject English
+	The subject Math is the hour 2:00 PM
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+
+
+Hints for grid cell [8][3]
+	The subject Math is 1 hours before the teacher Mr. Baker
+	The subject Science is 1 hours before the subject English
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	The hour 3:00 PM is the teacher Ms. Smith
+
+
+Hints for grid cell [8][4]
+	The subject Science is 1 hours before the subject English
+	The subject Math is 1 hours before the teacher Mr. Baker
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	The hour 3:00 PM is the teacher Ms. Smith
+
+
+Hints for grid cell [8][5]
+	The subject Science is 1 hours before the subject English
+	The subject Math is 1 hours before the teacher Mr. Baker
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	Either the teacher Mr. Baker or the teacher Ms. McDonald is the hour 3:00 PM
+	Either the hour 3:00 PM or the hour 1:00 PM is the subject Math
+
+
+Hints for grid cell [9][0]
+	The hour 2:00 PM is the teacher Mr. Johnson
+	The hour 3:00 PM is the teacher Ms. Smith
+	The subject English is the hour 1:00 PM
+	The subject Math is the hour 2:00 PM
+	Either The hour 2:00 PM is the teacher Mr. Baker or The subject Science is the teacher Ms. McDonald
+
+
+Hints for grid cell [9][1]
+	The subject Math is 1 hours before the teacher Mr. Baker
+	The teacher Mr. Johnson is 2 hours before the subject Math
+	The subject Science is 1 hours before the subject English
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+
+
+Hints for grid cell [9][2]
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	The subject Science is 1 hours before the subject English
+	The teacher Mr. Johnson is 2 hours before the subject Math
+	The subject Math is 1 hours before the teacher Mr. Baker
+
+
+Hints for grid cell [9][3]
+	The subject Science is 1 hours before the subject English
+	The subject Math is 1 hours before the teacher Mr. Baker
+	The subject History is at least 1 hour before the teacher Mr. Baker
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+
+
+Hints for grid cell [9][4]
+	The subject History is at least 1 hour before the teacher Mr. Baker
+	The subject Math is 1 hours before the teacher Mr. Baker
+	The subject Science is 1 hours before the subject English
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+
+
+Hints for grid cell [9][5]
+	The subject History is at least 1 hour before the teacher Mr. Baker
+	The teacher Mr. Johnson is 1 hours before the teacher Ms. Smith
+	The subject Math is 1 hours before the teacher Mr. Baker
+	The subject Science is 1 hours before the subject English
+
+
