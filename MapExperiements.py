@@ -2,22 +2,21 @@ from MapElites import evolve
 from LogicPuzzles import Puzzle, Category 
 import jsonpickle
 import random
-suspects = Category("suspect", ["Ms. Scarlet", "Mrs. White", "Col. Mustard", "Prof. Plum"], False)
-weapons = Category("weapon", ["Knife", "Rope", "Candlestick", "Wrench"], False)
-rooms = Category("room", ["Ballroom", "Living Room", "Kitchen", "Study"], False)
-time = Category("hour", ["1:00", "2:00", "3:00", "4:00"], True)
+subject = Category("subject", ["Math", "Science", "English", "History"], False)
+teacher = Category("teacher", ["Ms. Smith", "Mr. Johnson", "Ms. McDonald", "Mr. Baker"], False)
+time = Category("hour", ["1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"], True)
 
-puzzle = Puzzle([suspects, weapons, rooms, time]) 
+puzzle = Puzzle([subject, teacher, time]) 
 
-folder = "MapElites10k"
-starting = 10
-num_trials = 15
-gen_len = 10000 
-pop_size = 100
+folder = "school3"
+starting = 4
+num_trials = 10
+gen_len = 3000 
+pop_size = 300
 mut_rate = 0.8 
-x_rate = 0.3 
+x_rate = 0.6
 add_rate = 0.5 
-elits = 5
+elits = 10
 
 for trial in range(starting, num_trials):
     random.seed(trial)

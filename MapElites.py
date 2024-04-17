@@ -40,20 +40,25 @@ def decide(rate):
 
 class EliteGrid:
 
-    def __init__(self, width, height):
+    def __init__(self, width):
         self.width = width 
-        self.height = height 
         self.grid = []
         self.total_children = []
-        for i in range(height):
-            row = []
-            total_row = []
-            for j in range(width):
-                row.append(None)
-                total_row.append(0)
-            self.grid.append(row)
-            self.total_children.append(total_row)
+        self.solutions = {}
         self.pop_size = 0 
+        self.height = 0 
+
+    
+    def add_row(self):
+        row = []
+        total_row = []
+        for j in range(self.width):
+            row.append(None)
+            total_row.append(0)
+        self.grid.append(row)
+        self.total_children.append(total_row)
+        self.height += 1 
+        return self.height - 1 
     
     def select(self):
         if(self.pop_size == 0):
@@ -71,9 +76,18 @@ class EliteGrid:
         increments = 1 / self.height 
         return math.floor(value / increments)
     
+    def get_row(self, hint_set):
+        solution = hint_set.completed_puzzle.print_grid_small() 
+        if solution in self.solutions:
+            return self.solutions[solution]
+        else:
+            row =  self.add_row()
+            self.solutions[solution] = row 
+            return row
+    
     def add_child(self, hint_set):
 
-        row = min(self._choose_index(hint_set.hint_ratios()), self.height - 1)
+        row = self.get_row(hint_set)
         col = min((hint_set.solver_loops() - 1), self.width - 1)
 
         self.total_children[row][col] += 1 
@@ -81,8 +95,10 @@ class EliteGrid:
     
 
         if self.grid[row][col] == None or hint_set.hint_size() <= self.grid[row][col][0]:
+            if self.grid[row][col] == None: 
+                self.pop_size += 1 
             self.grid[row][col] = (hint_set.hint_size(), hint_set)
-            self.pop_size += 1 
+
     
     def get_fitness_grid(self):
         fit_grid = []
@@ -99,6 +115,32 @@ class EliteGrid:
     def print_fit_grid(self):
         fit_grid = self.get_fitness_grid()
         for row in fit_grid:
+            row = [str(val).rjust(2) for val in row]
+            print(row)
+
+    
+    def get_largest_rows(self):
+        largest_rows = [] 
+        least_empty =self.width 
+        fit_grid = self.get_fitness_grid()
+        for i in range(self.height):
+            row = fit_grid[i]
+            empty = row.count(-1)
+
+            if empty < least_empty:
+                largest_rows = [row]
+                least_empty = empty 
+            elif empty == least_empty:
+                largest_rows.append(row) 
+        return largest_rows
+            
+    
+    def print_progress(self):
+        print("Stats:")
+        print("\t Height:{}".format(self.height))
+        print("\t Total pop:{}".format(self.pop_size))
+
+        for row in self.get_largest_rows():
             row = [str(val).rjust(2) for val in row]
             print(row)
 
@@ -148,7 +190,7 @@ def _add_child(hints, feasible_grid, infeasible):
         infeasible.append((fitness, hints)) 
 
 def evolve(puzzle, generations, pop_size, x_rate, mut_rate, add_rate, elits):
-    feasible_grid = EliteGrid(10, 10) 
+    feasible_grid = EliteGrid(10) 
     infeasible = []
     history = History()
 
@@ -179,7 +221,7 @@ def evolve(puzzle, generations, pop_size, x_rate, mut_rate, add_rate, elits):
    
             print("feasible:")
     
-            feasible_grid.print_fit_grid()
+            feasible_grid.print_progress()
             print("-"* 80)
 
         # elitism 
