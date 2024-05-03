@@ -25,22 +25,31 @@ def hintset_to_json(hintset, file_path, id):
 
 
 if __name__ == "__main__":
-    file = "School2/map_grid_trial_7.p"
+    file = "school3/map_grid_trial_0.p"
     write_to = "example.json"
     json_str = open( file, "r").read()
     grid = jsonpickle.decode(json_str) 
     child = grid.grid[0][0]
-    i = 0 
+
+    fitness_grid = grid.get_fitness_grid()
     puzzle_index = {}
+    i = 0 
+    columns = (0, 1, 3, 5)
     for row in range(grid.height):
-        for col in range(grid.width):
-            child = grid.grid[row][col]
-            if(not child is None):
-                newFilePath = "School2/puzzle_" + str(i) +".json"
-                hintset_to_json(child[1], newFilePath, i)
-                puzzle_index[i] = {"gini": row, "loops": col, "hintset": child[1]}
-                i += 1 
+            children = []
+            for col in columns:
+                child = grid.grid[row][col]
+                if(not child is None):
+                    children.append((col, grid.grid[row][col])) 
+            
+            if(len(children) == len(columns)):
+                for col, child in children: 
+                    newFilePath = "school3/puzzle_" + str(row) + "_"  + str(col) +".json"
+                    hintset_to_json(child[1], newFilePath, i)
+                    puzzle_index[i] = {"solution": row, "loops": col, "hintset": child[1]} 
+                    i += 1 
+
     
     puzzle_json = jsonpickle.encode(puzzle_index)
-    open("School2/puzzleIndex.json", "w").write(puzzle_json)
+    open("School3/puzzleIndex.json", "w").write(puzzle_json)
 

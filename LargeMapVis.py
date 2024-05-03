@@ -83,6 +83,38 @@ def solutions_with_n(grid, n =3):
             children.append(children_grid[i])
     return fitness, children
 
+
+def solution_dict(grid, n =3, di = {}): 
+    fitness_grid = grid.get_fitness_grid()
+
+    for i in range(len(fitness_grid)):
+        row = fitness_grid[i]
+        
+        
+        num_empty = row.count(-1)
+        num_filled = len(row) - num_empty 
+
+        if(num_filled >= n):
+            j = 0 
+            while (grid.grid[i][j] is None):
+                j += 1 
+            hint_set = grid.grid[i][j][1] 
+            solution = hint_set.completed_puzzle.print_grid_small() 
+            if(solution in di):
+                di[solution] += 1 
+            else:
+                di[solution] = 1 
+    return di
+
+
+def top_solutions(grids, n=5):
+    di = {}
+    for grid in grids:
+        di = solution_dict(grid, n, di)
+    
+    return di 
+
+
 def num_puzzles(grid): 
     fitness_grid = grid.get_fitness_grid()
 
@@ -180,7 +212,16 @@ if __name__ == "__main__":
 
     grids = get_grids(folder, trials)
 
-    fitness, children = solutions_with_n(grids[1], n=5)
+    top_sols = top_solutions(grids, n=5)
+
+    for sol, amount in top_sols.items():
+        if(amount >= 4):
+            print(amount)
+            print(sol)
+            print("\n\n")
+
+
+    """fitness, children = solutions_with_n(grids[1], n=5)
     heat_map(fitness, True, title = "Average Hint Size for Solutions 5 or more puzzles", ylabel="Solution", xlabel="Solver loops", colorbar_label="Hint Size", vmin=3)
     heat_map(children, True, title = "Average Children  for Solutions 5 or more puzzles", ylabel="Solution", xlabel="Solver loops", colorbar_label="Children Produced", vmin=1)
     puzzle_lengths = num_puzzles(grids[1])
@@ -191,7 +232,7 @@ if __name__ == "__main__":
     plt.title("Histogram of puzzles found by solution")
     plt.bar(labels, counts, align='center')
     plt.gca().set_xticks(labels)
-    plt.show()
+    plt.show()"""
 
     """"agg_grid = get_loop_hint_size(folder, trials)
     

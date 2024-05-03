@@ -1,0 +1,8 @@
+user,puzzle,loops,attempts,num_incorrect,num_correct,is_correct,total_time,user_category,challenge_scale,enjoyment_scale
+n0P9Yrxz4sM5R9dmbPgdEznnRNA2,3,5,1,0,47,True,286220,expert,5.0,7.75
+assW8MIiz9YhYNoKMWZVbB0r2K52,0,0,6,11,3,False,378711,intermediate,-1,-1
+assW8MIiz9YhYNoKMWZVbB0r2K52,7,5,1,0,11,False,186706,intermediate,3.3333333333333335,5.0
+n0P9Yrxz4sM5R9dmbPgdEznnRNA2,5,1,1,0,48,True,362254,expert,4.666666666666667,7.75
+assW8MIiz9YhYNoKMWZVbB0r2K52,1,1,2,1,1,False,23350,intermediate,3.1666666666666665,5.0
+n0P9Yrxz4sM5R9dmbPgdEznnRNA2,14,3,1,0,43,True,239992,expert,3.3333333333333335,5.75
+n0P9Yrxz4sM5R9dmbPgdEznnRNA2,8,0,1,0,42,True,174521,expert,1.0,3.5

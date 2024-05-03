@@ -162,7 +162,9 @@ def first_feasible(histories):
     return sum(first_feasible) / len(first_feasible), min(first_feasible), max(first_feasible)
 
 
-def process_folder(experiement_folder, num_trials):
+
+
+def process_folder(experiement_folder, num_trials, skip_trial = []):
     histories = [] 
     feasible_pops = [] 
     infeasible_pops =[]
@@ -212,168 +214,169 @@ def process_folder(experiement_folder, num_trials):
     }
 
     for i in range(num_trials): 
-        feasible, infeasible, history = pickle.load( open(experiement_folder + "/pop" + str(i) + ".p", "rb" ) )
-        histories.append(history)
-        if len(feasible) > 0: 
-            feasible_pops.append(feasible[0])
-        if len(infeasible) > 0: 
-            infeasible_pops.append(infeasible[0])
-    
-    set_font_sizes(18, 20, 22) 
-    fes_average, infes_average = plot_histories(histories, experiement_folder) 
-    avg_first, min_first, max_first = first_feasible(histories) 
-
-    set_font_sizes(14, 16, 18) 
-
-    data_file = open(experiement_folder + "/data.txt", "w")
-    data_file.write("Average first feasible solution found in the {} generation \n".format(avg_first + 1))
-    data_file.write("Min first feasible solution found in the {} generation \n".format(min_first + 1))
-    data_file.write("Max first feasible solution found in the {} generation \n".format(max_first + 1))
-
-
-
-    data_file.write("\n\nAverage Feasible Fitness in Generation 500:{}\n".format(fes_average[-1]))
-    data_file.write("Average Infeasible Fitness in Generation 500:{}\n".format(infes_average[-1]))
-
-    data_file.write("\n\nAverage Feasible Fitness for all gens:{}\n".format(fes_average))
-    data_file.write("Average Infeasible Fitness for all gens:{}\n".format(infes_average))
-
-    
-
-    hint_file = open(experiement_folder + "/hints.txt", "w")
-    sol_file = open(experiement_folder + "/solutions.txt", "w")
-    num = 1 
-
-    for fitness, hint_set in feasible_pops: 
-        hints = hint_set.hints 
-
-        hint_set_trace = {}
-        try:
-            hint_set_trace = hint_set.trace
-        except AttributeError:
-            suspects = Category("suspect", ["Ms. carlet", "Mrs. White", "Col. Mustard", "Prof. Plum"], False)
-            weapons = Category("weapon", ["Knife", "Rope", "Candle Stick", "Wrench"], False)
-            rooms = Category("room", ["Ball room", "Living Room", "Kitchen", "Study"], False)
-            time = Category("hour", ["1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"], True)
-
-            puzzle = Puzzle([suspects, weapons, rooms, time]) 
-            _, hint_set_trace = apply_hints(puzzle, hints)
-
-        loops = max(len(hint_trace) for hint_trace in hint_set_trace.values())
-        per_puzzle_loops.append(loops)
+        if(not i in skip_trial):
+            feasible, infeasible, history = pickle.load( open(experiement_folder + "/pop" + str(i) + ".p", "rb" ) )
+            histories.append(history)
+            if len(feasible) > 0: 
+                feasible_pops.append(feasible[0])
+            if len(infeasible) > 0: 
+                infeasible_pops.append(infeasible[0])
         
-        duplicate_counts = {}
-        types_counts = {
-            'is': 0,
-            'not': 0,
-            'before': 0,
-            'simple_or': 0,
-            'compound_or': 0
-        }
-        hint_file.write("Hints for puzzle:{}\n".format(num))
-        hint_num = 1 
-        for hint in hints:
-            english = hint_to_english(hint)
-            hint_file.write("\t{}. {}\n".format(hint_num, english))
-            hint_num += 1 
+            set_font_sizes(18, 20, 22) 
+            fes_average, infes_average = plot_histories(histories, experiement_folder) 
+            avg_first, min_first, max_first = first_feasible(histories) 
 
-            if english in duplicate_counts:
-                duplicate_counts[english] += 1
-            else:
-                duplicate_counts[english] = 0
+            set_font_sizes(14, 16, 18) 
 
-                #type anal 
-                kind = next(iter(hint)) 
-                types_counts[kind] += 1           
-                total_counts[kind] += 1 
+            data_file = open(experiement_folder + "/data.txt", "w")
+            data_file.write("Average first feasible solution found in the {} generation \n".format(avg_first + 1))
+            data_file.write("Min first feasible solution found in the {} generation \n".format(min_first + 1))
+            data_file.write("Max first feasible solution found in the {} generation \n".format(max_first + 1))
 
-                if english.find("hour") != -1:
-                    numeric_counts[kind] += 1
 
-                trace_key = str_hint(hint)
-                trace = hint_set_trace[trace_key]
-                while len(hint_type_loops[kind]) < loops:
+
+            data_file.write("\n\nAverage Feasible Fitness in Generation 500:{}\n".format(fes_average[-1]))
+            data_file.write("Average Infeasible Fitness in Generation 500:{}\n".format(infes_average[-1]))
+
+            data_file.write("\n\nAverage Feasible Fitness for all gens:{}\n".format(fes_average))
+            data_file.write("Average Infeasible Fitness for all gens:{}\n".format(infes_average))
+
+            
+
+            hint_file = open(experiement_folder + "/hints.txt", "w")
+            sol_file = open(experiement_folder + "/solutions.txt", "w")
+            num = 1 
+
+            for fitness, hint_set in feasible_pops: 
+                hints = hint_set.hints 
+
+                hint_set_trace = {}
+                try:
+                    hint_set_trace = hint_set.trace
+                except AttributeError:
+                    suspects = Category("suspect", ["Ms. carlet", "Mrs. White", "Col. Mustard", "Prof. Plum"], False)
+                    weapons = Category("weapon", ["Knife", "Rope", "Candle Stick", "Wrench"], False)
+                    rooms = Category("room", ["Ball room", "Living Room", "Kitchen", "Study"], False)
+                    time = Category("hour", ["1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"], True)
+
+                    puzzle = Puzzle([suspects, weapons, rooms, time]) 
+                    _, hint_set_trace = apply_hints(puzzle, hints)
+
+                loops = max(len(hint_trace) for hint_trace in hint_set_trace.values())
+                per_puzzle_loops.append(loops)
+                
+                duplicate_counts = {}
+                types_counts = {
+                    'is': 0,
+                    'not': 0,
+                    'before': 0,
+                    'simple_or': 0,
+                    'compound_or': 0
+                }
+                hint_file.write("Hints for puzzle:{}\n".format(num))
+                hint_num = 1 
+                for hint in hints:
+                    english = hint_to_english(hint)
+                    hint_file.write("\t{}. {}\n".format(hint_num, english))
+                    hint_num += 1 
+
+                    if english in duplicate_counts:
+                        duplicate_counts[english] += 1
+                    else:
+                        duplicate_counts[english] = 0
+
+                        #type anal 
+                        kind = next(iter(hint)) 
+                        types_counts[kind] += 1           
+                        total_counts[kind] += 1 
+
+                        if english.find("hour") != -1:
+                            numeric_counts[kind] += 1
+
+                        trace_key = str_hint(hint)
+                        trace = hint_set_trace[trace_key]
+                        while len(hint_type_loops[kind]) < loops:
+                            hint_type_loops[kind].append(0)
+                        for l in trace:
+                            hint_type_loops[kind][l-1] += 1
+
+                hint_file.write("\n\n")
+
+                num_duplicates = sum(duplicate_counts.values())
+                total_duplicates += num_duplicates
+                per_puzzle_duplicates.append(num_duplicates)
+
+                size = len(hints) - num_duplicates
+                hint_sizes.append(size) 
+                
+                for key in types_counts: 
+                    count = types_counts[key]
+                    pct = count/(size)
+                    per_puzzle_counts[key].append(count)
+                    per_puzzle_pcts[key].append(pct)
+                
+                
+                sol_file.write("Solution for puzzle:{}\n".format(num))
+                sol_file.write(hint_set.completed_puzzle.print_grid())
+                sol_file.write("\n\n")
+
+                num+=1 
+
+            data_file.write("\n\nAverage clue length:{}".format(sum(hint_sizes) / len(hint_sizes)))
+            data_file.write("\nMin clue size:{}".format(min(hint_sizes)))
+            data_file.write("\nMax Clue Size:{}".format(max(hint_sizes)))
+
+            data_file.write("\n\nAverage num loops:{}".format(sum(per_puzzle_loops) / len(per_puzzle_loops)))
+            data_file.write("\nMin num loops:{}".format(min(per_puzzle_loops)))
+            data_file.write("\nMax num loops:{}".format(max(per_puzzle_loops)))
+
+            data_file.write("\n\nTotal Clue Amounts")
+            for key in total_counts:
+                data_file.write("\n\t{}:{}".format(key, total_counts[key]))
+            
+            data_file.write("\n\nAverages")
+            hint_type_averages = {}
+            for key in total_counts:
+                key_avg = total_counts[key]/len(feasible_pops)
+                hint_type_averages[key] = key_avg
+                data_file.write("\n\t{}:{}".format(key, key_avg))
+            plot_hint_type_averages(hint_type_averages, experiement_folder)
+            #plot_type_vs_loops(per_puzzle_loops, per_puzzle_pcts, experiement_folder)
+
+            data_file.write("\n\nPercent Numeric")
+            count_numeric_overall = sum(numeric_counts.values())
+            count_overall = sum(total_counts.values())
+            data_file.write("\n\tOverall: {}".format(count_numeric_overall/count_overall))
+            for key in total_counts:
+                numeric_pct = numeric_counts[key]/total_counts[key]
+                data_file.write("\n\t{}:{}".format(key, numeric_pct))
+
+            #plot_numeric_hint_types(total_counts, numeric_counts, experiement_folder)
+
+            for kind in hint_type_loops.keys():
+                while len(hint_type_loops[kind]) < max(per_puzzle_loops):
                     hint_type_loops[kind].append(0)
-                for l in trace:
-                    hint_type_loops[kind][l-1] += 1
+            plot_types_over_solve_time(hint_type_loops, experiement_folder)
+            
+            # data_file.write("\n\nClues per Puzzle when Hint Type is included")
+            # for key in per_puzzle_counts:
+            #     avg = sum(per_puzzle_counts[key]) / len(per_puzzle_counts[key])
+            #     data_file.write("\n\t{}:{}".format(key, avg))
+            
+            data_file.write("\n\nTotal duplicates:{}".format(total_duplicates))
+            data_file.write("\nAverage duplicates:{}".format(sum(per_puzzle_duplicates) / len(per_puzzle_duplicates)))
+            data_file.write("\nMin duplicates:{}".format(min(per_puzzle_duplicates)))
+            data_file.write("\nMax duplicates:{}".format(max(per_puzzle_duplicates)))
+            
+            data_file.close()
+            
+            hint_file.close()
+            sol_file.close()
 
-        hint_file.write("\n\n")
-
-        num_duplicates = sum(duplicate_counts.values())
-        total_duplicates += num_duplicates
-        per_puzzle_duplicates.append(num_duplicates)
-
-        size = len(hints) - num_duplicates
-        hint_sizes.append(size) 
-        
-        for key in types_counts: 
-            count = types_counts[key]
-            pct = count/(size)
-            per_puzzle_counts[key].append(count)
-            per_puzzle_pcts[key].append(pct)
-        
-        
-        sol_file.write("Solution for puzzle:{}\n".format(num))
-        sol_file.write(hint_set.completed_puzzle.print_grid())
-        sol_file.write("\n\n")
-
-        num+=1 
-
-    data_file.write("\n\nAverage clue length:{}".format(sum(hint_sizes) / len(hint_sizes)))
-    data_file.write("\nMin clue size:{}".format(min(hint_sizes)))
-    data_file.write("\nMax Clue Size:{}".format(max(hint_sizes)))
-
-    data_file.write("\n\nAverage num loops:{}".format(sum(per_puzzle_loops) / len(per_puzzle_loops)))
-    data_file.write("\nMin num loops:{}".format(min(per_puzzle_loops)))
-    data_file.write("\nMax num loops:{}".format(max(per_puzzle_loops)))
-
-    data_file.write("\n\nTotal Clue Amounts")
-    for key in total_counts:
-        data_file.write("\n\t{}:{}".format(key, total_counts[key]))
-    
-    data_file.write("\n\nAverages")
-    hint_type_averages = {}
-    for key in total_counts:
-        key_avg = total_counts[key]/len(feasible_pops)
-        hint_type_averages[key] = key_avg
-        data_file.write("\n\t{}:{}".format(key, key_avg))
-    plot_hint_type_averages(hint_type_averages, experiement_folder)
-    #plot_type_vs_loops(per_puzzle_loops, per_puzzle_pcts, experiement_folder)
-
-    data_file.write("\n\nPercent Numeric")
-    count_numeric_overall = sum(numeric_counts.values())
-    count_overall = sum(total_counts.values())
-    data_file.write("\n\tOverall: {}".format(count_numeric_overall/count_overall))
-    for key in total_counts:
-        numeric_pct = numeric_counts[key]/total_counts[key]
-        data_file.write("\n\t{}:{}".format(key, numeric_pct))
-
-    #plot_numeric_hint_types(total_counts, numeric_counts, experiement_folder)
-
-    for kind in hint_type_loops.keys():
-        while len(hint_type_loops[kind]) < max(per_puzzle_loops):
-            hint_type_loops[kind].append(0)
-    plot_types_over_solve_time(hint_type_loops, experiement_folder)
-    
-    # data_file.write("\n\nClues per Puzzle when Hint Type is included")
-    # for key in per_puzzle_counts:
-    #     avg = sum(per_puzzle_counts[key]) / len(per_puzzle_counts[key])
-    #     data_file.write("\n\t{}:{}".format(key, avg))
-    
-    data_file.write("\n\nTotal duplicates:{}".format(total_duplicates))
-    data_file.write("\nAverage duplicates:{}".format(sum(per_puzzle_duplicates) / len(per_puzzle_duplicates)))
-    data_file.write("\nMin duplicates:{}".format(min(per_puzzle_duplicates)))
-    data_file.write("\nMax duplicates:{}".format(max(per_puzzle_duplicates)))
-    
-    data_file.close()
-    
-    hint_file.close()
-    sol_file.close()
-
-    # fitness plots 
+            # fitness plots 
     
     
 
 if __name__ == "__main__":
-    process_folder("DifficultyOnly", 30)
+    process_folder("DifficultyOnly", 30, skip_trial=[5, 7, ])
     #rocess_folder("Hints-And-Difficulty", 30)

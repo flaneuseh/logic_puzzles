@@ -148,14 +148,15 @@ class HintSet:
 
     def mutate(self, add_rate):
         hint_copy = self.hints[:]
-        if((decide(0.45)) and len(hint_copy) <= 20) or  len(hint_copy) <= 0:
+        roll = random.random()
+        if((roll < 0.45) and len(hint_copy) <= 20) or  len(hint_copy) <= 0:
             new_hint = generate_hint(self.puzzle)
             hint_copy.append(new_hint)
-        elif (decide(0.1)):
-            self.swap_hints()
-        else:
+        elif (roll < 0.90):
             index = random.randint(0, len(hint_copy) - 1)
             del hint_copy[index] 
+        else:
+            self.swap_hints()
             
         
         return HintSet(hint_copy, self.puzzle)
