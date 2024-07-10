@@ -4,6 +4,68 @@ import matplotlib as mpl
 import seaborn as sns
 import numpy as np
 from HintToEnglish import hint_to_english 
+from DataVisualization import create_agg_plot
+from colorPalette import COLOR1, COLOR3, COLOR4,  COLOR5, COLORS 
+
+def average_grid(map_grid):
+    s = 0 
+    l = 0 
+    for row in range(len(map_grid)):
+        for col in range(len(map_grid[0])):
+            child = map_grid[row][col]            
+            if( child != -1):
+
+                l += 1
+                s += child 
+    return s / l  
+
+def count_grid(map_grid):
+    s = 0 
+    l = 0 
+    for row in range(len(map_grid)):
+        for col in range(len(map_grid[0])):
+            child = map_grid[row][col]            
+            if( child != -1):
+                l += 1 
+    return l  
+
+def difficult_lengths(map_grid):
+    lengths = [0] * 10 
+    for row in range(len(map_grid)):
+        l = 0 
+        for col in range(len(map_grid[0])):
+            child = map_grid[row][col]            
+            if( child != -1):
+                l += 1 
+        lengths[l] += 1 
+    return lengths  
+
+def history_average(histories):
+    hint_averages = []
+    for history in histories:
+        grids = history.elit_grids 
+        averages = [average_grid(grid) for grid in grids]
+        hint_averages.append(averages)
+    return hint_averages 
+
+def history_counts(histories):
+    hint_averages = []
+    for history in histories:
+        grids = history.elit_grids 
+        averages = [count_grid(grid) for grid in grids]
+        hint_averages.append(averages)
+    return hint_averages 
+
+def history_num_solutions(histories):
+    hint_averages = []
+    for history in histories:
+        grids = history.elit_grids 
+        averages = [len(grid) for grid in grids]
+        hint_averages.append(averages)
+    return hint_averages 
+
+
+
 def heat_map(grid, reverse, title = "", xlabel = "", ylabel = "", colorbar_label="", vmin = 0):
     
     # create the value mask
@@ -137,6 +199,14 @@ def get_grids(folder, trial_size):
         grid = jsonpickle.decode(json) 
         grids.append(grid)
     return grids 
+
+def get_histories(folder, trial_size):
+    grids = []
+    for trial in range(trial_size):
+        json = open( folder + "/history_trial_{}.p".format(trial), "r").read()
+        grid = jsonpickle.decode(json) 
+        grids.append(grid)
+    return grids 
 def get_loop_hint_size(folder, trial_size):
     grids = []
     for trial in range(trial_size):
@@ -145,6 +215,7 @@ def get_loop_hint_size(folder, trial_size):
         grids.append(grid.get_fitness_grid())
     
     return get_loop_grid(grids)
+
 
 def get_loop_duplicate_grids(folder, trial_size):
     grids = []
@@ -163,6 +234,22 @@ def get_loop_children_grids(folder, trial_size):
         grids.append(grid.total_grid[-1])
     
     return get_loop_grid(grids)
+
+def get_average_diff_length(folder, trial_size):
+    grids = []
+    len_sums = [0] * 10
+    for trial in range(trial_size):
+        json = open( folder + "/map_grid_trial_{}.p".format(trial), "r").read()
+        grid = jsonpickle.decode(json) 
+        grid = grid.get_fitness_grid() 
+        lengths = difficult_lengths(grid)
+     
+
+        for i in range(len(lengths)):
+            len_sums[i] += lengths[i]
+
+    avg_lengths = [l / trial_size for l in len_sums]    
+    return avg_lengths
 
 
 def hintset_to_string(hint_set):
@@ -210,7 +297,55 @@ if __name__ == "__main__":
     folder = "school3"
     trials = 10
 
-    grids = get_grids(folder, trials)
+    avg_lengths = get_average_diff_length(folder, trials)
+    plt.title("Average number levels of difficulty per solution")
+    plt.ylabel("Average Number of Solutions")
+    plt.xlabel("Levels of Difficulty")
+    ax = plt.bar(list(range(1,11)),avg_lengths, color = COLOR4)
+    plt.xticks([1,2,3,4,5,6,7,8,9,10])
+    plt.show()
+    
+    
+    """histories = get_histories(folder, trials)
+    
+
+
+    averages = history_average(histories)
+    #print(averages)
+    plt.title("Average Hint Size in Map-Elite Grid by Generation")
+    plt.ylabel("Hint Size")
+    plt.xlabel("Generation")
+    create_agg_plot(averages, color=COLOR4, label ="average hint size", legend=False,  multiplier=50)
+    plt.show()
+
+    counts = history_counts(histories)
+    #print(averages)
+    plt.title("Number of children in Map-Elite Grid by Generation")
+    plt.ylabel("Number of children")
+    plt.xlabel("Generation")
+    create_agg_plot(counts, color=COLOR4, label="number of feasible", legend=False, multiplier=50)
+    plt.show()
+
+    solutions = history_num_solutions(histories)
+    #print(averages)
+    plt.title("Number of Unique Solutions in Map-Elite Grid by Generation")
+    plt.ylabel("Number of Solutions")
+    plt.xlabel("Generation")
+    plt.axhline(y = 576, color = COLOR1, linestyle = "dashed", label = "Number of solutions possible") 
+    create_agg_plot(solutions, color=COLOR4, label="Number of solutions in top grid", legend=True, multiplier=50)
+    plt.show()
+
+    infeasible = [history.infes_fits[:10] for history in histories]
+   
+    plt.title("Infeasible Fitness by Generation")
+    plt.ylabel("Fitness")
+    plt.xlabel("Generation")
+    create_agg_plot(infeasible, color=COLOR4, label="infesible fitness", legend=False)
+    plt.show()"""
+
+
+    """grids = get_grids(folder, trials)
+    print(average_grid(grids[0].get_fitness_grid()))
 
     top_sols = top_solutions(grids, n=5)
 
@@ -221,7 +356,7 @@ if __name__ == "__main__":
             print("\n\n")
 
 
-    """fitness, children = solutions_with_n(grids[1], n=5)
+    fitness, children = solutions_with_n(grids[0], n=5)
     heat_map(fitness, True, title = "Average Hint Size for Solutions 5 or more puzzles", ylabel="Solution", xlabel="Solver loops", colorbar_label="Hint Size", vmin=3)
     heat_map(children, True, title = "Average Children  for Solutions 5 or more puzzles", ylabel="Solution", xlabel="Solver loops", colorbar_label="Children Produced", vmin=1)
     puzzle_lengths = num_puzzles(grids[1])
@@ -232,12 +367,12 @@ if __name__ == "__main__":
     plt.title("Histogram of puzzles found by solution")
     plt.bar(labels, counts, align='center')
     plt.gca().set_xticks(labels)
-    plt.show()"""
+    plt.show()""" 
 
-    """"agg_grid = get_loop_hint_size(folder, trials)
+    """agg_grid = get_loop_hint_size(folder, trials)
     
     #plt.figure(figsize=(12, 8))
-    ax = plt.bar(list(range(1,11)),agg_grid)
+    ax = plt.bar(list(range(1,11)),agg_grid,  color = COLOR4)
     plt.title("Average Hint size by solver loops")
     plt.ylabel("Average Hint size")
     plt.xlabel("Solver Loop")
@@ -250,11 +385,11 @@ if __name__ == "__main__":
     plt.title("Average number of children by solver loop")
     plt.ylabel("Average Number of children")
     plt.xlabel("Solver Loop")
-    ax = plt.bar(list(range(1,11)),agg_total_grid)
+    ax = plt.bar(list(range(1,11)),agg_total_grid, color = COLOR4)
     plt.xticks([1,2,3,4,5,6,7,8,9,10])
     plt.show()
     
     agg_grid = get_loop_duplicate_grids(folder, trials)
     heat_map(agg_grid, True, title = "Average Duplicates by Solver Loops", ylabel="Average", xlabel="Solver loops", colorbar_label="Average Duplicates")
-    """
-    #write_hint_files(folder, trials)
+    
+    #write_hint_files(folder, trials)"""

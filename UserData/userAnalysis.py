@@ -18,7 +18,7 @@ def calculate_pvalues(df):
             pvalues.loc[c,r] = round(pearsonr(tmp[r], tmp[c])[1], 4)
     return pvalues
 
-print(df[["loops", "attempts", "total_time", "percent_incorrect", "percent_incomplete", "is_correct",  "challenge_scale"]].corr())
+print(df[["loops", "attempts", "total_time", "percent_incorrect", "percent_incomplete", "is_correct",  "challenge_scale"]].corr(method = "spearman"))
 print("\n\n pvalues:")
 print(calculate_pvalues(df[["loops", "attempts", "total_time", "percent_incorrect", "percent_incomplete", "is_correct",  "challenge_scale"]]))
 

@@ -51,5 +51,5 @@ if __name__ == "__main__":
 
     
     puzzle_json = jsonpickle.encode(puzzle_index)
-    open("School3/puzzleIndex.json", "w").write(puzzle_json)
+    open("School2/puzzleIndex.json", "w").write(puzzle_json)
 
