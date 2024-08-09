@@ -150,8 +150,8 @@ def write_hint_files(folder, trial_size):
 
 
 if __name__ == "__main__":
-    folder = "School2"
-    trials = 8
+    folder = "Ballroom"
+    trials = 1
     agg_grid = get_agg_hint_grids(folder, trials)
     heat_map(agg_grid, True, title = "Average Hint Size by Cell", ylabel="Gini Coefficent", xlabel="Solver loops", colorbar_label="Average Hint Size", vmin = 3)
 
