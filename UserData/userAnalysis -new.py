@@ -71,6 +71,8 @@ print("total puzzle instances:", len(df))
 df["loops"] = df["loops"] + 1
 df2 = df.dropna()
 
+
+
 df["percent_incorrect"] = df["num_incorrect"] / (df["num_correct"] + df["num_incorrect"])
 df["percent_correct"] = df["num_incorrect"] / (df["num_correct"] + df["num_incorrect"])
 df["total_time_seconds"]  = df["total_time"] / 1000 
@@ -79,10 +81,17 @@ df_small = df[df["total_time_minutes"] <60]
 print("puzzles under an hour:", len(df_small))
 
 df["percent_incomplete"] = (48 - df["num_correct"]) / 48 
+
+print(df2.groupby("puzzle")["challenge_scale"].mean()) 
+print(df2.groupby("puzzle")["is_correct"].mean()) 
+
 print(df["total_time_minutes"].mean())
 print(df["total_time_minutes"].std())
 print(df["total_time_minutes"].median())
 
+
+
+"""
 print("Loop Correlation")
 #print(df[["loops", "attempts", "total_time", "percent_incorrect", "percent_incomplete", "is_correct",  "challenge_scale"]].corr(method = "spearman"))
 behaviors = ["attempts", "total_time", "percent_incorrect", "percent_correct", "num_correct", "percent_incomplete", "is_correct"]
@@ -142,4 +151,4 @@ print(tukey)
 tukey = pairwise_tukeyhsd(endog=df2["challenge_scale"],
                           groups=df2["user_by_loops"],
                           alpha=0.05)
-print(tukey)
+print(tukey)"""

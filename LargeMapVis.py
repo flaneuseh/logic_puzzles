@@ -294,16 +294,16 @@ def write_hint_files(folder, trial_size):
 
 
 if __name__ == "__main__":
-    folder = "school3"
-    trials = 10
+    folder = "Chili"
+    trials = 1
 
-    avg_lengths = get_average_diff_length(folder, trials)
+    """avg_lengths = get_average_diff_length(folder, trials)
     plt.title("Average number levels of difficulty per solution")
     plt.ylabel("Average Number of Solutions")
     plt.xlabel("Levels of Difficulty")
     ax = plt.bar(list(range(1,11)),avg_lengths, color = COLOR4)
     plt.xticks([1,2,3,4,5,6,7,8,9,10])
-    plt.show()
+    plt.show()"""
     
     
     """histories = get_histories(folder, trials)
@@ -390,6 +390,6 @@ if __name__ == "__main__":
     plt.show()
     
     agg_grid = get_loop_duplicate_grids(folder, trials)
-    heat_map(agg_grid, True, title = "Average Duplicates by Solver Loops", ylabel="Average", xlabel="Solver loops", colorbar_label="Average Duplicates")
+    heat_map(agg_grid, True, title = "Average Duplicates by Solver Loops", ylabel="Average", xlabel="Solver loops", colorbar_label="Average Duplicates")"""
     
-    #write_hint_files(folder, trials)"""
+    write_hint_files(folder, trials)
