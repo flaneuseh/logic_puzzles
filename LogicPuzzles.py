@@ -1487,7 +1487,7 @@ if __name__ == "__main__":
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
-def apply_before(puzzle, terms):
+def apply_before(puzzle, terms, is_dumb=False):
   """
   apply the before rule to the puzzle
   """
@@ -1508,7 +1508,7 @@ def apply_before(puzzle, terms):
     num = terms[5]
 
   # If A < B and A, B are not in the same category, then A is not B.
-  if bef_cat != aft_cat:
+  if bef_cat != aft_cat and not is_dumb:
     sy = puzzle.get_symbol(bef_cat, aft_cat, bef_ent, aft_ent)
     if sy == "*":
       applied = True
@@ -1525,9 +1525,10 @@ def apply_before(puzzle, terms):
 
   # Narrow down possiblities with no information for entities yet
   # The before entity can't be in the last num spots (or there won't be room for the after entity)
+
   for i in range(len(before_symbols) - num, len(before_symbols)):
     sy = puzzle.get_symbol(bef_cat, num_cat, bef_ent, num_cat.entities[i])
-    if sy == "*":
+    if sy == "*" and not is_dumb:
       applied = True
       puzzle.answer(bef_cat, num_cat, bef_ent, num_cat.entities[i], "X")
     elif sy == "O":
@@ -1537,7 +1538,7 @@ def apply_before(puzzle, terms):
   # And the inverse is true for the after entity
   for i in range(0, num):
     sy = puzzle.get_symbol(aft_cat, num_cat, aft_ent, num_cat.entities[i])
-    if sy == "*":
+    if sy == "*" and not is_dumb:
       applied = True
       puzzle.answer(aft_cat, num_cat, aft_ent, num_cat.entities[i], "X")
     elif sy == "O":
@@ -1855,7 +1856,7 @@ if __name__ == "__main__":
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
-def apply_simple_or(puzzle, terms):
+def apply_simple_or(puzzle, terms,is_dumb=False):
   """
   Apply the or rule to puzzle, will be incomplete if not enough information is known
   return: applied, is_valid, complete
@@ -1872,27 +1873,28 @@ def apply_simple_or(puzzle, terms):
   ans_cat = terms[4]
   ans_ent = terms[5]
 
-  if pos_cat1 != pos_cat2:
-    # A and B are in different categories
-    # If A or B is C then A is not B
-    applied, is_valid, complete = apply_not(puzzle, [ pos_cat1, pos_ent1, pos_cat2, pos_ent2 ])
-    if not is_valid:
-      return applied, is_valid, complete
-  else:
-    # A and B are in the same category
-    # If A or B from category 0 is C then no other entity from category 0 is C
-    for ent in pos_cat1.entities:
-      if ent not in [pos_ent1, pos_ent2]:
-        sy = puzzle.get_symbol(pos_cat1, ans_cat, ent, ans_ent)
-        if sy == "O":
-          # Logical error.
-          is_valid = False
-          complete = True
-          return applied, is_valid, complete
-        elif sy == "*":
-          # No other entity from cat1 is ans_ent
-          applied = True
-          puzzle.answer(pos_cat1, ans_cat, ent, ans_ent, "X")
+  if not is_dumb: 
+    if pos_cat1 != pos_cat2:
+      # A and B are in different categories
+      # If A or B is C then A is not B
+      applied, is_valid, complete = apply_not(puzzle, [ pos_cat1, pos_ent1, pos_cat2, pos_ent2 ])
+      if not is_valid:
+        return applied, is_valid, complete
+    else:
+      # A and B are in the same category
+      # If A or B from category 0 is C then no other entity from category 0 is C
+      for ent in pos_cat1.entities:
+        if ent not in [pos_ent1, pos_ent2]:
+          sy = puzzle.get_symbol(pos_cat1, ans_cat, ent, ans_ent)
+          if sy == "O":
+            # Logical error.
+            is_valid = False
+            complete = True
+            return applied, is_valid, complete
+          elif sy == "*":
+            # No other entity from cat1 is ans_ent
+            applied = True
+            puzzle.answer(pos_cat1, ans_cat, ent, ans_ent, "X")
 
   pos_symb1 = puzzle.get_symbol(pos_cat1, ans_cat, pos_ent1, ans_ent)
   pos_symb2 = puzzle.get_symbol(pos_cat2, ans_cat, pos_ent2, ans_ent)
@@ -2043,7 +2045,7 @@ if __name__ == "__main__":
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
-def apply_compound_or(puzzle, options):
+def apply_compound_or(puzzle, options, is_dumb = False):
   """
   Apply the compound or rule to puzzle, will be incomplete if not enough information is known
   return: applied, is_valid, complete
@@ -2169,7 +2171,7 @@ if __name__ == "__main__":
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
-def apply_hint(puzzle, hint):
+def apply_hint(puzzle, hint,is_dumb=False):
   """
    Given a hint dictionary and a puzzle, apply next step of the hint to the puzzle
 
@@ -2192,11 +2194,11 @@ def apply_hint(puzzle, hint):
   elif rule == "not":
     return apply_not(puzzle, terms[0]["is"])
   elif rule == "before":
-    return apply_before(puzzle, terms)
+    return apply_before(puzzle, terms,is_dumb=is_dumb)
   elif rule == "simple_or":
-    return apply_simple_or(puzzle, terms)
+    return apply_simple_or(puzzle, terms, is_dumb = is_dumb)
   elif rule == "compound_or":
-    return apply_compound_or(puzzle, [terms[0]["is"], terms[1]["is"]])
+    return apply_compound_or(puzzle, [terms[0]["is"], terms[1]["is"]], is_dumb=is_dumb)
   else:
     print("This hint has no apply rules! Something has gone horribly wrong. The offending hint: " + str_hint(hint))
 

@@ -71,7 +71,7 @@ HINT_VALUES = {
 
 
 # %%
-def apply_hints(puzzle, hints, print_soln=False):
+def apply_hints(puzzle, hints, print_soln=False, is_dumb=False):
     """
     solver 
     """
@@ -87,7 +87,7 @@ def apply_hints(puzzle, hints, print_soln=False):
         loop += 1
         
         for hint in queue:
-            a, is_valid, complete = apply_hint(copy, hint)
+            a, is_valid, complete = apply_hint(copy, hint, is_dumb=is_dumb)
             applied = applied or a
             if not complete: 
                 backlog.append(hint)
@@ -96,8 +96,11 @@ def apply_hints(puzzle, hints, print_soln=False):
 
             # Apply additional logic 
             if a: 
-                a_3, is_valid, complete = find_transitives(copy)
                 a_2, is_valid, complete = find_openings(copy)
+                if not is_dumb: 
+                    a_3, is_valid, complete = find_transitives(copy)
+                else: 
+                    a_3 = False 
                 applied = applied or a_2 or a_3# test if anything was changed 
             if print_soln:
                 print(copy.print_grid())
@@ -108,10 +111,14 @@ def apply_hints(puzzle, hints, print_soln=False):
 
 # %%
 class HintSet:
-    def __init__(self, hints, puzzle) -> None:
+    def __init__(self, hints, puzzle, require_insight=True) -> None:
         self.hints = hints 
         self.puzzle = puzzle # assumed to be blank 
         self.completed_puzzle, self.valid,  self.loops = apply_hints(self.puzzle, self.non_duplicates())
+        self.require_insight = require_insight
+
+        if require_insight: 
+            self.dumb_completed_puzzle, self.dumb_valid,  self.dumb_loops = apply_hints(self.puzzle, self.non_duplicates(), is_dumb=True)
     
     def get_duplicates(self):
         english_dict = {}
@@ -205,9 +212,16 @@ class HintSet:
         mad = (diff_sum / l) / (sum(values) / len(values))
         return 0.5 * mad 
 
+
+    def need_insight(self):
+         return not self.dumb_completed_puzzle.is_complete()
     
     def is_valid(self):
-        return  len(self.hints) > 0 and self.valid and self.completed_puzzle.is_complete()
+        if not self.require_insight: 
+            return  len(self.hints) > 0 and self.valid and self.completed_puzzle.is_complete()
+        else: 
+            return len(self.hints) > 0 and self.valid and self.completed_puzzle.is_complete()  and self.need_insight()
+
 
     def _violations_fun(self, violations):
         if violations > 10:
@@ -227,8 +241,10 @@ class HintSet:
     def feasibility(self):
         complete, valid = self.completed_puzzle.percent_complete()
         #violations = self.completed_puzzle.num_violations()
- 
-        return (0.5 * complete) + (0.5 * valid)
+        if not self.require_insight: 
+            return (0.5 * complete) + (0.5 * valid) 
+        else: 
+            return (0.45 * complete) + (0.45 * valid) + (0.1 * self.need_insight())
 
     def solver_loops(self):
         if len(self.hints) == 0:
