@@ -672,6 +672,17 @@ hint_grammar = {
   }
 }
 
+BEFORE_DIFF_CAT = "BEFORE_DIFF_CAT"
+BEFORE_NUM_SPOTS = "BEFORE_NUM_SPOTS"
+BEFORE_NUM_SPOTS_TWO = "BEFORE_NUM_SPOTS_TWO"
+BEFORE_NUM_SPOTS_THREE = "BEFORE_NUM_SPOTS_THREE"
+OR_DIFF_CAT = "OR_DIFF_CAT"
+OR_SAME_CAT = "OR_SAME_CAT"
+TRANS_ABC_TRUE = "TRANS_ABC_TRUE"
+TRANS_ABC_FALSE = "TRANS_ABC_FALSE"
+TRANS_SETS = "TRANS_SETS"
+ALL_INSIGHTS = {BEFORE_DIFF_CAT, BEFORE_NUM_SPOTS, BEFORE_NUM_SPOTS_TWO, BEFORE_NUM_SPOTS_THREE, OR_DIFF_CAT, OR_SAME_CAT, TRANS_ABC_TRUE, TRANS_ABC_FALSE, TRANS_SETS}
+
 # # subset for testing
 # hint_grammar = {"hint": {
 #                           "not": [["cat1", "ent", "cat2", "ent"]],
@@ -777,8 +788,7 @@ def fill_in_word(puzzle, word):
       nums = get_num(cats)
       last_cat = None
 
-      i = 0
-      for term in  value:
+      for term in value:
         if isinstance(term, dict):
           new_terms.append(fill_in_word(puzzle, term))
         else:
@@ -787,31 +797,31 @@ def fill_in_word(puzzle, word):
             new_terms.append(last_cat[0])
           elif term == "cat1":
             if len(cats) < 1:
-              raise  Exception("Not enough categories in puzzle")
+              raise  Exception("CAT_COUNT")
             else:
               last_cat = cats[0]
               new_terms.append(last_cat[0])
           elif term == "cat2":
             if len(cats) < 2:
-              raise  Exception("Not enough categories in puzzle")
+              raise  Exception("CAT_COUNT")
             else:
               last_cat = cats[1]
               new_terms.append(last_cat[0])
           elif term == "cat3":
             if len(cats) < 3:
-              raise  Exception("Not enough categories in puzzle")
+              raise  Exception("CAT_COUNT")
             else:
               last_cat = cats[2]
               new_terms.append(last_cat[0])
           elif term == "alp":
             if len(alps) == 0:
-              raise  Exception("Not enough alphetabetic catgories")
+              raise  Exception("ALPH_COUNT")
             else:
               last_cat = random.choice(alps)
               new_terms.append(last_cat[0])
           elif term == "num":
             if len(nums) == 0:
-              raise  Exception("Not enough numeric catgories")
+              raise  Exception("NUM_COUNT")
             else:
               last_cat = random.choice(nums)
               new_terms.append(last_cat[0])
@@ -819,17 +829,17 @@ def fill_in_word(puzzle, word):
               new_terms.append(random.choice(last_cat[1]))
           elif term == "ent1":
             if len(last_cat[1]) < 1:
-              raise  Exception("Not enough enties in puzzle")
+              raise  Exception("ENT_COUNT")
             else:
               new_terms.append(last_cat[1][0])
           elif term == "ent2":
             if len(last_cat[1]) < 2:
-              raise  Exception("Not enough enties in puzzle")
+              raise  Exception("ENT_COUNT")
             else:
               new_terms.append(last_cat[1][1])
           elif term == "ent3":
             if len(last_cat[1]) < 3:
-              raise  Exception("Not enough enties in puzzle")
+              raise  Exception("ENT_COUNT")
             else:
               new_terms.append(last_cat[1][2])
           elif term == "int":
@@ -842,6 +852,10 @@ def generate_hint(puzzle):
   """
   given a puzzle generate a random, valid hint
   """
+  cats = create_cats(puzzle)
+  nums = get_num(cats)
+  if len(nums) < 1:
+    del hint_grammar["hint"]["before"]
   word = generate_word(hint_grammar, terminals)
   return fill_in_word(puzzle, word)["hint"]
 
@@ -920,10 +934,11 @@ def cross_out(puzzle, cat1, cat2, ent1, ent2):
 # If A is B and B is C then A is C
 # If A is B and B is not C then A is not C
 # ...
-def find_transitives(puzzle):
+def find_transitives(puzzle, forbidden_insights=set()):
   applied = False
   complete = False
   is_valid = True
+  insights = set()
   
   # For every pair of related entities:
   #   check all other category relations for X and 0
@@ -949,27 +964,29 @@ def find_transitives(puzzle):
             if entC != None and entC != entA:
               # A -> B and B -> C, so A -> C
               sy = puzzle.get_symbol(catA, catC, entA, entC)
-              if sy == "*":
+              if sy == "*" and TRANS_ABC_TRUE not in forbidden_insights:
+                insights.add(TRANS_ABC_TRUE)
                 applied = True
                 puzzle.answer(catA, catC, entA, entC, "O")
                 is_valid = cross_out(puzzle, catA, catC, entA, entC)
                 if not is_valid:
-                  return applied, is_valid, complete
+                  return applied, is_valid, complete, insights
               elif sy == "X":
                 # Can't link A to C
                 is_valid = False
-                return applied, is_valid, complete
+                return applied, is_valid, complete, insights
             # For all false values for B in category C
             for entC in catC_relations["false"]:
               # A -> B and B !> C, so A !> C
               sy = puzzle.get_symbol(catA, catC, entA, entC)
-              if sy == "*":
+              if sy == "*" and TRANS_ABC_FALSE not in forbidden_insights:
+                insights.add(TRANS_ABC_FALSE)
                 applied = True
                 puzzle.answer(catA, catC, entA, entC, "X")
               elif sy == "O":
                 # Can't reject A to C
                 is_valid = False
-                return applied, is_valid, complete
+                return applied, is_valid, complete, insights
         # for A's indeterminate values in category B, if A and B can't be related in some category, then A !> B
         for entB in catB_relations["nil"]:
           # All relations for B
@@ -994,72 +1011,13 @@ def find_transitives(puzzle):
               # If A and B don't share any entities in their possible lists, then A !> B
               setA = set(A_possibles)
               setB = set(B_possibles)
-              if not (setA & setB):
+              if not (setA & setB) and TRANS_SETS not in forbidden_insights:
                 # A and B don't share any possibilities; A !> B
+                insights.add(TRANS_SETS)
                 applied = True
                 puzzle.answer(catA, catB, entA, entB, "X")
-
-
-          #   # Relate B to A's truth and false values
-        #   for catC, catC_relations in entA_relations.items():
-        #     entC = catC_relations["true"]
-        #     if entC != None:
-        #       # A -> B and A -> C so B -> C
-        #       sy = puzzle.get_symbol(catB, catC, entB, entC)
-        #       if sy == "*":
-        #         applied = True
-        #         puzzle.answer(catB, catC, entB, entC, "O")
-        #         is_valid = cross_out(puzzle, catB, catC, entB, entC)
-        #         if not is_valid:
-        #           return applied, is_valid, complete
-        #       elif sy == "X":
-        #         # Can't link B to C
-        #         is_valid = False
-        #         return applied, is_valid, complete
-        #     for entC in catC_relations["false"]:
-        #       # A -> B and A !> C so B !> C
-        #       sy = puzzle.get_symbol(catB, catC, entB, entC)
-        #       if sy == "*":
-        #         applied = True
-        #         puzzle.answer(catB, catC, entB, entC, "X")
-        #       elif sy == "O":
-        #         # Can't reject B to C
-        #         is_valid = False
-        #         return applied, is_valid, complete    
-
-        # # for A's false values in category B, A is negatively related to anything B is related to.
-        # for entB in catB_relations["false"]:
-        #   # A is not related to B, A is not related to anything B is related to.
-        #   # Get all relations for B
-        #   entB_relations = puzzle.get_known_relations(catB, entB)
-        #   # Relate A to B's truth and false values.
-        #   for catC, catC_relations in entB_relations.items():
-        #     entC = catC_relations["true"]
-        #     if entC != None:
-        #       # A !> B and B -> C, so A !> C
-        #       sy = puzzle.get_symbol(catA, catC, entA, entC)
-        #       if sy == "*":
-        #         applied = True
-        #         puzzle.answer(catA, catC, entA, entC, "X")
-        #       elif sy == "O":
-        #         # Can't reject A to C
-        #         is_valid = False
-        #         return applied, is_valid, complete
-            
-        #   # Relate B to A's truth and false values
-        #   for catC, catC_relations in entA_relations.items():
-        #     entC = catC_relations["true"]
-        #     if entC != None:
-        #       # A !> B and A -> C so B !> C
-        #       sy = puzzle.get_symbol(catB, catC, entB, entC)
-        #       if sy == "*":
-        #         applied = True
-        #         puzzle.answer(catB, catC, entB, entC, "X")
-        #       elif sy == "O":
-        #         # Can't reject B to C
-        #         is_valid = False
           
-  return applied, is_valid, complete
+  return applied, is_valid, complete, insights
 
 # %%
 # Test find_transitives
@@ -1369,6 +1327,7 @@ def apply_is(puzzle, terms):
   applied = False
   is_valid = True
   complete = True # this rule can only be applied once
+  insights = set() # is has no insights, but we want to be consistent
   cat1 = terms[0]
   ent1 = terms[1]
   cat2 = terms[2]
@@ -1390,7 +1349,7 @@ def apply_is(puzzle, terms):
     # someone already answered
     applied = False
 
-  return applied, is_valid, complete
+  return applied, is_valid, complete, insights
 
 
 # %%
@@ -1433,6 +1392,7 @@ def apply_not(puzzle, terms):
   applied = False
   is_valid = True
   complete = True # this rule can only be applied once
+  insights = set() # there are no insights for not, but we want to keep things consistent
   cat1 = terms[0]
   ent1 = terms[1]
   cat2 = terms[2]
@@ -1449,7 +1409,7 @@ def apply_not(puzzle, terms):
   elif current_term == "X":
     applied = False
 
-  return applied, is_valid, complete
+  return applied, is_valid, complete, insights
 
 
 # %%
@@ -1487,13 +1447,14 @@ if __name__ == "__main__":
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
-def apply_before(puzzle, terms, is_dumb=False):
+def apply_before(puzzle, terms, forbidden_insights=set()):
   """
   apply the before rule to the puzzle
   """
   applied = False
   complete = False
   is_valid = True
+  insights = set()
   numbered = len(terms) == 6
 
   bef_cat = terms[0]
@@ -1508,16 +1469,17 @@ def apply_before(puzzle, terms, is_dumb=False):
     num = terms[5]
 
   # If A < B and A, B are not in the same category, then A is not B.
-  if bef_cat != aft_cat and not is_dumb:
+  if bef_cat != aft_cat :
     sy = puzzle.get_symbol(bef_cat, aft_cat, bef_ent, aft_ent)
-    if sy == "*":
+    if sy == "*" and BEFORE_DIFF_CAT not in forbidden_insights:
+      insights.add(BEFORE_DIFF_CAT)
       applied = True
       puzzle.answer(bef_cat, aft_cat, bef_ent, aft_ent, "X")
     elif sy == "O":
       # Contradiction
       complete = True
       is_valid = False
-      return applied, is_valid, complete
+      return applied, is_valid, complete, insights
 
   # Get all the current symbols for the two entities in the num category
   before_symbols = [puzzle.get_symbol(bef_cat, num_cat, bef_ent, ent) for ent in num_cat.entities]
@@ -1528,23 +1490,25 @@ def apply_before(puzzle, terms, is_dumb=False):
 
   for i in range(len(before_symbols) - num, len(before_symbols)):
     sy = puzzle.get_symbol(bef_cat, num_cat, bef_ent, num_cat.entities[i])
-    if sy == "*" and not is_dumb:
+    if sy == "*" and BEFORE_NUM_SPOTS not in forbidden_insights:
+      insights.add(BEFORE_NUM_SPOTS)
       applied = True
       puzzle.answer(bef_cat, num_cat, bef_ent, num_cat.entities[i], "X")
     elif sy == "O":
       complete = True
       is_valid = False
-      return applied, is_valid, complete
+      return applied, is_valid, complete, insights
   # And the inverse is true for the after entity
   for i in range(0, num):
     sy = puzzle.get_symbol(aft_cat, num_cat, aft_ent, num_cat.entities[i])
-    if sy == "*" and not is_dumb:
+    if sy == "*" and BEFORE_NUM_SPOTS not in forbidden_insights:
+      insights.add(BEFORE_NUM_SPOTS)
       applied = True
       puzzle.answer(aft_cat, num_cat, aft_ent, num_cat.entities[i], "X")
     elif sy == "O":
       complete = True
       is_valid = False
-      return applied, is_valid, complete
+      return applied, is_valid, complete, insights
 
   # if both entities have answer, we can determine if this rule valid
   if "O" in before_symbols and "O" in after_symbols:
@@ -1554,7 +1518,7 @@ def apply_before(puzzle, terms, is_dumb=False):
       is_valid = after_symbols.index("O") - before_symbols.index("O") == num
     else:
       is_valid = before_symbols.index("O") < after_symbols.index("O")
-    return applied, is_valid, complete
+    return applied, is_valid, complete, insights
 
   # determine the possible after entities if the before entity is solved
   if "O" in before_symbols:
@@ -1570,7 +1534,7 @@ def apply_before(puzzle, terms, is_dumb=False):
     if len(pos_aft_index) == 0:
       complete = True
       is_valid = False
-      return applied, is_valid, complete
+      return applied, is_valid, complete, insights
     elif len(pos_aft_index) == 1:
       complete = True
       aft_index = pos_aft_index[0]
@@ -1578,7 +1542,7 @@ def apply_before(puzzle, terms, is_dumb=False):
       puzzle.answer(aft_cat, num_cat, aft_ent, num_cat.entities[aft_index], "O")
       is_valid = cross_out(puzzle, aft_cat, num_cat, aft_ent, num_cat.entities[aft_index])
       if not is_valid:
-        return applied, is_valid, complete
+        return applied, is_valid, complete, insights
     else:
       for i in range(0, bef_index):
         sy = puzzle.get_symbol(aft_cat, num_cat, aft_ent, num_cat.entities[i])
@@ -1588,9 +1552,9 @@ def apply_before(puzzle, terms, is_dumb=False):
         elif sy == "O":
           complete = True
           is_valid = False
-          return applied, is_valid, complete
+          return applied, is_valid, complete, insights
 
-  # determine the possible after entities if the after before is solved
+  # determine the possible before entities if the after entity is solved
   if "O" in after_symbols:
     aft_index = after_symbols.index("O")
     if numbered:
@@ -1604,7 +1568,7 @@ def apply_before(puzzle, terms, is_dumb=False):
     if len(pos_bef_index) == 0:
       complete = True
       is_valid = False
-      return applied, is_valid, complete
+      return applied, is_valid, complete, insights
     elif len(pos_bef_index) == 1:
       complete = True
       bef_index = pos_bef_index[0]
@@ -1612,7 +1576,7 @@ def apply_before(puzzle, terms, is_dumb=False):
       puzzle.answer(bef_cat, num_cat, bef_ent, num_cat.entities[bef_index], "O")
       is_valid = cross_out(puzzle, bef_cat, num_cat, bef_ent, num_cat.entities[bef_index])
       if not is_valid:
-        return applied, is_valid, complete
+        return applied, is_valid, complete, insights
     else:
       for i in range(aft_index, len(before_symbols)):
         sy = puzzle.get_symbol(bef_cat, num_cat, bef_ent, num_cat.entities[i])
@@ -1622,7 +1586,7 @@ def apply_before(puzzle, terms, is_dumb=False):
         elif sy == "O":
           complete = True
           is_valid = False
-          return applied, is_valid, complete
+          return applied, is_valid, complete, insights
 
   # Determine possible answers with constraints on either entity
   if "X" in before_symbols or "X" in after_symbols:
@@ -1635,12 +1599,14 @@ def apply_before(puzzle, terms, is_dumb=False):
       # For a position to be a valid answer, the corresponding position +/- num must be valid for the other entity
       for i in before_Xs:
         sy = puzzle.get_symbol(aft_cat, num_cat, aft_ent, num_cat.entities[i+num])
-        if sy == "*":
+        if sy == "*" and BEFORE_NUM_SPOTS_THREE not in forbidden_insights:
+          insights.add(BEFORE_NUM_SPOTS_THREE)
           applied = True
           puzzle.answer(aft_cat, num_cat, aft_ent, num_cat.entities[i+num], "X")
       for i in after_Xs:
         sy = puzzle.get_symbol(bef_cat, num_cat, bef_ent, num_cat.entities[i-num])
-        if sy == "*":
+        if sy == "*" and BEFORE_NUM_SPOTS_THREE not in forbidden_insights:
+          insights.add(BEFORE_NUM_SPOTS_THREE)
           applied = True
           puzzle.answer(bef_cat, num_cat, bef_ent, num_cat.entities[i-num], "X")
 
@@ -1649,7 +1615,8 @@ def apply_before(puzzle, terms, is_dumb=False):
       if before_symbols[i] != "X":
         break
       sy = puzzle.get_symbol(aft_cat, num_cat, aft_ent, num_cat.entities[i+1])
-      if sy == "*":
+      if sy == "*" and BEFORE_NUM_SPOTS_TWO not in forbidden_insights:
+        insights.add(BEFORE_NUM_SPOTS_TWO)
         applied = True
         puzzle.answer(aft_cat, num_cat, aft_ent, num_cat.entities[i+1], "X")
 
@@ -1657,10 +1624,11 @@ def apply_before(puzzle, terms, is_dumb=False):
       if after_symbols[i] != "X":
         break
       sy = puzzle.get_symbol(bef_cat, num_cat, bef_ent, num_cat.entities[i-1])
-      if sy == "*":
+      if sy == "*" and BEFORE_NUM_SPOTS_TWO not in forbidden_insights:
+        insights.add(BEFORE_NUM_SPOTS_TWO)
         applied = True
         puzzle.answer(bef_cat, num_cat, bef_ent, num_cat.entities[i-1], "X")
-  return applied, is_valid, complete
+  return applied, is_valid, complete, insights
 
 
 # %%
@@ -1856,7 +1824,7 @@ if __name__ == "__main__":
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
-def apply_simple_or(puzzle, terms,is_dumb=False):
+def apply_simple_or(puzzle, terms, forbidden_insights = set()):
   """
   Apply the or rule to puzzle, will be incomplete if not enough information is known
   return: applied, is_valid, complete
@@ -1864,6 +1832,7 @@ def apply_simple_or(puzzle, terms,is_dumb=False):
   applied = False
   is_valid = True
   complete = False
+  insights = set()
 
   pos_cat1 = terms[0]
   pos_ent1 = terms[1] # either ent1 or ent2 = ans_ent
@@ -1873,28 +1842,30 @@ def apply_simple_or(puzzle, terms,is_dumb=False):
   ans_cat = terms[4]
   ans_ent = terms[5]
 
-  if not is_dumb: 
-    if pos_cat1 != pos_cat2:
-      # A and B are in different categories
-      # If A or B is C then A is not B
-      applied, is_valid, complete = apply_not(puzzle, [ pos_cat1, pos_ent1, pos_cat2, pos_ent2 ])
-      if not is_valid:
-        return applied, is_valid, complete
-    else:
-      # A and B are in the same category
-      # If A or B from category 0 is C then no other entity from category 0 is C
-      for ent in pos_cat1.entities:
-        if ent not in [pos_ent1, pos_ent2]:
-          sy = puzzle.get_symbol(pos_cat1, ans_cat, ent, ans_ent)
-          if sy == "O":
-            # Logical error.
-            is_valid = False
-            complete = True
-            return applied, is_valid, complete
-          elif sy == "*":
-            # No other entity from cat1 is ans_ent
-            applied = True
-            puzzle.answer(pos_cat1, ans_cat, ent, ans_ent, "X")
+  if pos_cat1 != pos_cat2 and OR_DIFF_CAT not in forbidden_insights:
+    # A and B are in different categories
+    # If A or B is C then A is not B
+    insights.add(OR_DIFF_CAT)
+    applied, is_valid, complete, not_insights = apply_not(puzzle, [ pos_cat1, pos_ent1, pos_cat2, pos_ent2 ])
+    insights = insights & not_insights
+    if not is_valid:
+      return applied, is_valid, complete, insights
+  else:
+    # A and B are in the same category
+    # If A or B from category 0 is C then no other entity from category 0 is C
+    for ent in pos_cat1.entities:
+      if ent not in [pos_ent1, pos_ent2]:
+        sy = puzzle.get_symbol(pos_cat1, ans_cat, ent, ans_ent)
+        if sy == "O":
+          # Logical error.
+          is_valid = False
+          complete = True
+          return applied, is_valid, complete, insights
+        elif sy == "*" and "OR_SAME_CAT" not in forbidden_insights:
+          # No other entity from cat1 is ans_ent
+          insights.add(OR_SAME_CAT)
+          applied = True
+          puzzle.answer(pos_cat1, ans_cat, ent, ans_ent, "X")
 
   pos_symb1 = puzzle.get_symbol(pos_cat1, ans_cat, pos_ent1, ans_ent)
   pos_symb2 = puzzle.get_symbol(pos_cat2, ans_cat, pos_ent2, ans_ent)
@@ -1906,7 +1877,7 @@ def apply_simple_or(puzzle, terms,is_dumb=False):
     # this rule can't be applied (both are true or both are false)
     complete = True
     is_valid = False
-    return applied, is_valid, complete
+    return applied, is_valid, complete, insights
   elif pos_symb1 == "O":
     # hint says that ent2 cannot be the answer ent
     if pos_symb2 == "*":
@@ -1926,7 +1897,7 @@ def apply_simple_or(puzzle, terms,is_dumb=False):
       puzzle.answer(pos_cat2, ans_cat, pos_ent2, ans_ent, "O")
       is_valid = cross_out(puzzle, pos_cat2, ans_cat, pos_ent2, ans_ent)
       if not is_valid:
-        return applied, is_valid, complete
+        return applied, is_valid, complete, insights
     elif pos_symb2 == "O":
       # game state is correct, but we cannot change
       complete = True
@@ -1943,8 +1914,8 @@ def apply_simple_or(puzzle, terms,is_dumb=False):
       puzzle.answer(pos_cat1, ans_cat, pos_ent1, ans_ent, "O")
       is_valid = cross_out(puzzle, pos_cat1, ans_cat, pos_ent1, ans_ent)
       if not is_valid:
-        return applied, is_valid, complete
-  return applied, is_valid, complete
+        return applied, is_valid, complete, insights
+  return applied, is_valid, complete, insights
 
 
 # %%
@@ -2045,7 +2016,7 @@ if __name__ == "__main__":
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
-def apply_compound_or(puzzle, options, is_dumb = False):
+def apply_compound_or(puzzle, options):
   """
   Apply the compound or rule to puzzle, will be incomplete if not enough information is known
   return: applied, is_valid, complete
@@ -2053,6 +2024,7 @@ def apply_compound_or(puzzle, options, is_dumb = False):
   applied = False
   complete = False
   is_valid = True
+  insights = set() # There are no insights for compound or, but keep the return signature consistent
 
   optionA = options[0]
   catA1 = optionA[0]
@@ -2074,7 +2046,7 @@ def apply_compound_or(puzzle, options, is_dumb = False):
       is_valid = False
       complete = True
     # There is no info to apply.
-    return applied, is_valid, complete
+    return applied, is_valid, complete, insights
 
   # At least one term is answered; the hint is guaranteed complete.
   complete = True
@@ -2082,7 +2054,7 @@ def apply_compound_or(puzzle, options, is_dumb = False):
   currents = [currentA, currentB]
   if "X" in currents and "O" in currents:
     # Someone already answered.
-    return applied, is_valid, complete
+    return applied, is_valid, complete, insights
 
   # One is answered and the other is not; we are guaranteed to apply.
   applied = True
@@ -2098,7 +2070,7 @@ def apply_compound_or(puzzle, options, is_dumb = False):
   elif currentB == "O":
     puzzle.answer(catA1, catA2, entA1, entA2, "X")
 
-  return applied, is_valid, complete
+  return applied, is_valid, complete, insights
 
 
 # %%
@@ -2171,7 +2143,7 @@ if __name__ == "__main__":
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
-def apply_hint(puzzle, hint,is_dumb=False):
+def apply_hint(puzzle, hint, forbidden_insights):
   """
    Given a hint dictionary and a puzzle, apply next step of the hint to the puzzle
 
@@ -2184,6 +2156,7 @@ def apply_hint(puzzle, hint,is_dumb=False):
   applied = False
   complete = False
   is_valid = True
+  insights = set()
 
   rule = list(hint.keys())[0]
   terms = hint[rule]
@@ -2194,15 +2167,15 @@ def apply_hint(puzzle, hint,is_dumb=False):
   elif rule == "not":
     return apply_not(puzzle, terms[0]["is"])
   elif rule == "before":
-    return apply_before(puzzle, terms,is_dumb=is_dumb)
+    return apply_before(puzzle, terms, forbidden_insights=forbidden_insights)
   elif rule == "simple_or":
-    return apply_simple_or(puzzle, terms, is_dumb = is_dumb)
+    return apply_simple_or(puzzle, terms, forbidden_insights=forbidden_insights)
   elif rule == "compound_or":
-    return apply_compound_or(puzzle, [terms[0]["is"], terms[1]["is"]], is_dumb=is_dumb)
+    return apply_compound_or(puzzle, [terms[0]["is"], terms[1]["is"]])
   else:
     print("This hint has no apply rules! Something has gone horribly wrong. The offending hint: " + str_hint(hint))
 
-  return applied, is_valid, complete
+  return applied, is_valid, complete, insights
 
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="cIlFA0mXSH5R" outputId="274d1a0b-cd33-4b36-c0eb-6214b679cec5"

@@ -189,14 +189,14 @@ def _add_child(hints, feasible_grid, infeasible):
         fitness = hints.feasibility()
         infeasible.append((fitness, hints)) 
 
-def evolve(puzzle, generations, pop_size, x_rate, mut_rate, add_rate, elits):
+def evolve(puzzle, generations, pop_size, x_rate, mut_rate, add_rate, elits, required_insights_oneof=set(), forbidden_insights=set()):
     feasible_grid = EliteGrid(10) 
     infeasible = []
     history = History()
 
     # Create initial population 
     for i in range(pop_size):
-        hints = random_hint_set(puzzle)
+        hints = random_hint_set(puzzle, required_insights_oneof, forbidden_insights)
         _add_child(hints, feasible_grid, infeasible)
         
     for gen in range(generations):
@@ -263,6 +263,14 @@ def evolve(puzzle, generations, pop_size, x_rate, mut_rate, add_rate, elits):
             _add_child(child2, feasible_grid, new_infeasible)
                 
         infeasible = new_infeasible 
+    for row in range(feasible_grid.height):
+        for col in range(feasible_grid.width):
+            child_cell = feasible_grid.grid[row][col]
+            if(not child_cell is None):
+                child = child_cell[1]
+                assert len(child.insights & required_insights_oneof) > 0 or len(required_insights_oneof) == 0, "insights: {} does not include any of: {}. Child required: {}".format(child.insights, required_insights_oneof, child.required_insights_oneof)
+                assert len(child.insights & forbidden_insights) == 0, "insights: {} includes forbidden: {}. Child forbidden: {}".format(child.insights, child.insights & forbidden_insights, child.forbidden_insights)
+                assert len(child.dumb_insights & required_insights_oneof) == 0, "dumb insights: {} includes required: {}. Child required: {}".format(child.dumb_insights, child.insights & required_insights_oneof, child.required_insights_oneof)
     return feasible_grid, infeasible, history 
 
 
