@@ -119,8 +119,7 @@ class HintSet:
         self.forbidden_insights = forbidden_insights
         self.completed_puzzle, self.valid,  self.loops, self.insights = apply_hints(self.puzzle, self.non_duplicates(), forbidden_insights=self.forbidden_insights)
         
-        if self.require_insight: 
-            self.dumb_completed_puzzle, self.dumb_valid,  self.dumb_loops, self.dumb_insights = apply_hints(self.puzzle, self.non_duplicates(), forbidden_insights=self.forbidden_insights | self.required_insights_oneof)
+        self.dumb_completed_puzzle, self.dumb_valid,  self.dumb_loops, self.dumb_insights = apply_hints(self.puzzle, self.non_duplicates(), forbidden_insights=self.forbidden_insights | self.required_insights_oneof)
     
     def get_duplicates(self):
         english_dict = {}

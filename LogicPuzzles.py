@@ -672,15 +672,15 @@ hint_grammar = {
   }
 }
 
-BEFORE_DIFF_CAT = "BEFORE_DIFF_CAT"
-BEFORE_NUM_SPOTS = "BEFORE_NUM_SPOTS"
-BEFORE_NUM_SPOTS_TWO = "BEFORE_NUM_SPOTS_TWO"
-BEFORE_NUM_SPOTS_THREE = "BEFORE_NUM_SPOTS_THREE"
-OR_DIFF_CAT = "OR_DIFF_CAT"
-OR_SAME_CAT = "OR_SAME_CAT"
-TRANS_ABC_TRUE = "TRANS_ABC_TRUE"
-TRANS_ABC_FALSE = "TRANS_ABC_FALSE"
-TRANS_SETS = "TRANS_SETS"
+BEFORE_DIFF_CAT = "BEFORE_DIFF_CAT" # If A < B and A, B are not in the same category, then A is not B.
+BEFORE_NUM_SPOTS = "BEFORE_NUM_SPOTS" # The before entity can't be in the last N spots (and vice versa for the after entity)
+BEFORE_NUM_SPOTS_TWO = "BEFORE_NUM_SPOTS_TWO" # A streak of Xs at the beginning/end forces the first available position for the other entity to shift.
+BEFORE_NUM_SPOTS_THREE = "BEFORE_NUM_SPOTS_THREE" # For a position to be a valid answer, the corresponding position +/- num must be valid for the other entity
+OR_DIFF_CAT = "OR_DIFF_CAT" # If A or B is C then A is not B
+OR_SAME_CAT = "OR_SAME_CAT" # If A or B from category 0 is C then no other entity from category 0 is C
+TRANS_ABC_TRUE = "TRANS_ABC_TRUE" # A -> B and B -> C, so A -> C
+TRANS_ABC_FALSE = "TRANS_ABC_FALSE" # A -> B and B !> C, so A !> C
+TRANS_SETS = "TRANS_SETS" # A and B don't share any possibilities; A != B
 ALL_INSIGHTS = {BEFORE_DIFF_CAT, BEFORE_NUM_SPOTS, BEFORE_NUM_SPOTS_TWO, BEFORE_NUM_SPOTS_THREE, OR_DIFF_CAT, OR_SAME_CAT, TRANS_ABC_TRUE, TRANS_ABC_FALSE, TRANS_SETS}
 
 # # subset for testing
@@ -1008,11 +1008,11 @@ def find_transitives(puzzle, forbidden_insights=set()):
                 B_possibles.append(entCB)
                 
               # Now possibles include all positive or nil values for category C
-              # If A and B don't share any entities in their possible lists, then A !> B
+              # If A and B don't share any entities in their possible lists, then A != B
               setA = set(A_possibles)
               setB = set(B_possibles)
               if not (setA & setB) and TRANS_SETS not in forbidden_insights:
-                # A and B don't share any possibilities; A !> B
+                # A and B don't share any possibilities; A != B
                 insights.add(TRANS_SETS)
                 applied = True
                 puzzle.answer(catA, catB, entA, entB, "X")
