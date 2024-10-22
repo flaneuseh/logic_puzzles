@@ -270,7 +270,7 @@ def evolve(puzzle, generations, pop_size, x_rate, mut_rate, add_rate, elits, req
                 child = child_cell[1]
                 assert len(child.insights & required_insights_oneof) > 0 or len(required_insights_oneof) == 0, "insights: {} does not include any of: {}. Child required: {}".format(child.insights, required_insights_oneof, child.required_insights_oneof)
                 assert len(child.insights & forbidden_insights) == 0, "insights: {} includes forbidden: {}. Child forbidden: {}".format(child.insights, child.insights & forbidden_insights, child.forbidden_insights)
-                assert len(child.dumb_insights & required_insights_oneof) == 0, "dumb insights: {} includes required: {}. Child required: {}".format(child.dumb_insights, child.insights & required_insights_oneof, child.required_insights_oneof)
+                assert not child.require_insight or  len(child.dumb_insights & required_insights_oneof) == 0, "dumb insights: {} includes required: {}. Child required: {}".format(child.dumb_insights, child.insights & required_insights_oneof, child.required_insights_oneof)
     return feasible_grid, infeasible, history 
 
 
