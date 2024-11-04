@@ -1,0 +1,24 @@
+solution:
+      30  60  90  120
+    --------------------
+Pot|  X    X    X    O  |
+Gre|  O    X    X    X  |
+Egg|  X    O    X    X  |
+Bro|  X    X    O    X  |
+    --------------------
+Hints for with loop size: 1
+	The day 60 is the plant Eggplant
+	The plant Green Onion is at least 1 day before the plant Eggplant
+	Either The plant Green Onion is the day 120 or The plant Potato is the day 120
+
+
+Hints for with loop size: 2
+	The day 60 is the plant Eggplant
+	The plant Broccoli is 1 days before the plant Potato
+
+
+Hints for with loop size: 3
+	The plant Broccoli is 1 days before the plant Potato
+	The day 60 is the plant Eggplant
+
+

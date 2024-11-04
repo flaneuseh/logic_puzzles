@@ -1,0 +1,37 @@
+solution:
+      10  15  20  25
+    --------------------
+Sal|  X    X    O    X  |
+Egg|  X    O    X    X  |
+Tof|  O    X    X    X  |
+Pea|  X    X    X    O  |
+    --------------------
+Hints for with loop size: 1
+	The plant Tofu is the percent 10
+	The plant Egg is the percent 15
+	Either The plant Peanuts is the percent 15 or The plant Salmon is the percent 20
+
+
+Hints for with loop size: 2
+	The plant Egg is the percent 15
+	The plant Salmon is 1 percents before the plant Peanuts
+
+
+Hints for with loop size: 3
+	The plant Salmon is 1 percents before the plant Peanuts
+	The plant Egg is the percent 15
+
+
+Hints for with loop size: 4
+	The plant Egg is 1 percents before the plant Salmon
+	The plant Salmon is 1 percents before the plant Peanuts
+	Either The percent 25 is the plant Peanuts or The percent 20 is the plant Egg
+
+
+Hints for with loop size: 5
+	The plant Egg is at least 1 percent before the plant Salmon
+	The plant Egg is 1 percents before the plant Salmon
+	The plant Salmon is 1 percents before the plant Peanuts
+	Either The percent 25 is the plant Peanuts or The percent 20 is the plant Egg
+
+

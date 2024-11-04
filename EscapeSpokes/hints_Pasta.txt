@@ -1,0 +1,33 @@
+solution:
+      Elb  Bow  Lin  She
+    --------------------
+Tom|  O    X    X    X  |
+Alf|  X    X    X    O  |
+Pes|  X    O    X    X  |
+Car|  X    X    O    X  |
+    --------------------
+Hints for with loop size: 1
+	The sauce Tomato is the shape Elbow
+	Either The shape Shell is the sauce Alfredo or The shape Linguine is the sauce Tomato
+	Either The shape Shell is the sauce Alfredo or The shape Bowtie is the sauce Carbonara
+
+
+Hints for with loop size: 2
+	Either the shape Elbow or the shape Shell is the sauce Tomato
+	The sauce Alfredo is the shape Shell
+	Either The sauce Carbonara is the shape Linguine or The shape Bowtie is the sauce Alfredo
+
+
+Hints for with loop size: 3
+	Either The shape Shell is the sauce Alfredo or The shape Bowtie is the sauce Carbonara
+	Either The sauce Carbonara is the shape Bowtie or The shape Elbow is the sauce Tomato
+	The sauce Tomato is the shape Elbow
+
+
+Hints for with loop size: 4
+	Either The sauce Carbonara is the shape Linguine or The shape Linguine is the sauce Alfredo
+	Either The shape Shell is the sauce Alfredo or The shape Bowtie is the sauce Carbonara
+	Either The sauce Carbonara is the shape Bowtie or The shape Elbow is the sauce Tomato
+	The sauce Tomato is the shape Elbow
+
+

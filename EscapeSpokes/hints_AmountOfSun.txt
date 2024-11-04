@@ -1,0 +1,30 @@
+solution:
+      2 h  4 h  6 h  8 h
+    --------------------
+Pum|  X    X    X    O  |
+Kal|  X    O    X    X  |
+Blu|  O    X    X    X  |
+Cau|  X    X    O    X  |
+    --------------------
+Hints for with loop size: 1
+	The plant Blueberries is the hour 2 hours
+	Either The plant Kale is the hour 4 hours or The plant Blueberries is the hour 6 hours
+	The plant Blueberries is 2 hours before the plant Cauliflower
+
+
+Hints for with loop size: 2
+	The hour 4 hours is the plant Kale
+	The plant Cauliflower is 1 hours before the plant Pumpkins
+
+
+Hints for with loop size: 3
+	The plant Cauliflower is 1 hours before the plant Pumpkins
+	The hour 4 hours is the plant Kale
+
+
+Hints for with loop size: 4
+	Either The plant Blueberries is the hour 2 hours or The plant Cauliflower is the hour 4 hours
+	The plant Kale is 1 hours before the plant Cauliflower
+	The plant Blueberries is 1 hours before the plant Kale
+
+
