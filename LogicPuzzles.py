@@ -854,10 +854,18 @@ def generate_hint(puzzle):
   """
   cats = create_cats(puzzle)
   nums = get_num(cats)
+  
   if len(nums) < 1:
-    del hint_grammar["hint"]["before"]
-  word = generate_word(hint_grammar, terminals)
-  return fill_in_word(puzzle, word)["hint"]
+    hint_grammar2 = deepcopy(hint_grammar)
+    del hint_grammar2["hint"]["before"]
+    word = generate_word(hint_grammar2, terminals)
+  else: 
+    word = generate_word(hint_grammar, terminals)
+  try: 
+    return fill_in_word(puzzle, word)["hint"]
+  except: 
+    return generate_hint(puzzle)
+
 
 def str_hint(hint, str_so_far = ""):
   if isinstance(hint, dict):
