@@ -51,6 +51,7 @@ The "apply_hint(hint, puzzle)" will take a hint dictionary and apply any logic t
 * complete: true if the hint cannot change state anymore 
 
 
+
 ### Evolution.py 
 
 #### apply_hints(puzzle, hints)
@@ -107,30 +108,45 @@ Returns:
 
 Note: the feasible and infeasible populations are returned as list of tuples where the first item in the tuple is the fitness and the second item is the HintSet 
 
-## Other Files 
-
-### SinglePopulationEvolution 
-A single population GA that selects based on the infeasible fitness criteria. You can run new experiments for a single population GA by modifying and running the SinglePopExperiements.py, and running the SinglePopAnalysis.py file on the resulting folder. Data collected from these experiments is in the FitnessExperiements folder. 
-
-### FeasbilityTests.py 
-This file contains a single popualtion GA that finds the first N feasible induvals. Those indivuals are mutated several times. This was done to test how likely feasible indivuals are to become infesible. Results from that are anaylsised with VisualizeMutations.py file and data is stored in the MutationData folder. 
-
-### DataVisualization.py 
-This file is used to create graphs and preform data anaylsis on experiments from the FI-2Pop genetic algorithm. 
-
-## MSC. 
-
-### Version control for jupyter notebooks 
-Version Control: (from https://github.com/mwouts/jupytext)
-
-1. Install Jupytext using either ```pip install jupytext``` or ```conda install jupytext -c conda-forge```
-2. Update the notebook based on the py file with ```jupytext --sync LogicPuzzles.py```
-3. Create/update py file based on notebook: ```jupytext --set-formats ipynb,py:percent LogicPuzzles.ipynb```
 
 
-JupyterLab using Conda (can also use pip for universal environments)
-1. Install JupyterLab ```conda install jupyterlab -c conda-forge```
-2. Install Jupytext ```conda install jupytext -c conda-forge```
-3. ```jupyter lab``` to open the notebook/py editor
-4. Edit the notebook using JupyterLab, and LogicPuzzles.py will auto-update (and vice versa, though be sure to keep only ONE open in Jupyter Lab at a time) At least in theory. Be sure to verify for yourself with a changing version number at the top of the notebook.
-5. Happy Coding!
+### MapElites.py
+
+#### EliteGrid 
+
+Data structure for representing the map elite grid. Some important parameters and methods are: 
+
+* grid: a list of lists representing the grid. Each cell either contains ``None'' or a hintSet object 
+
+* addChild: Children are added to the grid with the addChild method. To add a child a row (based on solution) and column (based on solver loops) are determined. The child is added if this cell is empty or the new child is at least as small in terms of hint size. 
+
+* select: returns a random child in the grid 
+
+* getFitnessGrid: return the fitness (hint size) of children in the grid (or -1 if cell is empty)
+
+ #### History 
+ This object tracks various values throughout evolution history 
+
+ #### evolve 
+
+ Runs contrained map-elites evolition 
+
+ *inputs* 
+
+ * puzzle: the puzzle being generated 
+ *  generations: number of generations to run 
+ *  pop_size: opulation size
+ *  x_rate: cross over rate 
+ *  mut_rate: mutation rate 
+ *  add_rate: ratio of add mutations 
+ *  elits: number elites (for infeasible pop)
+
+ *outputs* 
+
+ * feasibleGrid: the mapElites grid of all feasible children in last generation 
+ * infeasiblePopulation: list of infeasible children in last generation 
+* history: history object across evolution 
+
+## Aiide-24 Files 
+
+The trials presented in the AIIDE-24 paper are provided in the school3 folder, including the graphs generated. The code used for anayalsis and visualization is given in the MapElitesVisualation.py file. 
