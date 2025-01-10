@@ -32,8 +32,9 @@ def set_font_sizes(small, medium, large):
     plt.rc('legend', fontsize=small)    # legend fontsize
     plt.rc('figure', titlesize=large)  # fontsize of the figure title
 
-def create_agg_plot(trials, color, label, normalize=False, legend = True):
+def create_agg_plot(trials, color, label, normalize=False, legend = True, multiplier = 1):
     x = list(range(0, len(trials[0])))
+    
     
     trial_avg  = [] 
     trial_max = [] 
@@ -46,7 +47,8 @@ def create_agg_plot(trials, color, label, normalize=False, legend = True):
         trial_avg.append(sum(fitness) / len(fitness))
         trial_max.append(max(fitness))
         trial_min.append(min(fitness))
-        
+
+    x = [x * multiplier for x in x]  
     plt.plot(x, trial_avg, color = color, label = label)
     if legend: 
         plt.legend()
