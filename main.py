@@ -5,7 +5,86 @@ from HintSetToJson import category_to_json
 from HintToEnglish import hint_to_english
 from LogicPuzzles import Category, Puzzle 
 import json 
+import jsonpickle
 app = Flask(__name__)
+
+ACCOUNT_DATABASE_FILE_STRING = "UserData.json"
+
+def get_user_database():
+    file = open(ACCOUNT_DATABASE_FILE_STRING, "r")
+    json_str = file.read()
+    file.close()
+    database = jsonpickle.loads(json_str)
+    return database 
+
+def update_user_database(new_database):
+        file = open(ACCOUNT_DATABASE_FILE_STRING, "w")
+        file.write(jsonpickle.encode(new_database))
+        file.close()
+
+
+@app.route('/add_account', methods=['POST'])
+@cross_origin()
+def add_account():
+
+    database = get_user_database()
+    request_data = request.get_json() 
+
+    username = request_data["username"]
+
+    if username in database:
+        response = jsonify("existing user")
+        return response 
+    else: 
+        database[username] = {} 
+        update_user_database(database)
+        response = jsonify("success")
+        return response 
+    
+@app.route('/like_puzzle', methods=['POST'])
+@cross_origin()
+def like_puzzle():
+    database  = get_user_database()
+    request_data = request.get_json() 
+
+    username = request_data["username"]
+
+    if username in database:
+        if "liked_puzzles" in database[username]:
+            database[username]["liked_puzzles"].append(request_data["puzzle"])
+        else:
+            database[username]["liked_puzzles"] = [request_data["puzzle"]]
+        
+        update_user_database(database)
+        response = jsonify("success")
+        return response 
+
+    else: 
+        response = jsonify("user not found")
+        return response , 406 
+
+@app.route('/get_liked_puzzles', methods=['GET'])
+@cross_origin()
+def get_liked_puzzles():
+    database  = get_user_database()
+    username = request.args.get('username')
+
+
+    if username in database:
+        if "liked_puzzles" in database[username]:
+            print(database[username]["liked_puzzles"][0]) 
+            return jsonify(database[username]["liked_puzzles"])
+        else: 
+            return jsonify([])  
+
+    else: 
+        response = jsonify("user not found")
+        return response , 406 
+
+
+
+
+
 
 def hintset_to_di(hintset, row, col):
     di = {}
