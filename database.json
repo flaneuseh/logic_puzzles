@@ -1,0 +1,61 @@
+{
+    "categories": [
+        {
+            "name": "suspect",
+            "entities": [
+                "Ms. Scarlet",
+                "Mrs. White",
+                "Prof. Plum",
+                "Mr. Green",
+                "Col Mustard",
+                "Mrs. Peacock",
+                "Mr. Boddy",
+                "Wadsworth"
+            ],
+            "is_numeric": false
+        },
+        {
+            "name": "location",
+            "entities": [
+                "Library",
+                "Study",
+                "Drawing Room",
+                "Conservatory",
+                "Kitchen",
+                "Dining Room",
+                "Smoking Room",
+                "Billiards Room"
+            ],
+            "is_numeric": false
+        },
+        {
+            "name": "weapon",
+            "entities": [
+                "candlestick",
+                "revolver",
+                "knife",
+                "rope",
+                "poison",
+                "wrench",
+                "lead pipe",
+                "piano wire"
+            ],
+            "is_numeric": false
+        },
+        {
+            "name": "time",
+            "entities": [
+                "4:00",
+                "5:00",
+                "6:00",
+                "7:00",
+                "8:00",
+                "9:00",
+                "10:00",
+                "11:00",
+                "12:00"
+            ],
+            "is_numeric": true
+        }
+    ]
+}
