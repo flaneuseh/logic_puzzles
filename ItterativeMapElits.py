@@ -179,6 +179,9 @@ class EliteGrid:
                     li.append({"row": j, "col": i, "fit":grid[i][j][0], "puzzle": grid[i][j][1]}) 
         
         return li  
+    def get_top_layer(self):
+        top_layer = len(self.grids) - 1 
+        return self.get_new_to_layer(top_layer)
 
             
     
