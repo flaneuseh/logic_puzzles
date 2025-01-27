@@ -9,10 +9,12 @@ from ItterativeMapElits import EliteGrid
 import json 
 import jsonpickle
 import random 
+from AddToGrammar import get_empty_before, get_empty_is, get_empty_not, get_empty_or
 
 app = Flask(__name__)
 
 ACCOUNT_DATABASE_FILE_STRING = "UserData.json"
+
 
 def get_user_database():
     file = open(ACCOUNT_DATABASE_FILE_STRING, "r")
@@ -29,11 +31,14 @@ def update_user_database(new_database):
 
 
 
+
 def hintset_to_di(hintset, row, col):
+    with open("database.json", 'r') as file:
+        database = json.load(file)
     di = {}
     di["solution"] = hintset.completed_puzzle.print_grid_small()
     di["categories"] = [category_to_json(cat) for cat in hintset.completed_puzzle.categories]
-    di["hints"] = [hint_to_english(hint) for hint in hintset.hints]
+    di["hints"] = [hint_to_english(hint, grammar_dict=database["grammar_dict"]) for hint in hintset.hints]
     di["diff"] = col + 1 
     di["sol"] = row 
     return di 
@@ -112,6 +117,7 @@ def get_gen_data(request_data):
     return [gen_len, pop_size, x_rate, mut_rate, add_rate, elits]
 
 
+
 def get_new_id(curr_ids):
     id = random.randint(0, 1000 + len(curr_ids))
 
@@ -185,6 +191,218 @@ def get_grid_with_id(database, user, request_data):
     else: 
         return None 
 
+def get_user_grammar(user):
+    user_database = get_user_database()
+    with open("database.json", 'r') as file:
+        database = json.load(file)
+    
+
+    if user!=None and user in user_database and "grammar_dict" in user_database[user]:
+        custom_grammar = user_database[user]["grammar_dict"]
+        print(custom_grammar)
+    else: 
+        custom_grammar = {}
+        
+        
+    database["grammar_dict"].update(custom_grammar)
+    return database["grammar_dict"]
+
+def get_formatted_unused_grammar(di, cats):
+
+    empty_is = get_empty_is(di, cats)
+    empty_not = get_empty_not(di, cats)
+    empty_before = get_empty_before(di, cats)
+    empty_or = get_empty_or(di, cats)
+
+    return_di = {}
+    if len(empty_is) > 0:
+        empty_formatted = [{"cat1": e[0], "cat2": e[1]} for e in empty_is]
+        return_di["is"] = {"logic": "The entity {ent1} in the category {cat1} is connect to the entity {ent2} in the category {cat2}", "vars": ["{cat1}", "{cat2}", "{ent1}", "{ent2}"],
+                           "default_temp": "The {cat1} {ent1} is the {cat2} {ent2}", "empty": empty_formatted }
+    if len(empty_not) > 0:
+        empty_formatted = [{"cat1": e[0], "cat2": e[1]} for e in empty_not]
+        return_di["not"] = {"logic": "The entity {ent1} in the category {cat1} is not connect to the entity {ent2} in the category {cat2}", "vars": ["{cat1}", "{cat2}", "{ent1}", "{ent2}"],
+                           "default_temp": "The {cat1} {ent1} is not the {cat2} {ent2}", "empty": empty_formatted }
+    if len(empty_before) > 0:
+        empty_formatted = [{"cat1": e[0], "cat2": e[1], "num_cat": e[2]} for e in empty_before]
+        return_di["before"] = {"logic": "The entity {ent1} in the category {cat1} is before/smaller then the {ent2} in the category {cat2}. The amount of which {ent1} is smaller may be specified or unspecified", "vars": ["{cat1}", "{cat2}", "{ent1}", "{ent2}", "{num_ent}", "{amount}", "{step}"],
+                           "default_temp": "Unspecified version: The {cat1} {ent1} is at least {step} {num_cat} before the {cat2} {ent2}. Specified version: The {cat1} {ent1} is {amount} {num_cat}s before the {cat2} {ent2}", "empty": empty_formatted }
+    if len(empty_or) > 0:
+        empty_formatted = [{"cat1": e[0], "cat2": e[1], "is_cat": e[2]} for e in empty_or]
+        return_di["or"] = {"logic": "Either the entity {ent1} in the category {cat1} or the entity {ent2} in the category {cat2} is connected to the entity {is_ent} in the category {is_cat}, but not both",  
+                           "vars": ["{cat1}", "{cat2}", "{ent1}", "{ent2}", "{is_ent}", "{is_cat}"],
+                           "default_temp": "Either the {cat1} {ent1} or the {cat2} {ent2} is the {is_cat} {is_ent}", "empty": empty_formatted }
+    return return_di 
+
+
+
+@app.route('/get_unused_grammar', methods=['POST'])
+@cross_origin()
+def get_unused_grammars():
+    request_data = request.get_json() 
+    user= request_data["username"]
+    cats = request_data["cats"]
+
+    grammar = get_user_grammar(user)
+
+    return_di = get_formatted_unused_grammar(grammar, cats)
+
+    return_di = jsonify(return_di)
+    return return_di 
+
+@app.route('/add_category', methods=['POST'])
+@cross_origin()
+def add_category():
+
+    user_database =get_user_database()
+    
+    request_data = request.get_json() 
+
+    if not request_data["user"] in user_database:
+        response = jsonify("user not found")
+        return response , 406
+    else:
+        user = user_database[request_data["user"]] 
+
+        category = {"name": request_data["category"]["name"], "entities": request_data["category"]["entities"], "is_numeric": request_data["category"]["is_numeric"]}
+
+        if "categories" in user:
+            user["categories"].append(category)
+        else:
+            user["categories"] = [category]
+        update_user_database(user_database)
+
+        response = jsonify("success")
+        return response
+    
+@app.route('/get_template', methods=['POST'])
+@cross_origin()
+def get_template():
+    
+    request_data = request.get_json()
+    user_dict = get_user_grammar(request_data["user"])
+    rule_type = request_data["type"]
+
+    if rule_type == "is":
+        cat1 = request_data["cat1"] 
+        cat2 = request_data["cat2"]
+        if not cat1 in user_dict or not cat2 in user_dict[cat1] or not "is" in user_dict[cat1][cat2]:
+            return "The {cat1} {ent1} is the {cat2} {ent2}"
+        else: 
+            return user_dict[cat1][cat2]["is"]
+    elif rule_type == "not":
+        cat1 = request_data["cat1"] 
+        cat2 = request_data["cat2"]
+        if not cat1 in user_dict or not cat2 in user_dict[cat1] or not "not" in user_dict[cat1][cat2]:
+            return "The {cat1} {ent1} is not the {cat2} {ent2}"
+        else: 
+            return user_dict[cat1][cat2]["not"]
+    elif rule_type == "before":
+        cat1 = request_data["cat1"] 
+        cat2 = request_data["cat2"]
+        num_cat = request_data["num_cat"]
+    
+
+        value = {"step": 1, "untimed": "The {cat1} {ent1} is at least {step} {num_cat} before the {cat2} {ent2}.", "timed": " The {cat1} {ent1} is {amount} {num_cat}s before the {cat2} {ent2}"}
+
+        if not cat1 in user_dict or not cat2 in user_dict[cat1] or not num_cat in user_dict[cat1][cat2] or not "before" in user_dict[cat1][cat2][num_cat]:
+            return jsonify(value) 
+        else: 
+            return jsonify(user_dict[cat1][cat2][num_cat]["before"]) 
+            
+
+ 
+    elif rule_type == "or":
+        cat1 = request_data["cat1"] 
+        cat2 = request_data["cat2"]
+        is_cat = request_data["is_cat"]
+
+        if not cat1 in user_dict or not cat2  in user_dict[cat1] or not  is_cat in user_dict[cat1][cat2] or not "or" in user_dict[cat1][cat2][is_cat]:
+           value = "Either the {cat1} {ent1} or the {cat2} {ent2} is the {is_cat} {is_ent}"
+        else: 
+            value = user_dict[cat1][cat2][is_cat]["or"]
+        return value 
+
+
+
+@app.route('/add_grammar_rule', methods=['POST'])
+@cross_origin()
+def add_grammar_rule():
+
+    user_database =get_user_database()
+    
+    request_data = request.get_json() 
+
+    if not request_data["user"] in user_database:
+        response = jsonify("user not found")
+        return response , 406
+    else:
+        user = user_database[request_data["user"]] 
+        if "grammar_dict" in user:
+            user_dict = user["grammar_dict"]
+        else: 
+            user_dict = {}
+            user["grammar_dict"] = user_dict
+        
+        rule_type = request_data["type"]
+
+        if rule_type == "is":
+            cat1 = request_data["cat1"] 
+            cat2 = request_data["cat2"]
+            if not cat1 in user_dict:
+                user_dict[cat1] = {}
+            if not cat2 in user_dict[cat1]:
+                user_dict[cat1][cat2] = {}
+            user_dict[cat1][cat2]["is"] = request_data["template"]
+        elif rule_type == "not":
+            cat1 = request_data["cat1"] 
+            cat2 = request_data["cat2"]
+            if not cat1 in user_dict:
+                user_dict[cat1] = {}
+            if not cat2 in user_dict[cat1]:
+                user_dict[cat1][cat2] = {}
+            user_dict[cat1][cat2]["not"] = request_data["template"]
+        elif rule_type == "before":
+            cat1 = request_data["cat1"] 
+            cat2 = request_data["cat2"]
+            num_cat = request_data["num_cat"]
+            template1 = request_data["untimed"]
+            template2 = request_data["timed"]
+            step = request_data["step"]
+
+            value = {"step": step, "untimed": template1, "timed": template2}
+
+            if not cat1 in user_dict:
+                user_dict[cat1] = {}
+            if not cat2 in user_dict[cat1]:
+                user_dict[cat1][cat2] = {}
+            if not num_cat in user_dict[cat1][cat2]: 
+                user_dict[cat1][cat2][num_cat] = {}
+
+            user_dict[cat1][cat2][num_cat]["before"] = value
+        elif rule_type == "or":
+            cat1 = request_data["cat1"] 
+            cat2 = request_data["cat2"]
+            is_cat = request_data["is_cat"]
+
+            value = request_data["template"]
+
+            if not cat1 in user_dict:
+                user_dict[cat1] = {}
+            if not cat2  in user_dict[cat1]:
+                user_dict[cat1][cat2] = {}
+            if not is_cat in user_dict[cat1][cat2]: 
+                user_dict[cat1][cat2][is_cat] = {}
+
+            user_dict[cat1][cat2][is_cat]["or"] = value
+
+
+        update_user_database(user_database)
+        response = jsonify("success")
+        return response 
+
+   
+
 
 @app.route('/add_account', methods=['POST'])
 @cross_origin()
@@ -252,9 +470,17 @@ def get_liked_puzzles():
 @app.route('/sample_categories', methods=['GET'])
 @cross_origin()
 def get_sample_categories():
+    
+ 
     with open("database.json", 'r') as file:
         database = json.load(file)
-    return jsonify(database["categories"])
+    categories = database["categories"]
+    if "user" in request.args:
+       username = request.args.get('user')
+       user_data = get_user_database()
+       if username in user_data and "categories" in user_data[username]:
+            categories += user_data[username]["categories"]
+    return jsonify(categories)
 
 
 
