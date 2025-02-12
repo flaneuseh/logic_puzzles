@@ -33,15 +33,7 @@ from LogicPuzzles import (
     find_openings,
     find_transitives,
     ALL_INSIGHTS,
-    BEFORE_DIFF_CAT,
-    BEFORE_NUM_SPOTS,
-    BEFORE_NUM_SPOTS_TWO,
-    BEFORE_NUM_SPOTS_THREE,
-    OR_DIFF_CAT,
-    OR_SAME_CAT,
-    TRANS_ABC_TRUE,
-    TRANS_ABC_FALSE,
-    TRANS_SETS,
+    repair,
 )
 from HintToEnglish import hint_to_english
 
@@ -97,14 +89,61 @@ def get_current_moves(puzzle, hints):
         any transitive moves possible in order
         all currently applicable hints and their moves in order
         any insights needed
+        if the current board is invalid, get the most salient contradiction (highlight the cell(s) that create the contradiction)
     """
-    copy = deepcopy(puzzle)
-    applied, is_valid, complete = find_openings(copy, slow=True)
-    copy = deepcopy(puzzle)
-    applied, is_valid, complete, insights = find_transitives(copy, slow=True)
+    moves = []
+    solution, is_valid, _, _ = apply_hints(puzzle, hints)
+    if not is_valid:
+        # The puzzle itself is broken. this should never happen.
+        raise Exception("INVALID_PUZZLE")
+
+    result = deepcopy(puzzle)
+    applied = repair(result, solution)
+    if not is_valid:
+        # If there are any errors, the only valid move is to remove all invalid marks.
+        moves.append({
+            "type": "repair",
+            "result": result,
+        })
+        return is_valid, moves
+
+    # We know that so far the puzzle is correct.
+    result = deepcopy(puzzle)
+    applied, is_valid, _, insights = find_openings(result, slow=True)
+    if not is_valid:
+        # We should never be here
+        raise Exception("BROKEN_STATE")
+    if applied:
+        moves.append({
+            "type": "openings",
+            "update": result,
+            "insights": insights,
+        })
+    result = deepcopy(puzzle)
+    applied, is_valid, _, insights = find_transitives(result, slow=True)
+    if not is_valid:
+        # We should never be here
+        raise Exception("BROKEN_STATE")
+    if applied:
+        moves.append({
+            "type": "transitives",
+            "result": result,
+            "insights": insights,
+        })
     for hint in hints:
-        copy = deepcopy(puzzle)
-        applied, is_valid, complete, insights = apply_hint(copy, hint, slow=True)
+        result = deepcopy(puzzle)
+        applied, is_valid, _, insights = apply_hint(result, hint, slow=True)
+        if not is_valid:
+            # We should never be here
+            raise Exception("BROKEN_STATE")
+        if applied:
+            moves.append({
+                "type": "hint",
+                "hint": hint,
+                "result": result,
+                "insights": insights,
+            })
+    return is_valid, moves
 
 
 # %%
