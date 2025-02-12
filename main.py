@@ -9,6 +9,7 @@ from ItterativeMapElits import EliteGrid
 import json 
 import jsonpickle
 import random 
+import Database
 from AddToGrammar import get_empty_before, get_empty_is, get_empty_not, get_empty_or
 
 app = Flask(__name__)
@@ -27,8 +28,6 @@ def update_user_database(new_database):
         file = open(ACCOUNT_DATABASE_FILE_STRING, "w")
         file.write(jsonpickle.encode(new_database))
         file.close()
-
-
 
 
 
@@ -191,21 +190,7 @@ def get_grid_with_id(database, user, request_data):
     else: 
         return None 
 
-def get_user_grammar(user):
-    user_database = get_user_database()
-    with open("database.json", 'r') as file:
-        database = json.load(file)
-    
 
-    if user!=None and user in user_database and "grammar_dict" in user_database[user]:
-        custom_grammar = user_database[user]["grammar_dict"]
-        print(custom_grammar)
-    else: 
-        custom_grammar = {}
-        
-        
-    database["grammar_dict"].update(custom_grammar)
-    return database["grammar_dict"]
 
 def get_formatted_unused_grammar(di, cats):
 
@@ -243,7 +228,7 @@ def get_unused_grammars():
     user= request_data["username"]
     cats = request_data["cats"]
 
-    grammar = get_user_grammar(user)
+    grammar = Database.get_user_grammar(user)
 
     return_di = get_formatted_unused_grammar(grammar, cats)
 
@@ -254,24 +239,14 @@ def get_unused_grammars():
 @cross_origin()
 def add_category():
 
-    user_database =get_user_database()
-    
     request_data = request.get_json() 
 
-    if not request_data["user"] in user_database:
+    result = Database.add_category(request_data["user"], request_data)
+
+    if result is None:
         response = jsonify("user not found")
         return response , 406
     else:
-        user = user_database[request_data["user"]] 
-
-        category = {"name": request_data["category"]["name"], "entities": request_data["category"]["entities"], "is_numeric": request_data["category"]["is_numeric"]}
-
-        if "categories" in user:
-            user["categories"].append(category)
-        else:
-            user["categories"] = [category]
-        update_user_database(user_database)
-
         response = jsonify("success")
         return response
     
@@ -280,7 +255,7 @@ def add_category():
 def get_template():
     
     request_data = request.get_json()
-    user_dict = get_user_grammar(request_data["user"])
+    user_dict = Database.get_user_grammar(request_data["user"])
     rule_type = request_data["type"]
 
     if rule_type == "is":
@@ -328,76 +303,16 @@ def get_template():
 @app.route('/add_grammar_rule', methods=['POST'])
 @cross_origin()
 def add_grammar_rule():
-
-    user_database =get_user_database()
     
     request_data = request.get_json() 
 
-    if not request_data["user"] in user_database:
+    results = Database.add_grammar_rule(request_data["user"], request_data)
+
+    if results is None:
         response = jsonify("user not found")
         return response , 406
     else:
-        user = user_database[request_data["user"]] 
-        if "grammar_dict" in user:
-            user_dict = user["grammar_dict"]
-        else: 
-            user_dict = {}
-            user["grammar_dict"] = user_dict
-        
-        rule_type = request_data["type"]
-
-        if rule_type == "is":
-            cat1 = request_data["cat1"] 
-            cat2 = request_data["cat2"]
-            if not cat1 in user_dict:
-                user_dict[cat1] = {}
-            if not cat2 in user_dict[cat1]:
-                user_dict[cat1][cat2] = {}
-            user_dict[cat1][cat2]["is"] = request_data["template"]
-        elif rule_type == "not":
-            cat1 = request_data["cat1"] 
-            cat2 = request_data["cat2"]
-            if not cat1 in user_dict:
-                user_dict[cat1] = {}
-            if not cat2 in user_dict[cat1]:
-                user_dict[cat1][cat2] = {}
-            user_dict[cat1][cat2]["not"] = request_data["template"]
-        elif rule_type == "before":
-            cat1 = request_data["cat1"] 
-            cat2 = request_data["cat2"]
-            num_cat = request_data["num_cat"]
-            template1 = request_data["untimed"]
-            template2 = request_data["timed"]
-            step = request_data["step"]
-
-            value = {"step": step, "untimed": template1, "timed": template2}
-
-            if not cat1 in user_dict:
-                user_dict[cat1] = {}
-            if not cat2 in user_dict[cat1]:
-                user_dict[cat1][cat2] = {}
-            if not num_cat in user_dict[cat1][cat2]: 
-                user_dict[cat1][cat2][num_cat] = {}
-
-            user_dict[cat1][cat2][num_cat]["before"] = value
-        elif rule_type == "or":
-            cat1 = request_data["cat1"] 
-            cat2 = request_data["cat2"]
-            is_cat = request_data["is_cat"]
-
-            value = request_data["template"]
-
-            if not cat1 in user_dict:
-                user_dict[cat1] = {}
-            if not cat2  in user_dict[cat1]:
-                user_dict[cat1][cat2] = {}
-            if not is_cat in user_dict[cat1][cat2]: 
-                user_dict[cat1][cat2][is_cat] = {}
-
-            user_dict[cat1][cat2][is_cat]["or"] = value
-
-
-        update_user_database(user_database)
+       
         response = jsonify("success")
         return response 
 
@@ -408,35 +323,34 @@ def add_grammar_rule():
 @cross_origin()
 def add_account():
 
-    database = get_user_database()
     request_data = request.get_json() 
 
     username = request_data["username"]
 
-    if username in database:
-        response = jsonify("existing user")
-        return response 
-    else: 
-        database[username] = {} 
-        update_user_database(database)
+    result = Database.add_user(username)
+
+    print(result)
+
+    if not result is None: 
         response = jsonify("success")
         return response 
+    else: 
+        response = jsonify("existing user")
+        return response 
+
+        
     
 @app.route('/like_puzzle', methods=['POST'])
 @cross_origin()
 def like_puzzle():
-    database  = get_user_database()
+
     request_data = request.get_json() 
 
     username = request_data["username"]
 
-    if username in database:
-        if "liked_puzzles" in database[username]:
-            database[username]["liked_puzzles"].append(request_data["puzzle"])
-        else:
-            database[username]["liked_puzzles"] = [request_data["puzzle"]]
-        
-        update_user_database(database)
+    result = Database.like_puzzle(username, (request_data["puzzle"])) 
+
+    if result: 
         response = jsonify("success")
         return response 
 
@@ -447,16 +361,12 @@ def like_puzzle():
 @app.route('/get_liked_puzzles', methods=['GET'])
 @cross_origin()
 def get_liked_puzzles():
-    database  = get_user_database()
     username = request.args.get('username')
 
+    result = Database.get_liked_puzzles(username)
 
-    if username in database:
-        if "liked_puzzles" in database[username]:
-            print(database[username]["liked_puzzles"][0]) 
-            return jsonify(database[username]["liked_puzzles"])
-        else: 
-            return jsonify([])  
+    if  not result is None: 
+            return jsonify(result)
 
     else: 
         response = jsonify("user not found")
@@ -471,15 +381,14 @@ def get_liked_puzzles():
 @cross_origin()
 def get_sample_categories():
     
- 
     with open("database.json", 'r') as file:
         database = json.load(file)
     categories = database["categories"]
     if "user" in request.args:
        username = request.args.get('user')
-       user_data = get_user_database()
-       if username in user_data and "categories" in user_data[username]:
-            categories += user_data[username]["categories"]
+       user_data = Database.get_categories(username)
+       if not user_data is None:
+            categories += user_data
     return jsonify(categories)
 
 
@@ -511,27 +420,24 @@ def map_evolve_api(*args):
 @app.route('/iterate_map_evolve', methods=['POST'])
 @cross_origin()
 def iter_map_evolve_api(*args):
-    print("args", args)
+
 
     request_data = request.get_json() 
 
-    user_data = get_user_database()
-
-    if not "user" in request_data or not request_data["user"] in user_data: 
+    if not "user" in request_data or Database.get_user(request_data["user"]) is None: 
         response = jsonify("user not found")
         return response , 406  
 
 
     if "id" in request_data:
         id = request_data["id"]
-        data = get_grid_with_id(user_data, request_data["user"], request_data)
+        data = Database.get_grid_with_id(request_data["user"], request_data)
         if data is None: 
-            print(request_data["id"])
-            print(user_data[request_data["user"]]["evolve_sessions"].keys())
             response = jsonify("evolve session not found")
             return response , 407
     else: 
-        data, id = get_new_evolve_id(user_data, request_data["user"], request_data)
+
+        data, id = Database.get_new_evolve_id( request_data["user"], request_data)
 
     gen_len, pop_size, x_rate, mut_rate, add_rate, elits = data["gen_data"]
     puzzle = data["puzzle"]
@@ -542,6 +448,8 @@ def iter_map_evolve_api(*args):
     new_puzzles = get_new_puzzles(elit_grid)
 
     return_di = {"puzzles": new_puzzles, "id": id}
+
+    Database.update_grid(request_data["user"], id, elit_grid) 
 
     return jsonify(return_di)
 
