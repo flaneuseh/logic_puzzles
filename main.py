@@ -325,19 +325,42 @@ def add_account():
 
     request_data = request.get_json() 
 
-    username = request_data["username"]
+    adminId = request_data["user"]
+    privateKey = request_data["privateKey"]
+    publicKey = request_data["publicKey"]
 
-    result = Database.add_user(username)
+    result = Database.add_user(adminId, privateKey, publicKey)
 
-    print(result)
 
-    if not result is None: 
+    if not result is None and result != -1: 
         response = jsonify("success")
         return response 
-    else: 
+    elif result is None: 
         response = jsonify("existing user")
         return response 
+    else: 
+        response = jsonify("requires admin access")
+        return response , 401  
 
+
+@app.route('/get_public_key', methods=['POST'])
+@cross_origin()
+def get_public_key():
+
+    request_data = request.get_json() 
+
+    id = request_data["user"]
+
+    result = Database.get_user(id)
+
+
+    if not result is None: 
+        response = jsonify({"publicKey": result["publicKey"]})
+        return response 
+    elif result is None: 
+        response = jsonify("user doesn't exist")
+        return response, 401
+ 
         
     
 @app.route('/like_puzzle', methods=['POST'])
@@ -381,15 +404,15 @@ def get_liked_puzzles():
 @cross_origin()
 def get_sample_categories():
     
-    with open("database.json", 'r') as file:
-        database = json.load(file)
-    categories = database["categories"]
+
     if "user" in request.args:
        username = request.args.get('user')
-       user_data = Database.get_categories(username)
-       if not user_data is None:
-            categories += user_data
-    return jsonify(categories)
+    else:
+       username = "null"
+
+    user_data = Database.get_categories(username)
+    
+    return jsonify(user_data)
 
 
 

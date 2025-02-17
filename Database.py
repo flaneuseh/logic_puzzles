@@ -11,14 +11,23 @@ mydb = myclient["puzzleDatabase"]
 
 userDB = mydb["users"]
 
-def add_user(user_id):
-    if get_user(user_id) is None: 
-        user_template = {"privateKey": user_id, "likedPuzzles":[], "grammar": {}, "evolveSessions": {"nextIdx": 0}, "categories":[]}
-        i = userDB.insert_one(user_template)
-    
-        return i 
-    else: 
-        return None 
+sampleDatabase = mydb["samples"]
+
+
+admins_public_keys = ["Admin 1"]
+
+def add_user(user_id, privateKey, publicKey):
+    user = get_user(user_id)
+    if user["publicKey"] in admins_public_keys:
+        if get_user(privateKey) is None: 
+            user_template = {"privateKey": privateKey, "publicKey": publicKey, "likedPuzzles":[], "grammar": {}, "evolveSessions": {"nextIdx": 0}, "categories":[]}
+            i = userDB.insert_one(user_template)
+        
+            return i 
+        else: 
+            return None 
+    else:
+        return -1 
 
 
 def get_user(user_id):
@@ -43,8 +52,8 @@ def get_liked_puzzles(user_id):
 def get_user_grammar(user_id):
     
     user= get_user(user_id) 
-    with open("database.json", 'r') as file:
-        database = json.load(file)
+   
+    database = sampleDatabase.find_one({})
     
 
     if user!=None:
@@ -102,25 +111,39 @@ def add_grammar_rule(user_id, request_data):
     
     
 
-    result = userDB.find_one_and_update({"privateKey": user_id}, {"$set": update})
+    user = get_user(user_id)
+
+    if user["publicKey"] in admins_public_keys:
+        result = sampleDatabase.find_one_and_update({}, {"$set": update})
+    else: 
+
+        result = userDB.find_one_and_update({"privateKey": user_id}, {"$set": update})
 
     return result 
 
 
 def add_category(user_id, request_data): 
     category = {"name": request_data["category"]["name"], "entities": request_data["category"]["entities"], "is_numeric": request_data["category"]["is_numeric"]}
-    result = userDB.find_one_and_update({"privateKey": user_id}, 
-            {"$push": {"categories": category}})
+
+    user = get_user(user_id)
+    if user["publicKey"] in admins_public_keys:
+        result = sampleDatabase.find_one_and_update({}, 
+             {"$push": {"categories": category}})
+    else: 
+        result = userDB.find_one_and_update({"privateKey": user_id}, 
+             {"$push": {"categories": category}})
     
     return result 
     
 def get_categories(user_id):
     user = get_user(user_id)
 
+    database = sampleDatabase.find_one({})["categories"]
+
     if not user is None: 
-        return user["categories"]
+        return user["categories"] + database 
     else:
-        return None 
+        return database
 
 def get_puzzle(request_data):
     if "puzzle" in request_data:
