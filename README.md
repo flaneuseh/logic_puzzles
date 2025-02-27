@@ -9,10 +9,13 @@ The generated puzzles are located in the Difficulty-Only and Hints-And-Difficult
 ### Looking at Experiment data 
 Each experiment folder also contains several visualizations about the generated puzzles and the generation process. The "data.txt" file also contains key information from the experiment. Each "pop_<i>.p" file contains a pickled version of the feasible and infeasible population of the last generation for that trial, along with a history object, which tracks fitness over generations. 
 
-### Running a new experiement 
-New experiements can be run by modifying the "Experiments.py" file. At the top, several contains are defined. Most important is the "folder" which tells the program where to put experiement data. We recommend created a new folder for each experiement run. You can also modify the puzzle to generate puzzles with different themes. Note that currenlty puzzles are required to have at least one numeric category. 
+### Running a new experiment 
+New experiments can be run by modifying the "Experiments.py" file. At the top, several contains are defined. Most important is the "folder" which tells the program where to put experiement data. We recommend creating a new folder for each experiment run. You can also modify the puzzle to generate puzzles with different themes. Note that currently puzzles are required to have at least three categories, one of which must be numeric. 
 
-After the experiement finishes running, you will need to run the "DataVisualisation.py" file, with the updated folder. This will produce "hint.txt" and "solutions.txt" files, of which you can look at and play your generated puzzles. 
+After the experiement finishes running, you will need to run the "DataVisualisation.py" file, with the updated folder. This will produce "hint.txt" and "solutions.txt" files, which contain the hints and solutions for your generated puzzles. 
+
+### Running the Flask API Server
+The Flask API server can be run using the command line with command ```python main.py```.
 
 ## Important Files 
 
@@ -23,7 +26,7 @@ This file defines the objects and logics for logic puzzles.
 A category object is a set of entities, that is either numerical or categorical. To create a new category, you need to provide a title for the category, list of string names for the entities, and whether the category is numerical or categorical.
 
 ```
-suspects = Category("suspect", ["Ms. carlet", "Mrs. White", "Col. Mustard", "Prof. Plum"], False) 
+suspects = Category("suspect", ["Ms. Scarlet", "Mrs. White", "Col. Mustard", "Prof. Plum"], False) 
 ```
 
 #### Puzzle 

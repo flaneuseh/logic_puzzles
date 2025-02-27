@@ -1,1 +1,265 @@
-{"categories": [{"name": "suspect", "entities": ["Ms. Scarlet", "Col. Mustard", "Prof. Plum", "Miss White", "Mr. Green", "Mrs. Peacock"], "is_numeric": false}, {"name": "hour", "entities": ["1 PM", "2 PM", "3 PM", "4 PM", "5 PM", "6 PM"], "is_numeric": true}, {"name": "weapon", "entities": ["Candlestick", "Dagger", "Revolver", "Rope", "Wrench", "Lead Pipe"], "is_numeric": false}, {"name": "room", "entities": ["Library", "Living Room", "Dinning Room", "Kitchen", "Ballroom", "Hall"], "is_numeric": false}], "grammar_dict": {"suspect": {"weapon": {"is": "{ent1} was the {cat1} with the {ent2}", "not": "{ent1} was not the {cat1} with the {ent2}", "hour": {"before": {"step": 1, "timed": "{ent1} was there {amount} hours before the {ent2}", "untimed": "{ent1} was there at least 1 hour before the {ent2}"}, "or": "Either {ent1} or the {ent2} was there at {is_ent}"}, "room": {"or": "Either {ent1} or the suspect with the {ent2} was in the {is_ent}"}}, "hour": {"is": "{ent1} was there at {ent2}", "not": "{ent1} not was there at {ent2}", "weapon": {"or": "Either {ent1} or the suspect there at {ent1} had the {is_ent}"}, "room": {"or": "Either {ent1} or the suspect there at {ent2} was in the {is_ent}"}}, "room": {"is": "{ent1} was in the {ent2}", "not": "{ent1} was not in the {ent2}", "hour": {"before": {"step": "1", "untimed": "{ent1} was there at least one hour before the suspect in the {ent2}", "timed": "{ent1} was there {amount} hours before the suspect in the {ent2}"}, "or": "Either {ent1} or the suspect in the {ent2} was there at {is_ent}"}, "weapon": {"or": "Either {ent1} or the suspect in the {ent2} had the {is_ent}"}}, "suspect": {"hour": {"or": "Either {ent1} or {ent2} was there at {is_ent}"}, "weapon": {"or": "Either {ent1} or {ent2} had the {is_ent}"}, "room": {"or": "Either {ent1} or {ent2} was in the {is_ent}"}}}, "weapon": {"suspect": {"is": "The {ent1} was with {ent2}", "not": "The {ent1} not was with {ent2}", "hour": {"before": {"step": 1, "timed": "The {ent1} was there {amount} hours before {ent2}", "untimed": "The {ent1} was there at least 1 hour before {ent2}"}, "or": "Either the {ent1} or  {ent2} was there  at  {is_ent}"}, "room": {"or": "Either the suspect with the {ent1} or {ent2} was in the {is_ent}"}}, "hour": {"is": "The {ent1} was there at {ent2}", "not": "The {ent1} not was there at {ent2}", "suspect": {"or": "{is_ent} either had the {ent1} or was there at {ent2}"}, "room": {"or": "Either the suspect with the {ent1} or the suspect there at {ent2} was in the {is_ent}"}}, "room": {"is": "The {ent1} was in the {ent2} ", "not": "The {ent1} was not in the {ent2}", "suspect": {"or": "{is_ent} either had the {ent1} or was in the {ent2}"}, "hour": {"before": {"step": "1", "untimed": "The suspect with the {ent1} was there at least one hour before the suspect in the {ent2}", "timed": "The suspect with the {ent1} was there {amount} hours before the suspect in the {ent2} "}, "or": "The suspect there at {is_ent} either had the {ent1} or was in the {ent2}"}}, "weapon": {"suspect": {"or": "{is_ent} either had the {ent1} or the {ent2} "}, "hour": {"or": "The suspect there at {is_ent} either had the {ent1} or the {ent2}"}, "room": {"or": "The suspect in the {is_ent} had either the {ent1} or the {ent2}"}}}, "hour": {"suspect": {"is": "{ent1} was when {ent2} was there", "not": "{ent1} is not when {ent2} was there", "weapon": {"or": "The {is_ent} was either there at {ent1} or was with {ent2}"}, "room": {"or": "Either the suspect there at {ent1} or {ent2} was in the {is_ent}"}}, "weapon": {"is": "{ent1} was when the {ent2} was there", "not": "{ent1} is not when the {ent2} was there", "suspect": {"or": "{is_ent} was either there at {ent1} or had the {ent2}"}, "room": {"or": "Either the suspect there at {ent1} or the suspect with the {ent2} was in the {is_ent}"}}, "room": {"is": "{ent1} was when the {ent2} was occupied", "not": "{ent1} was not when the {ent2} was occupied", "suspect": {"or": "{is_ent} was either there at {ent1} or was in the {ent2}"}, "weapon": {"or": "Either the suspect there at {ent1} or the suspect in the {ent2} had the {is_ent}"}}, "hour": {"suspect": {"or": "{is_ent} was there at either {ent1} or {ent2}"}, "weapon": {"or": "The suspect with the {is_ent} was there either at {ent1} or {ent2} "}, "room": {"or": "The suspect in the {is_ent} was there either {ent1} or {ent2}"}}}, "room": {"suspect": {"is": "The {ent1} was where {ent2} was.", "not": "The {ent1} was not where {ent2} was located ", "hour": {"before": {"step": "1", "untimed": "The suspect in the {ent1} was there at least one hour before {ent2}", "timed": "The suspect in the {ent1} was there {amount} hours before {ent2}"}, "or": "The suspect there at {is_ent} was either in the {ent1} or was {ent2}"}, "weapon": {"or": "The {is_ent} was either in the {ent1} or with {ent2}"}}, "hour": {"is": "The {ent1} was occupied at {ent2}", "not": "The {ent1} was not occupied at {ent2}", "suspect": {"or": "{is_ent} was either in the {ent1} or was there at {ent2}"}, "weapon": {"or": "The {is_ent} was either in the {ent1} or with the suspect there at {ent2}"}}, "weapon": {"is": "The {ent1} had the {ent2}", "not": "The {ent1} did not have the {ent2} ", "suspect": {"or": "{is_ent} was either in the {ent1} or had the {ent2}"}, "hour": {"before": {"step": "1", "untimed": "The suspect in the {ent1} was at least one hour earlier the then the suspect with the {ent2}", "timed": "The suspect in the {ent1} was {amount} hours before then the suspect with the {ent2}"}, "or": "The suspect there at {is_end} was either in the {ent1} or had the {ent2}"}}, "room": {"suspect": {"or": "{is_ent} was either in the {ent1} or {ent2}"}, "hour": {"or": "Either the suspect in the {ent1} or the {ent2} was there at {is_ent}"}, "weapon": {"or": "Either the suspect in the {ent1} or the {ent2} had the {is_ent}"}}}}}
+{
+    "categories": [
+        {
+            "name": "suspect",
+            "entities": [
+                "Ms. Scarlet",
+                "Mrs. White",
+                "Prof. Plum",
+                "Mr. Green",
+                "Col Mustard",
+                "Mrs. Peacock",
+                "Mr. Boddy",
+                "Wadsworth"
+            ],
+            "is_numeric": false
+        },
+        {
+            "name": "hour",
+            "entities": [
+                "1 PM",
+                "2 PM",
+                "3 PM",
+                "4 PM",
+                "5 PM",
+                "6 PM",
+                "7 PM",
+                "8 PM",
+                "9 PM"
+            ],
+            "is_numeric": true
+        },
+        {
+            "name": "weapon",
+            "entities": [
+                "candlestick",
+                "revolver",
+                "knife",
+                "rope",
+                "poison",
+                "wrench",
+                "lead pipe",
+                "piano wire"
+            ],
+            "is_numeric": false
+        },
+        {
+            "name": "room",
+            "entities": [
+                "Library",
+                "Study",
+                "Drawing Room",
+                "Conservatory",
+                "Kitchen",
+                "Dining Room",
+                "Smoking Room",
+                "Billiards Room"
+            ],
+            "is_numeric": false
+        }
+    ],
+    "grammar_dict": {
+        "suspect": {
+            "weapon": {
+                "is": "{ent1} was the {cat1} with the {ent2}",
+                "not": "{ent1} was not the {cat1} with the {ent2}",
+                "hour": {
+                    "before": {
+                        "step": 1,
+                        "timed": "{ent1} was there {amount} hours before the {ent2}",
+                        "untimed": "{ent1} was there at least 1 hour before the {ent2}"
+                    },
+                    "or": "Either {ent1} or the {ent2} was there at {is_ent}"
+                },
+                "room": {
+                    "or": "Either {ent1} or the suspect with the {ent2} was in the {is_ent}"
+                }
+            },
+            "hour": {
+                "is": "{ent1} was there at {ent2}",
+                "not": "{ent1} not was there at {ent2}",
+                "weapon": {
+                    "or": "Either {ent1} or the suspect there at {ent1} had the {is_ent}"
+                },
+                "room": {
+                    "or": "Either {ent1} or the suspect there at {ent2} was in the {is_ent}"
+                }
+            },
+            "room": {
+                "is": "{ent1} was in the {ent2}",
+                "not": "{ent1} was not in the {ent2}",
+                "hour": {
+                    "before": {
+                        "step": "1",
+                        "untimed": "{ent1} was there at least one hour before the suspect in the {ent2}",
+                        "timed": "{ent1} was there {amount} hours before the suspect in the {ent2}"
+                    },
+                    "or": "Either {ent1} or the suspect in the {ent2} was there at {is_ent}"
+                },
+                "weapon": {
+                    "or": "Either {ent1} or the suspect in the {ent2} had the {is_ent}"
+                }
+            },
+            "suspect": {
+                "hour": {
+                    "or": "Either {ent1} or {ent2} was there at {is_ent}"
+                },
+                "weapon": {
+                    "or": "Either {ent1} or {ent2} had the {is_ent}"
+                },
+                "room": {
+                    "or": "Either {ent1} or {ent2} was in the {is_ent}"
+                }
+            }
+        },
+        "weapon": {
+            "suspect": {
+                "is": "The {ent1} was with {ent2}",
+                "not": "The {ent1} not was with {ent2}",
+                "hour": {
+                    "before": {
+                        "step": 1,
+                        "timed": "The {ent1} was there {amount} hours before {ent2}",
+                        "untimed": "The {ent1} was there at least 1 hour before {ent2}"
+                    },
+                    "or": "Either the {ent1} or  {ent2} was there  at  {is_ent}"
+                },
+                "room": {
+                    "or": "Either the suspect with the {ent1} or {ent2} was in the {is_ent}"
+                }
+            },
+            "hour": {
+                "is": "The {ent1} was there at {ent2}",
+                "not": "The {ent1} not was there at {ent2}",
+                "suspect": {
+                    "or": "{is_ent} either had the {ent1} or was there at {ent2}"
+                },
+                "room": {
+                    "or": "Either the suspect with the {ent1} or the suspect there at {ent2} was in the {is_ent}"
+                }
+            },
+            "room": {
+                "is": "The {ent1} was in the {ent2} ",
+                "not": "The {ent1} was not in the {ent2}",
+                "suspect": {
+                    "or": "{is_ent} either had the {ent1} or was in the {ent2}"
+                },
+                "hour": {
+                    "before": {
+                        "step": "1",
+                        "untimed": "The suspect with the {ent1} was there at least one hour before the suspect in the {ent2}",
+                        "timed": "The suspect with the {ent1} was there {amount} hours before the suspect in the {ent2} "
+                    },
+                    "or": "The suspect there at {is_ent} either had the {ent1} or was in the {ent2}"
+                }
+            },
+            "weapon": {
+                "suspect": {
+                    "or": "{is_ent} either had the {ent1} or the {ent2} "
+                },
+                "hour": {
+                    "or": "The suspect there at {is_ent} either had the {ent1} or the {ent2}"
+                },
+                "room": {
+                    "or": "The suspect in the {is_ent} had either the {ent1} or the {ent2}"
+                }
+            }
+        },
+        "hour": {
+            "suspect": {
+                "is": "{ent1} was when {ent2} was there",
+                "not": "{ent1} is not when {ent2} was there",
+                "weapon": {
+                    "or": "The {is_ent} was either there at {ent1} or was with {ent2}"
+                },
+                "room": {
+                    "or": "Either the suspect there at {ent1} or {ent2} was in the {is_ent}"
+                }
+            },
+            "weapon": {
+                "is": "{ent1} was when the {ent2} was there",
+                "not": "{ent1} is not when the {ent2} was there",
+                "suspect": {
+                    "or": "{is_ent} was either there at {ent1} or had the {ent2}"
+                },
+                "room": {
+                    "or": "Either the suspect there at {ent1} or the suspect with the {ent2} was in the {is_ent}"
+                }
+            },
+            "room": {
+                "is": "{ent1} was when the {ent2} was occupied",
+                "not": "{ent1} was not when the {ent2} was occupied",
+                "suspect": {
+                    "or": "{is_ent} was either there at {ent1} or was in the {ent2}"
+                },
+                "weapon": {
+                    "or": "Either the suspect there at {ent1} or the suspect in the {ent2} had the {is_ent}"
+                }
+            },
+            "hour": {
+                "suspect": {
+                    "or": "{is_ent} was there at either {ent1} or {ent2}"
+                },
+                "weapon": {
+                    "or": "The suspect with the {is_ent} was there either at {ent1} or {ent2} "
+                },
+                "room": {
+                    "or": "The suspect in the {is_ent} was there either {ent1} or {ent2}"
+                }
+            }
+        },
+        "room": {
+            "suspect": {
+                "is": "The {ent1} was where {ent2} was.",
+                "not": "The {ent1} was not where {ent2} was located ",
+                "hour": {
+                    "before": {
+                        "step": "1",
+                        "untimed": "The suspect in the {ent1} was there at least one hour before {ent2}",
+                        "timed": "The suspect in the {ent1} was there {amount} hours before {ent2}"
+                    },
+                    "or": "The suspect there at {is_ent} was either in the {ent1} or was {ent2}"
+                },
+                "weapon": {
+                    "or": "The {is_ent} was either in the {ent1} or with {ent2}"
+                }
+            },
+            "hour": {
+                "is": "The {ent1} was occupied at {ent2}",
+                "not": "The {ent1} was not occupied at {ent2}",
+                "suspect": {
+                    "or": "{is_ent} was either in the {ent1} or was there at {ent2}"
+                },
+                "weapon": {
+                    "or": "The {is_ent} was either in the {ent1} or with the suspect there at {ent2}"
+                }
+            },
+            "weapon": {
+                "is": "The {ent1} had the {ent2}",
+                "not": "The {ent1} did not have the {ent2} ",
+                "suspect": {
+                    "or": "{is_ent} was either in the {ent1} or had the {ent2}"
+                },
+                "hour": {
+                    "before": {
+                        "step": "1",
+                        "untimed": "The suspect in the {ent1} was at least one hour earlier the then the suspect with the {ent2}",
+                        "timed": "The suspect in the {ent1} was {amount} hours before then the suspect with the {ent2}"
+                    },
+                    "or": "The suspect there at {is_end} was either in the {ent1} or had the {ent2}"
+                }
+            },
+            "room": {
+                "suspect": {
+                    "or": "{is_ent} was either in the {ent1} or {ent2}"
+                },
+                "hour": {
+                    "or": "Either the suspect in the {ent1} or the {ent2} was there at {is_ent}"
+                },
+                "weapon": {
+                    "or": "Either the suspect in the {ent1} or the {ent2} had the {is_ent}"
+                }
+            }
+        }
+    }
+}

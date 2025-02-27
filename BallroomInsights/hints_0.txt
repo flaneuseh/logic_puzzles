@@ -1,0 +1,1796 @@
+Hints for grid cell [0][1]
+	The suspect Mr. John Parker is at least 1 time before the dance Tango
+	Either the time 3 or the dance Tango is the suspect Miss Clementine Baker
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	The suspect Lady Eleanor Appleton is the dance Waltz
+
+
+Hints for grid cell [0][2]
+	Either The time 3 is the suspect Mr. John Parker or The suspect Mr. John Parker is the time 1
+	Either the dance Quickstep or the suspect Lady Eleanor Appleton is the time 2
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	Either the time 3 or the dance Tango is the suspect Miss Clementine Baker
+
+
+Hints for grid cell [1][1]
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The time 3 is the dance Quickstep
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+
+
+Hints for grid cell [1][2]
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The suspect Lady Eleanor Appleton is the dance Tango
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	Either The dance Waltz is the suspect Miss Clementine Baker or The dance Tango is the suspect Lord George Elliot
+
+
+Hints for grid cell [2][1]
+	Either the time 1 or the dance Foxtrot is the suspect Lord George Elliot
+	The time 2 is the dance Tango
+	The dance Quickstep is 2 times before the suspect Miss Clementine Baker
+	The suspect Lady Eleanor Appleton is the time 4
+	The dance Foxtrot is the time 3
+
+
+Hints for grid cell [3][1]
+	The suspect Mr. John Parker is 2 times before the dance Quickstep
+	The dance Tango is the suspect Lord George Elliot
+	The suspect Lady Eleanor Appleton is not the 4 time
+	Either the suspect Miss Clementine Baker or the time 4 is the dance Waltz
+	Either the suspect Miss Clementine Baker or the suspect Lady Eleanor Appleton is the dance Waltz
+
+
+Hints for grid cell [3][2]
+	The suspect Mr. John Parker is 2 times before the dance Quickstep
+	The dance Tango is the suspect Lord George Elliot
+	The suspect Lady Eleanor Appleton is not the 4 time
+	Either the suspect Miss Clementine Baker or the time 4 is the dance Waltz
+
+
+Hints for grid cell [4][1]
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	The time 3 is the suspect Lady Eleanor Appleton
+	Either the time 3 or the dance Tango is the suspect Miss Clementine Baker
+	Either The suspect Lady Eleanor Appleton is the dance Quickstep or The time 4 is the suspect Lady Eleanor Appleton
+
+
+Hints for grid cell [5][1]
+	The dance Foxtrot is not the Miss Clementine Baker suspect
+	The suspect Mr. John Parker is at least 1 time before the dance Tango
+	Either the time 3 or the time 1 is the dance Waltz
+	The dance Foxtrot is the time 3
+	Either the time 3 or the dance Tango is the suspect Miss Clementine Baker
+	The suspect Miss Clementine Baker is 1 times before the suspect Lord George Elliot
+
+
+Hints for grid cell [6][1]
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	The dance Foxtrot is the suspect Lady Eleanor Appleton
+	The time 3 is the dance Quickstep
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+
+
+Hints for grid cell [7][1]
+	The suspect Lord George Elliot is 2 times before the dance Quickstep
+	Either the time 2 or the time 4 is the suspect Lord George Elliot
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	Either the time 1 or the dance Foxtrot is the suspect Lord George Elliot
+	The time 1 is the suspect Lady Eleanor Appleton
+
+
+Hints for grid cell [7][2]
+	The suspect Lord George Elliot is 2 times before the dance Quickstep
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	Either the time 1 or the dance Foxtrot is the suspect Lord George Elliot
+	The time 1 is the suspect Lady Eleanor Appleton
+
+
+Hints for grid cell [8][1]
+	The time 1 is the suspect Lady Eleanor Appleton
+	The suspect Lady Eleanor Appleton is the dance Waltz
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	Either the time 1 or the dance Foxtrot is the suspect Lord George Elliot
+
+
+Hints for grid cell [9][2]
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The time 3 is the suspect Lady Eleanor Appleton
+	The suspect Miss Clementine Baker is the dance Waltz
+	The suspect Mr. John Parker is at least 1 time before the dance Tango
+	The dance Foxtrot is 1 times before the suspect Lord George Elliot
+
+
+Hints for grid cell [10][1]
+	The dance Quickstep is 2 times before the suspect Lord George Elliot
+	Either the dance Quickstep or the suspect Lord George Elliot is the time 4
+	Either the suspect Lord George Elliot or the suspect Lady Eleanor Appleton is the dance Quickstep
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	The dance Waltz is not the Miss Clementine Baker suspect
+	Either The dance Tango is the suspect Lord George Elliot or The time 3 is the dance Foxtrot
+
+
+Hints for grid cell [11][1]
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	Either the suspect Lord George Elliot or the suspect Lady Eleanor Appleton is the dance Tango
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+
+
+Hints for grid cell [11][2]
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	The dance Tango is the suspect Lord George Elliot
+	Either The dance Tango is the suspect Lord George Elliot or The suspect Lady Eleanor Appleton is the time 3
+
+
+Hints for grid cell [12][1]
+	The dance Quickstep is 1 times before the suspect Mr. John Parker
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The suspect Lord George Elliot is 1 times before the dance Waltz
+	Either the suspect Lord George Elliot or the dance Tango is the time 1
+	The time 3 is the suspect Lord George Elliot
+
+
+Hints for grid cell [12][2]
+	The dance Quickstep is 1 times before the suspect Mr. John Parker
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The suspect Lord George Elliot is 1 times before the dance Waltz
+	Either the suspect Lord George Elliot or the dance Tango is the time 1
+
+
+Hints for grid cell [12][3]
+	Either the suspect Lord George Elliot or the dance Tango is the time 1
+	The suspect Lord George Elliot is 1 times before the dance Waltz
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The dance Quickstep is 1 times before the suspect Mr. John Parker
+
+
+Hints for grid cell [13][1]
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The dance Quickstep is 1 times before the suspect Mr. John Parker
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+
+
+Hints for grid cell [13][2]
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	Either The dance Waltz is the time 2 or The dance Tango is the time 3
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The time 4 is the suspect Mr. John Parker
+	Either The suspect Miss Clementine Baker is the dance Quickstep or The dance Foxtrot is the suspect Lady Eleanor Appleton
+
+
+Hints for grid cell [13][3]
+	Either The suspect Miss Clementine Baker is the dance Quickstep or The dance Foxtrot is the suspect Lady Eleanor Appleton
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	The time 4 is the suspect Mr. John Parker
+	Either The dance Waltz is the time 2 or The dance Tango is the time 3
+
+
+Hints for grid cell [14][1]
+	The time 3 is the suspect Lord George Elliot
+	The dance Tango is 1 times before the suspect Lady Eleanor Appleton
+	Either the time 3 or the time 1 is the dance Waltz
+	The dance Quickstep is 2 times before the suspect Miss Clementine Baker
+
+
+Hints for grid cell [15][1]
+	The dance Quickstep is 2 times before the suspect Miss Clementine Baker
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	Either The dance Tango is the suspect Lord George Elliot or The suspect Lady Eleanor Appleton is the time 3
+	The suspect Lady Eleanor Appleton is the time 4
+	The time 1 is not the Lord George Elliot suspect
+
+
+Hints for grid cell [16][2]
+	The dance Foxtrot is the time 3
+	Either the time 1 or the dance Foxtrot is the suspect Lord George Elliot
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+
+
+Hints for grid cell [17][1]
+	Either the suspect Mr. John Parker or the dance Tango is the time 3
+	The dance Quickstep is 1 times before the dance Waltz
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The dance Foxtrot is not the Miss Clementine Baker suspect
+	Either The time 3 is the suspect Mr. John Parker or The suspect Mr. John Parker is the time 1
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+
+
+Hints for grid cell [17][2]
+	Either The time 3 is the suspect Mr. John Parker or The suspect Mr. John Parker is the time 1
+	The dance Quickstep is 1 times before the dance Waltz
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	Either the suspect Lord George Elliot or the time 2 is the dance Tango
+
+
+Hints for grid cell [18][1]
+	The suspect Lady Eleanor Appleton is at least 1 time before the dance Foxtrot
+	Either The suspect Miss Clementine Baker is the dance Quickstep or The dance Foxtrot is the suspect Lady Eleanor Appleton
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	Either The time 1 is the suspect Lord George Elliot or The dance Tango is the suspect Mr. John Parker
+
+
+Hints for grid cell [18][2]
+	The suspect Lady Eleanor Appleton is at least 1 time before the dance Foxtrot
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	The time 3 is the dance Quickstep
+	Either The suspect Mr. John Parker is the dance Tango or The suspect Miss Clementine Baker is the dance Foxtrot
+	Either The time 1 is the suspect Lord George Elliot or The dance Tango is the suspect Mr. John Parker
+
+
+Hints for grid cell [19][1]
+	The suspect Miss Clementine Baker is the dance Waltz
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	The dance Tango is the suspect Lord George Elliot
+
+
+Hints for grid cell [20][1]
+	The dance Foxtrot is not the 3 time
+	The suspect Lord George Elliot is not the 3 time
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	The dance Quickstep is 1 times before the dance Waltz
+	The dance Foxtrot is the suspect Miss Clementine Baker
+	The dance Tango is 2 times before the suspect Mr. John Parker
+
+
+Hints for grid cell [20][2]
+	The suspect Lord George Elliot is not the 3 time
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	The dance Foxtrot is not the Lady Eleanor Appleton suspect
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	The dance Quickstep is 2 times before the dance Foxtrot
+	The suspect Mr. John Parker is not the 4 time
+
+
+Hints for grid cell [21][1]
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The dance Tango is at least 1 time before the suspect Lord George Elliot
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The dance Quickstep is 1 times before the suspect Mr. John Parker
+	The suspect Lady Eleanor Appleton is the time 4
+	The time 3 is not the Mr. John Parker suspect
+
+
+Hints for grid cell [21][2]
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The dance Quickstep is 1 times before the suspect Mr. John Parker
+	Either The suspect Lord George Elliot is the time 3 or The dance Foxtrot is the time 2
+	The suspect Lady Eleanor Appleton is the time 4
+
+
+Hints for grid cell [21][3]
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The dance Tango is at least 1 time before the suspect Lord George Elliot
+	The dance Quickstep is 1 times before the suspect Mr. John Parker
+	Either The suspect Lord George Elliot is the time 3 or The dance Foxtrot is the time 2
+	The suspect Lady Eleanor Appleton is the time 4
+
+
+Hints for grid cell [22][1]
+	The suspect Lady Eleanor Appleton is the time 4
+	The dance Foxtrot is the time 3
+	The dance Quickstep is 2 times before the suspect Miss Clementine Baker
+	The dance Tango is the suspect Lord George Elliot
+
+
+Hints for grid cell [22][2]
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	Either The dance Foxtrot is the suspect Mr. John Parker or The dance Waltz is the time 4
+	The dance Tango is the suspect Lord George Elliot
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The dance Quickstep is 2 times before the dance Foxtrot
+
+
+Hints for grid cell [23][1]
+	Either The dance Foxtrot is the suspect Mr. John Parker or The dance Waltz is the time 4
+	The suspect Mr. John Parker is at least 1 time before the dance Tango
+	The dance Tango is at least 1 time before the suspect Lord George Elliot
+	The suspect Lady Eleanor Appleton is the time 4
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+
+
+Hints for grid cell [24][1]
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	The suspect Miss Clementine Baker is 2 times before the suspect Lady Eleanor Appleton
+	The time 2 is the dance Tango
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+
+
+Hints for grid cell [24][2]
+	The suspect Miss Clementine Baker is 2 times before the suspect Lady Eleanor Appleton
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	The time 2 is the dance Tango
+
+
+Hints for grid cell [25][1]
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The suspect Miss Clementine Baker is 2 times before the suspect Lady Eleanor Appleton
+	The dance Quickstep is 1 times before the dance Waltz
+	Either the time 3 or the time 4 is the dance Tango
+
+
+Hints for grid cell [25][2]
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	Either the dance Quickstep or the dance Foxtrot is the suspect Mr. John Parker
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The suspect Miss Clementine Baker is 2 times before the suspect Lady Eleanor Appleton
+	The dance Quickstep is 1 times before the dance Waltz
+	Either the time 3 or the time 4 is the dance Tango
+
+
+Hints for grid cell [25][3]
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	Either the dance Quickstep or the dance Foxtrot is the suspect Mr. John Parker
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The suspect Miss Clementine Baker is 2 times before the suspect Lady Eleanor Appleton
+	The dance Quickstep is 1 times before the dance Waltz
+
+
+Hints for grid cell [26][1]
+	The time 3 is the suspect Lady Eleanor Appleton
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	The dance Foxtrot is not the Lady Eleanor Appleton suspect
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+
+
+Hints for grid cell [27][2]
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	Either The suspect Lord George Elliot is the time 3 or The dance Foxtrot is the time 2
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The dance Tango is at least 1 time before the suspect Lord George Elliot
+	Either the time 4 or the time 2 is the suspect Lady Eleanor Appleton
+
+
+Hints for grid cell [28][1]
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	The suspect Miss Clementine Baker is the dance Waltz
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	Either the dance Foxtrot or the suspect Miss Clementine Baker is the time 1
+	The dance Waltz is at least 1 time before the dance Quickstep
+
+
+Hints for grid cell [28][2]
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	The suspect Miss Clementine Baker is the dance Waltz
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	Either the dance Foxtrot or the suspect Miss Clementine Baker is the time 1
+
+
+Hints for grid cell [29][1]
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	The suspect Lord George Elliot is 2 times before the dance Quickstep
+	The suspect Lady Eleanor Appleton is the time 4
+
+
+Hints for grid cell [29][2]
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	The suspect Lord George Elliot is 2 times before the dance Quickstep
+	The suspect Lady Eleanor Appleton is the time 4
+
+
+Hints for grid cell [30][1]
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	Either the suspect Lady Eleanor Appleton or the suspect Mr. John Parker is the time 4
+	The dance Quickstep is the suspect Lord George Elliot
+
+
+Hints for grid cell [30][2]
+	The suspect Miss Clementine Baker is 1 times before the suspect Lord George Elliot
+	Either the time 2 or the time 1 is the suspect Lord George Elliot
+	The suspect Lord George Elliot is at least 1 time before the suspect Mr. John Parker
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	The dance Quickstep is 2 times before the dance Foxtrot
+	Either The suspect Lord George Elliot is the time 3 or The time 1 is the dance Tango
+
+
+Hints for grid cell [31][1]
+	The dance Foxtrot is the time 3
+	Either the time 1 or the dance Foxtrot is the suspect Lord George Elliot
+	The suspect Lady Eleanor Appleton is the time 4
+	The dance Quickstep is 2 times before the suspect Miss Clementine Baker
+	The dance Waltz is not the 4 time
+	The suspect Miss Clementine Baker is not the 2 time
+
+
+Hints for grid cell [31][2]
+	The dance Quickstep is 2 times before the suspect Miss Clementine Baker
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	The suspect Lady Eleanor Appleton is the time 4
+	The dance Waltz is at least 1 time before the dance Tango
+	The dance Tango is not the 3 time
+
+
+Hints for grid cell [32][1]
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	Either The dance Tango is the suspect Lord George Elliot or The suspect Lady Eleanor Appleton is the time 3
+	The dance Foxtrot is not the Lady Eleanor Appleton suspect
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+
+
+Hints for grid cell [33][1]
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	The time 3 is the dance Quickstep
+	The time 3 is the suspect Lady Eleanor Appleton
+
+
+Hints for grid cell [33][2]
+	Either the suspect Lord George Elliot or the suspect Lady Eleanor Appleton is the dance Tango
+	Either The suspect Mr. John Parker is the dance Tango or The suspect Miss Clementine Baker is the dance Foxtrot
+	The time 4 is the suspect Mr. John Parker
+	The suspect Lord George Elliot is 2 times before the dance Quickstep
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	Either the time 3 or the time 1 is the dance Quickstep
+	Either The suspect Lord George Elliot is the time 2 or The suspect Lady Eleanor Appleton is the time 3
+
+
+Hints for grid cell [34][1]
+	Either the time 3 or the suspect Lord George Elliot is the dance Tango
+	The time 4 is the suspect Mr. John Parker
+	Either The suspect Mr. John Parker is the dance Foxtrot or The suspect Miss Clementine Baker is the dance Tango
+	The dance Tango is the suspect Lord George Elliot
+	Either The dance Tango is the suspect Lord George Elliot or The suspect Lady Eleanor Appleton is the time 3
+	The dance Quickstep is 2 times before the dance Foxtrot
+
+
+Hints for grid cell [35][1]
+	The suspect Miss Clementine Baker is 2 times before the suspect Lady Eleanor Appleton
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	Either The dance Quickstep is the time 2 or The dance Quickstep is the suspect Lord George Elliot
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+
+
+Hints for grid cell [35][2]
+	The suspect Lord George Elliot is not the 3 time
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The suspect Miss Clementine Baker is 2 times before the suspect Lady Eleanor Appleton
+	Either The dance Quickstep is the time 2 or The dance Quickstep is the suspect Lord George Elliot
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	Either The suspect Mr. John Parker is the dance Foxtrot or The suspect Lord George Elliot is the dance Tango
+
+
+Hints for grid cell [36][1]
+	Either The dance Foxtrot is the suspect Mr. John Parker or The dance Waltz is the time 4
+	The suspect Lady Eleanor Appleton is the time 4
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+
+
+Hints for grid cell [36][2]
+	The suspect Miss Clementine Baker is the dance Waltz
+	The dance Foxtrot is 1 times before the suspect Lord George Elliot
+	The suspect Lady Eleanor Appleton is the time 4
+	The time 2 is the dance Tango
+
+
+Hints for grid cell [37][3]
+	Either the time 1 or the dance Foxtrot is the suspect Lord George Elliot
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	Either The dance Foxtrot is the suspect Mr. John Parker or The dance Waltz is the time 4
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The suspect Lady Eleanor Appleton is at least 1 time before the dance Waltz
+
+
+Hints for grid cell [38][2]
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	Either The dance Tango is the suspect Lord George Elliot or The suspect Lady Eleanor Appleton is the time 3
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+
+
+Hints for grid cell [39][1]
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+	The time 2 is the dance Tango
+	The suspect Mr. John Parker is not the 4 time
+	The dance Quickstep is 2 times before the dance Foxtrot
+	The suspect Miss Clementine Baker is 1 times before the suspect Lord George Elliot
+	The suspect Lord George Elliot is not the 3 time
+	The suspect Lord George Elliot is at least 1 time before the suspect Mr. John Parker
+
+
+Hints for grid cell [39][2]
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+	The time 2 is the dance Tango
+	The suspect Mr. John Parker is not the 4 time
+	The dance Quickstep is 2 times before the dance Foxtrot
+	The suspect Miss Clementine Baker is 1 times before the suspect Lord George Elliot
+	The suspect Lord George Elliot is not the 3 time
+
+
+Hints for grid cell [40][2]
+	The suspect Lady Eleanor Appleton is at least 1 time before the dance Waltz
+	Either the time 1 or the dance Foxtrot is the suspect Lord George Elliot
+	The dance Quickstep is at least 1 time before the suspect Miss Clementine Baker
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	The suspect Lord George Elliot is not the 3 time
+	The dance Foxtrot is the suspect Miss Clementine Baker
+	The dance Foxtrot is not the Mr. John Parker suspect
+
+
+Hints for grid cell [41][1]
+	Either The dance Tango is the suspect Lord George Elliot or The suspect Lady Eleanor Appleton is the time 3
+	The time 2 is the dance Waltz
+	The dance Quickstep is 2 times before the dance Foxtrot
+	The suspect Miss Clementine Baker is at least 1 time before the suspect Lady Eleanor Appleton
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+
+
+Hints for grid cell [41][2]
+	Either The dance Waltz is the time 2 or The dance Tango is the time 3
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	The dance Quickstep is 1 times before the dance Waltz
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	Either the time 3 or the dance Waltz is the suspect Lord George Elliot
+
+
+Hints for grid cell [42][1]
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	The dance Tango is the suspect Lord George Elliot
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The dance Foxtrot is not the Lady Eleanor Appleton suspect
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	The dance Foxtrot is at least 1 time before the dance Quickstep
+
+
+Hints for grid cell [43][1]
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	Either the time 1 or the dance Foxtrot is the suspect Lord George Elliot
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The suspect Miss Clementine Baker is 2 times before the suspect Mr. John Parker
+
+
+Hints for grid cell [43][3]
+	The suspect Miss Clementine Baker is at least 1 time before the suspect Lady Eleanor Appleton
+	The dance Quickstep is not the 3 time
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	The dance Quickstep is 2 times before the dance Foxtrot
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	Either the time 4 or the dance Quickstep is the suspect Lord George Elliot
+
+
+Hints for grid cell [44][1]
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The time 4 is the suspect Mr. John Parker
+	Either The dance Waltz is the time 2 or The dance Tango is the time 3
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	The time 3 is the dance Foxtrot
+
+
+Hints for grid cell [45][1]
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	The dance Waltz is not the 4 time
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+	The dance Quickstep is the suspect Lord George Elliot
+	The suspect Miss Clementine Baker is 1 times before the suspect Mr. John Parker
+
+
+Hints for grid cell [45][2]
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+	The dance Quickstep is the suspect Lord George Elliot
+	The suspect Miss Clementine Baker is 1 times before the suspect Mr. John Parker
+
+
+Hints for grid cell [46][1]
+	The suspect Miss Clementine Baker is the dance Waltz
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	Either The dance Waltz is the time 2 or The dance Tango is the time 3
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+
+
+Hints for grid cell [46][2]
+	The time 3 is the dance Quickstep
+	The suspect Lady Eleanor Appleton is the time 4
+	Either the time 1 or the dance Foxtrot is the suspect Lord George Elliot
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The dance Tango is 2 times before the suspect Mr. John Parker
+
+
+Hints for grid cell [47][1]
+	The suspect Miss Clementine Baker is 1 times before the suspect Lord George Elliot
+	Either The suspect Lord George Elliot is the time 3 or The time 1 is the dance Tango
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	The dance Quickstep is 2 times before the dance Foxtrot
+	Either The dance Tango is the suspect Lord George Elliot or The suspect Lady Eleanor Appleton is the time 3
+
+
+Hints for grid cell [47][2]
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+	The dance Quickstep is 2 times before the dance Foxtrot
+	Either The suspect Lord George Elliot is the time 3 or The time 1 is the dance Tango
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	The suspect Miss Clementine Baker is 1 times before the suspect Lord George Elliot
+
+
+Hints for grid cell [48][2]
+	The dance Foxtrot is not the Miss Clementine Baker suspect
+	The suspect Miss Clementine Baker is at least 1 time before the suspect Lady Eleanor Appleton
+	The suspect Mr. John Parker is 2 times before the dance Quickstep
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The suspect Lady Eleanor Appleton is not the 4 time
+
+
+Hints for grid cell [49][1]
+	The dance Foxtrot is the time 3
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+
+
+Hints for grid cell [49][2]
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The suspect Lord George Elliot is not the 3 time
+	The dance Foxtrot is the time 3
+
+
+Hints for grid cell [50][1]
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	Either The dance Tango is the suspect Lord George Elliot or The time 3 is the dance Foxtrot
+	The suspect Lady Eleanor Appleton is the time 4
+	Either the dance Quickstep or the suspect Lord George Elliot is the time 4
+
+
+Hints for grid cell [50][2]
+	The dance Tango is the suspect Lord George Elliot
+	The suspect Lord George Elliot is 2 times before the dance Quickstep
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	The dance Foxtrot is not the Lady Eleanor Appleton suspect
+	Either The dance Tango is the suspect Lord George Elliot or The suspect Lady Eleanor Appleton is the time 3
+	The suspect Lord George Elliot is at least 1 time before the dance Waltz
+
+
+Hints for grid cell [51][1]
+	The suspect Lady Eleanor Appleton is the time 4
+	Either The dance Tango is the suspect Lord George Elliot or The time 3 is the dance Foxtrot
+	The time 3 is the dance Quickstep
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+
+
+Hints for grid cell [51][2]
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+	The time 3 is the dance Quickstep
+	Either The dance Tango is the suspect Lord George Elliot or The time 3 is the dance Foxtrot
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	The suspect Lady Eleanor Appleton is the time 4
+
+
+Hints for grid cell [52][1]
+	The suspect Mr. John Parker is at least 1 time before the suspect Miss Clementine Baker
+	The suspect Miss Clementine Baker is 2 times before the suspect Lady Eleanor Appleton
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	Either The suspect Miss Clementine Baker is the dance Quickstep or The suspect Lord George Elliot is the time 2
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+
+
+Hints for grid cell [52][2]
+	The suspect Mr. John Parker is at least 1 time before the suspect Miss Clementine Baker
+	The suspect Miss Clementine Baker is 2 times before the suspect Lady Eleanor Appleton
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	Either The suspect Miss Clementine Baker is the dance Quickstep or The suspect Lord George Elliot is the time 2
+
+
+Hints for grid cell [53][2]
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The suspect Miss Clementine Baker is the dance Waltz
+	Either The dance Quickstep is the time 2 or The dance Quickstep is the suspect Lord George Elliot
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+
+
+Hints for grid cell [54][1]
+	The dance Foxtrot is the time 3
+	Either The dance Waltz is the time 2 or The dance Tango is the time 3
+	The suspect Lady Eleanor Appleton is the time 4
+	The dance Tango is the suspect Lord George Elliot
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	Either the suspect Miss Clementine Baker or the time 4 is the dance Quickstep
+
+
+Hints for grid cell [54][2]
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	Either The dance Waltz is the time 2 or The dance Tango is the time 3
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The suspect Miss Clementine Baker is 2 times before the suspect Lady Eleanor Appleton
+
+
+Hints for grid cell [54][3]
+	Either The dance Foxtrot is the suspect Mr. John Parker or The dance Waltz is the time 4
+	The suspect Lady Eleanor Appleton is the time 4
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	The suspect Miss Clementine Baker is at least 1 time before the dance Foxtrot
+
+
+Hints for grid cell [55][1]
+	The dance Foxtrot is the suspect Lady Eleanor Appleton
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	Either the suspect Mr. John Parker or the dance Tango is the time 3
+	The dance Foxtrot is not the 3 time
+	The dance Quickstep is 2 times before the dance Foxtrot
+
+
+Hints for grid cell [56][1]
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	The suspect Mr. John Parker is at least 1 time before the dance Tango
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+
+
+Hints for grid cell [57][1]
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	Either the suspect Lord George Elliot or the suspect Lady Eleanor Appleton is the dance Waltz
+	Either the suspect Lady Eleanor Appleton or the suspect Lord George Elliot is the time 4
+	Either The suspect Mr. John Parker is the dance Foxtrot or The suspect Lord George Elliot is the dance Tango
+
+
+Hints for grid cell [57][2]
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The dance Quickstep is at least 1 time before the suspect Lord George Elliot
+	Either the suspect Lady Eleanor Appleton or the suspect Lord George Elliot is the time 4
+	Either The suspect Mr. John Parker is the dance Foxtrot or The suspect Lord George Elliot is the dance Tango
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	The dance Quickstep is 2 times before the suspect Lord George Elliot
+
+
+Hints for grid cell [57][3]
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The dance Quickstep is at least 1 time before the suspect Lord George Elliot
+	Either the suspect Lady Eleanor Appleton or the suspect Lord George Elliot is the time 4
+	Either The suspect Mr. John Parker is the dance Foxtrot or The suspect Lord George Elliot is the dance Tango
+	The dance Tango is 2 times before the suspect Mr. John Parker
+
+
+Hints for grid cell [58][1]
+	Either the suspect Mr. John Parker or the dance Tango is the time 3
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The suspect Miss Clementine Baker is 2 times before the suspect Lady Eleanor Appleton
+
+
+Hints for grid cell [58][2]
+	Either the dance Quickstep or the dance Foxtrot is the suspect Mr. John Parker
+	The suspect Lady Eleanor Appleton is not the 3 time
+	Either the time 1 or the dance Foxtrot is the suspect Lord George Elliot
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The suspect Miss Clementine Baker is 2 times before the suspect Lady Eleanor Appleton
+	Either the suspect Lord George Elliot or the dance Tango is the time 1
+	The suspect Mr. John Parker is not the Tango dance
+
+
+Hints for grid cell [59][1]
+	Either The dance Foxtrot is the suspect Mr. John Parker or The dance Waltz is the time 4
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The dance Foxtrot is 1 times before the suspect Lord George Elliot
+	The dance Foxtrot is the time 3
+	Either the suspect Lady Eleanor Appleton or the suspect Lord George Elliot is the time 4
+
+
+Hints for grid cell [59][2]
+	Either The dance Foxtrot is the suspect Mr. John Parker or The dance Waltz is the time 4
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The dance Foxtrot is 1 times before the suspect Lord George Elliot
+	The dance Foxtrot is the time 3
+
+
+Hints for grid cell [60][1]
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	Either The dance Waltz is the time 2 or The dance Tango is the time 3
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	The suspect Lady Eleanor Appleton is the time 4
+	Either the suspect Lord George Elliot or the suspect Lady Eleanor Appleton is the dance Waltz
+	The time 3 is the dance Foxtrot
+
+
+Hints for grid cell [61][1]
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	The dance Foxtrot is not the Lady Eleanor Appleton suspect
+	The suspect Mr. John Parker is not the 4 time
+	The time 3 is the dance Quickstep
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+
+
+Hints for grid cell [62][1]
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	The dance Waltz is not the Lord George Elliot suspect
+	The dance Foxtrot is not the Mr. John Parker suspect
+	Either The dance Tango is the suspect Lord George Elliot or The time 3 is the dance Foxtrot
+
+
+Hints for grid cell [63][2]
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The suspect Miss Clementine Baker is at least 1 time before the suspect Lady Eleanor Appleton
+	The suspect Lady Eleanor Appleton is not the 4 time
+	Either the dance Quickstep or the dance Foxtrot is the suspect Mr. John Parker
+	Either The suspect Miss Clementine Baker is the dance Quickstep or The suspect Lord George Elliot is the time 2
+	The suspect Mr. John Parker is at least 1 time before the suspect Miss Clementine Baker
+
+
+Hints for grid cell [64][1]
+	The suspect Miss Clementine Baker is 1 times before the suspect Mr. John Parker
+	Either The time 3 is the suspect Mr. John Parker or The suspect Mr. John Parker is the time 1
+	The dance Quickstep is 1 times before the dance Waltz
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	The suspect Lady Eleanor Appleton is the dance Tango
+
+
+Hints for grid cell [64][2]
+	The suspect Miss Clementine Baker is 1 times before the suspect Mr. John Parker
+	Either The time 3 is the suspect Mr. John Parker or The suspect Mr. John Parker is the time 1
+	The dance Quickstep is 1 times before the dance Waltz
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	The suspect Lady Eleanor Appleton is the dance Tango
+
+
+Hints for grid cell [64][3]
+	The suspect Miss Clementine Baker is 1 times before the suspect Mr. John Parker
+	The dance Quickstep is 1 times before the dance Waltz
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	The suspect Lady Eleanor Appleton is the dance Tango
+
+
+Hints for grid cell [65][2]
+	Either The time 3 is the suspect Mr. John Parker or The suspect Mr. John Parker is the time 1
+	The suspect Lord George Elliot is not the 3 time
+	Either The dance Foxtrot is the suspect Mr. John Parker or The dance Waltz is the time 4
+	The dance Foxtrot is the time 3
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+
+
+Hints for grid cell [66][1]
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	Either The suspect Miss Clementine Baker is the dance Quickstep or The dance Foxtrot is the suspect Lady Eleanor Appleton
+	The dance Waltz is the time 1
+	Either The dance Waltz is the time 2 or The dance Tango is the time 3
+	The time 4 is the suspect Mr. John Parker
+
+
+Hints for grid cell [67][1]
+	Either The suspect Miss Clementine Baker is the time 4 or The suspect Lady Eleanor Appleton is the time 3
+	The dance Tango is 2 times before the dance Waltz
+	Either the dance Tango or the dance Waltz is the time 1
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The suspect Mr. John Parker is at least 1 time before the suspect Miss Clementine Baker
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+
+
+Hints for grid cell [67][2]
+	Either the dance Tango or the dance Waltz is the time 1
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	The dance Tango is 2 times before the dance Waltz
+
+
+Hints for grid cell [68][1]
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	The dance Tango is the suspect Lord George Elliot
+	The dance Foxtrot is not the Lady Eleanor Appleton suspect
+	The dance Foxtrot is at least 1 time before the dance Quickstep
+	Either the suspect Miss Clementine Baker or the dance Tango is the time 3
+
+
+Hints for grid cell [69][1]
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+	The dance Quickstep is 2 times before the dance Foxtrot
+	The suspect Lady Eleanor Appleton is the dance Waltz
+
+
+Hints for grid cell [69][2]
+	The suspect Mr. John Parker is at least 1 time before the dance Tango
+	The suspect Lady Eleanor Appleton is at least 1 time before the dance Foxtrot
+	Either The suspect Miss Clementine Baker is the dance Quickstep or The dance Foxtrot is the suspect Lady Eleanor Appleton
+	The suspect Lady Eleanor Appleton is the dance Waltz
+	The time 1 is not the Waltz dance
+
+
+Hints for grid cell [70][2]
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	Either the suspect Mr. John Parker or the dance Tango is the time 3
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	The suspect Miss Clementine Baker is 2 times before the suspect Lady Eleanor Appleton
+
+
+Hints for grid cell [71][1]
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The suspect Miss Clementine Baker is 2 times before the suspect Lady Eleanor Appleton
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	Either The dance Waltz is the time 2 or The dance Tango is the time 3
+	The dance Quickstep is 1 times before the suspect Mr. John Parker
+
+
+Hints for grid cell [71][2]
+	Either The dance Waltz is the time 2 or The dance Tango is the time 3
+	The suspect Miss Clementine Baker is 2 times before the suspect Lady Eleanor Appleton
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	Either The suspect Miss Clementine Baker is the dance Quickstep or The dance Foxtrot is the time 2
+
+
+Hints for grid cell [71][3]
+	Either The dance Waltz is the time 2 or The dance Tango is the time 3
+	The suspect Miss Clementine Baker is 2 times before the suspect Lady Eleanor Appleton
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+
+
+Hints for grid cell [72][1]
+	The suspect Mr. John Parker is at least 1 time before the dance Tango
+	The time 3 is the dance Quickstep
+	Either The dance Foxtrot is the suspect Mr. John Parker or The dance Waltz is the time 4
+	Either the suspect Lord George Elliot or the suspect Lady Eleanor Appleton is the dance Tango
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	Either the time 3 or the dance Tango is the suspect Miss Clementine Baker
+
+
+Hints for grid cell [73][1]
+	Either The dance Foxtrot is the suspect Mr. John Parker or The dance Waltz is the time 4
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The time 2 is the dance Waltz
+	The dance Quickstep is 2 times before the dance Foxtrot
+	The suspect Miss Clementine Baker is at least 1 time before the suspect Lady Eleanor Appleton
+	The dance Tango is not the Mr. John Parker suspect
+
+
+Hints for grid cell [73][2]
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The time 2 is the dance Waltz
+	The dance Quickstep is 2 times before the dance Foxtrot
+	The suspect Miss Clementine Baker is at least 1 time before the suspect Lady Eleanor Appleton
+	The dance Tango is not the Mr. John Parker suspect
+
+
+Hints for grid cell [74][1]
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	The time 3 is the dance Quickstep
+	The suspect Lady Eleanor Appleton is 1 times before the dance Foxtrot
+	Either the time 3 or the dance Tango is the suspect Miss Clementine Baker
+	The time 1 is the dance Tango
+
+
+Hints for grid cell [74][2]
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The dance Quickstep is 1 times before the dance Waltz
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+
+
+Hints for grid cell [75][1]
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	The suspect Mr. John Parker is at least 1 time before the dance Tango
+	The dance Quickstep is at least 1 time before the suspect Lord George Elliot
+
+
+Hints for grid cell [76][1]
+	Either The dance Tango is the suspect Lord George Elliot or The suspect Lady Eleanor Appleton is the time 3
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	The dance Quickstep is 1 times before the suspect Mr. John Parker
+	The dance Quickstep is 2 times before the suspect Miss Clementine Baker
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The suspect Lady Eleanor Appleton is at least 1 time before the dance Foxtrot
+
+
+Hints for grid cell [76][2]
+	The dance Quickstep is 2 times before the suspect Miss Clementine Baker
+	Either The dance Tango is the suspect Lord George Elliot or The suspect Lady Eleanor Appleton is the time 3
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+
+
+Hints for grid cell [76][3]
+	The dance Foxtrot is not the Lady Eleanor Appleton suspect
+	The suspect Mr. John Parker is at least 1 time before the suspect Miss Clementine Baker
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+
+
+Hints for grid cell [77][1]
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	The dance Quickstep is 1 times before the suspect Mr. John Parker
+	Either The dance Waltz is the time 2 or The dance Tango is the time 3
+	Either the suspect Lord George Elliot or the dance Tango is the time 1
+	Either the suspect Lady Eleanor Appleton or the dance Foxtrot is the time 4
+
+
+Hints for grid cell [78][1]
+	Either The dance Foxtrot is the suspect Mr. John Parker or The dance Waltz is the time 4
+	The dance Foxtrot is the time 3
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	Either the dance Waltz or the dance Quickstep is the suspect Miss Clementine Baker
+	The suspect Miss Clementine Baker is at least 1 time before the dance Tango
+
+
+Hints for grid cell [78][2]
+	Either the dance Waltz or the dance Quickstep is the suspect Miss Clementine Baker
+	The suspect Miss Clementine Baker is at least 1 time before the dance Tango
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The dance Quickstep is the suspect Lord George Elliot
+	Either The dance Foxtrot is the suspect Mr. John Parker or The dance Waltz is the time 4
+	Either the time 1 or the suspect Lord George Elliot is the dance Quickstep
+
+
+Hints for grid cell [79][2]
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The suspect Mr. John Parker is at least 1 time before the dance Waltz
+
+
+Hints for grid cell [79][3]
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The dance Quickstep is 2 times before the suspect Miss Clementine Baker
+	Either The time 3 is the suspect Mr. John Parker or The suspect Mr. John Parker is the time 1
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+
+
+Hints for grid cell [80][1]
+	The dance Tango is the suspect Lord George Elliot
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	Either the suspect Miss Clementine Baker or the time 4 is the dance Waltz
+	Either the time 1 or the dance Foxtrot is the suspect Lord George Elliot
+
+
+Hints for grid cell [80][2]
+	Either The time 1 is the suspect Lord George Elliot or The dance Tango is the suspect Mr. John Parker
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	Either the time 3 or the dance Tango is the suspect Miss Clementine Baker
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The time 1 is not the Lady Eleanor Appleton suspect
+	The dance Tango is not the Miss Clementine Baker suspect
+
+
+Hints for grid cell [80][3]
+	Either The time 1 is the suspect Lord George Elliot or The dance Tango is the suspect Mr. John Parker
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	Either the time 3 or the dance Tango is the suspect Miss Clementine Baker
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The time 1 is not the Lady Eleanor Appleton suspect
+
+
+Hints for grid cell [81][2]
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	Either the dance Quickstep or the suspect Lady Eleanor Appleton is the time 2
+	Either the time 3 or the dance Tango is the suspect Miss Clementine Baker
+	Either The time 3 is the suspect Mr. John Parker or The suspect Mr. John Parker is the time 1
+	Either the time 1 or the dance Foxtrot is the suspect Lord George Elliot
+
+
+Hints for grid cell [82][1]
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The suspect Lady Eleanor Appleton is the dance Waltz
+	The dance Quickstep is 1 times before the suspect Mr. John Parker
+
+
+Hints for grid cell [82][2]
+	The suspect Lady Eleanor Appleton is at least 1 time before the dance Foxtrot
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The suspect Lady Eleanor Appleton is the dance Waltz
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+
+
+Hints for grid cell [83][2]
+	Either the time 3 or the dance Tango is the suspect Miss Clementine Baker
+	Either the dance Quickstep or the suspect Lady Eleanor Appleton is the time 2
+	The suspect Mr. John Parker is at least 1 time before the dance Tango
+	Either The suspect Miss Clementine Baker is the dance Quickstep or The dance Foxtrot is the suspect Lady Eleanor Appleton
+	The suspect Lady Eleanor Appleton is the dance Waltz
+	The time 3 is the dance Quickstep
+
+
+Hints for grid cell [84][1]
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	Either The dance Foxtrot is the suspect Mr. John Parker or The dance Waltz is the time 4
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	The time 3 is the dance Quickstep
+	The time 3 is not the Lord George Elliot suspect
+
+
+Hints for grid cell [85][1]
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	Either The suspect Miss Clementine Baker is the dance Quickstep or The dance Foxtrot is the suspect Lady Eleanor Appleton
+	The time 3 is the suspect Lady Eleanor Appleton
+	Either The dance Waltz is the time 2 or The dance Tango is the time 3
+
+
+Hints for grid cell [86][1]
+	The dance Quickstep is 2 times before the suspect Miss Clementine Baker
+	The suspect Miss Clementine Baker is the dance Waltz
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	The dance Foxtrot is the time 3
+	The suspect Mr. John Parker is the time 3
+
+
+Hints for grid cell [86][2]
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The suspect Miss Clementine Baker is the dance Waltz
+	The suspect Mr. John Parker is at least 1 time before the suspect Miss Clementine Baker
+	Either The suspect Mr. John Parker is the time 3 or The suspect Lady Eleanor Appleton is the time 4
+
+
+Hints for grid cell [87][1]
+	The suspect Lady Eleanor Appleton is not the 4 time
+	The suspect Lord George Elliot is not the Foxtrot dance
+	The suspect Mr. John Parker is at least 1 time before the suspect Miss Clementine Baker
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The suspect Miss Clementine Baker is at least 1 time before the suspect Lady Eleanor Appleton
+	The dance Foxtrot is not the Lady Eleanor Appleton suspect
+	The dance Tango is the suspect Mr. John Parker
+
+
+Hints for grid cell [88][1]
+	The suspect Miss Clementine Baker is 2 times before the dance Quickstep
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	The dance Foxtrot is not the 3 time
+	The time 4 is the suspect Mr. John Parker
+	Either The dance Waltz is the time 2 or The dance Tango is the time 3
+
+
+Hints for grid cell [89][1]
+	The dance Foxtrot is the time 3
+	Either The dance Foxtrot is the suspect Mr. John Parker or The dance Waltz is the time 4
+	The suspect Miss Clementine Baker is at least 1 time before the dance Tango
+	The dance Foxtrot is the suspect Lady Eleanor Appleton
+	The suspect Mr. John Parker is 2 times before the suspect Lord George Elliot
+
+
+Hints for grid cell [89][2]
+	Either The dance Foxtrot is the suspect Mr. John Parker or The dance Waltz is the time 4
+	The dance Foxtrot is the suspect Lady Eleanor Appleton
+	The suspect Mr. John Parker is 2 times before the suspect Lord George Elliot
+	The suspect Miss Clementine Baker is at least 1 time before the dance Tango
+	The dance Waltz is not the Miss Clementine Baker suspect
+
+
+Hints for grid cell [90][2]
+	The suspect Mr. John Parker is at least 1 time before the dance Tango
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The dance Foxtrot is not the Miss Clementine Baker suspect
+	Either the time 1 or the dance Foxtrot is the suspect Lord George Elliot
+	The suspect Lady Eleanor Appleton is the dance Waltz
+	Either the time 3 or the dance Tango is the suspect Miss Clementine Baker
+
+
+Hints for grid cell [91][1]
+	The suspect Mr. John Parker is at least 1 time before the dance Tango
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	The suspect Lady Eleanor Appleton is the dance Waltz
+
+
+Hints for grid cell [92][1]
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	The suspect Miss Clementine Baker is the dance Waltz
+	The dance Foxtrot is not the Lady Eleanor Appleton suspect
+	The time 3 is the dance Quickstep
+	The suspect Miss Clementine Baker is the time 4
+
+
+Hints for grid cell [93][2]
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+	The dance Tango is at least 1 time before the suspect Lord George Elliot
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	Either The dance Foxtrot is the suspect Mr. John Parker or The dance Waltz is the time 4
+	The suspect Lady Eleanor Appleton is the time 4
+
+
+Hints for grid cell [94][1]
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	The time 3 is the dance Quickstep
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	Either the time 3 or the dance Tango is the suspect Miss Clementine Baker
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+
+
+Hints for grid cell [94][2]
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The dance Waltz is at least 1 time before the dance Tango
+	Either The suspect Miss Clementine Baker is the dance Quickstep or The dance Foxtrot is the suspect Lady Eleanor Appleton
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+
+
+Hints for grid cell [95][1]
+	The dance Quickstep is 2 times before the dance Foxtrot
+	Either The dance Tango is the suspect Lord George Elliot or The suspect Lady Eleanor Appleton is the time 3
+	The time 4 is the suspect Mr. John Parker
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	The dance Tango is 2 times before the suspect Mr. John Parker
+
+
+Hints for grid cell [95][2]
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	The dance Foxtrot is the time 3
+	The suspect Lord George Elliot is not the 3 time
+	Either The dance Quickstep is the time 1 or The suspect Miss Clementine Baker is the dance Tango
+
+
+Hints for grid cell [95][3]
+	Either The dance Tango is the suspect Lord George Elliot or The suspect Lady Eleanor Appleton is the time 3
+	The dance Quickstep is not the Lord George Elliot suspect
+	Either the time 1 or the dance Tango is the suspect Lord George Elliot
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	The dance Quickstep is 2 times before the dance Foxtrot
+	The time 4 is the suspect Mr. John Parker
+
+
+Hints for grid cell [96][3]
+	The suspect Lady Eleanor Appleton is at least 1 time before the dance Quickstep
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	Either the suspect Miss Clementine Baker or the suspect Lady Eleanor Appleton is the dance Foxtrot
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	The suspect Miss Clementine Baker is 1 times before the suspect Mr. John Parker
+
+
+Hints for grid cell [97][1]
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	Either The dance Foxtrot is the suspect Mr. John Parker or The dance Waltz is the time 4
+	The dance Foxtrot is the time 3
+	Either the suspect Miss Clementine Baker or the suspect Lady Eleanor Appleton is the dance Foxtrot
+	The suspect Miss Clementine Baker is 2 times before the suspect Lady Eleanor Appleton
+	The dance Quickstep is 2 times before the suspect Mr. John Parker
+
+
+Hints for grid cell [98][1]
+	The suspect Mr. John Parker is 2 times before the suspect Lord George Elliot
+	The time 3 is the suspect Lord George Elliot
+	The dance Foxtrot is the time 3
+	The time 2 is the dance Tango
+	The dance Quickstep is 1 times before the suspect Lady Eleanor Appleton
+
+
+Hints for grid cell [99][2]
+	Either The dance Waltz is the time 2 or The dance Tango is the time 3
+	Either the time 1 or the dance Foxtrot is the suspect Lord George Elliot
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The dance Foxtrot is the time 3
+
+
+Hints for grid cell [100][1]
+	The dance Quickstep is 2 times before the suspect Miss Clementine Baker
+	The suspect Lady Eleanor Appleton is the time 4
+	Either The suspect Miss Clementine Baker is the dance Quickstep or The dance Foxtrot is the suspect Lady Eleanor Appleton
+	The time 1 is not the Lord George Elliot suspect
+	The dance Waltz is at least 1 time before the dance Tango
+
+
+Hints for grid cell [100][2]
+	Either the suspect Mr. John Parker or the dance Tango is the time 3
+	The dance Foxtrot is not the 3 time
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	The dance Foxtrot is the suspect Lady Eleanor Appleton
+	The dance Quickstep is 1 times before the dance Waltz
+
+
+Hints for grid cell [101][1]
+	The time 1 is not the Lord George Elliot suspect
+	The dance Quickstep is 2 times before the suspect Miss Clementine Baker
+	The dance Foxtrot is the time 3
+	The dance Waltz is not the 4 time
+	The suspect Lady Eleanor Appleton is the time 4
+
+
+Hints for grid cell [102][1]
+	Either the dance Quickstep or the suspect Lord George Elliot is the time 4
+	Either The dance Tango is the suspect Lord George Elliot or The time 3 is the dance Foxtrot
+	The dance Foxtrot is the time 3
+	The suspect Miss Clementine Baker is 2 times before the suspect Lady Eleanor Appleton
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+
+
+Hints for grid cell [103][1]
+	The dance Waltz is the time 1
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+
+
+Hints for grid cell [104][1]
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	The dance Quickstep is not the Lord George Elliot suspect
+	The suspect Mr. John Parker is at least 1 time before the dance Tango
+	The time 1 is not the Miss Clementine Baker suspect
+	Either the time 3 or the dance Tango is the suspect Miss Clementine Baker
+
+
+Hints for grid cell [105][2]
+	The suspect Mr. John Parker is the time 3
+	The suspect Miss Clementine Baker is at least 1 time before the dance Tango
+	Either The time 3 is the suspect Mr. John Parker or The suspect Mr. John Parker is the time 1
+	Either the time 1 or the dance Foxtrot is the suspect Lord George Elliot
+	The suspect Lord George Elliot is 2 times before the dance Quickstep
+	The suspect Mr. John Parker is at least 1 time before the dance Tango
+
+
+Hints for grid cell [106][1]
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	Either The suspect Miss Clementine Baker is the time 4 or The suspect Lady Eleanor Appleton is the time 3
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+
+
+Hints for grid cell [106][2]
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+	Either The suspect Miss Clementine Baker is the time 4 or The suspect Lady Eleanor Appleton is the time 3
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+
+
+Hints for grid cell [107][1]
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	The suspect Miss Clementine Baker is the dance Waltz
+	The dance Tango is the suspect Mr. John Parker
+	The suspect Miss Clementine Baker is 1 times before the suspect Lady Eleanor Appleton
+	The dance Quickstep is not the Mr. John Parker suspect
+
+
+Hints for grid cell [108][2]
+	The suspect Lord George Elliot is not the Foxtrot dance
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The time 3 is the dance Quickstep
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+	The suspect Mr. John Parker is at least 1 time before the suspect Miss Clementine Baker
+	The suspect Lady Eleanor Appleton is not the 4 time
+	Either the time 4 or the dance Quickstep is the suspect Lord George Elliot
+
+
+Hints for grid cell [108][3]
+	The suspect Lord George Elliot is not the Foxtrot dance
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The time 3 is the dance Quickstep
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+	The suspect Mr. John Parker is at least 1 time before the suspect Miss Clementine Baker
+	The suspect Lady Eleanor Appleton is not the 4 time
+
+
+Hints for grid cell [109][1]
+	The dance Foxtrot is the suspect Lady Eleanor Appleton
+	Either the dance Quickstep or the suspect Lady Eleanor Appleton is the time 2
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+
+
+Hints for grid cell [109][2]
+	The dance Quickstep is 1 times before the dance Waltz
+	The dance Foxtrot is the suspect Lady Eleanor Appleton
+	The dance Foxtrot is not the Mr. John Parker suspect
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	The suspect Miss Clementine Baker is 2 times before the dance Quickstep
+
+
+Hints for grid cell [110][1]
+	Either The time 3 is the suspect Mr. John Parker or The suspect Mr. John Parker is the time 1
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	The suspect Miss Clementine Baker is the dance Waltz
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	The dance Quickstep is 2 times before the suspect Miss Clementine Baker
+	Either The time 3 is the suspect Lady Eleanor Appleton or The time 1 is the dance Waltz
+
+
+Hints for grid cell [111][2]
+	Either The suspect Lord George Elliot is the time 2 or The suspect Lady Eleanor Appleton is the time 3
+	The suspect Lord George Elliot is 2 times before the dance Quickstep
+	Either The suspect Mr. John Parker is the dance Tango or The suspect Miss Clementine Baker is the dance Foxtrot
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	Either the time 3 or the time 1 is the dance Quickstep
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+
+
+Hints for grid cell [112][2]
+	Either the suspect Miss Clementine Baker or the time 4 is the dance Waltz
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The dance Tango is the suspect Lord George Elliot
+	The dance Waltz is at least 1 time before the dance Tango
+
+
+Hints for grid cell [113][3]
+	The suspect Lord George Elliot is not the Foxtrot dance
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The time 3 is the dance Quickstep
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+	The suspect Mr. John Parker is at least 1 time before the suspect Miss Clementine Baker
+	Either The dance Waltz is the suspect Mr. John Parker or The suspect Lady Eleanor Appleton is the time 4
+
+
+Hints for grid cell [114][2]
+	The suspect Miss Clementine Baker is at least 1 time before the suspect Lady Eleanor Appleton
+	The dance Quickstep is 2 times before the dance Foxtrot
+	The suspect Miss Clementine Baker is the dance Waltz
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The dance Quickstep is not the 3 time
+
+
+Hints for grid cell [115][1]
+	The dance Foxtrot is the time 3
+	The dance Waltz is not the 4 time
+	Either the time 1 or the dance Foxtrot is the suspect Lord George Elliot
+	The suspect Miss Clementine Baker is not the 2 time
+	The time 1 is the suspect Lady Eleanor Appleton
+	The dance Quickstep is 2 times before the suspect Miss Clementine Baker
+	Either The time 1 is the suspect Lady Eleanor Appleton or The time 2 is the suspect Lady Eleanor Appleton
+
+
+Hints for grid cell [116][1]
+	The suspect Miss Clementine Baker is 2 times before the suspect Lady Eleanor Appleton
+	Either the suspect Miss Clementine Baker or the suspect Lady Eleanor Appleton is the dance Foxtrot
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The suspect Lady Eleanor Appleton is at least 1 time before the dance Quickstep
+	The suspect Miss Clementine Baker is 1 times before the suspect Mr. John Parker
+
+
+Hints for grid cell [117][1]
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	The suspect Miss Clementine Baker is 2 times before the suspect Lady Eleanor Appleton
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	Either The time 3 is the suspect Mr. John Parker or The suspect Mr. John Parker is the time 1
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The suspect Mr. John Parker is at least 1 time before the suspect Miss Clementine Baker
+
+
+Hints for grid cell [118][2]
+	The dance Foxtrot is not the Miss Clementine Baker suspect
+	The suspect Mr. John Parker is at least 1 time before the dance Tango
+	The suspect Lady Eleanor Appleton is the dance Waltz
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	Either the dance Quickstep or the suspect Lady Eleanor Appleton is the time 2
+	Either the dance Waltz or the dance Quickstep is the suspect Lady Eleanor Appleton
+
+
+Hints for grid cell [119][1]
+	Either the suspect Lord George Elliot or the suspect Lady Eleanor Appleton is the dance Tango
+	The time 3 is the suspect Lady Eleanor Appleton
+	The time 4 is the suspect Mr. John Parker
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	Either The suspect Lady Eleanor Appleton is the dance Quickstep or The time 4 is the suspect Lady Eleanor Appleton
+	The time 2 is not the Lady Eleanor Appleton suspect
+
+
+Hints for grid cell [120][1]
+	Either The suspect Miss Clementine Baker is the dance Quickstep or The suspect Lord George Elliot is the time 2
+	The suspect Lady Eleanor Appleton is not the 4 time
+	The suspect Miss Clementine Baker is at least 1 time before the suspect Lady Eleanor Appleton
+	Either the dance Quickstep or the dance Foxtrot is the suspect Mr. John Parker
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	The suspect Lady Eleanor Appleton is at least 1 time before the suspect Mr. John Parker
+
+
+Hints for grid cell [121][2]
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The dance Quickstep is not the Mr. John Parker suspect
+	The suspect Miss Clementine Baker is the dance Waltz
+	The dance Quickstep is 1 times before the suspect Mr. John Parker
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+
+
+Hints for grid cell [122][1]
+	The suspect Mr. John Parker is at least 1 time before the suspect Miss Clementine Baker
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The dance Quickstep is not the 2 time
+
+
+Hints for grid cell [123][1]
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	The time 1 is not the Lord George Elliot suspect
+	Either The suspect Lord George Elliot is the dance Quickstep or The dance Waltz is the suspect Mr. John Parker
+	The suspect Lady Eleanor Appleton is the time 4
+	The dance Foxtrot is the time 3
+
+
+Hints for grid cell [124][1]
+	The suspect Lady Eleanor Appleton is the dance Tango
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	Either The suspect Miss Clementine Baker is the time 4 or The time 2 is the dance Tango
+
+
+Hints for grid cell [125][1]
+	The suspect Mr. John Parker is at least 1 time before the dance Waltz
+	The dance Waltz is at least 1 time before the dance Tango
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	The dance Tango is at least 1 time before the dance Foxtrot
+
+
+Hints for grid cell [125][2]
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The suspect Mr. John Parker is at least 1 time before the dance Tango
+	The dance Tango is at least 1 time before the dance Foxtrot
+	The suspect Mr. John Parker is at least 1 time before the dance Waltz
+
+
+Hints for grid cell [126][1]
+	Either the time 3 or the time 1 is the dance Quickstep
+	The suspect Lord George Elliot is 2 times before the dance Quickstep
+	The dance Foxtrot is not the Mr. John Parker suspect
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	The dance Quickstep is 1 times before the dance Waltz
+	The dance Waltz is not the 3 time
+
+
+Hints for grid cell [127][1]
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The dance Quickstep is 1 times before the suspect Mr. John Parker
+	Either The dance Tango is the suspect Lord George Elliot or The suspect Lady Eleanor Appleton is the time 3
+	The dance Foxtrot is not the Lady Eleanor Appleton suspect
+
+
+Hints for grid cell [128][2]
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	Either The dance Waltz is the suspect Miss Clementine Baker or The dance Tango is the suspect Lord George Elliot
+	The dance Waltz is at least 1 time before the dance Tango
+	The suspect Mr. John Parker is at least 1 time before the dance Waltz
+
+
+Hints for grid cell [129][1]
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	Either The suspect Miss Clementine Baker is the time 4 or The suspect Lady Eleanor Appleton is the time 3
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The dance Tango is 2 times before the dance Waltz
+
+
+Hints for grid cell [129][2]
+	Either The suspect Miss Clementine Baker is the time 4 or The suspect Lady Eleanor Appleton is the time 3
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The dance Tango is 2 times before the dance Waltz
+
+
+Hints for grid cell [130][1]
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	The suspect Miss Clementine Baker is at least 1 time before the suspect Lady Eleanor Appleton
+	The dance Quickstep is not the 3 time
+	The suspect Miss Clementine Baker is the dance Waltz
+	The suspect Miss Clementine Baker is 1 times before the suspect Mr. John Parker
+	The suspect Lady Eleanor Appleton is at least 1 time before the dance Quickstep
+	The time 2 is not the Lady Eleanor Appleton suspect
+
+
+Hints for grid cell [131][2]
+	The suspect Mr. John Parker is at least 1 time before the dance Tango
+	The dance Quickstep is 2 times before the dance Foxtrot
+	The suspect Miss Clementine Baker is 1 times before the suspect Mr. John Parker
+	Either the time 2 or the time 1 is the suspect Lord George Elliot
+
+
+Hints for grid cell [132][2]
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The suspect Mr. John Parker is 2 times before the suspect Lord George Elliot
+	The time 3 is the suspect Lord George Elliot
+	The time 2 is the dance Tango
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	Either The time 2 is the dance Waltz or The dance Tango is the time 2
+
+
+Hints for grid cell [133][1]
+	The suspect Lady Eleanor Appleton is the time 4
+	The dance Tango is the suspect Lord George Elliot
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	Either the dance Waltz or the dance Tango is the suspect Lord George Elliot
+	Either The dance Quickstep is the time 2 or The dance Quickstep is the suspect Lord George Elliot
+	The suspect Mr. John Parker is not the Waltz dance
+
+
+Hints for grid cell [133][2]
+	The suspect Mr. John Parker is at least 1 time before the dance Waltz
+	The suspect Lord George Elliot is 2 times before the dance Foxtrot
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	The dance Tango is at least 1 time before the dance Foxtrot
+
+
+Hints for grid cell [134][2]
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The dance Foxtrot is not the Miss Clementine Baker suspect
+	Either The time 3 is the suspect Mr. John Parker or The suspect Mr. John Parker is the time 1
+	The suspect Lady Eleanor Appleton is at least 1 time before the dance Foxtrot
+	The suspect Mr. John Parker is at least 1 time before the dance Tango
+	Either the time 4 or the time 2 is the dance Foxtrot
+	The dance Quickstep is at least 1 time before the suspect Mr. John Parker
+
+
+Hints for grid cell [135][1]
+	Either the time 3 or the dance Tango is the suspect Miss Clementine Baker
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+
+
+Hints for grid cell [136][2]
+	Either The suspect Mr. John Parker is the dance Tango or The suspect Miss Clementine Baker is the dance Foxtrot
+	Either the suspect Lord George Elliot or the suspect Lady Eleanor Appleton is the dance Tango
+	The suspect Mr. John Parker is at least 1 time before the dance Tango
+	The dance Quickstep is at least 1 time before the suspect Lord George Elliot
+	The suspect Lady Eleanor Appleton is 2 times before the dance Quickstep
+
+
+Hints for grid cell [137][1]
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	The dance Quickstep is not the 2 time
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	The suspect Mr. John Parker is at least 1 time before the suspect Miss Clementine Baker
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+	Either the time 2 or the suspect Miss Clementine Baker is the dance Waltz
+
+
+Hints for grid cell [138][1]
+	The suspect Lord George Elliot is the time 1
+	The suspect Miss Clementine Baker is at least 1 time before the dance Foxtrot
+	The time 3 is not the Miss Clementine Baker suspect
+	The dance Quickstep is 1 times before the suspect Mr. John Parker
+	The suspect Mr. John Parker is at least 1 time before the dance Tango
+
+
+Hints for grid cell [139][2]
+	The dance Tango is 2 times before the suspect Mr. John Parker
+	Either the dance Waltz or the dance Quickstep is the suspect Miss Clementine Baker
+	Either the dance Quickstep or the time 4 is the suspect Lady Eleanor Appleton
+	The suspect Lord George Elliot is 2 times before the suspect Mr. John Parker
+	The time 1 is the suspect Lady Eleanor Appleton
+
+
+Hints for grid cell [140][2]
+	The dance Quickstep is 2 times before the dance Foxtrot
+	The time 2 is the dance Waltz
+	Either the time 3 or the dance Tango is the suspect Miss Clementine Baker
+	Either The dance Tango is the suspect Lord George Elliot or The suspect Lady Eleanor Appleton is the time 3
+	The suspect Lady Eleanor Appleton is the dance Waltz
+	Either the suspect Mr. John Parker or the suspect Miss Clementine Baker is the time 3
+
+
+Hints for grid cell [141][1]
+	The dance Quickstep is 2 times before the suspect Miss Clementine Baker
+	Either The suspect Miss Clementine Baker is the dance Quickstep or The suspect Lord George Elliot is the time 2
+	The suspect Lady Eleanor Appleton is the time 4
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The time 1 is not the Lord George Elliot suspect
+	Either The suspect Miss Clementine Baker is the dance Tango or The time 2 is the dance Foxtrot
+
+
+Hints for grid cell [142][1]
+	Either The suspect Miss Clementine Baker is the dance Quickstep or The suspect Lord George Elliot is the time 2
+	The suspect Lady Eleanor Appleton is not the 4 time
+	Either the dance Quickstep or the dance Foxtrot is the suspect Mr. John Parker
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The dance Foxtrot is 2 times before the suspect Mr. John Parker
+	The suspect Lady Eleanor Appleton is at least 1 time before the suspect Mr. John Parker
+	The time 1 is the dance Waltz
+
+
+Hints for grid cell [143][1]
+	The dance Foxtrot is the time 3
+	Either The suspect Mr. John Parker is the dance Tango or The suspect Miss Clementine Baker is the dance Foxtrot
+	The suspect Lord George Elliot is 2 times before the dance Quickstep
+	Either The suspect Lord George Elliot is the dance Quickstep or The dance Waltz is the suspect Mr. John Parker
+	The suspect Mr. John Parker is at least 1 time before the dance Foxtrot
+
+
+Hints for grid cell [144][2]
+	The dance Quickstep is 1 times before the suspect Mr. John Parker
+	The suspect Miss Clementine Baker is the dance Waltz
+	The suspect Lady Eleanor Appleton is the time 4
+	Either The suspect Lord George Elliot is the time 3 or The dance Foxtrot is the time 2
+
+
+Hints for grid cell [145][1]
+	Either the time 3 or the time 1 is the dance Quickstep
+	Either the dance Quickstep or the suspect Lady Eleanor Appleton is the time 2
+	Either The time 3 is the suspect Mr. John Parker or The suspect Mr. John Parker is the time 1
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The suspect Lord George Elliot is 2 times before the dance Quickstep
+	Either The suspect Mr. John Parker is the dance Tango or The suspect Miss Clementine Baker is the dance Foxtrot
+	The dance Quickstep is at least 1 time before the dance Foxtrot
+
+
+Hints for grid cell [145][2]
+	Either the time 3 or the time 1 is the dance Quickstep
+	Either The time 3 is the suspect Mr. John Parker or The suspect Mr. John Parker is the time 1
+	Either The dance Quickstep is the suspect Lady Eleanor Appleton or The dance Waltz is the suspect Lord George Elliot
+	The suspect Lord George Elliot is 2 times before the dance Quickstep
+	Either The suspect Mr. John Parker is the dance Tango or The suspect Miss Clementine Baker is the dance Foxtrot
+	The dance Quickstep is at least 1 time before the dance Foxtrot
+
+
+Hints for grid cell [146][1]
+	The dance Quickstep is 2 times before the dance Foxtrot
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The dance Quickstep is 1 times before the dance Waltz
+	The dance Foxtrot is at least 1 time before the suspect Lord George Elliot
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+
+
+Hints for grid cell [147][2]
+	Either The time 3 is the suspect Mr. John Parker or The suspect Mr. John Parker is the time 1
+	The suspect Mr. John Parker is at least 1 time before the suspect Miss Clementine Baker
+	The dance Quickstep is 1 times before the suspect Mr. John Parker
+	Either The time 1 is the suspect Lady Eleanor Appleton or The dance Waltz is the time 3
+	The dance Tango is 1 times before the suspect Miss Clementine Baker
+	The dance Tango is at least 1 time before the dance Waltz
+
+
+Hints for grid cell [148][1]
+	The dance Quickstep is 2 times before the suspect Miss Clementine Baker
+	Either The suspect Miss Clementine Baker is the dance Quickstep or The dance Foxtrot is the suspect Lady Eleanor Appleton
+	Either the dance Waltz or the time 1 is the suspect Miss Clementine Baker
+	The dance Waltz is at least 1 time before the dance Tango
+	The dance Tango is the suspect Mr. John Parker
+
+

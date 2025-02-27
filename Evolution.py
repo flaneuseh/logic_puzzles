@@ -14,7 +14,7 @@
 # ---
 
 # %% [markdown]
-# # Evolution 
+# # Evolution
 #
 # An evolutionary Algorithm to evolve logic puzzles
 
@@ -22,42 +22,54 @@
 # !pip install import_ipynb
 
 # %%
-# Imports Baby 
-#import import_ipynb 
-from LogicPuzzles import Puzzle, generate_hint, str_hint, Category, apply_hint, find_openings, find_transitives  
-from HintToEnglish import hint_to_english  
-# from DataVisualization import plot_history
-import random 
-import math 
-import numpy.random as npr
-import pickle 
-from itertools import combinations 
+# Imports Baby
+# import import_ipynb
+from LogicPuzzles import (
+    Puzzle,
+    generate_hint,
+    str_hint,
+    Category,
+    apply_hint,
+    find_openings,
+    find_transitives,
+    ALL_INSIGHTS,
+    repair,
+)
 from HintToEnglish import hint_to_english
+
+# from DataVisualization import plot_history
+import random
+import math
+import numpy.random as npr
+import pickle
+from itertools import combinations
+from HintToEnglish import hint_to_english
+from copy import deepcopy
 
 
 # %%
 def decide(rate):
-  return random.random() < rate
+    return random.random() < rate
 
 
 # %% [markdown]
-# ## Representation 
+# ## Representation
 #
-# ### Mutation 
+# ### Mutation
 #
-# The following kinds of mutation are implemented: 
-# 1. Add new hint 
-# 2. Remove a hint 
+# The following kinds of mutation are implemented:
+# 1. Add new hint
+# 2. Remove a hint
 #
-# ### Cross-over 
-# Randomly add hints to each of children 
+# ### Cross-over
+# Randomly add hints to each of children
 #
-# ### Heuristic 
+# ### Heuristic
 #
-# #### Feasibility 
-# The fesability heuristic is the percentage of empty (unsolved). A valid puzzle is completely filled, but if the hints are incomplete or inlogical the resulting puzzle will have many empty pieces. This assumes that the hints will stop being applied when an invalid hint is attempted. 
+# #### Feasibility
+# The fesability heuristic is the percentage of empty (unsolved). A valid puzzle is completely filled, but if the hints are incomplete or inlogical the resulting puzzle will have many empty pieces. This assumes that the hints will stop being applied when an invalid hint is attempted.
 #
-# #### Optimization 
+# #### Optimization
 # We are hoping to optimize for challenge. Certain hint types are more challenging then others, so the algorithm will find the average of the difficulty of each hint (according to a dicitonary). In the future more complex algorithms could be considered (what types of deductions need to be made, etc.). This way harder hints (ex: or) will be selected over easier hints (ex: is)
 
 # %%
@@ -66,203 +78,351 @@ HINT_VALUES = {
     "not": 0.4,
     "before": 0.7,
     "simple_or": 0.7,
-    "compound_or": 0.1
-  }
+    "compound_or": 0.1,
+}
+
+
+def get_current_moves(puzzle, hints):
+    """
+    get all possible next moves in the solution:
+        any openings
+        any transitive moves possible in order
+        all currently applicable hints and their moves in order
+        any insights needed
+        if the current board is invalid, get the most salient contradiction (highlight the cell(s) that create the contradiction)
+    """
+    moves = []
+    solution, is_valid, _, _ = apply_hints(puzzle, hints)
+    if not is_valid:
+        # The puzzle itself is broken. this should never happen.
+        raise Exception("INVALID_PUZZLE")
+
+    result = deepcopy(puzzle)
+    applied = repair(result, solution)
+    if not is_valid:
+        # If there are any errors, the only valid move is to remove all invalid marks.
+        moves.append({
+            "type": "repair",
+            "result": result,
+        })
+        return is_valid, moves
+
+    # We know that so far the puzzle is correct.
+    result = deepcopy(puzzle)
+    applied, is_valid, _, insights = find_openings(result, slow=True)
+    if not is_valid:
+        # We should never be here
+        raise Exception("BROKEN_STATE")
+    if applied:
+        moves.append({
+            "type": "openings",
+            "update": result,
+            "insights": insights,
+        })
+    result = deepcopy(puzzle)
+    applied, is_valid, _, insights = find_transitives(result, slow=True)
+    if not is_valid:
+        # We should never be here
+        raise Exception("BROKEN_STATE")
+    if applied:
+        moves.append({
+            "type": "transitives",
+            "result": result,
+            "insights": insights,
+        })
+    for hint in hints:
+        result = deepcopy(puzzle)
+        applied, is_valid, _, insights = apply_hint(result, hint, slow=True)
+        if not is_valid:
+            # We should never be here
+            raise Exception("BROKEN_STATE")
+        if applied:
+            moves.append({
+                "type": "hint",
+                "hint": hint,
+                "result": result,
+                "insights": insights,
+            })
+    return is_valid, moves
 
 
 # %%
-def apply_hints(puzzle, hints, print_soln=False):
+def apply_hints(puzzle, hints, print_soln=False, forbidden_insights=set()):
     """
-    solver 
+    solver
     """
     copy = Puzzle(puzzle.categories)
     queue = hints[:]
-    #trace = {}
+    # trace = {}
     backlog = []
-    applied = True 
+    applied = True
     is_valid = True
+    insights = set()
     loop = 0
     while is_valid and applied and len(queue) > 0:
-        applied = False 
+        applied = False
         loop += 1
-        
+
         for hint in queue:
-            a, is_valid, complete = apply_hint(copy, hint)
+            a, is_valid, complete, hint_insights = apply_hint(
+                copy, hint, forbidden_insights=forbidden_insights
+            )
             applied = applied or a
-            if not complete: 
+            insights = insights | hint_insights
+            if not complete:
                 backlog.append(hint)
             if not is_valid:
-                break 
+                break
 
-            # Apply additional logic 
-            if a: 
-                a_3, is_valid, complete = find_transitives(copy)
-                a_2, is_valid, complete = find_openings(copy)
-                applied = applied or a_2 or a_3# test if anything was changed 
+            # Apply additional logic
+            if a:
+                a_2, is_valid, complete, opening_insights = find_openings(copy)
+                a_3, is_valid, complete, trans_insights = find_transitives(
+                    copy, forbidden_insights=forbidden_insights
+                )
+                applied = applied or a_2 or a_3  # test if anything was changed
+                insights = insights | trans_insights | opening_insights
             if print_soln:
+                print("hint: ", hint)
+                print("hint insight: ", hint_insights)
+                print("trans insight: ", trans_insights)
+                print("opening insight: ", opening_insights)
+                print("updated grid: ")
                 print(copy.print_grid())
-        queue = backlog 
-        backlog = [] 
-    return  copy, is_valid, loop 
+        queue = backlog
+        backlog = []
+    return copy, is_valid, loop, insights
 
 
 # %%
 class HintSet:
-    def __init__(self, hints, puzzle) -> None:
-        self.hints = hints 
-        self.puzzle = puzzle # assumed to be blank 
-        self.completed_puzzle, self.valid,  self.loops = apply_hints(self.puzzle, self.non_duplicates())
-    
+    def __init__(
+        self, hints, puzzle, required_insights_oneof=set(), forbidden_insights=set()
+    ) -> None:
+        self.hints = hints
+        self.puzzle = puzzle  # assumed to be blank
+        self.required_insights_oneof = required_insights_oneof
+        self.require_insight = len(self.required_insights_oneof) > 0
+        self.forbidden_insights = forbidden_insights
+        self.completed_puzzle, self.valid, self.loops, self.insights = apply_hints(
+            self.puzzle,
+            self.non_duplicates(),
+            forbidden_insights=self.forbidden_insights,
+        )
+
+        (
+            self.dumb_completed_puzzle,
+            self.dumb_valid,
+            self.dumb_loops,
+            self.dumb_insights,
+        ) = apply_hints(
+            self.puzzle,
+            self.non_duplicates(),
+            forbidden_insights=self.forbidden_insights | self.required_insights_oneof,
+        )
+
     def get_duplicates(self):
         english_dict = {}
         for hint in self.hints:
             english = hint_to_english(hint)
-            if(english in english_dict):
-                english_dict[english] += 1 
+            if english in english_dict:
+                english_dict[english] += 1
             else:
-                english_dict[english] = 1 
+                english_dict[english] = 1
         duplicates = {}
         for key, value in english_dict.items():
-            if (value > 1):
-                duplicates[key] = value 
-        
-        return duplicates 
+            if value > 1:
+                duplicates[key] = value
+
+        return duplicates
 
     def num_duplicates(self):
         duplicates = self.get_duplicates()
-        s = 0 
+        s = 0
         for key in duplicates:
             s += duplicates[key]
-        
-        return s 
+
+        return s
 
     def non_duplicates(self):
         new_list = []
         duplicates = self.get_duplicates()
         for hint in self.hints:
-            if (not hint_to_english(hint) in duplicates):
+            if not hint_to_english(hint) in duplicates:
                 new_list.append(hint)
-        
-        return new_list
 
+        return new_list
 
     def mutate(self, add_rate):
         hint_copy = self.hints[:]
         roll = random.random()
-        if((roll < 0.45) and len(hint_copy) <= 20) or  len(hint_copy) <= 0:
+        if ((roll < 0.45) and len(hint_copy) <= 20) or len(hint_copy) <= 0:
             new_hint = generate_hint(self.puzzle)
             hint_copy.append(new_hint)
-        elif (roll < 0.90):
+        elif roll < 0.90:
             index = random.randint(0, len(hint_copy) - 1)
-            del hint_copy[index] 
+            del hint_copy[index]
         else:
             self.swap_hints()
-            
-        
-        return HintSet(hint_copy, self.puzzle)
+
+        return HintSet(
+            hint_copy,
+            self.puzzle,
+            self.required_insights_oneof,
+            self.forbidden_insights,
+        )
 
     def swap_hints(self):
         i = random.randint(0, len(self.hints) - 1)
-        j = random.randint(0, len(self.hints) - 1) 
+        j = random.randint(0, len(self.hints) - 1)
         temp = self.hints[i]
         self.hints[i] = self.hints[j]
-        self.hints[j] = temp 
-    
+        self.hints[j] = temp
+
     def cross_over(self, other):
         hints = self.hints[:] + other.hints[:]
         random.shuffle(hints)
         threshold = math.floor(len(hints) / 2)
 
-        return HintSet(hints[0:threshold], self.puzzle), HintSet(hints[threshold: len(hints)], self.puzzle)
-    
+        return HintSet(
+            hints[0:threshold],
+            self.puzzle,
+            self.required_insights_oneof,
+            self.forbidden_insights,
+        ), HintSet(
+            hints[threshold : len(hints)],
+            self.puzzle,
+            self.required_insights_oneof,
+            self.forbidden_insights,
+        )
+
     def get_hint_counts(self, hints):
         total_counts = {
-        'is': 0,
-        'not': 0,
-        'before': 0,
-        'simple_or': 0,
-        'compound_or': 0
+            "is": 0,
+            "not": 0,
+            "before": 0,
+            "simple_or": 0,
+            "compound_or": 0,
         }
 
         for hint in hints:
-            kind = next(iter(hint)) 
-            total_counts[kind] += 1 
-        
-        return total_counts 
+            kind = next(iter(hint))
+            total_counts[kind] += 1
+
+        return total_counts
 
     def hint_ratios(self):
-        counts = self.get_hint_counts(self.non_duplicates()) 
+        counts = self.get_hint_counts(self.non_duplicates())
         values = list(counts.values())
         pairs = combinations(counts.keys(), 2)
 
-        diff_sum = 0 
-        l = 0 
+        diff_sum = 0
+        l = 0
 
         for first, second in pairs:
             diff_sum += abs(counts[first] - counts[second])
-            l += 1 
-            
-        mad = (diff_sum / l) / (sum(values) / len(values))
-        return 0.5 * mad 
+            l += 1
 
-    
+        mad = (diff_sum / l) / (sum(values) / len(values))
+        return 0.5 * mad
+
+    def need_insight(self):
+        return not self.dumb_completed_puzzle.is_complete()
+
     def is_valid(self):
-        return  len(self.hints) > 0 and self.valid and self.completed_puzzle.is_complete()
+        valid = False
+        if not self.require_insight:
+            valid = (
+                len(self.hints) > 0
+                and self.valid
+                and self.completed_puzzle.is_complete()
+            )
+        else:
+            valid = (
+                len(self.hints) > 0
+                and self.valid
+                and self.completed_puzzle.is_complete()
+                and self.need_insight()
+            )
+        if valid and self.require_insight:
+            assert (
+                len(self.insights & self.required_insights_oneof) > 0
+                or len(self.required_insights_oneof) == 0
+            ), "insights: {} does not include any of: {}".format(
+                self.insights, self.required_insights_oneof
+            )
+            assert (
+                len(self.insights & self.forbidden_insights) == 0
+            ), "insights: {} includes forbidden: {}".format(
+                self.insights, self.insights & self.forbidden_insights
+            )
+            assert (
+                len(self.dumb_insights & self.required_insights_oneof) == 0
+            ), "dumb insights: {} includes required: {}".format(
+                self.dumb_insights, self.insights & self.required_insights_oneof
+            )
+        return valid
 
     def _violations_fun(self, violations):
         if violations > 10:
-            return 0 
+            return 0
         elif violations <= 0:
-            return 1 
+            return 1
         else:
-            return 1 - (violations / 10 ) 
-    
+            return 1 - (violations / 10)
+
     def weighted_feasiblility(self, complete_w, valid_w, violation_w):
         complete, valid = self.completed_puzzle.percent_complete()
         violations = self.completed_puzzle.num_violations()
- 
-        return (complete_w * complete) + (valid_w* valid) + (violation_w * self._violations_fun(violations))
 
-    
+        return (
+            (complete_w * complete)
+            + (valid_w * valid)
+            + (violation_w * self._violations_fun(violations))
+        )
+
     def feasibility(self):
         complete, valid = self.completed_puzzle.percent_complete()
-        #violations = self.completed_puzzle.num_violations()
- 
-        return (0.5 * complete) + (0.5 * valid)
+        # violations = self.completed_puzzle.num_violations()
+        if not self.require_insight:
+            return (0.5 * complete) + (0.5 * valid)
+        else:
+            return (0.45 * complete) + (0.45 * valid) + (0.1 * self.need_insight())
 
     def solver_loops(self):
         if len(self.hints) == 0:
-            return 0 
-        
-        return self.loops 
+            return 0
+
+        return self.loops
 
     def hint_size(self):
         return len(self.hints)
-     
+
     def optimize_func(self):
         if len(self.hints) == 0:
-            return 0 
-       
-        score = 0 
+            return 0
+
+        score = 0
         for hint in self.hints:
             rule = list(hint.keys())[0]
             if rule == "simple_hint":
                 rule = list(hint.keys())[0]
-            score += HINT_VALUES[rule] 
-        
+            score += HINT_VALUES[rule]
+
         num_loops = self.loops
-       
+
         # Fn 1: optimize by hint type and number of hints
         # return (0.5 * score / len(self.hints)) + (0.5 * (1 - (len(self.hints) / 20)))
-        
+
         # Fn 2: optimize by number of loops and number of hints
         return (0.5 * min(num_loops, 10) / 10) + (0.5 * (1 - (len(self.hints) / 20)))
-        
+
         # Fn 3: optimize by number of loops
         # return num_loops
 
         # Fn 4: optimize by hint size
-        #return 1 - (len(self.hints) / 20)
+        # return 1 - (len(self.hints) / 20)
+
 
 class History:
     def __init__(self):
@@ -275,101 +435,108 @@ class History:
 
         if len(feasible) == 0:
             self.feasible_fitness.append(0)
-        else: 
+        else:
             self.feasible_fitness.append(feasible[0][0])
-        
+
         if len(infeasible) == 0:
             self.infeasible_fitness.append(0)
-        else: 
+        else:
             self.infeasible_fitness.append(infeasible[0][0])
 
 
-
-
-
-
 # %%
-def random_hint_set(puzzle):
-    num = random.randint(1,5) 
+def random_hint_set(puzzle, required_insights_oneof=set(), forbidden_insights=set()):
+    num = random.randint(1, 5)
     hints = [generate_hint(puzzle) for i in range(num)]
-    return HintSet(hints, puzzle)
+    return HintSet(hints, puzzle, required_insights_oneof, forbidden_insights)
 
 
 # %% [markdown]
-# ## Evolution 
+# ## Evolution
 
 # %%
 
+
 def select(population):
     m = sum([c[0] for c in population])
-    if(m == 0):
-      selection_probs = [1/len(population) for c in population]
+    if m == 0:
+        selection_probs = [1 / len(population) for c in population]
     else:
-      selection_probs = [c[0]/m for c in population]
+        selection_probs = [c[0] / m for c in population]
     return population[npr.choice(len(population), p=selection_probs)]
 
 
 # %%
 def _add_child(hints, feasible, infeasible):
     """
-    if hint set is valid, add to feasible pop with optmiziation fitness, 
-    otherwise add to infeasible pop with feasibility fitness 
+    if hint set is valid, add to feasible pop with optmiziation fitness,
+    otherwise add to infeasible pop with feasibility fitness
     """
     if hints.is_valid():
         fitness = hints.optimize_func()
         feasible.append((fitness, hints))
     else:
         fitness = hints.feasibility()
-        infeasible.append((fitness, hints)) 
+        infeasible.append((fitness, hints))
 
-def evolve(puzzle, generations, pop_size, x_rate, mut_rate, add_rate, elits):
+
+def evolve(
+    puzzle,
+    generations,
+    pop_size,
+    x_rate,
+    mut_rate,
+    add_rate,
+    elits,
+    required_insights_oneof=set(),
+    forbidden_insights=set(),
+):
     feasible = []
     infeasible = []
     history = History()
 
-    # Create initial population 
+    # Create initial population
     for i in range(pop_size):
-        hints = random_hint_set(puzzle)
+        hints = random_hint_set(puzzle, required_insights_oneof, forbidden_insights)
         _add_child(hints, feasible, infeasible)
-        
+
     for gen in range(generations):
-     
+
         new_feasible = []
         new_infeasible = []
 
-        
-        feasible.sort(reverse= True, key = lambda a: a[0])
-        infeasible.sort(reverse= True, key = lambda a: a[0]) 
+        feasible.sort(reverse=True, key=lambda a: a[0])
+        infeasible.sort(reverse=True, key=lambda a: a[0])
 
         history.update_history(feasible, infeasible)
 
-        if gen % 50 == 0: 
-            print("-"* 40) 
+        if gen % 50 == 0:
+            print("-" * 40)
             print("GENERATION " + str(gen))
-            print("-"* 80)
+            print("-" * 80)
             if len(infeasible) > 0:
                 print("Infeasible")
                 print(infeasible[0])
                 print(infeasible[0][1].completed_puzzle.print_grid())
                 print(infeasible[0][1].completed_puzzle.num_violations())
-            if len(feasible) > 0 :
+            if len(feasible) > 0:
                 print("feasible:")
                 print(feasible[0])
                 print(feasible[0][1].completed_puzzle.print_grid())
-            print("-"* 80)
+            print("-" * 80)
 
-        # elitism 
+        # elitism
         if len(feasible) > 0:
             new_feasible = feasible[:elits]
         if len(infeasible) > 0:
             new_infeasible = infeasible[:elits]
 
-        #create new population 
+        # create new population
         while len(new_feasible) + len(new_infeasible) < pop_size:
-            
-            # Selection 
-            # Not clear to me how to choose which pop to select from, 
-            # right now am deciding randomly based on size of two pops 
+
+            # Selection
+            # Not clear to me how to choose which pop to select from,
+            # right now am deciding randomly based on size of two pops
 
             if decide(len(feasible) / (len(feasible) + len(infeasible))):
                 # selecting from feasible
@@ -378,13 +545,12 @@ def evolve(puzzle, generations, pop_size, x_rate, mut_rate, add_rate, elits):
             else:
                 indiv1 = select(infeasible)[1]
                 indiv2 = select(infeasible)[1]
-            
-            
-            # cross over 
+
+            # cross over
             if decide(x_rate):
                 indiv1, indiv2 = indiv1.cross_over(indiv2)
 
-            # mutation 
+            # mutation
             if decide(mut_rate):
                 child1 = indiv1.mutate(add_rate)
                 child2 = indiv2.mutate(add_rate)
@@ -392,15 +558,32 @@ def evolve(puzzle, generations, pop_size, x_rate, mut_rate, add_rate, elits):
                 child1 = indiv1
                 child2 = indiv2
 
-            # add children 
+            # add children
             _add_child(child1, new_feasible, new_infeasible)
 
             if len(new_feasible) + len(new_infeasible) < pop_size:
                 _add_child(child2, new_feasible, new_infeasible)
-                
+
         feasible = new_feasible
-        infeasible = new_infeasible 
-    return feasible, infeasible, history 
+        infeasible = new_infeasible
+    for child in feasible:
+        assert (
+            len(child.insights & required_insights_oneof) > 0
+            or len(required_insights_oneof) == 0
+        ), "insights: {} does not include any of: {}".format(
+            child.insights, required_insights_oneof
+        )
+        assert (
+            len(child.insights & forbidden_insights) == 0
+        ), "insights: {} includes forbidden: {}".format(
+            child.insights, child.insights & forbidden_insights
+        )
+        assert (
+            len(child.dumb_insights & required_insights_oneof) == 0
+        ), "dumb insights: {} includes required: {}".format(
+            child.dumb_insights, child.insights & required_insights_oneof
+        )
+    return feasible, infeasible, history
 
 
 # %%
@@ -410,16 +593,29 @@ if __name__ == "__main__":
     rooms = Category("room", ["Ball room", "Living Room", "Kitchen", "Study"], False)
     time = Category("hour", ["1:00", "2:00", "3:00", "4:00"], True)
 
-    puzzle = Puzzle([suspects, weapons, rooms, time]) 
+    puzzle = Puzzle([suspects, weapons, rooms, time])
 
-    pop = evolve(puzzle, 100,50, 0.2, 1, 0.5, 2) 
-    
+    pop = evolve(puzzle, 100, 50, 0.2, 1, 0.5, 2, required_insights_oneof=ALL_INSIGHTS)
+
+    file = open("InsightExp/pop.p", "wb")
+    pickle.dump(pop, file)
+    feasible = pop[0]
+    infeasible = pop[1]
+    history = pop[2]
+
+    print(feasible)
+    print(feasible[0][1].completed_puzzle.print_grid())
+    print(len(feasible[0][1].hints))
+    print([hint_to_english(hint) for hint in feasible[0][1].hints])
+    print("\n\n")
+    print(infeasible)
+    # plot_history(history, "Insight_Exp")
     """hints = random_hint_set(puzzle) 
     for hint in hints.hints:
         print(hint)
     
     print(hints.hint_ratios())"""
-    
+
 # %%
 # if __name__ == "__main__":
 #     file = open("Experiement1/pop1.p", "wb")
