@@ -176,13 +176,18 @@ def apply_hints(puzzle, hints, print_soln=False, forbidden_insights=set()):
 
             # Apply additional logic
             if a:
-                a_2, is_valid, complete = find_openings(copy)
+                a_2, is_valid, complete, opening_insights = find_openings(copy)
                 a_3, is_valid, complete, trans_insights = find_transitives(
                     copy, forbidden_insights=forbidden_insights
                 )
                 applied = applied or a_2 or a_3  # test if anything was changed
-                insights = insights | trans_insights
+                insights = insights | trans_insights | opening_insights
             if print_soln:
+                print("hint: ", hint)
+                print("hint insight: ", hint_insights)
+                print("trans insight: ", trans_insights)
+                print("opening insight: ", opening_insights)
+                print("updated grid: ")
                 print(copy.print_grid())
         queue = backlog
         backlog = []

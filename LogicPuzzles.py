@@ -1229,10 +1229,8 @@ def find_openings(puzzle, slow=True):
                           return applied, is_valid, complete, insights
                         insights.add(Insight.OPENING)
     # Apply updates.
-    print("final update_puzzle")
-    print(update_puzzle.print_grid())
-    puzzle = update_puzzle
-    print("final puzzle")
+    puzzle.grids = update_puzzle.grids
+    print("within openings final puzzle")
     print(puzzle.print_grid())
     return applied, is_valid, complete, insights
 
