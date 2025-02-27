@@ -4,6 +4,7 @@ import json
 from ItterativeMapElits import evolve as itterative_evolve 
 from ItterativeMapElits import EliteGrid 
 from LogicPuzzles import Category, Puzzle 
+from bson.objectid import ObjectId
 
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 
@@ -16,11 +17,13 @@ sampleDatabase = mydb["samples"]
 
 admins_public_keys = ["Admin 1"]
 
+evolveSessions = mydb["evolveSessions"]
+
 def add_user(user_id, privateKey, publicKey):
     user = get_user(user_id)
     if user["publicKey"] in admins_public_keys:
         if get_user(privateKey) is None: 
-            user_template = {"privateKey": privateKey, "publicKey": publicKey, "likedPuzzles":[], "grammar": {}, "evolveSessions": {"nextIdx": 0}, "categories":[]}
+            user_template = {"privateKey": privateKey, "publicKey": publicKey, "nextPuzzleIdx":0, "likedPuzzles":[], "grammar": {}, "evolveSessions": {"nextIdx": 0}, "categories":[]}
             i = userDB.insert_one(user_template)
         
             return i 
@@ -33,11 +36,39 @@ def add_user(user_id, privateKey, publicKey):
 def get_user(user_id):
     user = userDB.find_one({"privateKey": user_id})
 
+    if not "nextPuzzleIdx"  in user:
+        userDB.find_one_and_update({"privateKey": user_id},  {"$set": {"nextPuzzleIdx":0}})
+
     return user 
 
 def like_puzzle(user_id, puzzle):
+
+    user = get_user(user_id)
+    next_idx = user["nextPuzzleIdx"]
+
+    puzzle["key"] = next_idx
+
     result = userDB.find_one_and_update({"privateKey": user_id}, 
-            {"$push": {"likedPuzzles": puzzle}})
+            {"$push": {"likedPuzzles": puzzle}, "$inc": {"nextPuzzleIdx":1}})
+    
+    if not result is None:
+        return next_idx 
+    else:
+        return None 
+
+def update_puzzle(user_id, key, new_puzzle):
+
+
+    result = userDB.find_one_and_update({"privateKey": user_id,"likedPuzzles":{"$elemMatch": {"key": key}}}, 
+            {"$set": {"likedPuzzles.$": new_puzzle}})
+    
+    
+    return not result is None 
+
+def remove_puzzle(user_id, key):
+
+    result = userDB.find_one_and_update({"privateKey": user_id}, 
+            {"$pull": {"likedPuzzles": {"key": key}}})
     
     return not result is None 
 
@@ -63,12 +94,14 @@ def get_user_grammar(user_id):
         custom_grammar = {}
         
         
-    database["grammar_dict"].update(custom_grammar)
-    return database["grammar_dict"]
+    database["grammar"].update(custom_grammar)
+    return database["grammar"]
 
 def add_grammar_rule(user_id, request_data):
 
     update= {} 
+
+    user = get_user(user_id)
     
     rule_type = request_data["type"]
     key_str = "grammar."
@@ -108,18 +141,86 @@ def add_grammar_rule(user_id, request_data):
 
         key_str += cat1 + "." + cat2 + "." + is_cat + ".or"
         update[key_str] = value
-    
-    
 
+    if user["publicKey"] in admins_public_keys:
+        result = sampleDatabase.find_one_and_update({}, {"$push": update})
+    else: 
+
+        result = userDB.find_one_and_update({"privateKey": user_id}, {"$push": update})
+
+    return result 
+
+def add_brainstorm(user_id, request_data):
+
+    update= {} 
+    
+    rule_type = request_data["type"]
+    key_str = "brainstorm."
+
+    if rule_type == "is":
+        cat1 = request_data["cat1"] 
+        cat2 = request_data["cat2"]
+        key_str += cat1 + "." + cat2 + ".is"
+        update[key_str] = request_data["template"]
+      
+    elif rule_type == "not":
+        cat1 = request_data["cat1"] 
+        cat2 = request_data["cat2"]
+        key_str += cat1 + "." + cat2 + ".not"
+        update[key_str] = request_data["template"]
+    elif rule_type == "before":
+        cat1 = request_data["cat1"] 
+        cat2 = request_data["cat2"]
+        num_cat = request_data["num_cat"]
+        template = request_data["template"]
+        timed = request_data["timed"]
+
+        if timed: 
+            key_str += cat1 + "." + cat2 + "." + num_cat + ".before.timed"
+        else: 
+            key_str += cat1 + "." + cat2 + "." + num_cat + ".before.untimed"
+
+        update[key_str] = template
+    elif rule_type == "or":
+        cat1 = request_data["cat1"] 
+        cat2 = request_data["cat2"]
+        is_cat = request_data["is_cat"]
+
+        value = request_data["template"]
+
+
+        key_str += cat1 + "." + cat2 + "." + is_cat + ".or"
+        update[key_str] = value
+    
+    
     user = get_user(user_id)
 
     if user["publicKey"] in admins_public_keys:
-        result = sampleDatabase.find_one_and_update({}, {"$set": update})
+        result = sampleDatabase.find_one_and_update({}, {"$push": update})
     else: 
 
-        result = userDB.find_one_and_update({"privateKey": user_id}, {"$set": update})
+        result = userDB.find_one_and_update({"privateKey": user_id}, {"$push": update})
 
     return result 
+
+def get_user_brainstorms(user_id):
+    
+    user= get_user(user_id) 
+   
+    database = sampleDatabase.find_one({})
+    
+
+    if user!=None:
+        custom_grammar = user["brainstorm"]
+    else: 
+        custom_grammar = {}
+        
+    if "brainstorm" in database:
+
+        database["brainstorm"].update(custom_grammar)
+        return database["brainstorm"]
+    else:
+        return custom_grammar  
 
 
 def add_category(user_id, request_data): 
@@ -201,31 +302,29 @@ def get_gen_data(request_data):
 
 
 def get_new_evolve_id(user, request):
-    document = userDB.find_one_and_update({"privateKey": user}, {"$inc": {"evolveSessions.nextIdx":1}})
 
-    new_id = document["evolveSessions"]["nextIdx"]
 
     grid = EliteGrid(10)
     puzzle = get_puzzle(request)
     gen_data = get_gen_data(request_data=request)
 
-    data = {"puzzle": request["puzzle"], "gen_data": gen_data, "grid": jsonpickle.encode(grid)}
+    data = {"user": user, "puzzle": request["puzzle"], "gen_data": gen_data, "grid": jsonpickle.encode(grid)}
 
-    results = userDB.find_one_and_update({"privateKey": user}, {"$set": {"evolveSessions." + str(new_id):data}})
+    results = evolveSessions.insert_one(data)
 
     data["grid"] = grid
     data["puzzle"] = puzzle 
-    return data, new_id 
+    return data, str(results.inserted_id)
 
 def get_grid_with_id(user, request_data): 
     id = str(request_data["id"]) 
-    user_data = get_user(user)
-
-    print(user_data["evolveSessions"].keys())
 
 
-    if not user_data is None and  "evolveSessions" in user_data and id in user_data["evolveSessions"]: 
-        data =  user_data["evolveSessions"][id]
+    data = evolveSessions.find_one({ "_id" : ObjectId(id), "user":user})
+
+
+
+    if not data is None: 
         print(data.keys())
         gen_data = data["gen_data"] 
         update = False 
@@ -261,7 +360,7 @@ def get_grid_with_id(user, request_data):
         data["grid"] = jsonpickle.decode(data["grid"])
         data["puzzle"] = get_puzzle(data)
         if update:
-            userDB.find_one_and_update({"privateKey":user}, {"$set": {"evolveSessions." + str(id) +".gen_data":gen_data}})
+            userDB.find_one_and_update({ "_id" : ObjectId(id), "user":user}, {"$set": {"evolveSessions." + str(id) +".gen_data":gen_data}})
         return data 
      
 
@@ -269,9 +368,11 @@ def get_grid_with_id(user, request_data):
         return None 
 
 
+
+
 def update_grid(user, id, grid): 
     grid_str = jsonpickle.encode(grid)
 
-    results = userDB.find_one_and_update({"privateKey": user}, {"$set" : {"evolveSessions." + str(id) + ".grid": grid_str}})
+    results = evolveSessions.find_one_and_update({ "_id" : ObjectId(id), "user":user}, {"$set" : {"evolveSessions." + str(id) + ".grid": grid_str}})
 
 

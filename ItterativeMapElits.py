@@ -176,7 +176,7 @@ class EliteGrid:
         for i in range(len(grid)):
             for j in range(len(grid[0])):
                 if not grid[i][j] is None: 
-                    li.append({"row": j, "col": i, "fit":grid[i][j][0], "puzzle": grid[i][j][1]}) 
+                    li.append({"row": i, "col": j, "fit":grid[i][j][0], "puzzle": grid[i][j][1]}) 
         
         return li  
     def get_top_layer(self):

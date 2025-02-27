@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, url_for, jsonify
 from flask_cors import CORS, cross_origin
 from MapElites import evolve as map_evolve  
 from HintSetToJson import category_to_json 
-from HintToEnglish import hint_to_english
+from HintToEnglish import hint_to_english,serialized_hint_grammar
 from LogicPuzzles import Category, Puzzle 
 from ItterativeMapElits import evolve as itterative_evolve 
 from ItterativeMapElits import EliteGrid 
@@ -31,14 +31,14 @@ def update_user_database(new_database):
 
 
 
-def hintset_to_di(hintset, row, col):
-    with open("database.json", 'r') as file:
-        database = json.load(file)
+
+def hintset_to_di(hintset, row, col, database={}):
     di = {}
     di["solution"] = hintset.completed_puzzle.print_grid_small()
     di["categories"] = [category_to_json(cat) for cat in hintset.completed_puzzle.categories]
-    di["hints"] = [hint_to_english(hint, grammar_dict=database["grammar_dict"]) for hint in hintset.hints]
-    di["diff"] = col + 1 
+    di["hints"] = [hint_to_english(hint, grammar_dict=database) for hint in hintset.hints]
+    di["hint_grammar"] = [serialized_hint_grammar(hint) for hint in hintset.hints]
+    di["diff"] = col + 1
     di["sol"] = row 
     return di 
 
@@ -53,10 +53,10 @@ def elite_grid_to_json(grid):
                 i +=1 
     return grid_di
 
-def get_new_puzzles(grid):
+def get_new_puzzles(grid,database={}):
     new = grid.get_top_layer()
 
-    formated_list = [hintset_to_di(child["puzzle"], child["row"], child["col"]) for child in new ]
+    formated_list = [hintset_to_di(child["puzzle"], child["row"], child["col"],  database) for child in new ]
 
     return formated_list 
 
@@ -316,7 +316,74 @@ def add_grammar_rule():
         response = jsonify("success")
         return response 
 
-   
+
+@app.route('/get_brainstorm', methods=['POST'])
+@cross_origin()
+def get_brainstorm():
+    
+    request_data = request.get_json()
+    user_dict = Database.get_user_brainstorms(request_data["user"])
+    rule_type = request_data["type"]
+
+    if rule_type == "is":
+        cat1 = request_data["cat1"] 
+        cat2 = request_data["cat2"]
+        if not cat1 in user_dict or not cat2 in user_dict[cat1] or not "is" in user_dict[cat1][cat2]:
+            return []
+        else: 
+            return user_dict[cat1][cat2]["is"]
+    elif rule_type == "not":
+        cat1 = request_data["cat1"] 
+        cat2 = request_data["cat2"]
+        if not cat1 in user_dict or not cat2 in user_dict[cat1] or not "not" in user_dict[cat1][cat2]:
+            return []
+        else: 
+            return user_dict[cat1][cat2]["not"]
+    elif rule_type == "before":
+        cat1 = request_data["cat1"] 
+        cat2 = request_data["cat2"]
+        num_cat = request_data["num_cat"]
+    
+
+        value = {"untimed":[], "timed": []}
+
+        if not cat1 in user_dict or not cat2 in user_dict[cat1] or not num_cat in user_dict[cat1][cat2] or not "before" in user_dict[cat1][cat2][num_cat]:
+            return jsonify(value) 
+        else: 
+            return jsonify(user_dict[cat1][cat2][num_cat]["before"]) 
+            
+
+ 
+    elif rule_type == "or":
+        cat1 = request_data["cat1"] 
+        cat2 = request_data["cat2"]
+        is_cat = request_data["is_cat"]
+
+        if not cat1 in user_dict or not cat2  in user_dict[cat1] or not  is_cat in user_dict[cat1][cat2] or not "or" in user_dict[cat1][cat2][is_cat]:
+          
+           value = []
+        else: 
+            value = user_dict[cat1][cat2][is_cat]["or"]
+        return value 
+
+
+
+@app.route('/add_brainstorm', methods=['POST'])
+@cross_origin()
+def add_brainstorm():
+    
+    request_data = request.get_json() 
+
+    results = Database.add_brainstorm(request_data["user"], request_data)
+
+    if results is None:
+        response = jsonify("user not found")
+        return response , 406
+    else:
+       
+        response = jsonify("success")
+        return response 
+
 
 
 @app.route('/add_account', methods=['POST'])
@@ -373,9 +440,42 @@ def like_puzzle():
 
     result = Database.like_puzzle(username, (request_data["puzzle"])) 
 
+    if not result is None: 
+        return {"key": result}  
+
+    else: 
+        response = jsonify("user not found")
+        return response , 406 
+    
+@app.route('/remove_puzzle', methods=['POST'])
+@cross_origin()
+def remove_puzzle():
+
+    request_data = request.get_json() 
+
+    username = request_data["username"]
+
+    result = Database.remove_puzzle(username, request_data["key"]) 
+
     if result: 
-        response = jsonify("success")
-        return response 
+        return "success"
+
+    else: 
+        response = jsonify("user not found")
+        return response , 406 
+    
+@app.route('/update_puzzle', methods=['POST'])
+@cross_origin()
+def update_puzzle():
+
+    request_data = request.get_json() 
+
+    username = request_data["username"]
+
+    result = Database.update_puzzle( username,  request_data["key"],  request_data["puzzle"]) 
+
+    if result: 
+        return "success"
 
     else: 
         response = jsonify("user not found")
@@ -394,8 +494,6 @@ def get_liked_puzzles():
     else: 
         response = jsonify("user not found")
         return response , 406 
-
-
 
 
     
@@ -451,6 +549,7 @@ def iter_map_evolve_api(*args):
         response = jsonify("user not found")
         return response , 406  
 
+    user_grammar = Database.get_user_grammar(request_data["user"])
 
     if "id" in request_data:
         id = request_data["id"]
@@ -468,7 +567,7 @@ def iter_map_evolve_api(*args):
     #grid = EliteGrid(10)
     elit_grid, infeasible, history = itterative_evolve(puzzle, gen_len, pop_size, x_rate, mut_rate, add_rate, elits, feasible_grid=grid) 
 
-    new_puzzles = get_new_puzzles(elit_grid)
+    new_puzzles = get_new_puzzles(elit_grid, user_grammar)
 
     return_di = {"puzzles": new_puzzles, "id": id}
 

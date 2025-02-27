@@ -8,6 +8,8 @@ time = Category("hour", ["1:00 pm", "2:00 pm", "3:00 pm", "4:00 pm"], True)
 
 puzzle = Puzzle([suspects, weapons, time])
 
+from copy import deepcopy 
+
 
 grammar_dict = {
     "suspect": {
@@ -147,6 +149,57 @@ def hint_to_english(hint, grammar_dict = {}):
         return compound_or_to_english(hint[kind], grammar_dict=grammar_dict)
     else:
         return "NOT IMPLEMENTED YET"
+
+
+def serialized_hint_grammar(hint):
+    hint = deepcopy(hint)
+    kind = next(iter(hint))
+
+    attributes = hint[kind]
+    if kind == "not":
+        attributes = attributes[0]["is"]
+
+    if kind == "is" or kind == "not":
+        
+        cat1 = attributes[0].title 
+        ent1 = attributes[1]
+        cat2 = attributes[2].title 
+        ent2 = attributes[3]
+
+        hint[kind] = [cat1, ent1, cat2, ent2]
+    elif kind == "before":
+            cat1 = attributes[0].title
+            ent1 = attributes[1]
+            cat2 = attributes[2].title 
+            ent2 = attributes[3]
+
+            num_cat = attributes[4].title 
+
+            timed = len(attributes) == 6  
+
+            if timed:
+                hint[kind] = [cat1,ent1,cat2,ent2,num_cat, attributes[5]]
+            else: 
+                hint[kind] = [cat1,ent1,cat2,ent2,num_cat]
+    elif kind == "simple_or":
+        cat1 = attributes[0].title 
+        ent1 = attributes[1]
+        cat2 = attributes[2].title 
+        ent2 = attributes[3]
+
+        is_cat = attributes[4].title 
+        is_ent = attributes[5] 
+
+        hint[kind] = [cat1, ent1, cat2, ent2, is_cat, is_ent]
+    elif kind == "compound_or":
+        hint1 = attributes[0]
+        hint2 = attributes[1]
+
+        hint1 = serialized_hint_grammar(hint1)
+        hint2 = serialized_hint_grammar(hint2)
+
+        hint[kind] = [hint1, hint2]
+    return hint 
 if __name__ == "__main__":
     """is_hint = generate_hint(puzzle)
     print(is_hint)

@@ -151,14 +151,6 @@ def make_new_grammar():
 
         value = {"step": step, "untimed": template1, "timed": templated2}
 
-        if categories[0] not in di:
-            di[categories[0]] = {}
-        if categories[1] not in di[categories[0]]:
-            di[categories[0]][categories[1]] = {}
-        if categories[2] not in di[categories[0]][categories[1]]: 
-            di[categories[0]][categories[1]][categories[2]] = {}
-
-        di[categories[0]][categories[1]][categories[2]]["or"] = value
 
         if categories[0] not in di:
             di[categories[0]] = {}
@@ -191,14 +183,14 @@ def make_new_grammar():
     update_grammar_dict(di)
 
 if __name__ == "__main__":
-    #make_new_grammar()
+    make_new_grammar()
 
-    #con = input("Make another (y/n)").lower().startswith("y")
+    con = input("Make another (y/n)").lower().startswith("y")
 
-    #while con: 
-     #   make_new_grammar()
-      #  con = input("Make another (y/n)").lower().startswith("y")
-    suspects = Category("suspect", ["Ms. Scarlet", "Ms. White", "Col Mustard", "Prof Plum"], False)
+    while con: 
+        make_new_grammar()
+        con = input("Make another (y/n)").lower().startswith("y")
+    """suspects = Category("suspect", ["Ms. Scarlet", "Ms. White", "Col Mustard", "Prof Plum"], False)
     weapons = Category("weapon", ["Knife", "Rope", "Candle Stick", "Wrench"], False)
     rooms = Category("room", ["Ball room", "Living Room", "Kitchen", "Study"], False)
     time = Category("hour", ["1:00 pm", "2:00 pm", "3:00 pm", "4:00 pm"], True)
@@ -207,7 +199,7 @@ if __name__ == "__main__":
 
     grammar = get_grammar()
     for i in range(10):
-        print(hint_to_english(generate_hint(puzzle), grammar_dict=grammar))
+        print(hint_to_english(generate_hint(puzzle), grammar_dict=grammar))"""
         
 
 
