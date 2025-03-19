@@ -32,7 +32,7 @@ def update_user_database(new_database):
 
 
 
-def hintset_to_di(hintset, row, col, database={}):
+def hintset_to_di(hintset, row, col, database={}, data={}):
     di = {}
     di["solution"] = hintset.completed_puzzle.print_grid_small()
     di["categories"] = [category_to_json(cat) for cat in hintset.completed_puzzle.categories]
@@ -40,6 +40,10 @@ def hintset_to_di(hintset, row, col, database={}):
     di["hint_grammar"] = [serialized_hint_grammar(hint) for hint in hintset.hints]
     di["diff"] = col + 1
     di["sol"] = row 
+    if "name" in data:
+        di["name"] = data["name"]
+    if "scenario" in data:
+        di["scenario"] = data["scenario"]
     return di 
 
 def elite_grid_to_json(grid):
@@ -53,10 +57,10 @@ def elite_grid_to_json(grid):
                 i +=1 
     return grid_di
 
-def get_new_puzzles(grid,database={}):
+def get_new_puzzles(grid,database={}, data={}):
     new = grid.get_top_layer()
 
-    formated_list = [hintset_to_di(child["puzzle"], child["row"], child["col"],  database) for child in new ]
+    formated_list = [hintset_to_di(child["puzzle"], child["row"], child["col"],  database, data) for child in new ]
 
     return formated_list 
 
@@ -70,7 +74,8 @@ def get_puzzle(request_data):
                 name = element["name"]
                 entities = element["entities"]
                 is_numeric = element["is_numeric"]
-                category = Category(name, entities, is_numeric)
+                inc = element["inc"] if "inc" in element else 1 
+                category = Category(name, entities, is_numeric, increment=inc)
                 categories.append(category)
         print("categories", categories[0].entities)
         puzzle = Puzzle(categories) 
@@ -250,6 +255,41 @@ def add_category():
         response = jsonify("success")
         return response
     
+@app.route('/add_scenario', methods=['POST'])
+@cross_origin()
+def add_scen():
+
+    request_data = request.get_json() 
+
+    result = Database.add_scenario(request_data["user"], request_data)
+
+    if result is None:
+        response = jsonify("user not found")
+        return response , 406
+    else:
+        response = jsonify("success")
+        return response
+    
+@app.route('/get_scenarios', methods=['GET'])
+@cross_origin()
+def get_scenarios():
+    
+
+    if "user" in request.args:
+       username = request.args.get('user')
+    else:
+       username = "null"
+
+    if "getSample" in request.args:
+        get_sample = request.args.get("getSample")
+    else:
+        get_sample = False 
+
+    user_data = Database.get_scenario(username, get_sample)
+    
+    return jsonify(user_data)
+
+    
 @app.route('/get_template', methods=['POST'])
 @cross_origin()
 def get_template():
@@ -395,8 +435,9 @@ def add_account():
     adminId = request_data["user"]
     privateKey = request_data["privateKey"]
     publicKey = request_data["publicKey"]
+    mode = request_data["mode"]
 
-    result = Database.add_user(adminId, privateKey, publicKey)
+    result = Database.add_user(adminId, privateKey, publicKey, mode)
 
 
     if not result is None and result != -1: 
@@ -420,9 +461,11 @@ def get_public_key():
 
     result = Database.get_user(id)
 
+    mode = result["mode"] if  "mode" in result else "mixed"
+
 
     if not result is None: 
-        response = jsonify({"publicKey": result["publicKey"]})
+        response = jsonify({"publicKey": result["publicKey"], "mode": mode})
         return response 
     elif result is None: 
         response = jsonify("user doesn't exist")
@@ -515,6 +558,8 @@ def get_sample_categories():
 
 
 
+
+
 @app.route('/map_evolve', methods=['POST'])
 @cross_origin()
 def map_evolve_api(*args):
@@ -567,7 +612,7 @@ def iter_map_evolve_api(*args):
     #grid = EliteGrid(10)
     elit_grid, infeasible, history = itterative_evolve(puzzle, gen_len, pop_size, x_rate, mut_rate, add_rate, elits, feasible_grid=grid) 
 
-    new_puzzles = get_new_puzzles(elit_grid, user_grammar)
+    new_puzzles = get_new_puzzles(elit_grid, user_grammar, data)
 
     return_di = {"puzzles": new_puzzles, "id": id}
 
