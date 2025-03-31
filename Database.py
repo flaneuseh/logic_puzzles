@@ -19,11 +19,11 @@ admins_public_keys = ["Admin 1"]
 
 evolveSessions = mydb["evolveSessions"]
 
-def add_user(user_id, privateKey, publicKey):
+def add_user(user_id, privateKey, publicKey, mode):
     user = get_user(user_id)
     if user["publicKey"] in admins_public_keys:
         if get_user(privateKey) is None: 
-            user_template = {"privateKey": privateKey, "publicKey": publicKey, "nextPuzzleIdx":0, "likedPuzzles":[], "grammar": {}, "evolveSessions": {"nextIdx": 0}, "categories":[]}
+            user_template = {"privateKey": privateKey, "publicKey": publicKey, "mode": mode, "nextPuzzleIdx":0, "likedPuzzles":[], "grammar": {}, "evolveSessions": {"nextIdx": 0}, "categories":[]}
             i = userDB.insert_one(user_template)
         
             return i 
@@ -36,13 +36,15 @@ def add_user(user_id, privateKey, publicKey):
 def get_user(user_id):
     user = userDB.find_one({"privateKey": user_id})
 
-    if not "nextPuzzleIdx"  in user:
-        userDB.find_one_and_update({"privateKey": user_id},  {"$set": {"nextPuzzleIdx":0}})
+    if not user is None:
+        if not "nextPuzzleIdx" in user:
+            userDB.find_one_and_update({"privateKey": user_id},  {"$set": {"nextPuzzleIdx":0}})
+        if not "mode" in user:
+            userDB.find_one_and_update({"privateKey": user_id}, {"$set": {"mode": "mixed"}})
 
     return user 
 
 def like_puzzle(user_id, puzzle):
-
     user = get_user(user_id)
     next_idx = user["nextPuzzleIdx"]
 

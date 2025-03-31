@@ -123,6 +123,8 @@ def make_hint_file(map_grid, file_path):
             if(not child is None):
                 file.write("Hints for grid cell [{}][{}]\n".format(row, col))
                 file.write(hintset_to_string(child[1]))
+                file.write("Insights: ")
+                file.write(str(child[1].insights))
                 file.write("\n\n")
 
     file.close()

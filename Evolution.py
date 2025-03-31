@@ -68,11 +68,8 @@ def decide(rate):
 #
 # #### Feasibility
 # The fesability heuristic is the percentage of empty (unsolved). A valid puzzle is completely filled, but if the hints are incomplete or inlogical the resulting puzzle will have many empty pieces. This assumes that the hints will stop being applied when an invalid hint is attempted.
-#
-# #### Optimization
-# We are hoping to optimize for challenge. Certain hint types are more challenging then others, so the algorithm will find the average of the difficulty of each hint (according to a dicitonary). In the future more complex algorithms could be considered (what types of deductions need to be made, etc.). This way harder hints (ex: or) will be selected over easier hints (ex: is)
 
-# %%
+#  We are hoping to optimize for challenge. Certain hint types are more challenging then others, and this is our estimate of the difficulty of different hint types (hardest being higher). This way harder hints (ex: before, simple or) can be selected over easier hints (ex: is).
 HINT_VALUES = {
     "is": 0.2,
     "not": 0.4,
@@ -81,8 +78,7 @@ HINT_VALUES = {
     "compound_or": 0.1,
 }
 
-
-def get_current_moves(puzzle, hints):
+def get_available_moves(puzzle, hints):
     """
     get all possible next moves in the solution:
         any openings
@@ -130,7 +126,7 @@ def get_current_moves(puzzle, hints):
             "result": result,
             "insights": insights,
         })
-    for hint in hints:
+    for idx, hint in enumerate(hints):
         result = deepcopy(puzzle)
         applied, is_valid, _, insights = apply_hint(result, hint, slow=True)
         if not is_valid:
@@ -139,12 +135,14 @@ def get_current_moves(puzzle, hints):
         if applied:
             moves.append({
                 "type": "hint",
-                "hint": hint,
+                "indexed_hint": {
+                    "idx": idx,
+                    "hint": hint
+                },
                 "result": result,
                 "insights": insights,
             })
     return is_valid, moves
-
 
 # %%
 def apply_hints(puzzle, hints, print_soln=False, forbidden_insights=set()):
@@ -414,13 +412,13 @@ class HintSet:
         # Fn 1: optimize by hint type and number of hints
         # return (0.5 * score / len(self.hints)) + (0.5 * (1 - (len(self.hints) / 20)))
 
-        # Fn 2: optimize by number of loops and number of hints
+        # Fn 2: optimize by number of solver loops and number of hints
         return (0.5 * min(num_loops, 10) / 10) + (0.5 * (1 - (len(self.hints) / 20)))
 
-        # Fn 3: optimize by number of loops
+        # Fn 3: optimize by number of loops only
         # return num_loops
 
-        # Fn 4: optimize by hint size
+        # Fn 4: optimize by number of hints only
         # return 1 - (len(self.hints) / 20)
 
 

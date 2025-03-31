@@ -7,6 +7,7 @@ def category_to_json(cat):
     di = {}
     di["name"] = cat.title 
     di["entities"] = cat.entities 
+    di["is_numeric"] = cat.is_numeric
     return di 
 
 

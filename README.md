@@ -16,6 +16,7 @@ After the experiement finishes running, you will need to run the "DataVisualisat
 
 ### Running the Flask API Server
 The Flask API server can be run using the command line with command ```python main.py```.
+To start a mock database, start MongoDB, then run command ```python mock-db.py```.
 
 ## Important Files 
 

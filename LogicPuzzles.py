@@ -87,16 +87,16 @@ class Puzzle:
         """
         self.categories = categories
         self.left_right = self.categories[0 : len(categories) - 1]
-        self.top_buttom = []
+        self.top_bottom = []
         for i in range(len(self.categories) - 1, 0, -1):
-            self.top_buttom.append(self.categories[i])
+            self.top_bottom.append(self.categories[i])
         self.grids = {}
 
-        rows = len(self.top_buttom)
+        rows = len(self.top_bottom)
 
         for top_category in self.left_right:
             for i in range(rows):
-                left_cat = self.top_buttom[i]
+                left_cat = self.top_bottom[i]
                 title = self._to_key(top_category, left_cat)
                 array = []
                 for i in range(len(left_cat.entities)):
@@ -119,8 +119,6 @@ class Puzzle:
         """
         Get the grid for cat1 and cat2
         assuming cat is the top category
-
-        Not sure if this ended up actually be useful, could delete
         """
         if self._to_key(cat1, cat2) in self.grids:
             return self.grids[self._to_key(cat1, cat2)]
@@ -230,7 +228,7 @@ class Puzzle:
         find the top categories and the vertical categories
         for a single row
         """
-        left_cat = self.top_buttom[row]
+        left_cat = self.top_bottom[row]
         num_top = len(self.left_right) - row
         if not small:
             remove_top = row > 0
@@ -245,7 +243,7 @@ class Puzzle:
         TODO: add category names?
         """
         return_str = ""
-        for i in range(len(self.top_buttom)):
+        for i in range(len(self.top_bottom)):
             return_str += self.print_row(i)
 
         return return_str
@@ -257,7 +255,7 @@ class Puzzle:
         TODO: add category names?
         """
         return_str = ""
-        for i in range(len(self.top_buttom)):
+        for i in range(len(self.top_bottom)):
             return_str += self.print_row(i, True)
 
         return return_str
@@ -570,8 +568,8 @@ if __name__ == "__main__":
 if __name__ == "__main__":
     print("Test board arrangement")
     print(" " * 7 + " ".join([str(ent) for ent in puzzle.left_right]))
-    print("\n".join([str(ent) for ent in puzzle.top_buttom]))
-    print(puzzle.print_grid())  
+    print("\n".join([str(ent) for ent in puzzle.top_bottom]))
+    print(puzzle.print_grid())
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="5y0jCd1KcEO3" outputId="0c5dae69-7b4f-4467-e76e-291ebb128933"
 if __name__ == "__main__":
@@ -699,13 +697,22 @@ class Insight(Enum):
     APPLY_IS = 3  # Apply an is hint
     APPLY_NOT = 4  # Apply a not hint
     APPLY_OR = 5  # Apply an or hint once one of the clauses has been answered.
-    APPLY_BEFORE_ONE_SPOT = 6  # If A is answered and B is 1 after A, then answer B is one after A
-    APPLY_BEFORE_N_SPOTS = 7  # If A is answered and B is N after A, then answer B is N after A
-    
-    APPLY_BEFORE_UNDEFINED_SPOTS = 8  # If A is answered then B must be one of the spots after A
-    SIMPLE_OR_SAME_CAT = 9  # If A or B from category 0 is C then no other entity from category 0 is C
+    APPLY_BEFORE_ONE_SPOT = (
+        6  # If A is answered and B is 1 after A, then answer B is one after A
+    )
+    APPLY_BEFORE_N_SPOTS = (
+        7  # If A is answered and B is N after A, then answer B is N after A
+    )
+    APPLY_BEFORE_UNDEFINED_SPOTS = (
+        8  # If A is answered then B must be one of the spots after A
+    )
+    SIMPLE_OR_SAME_CAT = (
+        9  # If A or B from category 0 is C then no other entity from category 0 is C
+    )
     SIMPLE_OR_DIFF_CAT = 10  # If A or B is C then A is not B
-    BEFORE_DIFF_CAT = 11  # If A < B and A, B are not in the same category, then A is not B.
+    BEFORE_DIFF_CAT = (
+        11  # If A < B and A, B are not in the same category, then A is not B.
+    )
     BEFORE_ONE_SPOT_NOINFO = 12  # The before entity can't be in the last spot (and vice versa for the after entity) Same for undefined spots
     BEFORE_N_SPOTS_NOINFO = 13  # The before entity can't be in the last N spots (and vice versa for the after entity)
     TRANS_ABC_TRUE = 14  # A -> B and B -> C, so A -> C
@@ -713,6 +720,7 @@ class Insight(Enum):
     BEFORE_N_SPOTS_SHIFT = 16  # A streak of Xs at the beginning/end forces the first available position for the other entity to shift.
     BEFORE_N_SPOTS_CROSSCHECK = 17  # For a position to be a valid answer, the corresponding position +/- num must be valid for the other entity
     TRANS_SETS = 18  # A and B don't share any possibilities; A != B
+
 
 ALL_INSIGHTS = {insight.value for insight in Insight}
 # # subset for testing
@@ -901,11 +909,11 @@ def generate_hint(puzzle):
     if len(nums) < 1:
         del hint_grammar["hint"]["before"]
     word = generate_word(hint_grammar, terminals)
-    # try:
+    try:
+        return fill_in_word(puzzle, word)["hint"]
+    except:
+        return generate_hint(puzzle)
     # return fill_in_word(puzzle, word)["hint"]
-    # except:
-    #  return generate_hint(puzzle)
-    return fill_in_word(puzzle, word)["hint"]
 
 
 def str_hint(hint, str_so_far=""):
@@ -977,16 +985,19 @@ def cross_out(puzzle, cat1, cat2, ent1, ent2):
                 puzzle.answer(cat1, cat2, ent1, ent, "X")
             elif symb == "O":
                 is_valid = False
-    
+
     return is_valid
+
 
 # remove errors (discrepancies between the current puzzle and the canonical solution)
 def repair(puzzle, solution):
     applied = False
-    for cat1 in puzzle.categories:
-        for cat2 in puzzle.categories:
+    for cat1 in puzzle.left_right:
+        for cat2 in puzzle.top_bottom:
             curr_grid = puzzle.get_grid(cat1, cat2)
             soln_grid = solution.get_grid(cat1, cat2)
+            if curr_grid is None or soln_grid is None:
+                continue
             for ent2_idx in range(0, len(curr_grid)):
                 for ent1_idx in range(0, len(curr_grid[ent2_idx])):
                     if (
@@ -1011,7 +1022,7 @@ def apply_is(puzzle, terms):
     applied = False
     is_valid = True
     complete = True  # this rule can only be applied once
-    insights = set()  
+    insights = set()
     cat1 = terms[0]
     ent1 = terms[1]
     cat2 = terms[2]
@@ -1024,7 +1035,7 @@ def apply_is(puzzle, terms):
         puzzle.answer(cat1, cat2, ent1, ent2, "O")
         is_valid = cross_out(puzzle, cat1, cat2, ent1, ent2)
         if is_valid:
-          insights.add(Insight.APPLY_IS)
+            insights.add(Insight.APPLY_IS)
 
     elif current_term == "X":
         # something logic error occured
@@ -1050,14 +1061,25 @@ if __name__ == "__main__":
     print("New IS: Scarlet IS Knife")
     terms = [suspects, "Scarlet", weapons, "Knife"]
     applied, is_valid, complete, insights = apply_is(puzzle, terms)
-    assert (applied, is_valid, complete, insights) == (True, True, True, {Insight.APPLY_IS})
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        True,
+        {Insight.APPLY_IS},
+    )
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
 
     # Skip when it has already been answered O
     print("PreAnswered: Scarlet IS Knife")
     applied, is_valid, complete, insights = apply_is(puzzle, terms)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     assert (applied, is_valid, complete, insights) == (False, True, True, set())
     print(puzzle.print_grid())
 
@@ -1066,7 +1088,10 @@ if __name__ == "__main__":
     terms[3] = "Rope"
     applied, is_valid, complete, insights = apply_is(puzzle, terms)
     assert (applied, is_valid, complete, insights) == (False, False, True, set())
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
 
 
@@ -1081,7 +1106,7 @@ def apply_not(puzzle, terms):
     applied = False
     is_valid = True
     complete = True  # this rule can only be applied once
-    insights = (set())  
+    insights = set()
     cat1 = terms[0]
     ent1 = terms[1]
     cat2 = terms[2]
@@ -1115,15 +1140,26 @@ if __name__ == "__main__":
     print("Testing NOT")
     print("New NOT: Scarlet NOT Knife")
     applied, is_valid, complete, insights = apply_not(puzzle, terms)
-    assert (applied, is_valid, complete, insights) == (True, True, True, {Insight.APPLY_NOT})
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        True,
+        {Insight.APPLY_NOT},
+    )
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
 
     # Skip when it has already been answered O
     print("PreAnswered: Scarlet NOT Knife")
     applied, is_valid, complete, insights = apply_not(puzzle, terms)
     assert (applied, is_valid, complete, insights) == (False, True, True, set())
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
 
     # Contradiction when it has already been answered X
@@ -1133,8 +1169,12 @@ if __name__ == "__main__":
     print("Contradiction: Plum NOT Knife")
     applied, is_valid, complete, insights = apply_not(puzzle, terms)
     assert (applied, is_valid, complete, insights) == (False, False, True, set())
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
+
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
 # If a row/column has 1 O then fill the rest with X.
@@ -1149,7 +1189,7 @@ def find_openings(puzzle, slow=True):
     # The puzzle to update. Update in place in normal mode; in slow mode update a copy.
     update_puzzle = puzzle
     if slow:
-      update_puzzle = deepcopy(puzzle)
+        update_puzzle = deepcopy(puzzle)
 
     # For every combination of categories:
     for cat1 in puzzle.categories:
@@ -1213,8 +1253,8 @@ def find_openings(puzzle, slow=True):
                         applied = True
                         is_valid = cross_out(update_puzzle, cat1, cat2, ent1, ent2)
                         if not is_valid:
-                          applied = False
-                          return applied, is_valid, complete, insights
+                            applied = False
+                            return applied, is_valid, complete, insights
                         insights.add(Insight.CROSS_OUT)
                     # If there is only one blank value:
                     elif len(blanks) == 1:
@@ -1225,13 +1265,11 @@ def find_openings(puzzle, slow=True):
                         update_puzzle.answer(cat1, cat2, ent1, ent2, "O")
                         is_valid = cross_out(update_puzzle, cat1, cat2, ent1, ent2)
                         if not is_valid:
-                          applied = False
-                          return applied, is_valid, complete, insights
+                            applied = False
+                            return applied, is_valid, complete, insights
                         insights.add(Insight.OPENING)
     # Apply updates.
     puzzle.grids = update_puzzle.grids
-    print("within openings final puzzle")
-    print(puzzle.print_grid())
     return applied, is_valid, complete, insights
 
 
@@ -1253,7 +1291,10 @@ if __name__ == "__main__":
     print("Find openings when there are no single blanks")
     applied, is_valid, complete, insights = find_openings(puzzle)
     assert (applied, is_valid, complete, insights) == (False, True, False, set())
-    print("(Applied, Is Valid, Complete, insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
 
     # There is an opening in a column
@@ -1263,8 +1304,16 @@ if __name__ == "__main__":
     print("Find an opening in a column")
     applied, is_valid, complete, insights = find_openings(puzzle)
     print(puzzle.print_grid())
-    print("(Applied, Is Valid, Complete, insights): ", (applied, is_valid, complete, insights))
-    assert (applied, is_valid, complete, insights) == (True, True, False, {Insight.OPENING})
+    print(
+        "(Applied, Is Valid, Complete, insights): ",
+        (applied, is_valid, complete, insights),
+    )
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.OPENING},
+    )
 
     # There is an opening in a row
     print("Set Wrench to 3:00")
@@ -1273,8 +1322,16 @@ if __name__ == "__main__":
     print("Find an opening in a row")
     applied, is_valid, complete, insights = find_openings(puzzle)
     print(puzzle.print_grid())
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
-    assert (applied, is_valid, complete, insights) == (True, True, False, {Insight.OPENING})
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.OPENING},
+    )
 
     # There is a row of all X => contradiction
     print("Set row to all X => contradiction")
@@ -1284,7 +1341,10 @@ if __name__ == "__main__":
     apply_not(puzzle, [suspects, "Mustard", time, "1:00"])
     apply_not(puzzle, [suspects, "Plum", time, "1:00"])
     applied, is_valid, complete, insights = find_openings(puzzle)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
     assert (applied, is_valid, complete, insights) == (False, False, False, set())
 
@@ -1296,27 +1356,48 @@ if __name__ == "__main__":
     apply_not(puzzle, [suspects, "Scarlet", time, "3:00"])
     apply_not(puzzle, [suspects, "Scarlet", time, "4:00"])
     applied, is_valid, complete, insights = find_openings(puzzle)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
     assert (applied, is_valid, complete, insights) == (False, False, False, set())
 
     # There is a row with one O and no Xs
-    print("Set row to one O and no Xs => fill in blanks") # also shows a col with one O and otherwise missing blanks
+    print(
+        "Set row to one O and no Xs => fill in blanks"
+    )  # also shows a col with one O and otherwise missing blanks
     puzzle = Puzzle([suspects, weapons, rooms, time])
     puzzle.answer(suspects, time, "Scarlet", "1:00", "O")
     applied, is_valid, complete, insights = find_openings(puzzle)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
-    assert(applied, is_valid, complete, insights) == (True, True, False, {Insight.CROSS_OUT})
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.CROSS_OUT},
+    )
 
     print("Set row to one O and some Xs => fill in blanks")
     puzzle = Puzzle([suspects, weapons, rooms, time])
     puzzle.answer(suspects, time, "Scarlet", "1:00", "O")
     puzzle.answer(suspects, time, "Mustard", "1:00", "X")
     applied, is_valid, complete, insights = find_openings(puzzle)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
-    assert(applied, is_valid, complete, insights) == (True, True, False, {Insight.CROSS_OUT}) 
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.CROSS_OUT},
+    )
 
     # There is a column with one O and missing blanks
     print("Set col to one O and some Xs => fill in missing blanks")
@@ -1324,9 +1405,17 @@ if __name__ == "__main__":
     puzzle.answer(suspects, time, "Scarlet", "1:00", "O")
     puzzle.answer(suspects, time, "Scarlet", "2:00", "X")
     applied, is_valid, complete, insights = find_openings(puzzle)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
-    assert(applied, is_valid, complete, insights) == (True, True, False, {Insight.CROSS_OUT}) 
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.CROSS_OUT},
+    )
 
     # There is a row with 2 or more Os (contradiction)
     print("Set row to 2 or more Os => contradiction")
@@ -1334,9 +1423,12 @@ if __name__ == "__main__":
     puzzle.answer(suspects, time, "Scarlet", "1:00", "O")
     puzzle.answer(suspects, time, "White", "1:00", "O")
     applied, is_valid, complete, insights = find_openings(puzzle)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
-    assert(applied, is_valid, complete, insights) == (False, False, False, set()) 
+    assert (applied, is_valid, complete, insights) == (False, False, False, set())
 
     # There is a column with 2 or more Os (contradiction)
     print("Set col to 2 or more Os => contradiction")
@@ -1345,8 +1437,12 @@ if __name__ == "__main__":
     puzzle.answer(suspects, time, "Scarlet", "2:00", "O")
     applied, is_valid, complete, insights = find_openings(puzzle)
     print(puzzle.print_grid())
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
-    assert(applied, is_valid, complete, insights) == (False, False, False, set()) 
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
+    assert (applied, is_valid, complete, insights) == (False, False, False, set())
+
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
 # If A is B and B is C then A is C
@@ -1416,7 +1512,7 @@ def find_transitives(puzzle, forbidden_insights=set(), slow=False):
                                 # Can't reject A to C
                                 is_valid = False
                                 return applied, is_valid, complete, insights
-    
+
     # For every pair of entities:
     #   If A and B don't share any possible values for category C, then A != B
     # This loop is separate to enforce that harder insights are only used when the easier insights have been exhausted.
@@ -1455,17 +1551,17 @@ def find_transitives(puzzle, forbidden_insights=set(), slow=False):
                                 not (setA & setB)
                                 and Insight.TRANS_SETS not in forbidden_insights
                             ):
-                              # A and B don't share any possibilities; A != B
-                              sy = puzzle.get_symbol(catA, catB, entA, entB) 
-                              if sy == "O":
-                                is_valid = False
-                                return applied, is_valid, complete, insights
-                              elif sy == "*":
-                                insights.add(Insight.TRANS_SETS)
-                                applied = True
-                                puzzle.answer(catA, catB, entA, entB, "X")
-                                if slow:
+                                # A and B don't share any possibilities; A != B
+                                sy = puzzle.get_symbol(catA, catB, entA, entB)
+                                if sy == "O":
+                                    is_valid = False
                                     return applied, is_valid, complete, insights
+                                elif sy == "*":
+                                    insights.add(Insight.TRANS_SETS)
+                                    applied = True
+                                    puzzle.answer(catA, catB, entA, entB, "X")
+                                    if slow:
+                                        return applied, is_valid, complete, insights
 
     return applied, is_valid, complete, insights
 
@@ -1483,8 +1579,16 @@ if __name__ == "__main__":
     print("Scarlet -> 1:00 and 1:00 -> Study so Scarlet -> Study")
     applied, is_valid, complete, insights = find_transitives(puzzle)
     print(puzzle.print_grid())
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
-    assert (applied, is_valid, complete, insights) == (True, True, False, {Insight.TRANS_ABC_TRUE})
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.TRANS_ABC_TRUE},
+    )
 
     # A -> B and B -> C, but can't A -> C => contradiction
     puzzle = Puzzle([suspects, weapons, rooms, time])
@@ -1496,7 +1600,10 @@ if __name__ == "__main__":
     print("Scarlet -> 1:00 and 1:00 -> Study but Scarlet !> Study => contradiction")
     applied, is_valid, complete, insights = find_transitives(puzzle)
     print(puzzle.print_grid())
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     assert (applied, is_valid, complete, insights) == (False, False, False, set())
 
     # A -> B and B !> C, so A !> C
@@ -1507,9 +1614,17 @@ if __name__ == "__main__":
 
     print("Scarlet -> 1:00 and 1:00 !> Study so Scarlet !> Study")
     applied, is_valid, complete, insights = find_transitives(puzzle)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
-    assert (applied, is_valid, complete, insights) == (True, True, False, {Insight.TRANS_ABC_FALSE})
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.TRANS_ABC_FALSE},
+    )
 
     # A -> B and B !> C, but can't A !> C => contradiction
     puzzle = Puzzle([suspects, weapons, rooms, time])
@@ -1520,7 +1635,10 @@ if __name__ == "__main__":
 
     print("Scarlet -> 1:00 and 1:00 !> Study but Scarlet !> Study => contradiction")
     applied, is_valid, complete, insights = find_transitives(puzzle)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
     assert (applied, is_valid, complete, insights) == (False, False, False, set())
 
@@ -1532,9 +1650,17 @@ if __name__ == "__main__":
 
     print("Scarlet -> 1:00 and Scarlet -> Study so 1:00 -> Study")
     applied, is_valid, complete, insights = find_transitives(puzzle)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
-    assert (applied, is_valid, complete, insights) == (True, True, False, {Insight.TRANS_ABC_TRUE})
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.TRANS_ABC_TRUE},
+    )
 
     # A -> B and A -> C, but can't B -> C => contradiction
     puzzle = Puzzle([suspects, weapons, rooms, time])
@@ -1545,7 +1671,10 @@ if __name__ == "__main__":
 
     print("Scarlet -> 1:00 and Scarlet -> Study but 1:00 !> Study => contradiction")
     applied, is_valid, complete, insights = find_transitives(puzzle)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
     assert (applied, is_valid, complete, insights) == (False, False, False, set())
 
@@ -1557,9 +1686,17 @@ if __name__ == "__main__":
 
     print("Scarlet -> 1:00 and Scarlet !> Study so 1:00 !> Study")
     applied, is_valid, complete, insights = find_transitives(puzzle)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
-    assert (applied, is_valid, complete, insights) == (True, True, False, {Insight.TRANS_ABC_FALSE})
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.TRANS_ABC_FALSE},
+    )
 
     # A -> B and A !> C, but can't B !> C => contradiction
     puzzle = Puzzle([suspects, weapons, rooms, time])
@@ -1571,7 +1708,10 @@ if __name__ == "__main__":
     print("Scarlet -> 1:00 and Scarlet !> Study but 1:00 -> Study => contradiction")
     applied, is_valid, complete, insights = find_transitives(puzzle)
     print(puzzle.print_grid())
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     assert (applied, is_valid, complete, insights) == (False, False, False, set())
 
     # A !> B and B -> C, so A !> C
@@ -1582,9 +1722,17 @@ if __name__ == "__main__":
 
     print("Scarlet !> 1:00 and 1:00 -> Study so Scarlet !> Study")
     applied, is_valid, complete, insights = find_transitives(puzzle)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
-    assert (applied, is_valid, complete, insights) == (True, True, False, {Insight.TRANS_ABC_FALSE})
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.TRANS_ABC_FALSE},
+    )
 
     # A !> B and B -> C, , but can't reject A to C => contradiction
     puzzle = Puzzle([suspects, weapons, rooms, time])
@@ -1595,7 +1743,10 @@ if __name__ == "__main__":
 
     print("Scarlet !> 1:00 and 1:00 -> Study, but Scarlet !> Study => contradiction")
     applied, is_valid, complete, insights = find_transitives(puzzle)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
     assert (applied, is_valid, complete, insights) == (False, False, False, set())
 
@@ -1607,9 +1758,17 @@ if __name__ == "__main__":
 
     print("Scarlet !> 1:00 and Scarlet -> Study so 1:00 !> Study")
     applied, is_valid, complete, insights = find_transitives(puzzle)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
-    assert (applied, is_valid, complete, insights) == (True, True, False, {Insight.TRANS_ABC_FALSE})
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.TRANS_ABC_FALSE},
+    )
 
     # A !> B and A -> C so B !> C, but can't reject B to C => contradiction
     puzzle = Puzzle([suspects, weapons, rooms, time])
@@ -1620,7 +1779,10 @@ if __name__ == "__main__":
 
     print("Scarlet !> 1:00 and Scarlet -> Study, but 1:00 !> Study => contradiction")
     applied, is_valid, complete, insights = find_transitives(puzzle)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
     assert (applied, is_valid, complete, insights) == (False, False, False, set())
 
@@ -1636,9 +1798,17 @@ if __name__ == "__main__":
     ## Neither Scarlet nor Rope has a O time
     print("Scarlet and Rope don't share any compatible times, so Scarlet !> Rope")
     applied, is_valid, complete, insights = find_transitives(puzzle)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
-    assert (applied, is_valid, complete, insights) == (True, True, False, {Insight.TRANS_SETS})
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.TRANS_SETS},
+    )
 
     # Neither Scarlet nor White can be 1:00 and Ballroom can only be Scarlet or White so Ballroom is not 1:00
     apply_not(puzzle, [suspects, "White", time, "1:00"])
@@ -1649,8 +1819,16 @@ if __name__ == "__main__":
     print("Ballroom and 1:00 don't share any compatible suspects, so Ballroom != 1:00")
     applied, is_valid, complete, insights = find_transitives(puzzle)
     print(puzzle.print_grid())
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
-    assert (applied, is_valid, complete, insights) == (True, True, False, {Insight.TRANS_SETS})
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.TRANS_SETS},
+    )
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
@@ -1716,7 +1894,10 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
     if "O" in before_symbols:
         bef_index = before_symbols.index("O")
         if numbered:
-            if after_symbols[bef_index + num] == "*":
+            if (
+                bef_index + num < len(after_symbols)
+                and after_symbols[bef_index + num] == "*"
+            ):
                 pos_aft_index = [bef_index + num]
             else:
                 pos_aft_index = []
@@ -1732,12 +1913,12 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
             return applied, is_valid, complete, insights
         elif len(pos_aft_index) == 1:
             if numbered:
-              if num == 1:
-                insights.add(Insight.APPLY_BEFORE_ONE_SPOT)
-              else:
-                insights.add(Insight.APPLY_BEFORE_N_SPOTS)
+                if num == 1:
+                    insights.add(Insight.APPLY_BEFORE_ONE_SPOT)
+                else:
+                    insights.add(Insight.APPLY_BEFORE_N_SPOTS)
             else:
-              insights.add(Insight.APPLY_BEFORE_UNDEFINED_SPOTS)
+                insights.add(Insight.APPLY_BEFORE_UNDEFINED_SPOTS)
             complete = True
             aft_index = pos_aft_index[0]
             applied = True
@@ -1764,7 +1945,7 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
     if "O" in after_symbols:
         aft_index = after_symbols.index("O")
         if numbered:
-            if before_symbols[aft_index - num] == "*":
+            if aft_index - num >= 0 and before_symbols[aft_index - num] == "*":
                 pos_bef_index = [aft_index - num]
             else:
                 pos_bef_index = []
@@ -1779,12 +1960,12 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
             return applied, is_valid, complete, insights
         elif len(pos_bef_index) == 1:
             if numbered:
-              if num == 1:
-                insights.add(Insight.APPLY_BEFORE_ONE_SPOT)
-              else:
-                insights.add(Insight.APPLY_BEFORE_N_SPOTS)
+                if num == 1:
+                    insights.add(Insight.APPLY_BEFORE_ONE_SPOT)
+                else:
+                    insights.add(Insight.APPLY_BEFORE_N_SPOTS)
             else:
-              insights.add(Insight.APPLY_BEFORE_UNDEFINED_SPOTS)
+                insights.add(Insight.APPLY_BEFORE_UNDEFINED_SPOTS)
             complete = True
             bef_index = pos_bef_index[0]
             applied = True
@@ -1921,30 +2102,57 @@ if __name__ == "__main__":
     # No current information; simple before
     print("Scarlet BEFORE White")
     applied, is_valid, complete, insights = apply_before(puzzle, terms)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
-    assert (applied, is_valid, complete, insights) == (True, True, False, {Insight.BEFORE_ONE_SPOT_NOINFO})
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.BEFORE_ONE_SPOT_NOINFO},
+    )
     print(puzzle.print_grid())
 
     # Additional constraint on After's time
     print("White NOT 4:00 => Scarlet NOT 3:00")
     apply_not(puzzle, [suspects, "White", time, "4:00"])
     applied, is_valid, complete, insights = apply_before(puzzle, terms)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
-    assert (applied, is_valid, complete, insights) == (True, True, False, {Insight.BEFORE_N_SPOTS_SHIFT})
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.BEFORE_N_SPOTS_SHIFT},
+    )
 
     # After is set
     print("White IS 2:00 => Scarlet IS 1:00; finished hint")
     apply_is(puzzle, [suspects, "White", time, "2:00"])
     applied, is_valid, complete, insights = apply_before(puzzle, terms)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
-    assert (applied, is_valid, complete, insights) == (True, True, True, {Insight.APPLY_BEFORE_UNDEFINED_SPOTS})
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        True,
+        {Insight.APPLY_BEFORE_UNDEFINED_SPOTS},
+    )
 
     # Already satisfied
     print("Already satisfied; no further changes")
     applied, is_valid, complete, insights = apply_before(puzzle, terms)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
     assert (applied, is_valid, complete, insights) == (False, True, True, set())
 
@@ -1960,8 +2168,16 @@ if __name__ == "__main__":
     terms[3] = "Plum"
     applied, is_valid, complete, insights = apply_before(puzzle, terms)
     print(puzzle.print_grid())
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
-    assert (applied, is_valid, complete, insights) == (True, True, False, {Insight.BEFORE_N_SPOTS_SHIFT})
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.BEFORE_N_SPOTS_SHIFT},
+    )
 
     # Single answer
     puzzle = Puzzle([suspects, weapons, rooms, time])
@@ -1972,17 +2188,33 @@ if __name__ == "__main__":
     apply_is(puzzle, [suspects, "Plum", time, "4:00"])
     applied, is_valid, complete, insights = apply_before(puzzle, terms)
     print(puzzle.print_grid())
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
-    assert (applied, is_valid, complete, insights) == (True, True, True, {Insight.APPLY_BEFORE_UNDEFINED_SPOTS})
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        True,
+        {Insight.APPLY_BEFORE_UNDEFINED_SPOTS},
+    )
 
     print("Candle Stick IS 3:00 and Candle Stick BEFORE Rope => Rope IS 4:00")
     apply_is(puzzle, [weapons, "Candle Stick", time, "3:00"])
     applied, is_valid, complete, insights = apply_before(
         puzzle, [weapons, "Candle Stick", weapons, "Rope", time]
     )
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
-    assert (applied, is_valid, complete, insights) == (True, True, True, {Insight.APPLY_BEFORE_UNDEFINED_SPOTS})
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        True,
+        {Insight.APPLY_BEFORE_UNDEFINED_SPOTS},
+    )
 
     # Reset puzzle
     puzzle = Puzzle([suspects, weapons, rooms, time])
@@ -1996,8 +2228,16 @@ if __name__ == "__main__":
     apply_not(puzzle, [weapons, "Rope", time, "1:00"])
     applied, is_valid, complete, insights = apply_before(puzzle, terms)
     print(puzzle.print_grid())
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
-    assert (applied, is_valid, complete, insights) == (True, True, False, {Insight.BEFORE_N_SPOTS_SHIFT})
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.BEFORE_N_SPOTS_SHIFT},
+    )
 
     # Simple contradiction
     print("Candle is 3:00 and Wrench is 2:00; Candle BEFORE Wrench is contradictory")
@@ -2006,7 +2246,10 @@ if __name__ == "__main__":
     applied, is_valid, complete, insights = apply_before(
         puzzle, [weapons, "Candle Stick", weapons, "Wrench", time]
     )
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
     assert (applied, is_valid, complete, insights) == (False, False, True, set())
 
@@ -2018,8 +2261,16 @@ if __name__ == "__main__":
         puzzle, [suspects, "White", rooms, "Ball room", time]
     )
     print(puzzle.print_grid())
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
-    assert (applied, is_valid, complete, insights) == (True, True, False, {Insight.BEFORE_DIFF_CAT})
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.BEFORE_DIFF_CAT},
+    )
 
     # Contradiction for before O
     print("Kitchen IS 4:00, so Kitchen before Study contradicts")
@@ -2027,7 +2278,10 @@ if __name__ == "__main__":
     applied, is_valid, complete, insights = apply_before(
         puzzle, [rooms, "Kitchen", rooms, "Study", time]
     )
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
     assert (applied, is_valid, complete, insights) == (False, False, True, set())
 
@@ -2037,7 +2291,10 @@ if __name__ == "__main__":
     applied, is_valid, complete, insights = apply_before(
         puzzle, [rooms, "Study", rooms, "Living Room", time]
     )
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
     assert (applied, is_valid, complete, insights) == (False, False, True, set())
 
@@ -2051,15 +2308,31 @@ if __name__ == "__main__":
     # No current info, n
     print("Scarlet 2 BEFORE White")
     applied, is_valid, complete, insights = apply_before(puzzle, terms_n)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
-    assert (applied, is_valid, complete, insights) == (True, True, False, {Insight.BEFORE_N_SPOTS_NOINFO})
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.BEFORE_N_SPOTS_NOINFO},
+    )
     print(puzzle.print_grid())
 
     # No current info, 1
     print("Knife 1 BEFORE Rope")
     applied, is_valid, complete, insights = apply_before(puzzle, terms_1)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
-    assert (applied, is_valid, complete, insights) == (True, True, False, {Insight.BEFORE_ONE_SPOT_NOINFO})
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.BEFORE_ONE_SPOT_NOINFO},
+    )
     print(puzzle.print_grid())
 
     # Before entity has X
@@ -2067,22 +2340,46 @@ if __name__ == "__main__":
     apply_not(puzzle, [suspects, "Scarlet", time, "1:00"])
     applied, is_valid, complete, insights = apply_before(puzzle, terms_n)
     print(puzzle.print_grid())
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
-    assert (applied, is_valid, complete, insights) == (True, True, False, {Insight.BEFORE_N_SPOTS_SHIFT})
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.BEFORE_N_SPOTS_SHIFT},
+    )
 
     # Before entity is set
     print("Scarlet IS 2:00 and Scarlet 2 BEFORE White")
     apply_is(puzzle, [suspects, "Scarlet", time, "2:00"])
     applied, is_valid, complete, insights = apply_before(puzzle, terms_n)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
-    assert (applied, is_valid, complete, insights) == (True, True, True, {Insight.APPLY_BEFORE_N_SPOTS})
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        True,
+        {Insight.APPLY_BEFORE_N_SPOTS},
+    )
     print(puzzle.print_grid())
 
     print("Knife IS 2:00 and Knife 1 BEFORE Wrench")
     apply_is(puzzle, [weapons, "Knife", time, "2:00"])
     applied, is_valid, complete, insights = apply_before(puzzle, terms_1)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
-    assert (applied, is_valid, complete, insights) == (True, True, True, {Insight.APPLY_BEFORE_ONE_SPOT})
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        True,
+        {Insight.APPLY_BEFORE_ONE_SPOT},
+    )
     print(puzzle.print_grid())
 
     # Reset puzzle
@@ -2100,32 +2397,59 @@ if __name__ == "__main__":
     apply_not(puzzle, [suspects, "Mustard", time, "3:00"])
     applied, is_valid, complete, insights = apply_before(puzzle, terms_n)
     print(puzzle.print_grid())
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
-    assert (applied, is_valid, complete, insights) == (True, True, False, {Insight.BEFORE_N_SPOTS_SHIFT})
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.BEFORE_N_SPOTS_SHIFT},
+    )
 
     # After entity is set
     print("Plum IS 3:00 and Mustard 2 before Plum")
     apply_is(puzzle, [suspects, "Plum", time, "3:00"])
     applied, is_valid, complete, insights = apply_before(puzzle, terms_n)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
-    assert (applied, is_valid, complete, insights) == (True, True, True, {Insight.APPLY_BEFORE_N_SPOTS})
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        True,
+        {Insight.APPLY_BEFORE_N_SPOTS},
+    )
     print(puzzle.print_grid())
 
     terms_1[0] = rooms
-    terms_1[1] = "Living Room" 
+    terms_1[1] = "Living Room"
     terms_1[2] = rooms
-    terms_1[3] = "Study" 
+    terms_1[3] = "Study"
     print("Study IS 3:00 and Living Room 2 before Study")
     apply_is(puzzle, [rooms, "Study", time, "3:00"])
     applied, is_valid, complete, insights = apply_before(puzzle, terms_1)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
-    assert (applied, is_valid, complete, insights) == (True, True, True, {Insight.APPLY_BEFORE_ONE_SPOT})
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        True,
+        {Insight.APPLY_BEFORE_ONE_SPOT},
+    )
     print(puzzle.print_grid())
 
     # Both set, ok
     print("Both set; Mustard 2 before Plum")
     applied, is_valid, complete, insights = apply_before(puzzle, terms_n)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     assert (applied, is_valid, complete, insights) == (False, True, True, set())
     print(puzzle.print_grid())
 
@@ -2137,7 +2461,10 @@ if __name__ == "__main__":
     apply_not(puzzle, [weapons, "Rope", time, "1:00"])
     applied, is_valid, complete, insights = apply_before(puzzle, terms_n)
     print(puzzle.print_grid())
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     assert (applied, is_valid, complete, insights) == (False, False, True, set())
 
     # After set, contradiction
@@ -2149,7 +2476,10 @@ if __name__ == "__main__":
     apply_is(puzzle, [weapons, "Wrench", time, "3:00"])
     apply_not(puzzle, [weapons, "Candle Stick", time, "1:00"])
     applied, is_valid, complete, insights = apply_before(puzzle, terms_n)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
     assert (applied, is_valid, complete, insights) == (False, False, True, set())
 
@@ -2165,7 +2495,10 @@ if __name__ == "__main__":
         puzzle, [rooms, "Kitchen", rooms, "Study", time, 2]
     )
     print(puzzle.print_grid())
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     assert (applied, is_valid, complete, insights) == (False, False, True, set())
 
 
@@ -2196,7 +2529,7 @@ def apply_simple_or(puzzle, terms, forbidden_insights=set(), slow=False):
             puzzle, [pos_cat1, pos_ent1, pos_cat2, pos_ent2]
         )
         if applied:
-          insights.add(Insight.SIMPLE_OR_DIFF_CAT)
+            insights.add(Insight.SIMPLE_OR_DIFF_CAT)
         if slow:
             return applied, is_valid, complete, insights
         if not is_valid:
@@ -2288,24 +2621,43 @@ if __name__ == "__main__":
         "Either Mrs. White OR the Knife was in the Study => Mrs. White did NOT have the Knife"
     )
     applied, is_valid, complete, insights = apply_simple_or(puzzle, terms)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
-    assert (applied, is_valid, complete, insights) == (True, True, False, {Insight.SIMPLE_OR_DIFF_CAT})
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.SIMPLE_OR_DIFF_CAT},
+    )
 
     # A and B in same category; no info
     terms = [rooms, "Kitchen", rooms, "Study", time, "1:00"]
     print("Either the Kitchen OR the Study was at 1:00 => no other room can be at 1:00")
     applied, is_valid, complete, insights = apply_simple_or(puzzle, terms)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
-    assert (applied, is_valid, complete, insights) == (True, True, False, {Insight.SIMPLE_OR_SAME_CAT})
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        False,
+        {Insight.SIMPLE_OR_SAME_CAT},
+    )
 
     # A and B in same category and a different item has the value.
     print("Knife was at 1:00 and Rope OR Wrench was at 1:00 => contradiction")
     apply_is(puzzle, [weapons, "Knife", time, "1:00"])
     terms = [weapons, "Rope", weapons, "Wrench", time, "1:00"]
     applied, is_valid, complete, insights = apply_simple_or(puzzle, terms)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
     assert (applied, is_valid, complete, insights) == (False, False, True, set())
 
@@ -2318,7 +2670,10 @@ if __name__ == "__main__":
     terms = [weapons, "Rope", suspects, "White", time, "2:00"]
     applied, is_valid, complete, insights = apply_simple_or(puzzle, terms)
     print(puzzle.print_grid())
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     assert (applied, is_valid, complete) == (True, False, True)
 
     terms = [suspects, "Scarlet", rooms, "Kitchen", weapons, "Knife"]
@@ -2331,13 +2686,24 @@ if __name__ == "__main__":
     apply_not(puzzle, [suspects, "Scarlet", rooms, "Kitchen"])
     applied, is_valid, complete, insights = apply_simple_or(puzzle, terms)
     print(puzzle.print_grid())
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
-    assert (applied, is_valid, complete, insights) == (True, True, True, {Insight.APPLY_OR})
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        True,
+        {Insight.APPLY_OR},
+    )
 
     # A is O and B is X => ok
     print("Scarlet or Kitchen has the Knife; already applied")
     applied, is_valid, complete, insights = apply_simple_or(puzzle, terms)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
     assert (applied, is_valid, complete, insights) == (False, True, True, set())
 
@@ -2351,13 +2717,24 @@ if __name__ == "__main__":
     apply_not(puzzle, [suspects, "Scarlet", rooms, "Kitchen"])
     applied, is_valid, complete, insights = apply_simple_or(puzzle, terms)
     print(puzzle.print_grid())
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
-    assert (applied, is_valid, complete, insights) == (True, True, True, {Insight.APPLY_OR})
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        True,
+        {Insight.APPLY_OR},
+    )
 
     # A is X and B is O => ok
     print("Scarlet or Kitchen has the Knife; already applied")
     applied, is_valid, complete, insights = apply_simple_or(puzzle, terms)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
     assert (applied, is_valid, complete, insights) == (False, True, True, set())
 
@@ -2371,8 +2748,16 @@ if __name__ == "__main__":
     apply_not(puzzle, [rooms, "Kitchen", suspects, "Scarlet"])
     applied, is_valid, complete, insights = apply_simple_or(puzzle, terms)
     print(puzzle.print_grid())
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
-    assert (applied, is_valid, complete, insights) == (True, True, True, {Insight.APPLY_OR})
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        True,
+        {Insight.APPLY_OR},
+    )
 
     # A is * and B is O => Set A to X
     puzzle = Puzzle([suspects, weapons, rooms, time])
@@ -2384,8 +2769,16 @@ if __name__ == "__main__":
     apply_not(puzzle, [rooms, "Kitchen", suspects, "Scarlet"])
     applied, is_valid, complete, insights = apply_simple_or(puzzle, terms)
     print(puzzle.print_grid())
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
-    assert (applied, is_valid, complete, insights) == (True, True, True, {Insight.APPLY_OR})
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        True,
+        {Insight.APPLY_OR},
+    )
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
@@ -2463,7 +2856,10 @@ if __name__ == "__main__":
     # No info
     print("Either White is in the Kitchen OR the Knife is at 2:00; no info")
     applied, is_valid, complete, insights = apply_compound_or(puzzle, terms)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
     assert (applied, is_valid, complete, insights) == (False, True, False, set())
 
@@ -2474,7 +2870,10 @@ if __name__ == "__main__":
     apply_is(puzzle, [suspects, "White", rooms, "Kitchen"])
     apply_is(puzzle, [weapons, "Knife", time, "2:00"])
     applied, is_valid, complete, insights = apply_compound_or(puzzle, terms)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
     assert (applied, is_valid, complete, insights) == (False, False, True, set())
 
@@ -2485,15 +2884,26 @@ if __name__ == "__main__":
     )
     apply_is(puzzle, [suspects, "White", rooms, "Kitchen"])
     applied, is_valid, complete, insights = apply_compound_or(puzzle, terms)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
-    assert (applied, is_valid, complete, insights) == (True, True, True, {Insight.APPLY_OR})
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        True,
+        {Insight.APPLY_OR},
+    )
 
     # A is O and B is X => ok
     print("Either White is in the Kitchen OR the Knife is at 2:00; already applied")
     apply_is(puzzle, [suspects, "White", rooms, "Kitchen"])
     applied, is_valid, complete, insights = apply_compound_or(puzzle, terms)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
     assert (applied, is_valid, complete, insights) == (False, True, True, set())
 
@@ -2504,9 +2914,17 @@ if __name__ == "__main__":
     )
     apply_not(puzzle, [suspects, "White", rooms, "Kitchen"])
     applied, is_valid, complete, insights = apply_compound_or(puzzle, terms)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
-    assert (applied, is_valid, complete, insights) == (True, True, True, {Insight.APPLY_OR})
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        True,
+        {Insight.APPLY_OR},
+    )
 
     # A is * and B is O => Set A to X
     puzzle = Puzzle([suspects, weapons, rooms, time])
@@ -2515,9 +2933,17 @@ if __name__ == "__main__":
     )
     apply_is(puzzle, [weapons, "Knife", time, "2:00"])
     applied, is_valid, complete, insights = apply_compound_or(puzzle, terms)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
-    assert (applied, is_valid, complete, insights) == (True, True, True, {Insight.APPLY_OR})
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        True,
+        {Insight.APPLY_OR},
+    )
 
     # A is * and B is X => Set A to O
     puzzle = Puzzle([suspects, weapons, rooms, time])
@@ -2526,9 +2952,17 @@ if __name__ == "__main__":
     )
     apply_not(puzzle, [weapons, "Knife", time, "2:00"])
     applied, is_valid, complete, insights = apply_compound_or(puzzle, terms)
-    print("(Applied, Is Valid, Complete, Insights): ", (applied, is_valid, complete, insights))
+    print(
+        "(Applied, Is Valid, Complete, Insights): ",
+        (applied, is_valid, complete, insights),
+    )
     print(puzzle.print_grid())
-    assert (applied, is_valid, complete, insights) == (True, True, True, {Insight.APPLY_OR})
+    assert (applied, is_valid, complete, insights) == (
+        True,
+        True,
+        True,
+        {Insight.APPLY_OR},
+    )
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"

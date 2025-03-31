@@ -1,0 +1,335 @@
+Hints for grid cell [0][1]
+	The seed Cauliflower is 2 sunlights before the seed Pumpkin
+	Either the sunlight 2h is the seed Blueberry or the seed Cauliflower is the sunlight 8h
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>}
+
+Hints for grid cell [0][2]
+	Either the sunlight 6h is the seed Pumpkin or the seed Cauliflower is the sunlight 4h
+	The seed Blueberry was not the sunlight 4h
+	The seed Blueberry is 2 sunlights before the seed Kale
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.APPLY_NOT: 4>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [0][3]
+	The seed Blueberry is at least 1 sunlight before the seed Pumpkin
+	Either the sunlight 6h is the seed Pumpkin or the seed Cauliflower is the sunlight 4h
+	The seed Blueberry was not the sunlight 4h
+	The seed Blueberry is 2 sunlights before the seed Kale
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.APPLY_NOT: 4>, <Insight.OPENING: 2>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.APPLY_OR: 5>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [1][1]
+	The seed Blueberry is at least 1 sunlight before the seed Cauliflower
+	The seed Pumpkin is 2 sunlights before the seed Blueberry
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.APPLY_BEFORE_UNDEFINED_SPOTS: 8>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [1][2]
+	The seed Kale is 1 sunlights before the seed Blueberry
+	The seed Pumpkin is 2 sunlights before the seed Blueberry
+	The sunlight 4h was not the seed Pumpkin
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.APPLY_NOT: 4>, <Insight.OPENING: 2>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [2][1]
+	Either the sunlight 2h is the seed Cauliflower or the seed Kale is the sunlight 2h
+	The seed Pumpkin is 2 sunlights before the seed Kale
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>}
+
+Hints for grid cell [2][2]
+	Either the sunlight 2h is the seed Cauliflower or the sunlight 8h is the seed Blueberry
+	The seed Pumpkin is 2 sunlights before the seed Kale
+	The seed Pumpkin was not the sunlight 2h
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.APPLY_NOT: 4>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [3][1]
+	The seed Pumpkin is at least 1 sunlight before the seed Kale
+	The seed Kale is 2 sunlights before the seed Blueberry
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.APPLY_BEFORE_UNDEFINED_SPOTS: 8>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [3][2]
+	Either the seed Cauliflower or the seed Pumpkin is the sunlight 2h
+	The seed Pumpkin is at least 1 sunlight before the seed Kale
+	The seed Kale is 2 sunlights before the seed Blueberry
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.APPLY_BEFORE_UNDEFINED_SPOTS: 8>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [3][3]
+	Either the seed Pumpkin or the seed Cauliflower is the sunlight 2h
+	Either the sunlight 2h is the seed Cauliflower or the sunlight 8h is the seed Blueberry
+	The seed Kale is 2 sunlights before the seed Blueberry
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [4][1]
+	The seed Blueberry is 2 sunlights before the seed Cauliflower
+	The seed Cauliflower is at least 1 sunlight before the seed Kale
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.APPLY_BEFORE_UNDEFINED_SPOTS: 8>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [4][2]
+	Either the seed Blueberry is the sunlight 2h or the seed Cauliflower is the sunlight 4h
+	The seed Kale was not the sunlight 6h
+	The seed Pumpkin is 2 sunlights before the seed Kale
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.APPLY_NOT: 4>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [5][1]
+	The seed Pumpkin is at least 1 sunlight before the seed Kale
+	The seed Blueberry is 2 sunlights before the seed Pumpkin
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.APPLY_BEFORE_UNDEFINED_SPOTS: 8>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [5][2]
+	Either the sunlight 8h is the seed Pumpkin or the seed Kale is the sunlight 8h
+	The seed Blueberry is 2 sunlights before the seed Pumpkin
+	Either the sunlight 8h or the sunlight 2h is the seed Blueberry
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.APPLY_OR: 5>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [6][1]
+	The seed Cauliflower is 1 sunlights before the seed Blueberry
+	The seed Blueberry is 2 sunlights before the seed Pumpkin
+Insights: {<Insight.APPLY_BEFORE_ONE_SPOT: 6>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [6][2]
+	The seed Cauliflower is 1 sunlights before the seed Blueberry
+	Either the sunlight 8h or the sunlight 6h is the seed Pumpkin
+	The seed Blueberry is 2 sunlights before the seed Pumpkin
+Insights: {<Insight.APPLY_BEFORE_ONE_SPOT: 6>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [6][3]
+	The seed Blueberry was not the sunlight 2h
+	Either the sunlight 2h is the seed Cauliflower or the seed Kale is the sunlight 2h
+	Either the seed Kale is the sunlight 2h or the sunlight 8h is the seed Pumpkin
+	The seed Blueberry is 2 sunlights before the seed Pumpkin
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.APPLY_NOT: 4>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [7][1]
+	The sunlight 6h is the seed Cauliflower
+	The seed Blueberry is 2 sunlights before the seed Pumpkin
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.APPLY_IS: 3>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [7][2]
+	Either the sunlight 8h is the seed Kale or the sunlight 6h is the seed Cauliflower
+	The seed Blueberry is 2 sunlights before the seed Pumpkin
+	Either the seed Cauliflower or the seed Kale is the sunlight 2h
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [8][1]
+	The seed Pumpkin is 2 sunlights before the seed Blueberry
+	Either the sunlight 2h is the seed Blueberry or the sunlight 6h is the seed Kale
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>}
+
+Hints for grid cell [8][2]
+	The seed Pumpkin is at least 1 sunlight before the seed Kale
+	Either the seed Kale or the seed Cauliflower is the sunlight 2h
+	The seed Pumpkin is 2 sunlights before the seed Blueberry
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.APPLY_OR: 5>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [9][1]
+	Either the seed Cauliflower or the seed Blueberry is the sunlight 8h
+	The seed Blueberry is 2 sunlights before the seed Kale
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.OPENING: 2>, <Insight.SIMPLE_OR_SAME_CAT: 9>}
+
+Hints for grid cell [9][2]
+	The seed Blueberry is at least 1 sunlight before the seed Cauliflower
+	The seed Blueberry is 2 sunlights before the seed Kale
+	The seed Kale is 1 sunlights before the seed Cauliflower
+Insights: {<Insight.APPLY_BEFORE_ONE_SPOT: 6>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [9][3]
+	Either the seed Pumpkin or the seed Cauliflower is the sunlight 8h
+	Either the seed Blueberry is the sunlight 2h or the seed Cauliflower is the sunlight 4h
+	The seed Blueberry is 2 sunlights before the seed Kale
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [10][1]
+	The seed Kale is 2 sunlights before the seed Blueberry
+	The seed Blueberry is at least 1 sunlight before the seed Cauliflower
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.APPLY_BEFORE_UNDEFINED_SPOTS: 8>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [10][2]
+	Either the seed Kale is the sunlight 4h or the sunlight 8h is the seed Cauliflower
+	Either the sunlight 2h is the seed Blueberry or the seed Cauliflower is the sunlight 8h
+	The seed Kale is 2 sunlights before the seed Blueberry
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [11][1]
+	The seed Kale is 2 sunlights before the seed Cauliflower
+	Either the seed Kale or the seed Pumpkin is the sunlight 6h
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.APPLY_OR: 5>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [11][2]
+	The seed Blueberry is 2 sunlights before the seed Pumpkin
+	Either the sunlight 8h is the seed Kale or the seed Kale is the sunlight 4h
+	The seed Kale was not the sunlight 8h
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.APPLY_NOT: 4>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [12][1]
+	The seed Blueberry is 2 sunlights before the seed Kale
+	Either the seed Kale is the sunlight 4h or the sunlight 2h is the seed Pumpkin
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>}
+
+Hints for grid cell [12][2]
+	Either the seed Cauliflower or the seed Pumpkin is the sunlight 2h
+	The seed Blueberry is 2 sunlights before the seed Kale
+	Either the sunlight 8h is the seed Cauliflower or the sunlight 6h is the seed Cauliflower
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [12][3]
+	Either the seed Cauliflower or the seed Pumpkin is the sunlight 2h
+	Either the sunlight 8h is the seed Cauliflower or the sunlight 6h is the seed Cauliflower
+	The seed Blueberry is 2 sunlights before the seed Kale
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [13][1]
+	Either the sunlight 4h is the seed Kale or the seed Pumpkin is the sunlight 6h
+	The seed Blueberry is 2 sunlights before the seed Kale
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>}
+
+Hints for grid cell [13][2]
+	Either the sunlight 6h or the sunlight 2h is the seed Pumpkin
+	The seed Cauliflower is at least 1 sunlight before the seed Pumpkin
+	The seed Blueberry is 2 sunlights before the seed Kale
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [13][3]
+	Either the seed Pumpkin or the seed Cauliflower is the sunlight 2h
+	The seed Pumpkin is 1 sunlights before the seed Kale
+	The seed Blueberry is 2 sunlights before the seed Kale
+Insights: {<Insight.APPLY_BEFORE_ONE_SPOT: 6>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [14][1]
+	The seed Kale is 2 sunlights before the seed Pumpkin
+	The seed Pumpkin is 1 sunlights before the seed Blueberry
+Insights: {<Insight.APPLY_BEFORE_ONE_SPOT: 6>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [14][2]
+	The seed Kale is 2 sunlights before the seed Pumpkin
+	Either the seed Blueberry or the seed Cauliflower is the sunlight 8h
+	The seed Kale is 1 sunlights before the seed Cauliflower
+Insights: {<Insight.APPLY_BEFORE_ONE_SPOT: 6>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [14][3]
+	Either the seed Blueberry or the seed Cauliflower is the sunlight 8h
+	Either the sunlight 2h is the seed Cauliflower or the sunlight 8h is the seed Blueberry
+	The seed Kale is 2 sunlights before the seed Pumpkin
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [15][1]
+	Either the seed Blueberry is the sunlight 2h or the seed Cauliflower is the sunlight 4h
+	The seed Kale is 2 sunlights before the seed Blueberry
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>}
+
+Hints for grid cell [15][2]
+	Either the seed Pumpkin or the seed Cauliflower is the sunlight 8h
+	Either the seed Blueberry is the sunlight 2h or the seed Cauliflower is the sunlight 4h
+	The seed Kale is 2 sunlights before the seed Blueberry
+Insights: {<Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>}
+
+Hints for grid cell [15][3]
+	Either the seed Blueberry or the seed Kale is the sunlight 6h
+	Either the sunlight 2h is the seed Cauliflower or the seed Kale is the sunlight 2h
+	The seed Cauliflower is 2 sunlights before the seed Pumpkin
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [16][1]
+	Either the sunlight 2h is the seed Blueberry or the sunlight 6h is the seed Kale
+	The seed Kale is 2 sunlights before the seed Pumpkin
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>}
+
+Hints for grid cell [16][2]
+	The seed Kale is 1 sunlights before the seed Cauliflower
+	Either the sunlight 2h is the seed Blueberry or the sunlight 6h is the seed Kale
+	The seed Kale is 2 sunlights before the seed Pumpkin
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.APPLY_OR: 5>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [16][3]
+	Either the seed Blueberry or the seed Cauliflower is the sunlight 6h
+	The seed Blueberry is 2 sunlights before the seed Kale
+	Either the seed Cauliflower is the sunlight 4h or the seed Blueberry is the sunlight 2h
+	The seed Kale is 2 sunlights before the seed Pumpkin
+	The seed Blueberry is 2 sunlights before the seed Kale
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [17][1]
+	Either the sunlight 2h is the seed Cauliflower or the sunlight 8h is the seed Blueberry
+	The seed Kale is 2 sunlights before the seed Cauliflower
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>}
+
+Hints for grid cell [17][2]
+	Either the seed Blueberry or the seed Cauliflower is the sunlight 8h
+	The seed Kale is 2 sunlights before the seed Cauliflower
+	Either the seed Cauliflower or the seed Kale is the sunlight 2h
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [18][1]
+	Either the seed Cauliflower or the seed Pumpkin is the sunlight 2h
+	The seed Blueberry is 2 sunlights before the seed Cauliflower
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.OPENING: 2>, <Insight.SIMPLE_OR_SAME_CAT: 9>}
+
+Hints for grid cell [18][2]
+	Either the seed Blueberry is the sunlight 8h or the seed Pumpkin is the sunlight 2h
+	The seed Pumpkin is 2 sunlights before the seed Kale
+	Either the seed Kale or the seed Pumpkin is the sunlight 6h
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.APPLY_OR: 5>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [19][1]
+	Either the seed Cauliflower or the seed Pumpkin is the sunlight 2h
+	The seed Kale is 2 sunlights before the seed Pumpkin
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.OPENING: 2>, <Insight.SIMPLE_OR_SAME_CAT: 9>}
+
+Hints for grid cell [19][2]
+	Either the sunlight 2h is the seed Cauliflower or the sunlight 8h is the seed Blueberry
+	Either the seed Kale is the sunlight 6h or the seed Cauliflower is the sunlight 2h
+	The seed Kale is 2 sunlights before the seed Pumpkin
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [20][1]
+	The seed Pumpkin is 2 sunlights before the seed Kale
+	Either the sunlight 4h is the seed Cauliflower or the sunlight 2h is the seed Kale
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>}
+
+Hints for grid cell [20][2]
+	Either the sunlight 2h is the seed Cauliflower or the sunlight 8h is the seed Blueberry
+	Either the seed Kale or the seed Pumpkin is the sunlight 6h
+	The seed Pumpkin is 2 sunlights before the seed Kale
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [21][1]
+	Either the seed Kale or the seed Pumpkin is the sunlight 6h
+	The seed Kale is 2 sunlights before the seed Blueberry
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.OPENING: 2>, <Insight.SIMPLE_OR_SAME_CAT: 9>}
+
+Hints for grid cell [21][2]
+	The seed Kale is 2 sunlights before the seed Blueberry
+	Either the seed Kale is the sunlight 4h or the sunlight 2h is the seed Pumpkin
+	The seed Cauliflower is 2 sunlights before the seed Pumpkin
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [21][3]
+	Either the sunlight 6h or the sunlight 2h is the seed Pumpkin
+	Either the sunlight 8h or the sunlight 2h is the seed Blueberry
+	Either the sunlight 4h is the seed Cauliflower or the sunlight 6h is the seed Pumpkin
+	The seed Kale is 2 sunlights before the seed Blueberry
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [22][1]
+	The seed Pumpkin is at least 1 sunlight before the seed Cauliflower
+	The seed Kale is 2 sunlights before the seed Pumpkin
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.APPLY_BEFORE_UNDEFINED_SPOTS: 8>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [22][2]
+	The seed Kale is 2 sunlights before the seed Pumpkin
+	Either the seed Blueberry is the sunlight 2h or the seed Blueberry is the sunlight 4h
+	Either the sunlight 6h or the sunlight 4h is the seed Blueberry
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [22][3]
+	Either the seed Blueberry or the seed Cauliflower is the sunlight 8h
+	Either the seed Blueberry is the sunlight 2h or the seed Blueberry is the sunlight 4h
+	The seed Kale is 2 sunlights before the seed Pumpkin
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [23][1]
+	Either the sunlight 6h is the seed Pumpkin or the seed Cauliflower is the sunlight 4h
+	The seed Pumpkin is 2 sunlights before the seed Blueberry
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.OPENING: 2>, <Insight.APPLY_OR: 5>}
+
+Hints for grid cell [23][2]
+	The sunlight 8h is the seed Kale
+	The seed Pumpkin is at least 1 sunlight before the seed Kale
+	The seed Pumpkin is 2 sunlights before the seed Blueberry
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.APPLY_IS: 3>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+

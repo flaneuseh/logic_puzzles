@@ -246,7 +246,7 @@
                         "untimed": "The suspect in the {ent1} was at least one hour earlier the then the suspect with the {ent2}",
                         "timed": "The suspect in the {ent1} was {amount} hours before then the suspect with the {ent2}"
                     },
-                    "or": "The suspect there at {is_end} was either in the {ent1} or had the {ent2}"
+                    "or": "The suspect there at {is_ent} was either in the {ent1} or had the {ent2}"
                 }
             },
             "room": {
