@@ -1005,9 +1005,11 @@ def repair(puzzle, solution):
                         and curr_grid[ent2_idx][ent1_idx]
                         is not soln_grid[ent2_idx][ent1_idx]
                     ):
+                        print("INVALID CELL: ")
+                        print(curr_grid[ent2_idx][ent1_idx])
                         # The puzzle value does not match the canonical solution; unset and mark repair as applied
                         applied = True
-                        puzzle.answer(cat1, cat2, cat1[ent1_idx], cat2[ent2_idx], "*")
+                        puzzle.answer(cat1, cat2, cat1.entities[ent1_idx], cat2.entities[ent2_idx], "*")
     return applied
 
 
