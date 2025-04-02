@@ -20,6 +20,8 @@ admins_public_keys = ["Admin 1"]
 
 evolveSessions = mydb["evolveSessions"]
 
+sessions = mydb["sessions"]
+
 def add_user(user_id, privateKey, publicKey, mode):
     user = get_user(user_id)
     if user["publicKey"] in admins_public_keys:
@@ -41,6 +43,29 @@ def get_user(user_id):
         userDB.find_one_and_update({"privateKey": user_id},  {"$set": {"nextPuzzleIdx":0}})
 
     return user 
+
+def new_session(privateKey, start_time):
+    user = get_user(privateKey)
+    if not get_user(privateKey) is None: 
+            session_template = {"user": user["publicKey"], "startTime": start_time, "totalCasual": 0, "totalSerious": 0,  "totalNeutral":0, "clicks": [], "totalTime": 0}
+            i = sessions.insert_one(session_template)
+        
+            return str(i.inserted_id)  
+    else: 
+            return None 
+  
+def add_click(sessionId, data):
+    click_data ={"name": data["name"], "time":data["time"], "type": data["type"]}
+    if "data" in data:
+        click_data["data"] = data["data"]
+    
+    inc = "totalNeutral"
+    if data["type"] == "casual":
+        inc = "totalCasual"
+    elif data["type"] == "serious":
+        inc = "totalSerious"
+    session = sessions.find_one_and_update({"_id": ObjectId(sessionId)}, {"$push": {"clicks": click_data }, "$inc": {inc:1}, "$set": {"totalTime": data["time"]}})
+
 
 def like_puzzle(user_id, puzzle):
 

@@ -471,7 +471,40 @@ def get_public_key():
         response = jsonify("user doesn't exist")
         return response, 401
  
-        
+@app.route('/new_session', methods=['POST'])
+@cross_origin()
+def new_session():
+
+    request_data = request.get_json() 
+
+
+    privateKey = request_data["privateKey"]
+
+
+    result = Database.new_session(privateKey, request_data["startTime"])
+
+
+    if not result is None and result != -1: 
+        return result 
+    elif result is None: 
+        response = jsonify("user does not exist")
+        return response , 401
+    
+@app.route('/add_click', methods=['POST'])
+@cross_origin()
+def add_click():
+
+    request_data = request.get_json() 
+
+
+    sessionID = request_data["sessionID"]
+
+
+    Database.add_click(sessionID, request_data)
+
+    return "success"
+
+
     
 @app.route('/like_puzzle', methods=['POST'])
 @cross_origin()
