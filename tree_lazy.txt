@@ -1,0 +1,228 @@
+Puzzle:
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c
+    ----------------------------------------
+Bea|  *    *    *    *  | *    *    *    *  |
+Pas|  *    *    *    *  | *    *    *    *  |
+Tom|  *    *    *    *  | *    *    *    *  |
+Car|  *    *    *    *  | *    *    *    *  |
+    ----------------------------------------
+1 c|  *    *    *    *  |
+2 c|  *    *    *    *  |
+3 c|  *    *    *    *  |
+4 c|  *    *    *    *  |
+    --------------------
+Hints:
+The ingredient Pasta is 2 orders before the ingredient Beans
+The ingredient Tomato is 2 cups before the ingredient Beans
+The ingredient Tomato is the order 4th
+The ingredient Beans is 1 cups before the ingredient Carrots
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c                                 1st  2nd  3rd  4th  1 c  2 c  3 c  4 c                                 1st  2nd  3rd  4th  1 c  2 c  3 c  4 c                                 1st  2nd  3rd  4th  1 c  2 c  3 c  4 c                           
+    ----------------------------------------                               ----------------------------------------                               ----------------------------------------                               ----------------------------------------                           
+Bea|  X    X    *    *  | *    *    *    *  |                          Bea|  *    *    *    *  | X    X    *    *  |                          Bea|  *    *    *    X  | *    *    *    *  |                          Bea|  *    *    *    *  | *    *    *    X  |                          
+Pas|  *    *    X    X  | *    *    *    *  |                          Pas|  *    *    *    *  | *    *    *    *  |                          Pas|  *    *    *    X  | *    *    *    *  |                          Pas|  *    *    *    *  | *    *    *    *  |                          
+Tom|  *    *    *    *  | *    *    *    *  |                          Tom|  *    *    *    *  | *    *    X    X  |                          Tom|  X    X    X    O  | *    *    *    *  |                          Tom|  *    *    *    *  | *    *    *    *  |                          
+Car|  *    *    *    *  | *    *    *    *  |                          Car|  *    *    *    *  | *    *    *    *  |                          Car|  *    *    *    X  | *    *    *    *  |                          Car|  *    *    *    *  | X    *    *    *  |                          
+    ----------------------------------------                               ----------------------------------------                               ----------------------------------------                               ----------------------------------------                           
+1 c|  *    *    *    *  |                                              1 c|  *    *    *    *  |                                              1 c|  *    *    *    *  |                                              1 c|  *    *    *    *  |                                              
+2 c|  *    *    *    *  |                                              2 c|  *    *    *    *  |                                              2 c|  *    *    *    *  |                                              2 c|  *    *    *    *  |                                              
+3 c|  *    *    *    *  |                                              3 c|  *    *    *    *  |                                              3 c|  *    *    *    *  |                                              3 c|  *    *    *    *  |                                              
+4 c|  *    *    *    *  |                                              4 c|  *    *    *    *  |                                              4 c|  *    *    *    *  |                                              4 c|  *    *    *    *  |                                              
+    --------------------                                                   --------------------                                                   --------------------                                                   --------------------                                               
+hint: The ingredient Pasta is 2 orders before the ingredient Beans     hint: The ingredient Tomato is 2 cups before the ingredient Beans      hint: The ingredient Tomato is the order 4th                           hint: The ingredient Beans is 1 cups before the ingredient Carrots     
+insights: BEFORE_N_SPOTS_NOINFO (13),                                  insights: BEFORE_N_SPOTS_NOINFO (13),                                  insights: APPLY_IS (3),                                                insights: BEFORE_ONE_SPOT_NOINFO (12),                                 
+                                                                                                                                              CHOSEN BY SOLVER                                                                                                                              
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c                                 1st  2nd  3rd  4th  1 c  2 c  3 c  4 c                                 1st  2nd  3rd  4th  1 c  2 c  3 c  4 c                           
+    ----------------------------------------                               ----------------------------------------                               ----------------------------------------                           
+Bea|  X    X    *    x  | *    *    *    *  |                          Bea|  *    *    *    x  | X    X    *    *  |                          Bea|  *    *    *    x  | *    *    *    X  |                          
+Pas|  *    X    X    x  | *    *    *    *  |                          Pas|  *    *    *    x  | *    *    *    *  |                          Pas|  *    *    *    x  | *    *    *    *  |                          
+Tom|  x    x    x    o  | *    *    *    *  |                          Tom|  x    x    x    o  | *    *    X    X  |                          Tom|  x    x    x    o  | *    *    *    *  |                          
+Car|  *    *    *    x  | *    *    *    *  |                          Car|  *    *    *    x  | *    *    *    *  |                          Car|  *    *    *    x  | X    *    *    *  |                          
+    ----------------------------------------                               ----------------------------------------                               ----------------------------------------                           
+1 c|  *    *    *    *  |                                              1 c|  *    *    *    *  |                                              1 c|  *    *    *    *  |                                              
+2 c|  *    *    *    *  |                                              2 c|  *    *    *    *  |                                              2 c|  *    *    *    *  |                                              
+3 c|  *    *    *    *  |                                              3 c|  *    *    *    *  |                                              3 c|  *    *    *    *  |                                              
+4 c|  *    *    *    *  |                                              4 c|  *    *    *    *  |                                              4 c|  *    *    *    *  |                                              
+    --------------------                                                   --------------------                                                   --------------------                                               
+hint: The ingredient Pasta is 2 orders before the ingredient Beans     hint: The ingredient Tomato is 2 cups before the ingredient Beans      hint: The ingredient Beans is 1 cups before the ingredient Carrots     
+insights: BEFORE_N_SPOTS_NOINFO (13), BEFORE_N_SPOTS_SHIFT (16),       insights: BEFORE_N_SPOTS_NOINFO (13),                                  insights: BEFORE_ONE_SPOT_NOINFO (12),                                 
+                                                                                                                                              CHOSEN BY SOLVER                                                       
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c                                 1st  2nd  3rd  4th  1 c  2 c  3 c  4 c                           
+    ----------------------------------------                               ----------------------------------------                           
+Bea|  X    X    *    x  | *    *    *    x  |                          Bea|  *    *    *    x  | X    X    *    x  |                          
+Pas|  *    X    X    x  | *    *    *    *  |                          Pas|  *    *    *    x  | *    *    *    *  |                          
+Tom|  x    x    x    o  | *    *    *    *  |                          Tom|  x    x    x    o  | *    X    X    X  |                          
+Car|  *    *    *    x  | x    *    *    *  |                          Car|  *    *    *    x  | x    *    *    *  |                          
+    ----------------------------------------                               ----------------------------------------                           
+1 c|  *    *    *    *  |                                              1 c|  *    *    *    *  |                                              
+2 c|  *    *    *    *  |                                              2 c|  *    *    *    *  |                                              
+3 c|  *    *    *    *  |                                              3 c|  *    *    *    *  |                                              
+4 c|  *    *    *    *  |                                              4 c|  *    *    *    *  |                                              
+    --------------------                                                   --------------------                                               
+hint: The ingredient Pasta is 2 orders before the ingredient Beans     hint: The ingredient Tomato is 2 cups before the ingredient Beans      
+insights: BEFORE_N_SPOTS_NOINFO (13), BEFORE_N_SPOTS_SHIFT (16),       insights: BEFORE_N_SPOTS_NOINFO (13), BEFORE_N_SPOTS_SHIFT (16),       
+CHOSEN BY SOLVER                                                                                                                              
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c                                1st  2nd  3rd  4th  1 c  2 c  3 c  4 c                                1st  2nd  3rd  4th  1 c  2 c  3 c  4 c                          
+    ----------------------------------------                              ----------------------------------------                              ----------------------------------------                          
+Bea|  x    x    O    x  | *    *    *    x  |                         Bea|  x    x    *    x  | *    *    *    x  |                         Bea|  x    x    *    x  | X    X    *    x  |                         
+Pas|  O    x    x    x  | *    *    *    *  |                         Pas|  *    x    x    x  | *    *    *    *  |                         Pas|  *    x    x    x  | *    *    *    *  |                         
+Tom|  x    x    x    o  | *    *    *    *  |                         Tom|  x    x    x    o  | *    *    *    *  |                         Tom|  x    x    x    o  | *    X    X    X  |                         
+Car|  X    O    X    x  | x    *    *    *  |                         Car|  *    *    *    x  | x    *    *    *  |                         Car|  *    *    *    x  | x    *    *    *  |                         
+    ----------------------------------------                              ----------------------------------------                              ----------------------------------------                          
+1 c|  *    *    *    *  |                                             1 c|  *    X    *    *  |                                             1 c|  *    *    *    *  |                                             
+2 c|  *    *    *    *  |                                             2 c|  *    *    *    *  |                                             2 c|  *    *    *    *  |                                             
+3 c|  *    *    *    *  |                                             3 c|  *    *    *    *  |                                             3 c|  *    *    *    *  |                                             
+4 c|  *    *    *    *  |                                             4 c|  *    *    *    *  |                                             4 c|  *    *    *    *  |                                             
+    --------------------                                                  --------------------                                                  --------------------                                              
+openings                                                              transitives                                                           hint: The ingredient Tomato is 2 cups before the ingredient Beans     
+insights: OPENING (2),                                                insights: TRANS_SETS (18),                                            insights: BEFORE_N_SPOTS_NOINFO (13), BEFORE_N_SPOTS_SHIFT (16),      
+CHOSEN BY SOLVER                                                                                                                                                                                                  
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c                                1st  2nd  3rd  4th  1 c  2 c  3 c  4 c                          
+    ----------------------------------------                              ----------------------------------------                          
+Bea|  x    x    o    x  | *    *    *    x  |                         Bea|  x    x    o    x  | X    X    *    x  |                         
+Pas|  o    x    x    x  | *    *    *    *  |                         Pas|  o    x    x    x  | *    *    *    *  |                         
+Tom|  x    x    x    o  | *    *    *    *  |                         Tom|  x    x    x    o  | *    X    X    X  |                         
+Car|  x    o    x    x  | x    *    *    *  |                         Car|  x    o    x    x  | x    *    *    *  |                         
+    ----------------------------------------                              ----------------------------------------                          
+1 c|  *    X    *    *  |                                             1 c|  *    *    *    *  |                                             
+2 c|  *    *    *    *  |                                             2 c|  *    *    *    *  |                                             
+3 c|  *    *    *    *  |                                             3 c|  *    *    *    *  |                                             
+4 c|  *    *    *    *  |                                             4 c|  *    *    *    *  |                                             
+    --------------------                                                  --------------------                                              
+transitives                                                           hint: The ingredient Tomato is 2 cups before the ingredient Beans     
+insights: TRANS_ABC_FALSE (15),                                       insights: BEFORE_N_SPOTS_NOINFO (13), BEFORE_N_SPOTS_SHIFT (16),      
+CHOSEN BY SOLVER                                                                                                                            
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c                                1st  2nd  3rd  4th  1 c  2 c  3 c  4 c                          
+    ----------------------------------------                              ----------------------------------------                          
+Bea|  x    x    o    x  | *    *    *    x  |                         Bea|  x    x    o    x  | X    X    *    x  |                         
+Pas|  o    x    x    x  | *    *    *    *  |                         Pas|  o    x    x    x  | *    *    *    *  |                         
+Tom|  x    x    x    o  | *    *    *    *  |                         Tom|  x    x    x    o  | *    X    X    X  |                         
+Car|  x    o    x    x  | x    *    *    *  |                         Car|  x    o    x    x  | x    *    *    *  |                         
+    ----------------------------------------                              ----------------------------------------                          
+1 c|  *    x    *    *  |                                             1 c|  *    x    *    *  |                                             
+2 c|  *    *    *    *  |                                             2 c|  *    *    *    *  |                                             
+3 c|  *    *    *    *  |                                             3 c|  *    *    *    *  |                                             
+4 c|  *    *    X    *  |                                             4 c|  *    *    *    *  |                                             
+    --------------------                                                  --------------------                                              
+transitives                                                           hint: The ingredient Tomato is 2 cups before the ingredient Beans     
+insights: TRANS_ABC_FALSE (15),                                       insights: BEFORE_N_SPOTS_NOINFO (13), BEFORE_N_SPOTS_SHIFT (16),      
+CHOSEN BY SOLVER                                                                                                                            
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c                          
+    ----------------------------------------                          
+Bea|  x    x    o    x  | X    X    *    x  |                         
+Pas|  o    x    x    x  | *    *    *    *  |                         
+Tom|  x    x    x    o  | *    X    X    X  |                         
+Car|  x    o    x    x  | x    *    *    *  |                         
+    ----------------------------------------                          
+1 c|  *    x    *    *  |                                             
+2 c|  *    *    *    *  |                                             
+3 c|  *    *    *    *  |                                             
+4 c|  *    *    x    *  |                                             
+    --------------------                                              
+hint: The ingredient Tomato is 2 cups before the ingredient Beans     
+insights: BEFORE_N_SPOTS_NOINFO (13), BEFORE_N_SPOTS_SHIFT (16),      
+CHOSEN BY SOLVER                                                      
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c                                 1st  2nd  3rd  4th  1 c  2 c  3 c  4 c                                 1st  2nd  3rd  4th  1 c  2 c  3 c  4 c                           
+    ----------------------------------------                               ----------------------------------------                               ----------------------------------------                           
+Bea|  x    x    o    x  | x    x    O    x  |                          Bea|  x    x    o    x  | x    x    *    x  |                          Bea|  x    x    o    x  | x    x    *    x  |                          
+Pas|  o    x    x    x  | X    *    X    *  |                          Pas|  o    x    x    x  | *    *    *    *  |                          Pas|  o    x    x    x  | *    *    *    *  |                          
+Tom|  x    x    x    o  | O    x    x    x  |                          Tom|  x    x    x    o  | *    x    x    x  |                          Tom|  x    x    x    o  | *    x    x    x  |                          
+Car|  x    o    x    x  | x    *    X    *  |                          Car|  x    o    x    x  | x    *    *    *  |                          Car|  x    o    x    x  | x    X    X    *  |                          
+    ----------------------------------------                               ----------------------------------------                               ----------------------------------------                           
+1 c|  *    x    *    *  |                                              1 c|  *    x    X    *  |                                              1 c|  *    x    *    *  |                                              
+2 c|  *    *    *    *  |                                              2 c|  *    *    *    *  |                                              2 c|  *    *    *    *  |                                              
+3 c|  *    *    *    *  |                                              3 c|  *    *    *    *  |                                              3 c|  *    *    *    *  |                                              
+4 c|  *    *    x    *  |                                              4 c|  *    *    x    *  |                                              4 c|  *    *    x    *  |                                              
+    --------------------                                                   --------------------                                                   --------------------                                               
+openings                                                               transitives                                                            hint: The ingredient Beans is 1 cups before the ingredient Carrots     
+insights: OPENING (2),                                                 insights: TRANS_ABC_FALSE (15),                                        insights: BEFORE_N_SPOTS_SHIFT (16),                                   
+CHOSEN BY SOLVER                                                                                                                                                                                                     
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c                                 1st  2nd  3rd  4th  1 c  2 c  3 c  4 c                           
+    ----------------------------------------                               ----------------------------------------                           
+Bea|  x    x    o    x  | x    x    o    x  |                          Bea|  x    x    o    x  | x    x    o    x  |                          
+Pas|  o    x    x    x  | x    *    x    *  |                          Pas|  o    x    x    x  | x    *    x    X  |                          
+Tom|  x    x    x    o  | o    x    x    x  |                          Tom|  x    x    x    o  | o    x    x    x  |                          
+Car|  x    o    x    x  | x    *    x    *  |                          Car|  x    o    x    x  | x    X    x    O  |                          
+    ----------------------------------------                               ----------------------------------------                           
+1 c|  X    x    *    *  |                                              1 c|  *    x    *    *  |                                              
+2 c|  *    *    *    *  |                                              2 c|  *    *    *    *  |                                              
+3 c|  *    *    *    *  |                                              3 c|  *    *    *    *  |                                              
+4 c|  *    *    x    *  |                                              4 c|  *    *    x    *  |                                              
+    --------------------                                                   --------------------                                               
+transitives                                                            hint: The ingredient Beans is 1 cups before the ingredient Carrots     
+insights: TRANS_ABC_FALSE (15),                                        insights: APPLY_BEFORE_ONE_SPOT (6),                                   
+                                                                       CHOSEN BY SOLVER                                                       
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c            1st  2nd  3rd  4th  1 c  2 c  3 c  4 c      
+    ----------------------------------------          ----------------------------------------      
+Bea|  x    x    o    x  | x    x    o    x  |     Bea|  x    x    o    x  | x    x    o    x  |     
+Pas|  o    x    x    x  | x    O    x    x  |     Pas|  o    x    x    x  | x    *    x    x  |     
+Tom|  x    x    x    o  | o    x    x    x  |     Tom|  x    x    x    o  | o    x    x    x  |     
+Car|  x    o    x    x  | x    x    x    o  |     Car|  x    o    x    x  | x    x    x    o  |     
+    ----------------------------------------          ----------------------------------------      
+1 c|  *    x    *    *  |                         1 c|  X    x    *    *  |                         
+2 c|  *    *    *    *  |                         2 c|  *    *    *    *  |                         
+3 c|  *    *    *    *  |                         3 c|  *    *    *    *  |                         
+4 c|  *    *    x    *  |                         4 c|  *    *    x    *  |                         
+    --------------------                              --------------------                          
+openings                                          transitives                                       
+insights: OPENING (2),                            insights: TRANS_ABC_FALSE (15),                   
+CHOSEN BY SOLVER                                                                                    
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c      
+    ----------------------------------------      
+Bea|  x    x    o    x  | x    x    o    x  |     
+Pas|  o    x    x    x  | x    o    x    x  |     
+Tom|  x    x    x    o  | o    x    x    x  |     
+Car|  x    o    x    x  | x    x    x    o  |     
+    ----------------------------------------      
+1 c|  X    x    *    *  |                         
+2 c|  O    X    X    X  |                         
+3 c|  X    *    *    *  |                         
+4 c|  X    *    x    *  |                         
+    --------------------                          
+transitives                                       
+insights: TRANS_ABC_TRUE (14),                    
+CHOSEN BY SOLVER                                  
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c      
+    ----------------------------------------      
+Bea|  x    x    o    x  | x    x    o    x  |     
+Pas|  o    x    x    x  | x    o    x    x  |     
+Tom|  x    x    x    o  | o    x    x    x  |     
+Car|  x    o    x    x  | x    x    x    o  |     
+    ----------------------------------------      
+1 c|  x    x    *    *  |                         
+2 c|  o    x    x    x  |                         
+3 c|  x    X    *    *  |                         
+4 c|  x    O    x    X  |                         
+    --------------------                          
+transitives                                       
+insights: TRANS_ABC_TRUE (14),                    
+CHOSEN BY SOLVER                                  
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c      
+    ----------------------------------------      
+Bea|  x    x    o    x  | x    x    o    x  |     
+Pas|  o    x    x    x  | x    o    x    x  |     
+Tom|  x    x    x    o  | o    x    x    x  |     
+Car|  x    o    x    x  | x    x    x    o  |     
+    ----------------------------------------      
+1 c|  x    x    X    *  |                         
+2 c|  o    x    x    x  |                         
+3 c|  x    x    O    X  |                         
+4 c|  x    o    x    x  |                         
+    --------------------                          
+transitives                                       
+insights: TRANS_ABC_TRUE (14),                    
+CHOSEN BY SOLVER                                  
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c            1st  2nd  3rd  4th  1 c  2 c  3 c  4 c      
+    ----------------------------------------          ----------------------------------------      
+Bea|  x    x    o    x  | x    x    o    x  |     Bea|  x    x    o    x  | x    x    o    x  |     
+Pas|  o    x    x    x  | x    o    x    x  |     Pas|  o    x    x    x  | x    o    x    x  |     
+Tom|  x    x    x    o  | o    x    x    x  |     Tom|  x    x    x    o  | o    x    x    x  |     
+Car|  x    o    x    x  | x    x    x    o  |     Car|  x    o    x    x  | x    x    x    o  |     
+    ----------------------------------------          ----------------------------------------      
+1 c|  x    x    x    O  |                         1 c|  x    x    x    O  |                         
+2 c|  o    x    x    x  |                         2 c|  o    x    x    x  |                         
+3 c|  x    x    o    x  |                         3 c|  x    x    o    x  |                         
+4 c|  x    o    x    x  |                         4 c|  x    o    x    x  |                         
+    --------------------                              --------------------                          
+openings                                          transitives                                       
+insights: OPENING (2),                            insights: TRANS_ABC_TRUE (14),                    
+CHOSEN BY SOLVER                                                                                    

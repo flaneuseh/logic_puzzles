@@ -239,8 +239,6 @@ class Puzzle:
     def print_grid(self):
         """
         return the entire puzzle string
-
-        TODO: add category names?
         """
         return_str = ""
         for i in range(len(self.top_bottom)):

@@ -94,45 +94,38 @@ def get_available_moves(puzzle, hints):
         raise Exception("INVALID_PUZZLE")
 
     result = deepcopy(puzzle)
-    applied = repair(result, solution)
-    if not is_valid:
+    broken_state = repair(result, solution)
+    if broken_state:
         # If there are any errors, the only valid move is to remove all invalid marks.
         moves.append({
             "type": "repair",
             "result": result,
+            "move_diff": get_move_diff(puzzle, result)
         })
-        return is_valid, moves
 
     # We know that so far the puzzle is correct.
     result = deepcopy(puzzle)
     applied, is_valid, _, insights = find_openings(result, slow=True)
-    if not is_valid:
-        # We should never be here
-        raise Exception("BROKEN_STATE")
-    if applied:
+    if applied and is_valid:
         moves.append({
             "type": "openings",
-            "update": result,
+            "result": result,
+            "move_diff": get_move_diff(puzzle, result),
             "insights": insights,
         })
     result = deepcopy(puzzle)
     applied, is_valid, _, insights = find_transitives(result, slow=True)
-    if not is_valid:
-        # We should never be here
-        raise Exception("BROKEN_STATE")
-    if applied:
+    if applied and is_valid:
         moves.append({
             "type": "transitives",
             "result": result,
+            "move_diff": get_move_diff(puzzle, result),
             "insights": insights,
         })
     for idx, hint in enumerate(hints):
         result = deepcopy(puzzle)
         applied, is_valid, _, insights = apply_hint(result, hint, slow=True)
-        if not is_valid:
-            # We should never be here
-            raise Exception("BROKEN_STATE")
-        if applied:
+        if applied and is_valid:
             moves.append({
                 "type": "hint",
                 "indexed_hint": {
@@ -140,9 +133,39 @@ def get_available_moves(puzzle, hints):
                     "hint": hint
                 },
                 "result": result,
+                "move_diff": get_move_diff(puzzle, result),
                 "insights": insights,
             })
-    return is_valid, moves
+    return broken_state, moves
+
+def get_move_diff(before, after):
+    diff = deepcopy(after)
+
+    for cat1 in before.left_right:
+        for cat2 in before.top_bottom:
+            before_grid = before.get_grid(cat1, cat2)
+            after_grid = after.get_grid(cat1, cat2)
+            if before_grid is None or after_grid is None:
+                continue
+            for ent2_idx in range(0, len(before_grid)):
+                for ent1_idx in range(0, len(before_grid[ent2_idx])):
+                    if (
+                        before_grid[ent2_idx][ent1_idx] == after_grid[ent2_idx][ent1_idx]
+                    ):
+                        diff.answer(cat1, cat2, cat1.entities[ent1_idx], cat2.entities[ent2_idx], lowercase_grid_symbol(after_grid[ent2_idx][ent1_idx]))
+                    elif (after_grid[ent2_idx][ent1_idx] == "*"):
+                        # This is a repair operation
+                        diff.answer(cat1, cat2, cat1.entities[ent1_idx], cat2.entities[ent2_idx], "_")
+    return diff
+
+def lowercase_grid_symbol(S):
+    if S == "X":
+        return "x"
+    elif S == "O":
+        return "o"
+    elif S == "*":
+        return "*"
+    return "__"
 
 # %%
 def apply_hints(puzzle, hints, print_soln=False, forbidden_insights=set()):
