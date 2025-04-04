@@ -2994,9 +2994,9 @@ def apply_hint(puzzle, hint, forbidden_insights=set(), slow=False):
     elif rule == "not":
         return apply_not(puzzle, terms[0]["is"])
     elif rule == "before":
-        return apply_before(puzzle, terms, forbidden_insights=forbidden_insights)
+        return apply_before(puzzle, terms, forbidden_insights=forbidden_insights, slow=slow)
     elif rule == "simple_or":
-        return apply_simple_or(puzzle, terms, forbidden_insights=forbidden_insights)
+        return apply_simple_or(puzzle, terms, forbidden_insights=forbidden_insights, slow=slow)
     elif rule == "compound_or":
         return apply_compound_or(puzzle, [terms[0]["is"], terms[1]["is"]])
     else:
