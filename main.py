@@ -16,6 +16,7 @@ import random
 import Database
 from AddToGrammar import get_empty_before, get_empty_is, get_empty_not, get_empty_or
 import Evolution
+from insight_tree import choose_move_lazy
 
 app = Flask(__name__)
 
@@ -86,7 +87,6 @@ def get_puzzle(request_data):
                 is_numeric = element["is_numeric"]
                 category = Category(name, entities, is_numeric)
                 categories.append(category)
-        print("categories", categories[0].entities)
         puzzle = Puzzle(categories)
     else:
         subject = Category("order", ["1st", "2nd", "3rd", "4th"], True)
@@ -590,6 +590,7 @@ def get_sample_categories():
 
     return jsonify(user_data)
 
+
 def serialize_move(move):
     s_move = {}
     s_move["type"] = move["type"]
@@ -636,6 +637,7 @@ def get_available_moves(*args):
     result = {
         "is_valid": is_valid,
         "available_moves": list(map(serialize_move, available_moves)),
+        "suggested_lazy_move": serialize_move(choose_move_lazy(available_moves, 0)),
     }
 
     return jsonify(result)

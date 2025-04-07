@@ -118,7 +118,7 @@ class Puzzle:
     def get_grid(self, cat1, cat2):
         """
         Get the grid for cat1 and cat2
-        assuming cat is the top category
+        assuming cat1 is the top category
         """
         if self._to_key(cat1, cat2) in self.grids:
             return self.grids[self._to_key(cat1, cat2)]
@@ -688,29 +688,18 @@ hint_grammar = {
 # ordered according to how difficult we estimate each insight is to learn (based on our intuition),
 # with more difficult insights being numbered higher.
 class Insight(Enum):
-    CROSS_OUT = (
-        1  # If there is an O in a row/column, the rest of the row/column must be X
-    )
+    NO_INSIGHT = 0
+    CROSS_OUT = 1  # If there is an O in a row/column, the rest of the row/column must be X
     OPENING = 2  # If a row/column has one opening and the rest are Xs, it must be O
     APPLY_IS = 3  # Apply an is hint
     APPLY_NOT = 4  # Apply a not hint
     APPLY_OR = 5  # Apply an or hint once one of the clauses has been answered.
-    APPLY_BEFORE_ONE_SPOT = (
-        6  # If A is answered and B is 1 after A, then answer B is one after A
-    )
-    APPLY_BEFORE_N_SPOTS = (
-        7  # If A is answered and B is N after A, then answer B is N after A
-    )
-    APPLY_BEFORE_UNDEFINED_SPOTS = (
-        8  # If A is answered then B must be one of the spots after A
-    )
-    SIMPLE_OR_SAME_CAT = (
-        9  # If A or B from category 0 is C then no other entity from category 0 is C
-    )
+    APPLY_BEFORE_ONE_SPOT = 6  # If A is answered and B is 1 after A, then answer B is one after A
+    APPLY_BEFORE_N_SPOTS = 7  # If A is answered and B is N after A, then answer B is N after A
+    APPLY_BEFORE_UNDEFINED_SPOTS = 8  # If A is answered then B must be one of the spots after A
+    SIMPLE_OR_SAME_CAT = 9  # If A or B from category 0 is C then no other entity from category 0 is C
     SIMPLE_OR_DIFF_CAT = 10  # If A or B is C then A is not B
-    BEFORE_DIFF_CAT = (
-        11  # If A < B and A, B are not in the same category, then A is not B.
-    )
+    BEFORE_DIFF_CAT = 11  # If A < B and A, B are not in the same category, then A is not B.
     BEFORE_ONE_SPOT_NOINFO = 12  # The before entity can't be in the last spot (and vice versa for the after entity) Same for undefined spots
     BEFORE_N_SPOTS_NOINFO = 13  # The before entity can't be in the last N spots (and vice versa for the after entity)
     TRANS_ABC_TRUE = 14  # A -> B and B -> C, so A -> C
@@ -718,6 +707,7 @@ class Insight(Enum):
     BEFORE_N_SPOTS_SHIFT = 16  # A streak of Xs at the beginning/end forces the first available position for the other entity to shift.
     BEFORE_N_SPOTS_CROSSCHECK = 17  # For a position to be a valid answer, the corresponding position +/- num must be valid for the other entity
     TRANS_SETS = 18  # A and B don't share any possibilities; A != B
+    REPAIR = 100 # Repair broken puzzle
 
 
 ALL_INSIGHTS = {insight.value for insight in Insight}
@@ -1003,11 +993,11 @@ def repair(puzzle, solution):
                         and curr_grid[ent2_idx][ent1_idx]
                         is not soln_grid[ent2_idx][ent1_idx]
                     ):
-                        print("INVALID CELL: ")
-                        print(curr_grid[ent2_idx][ent1_idx])
-                        # The puzzle value does not match the canonical solution; unset and mark repair as applied
+                        # The puzzle value does not match the canonical solution; unset subgrid and mark repair as applied
                         applied = True
-                        puzzle.answer(cat1, cat2, cat1.entities[ent1_idx], cat2.entities[ent2_idx], "*")
+                        for ent1 in cat1.entities:
+                            for ent2 in cat2.entities:
+                                puzzle.answer(cat1, cat2, ent1, ent2, "*")
     return applied
 
 

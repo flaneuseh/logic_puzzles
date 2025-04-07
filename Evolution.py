@@ -34,6 +34,7 @@ from LogicPuzzles import (
     find_transitives,
     ALL_INSIGHTS,
     repair,
+    Insight
 )
 from HintToEnglish import hint_to_english
 
@@ -100,12 +101,17 @@ def get_available_moves(puzzle, hints):
         moves.append({
             "type": "repair",
             "result": result,
-            "move_diff": get_move_diff(puzzle, result)
+            "move_diff": get_move_diff(puzzle, result),
+            "insights": [Insight.REPAIR]
         })
+    
+    state_is_valid = not broken_state
 
     # We know that so far the puzzle is correct.
     result = deepcopy(puzzle)
     applied, is_valid, _, insights = find_openings(result, slow=True)
+    if len(insights) == 0:
+        insights = [Insight.NO_INSIGHT]
     if applied and is_valid:
         moves.append({
             "type": "openings",
@@ -115,6 +121,8 @@ def get_available_moves(puzzle, hints):
         })
     result = deepcopy(puzzle)
     applied, is_valid, _, insights = find_transitives(result, slow=True)
+    if len(insights) == 0:
+        insights = [Insight.NO_INSIGHT]
     if applied and is_valid:
         moves.append({
             "type": "transitives",
@@ -125,6 +133,8 @@ def get_available_moves(puzzle, hints):
     for idx, hint in enumerate(hints):
         result = deepcopy(puzzle)
         applied, is_valid, _, insights = apply_hint(result, hint, slow=True)
+        if len(insights) == 0:
+            insights = [Insight.NO_INSIGHT]
         if applied and is_valid:
             moves.append({
                 "type": "hint",
@@ -136,7 +146,7 @@ def get_available_moves(puzzle, hints):
                 "move_diff": get_move_diff(puzzle, result),
                 "insights": insights,
             })
-    return broken_state, moves
+    return state_is_valid, moves
 
 def get_move_diff(before, after):
     diff = deepcopy(after)

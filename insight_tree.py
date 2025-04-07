@@ -2,7 +2,7 @@ from copy import deepcopy
 
 from Evolution import get_available_moves
 from HintToEnglish import hint_to_english
-from LogicPuzzles import Category, Puzzle
+from LogicPuzzles import Category, Puzzle, Insight
 
 
 # Get insights found by the solver from the current state to the end.
