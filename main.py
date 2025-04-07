@@ -37,7 +37,7 @@ def update_user_database(new_database):
     file.close()
 
 
-def hintset_to_di(hintset, row, col, database={}):
+def hintset_to_di(hintset, row, col, database={}, data={}):
     di = {}
     di["solution"] = hintset.completed_puzzle.print_grid_small()
     di["categories"] = [
@@ -48,9 +48,12 @@ def hintset_to_di(hintset, row, col, database={}):
     ]
     di["hint_grammar"] = [serialized_hint_grammar(hint) for hint in hintset.hints]
     di["diff"] = col + 1
-    di["sol"] = row
-    return di
-
+    di["sol"] = row 
+    if "name" in data:
+        di["name"] = data["name"]
+    if "scenario" in data:
+        di["scenario"] = data["scenario"]
+    return di 
 
 def elite_grid_to_json(grid):
     grid_di = []
@@ -63,16 +66,10 @@ def elite_grid_to_json(grid):
                 i += 1
     return grid_di
 
-
-def get_new_puzzles(grid, database={}):
+def get_new_puzzles(grid,database={}, data={}):
     new = grid.get_top_layer()
 
-    formated_list = [
-        hintset_to_di(child["puzzle"], child["row"], child["col"], database)
-        for child in new
-    ]
-
-    return formated_list
+    formated_list = [hintset_to_di(child["puzzle"], child["row"], child["col"],  database, data) for child in new ]
 
 
 def get_puzzle(request_data):
@@ -85,7 +82,8 @@ def get_puzzle(request_data):
                 name = element["name"]
                 entities = element["entities"]
                 is_numeric = element["is_numeric"]
-                category = Category(name, entities, is_numeric)
+                inc = element["inc"] if "inc" in element else 1 
+                category = Category(name, entities, is_numeric, increment=inc)
                 categories.append(category)
         puzzle = Puzzle(categories)
     else:
@@ -293,9 +291,43 @@ def add_category():
     else:
         response = jsonify("success")
         return response
+    
+@app.route('/add_scenario', methods=['POST'])
+@cross_origin()
+def add_scen():
 
+    request_data = request.get_json() 
 
-@app.route("/get_template", methods=["POST"])
+    result = Database.add_scenario(request_data["user"], request_data)
+
+    if result is None:
+        response = jsonify("user not found")
+        return response , 406
+    else:
+        response = jsonify("success")
+        return response
+    
+@app.route('/get_scenarios', methods=['GET'])
+@cross_origin()
+def get_scenarios():
+    
+
+    if "user" in request.args:
+       username = request.args.get('user')
+    else:
+       username = "null"
+
+    if "getSample" in request.args:
+        get_sample = request.args.get("getSample")
+    else:
+        get_sample = False 
+
+    user_data = Database.get_scenario(username, get_sample)
+    
+    return jsonify(user_data)
+
+    
+@app.route('/get_template', methods=['POST'])
 @cross_origin()
 def get_template():
 
@@ -498,15 +530,52 @@ def get_public_key():
 
     result = Database.get_user(id)
 
-    if not result is None:
-        response = jsonify({"publicKey": result["publicKey"], "mode": result["mode"]})
-        return response
-    elif result is None:
+    mode = result["mode"] if  "mode" in result else "mixed"
+
+
+    if not result is None: 
+        response = jsonify({"publicKey": result["publicKey"], "mode": mode})
+        return response 
+    elif result is None: 
         response = jsonify("user doesn't exist")
         return response, 401
+ 
+@app.route('/new_session', methods=['POST'])
+@cross_origin()
+def new_session():
+
+    request_data = request.get_json() 
 
 
-@app.route("/like_puzzle", methods=["POST"])
+    privateKey = request_data["privateKey"]
+
+
+    result = Database.new_session(privateKey, request_data["startTime"])
+
+
+    if not result is None and result != -1: 
+        return result 
+    elif result is None: 
+        response = jsonify("user does not exist")
+        return response , 401
+    
+@app.route('/add_click', methods=['POST'])
+@cross_origin()
+def add_click():
+
+    request_data = request.get_json() 
+
+
+    sessionID = request_data["sessionID"]
+
+
+    Database.add_click(sessionID, request_data)
+
+    return "success"
+
+
+    
+@app.route('/like_puzzle', methods=['POST'])
 @cross_origin()
 def like_puzzle():
 
@@ -642,6 +711,22 @@ def get_available_moves(*args):
 
     return jsonify(result)
 
+@app.route('/map_evolve', methods=['POST'])
+@cross_origin()
+def map_evolve_api(*args):
+    print("args", args)
+
+    request_data = request.get_json() 
+
+    print("data", request_data)
+
+
+    puzzle = get_puzzle(request_data) 
+    gen_len, pop_size, x_rate, mut_rate, add_rate, elits = get_gen_data(request_data)
+    
+    elit_grid, infeasible, history = map_evolve(puzzle, gen_len, pop_size, x_rate, mut_rate, add_rate, elits) 
+
+    return elite_grid_to_json(elit_grid)
 
 @app.route("/iterate_map_evolve", methods=["POST"])
 @cross_origin()
@@ -673,7 +758,7 @@ def iter_map_evolve_api(*args):
         puzzle, gen_len, pop_size, x_rate, mut_rate, add_rate, elits, feasible_grid=grid
     )
 
-    new_puzzles = get_new_puzzles(elit_grid, user_grammar)
+    new_puzzles = get_new_puzzles(elit_grid, user_grammar, data)
 
     return_di = {"puzzles": new_puzzles, "id": id}
 

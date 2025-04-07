@@ -14,16 +14,19 @@ userDB = mydb["users"]
 
 sampleDatabase = mydb["samples"]
 
+scenarioDatabase = mydb["scenarios"]
 
 admins_public_keys = ["Admin 1"]
 
 evolveSessions = mydb["evolveSessions"]
 
+sessions = mydb["sessions"]
+
 def add_user(user_id, privateKey, publicKey, mode):
     user = get_user(user_id)
     if user["publicKey"] in admins_public_keys:
         if get_user(privateKey) is None: 
-            user_template = {"privateKey": privateKey, "publicKey": publicKey, "mode": mode, "nextPuzzleIdx":0, "likedPuzzles":[], "grammar": {}, "evolveSessions": {"nextIdx": 0}, "categories":[]}
+            user_template = {"mode": mode, "privateKey": privateKey, "publicKey": publicKey, "nextPuzzleIdx":0, "likedPuzzles":[], "grammar": {}, "evolveSessions": {"nextIdx": 0}, "categories":[]}
             i = userDB.insert_one(user_template)
         
             return i 
@@ -36,13 +39,33 @@ def add_user(user_id, privateKey, publicKey, mode):
 def get_user(user_id):
     user = userDB.find_one({"privateKey": user_id})
 
-    if not user is None:
-        if not "nextPuzzleIdx" in user:
-            userDB.find_one_and_update({"privateKey": user_id},  {"$set": {"nextPuzzleIdx":0}})
-        if not "mode" in user:
-            userDB.find_one_and_update({"privateKey": user_id}, {"$set": {"mode": "mixed"}})
+    if not user is None and not "nextPuzzleIdx"  in user:
+        userDB.find_one_and_update({"privateKey": user_id},  {"$set": {"nextPuzzleIdx":0}})
 
     return user 
+
+def new_session(privateKey, start_time):
+    user = get_user(privateKey)
+    if not get_user(privateKey) is None: 
+            session_template = {"user": user["publicKey"], "startTime": start_time, "totalCasual": 0, "totalSerious": 0,  "totalNeutral":0, "clicks": [], "totalTime": 0}
+            i = sessions.insert_one(session_template)
+        
+            return str(i.inserted_id)  
+    else: 
+            return None 
+  
+def add_click(sessionId, data):
+    click_data ={"name": data["name"], "time":data["time"], "type": data["type"]}
+    if "data" in data:
+        click_data["data"] = data["data"]
+    
+    inc = "totalNeutral"
+    if data["type"] == "casual":
+        inc = "totalCasual"
+    elif data["type"] == "serious":
+        inc = "totalSerious"
+    session = sessions.find_one_and_update({"_id": ObjectId(sessionId)}, {"$push": {"clicks": click_data }, "$inc": {inc:1}, "$set": {"totalTime": data["time"]}})
+
 
 def like_puzzle(user_id, puzzle):
     user = get_user(user_id)
@@ -223,6 +246,40 @@ def get_user_brainstorms(user_id):
         return database["brainstorm"]
     else:
         return custom_grammar  
+    
+
+def add_scenario(user_id, request_data):
+    scenario = request_data["scenario"]
+    name = request_data["name"]
+    categories = request_data["categories"]
+
+    values = {"scenario": scenario, "name": name, "categories": categories}
+
+    user = get_user(user_id)
+    if user["publicKey"] in admins_public_keys:
+        result = scenarioDatabase.insert_one(values)
+    else: 
+        result = userDB.find_one_and_update({"privateKey": user_id}, 
+             {"$push": {"scenarios": values}})
+    
+    return result 
+
+
+def get_scenario(user_id, get_samples = True):
+
+    scenarios = []
+
+    if get_samples:
+        samples = list(scenarioDatabase.find({}, {"_id":0})) 
+        [s.update({"origin": "sample"}) for s in samples]
+        scenarios += samples 
+    user = get_user(user_id) 
+    if not user is None and "scenarios" in user: 
+        user_scens = user["scenarios"]
+        [s.update({"origin": "user"}) for s in user_scens]
+        scenarios += user_scens
+
+    return scenarios 
 
 
 def add_category(user_id, request_data): 
@@ -309,8 +366,10 @@ def get_new_evolve_id(user, request):
     grid = EliteGrid(10)
     puzzle = get_puzzle(request)
     gen_data = get_gen_data(request_data=request)
+    scenario = request["scenario"] if "scenario" in request else ""
+    name = request["name"] if "name" in request else "untitled"
 
-    data = {"user": user, "puzzle": request["puzzle"], "gen_data": gen_data, "grid": jsonpickle.encode(grid)}
+    data = {"user": user, "puzzle": request["puzzle"], "gen_data": gen_data, "grid": jsonpickle.encode(grid), "scenario": scenario, "name": name}
 
     results = evolveSessions.insert_one(data)
 

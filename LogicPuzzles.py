@@ -56,13 +56,13 @@ from enum import Enum
 
 # %% id="YxoXVU28JZaw"
 class Category:
-    def __init__(self, title, entities, is_numeric):
-        self.title = title
-        self.entities = entities
-        self.is_numeric = is_numeric
-
-    def __str__(self):
-        return self.title
+  def __init__(self, title, entities, is_numeric, increment  =1):
+    self.title = title
+    self.entities = entities
+    self.is_numeric = is_numeric
+    self.increment = increment
+  def __str__(self):
+    return self.title
 
 
 # %% id="EFhbSHGwKlRs"
@@ -889,19 +889,31 @@ def fill_in_word(puzzle, word):
 
 
 def generate_hint(puzzle):
-    """
-    given a puzzle generate a random, valid hint
-    """
-    cats = create_cats(puzzle)
-    nums = get_num(cats)
-    if len(nums) < 1:
-        del hint_grammar["hint"]["before"]
-    word = generate_word(hint_grammar, terminals)
-    try:
-        return fill_in_word(puzzle, word)["hint"]
-    except:
-        return generate_hint(puzzle)
-    # return fill_in_word(puzzle, word)["hint"]
+  """
+  given a puzzle generate a random, valid hint
+  """
+  word = generate_word(hint_grammar, terminals)
+  try:
+    return fill_in_word(puzzle, word)["hint"]
+  except: 
+    return generate_hint(puzzle) 
+  #return fill_in_word(puzzle, word)["hint"]
+
+def str_hint(hint, str_so_far = ""):
+  if isinstance(hint, dict):
+    rule = list(hint.keys())[0]
+    str_so_far += rule + ": "
+    return str_hint(hint[rule], str_so_far)
+  elif isinstance(hint, list):
+    str_so_far += "[ "
+    for i, term in enumerate(hint):
+      str_so_far += str_hint(term)
+      if i != len(hint) - 1:
+        str_so_far += ", "
+    str_so_far += " ]"
+  else:
+    str_so_far += str(hint)
+  return str_so_far
 
 
 def str_hint(hint, str_so_far=""):

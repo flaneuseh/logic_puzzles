@@ -129,10 +129,10 @@ def before_to_english(attributes, grammar_dict={}):
         and "before" in grammar_dict[cat1][cat2][num_cat]
     ):
         template_info = grammar_dict[cat1][cat2][num_cat]["before"]
-        step = template_info["step"]
+        step = attributes[4].increment
     else:
-        template_info = None
-        step = 1
+        template_info = None 
+        step = attributes[4].increment
 
     if not timed:
         if not template_info is None:
