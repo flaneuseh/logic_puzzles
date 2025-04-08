@@ -70,6 +70,7 @@ def get_new_puzzles(grid,database={}, data={}):
     new = grid.get_top_layer()
 
     formated_list = [hintset_to_di(child["puzzle"], child["row"], child["col"],  database, data) for child in new ]
+    return formated_list
 
 
 def get_puzzle(request_data):
@@ -79,9 +80,10 @@ def get_puzzle(request_data):
         print(puzzle_data)
         if "categories" in puzzle_data:
             for element in puzzle_data["categories"]:
+                print(element)
                 name = element["name"]
                 entities = element["entities"]
-                is_numeric = element["is_numeric"]
+                is_numeric =  element["is_numeric"] if "is_numeric" in element else False 
                 inc = element["inc"] if "inc" in element else 1 
                 category = Category(name, entities, is_numeric, increment=inc)
                 categories.append(category)
@@ -697,6 +699,7 @@ def get_available_moves(*args):
 
     currGrid = request_data["currGrid"]
     puzzle.grids = currGrid
+    print(request_data["puzzle"]["hint_grammar"])
     hints = [
         deserialized_hint_grammar(hint, puzzle.categories)
         for hint in request_data["puzzle"]["hint_grammar"]
