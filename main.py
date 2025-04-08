@@ -504,6 +504,120 @@ def add_click():
 
     return "success"
 
+@app.route('/get_posted_puzzles', methods=['GET'])
+@cross_origin()
+def get_posted():
+    username = request.args.get('username')
+
+    result = Database.get_posted_puzzles(username)
+
+    if  not result is None: 
+            return jsonify(result)
+
+    else: 
+        response = jsonify("user not found")
+        return response , 406 
+
+@app.route('/post_puzzle', methods=['POST'])
+@cross_origin()
+def post_puzzle():
+
+    request_data = request.get_json() 
+
+    username = request_data["username"]
+
+    puzzle = request_data["puzzle"]
+
+    title = request_data["title"]
+
+    body = request_data["body"]
+
+    time = request_data["time"]
+
+
+    result = Database.post_puzzle(username, title, body, time, puzzle)
+
+    if not result is None: 
+        return "success" 
+
+    else: 
+        response = jsonify("user not found")
+        return response , 406 
+
+@app.route('/view_puzzle', methods=['POST'])
+@cross_origin()
+def view_puzzle():
+
+    request_data = request.get_json() 
+
+    username = request_data["username"]
+
+    result = Database.view_puzzle(username, request_data["puzzleId"]) 
+
+    if not result is None: 
+        return "success" 
+
+    else: 
+        response = jsonify("user not found")
+        return response , 406 
+    
+@app.route('/like_posted_puzzle', methods=['POST'])
+@cross_origin()
+def like_posted_puzzle():
+
+    request_data = request.get_json() 
+
+    username = request_data["username"]
+
+    result = Database.like_posted_puzzles(username, request_data["puzzleId"]) 
+
+    if not result is None: 
+        return "success" 
+
+    else: 
+        response = jsonify("user not found")
+        return response , 406 
+
+@app.route('/unlike_posted_puzzle', methods=['POST'])
+@cross_origin()
+def unlike_posted_puzzle():
+
+    request_data = request.get_json() 
+
+    username = request_data["username"]
+
+    result = Database.unlike_posted_puzzles(username, request_data["puzzleId"]) 
+
+    if not result is None: 
+        return "success" 
+
+    else: 
+        response = jsonify("user not found")
+        return response , 406 
+
+@app.route('/add_comment', methods=['POST'])
+@cross_origin()
+def add_comment():
+
+    request_data = request.get_json() 
+
+    username = request_data["username"]
+
+    comment = request_data["comment"]
+
+    id = request_data["puzzleId"]
+
+    time = request_data["time"]
+
+
+    result = Database.post_comment(username, id, comment, time)
+
+    if not result is None: 
+        return "success" 
+
+    else: 
+        response = jsonify("user not found")
+        return response , 406 
 
     
 @app.route('/like_puzzle', methods=['POST'])

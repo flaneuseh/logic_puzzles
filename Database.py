@@ -22,6 +22,8 @@ evolveSessions = mydb["evolveSessions"]
 
 sessions = mydb["sessions"]
 
+posted_puzzles = mydb["community"]
+
 def add_user(user_id, privateKey, publicKey, mode):
     user = get_user(user_id)
     if user["publicKey"] in admins_public_keys:
@@ -29,12 +31,85 @@ def add_user(user_id, privateKey, publicKey, mode):
             user_template = {"mode": mode, "privateKey": privateKey, "publicKey": publicKey, "nextPuzzleIdx":0, "likedPuzzles":[], "grammar": {}, "evolveSessions": {"nextIdx": 0}, "categories":[]}
             i = userDB.insert_one(user_template)
         
+        
             return i 
         else: 
             return None 
     else:
         return -1 
 
+def get_posted_puzzles(user_id):
+    if get_user(user_id) != None:
+        puzzles = list(posted_puzzles.find({})) 
+        print(puzzles)
+        for p in puzzles:
+            p["_id"] = str(p["_id"])
+        return puzzles 
+    else:
+        return None
+    
+def view_puzzle(user_id, puzzle_id):
+    if get_user(user_id) != None:
+        result = posted_puzzles.find_one_and_update({"_id": ObjectId(puzzle_id)}, {"$inc": {"views": 1}})
+        return result 
+    
+def post_puzzle(user_id, post_title, post_body, time,  puzzle):
+    user = get_user(user_id)
+
+    if user != None:
+        data = {"username": user["publicKey"], "time":time, "title": post_title, "body": post_body, "puzzle":puzzle, "comments": [], "views" : 0, "likes":0 }
+
+        puzzle = posted_puzzles.insert_one(data)
+        return puzzle 
+    else:
+        return None 
+
+def post_comment(user_id, puzzle_id, comment, time):
+
+    user = get_user(user_id)
+
+    if user != None:
+        data = {"username": user["publicKey"], "time":time, "comment":comment}
+
+        result = posted_puzzles.find_one_and_update({"_id": ObjectId(puzzle_id)}, {"$push": {"comments": data}})
+        return result  
+    else:
+        return -1 
+
+def like_posted_puzzles(user_id, puzzle_id):
+
+    result = userDB.find_one_and_update({"privateKey": user_id}, {"$push": {"community_puzzles": puzzle_id}})
+    result = posted_puzzles.find_one_and_update({"_id": ObjectId(puzzle_id)}, {"$inc": {"likes": 1}})
+
+    return not result is None 
+
+def unlike_posted_puzzles(user_id, puzzle_id):
+
+    result = userDB.find_one_and_update({"privateKey": user_id}, 
+            {"$pull": {"community_puzzles": puzzle_id}})
+    result = posted_puzzles.find_one_and_update({"_id": ObjectId(puzzle_id)}, {"$inc": {"likes": -1}})
+
+    return not result is None
+
+def get_liked_posted_puzzles(user_id):
+    user = get_user(user_id) 
+
+    if user is None:
+        return None 
+
+    elif "community_puzzles" in user:
+        puzzles = []
+
+        ids = [ObjectId(i) for i in user["community_puzzles"]]
+
+        puzzles = posted_puzzles.find({"_id": {"$in": ids}})
+        for p in puzzles:
+            p["_id"] = str(p["_id"])
+        return puzzles 
+    else:
+        return []
+
+    
 
 def get_user(user_id):
     user = userDB.find_one({"privateKey": user_id})
@@ -115,7 +190,6 @@ def get_user_grammar(user_id):
 
     if user!=None:
         custom_grammar = user["grammar"]
-        print(custom_grammar)
     else: 
         custom_grammar = {}
         
