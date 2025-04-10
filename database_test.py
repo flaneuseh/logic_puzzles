@@ -39,6 +39,10 @@ database["grammar"] = database["grammar_dict"]
 del database["grammar_dict"]
 i = sampleDatabase.insert_one(database)
 
+database = sampleDatabase.find_one({})
+
+print(database)
+
 
 
 
