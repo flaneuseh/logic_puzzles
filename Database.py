@@ -102,7 +102,7 @@ def get_liked_posted_puzzles(user_id):
 
         ids = [ObjectId(i) for i in user["community_puzzles"]]
 
-        puzzles = posted_puzzles.find({"_id": {"$in": ids}})
+        puzzles = list(posted_puzzles.find({"_id": {"$in": ids}})) 
         for p in puzzles:
             p["_id"] = str(p["_id"])
         return puzzles 

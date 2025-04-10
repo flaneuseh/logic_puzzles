@@ -686,6 +686,19 @@ def get_liked_puzzles():
         return response , 406 
 
 
+@app.route('/get_liked_posted_puzzles', methods=['GET'])
+@cross_origin()
+def get_liked_posted_puzzles():
+    username = request.args.get('username')
+
+    result = Database.get_liked_posted_puzzles(username)
+
+    if  not result is None: 
+            return jsonify(result)
+
+    else: 
+        response = jsonify("user not found")
+        return response , 406 
     
 
 @app.route('/sample_categories', methods=['GET'])
