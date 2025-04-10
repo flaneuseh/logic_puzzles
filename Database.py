@@ -24,6 +24,23 @@ sessions = mydb["sessions"]
 
 posted_puzzles = mydb["community"]
 
+survey_db = mydb["surveys"]
+
+
+def add_survey(user, data):
+    if get_user(user) != None:
+        survey_db.insert_one(data)
+    return 1 
+
+def get_number_surveys(user):
+    user =  get_user(user) 
+    if user != None:
+        surveys = list(survey_db.find({"username": user["publicKey"]})) 
+
+        return len(surveys)
+    else:
+        return -1 
+
 def add_user(user_id, privateKey, publicKey, mode):
     user = get_user(user_id)
     if user["publicKey"] in admins_public_keys:

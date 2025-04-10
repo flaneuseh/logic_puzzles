@@ -451,6 +451,34 @@ def add_account():
         return response , 401  
 
 
+@app.route('/add_survey', methods=['POST'])
+@cross_origin()
+def add_survey():
+
+    request_data = request.get_json() 
+
+    user = request_data["user"]
+    data = request_data["data"]
+    result = Database.add_survey(user, data)
+
+
+    if not result is None and result != -1: 
+        response = jsonify("success")
+        return response 
+
+@app.route('/get_num_surveys', methods=['POST'])
+@cross_origin()
+def get_num_surveys():
+
+    request_data = request.get_json() 
+
+    user = request_data["user"]
+
+    result = Database.add_survey(user)
+
+    return jsonify(result)
+  
+
 @app.route('/get_public_key', methods=['POST'])
 @cross_origin()
 def get_public_key():
