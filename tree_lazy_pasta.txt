@@ -1,0 +1,52 @@
+Puzzle:
+      Elb  Bow  Lin  She
+    --------------------
+Tom|  *    *    *    *  |
+Alf|  *    *    *    *  |
+Pes|  *    *    *    *  |
+Car|  *    *    *    *  |
+    --------------------
+Hints:
+Either the shapes Elbow or the shapes Shell is the sauces Tomato
+The sauces Alfredo is the shapes Shell
+Either the sauces Carbonara is the shapes Linguine or the shapes Bowtie is the sauces Alfredo
+      Elb  Bow  Lin  She                                                         Elb  Bow  Lin  She                                                   
+    --------------------                                                       --------------------                                                   
+Tom|  *    X    X    *  |                                                  Tom|  *    *    *    X  |                                                  
+Alf|  *    *    *    *  |                                                  Alf|  X    X    X    O  |                                                  
+Pes|  *    *    *    *  |                                                  Pes|  *    *    *    X  |                                                  
+Car|  *    *    *    *  |                                                  Car|  *    *    *    X  |                                                  
+    --------------------                                                       --------------------                                                   
+hint: Either the shapes Elbow or the shapes Shell is the sauces Tomato     hint: The sauces Alfredo is the shapes Shell                               
+insights: SIMPLE_OR_SAME_CAT (9),                                          insights: APPLY_IS (3),                                                    
+                                                                           CHOSEN BY SOLVER                                                           
+      Elb  Bow  Lin  She                                                                                      Elb  Bow  Lin  She                                                                                
+    --------------------                                                                                    --------------------                                                                                
+Tom|  O    X    X    x  |                                                                               Tom|  *    *    X    x  |                                                                               
+Alf|  x    x    x    o  |                                                                               Alf|  x    x    x    o  |                                                                               
+Pes|  X    *    *    x  |                                                                               Pes|  *    *    X    x  |                                                                               
+Car|  X    *    *    x  |                                                                               Car|  X    X    O    x  |                                                                               
+    --------------------                                                                                    --------------------                                                                                
+hint: Either the shapes Elbow or the shapes Shell is the sauces Tomato                                  hint: Either the sauces Carbonara is the shapes Linguine or the shapes Bowtie is the sauces Alfredo     
+insights: APPLY_OR (5),                                                                                 insights: APPLY_OR (5),                                                                                 
+CHOSEN BY SOLVER                                                                                                                                                                                                
+      Elb  Bow  Lin  She                                                                                
+    --------------------                                                                                
+Tom|  o    x    x    x  |                                                                               
+Alf|  x    x    x    o  |                                                                               
+Pes|  x    *    X    x  |                                                                               
+Car|  x    X    O    x  |                                                                               
+    --------------------                                                                                
+hint: Either the sauces Carbonara is the shapes Linguine or the shapes Bowtie is the sauces Alfredo     
+insights: APPLY_OR (5),                                                                                 
+CHOSEN BY SOLVER                                                                                        
+      Elb  Bow  Lin  She      
+    --------------------      
+Tom|  o    x    x    x  |     
+Alf|  x    x    x    o  |     
+Pes|  x    O    x    x  |     
+Car|  x    x    o    x  |     
+    --------------------      
+openings                      
+insights: OPENING (2),        
+CHOSEN BY SOLVER              

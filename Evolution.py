@@ -34,7 +34,7 @@ from LogicPuzzles import (
     find_transitives,
     ALL_INSIGHTS,
     repair,
-    Insight
+    Insight,
 )
 from HintToEnglish import hint_to_english
 
@@ -79,6 +79,7 @@ HINT_VALUES = {
     "compound_or": 0.1,
 }
 
+
 def get_available_moves(puzzle, hints):
     """
     get all possible next moves in the solution:
@@ -102,9 +103,9 @@ def get_available_moves(puzzle, hints):
             "type": "repair",
             "result": result,
             "move_diff": get_move_diff(puzzle, result),
-            "insights": [Insight.REPAIR]
+            "insights": [Insight.REPAIR],
         })
-    
+
     state_is_valid = not broken_state
 
     # We know that so far the puzzle is correct.
@@ -138,15 +139,13 @@ def get_available_moves(puzzle, hints):
         if applied and is_valid:
             moves.append({
                 "type": "hint",
-                "indexed_hint": {
-                    "idx": idx,
-                    "hint": hint
-                },
+                "indexed_hint": {"idx": idx, "hint": hint},
                 "result": result,
                 "move_diff": get_move_diff(puzzle, result),
                 "insights": insights,
             })
     return state_is_valid, moves
+
 
 def get_move_diff(before, after):
     diff = deepcopy(after)
@@ -160,13 +159,27 @@ def get_move_diff(before, after):
             for ent2_idx in range(0, len(before_grid)):
                 for ent1_idx in range(0, len(before_grid[ent2_idx])):
                     if (
-                        before_grid[ent2_idx][ent1_idx] == after_grid[ent2_idx][ent1_idx]
+                        before_grid[ent2_idx][ent1_idx]
+                        == after_grid[ent2_idx][ent1_idx]
                     ):
-                        diff.answer(cat1, cat2, cat1.entities[ent1_idx], cat2.entities[ent2_idx], lowercase_grid_symbol(after_grid[ent2_idx][ent1_idx]))
-                    elif (after_grid[ent2_idx][ent1_idx] == "*"):
+                        diff.answer(
+                            cat1,
+                            cat2,
+                            cat1.entities[ent1_idx],
+                            cat2.entities[ent2_idx],
+                            lowercase_grid_symbol(after_grid[ent2_idx][ent1_idx]),
+                        )
+                    elif after_grid[ent2_idx][ent1_idx] == "*":
                         # This is a repair operation
-                        diff.answer(cat1, cat2, cat1.entities[ent1_idx], cat2.entities[ent2_idx], "_")
+                        diff.answer(
+                            cat1,
+                            cat2,
+                            cat1.entities[ent1_idx],
+                            cat2.entities[ent2_idx],
+                            "_",
+                        )
     return diff
+
 
 def lowercase_grid_symbol(S):
     if S == "X":
@@ -177,19 +190,23 @@ def lowercase_grid_symbol(S):
         return "*"
     return "__"
 
+
 # %%
 def apply_hints(puzzle, hints, print_soln=False, forbidden_insights=set()):
     """
     solver
     """
+    is_valid = True
     copy = Puzzle(puzzle.categories)
     queue = hints[:]
     # trace = {}
     backlog = []
     applied = True
-    is_valid = True
     insights = set()
     loop = 0
+    if len(hints) == 0:
+        is_valid = False
+        return copy, is_valid, loop, insights
     while is_valid and applied and len(queue) > 0:
         applied = False
         loop += 1
@@ -202,55 +219,159 @@ def apply_hints(puzzle, hints, print_soln=False, forbidden_insights=set()):
             insights = insights | hint_insights
             if not complete:
                 backlog.append(hint)
+            elif print_soln:
+                print("HINT NO LONGER NEEDED: ", hint_to_english(hint))
             if not is_valid:
-                break
+                return copy, is_valid, loop, insights
 
             # Apply additional logic
             if a:
-                a_2, is_valid, complete, opening_insights = find_openings(copy)
-                a_3, is_valid, complete, trans_insights = find_transitives(
-                    copy, forbidden_insights=forbidden_insights
-                )
-                applied = applied or a_2 or a_3  # test if anything was changed
-                insights = insights | trans_insights | opening_insights
-            if print_soln:
-                print("hint: ", hint)
-                print("hint insight: ", hint_insights)
-                print("trans insight: ", trans_insights)
-                print("opening insight: ", opening_insights)
+                a_2 = True
+                a_3 = True
+                while a_2 or a_3:
+                    # Apply openings and transitives as many times as you can.
+                    a_2, is_valid, complete, opening_insights = find_openings(
+                        copy, forbidden_insights=forbidden_insights
+                    )
+                    if not is_valid:
+                        return copy, is_valid, loop, insights
+                    a_3, is_valid, complete, trans_insights = find_transitives(
+                        copy, forbidden_insights=forbidden_insights
+                    )
+                    if not is_valid:
+                        return copy, is_valid, loop, insights
+                    applied = applied or a_2 or a_3  # test if anything was changed
+                    insights = insights | trans_insights | opening_insights
+                if not is_valid:
+                    return copy, is_valid, loop, insights
+            if print_soln and a:
+                print("hint: ", hint_to_english(hint))
                 print("updated grid: ")
                 print(copy.print_grid())
         queue = backlog
         backlog = []
+
     return copy, is_valid, loop, insights
+
+
+def get_needed_insights(puzzle, hints):
+    completed_puzzle, is_valid, _, _ = apply_hints(
+        puzzle, hints, print_soln=False
+    )
+    assert(completed_puzzle.is_complete() and is_valid)
+
+    needed_insights = set()
+
+    # Find all insights that are required regardless of what other insights are allowed.
+    for insight in Insight:
+        completed_without_forbidden = can_solve_without_forbidden(
+            puzzle, hints, forbidden_insights={insight}
+        )
+        if not completed_without_forbidden:
+            needed_insights = needed_insights | {insight}
+
+    unneeded_insights = ALL_INSIGHTS - needed_insights
+    assert len(unneeded_insights & needed_insights) == 0
+    completed_without_unneeded = can_solve_without_forbidden(
+        puzzle, hints, unneeded_insights
+    )
+
+    # If these are not sufficient
+    if not completed_without_unneeded:
+        maybe_needed = set()
+        completed_without_maybe = False
+        # Add insights easiest first until the puzzle can be solved.
+        for insight in Insight:
+            if insight not in needed_insights and not completed_without_maybe:
+                maybe_needed = maybe_needed | {insight}
+                unneeded_insights = unneeded_insights - {insight}
+                completed_without_maybe = can_solve_without_forbidden(
+                    puzzle, hints, unneeded_insights
+                )
+        assert completed_without_maybe
+        # Remove any insights that don't result in the puzzle breaking.
+        for insight in reversed(Insight):
+            if insight in maybe_needed:
+                forbidden_try = unneeded_insights | {insight}
+                assert insight in forbidden_try
+                assert len(needed_insights & forbidden_try) == 0
+                assert len(maybe_needed & forbidden_try) == 1
+                completed_without_maybe = can_solve_without_forbidden(
+                    puzzle, hints, forbidden_try
+                )
+                if not completed_without_maybe:
+                    maybe_needed = maybe_needed - {insight}
+                    needed_insights = needed_insights | {insight}
+                    assert insight in needed_insights
+                    assert insight not in maybe_needed
+                    assert insight not in unneeded_insights
+                else:
+                    unneeded_insights = unneeded_insights | {insight}
+                    maybe_needed = maybe_needed - {insight}
+    if not can_solve_without_forbidden(puzzle, hints, ALL_INSIGHTS - needed_insights):
+        print("WITH FORBIDDEN")
+        apply_hints(
+        puzzle, hints, print_soln=True, forbidden_insights=ALL_INSIGHTS - needed_insights)
+        print("WITHOUT FORBIDDEN")
+        apply_hints(
+        puzzle, hints, print_soln=True)
+        print("needed: ", needed_insights)
+        print("unneeded: ", unneeded_insights)
+        print("maybe: ", maybe_needed)
+    assert can_solve_without_forbidden(puzzle, hints, ALL_INSIGHTS - needed_insights), "can't solve without some of {}".format(ALL_INSIGHTS - needed_insights)
+    assert not can_solve_without_forbidden(puzzle, hints, needed_insights)
+    return needed_insights
+
+
+def can_solve_without_forbidden(puzzle, hints, forbidden_insights):
+    completed_puzzle, is_valid, _, used_insights = apply_hints(
+        puzzle, hints, print_soln=False, forbidden_insights=forbidden_insights
+    )
+    assert (
+        len(used_insights & forbidden_insights) == 0
+    ), "insights: {} includes forbidden: {}".format(
+        used_insights, used_insights & forbidden_insights
+    )
+    # if not is_valid:
+    #     print("WITH FORBIDDEN")
+    #     apply_hints(
+    #     puzzle, hints, print_soln=True, forbidden_insights=forbidden_insights)
+    #     print("WITHOUT FORBIDDEN")
+    #     apply_hints(
+    #     puzzle, hints, print_soln=True)
+    assert is_valid, "not valid with forbidden {}".format(forbidden_insights)
+    return completed_puzzle.is_complete()
 
 
 # %%
 class HintSet:
     def __init__(
-        self, hints, puzzle, required_insights_oneof=set(), forbidden_insights=set()
+        self, hints, puzzle, required_insights=set(), forbidden_insights=set()
     ) -> None:
         self.hints = hints
         self.puzzle = puzzle  # assumed to be blank
-        self.required_insights_oneof = required_insights_oneof
-        self.require_insight = len(self.required_insights_oneof) > 0
+        self.required_insights = required_insights
+        self.require_insight = len(self.required_insights) > 0
         self.forbidden_insights = forbidden_insights
-        self.completed_puzzle, self.valid, self.loops, self.insights = apply_hints(
-            self.puzzle,
-            self.non_duplicates(),
-            forbidden_insights=self.forbidden_insights,
+        self.completed_puzzle, self.valid, self.loops, self.solver_insights = (
+            apply_hints(
+                self.puzzle,
+                self.non_duplicates(),
+            )
         )
 
-        (
-            self.dumb_completed_puzzle,
-            self.dumb_valid,
-            self.dumb_loops,
-            self.dumb_insights,
-        ) = apply_hints(
-            self.puzzle,
-            self.non_duplicates(),
-            forbidden_insights=self.forbidden_insights | self.required_insights_oneof,
-        )
+        self.insights = set()
+        if self.valid and self.completed_puzzle.is_complete():
+            self.insights = get_needed_insights(self.puzzle, self.hints)
+
+    def follows_insight_requirements(self):
+        # Should be solvable without the forbidden insights, 
+        # and should not be solvable without the required insights
+        if not self.valid or not self.completed_puzzle.is_complete():
+            return True
+        return can_solve_without_forbidden(
+            self.puzzle, self.hints, self.forbidden_insights
+        ) and len(self.insights & self.required_insights) == len(self.required_insights)
 
     def get_duplicates(self):
         english_dict = {}
@@ -272,17 +393,59 @@ class HintSet:
         s = 0
         for key in duplicates:
             s += duplicates[key]
-
         return s
 
     def non_duplicates(self):
-        new_list = []
-        duplicates = self.get_duplicates()
+        english_hints = []
+        non_duplicates = []
         for hint in self.hints:
-            if not hint_to_english(hint) in duplicates:
-                new_list.append(hint)
+            english = hint_to_english(hint)
+            if not english in english_hints:
+                non_duplicates.append(hint)
+                english_hints.append(english)
 
-        return new_list
+        final_puzzle_without_duplicates, valid_without_duplicates, _, _ = (
+            apply_hints(
+                self.puzzle,
+                non_duplicates,
+            )
+        )
+        final_puzzle_with_duplicates, valid_with_duplicates, _, _ = (
+            apply_hints(
+                self.puzzle,
+                self.hints,
+            )
+        )
+        # print("--------------------------------------")
+        # print("original hints ", [hint_to_english(hint) for hint in self.hints])
+        # print("non duplicates: ", [hint_to_english(hint) for hint in non_duplicates])
+        # print("with dupes complete ", final_puzzle_with_duplicates.is_complete())
+        # print("without dupes complete ", final_puzzle_without_duplicates.is_complete())
+        # print("with dupes grid")
+        # print(final_puzzle_with_duplicates.print_grid())
+        # print("without dupes grid")
+        # print(final_puzzle_without_duplicates.print_grid())
+        # print("with dupes valid ", valid_with_duplicates)
+        # print("without dupes valid ", valid_without_duplicates)
+        
+        # if valid_with_duplicates != valid_without_duplicates or valid_with_duplicates and final_puzzle_with_duplicates.is_complete() != final_puzzle_without_duplicates.is_complete():
+        #     print("WITHOUT DUPES SOLVER")
+        #     apply_hints(
+        #         self.puzzle,
+        #         non_duplicates,
+        #         print_soln = True
+        #     )
+        #     print("WITH DUPES SOLVER")
+        #     apply_hints(
+        #         self.puzzle,
+        #         self.hints,
+        #         print_soln = True
+        #     )
+        assert(valid_with_duplicates == valid_without_duplicates)
+        if valid_with_duplicates:
+            assert(final_puzzle_with_duplicates.is_complete() == final_puzzle_without_duplicates.is_complete())
+
+        return non_duplicates
 
     def mutate(self, add_rate):
         hint_copy = self.hints[:]
@@ -299,7 +462,7 @@ class HintSet:
         return HintSet(
             hint_copy,
             self.puzzle,
-            self.required_insights_oneof,
+            self.required_insights,
             self.forbidden_insights,
         )
 
@@ -318,12 +481,12 @@ class HintSet:
         return HintSet(
             hints[0:threshold],
             self.puzzle,
-            self.required_insights_oneof,
+            self.required_insights,
             self.forbidden_insights,
         ), HintSet(
             hints[threshold : len(hints)],
             self.puzzle,
-            self.required_insights_oneof,
+            self.required_insights,
             self.forbidden_insights,
         )
 
@@ -357,41 +520,14 @@ class HintSet:
         mad = (diff_sum / l) / (sum(values) / len(values))
         return 0.5 * mad
 
-    def need_insight(self):
-        return not self.dumb_completed_puzzle.is_complete()
+    def is_feasible(self):
+        valid = (
+            len(self.hints) > 0
+            and self.valid
+            and self.completed_puzzle.is_complete()
+            and self.follows_insight_requirements()
+        )
 
-    def is_valid(self):
-        valid = False
-        if not self.require_insight:
-            valid = (
-                len(self.hints) > 0
-                and self.valid
-                and self.completed_puzzle.is_complete()
-            )
-        else:
-            valid = (
-                len(self.hints) > 0
-                and self.valid
-                and self.completed_puzzle.is_complete()
-                and self.need_insight()
-            )
-        if valid and self.require_insight:
-            assert (
-                len(self.insights & self.required_insights_oneof) > 0
-                or len(self.required_insights_oneof) == 0
-            ), "insights: {} does not include any of: {}".format(
-                self.insights, self.required_insights_oneof
-            )
-            assert (
-                len(self.insights & self.forbidden_insights) == 0
-            ), "insights: {} includes forbidden: {}".format(
-                self.insights, self.insights & self.forbidden_insights
-            )
-            assert (
-                len(self.dumb_insights & self.required_insights_oneof) == 0
-            ), "dumb insights: {} includes required: {}".format(
-                self.dumb_insights, self.insights & self.required_insights_oneof
-            )
         return valid
 
     def _violations_fun(self, violations):
@@ -415,10 +551,15 @@ class HintSet:
     def feasibility(self):
         complete, valid = self.completed_puzzle.percent_complete()
         # violations = self.completed_puzzle.num_violations()
-        if not self.require_insight:
+        #return (0.5 * complete) + (0.5 * valid)
+        if not self.require_insight or not valid or not self.completed_puzzle.is_complete():
             return (0.5 * complete) + (0.5 * valid)
         else:
-            return (0.45 * complete) + (0.45 * valid) + (0.1 * self.need_insight())
+            return (
+                (0.45 * complete)
+                + (0.45 * valid)
+                + (0.1 * self.follows_insight_requirements())
+            )
 
     def solver_loops(self):
         if len(self.hints) == 0:
@@ -446,13 +587,16 @@ class HintSet:
         # return (0.5 * score / len(self.hints)) + (0.5 * (1 - (len(self.hints) / 20)))
 
         # Fn 2: optimize by number of solver loops and number of hints
-        return (0.5 * min(num_loops, 10) / 10) + (0.5 * (1 - (len(self.hints) / 20)))
+        # return (0.5 * min(num_loops, 10) / 10) + (0.5 * (1 - (len(self.hints) / 20)))
 
         # Fn 3: optimize by number of loops only
         # return num_loops
 
         # Fn 4: optimize by number of hints only
         # return 1 - (len(self.hints) / 20)
+
+        # Fn 5: optimize using insights
+        return (0.45 * min(num_loops, 10) / 10) + (0.45 * (1 - (len(self.hints) / 20)) + .1 * self.follows_insight_requirements())
 
 
 class History:
@@ -476,10 +620,10 @@ class History:
 
 
 # %%
-def random_hint_set(puzzle, required_insights_oneof=set(), forbidden_insights=set()):
+def random_hint_set(puzzle, required_insights=set(), forbidden_insights=set()):
     num = random.randint(1, 5)
     hints = [generate_hint(puzzle) for i in range(num)]
-    return HintSet(hints, puzzle, required_insights_oneof, forbidden_insights)
+    return HintSet(hints, puzzle, required_insights, forbidden_insights)
 
 
 # %% [markdown]
@@ -503,7 +647,7 @@ def _add_child(hints, feasible, infeasible):
     if hint set is valid, add to feasible pop with optmiziation fitness,
     otherwise add to infeasible pop with feasibility fitness
     """
-    if hints.is_valid():
+    if hints.is_feasible():
         fitness = hints.optimize_func()
         feasible.append((fitness, hints))
     else:
@@ -519,7 +663,7 @@ def evolve(
     mut_rate,
     add_rate,
     elits,
-    required_insights_oneof=set(),
+    required_insights=set(),
     forbidden_insights=set(),
 ):
     feasible = []
@@ -528,7 +672,7 @@ def evolve(
 
     # Create initial population
     for i in range(pop_size):
-        hints = random_hint_set(puzzle, required_insights_oneof, forbidden_insights)
+        hints = random_hint_set(puzzle, required_insights, forbidden_insights)
         _add_child(hints, feasible, infeasible)
 
     for gen in range(generations):
@@ -598,22 +742,14 @@ def evolve(
         feasible = new_feasible
         infeasible = new_infeasible
     for child in feasible:
-        assert (
-            len(child.insights & required_insights_oneof) > 0
-            or len(required_insights_oneof) == 0
-        ), "insights: {} does not include any of: {}".format(
-            child.insights, required_insights_oneof
+        assert len(child.insights & required_insights) == len(
+            required_insights
+        ), "insights: {} does not include all of: {}".format(
+            child.insights, required_insights
         )
-        assert (
-            len(child.insights & forbidden_insights) == 0
-        ), "insights: {} includes forbidden: {}".format(
-            child.insights, child.insights & forbidden_insights
-        )
-        assert (
-            len(child.dumb_insights & required_insights_oneof) == 0
-        ), "dumb insights: {} includes required: {}".format(
-            child.dumb_insights, child.insights & required_insights_oneof
-        )
+        assert can_solve_without_forbidden(
+            child.puzzle, child.hints, child.forbidden_insights
+        ), "can't solve without forbidden insights {}".format(forbidden_insights)
     return feasible, infeasible, history
 
 
@@ -626,7 +762,7 @@ if __name__ == "__main__":
 
     puzzle = Puzzle([suspects, weapons, rooms, time])
 
-    pop = evolve(puzzle, 100, 50, 0.2, 1, 0.5, 2, required_insights_oneof=ALL_INSIGHTS)
+    pop = evolve(puzzle, 100, 50, 0.2, 1, 0.5, 2, required_insights=ALL_INSIGHTS)
 
     file = open("InsightExp/pop.p", "wb")
     pickle.dump(pop, file)

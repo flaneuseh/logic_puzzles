@@ -1,0 +1,51 @@
+Puzzle:
+      10  15  20  25
+    --------------------
+Sal|  *    *    *    *  |
+Egg|  *    *    *    *  |
+Tof|  *    *    *    *  |
+Pea|  *    *    *    *  |
+    --------------------
+Hints:
+The food Eggs is the grams 15
+The food Salmon is 1 gramss before the food Peanuts
+      10  15  20  25                                                10  15  20  25                                          
+    --------------------                                          --------------------                                      
+Sal|  *    X    *    *  |                                     Sal|  *    *    *    X  |                                     
+Egg|  X    O    X    X  |                                     Egg|  *    *    *    *  |                                     
+Tof|  *    X    *    *  |                                     Tof|  *    *    *    *  |                                     
+Pea|  *    X    *    *  |                                     Pea|  X    *    *    *  |                                     
+    --------------------                                          --------------------                                      
+hint: The food Eggs is the grams 15                           hint: The food Salmon is 1 gramss before the food Peanuts     
+insights: APPLY_IS (3),                                       insights: BEFORE_ONE_SPOT_NOINFO (12),                        
+CHOSEN BY SOLVER                                                                                                            
+      10  15  20  25                                          
+    --------------------                                      
+Sal|  *    x    *    X  |                                     
+Egg|  x    o    x    x  |                                     
+Tof|  *    x    *    *  |                                     
+Pea|  X    x    *    *  |                                     
+    --------------------                                      
+hint: The food Salmon is 1 gramss before the food Peanuts     
+insights: BEFORE_ONE_SPOT_NOINFO (12),                        
+CHOSEN BY SOLVER                                              
+      10  15  20  25                                          
+    --------------------                                      
+Sal|  X    x    *    x  |                                     
+Egg|  x    o    x    x  |                                     
+Tof|  *    x    *    *  |                                     
+Pea|  x    x    X    *  |                                     
+    --------------------                                      
+hint: The food Salmon is 1 gramss before the food Peanuts     
+insights: BEFORE_N_SPOTS_CROSSCHECK (17),                     
+CHOSEN BY SOLVER                                              
+      10  15  20  25          
+    --------------------      
+Sal|  x    x    O    x  |     
+Egg|  x    o    x    x  |     
+Tof|  O    x    X    X  |     
+Pea|  x    x    x    O  |     
+    --------------------      
+openings                      
+insights: OPENING (2),        
+CHOSEN BY SOLVER              

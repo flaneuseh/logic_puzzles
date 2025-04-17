@@ -1,5 +1,5 @@
 from MapElites import evolve 
-from LogicPuzzles import Puzzle, Category 
+from LogicPuzzles import Puzzle, Category, Insight
 import jsonpickle
 import random
 order = Category("order", ["1st", "2nd", "3rd", "4th"], True)
@@ -7,8 +7,9 @@ quantity = Category("cup", ["1 cup", "2 cups", "3 cups", "4 cups"], True)
 food = Category("ingredient", ["Beans", "Pasta", "Tomato", "Carrots"], False)
 
 puzzle = Puzzle([order, quantity, food]) 
+required_insights = {Insight.BEFORE_N_SPOTS_CROSSCHECK}
 
-folder = "Escape"
+folder = "InsightsHub"
 starting =0 
 num_trials = 1
 gen_len = 1000 
@@ -21,7 +22,7 @@ elits = 10
 for trial in range(starting, num_trials):
     random.seed(trial)
     print("Starting Trial:{}".format(trial))
-    elit_grid, infeasible, history = evolve(puzzle, gen_len, pop_size, x_rate, mut_rate, add_rate, elits)
+    elit_grid, infeasible, history = evolve(puzzle, gen_len, pop_size, x_rate, mut_rate, add_rate, elits, required_insights=required_insights)
 
     elite_json = jsonpickle.encode(elit_grid)
     elite_file = open(folder + "/map_grid_trial_{}.p".format(trial), "w")
