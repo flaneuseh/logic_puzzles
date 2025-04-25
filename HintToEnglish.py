@@ -50,7 +50,6 @@ def is_to_english(attributes, grammar_dict = {}):
         template = grammar_dict[cat1][cat2]["is"]
     else:
         template = "The {cat1} {ent1} is the {cat2} {ent2}"
-
     return template.format(cat1=cat1, cat2 = cat2, ent1=ent1, ent2=ent2) 
 
 def not_to_english(attributes,  grammar_dict = {}):
@@ -81,6 +80,7 @@ def before_to_english(attributes,  grammar_dict = {}):
         amount  = attributes[5] 
     else: 
         amount = -1 
+
     if cat1 in grammar_dict and cat2 in grammar_dict[cat1] and num_cat in grammar_dict[cat1][cat2] and  "before" in grammar_dict[cat1][cat2][num_cat]:
         template_info = grammar_dict[cat1][cat2][num_cat]["before"]
         step = attributes[4].increment
@@ -136,7 +136,6 @@ def compound_or_to_english(attributes,  grammar_dict = {}):
 
 def hint_to_english(hint, grammar_dict = {}):
     kind = next(iter(hint))
-
     if kind == "is":
         return is_to_english(hint[kind], grammar_dict=grammar_dict)
     elif kind == "not":

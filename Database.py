@@ -525,7 +525,6 @@ def add_scenario(user_id, request_data):
 
 
 def get_scenario(user_id, get_samples=True):
-
     scenarios = []
     if get_samples:
         samples = list(scenarioDatabase.find({}, {"_id": 0}))

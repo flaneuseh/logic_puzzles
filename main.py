@@ -86,7 +86,6 @@ def get_puzzle(request_data):
                 inc = element["inc"] if "inc" in element else 1
                 category = Category(name, entities, is_numeric, increment=inc)
                 categories.append(category)
-        print("categories", categories[0].entities)
         puzzle = Puzzle(categories)
     else:
         subject = Category("order", ["1st", "2nd", "3rd", "4th"], True)
