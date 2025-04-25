@@ -5,6 +5,7 @@ from ItterativeMapElits import evolve as itterative_evolve
 from ItterativeMapElits import EliteGrid
 from LogicPuzzles import Category, Puzzle
 from bson.objectid import ObjectId
+from copy import deepcopy
 
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 
@@ -455,59 +456,69 @@ def add_scenario(user_id, request_data):
     user = get_user(user_id)
 
     if user["mode"] == "admin":
-        existing_scenarios = list(scenarioDatabase.find({}, {"_id": 0}))
-        names = []
-        for scen in existing_scenarios:
-            if scen["name"] in names:
-                scenarioDatabase.find_one_and_delete({"name": name})
-            else:
-                names.append(scen["name"])
-            for dbcat in scen["categories"]:
-                for cat in categories:
-                    if dbcat["name"] == cat["name"]:
-                        cat["entities"] = list(set(cat["entities"] + dbcat["entities"]))
-        
+        updated_scenarios = list(scenarioDatabase.find({}, {"_id": 0}))
+    else:
+        updated_scenarios = user["scenarios"]
+    
+    # Merge any duplicatly named cats
+    cats_no_dupes = []
+    cat_names = []
+    for cat in categories:
+        if cat["name"] in cat_names:
+            for og_cat in cats_no_dupes:
+                if og_cat["name"] == cat["name"]:
+                    og_cat["entities"] = list(set(og_cat["entities"] + cat["entities"]) - {"entity"})
+        else:
+            cat_names.append(cat["name"])
+            cats_no_dupes.append(cat)
+    categories = cats_no_dupes
+
+    # Update existing scenarios
+    scen_found = False
+    for uscen in updated_scenarios:
+        # Merge duplicate scenario narratives
+        if uscen["name"] == name:
+            scen_found = True
+            uscen["scenario"] = scenario
+        # Merge duplicate categories
+        for ucat in uscen["categories"]:
+            cat_found = False
+            for cat in categories:
+                if ucat["name"] == cat["name"]:
+                    cat_found = True
+                    cat["entities"] = list(set(cat["entities"] + ucat["entities"]) - {"entity"})
+            # Merge duplicate scenario categories
+            if not cat_found and uscen["name"] == name:
+                categories.append(ucat)
+    if not scen_found:
+        updated_scenarios.append({
+            "name": name,
+            "scenario": scenario,
+            "categories": categories
+        })
+
+    # Update categories in existing scenarios
+    for uscen in updated_scenarios:
+        if uscen["name"] == name:
+            uscen["categories"] = categories
+        else:
+            needs_update = False
+            for cat in categories:
+                for ucat in uscen["categories"]:
+                    if ucat["name"] == cat["name"] and set(ucat["entities"]) != set(cat["entities"]):
+                        ucat["entities"] = cat["entities"]
+                        needs_update = True
+                        
+            if needs_update and user["mode"] == "admin":
+                result = scenarioDatabase.update_many({"name": uscen["name"]}, {
+            "$set": {"categories": uscen["categories"]}}, upsert = True)
+
+    if user["mode"] == "admin":
         result = scenarioDatabase.update_many({"name": name}, {
             "$set": {"scenario": scenario, "categories": categories}}, upsert = True)
-
-        for scen in existing_scenarios:
-            if scen["name"] == name:
-                # This scenario has already been updated.
-                continue 
-            do_update = False
-            for dbcat in scen["categories"]:
-                for cat in categories:
-                    if dbcat["name"] == cat["name"]:
-                        if set(dbcat["entities"]) != set(cat["entities"]):
-                            dbcat["entities"] = cat["entities"]
-                            do_update = True
-            if do_update:
-                result = scenarioDatabase.update_many({"name": scen["name"]}, {
-                "$set": {"scenario": scenario}
-            })
-
     else:
-        existing_scenarios = user["scenarios"]
-
-        for (sidx, dbscen) in enumerate(existing_scenarios):
-            if dbscen["name"] == name:
-                existing_scenarios[sidx]["scenario"] = scenario
-            for dbcat in dbscen["categories"]:
-                for (cidx, cat) in enumerate(categories):
-                    if dbcat["name"] == cat["name"]:
-                        categories[cidx]["entities"] = list(set(cat["entities"] + dbcat["entities"]) - set("entity"))
-        for (sidx, dbscen) in enumerate(existing_scenarios):
-            for cat in categories:
-                catfound = False
-                for (cidx, dbcat) in enumerate(dbscen["categories"]):
-                    if dbcat["name"] == cat["name"]:
-                        existing_scenarios[sidx]["categories"][cidx]["entities"] = cat["entities"]
-                        catfound = True
-                if not catfound and dbscen["name"] == name:
-                    existing_scenarios[sidx]["categories"].append(cat)
-
         result = userDB.find_one_and_update(
-            {"privateKey": user_id}, {"$set": {"scenarios": existing_scenarios}}
+            {"privateKey": user_id}, {"$set": {"scenarios": updated_scenarios}}
         )
 
     return result
@@ -516,11 +527,11 @@ def add_scenario(user_id, request_data):
 def get_scenario(user_id, get_samples=True):
 
     scenarios = []
-
     if get_samples:
         samples = list(scenarioDatabase.find({}, {"_id": 0}))
         [s.update({"origin": "sample"}) for s in samples]
         scenarios += samples
+        
     user = get_user(user_id)
     if not user is None and "scenarios" in user:
         user_scens = user["scenarios"]
