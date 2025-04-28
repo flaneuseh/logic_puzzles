@@ -168,8 +168,9 @@ def get_liked_posted_puzzles(user_id):
 def get_user(user_id):
     user = userDB.find_one({"privateKey": user_id})
     if user["publicKey"] in admins_public_keys:
-        user["mode"] = "admin"
-        userDB.find_one_and_update({"privateKey": user_id}, {"$set": {"mode": "admin"}})
+        if "mode" not in user:
+            user["mode"] = "admin"
+            userDB.find_one_and_update({"privateKey": user_id}, {"$set": {"mode": "admin"}})
 
     if not user is None and not "nextPuzzleIdx" in user:
         userDB.find_one_and_update(
