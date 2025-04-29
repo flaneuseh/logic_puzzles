@@ -23,7 +23,9 @@ evolveSessions = mydb["evolveSessions"]
 
 sessions = mydb["sessions"]
 
-posted_puzzles = mydb["community"]
+posted_puzzles_hybrid = mydb["community_hybrid"]
+
+posted_puzzles_serious = mydb["community_serious"]
 
 survey_db = mydb["surveys"]
 
@@ -68,9 +70,11 @@ def add_user(user_id, privateKey, publicKey, mode):
 
 
 def get_posted_puzzles(user_id):
-    if get_user(user_id) != None:
+    user = get_user(user_id) 
+    if user != None:
+        posted_puzzles = posted_puzzles_hybrid if user["mode"] == "mixed" else posted_puzzles_serious
         puzzles = list(posted_puzzles.find({}))
-        print(puzzles)
+   
         for p in puzzles:
             p["_id"] = str(p["_id"])
         return puzzles
@@ -80,16 +84,14 @@ def get_posted_puzzles(user_id):
 
 def view_puzzle(user_id, puzzle_id):
     if get_user(user_id) != None:
-        result = posted_puzzles.find_one_and_update(
-            {"_id": ObjectId(puzzle_id)}, {"$inc": {"views": 1}}
-        )
-        return result
-
-
-def post_puzzle(user_id, post_title, post_body, time, puzzle):
+        result = posted_puzzles.find_one_and_update({"_id": ObjectId(puzzle_id)}, {"$inc": {"views": 1}})
+        return result 
+    
+def post_puzzle(user_id, post_title, post_body, time,  puzzle):
     user = get_user(user_id)
 
     if user != None:
+        posted_puzzles = posted_puzzles_hybrid if user["mode"] == "mixed" else posted_puzzles_serious
         data = {
             "username": user["publicKey"],
             "time": time,
@@ -112,6 +114,7 @@ def post_comment(user_id, puzzle_id, comment, time):
     user = get_user(user_id)
 
     if user != None:
+        posted_puzzles = posted_puzzles_hybrid if user["mode"] == "mixed" else posted_puzzles_serious
         data = {"username": user["publicKey"], "time": time, "comment": comment}
 
         result = posted_puzzles.find_one_and_update(
@@ -127,6 +130,8 @@ def like_posted_puzzles(user_id, puzzle_id):
     result = userDB.find_one_and_update(
         {"privateKey": user_id}, {"$push": {"community_puzzles": puzzle_id}}
     )
+    user = get_user(user_id)
+    posted_puzzles = posted_puzzles_hybrid if user["mode"] == "mixed" else posted_puzzles_serious
     result = posted_puzzles.find_one_and_update(
         {"_id": ObjectId(puzzle_id)}, {"$inc": {"likes": 1}}
     )
@@ -139,6 +144,8 @@ def unlike_posted_puzzles(user_id, puzzle_id):
     result = userDB.find_one_and_update(
         {"privateKey": user_id}, {"$pull": {"community_puzzles": puzzle_id}}
     )
+    user = get_user(user_id)
+    posted_puzzles = posted_puzzles_hybrid if user["mode"] == "mixed" else posted_puzzles_serious
     result = posted_puzzles.find_one_and_update(
         {"_id": ObjectId(puzzle_id)}, {"$inc": {"likes": -1}}
     )
@@ -147,7 +154,7 @@ def unlike_posted_puzzles(user_id, puzzle_id):
 
 
 def get_liked_posted_puzzles(user_id):
-    user = get_user(user_id)
+    user = get_user(user_id) 
 
     if user is None:
         return None
@@ -156,7 +163,7 @@ def get_liked_posted_puzzles(user_id):
         puzzles = []
 
         ids = [ObjectId(i) for i in user["community_puzzles"]]
-
+        posted_puzzles = posted_puzzles_hybrid if user["mode"] == "mixed" else posted_puzzles_serious
         puzzles = list(posted_puzzles.find({"_id": {"$in": ids}}))
         for p in puzzles:
             p["_id"] = str(p["_id"])
