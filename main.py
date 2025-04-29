@@ -576,7 +576,7 @@ def get_num_surveys():
 
     user = request_data["user"]
 
-    result = Database.add_survey(user)
+    result = Database.get_number_surveys(user)
 
     return jsonify(result)
 
