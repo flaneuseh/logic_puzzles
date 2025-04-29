@@ -30,7 +30,11 @@ survey_db = mydb["surveys"]
 
 
 def add_survey(user, data):
-    if get_user(user) != None:
+    print(user)
+    user = get_user(user) 
+    print(user)
+    if user != None:
+        data["username"] = user["publicKey"]
         survey_db.insert_one(data)
     return 1 
 
