@@ -254,73 +254,46 @@ def apply_hints(puzzle, hints, print_soln=False, forbidden_insights=set()):
     return copy, is_valid, loop, insights
 
 
-def get_needed_insights(puzzle, hints):
+def get_needed(puzzle, hints):
     completed_puzzle, is_valid, _, _ = apply_hints(
         puzzle, hints, print_soln=False
     )
     assert(completed_puzzle.is_complete() and is_valid)
 
-    needed_insights = set()
+    needed = set()
+    unneeded = ALL_INSIGHTS.copy()
 
-    # Find all insights that are required regardless of what other insights are allowed.
-    for insight in Insight:
-        completed_without_forbidden = can_solve_without_forbidden(
-            puzzle, hints, forbidden_insights={insight}
-        )
-        if not completed_without_forbidden:
-            needed_insights = needed_insights | {insight}
-
-    unneeded_insights = ALL_INSIGHTS - needed_insights
-    assert len(unneeded_insights & needed_insights) == 0
-    completed_without_unneeded = can_solve_without_forbidden(
-        puzzle, hints, unneeded_insights
+    # Add insights easiest first until the puzzle can be solved.
+    completed_without_maybe = can_solve_without_forbidden(
+        puzzle, hints, unneeded
     )
-
-    # If these are not sufficient
-    if not completed_without_unneeded:
-        maybe_needed = set()
-        completed_without_maybe = False
-        # Add insights easiest first until the puzzle can be solved.
-        for insight in Insight:
-            if insight not in needed_insights and not completed_without_maybe:
-                maybe_needed = maybe_needed | {insight}
-                unneeded_insights = unneeded_insights - {insight}
-                completed_without_maybe = can_solve_without_forbidden(
-                    puzzle, hints, unneeded_insights
-                )
-        assert completed_without_maybe
-        # Remove any insights that don't result in the puzzle breaking.
-        for insight in reversed(Insight):
-            if insight in maybe_needed:
-                forbidden_try = unneeded_insights | {insight}
-                assert insight in forbidden_try
-                assert len(needed_insights & forbidden_try) == 0
-                assert len(maybe_needed & forbidden_try) == 1
-                completed_without_maybe = can_solve_without_forbidden(
-                    puzzle, hints, forbidden_try
-                )
-                if not completed_without_maybe:
-                    maybe_needed = maybe_needed - {insight}
-                    needed_insights = needed_insights | {insight}
-                    assert insight in needed_insights
-                    assert insight not in maybe_needed
-                    assert insight not in unneeded_insights
-                else:
-                    unneeded_insights = unneeded_insights | {insight}
-                    maybe_needed = maybe_needed - {insight}
-    if not can_solve_without_forbidden(puzzle, hints, ALL_INSIGHTS - needed_insights):
-        print("WITH FORBIDDEN")
-        apply_hints(
-        puzzle, hints, print_soln=True, forbidden_insights=ALL_INSIGHTS - needed_insights)
-        print("WITHOUT FORBIDDEN")
-        apply_hints(
-        puzzle, hints, print_soln=True)
-        print("needed: ", needed_insights)
-        print("unneeded: ", unneeded_insights)
-        print("maybe: ", maybe_needed)
-    assert can_solve_without_forbidden(puzzle, hints, ALL_INSIGHTS - needed_insights), "can't solve without some of {}".format(ALL_INSIGHTS - needed_insights)
-    assert not can_solve_without_forbidden(puzzle, hints, needed_insights)
-    return needed_insights
+    for insight in Insight:
+        if not completed_without_maybe:
+            needed = needed | {insight}
+            unneeded = unneeded - {insight}
+            completed_without_maybe = can_solve_without_forbidden(
+                puzzle, hints, unneeded
+            )
+    assert len(needed | unneeded) == len(ALL_INSIGHTS)
+    assert can_solve_without_forbidden(puzzle, hints, unneeded), "can't solve without some of {}".format(unneeded)
+    assert not can_solve_without_forbidden(puzzle, hints, needed), "can solve without {}".format(needed)
+    # Remove any insights that don't result in the puzzle breaking, starting from the hardest
+    for insight in reversed(Insight):
+        if insight in needed:
+            needed = needed - {insight}
+            completed_without_maybe = can_solve_without_forbidden(
+                puzzle, hints, ALL_INSIGHTS - needed
+            )
+            
+            if not completed_without_maybe:
+                needed = needed | {insight}
+            else:
+                unneeded = unneeded | {insight}
+    assert len(needed | unneeded) == len(ALL_INSIGHTS)
+    assert len(ALL_INSIGHTS - needed) == len(unneeded)
+    assert can_solve_without_forbidden(puzzle, hints, ALL_INSIGHTS - needed), "can't solve without some of {}".format(ALL_INSIGHTS - needed)
+    assert not can_solve_without_forbidden(puzzle, hints, needed), "can solve without {}".format(needed)
+    return needed
 
 
 def can_solve_without_forbidden(puzzle, hints, forbidden_insights):
@@ -332,13 +305,6 @@ def can_solve_without_forbidden(puzzle, hints, forbidden_insights):
     ), "insights: {} includes forbidden: {}".format(
         used_insights, used_insights & forbidden_insights
     )
-    # if not is_valid:
-    #     print("WITH FORBIDDEN")
-    #     apply_hints(
-    #     puzzle, hints, print_soln=True, forbidden_insights=forbidden_insights)
-    #     print("WITHOUT FORBIDDEN")
-    #     apply_hints(
-    #     puzzle, hints, print_soln=True)
     assert is_valid, "not valid with forbidden {}".format(forbidden_insights)
     return completed_puzzle.is_complete()
 
@@ -362,7 +328,7 @@ class HintSet:
 
         self.insights = set()
         if self.valid and self.completed_puzzle.is_complete():
-            self.insights = get_needed_insights(self.puzzle, self.hints)
+            self.insights = get_needed(self.puzzle, self.hints)
 
     def follows_insight_requirements(self):
         # Should be solvable without the forbidden insights, 

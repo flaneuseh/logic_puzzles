@@ -931,7 +931,6 @@ def generate_hint(puzzle):
         return fill_in_word(puzzle, word)["hint"]
     except:
         return generate_hint(puzzle)
-    # return fill_in_word(puzzle, word)["hint"]
 
 
 def str_hint(hint, str_so_far=""):
