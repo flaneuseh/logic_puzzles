@@ -292,6 +292,8 @@ def merge_dicts(di1, di2):
             new_di[key] = di1[key]
     
     for key in di2:
+        print(key)
+        print(di1)
         if not key in di1:
             new_di[key] = di2[key]
 
