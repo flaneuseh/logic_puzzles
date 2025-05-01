@@ -51,7 +51,10 @@ def is_to_english(attributes, grammar_dict = {}):
     ent2 = attributes[3]
 
     if cat1 in grammar_dict and cat2 in grammar_dict[cat1] and "is" in grammar_dict[cat1][cat2]:
-        template = grammar_dict[cat1][cat2]["is"][0]
+        template = grammar_dict[cat1][cat2]["is"]
+        if isinstance(template, list): 
+            template = template[0]
+    
     else:
         template = "The {cat1} {ent1} is the {cat2} {ent2}"
     template = toTemplate(template)
@@ -66,7 +69,9 @@ def not_to_english(attributes,  grammar_dict = {}):
     ent2 = attributes[3]
 
     if cat1 in grammar_dict and cat2 in grammar_dict[cat1] and "not" in grammar_dict[cat1][cat2]:
-        template = grammar_dict[cat1][cat2]["not"][0]
+        template = grammar_dict[cat1][cat2]["not"]
+        if isinstance(template, list): 
+            template = template[0]
     else: 
         template = "The {cat1} {ent1} was not the {cat2} {ent2}"
 
@@ -88,7 +93,9 @@ def before_to_english(attributes,  grammar_dict = {}):
         amount = -1 
 
     if cat1 in grammar_dict and cat2 in grammar_dict[cat1] and num_cat in grammar_dict[cat1][cat2] and  "before" in grammar_dict[cat1][cat2][num_cat]:
-        template_info = grammar_dict[cat1][cat2][num_cat]["before"][0]
+        template_info = grammar_dict[cat1][cat2][num_cat]["before"]
+        if isinstance(template, list): 
+            template = template[0]
         step = attributes[4].increment
     else:
         template_info = None 
@@ -124,7 +131,9 @@ def simple_or_to_english(attributes,  grammar_dict = {}):
     is_ent = attributes[5] 
 
     if cat1 in grammar_dict and cat2 in grammar_dict[cat1] and is_cat in grammar_dict[cat1][cat2] and "or" in grammar_dict[cat1][cat2][is_cat]:
-        template =  grammar_dict[cat1][cat2][is_cat]["or"][0]
+        template =  grammar_dict[cat1][cat2][is_cat]["or"]
+        if isinstance(template, list): 
+            template = template[0]
     else:
         template =  "Either the {cat1} {ent1} or the {cat2} {ent2} is the {is_cat} {is_ent}"
 
@@ -146,7 +155,7 @@ def compound_or_to_english(attributes,  grammar_dict = {}):
 def hint_to_english(hint, grammar_dict = {}):
     kind = next(iter(hint))
     if kind == "is":
-        return is_to_english(hint[kind], grammar_dict=grammar_dict)
+        return is_to_english(hint[kind], grammar_dict=grammar_dict, hint=hint)
     elif kind == "not":
         return not_to_english(hint[kind], grammar_dict=grammar_dict)
     elif kind == "before":
