@@ -503,7 +503,13 @@ def add_scenario(user_id, request_data):
         if cat["name"] in cat_names:
             for og_cat in cats_no_dupes:
                 if og_cat["name"] == cat["name"]:
-                    og_cat["entities"] = list(set(og_cat["entities"] + cat["entities"]) - {"entity"})
+                    if cat["is_numeric"]:
+                        # Replace entities in the same position.
+                        for i, entity in enumerate(og_cat["entities"]):
+                            if cat["entities"][i] != "entity":
+                                og_cat["entities"][i] = entity
+                    else:
+                        og_cat["entities"] = list(set(og_cat["entities"] + cat["entities"]) - {"entity"})
         else:
             cat_names.append(cat["name"])
             cats_no_dupes.append(cat)
@@ -512,7 +518,7 @@ def add_scenario(user_id, request_data):
     # Update existing scenarios
     scen_found = False
     for uscen in updated_scenarios:
-        # Merge duplicate scenario narratives
+        # Replace existing scenario narrative
         if uscen["name"] == name:
             scen_found = True
             uscen["scenario"] = scenario
@@ -522,7 +528,13 @@ def add_scenario(user_id, request_data):
             for cat in categories:
                 if ucat["name"] == cat["name"]:
                     cat_found = True
-                    cat["entities"] = list(set(cat["entities"] + ucat["entities"]) - {"entity"})
+                    if cat["is_numeric"]:
+                        # Replace entities in the same position, keep enties in higher positions if they are not dupes.
+                        for i, entity in enumerate(ucat["entities"]):
+                            if i >= len(cat["entities"]) and entity not in cat["entities"]:
+                                cat["entities"].append(entity)
+                    else:
+                        cat["entities"] = list(set(cat["entities"] + ucat["entities"]) - {"entity"})
             # Merge duplicate scenario categories
             if not cat_found and uscen["name"] == name:
                 categories.append(ucat)
@@ -541,10 +553,13 @@ def add_scenario(user_id, request_data):
             needs_update = False
             for cat in categories:
                 for ucat in uscen["categories"]:
-                    if ucat["name"] == cat["name"] and set(ucat["entities"]) != set(cat["entities"]):
-                        ucat["entities"] = cat["entities"]
-                        needs_update = True
-                        
+                    if ucat["name"] == cat["name"]:
+                        if not ucat["is_numeric"] and set(ucat["entities"]) != set(cat["entities"]):
+                            ucat["entities"] = cat["entities"]
+                            needs_update = True
+                        elif ucat["is_numeric"] and ucat["entities"] == cat["entities"]:
+                            ucat["entities"] = cat["entities"]
+                            needs_update = True
             if needs_update and user["mode"] == "admin":
                 result = scenarioDatabase.update_many({"name": uscen["name"]}, {
             "$set": {"categories": uscen["categories"]}}, upsert = True)
