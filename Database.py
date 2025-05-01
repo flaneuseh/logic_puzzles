@@ -178,7 +178,7 @@ def get_liked_posted_puzzles(user_id):
 
 def get_user(user_id):
     user = userDB.find_one({"privateKey": user_id})
-    if user["publicKey"] in admins_public_keys:
+    if not user is None and user["publicKey"] in admins_public_keys:
         if "mode" not in user:
             user["mode"] = "admin"
             userDB.find_one_and_update({"privateKey": user_id}, {"$set": {"mode": "admin"}})
@@ -292,7 +292,6 @@ def get_user_grammar(user_id):
 
 
 def add_grammar_rule(user_id, request_data):
-
     update = {}
 
     user = get_user(user_id)
@@ -305,7 +304,6 @@ def add_grammar_rule(user_id, request_data):
         cat2 = request_data["cat2"]
         key_str += cat1 + "." + cat2 + ".is"
         update[key_str] = request_data["template"]
-
     elif rule_type == "not":
         cat1 = request_data["cat1"]
         cat2 = request_data["cat2"]
@@ -334,10 +332,9 @@ def add_grammar_rule(user_id, request_data):
         update[key_str] = value
 
     if user["publicKey"] in admins_public_keys:
-        result = sampleDatabase.find_one_and_update({}, {"$push": update})
+        result = sampleDatabase.find_one_and_update({}, {"$set": update})
     else:
-
-        result = userDB.find_one_and_update({"privateKey": user_id}, {"$push": update})
+        result = userDB.find_one_and_update({"privateKey": user_id}, {"$set": update})
 
     return result
 
@@ -400,7 +397,7 @@ def get_user_brainstorms(user_id):
 
     database = sampleDatabase.find_one({})
 
-    if user != None:
+    if user != None and "brainstorm" in user:
         custom_grammar = user["brainstorm"]
     else:
         custom_grammar = {}
@@ -467,9 +464,10 @@ def add_scenario(user_id, request_data):
 
     user = get_user(user_id)
 
+    updated_scenarios = []
     if user["mode"] == "admin":
         updated_scenarios = list(scenarioDatabase.find({}, {"_id": 0}))
-    else:
+    elif "scenarios" in user:
         updated_scenarios = user["scenarios"]
     
     # Merge any duplicatly named cats

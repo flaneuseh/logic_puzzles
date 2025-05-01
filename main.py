@@ -492,7 +492,12 @@ def get_brainstorm():
         ):
             return jsonify(value)
         else:
-            return jsonify(user_dict[cat1][cat2][num_cat]["before"])
+            before_brains = user_dict[cat1][cat2][num_cat]["before"]
+            if not "timed" in before_brains:
+                before_brains["timed"] = []
+            if not "untimed" in before_brains:
+                before_brains["untimed"] = []
+            return before_brains
 
     elif rule_type == "or":
         cat1 = request_data["cat1"]
