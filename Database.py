@@ -275,6 +275,29 @@ def get_liked_puzzles(user_id):
     else:
         return None
 
+def merge_dicts(di1, di2):
+    new_di = {}
+
+    for key in di1:
+        if key in di2:
+            if( isinstance(di1[key], list) or isinstance(di1[key], str) or isinstance(di1[key], int)) :
+                new_di[key] = di1[key] 
+            elif (isinstance(di1[key], dict)): 
+                new_di[key] = merge_dicts(di1[key], di2[key])
+            else:
+                print("Something is wrong here")
+                print(di1)
+                print(di1[key])
+        else:
+            new_di[key] = di1[key]
+    
+    for key in di2:
+        if not key in di1:
+            new_di[key] = di2[key]
+
+    return new_di
+        
+
 
 def get_user_grammar(user_id):
 
@@ -287,8 +310,9 @@ def get_user_grammar(user_id):
     else:
         custom_grammar = {}
 
-    database["grammar"].update(custom_grammar)
-    return database["grammar"]
+    #database["grammar"].update(custom_grammar)
+    grammar = merge_dicts(custom_grammar, database["grammar"])
+    return grammar
 
 
 def add_grammar_rule(user_id, request_data):
