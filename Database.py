@@ -17,7 +17,7 @@ sampleDatabase = mydb["samples"]
 
 scenarioDatabase = mydb["scenarios"]
 
-admins_public_keys = ["Admin 1"]
+admins_public_keys = ["Admin 1", "Admin 2"]
 
 evolveSessions = mydb["evolveSessions"]
 
