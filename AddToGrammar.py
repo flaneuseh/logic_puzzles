@@ -63,7 +63,7 @@ def get_empty_before(di, cats):
         for cat2 in cats: 
             cat2=cat2["name"]
             for cat3 in cats: 
-                if cat1 != cat2 and cat3["is_numeric"]: 
+                if cat3["is_numeric"]: 
                     cat3 = cat3["name"]
                     if cat1 != cat3 and cat2 != cat3: 
                         if not (cat1 in di and cat2 in di[cat1] and cat3 in di[cat1][cat2] and  "before" in di[cat1][cat2][cat3]):
