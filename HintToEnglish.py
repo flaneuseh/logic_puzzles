@@ -94,8 +94,8 @@ def before_to_english(attributes,  grammar_dict = {}):
 
     if cat1 in grammar_dict and cat2 in grammar_dict[cat1] and num_cat in grammar_dict[cat1][cat2] and  "before" in grammar_dict[cat1][cat2][num_cat]:
         template_info = grammar_dict[cat1][cat2][num_cat]["before"]
-        if isinstance(template, list): 
-            template = template[0]
+        if isinstance(template_info, list): 
+            template_info = template[0]
         step = attributes[4].increment
     else:
         template_info = None 
@@ -155,7 +155,7 @@ def compound_or_to_english(attributes,  grammar_dict = {}):
 def hint_to_english(hint, grammar_dict = {}):
     kind = next(iter(hint))
     if kind == "is":
-        return is_to_english(hint[kind], grammar_dict=grammar_dict, hint=hint)
+        return is_to_english(hint[kind], grammar_dict=grammar_dict)
     elif kind == "not":
         return not_to_english(hint[kind], grammar_dict=grammar_dict)
     elif kind == "before":
