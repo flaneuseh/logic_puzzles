@@ -282,7 +282,7 @@ def merge_dicts(di1, di2):
         if key in di2:
             if( isinstance(di1[key], list) or isinstance(di1[key], str) or isinstance(di1[key], int)) :
                 new_di[key] = di1[key] 
-            elif (isinstance(di1[key], dict)): 
+            elif (isinstance(di1[key], dict) and isinstance(di2[key], dict)): 
                 new_di[key] = merge_dicts(di1[key], di2[key])
             else:
                 print("Something is wrong here")
@@ -292,8 +292,6 @@ def merge_dicts(di1, di2):
             new_di[key] = di1[key]
     
     for key in di2:
-        print(key)
-        print(di1)
         if not key in di1:
             new_di[key] = di2[key]
 
