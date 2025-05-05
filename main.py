@@ -677,6 +677,8 @@ def post_puzzle():
         return response, 406
 
 
+
+
 @app.route("/view_puzzle", methods=["POST"])
 @cross_origin()
 def view_puzzle():
@@ -685,7 +687,12 @@ def view_puzzle():
 
     username = request_data["username"]
 
-    result = Database.view_puzzle(username, request_data["puzzleId"])
+    if "mode" in request_data:
+        mode = request_data["mode"]
+    else:
+        mode = None
+
+    result = Database.view_puzzle(username, request_data["puzzleId"],mode)
 
     if not result is None:
         return "success"
@@ -694,6 +701,39 @@ def view_puzzle():
         response = jsonify("user not found")
         return response, 406
 
+@app.route("/delete_post", methods=["POST"])
+@cross_origin()
+def delete_post():
+
+    request_data = request.get_json()
+
+    username = request_data["username"]
+
+    result = Database.delete_puzzle(username, request_data["mode"], request_data["puzzleId"])
+
+    if not result is None:
+        return "success"
+
+    else:
+        response = jsonify("user not found")
+        return response, 406
+
+@app.route("/delete_comment", methods=["POST"])
+@cross_origin()
+def delete_comment():
+
+    request_data = request.get_json()
+
+    username = request_data["username"]
+
+    result = Database.delete_comment(username, request_data["mode"], request_data["puzzleId"], request_data["comennt"])
+
+    if not result is None:
+        return "success"
+
+    else:
+        response = jsonify("user not found")
+        return response, 406
 
 @app.route("/like_posted_puzzle", methods=["POST"])
 @cross_origin()
