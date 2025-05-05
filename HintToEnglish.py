@@ -59,7 +59,7 @@ def is_to_english(attributes, grammar_dict = {}):
         template = "The {cat1} {ent1} is the {cat2} {ent2}"
     template = toTemplate(template)
 
-    return template.substitute(cat1=cat1, cat2 = cat2, ent1=ent1, ent2=ent2) 
+    return template.safe_substitute(cat1=cat1, cat2 = cat2, ent1=ent1, ent2=ent2) 
 
 def not_to_english(attributes,  grammar_dict = {}):
     attributes = attributes[0]["is"]
@@ -76,7 +76,7 @@ def not_to_english(attributes,  grammar_dict = {}):
         template = "The {cat1} {ent1} was not the {cat2} {ent2}"
 
     template = toTemplate(template) 
-    return template.substitute(cat1=cat1, cat2=cat2, ent1=ent1, ent2=ent2) 
+    return template.safe_substitute(cat1=cat1, cat2=cat2, ent1=ent1, ent2=ent2) 
 
 def before_to_english(attributes,  grammar_dict = {}):
     cat1 = attributes[0].title
@@ -108,7 +108,7 @@ def before_to_english(attributes,  grammar_dict = {}):
             
             template = "The {cat1} {ent1} is at least {step} {num_cat} before the {cat2} {ent2}"
         template = toTemplate(template) 
-        return template.substitute(cat1= cat1, cat2=cat2, num_cat=num_cat, step=step, ent1=ent1, ent2=ent2 )
+        return template.safe_substitute(cat1= cat1, cat2=cat2, num_cat=num_cat, step=step, ent1=ent1, ent2=ent2 )
     else:
         amount = amount * step 
         if not template_info is None: 
@@ -117,7 +117,7 @@ def before_to_english(attributes,  grammar_dict = {}):
             
             template = "The {cat1} {ent1} is {amount} {num_cat}s before the {cat2} {ent2}"
         template = toTemplate(template) 
-        return template.substitute(cat1= cat1, cat2=cat2, num_cat=num_cat, step=step, ent1=ent1, ent2=ent2, amount=amount )
+        return template.safe_substitute(cat1= cat1, cat2=cat2, num_cat=num_cat, step=step, ent1=ent1, ent2=ent2, amount=amount )
 
     
 
@@ -138,7 +138,7 @@ def simple_or_to_english(attributes,  grammar_dict = {}):
         template =  "Either the {cat1} {ent1} or the {cat2} {ent2} is the {is_cat} {is_ent}"
 
     template = toTemplate(template) 
-    return template.substitute(cat1=cat1, cat2=cat2, ent1=ent1, ent2=ent2, is_cat=is_cat, is_ent=is_ent)
+    return template.safe_substitute(cat1=cat1, cat2=cat2, ent1=ent1, ent2=ent2, is_cat=is_cat, is_ent=is_ent)
 
 def compound_or_to_english(attributes,  grammar_dict = {}):
     hint1 = attributes[0]
