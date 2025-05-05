@@ -596,9 +596,10 @@ def get_public_key():
 
     result = Database.get_user(id)
 
-    mode = result["mode"] if "mode" in result else "mixed"
+    
 
     if not result is None:
+        mode = result["mode"] if "mode" in result else "mixed"
         response = jsonify({"publicKey": result["publicKey"], "mode": mode})
         return response
     elif result is None:
@@ -726,7 +727,7 @@ def delete_comment():
 
     username = request_data["username"]
 
-    result = Database.delete_comment(username, request_data["mode"], request_data["puzzleId"], request_data["comennt"])
+    result = Database.delete_comment(username, request_data["mode"], request_data["puzzleId"], request_data["time"])
 
     if not result is None:
         return "success"

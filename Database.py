@@ -135,6 +135,7 @@ def delete_puzzle(admin_id, mode, puzzle_id):
     if (admin["mode"] == "admin"):
         posted_puzzles = posted_puzzles_hybrid if mode == "mixed" else posted_puzzles_serious
         result = posted_puzzles.find_one_and_delete({"_id": ObjectId(puzzle_id)})
+        return result 
     else:
         return None 
 
@@ -152,12 +153,12 @@ def post_comment(user_id, puzzle_id, comment, time):
         return result
     else:
         return -1
-def delete_comment(admin_id, mode, puzzle_id, comment):
+def delete_comment(admin_id, mode, puzzle_id, time):
     admin = get_user(admin_id)
 
-    if (admin["mode"] == "admin"):
+    if (admin != None and admin["mode"] == "admin"):
         posted_puzzles = posted_puzzles_hybrid if mode == "mixed" else posted_puzzles_serious
-        result = posted_puzzles.find_one_and_update({"_id": ObjectId(puzzle_id)}, {"$pull": {"comments": {"comment": comment}}})
+        result = posted_puzzles.find_one_and_update({"_id": ObjectId(puzzle_id)}, {"$pull": {"comments": {"time": time}}})
         return result
     else: 
         return None 
