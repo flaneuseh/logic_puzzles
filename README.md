@@ -19,6 +19,15 @@ If there is an error you can check with
 
 ```sudo systemctl status logic_puzzle_app.service``` 
 
+Or for more detail logs, check the journal with (where 200 is the number of lines to print): 
+
+```sudo journalctl -u logic_puzzle_app.service -n 200```
+
+
+You can find/modify the Gunicorn configuration with: 
+
+```sudo nano /etc/systemd/system/logic_puzzle_app.service```
+
 You can reference this tutorial: https://medium.com/@adityaarya1/deploy-a-flask-application-to-azure-vm-with-a-ssl-certificate-d2960c50783d 
 
 ## Quick Start 
