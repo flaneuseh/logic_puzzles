@@ -786,7 +786,12 @@ def add_comment():
 
     time = request_data["time"]
 
-    result = Database.post_comment(username, id, comment, time)
+    if "mode" in request_data:
+        mode = request_data["mode"]
+    else:
+        mode = None
+ 
+    result = Database.post_comment(username, id, comment, time,mode)
 
     if not result is None:
         return "success"

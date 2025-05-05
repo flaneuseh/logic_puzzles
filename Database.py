@@ -125,6 +125,10 @@ def post_puzzle(user_id, post_title, post_body, time,  puzzle):
         }
 
         puzzle = posted_puzzles.insert_one(data)
+
+
+        if user["mode"] == "admin":
+            posted_puzzles_hybrid.insert_one(data)
         return puzzle
     else:
         return None
@@ -139,12 +143,12 @@ def delete_puzzle(admin_id, mode, puzzle_id):
     else:
         return None 
 
-def post_comment(user_id, puzzle_id, comment, time):
+def post_comment(user_id, puzzle_id, comment, time, mode = None):
 
     user = get_user(user_id)
 
     if user != None:
-        posted_puzzles = posted_puzzles_hybrid if user["mode"] == "mixed" else posted_puzzles_serious
+        posted_puzzles = posted_puzzles_hybrid if (user["mode"] == "mixed" or mode == "mixed") else posted_puzzles_serious
         data = {"username": user["publicKey"], "time": time, "comment": comment}
 
         result = posted_puzzles.find_one_and_update(
