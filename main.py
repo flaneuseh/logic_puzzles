@@ -48,12 +48,13 @@ def hintset_to_di(hintset, row, col, database={}, data={}):
     ]
     di["hint_grammar"] = [serialized_hint_grammar(hint) for hint in hintset.hints]
     di["diff"] = col + 1
-    di["sol"] = row 
+    di["sol"] = row
     if "name" in data:
         di["name"] = data["name"]
     if "scenario" in data:
         di["scenario"] = data["scenario"]
-    return di 
+    return di
+
 
 def elite_grid_to_json(grid):
     grid_di = []
@@ -66,10 +67,15 @@ def elite_grid_to_json(grid):
                 i += 1
     return grid_di
 
-def get_new_puzzles(grid,database={}, data={}):
+
+def get_new_puzzles(grid, database={}, data={}):
     new = grid.get_top_layer()
 
-    formated_list = [hintset_to_di(child["puzzle"], child["row"], child["col"],  database, data) for child in new ]
+    formated_list = [
+        hintset_to_di(child["puzzle"], child["row"], child["col"], database, data)
+        for child in new
+    ]
+
     return formated_list
 
 
@@ -83,8 +89,8 @@ def get_puzzle(request_data):
                 print(element)
                 name = element["name"]
                 entities = element["entities"]
-                is_numeric =  element["is_numeric"] if "is_numeric" in element else False 
-                inc = element["inc"] if "inc" in element else 1 
+                is_numeric = element["is_numeric"]
+                inc = element["inc"] if "inc" in element else 1
                 category = Category(name, entities, is_numeric, increment=inc)
                 categories.append(category)
         puzzle = Puzzle(categories)
@@ -293,43 +299,75 @@ def add_category():
     else:
         response = jsonify("success")
         return response
-    
-@app.route('/add_scenario', methods=['POST'])
+
+
+@app.route("/add_scenario", methods=["POST"])
 @cross_origin()
 def add_scen():
 
-    request_data = request.get_json() 
+    request_data = request.get_json()
 
     result = Database.add_scenario(request_data["user"], request_data)
 
     if result is None:
         response = jsonify("user not found")
-        return response , 406
+        return response, 406
     else:
         response = jsonify("success")
         return response
-    
-@app.route('/get_scenarios', methods=['GET'])
+
+
+@app.route("/update_scenario", methods=["POST"])
+@cross_origin()
+def update_scen():
+
+    request_data = request.get_json()
+
+    result = Database.update_scenario(request_data["user"], request_data)
+
+    if result is None:
+        response = jsonify("user not found")
+        return response, 406
+    else:
+        response = jsonify("success")
+        return response
+
+
+@app.route("/delete_scenario", methods=["POST"])
+@cross_origin()
+def delete_scen():
+
+    request_data = request.get_json()
+
+    result = Database.delete_scenario(request_data["user"], request_data)
+
+    if result is None:
+        response = jsonify("user not found")
+        return response, 406
+    else:
+        response = jsonify("success")
+        return response
+
+
+@app.route("/get_scenarios", methods=["GET"])
 @cross_origin()
 def get_scenarios():
-    
-
     if "user" in request.args:
-       username = request.args.get('user')
+        username = request.args.get("user")
     else:
-       username = "null"
+        username = "null"
 
     if "getSample" in request.args:
         get_sample = request.args.get("getSample")
     else:
-        get_sample = False 
+        get_sample = False
 
     user_data = Database.get_scenario(username, get_sample)
-    
+
     return jsonify(user_data)
 
-    
-@app.route('/get_template', methods=['POST'])
+
+@app.route("/get_template", methods=["POST"])
 @cross_origin()
 def get_template():
 
@@ -461,7 +499,12 @@ def get_brainstorm():
         ):
             return jsonify(value)
         else:
-            return jsonify(user_dict[cat1][cat2][num_cat]["before"])
+            before_brains = user_dict[cat1][cat2][num_cat]["before"]
+            if not "timed" in before_brains:
+                before_brains["timed"] = []
+            if not "untimed" in before_brains:
+                before_brains["untimed"] = []
+            return before_brains
 
     elif rule_type == "or":
         cat1 = request_data["cat1"]
@@ -522,6 +565,34 @@ def add_account():
         return response, 401
 
 
+@app.route("/add_survey", methods=["POST"])
+@cross_origin()
+def add_survey():
+
+    request_data = request.get_json()
+
+    user = request_data["user"]
+    data = request_data["data"]
+    result = Database.add_survey(user, data)
+
+    if not result is None and result != -1:
+        response = jsonify("success")
+        return response
+
+
+@app.route("/get_num_surveys", methods=["POST"])
+@cross_origin()
+def get_num_surveys():
+
+    request_data = request.get_json()
+
+    user = request_data["user"]
+
+    result = Database.get_number_surveys(user)
+
+    return jsonify(result)
+
+
 @app.route("/get_public_key", methods=["POST"])
 @cross_origin()
 def get_public_key():
@@ -532,52 +603,166 @@ def get_public_key():
 
     result = Database.get_user(id)
 
-    mode = result["mode"] if  "mode" in result else "mixed"
+    mode = result["mode"] if "mode" in result else "mixed"
 
-
-    if not result is None: 
+    if not result is None:
         response = jsonify({"publicKey": result["publicKey"], "mode": mode})
-        return response 
-    elif result is None: 
+        return response
+    elif result is None:
         response = jsonify("user doesn't exist")
         return response, 401
- 
-@app.route('/new_session', methods=['POST'])
+
+
+@app.route("/new_session", methods=["POST"])
 @cross_origin()
 def new_session():
 
-    request_data = request.get_json() 
-
+    request_data = request.get_json()
 
     privateKey = request_data["privateKey"]
 
-
     result = Database.new_session(privateKey, request_data["startTime"])
 
-
-    if not result is None and result != -1: 
-        return result 
-    elif result is None: 
+    if not result is None and result != -1:
+        return result
+    elif result is None:
         response = jsonify("user does not exist")
-        return response , 401
-    
-@app.route('/add_click', methods=['POST'])
+        return response, 401
+
+
+@app.route("/add_click", methods=["POST"])
 @cross_origin()
 def add_click():
 
-    request_data = request.get_json() 
-
+    request_data = request.get_json()
 
     sessionID = request_data["sessionID"]
-
 
     Database.add_click(sessionID, request_data)
 
     return "success"
 
 
-    
-@app.route('/like_puzzle', methods=['POST'])
+@app.route("/get_posted_puzzles", methods=["GET"])
+@cross_origin()
+def get_posted():
+    username = request.args.get("username")
+
+    result = Database.get_posted_puzzles(username)
+
+    if not result is None:
+        return jsonify(result)
+
+    else:
+        response = jsonify("user not found")
+        return response, 406
+
+
+@app.route("/post_puzzle", methods=["POST"])
+@cross_origin()
+def post_puzzle():
+
+    request_data = request.get_json()
+
+    username = request_data["username"]
+
+    puzzle = request_data["puzzle"]
+
+    title = request_data["title"]
+
+    body = request_data["body"]
+
+    time = request_data["time"]
+
+    result = Database.post_puzzle(username, title, body, time, puzzle)
+
+    if not result is None:
+        return "success"
+
+    else:
+        response = jsonify("user not found")
+        return response, 406
+
+
+@app.route("/view_puzzle", methods=["POST"])
+@cross_origin()
+def view_puzzle():
+
+    request_data = request.get_json()
+
+    username = request_data["username"]
+
+    result = Database.view_puzzle(username, request_data["puzzleId"])
+
+    if not result is None:
+        return "success"
+
+    else:
+        response = jsonify("user not found")
+        return response, 406
+
+
+@app.route("/like_posted_puzzle", methods=["POST"])
+@cross_origin()
+def like_posted_puzzle():
+
+    request_data = request.get_json()
+
+    username = request_data["username"]
+
+    result = Database.like_posted_puzzles(username, request_data["puzzleId"])
+
+    if not result is None:
+        return "success"
+
+    else:
+        response = jsonify("user not found")
+        return response, 406
+
+
+@app.route("/unlike_posted_puzzle", methods=["POST"])
+@cross_origin()
+def unlike_posted_puzzle():
+
+    request_data = request.get_json()
+
+    username = request_data["username"]
+
+    result = Database.unlike_posted_puzzles(username, request_data["puzzleId"])
+
+    if not result is None:
+        return "success"
+
+    else:
+        response = jsonify("user not found")
+        return response, 406
+
+
+@app.route("/add_comment", methods=["POST"])
+@cross_origin()
+def add_comment():
+
+    request_data = request.get_json()
+
+    username = request_data["username"]
+
+    comment = request_data["comment"]
+
+    id = request_data["puzzleId"]
+
+    time = request_data["time"]
+
+    result = Database.post_comment(username, id, comment, time)
+
+    if not result is None:
+        return "success"
+
+    else:
+        response = jsonify("user not found")
+        return response, 406
+
+
+@app.route("/like_puzzle", methods=["POST"])
 @cross_origin()
 def like_puzzle():
 
@@ -648,6 +833,21 @@ def get_liked_puzzles():
         return response, 406
 
 
+@app.route("/get_liked_posted_puzzles", methods=["GET"])
+@cross_origin()
+def get_liked_posted_puzzles():
+    username = request.args.get("username")
+
+    result = Database.get_liked_posted_puzzles(username)
+
+    if not result is None:
+        return jsonify(result)
+
+    else:
+        response = jsonify("user not found")
+        return response, 406
+
+
 @app.route("/sample_categories", methods=["GET"])
 @cross_origin()
 def get_sample_categories():
@@ -662,74 +862,30 @@ def get_sample_categories():
     return jsonify(user_data)
 
 
-def serialize_move(move):
-    s_move = {}
-    s_move["type"] = move["type"]
-    s_move["result"] = serialize_puzzle(move["result"])
-    if "indexed_hint" in move:
-        s_move["hint"] = {
-            "idx": move["indexed_hint"]["idx"],
-            "grammar": serialized_hint_grammar(move["indexed_hint"]["hint"]),
-        }
-    if "insights" in move:
-        s_move["insights"] = list(
-            map(
-                lambda insight: {"label": insight.name, "difficulty": insight.value},
-                move["insights"],
-            )
-        )
-    return s_move
-
-
-def serialize_puzzle(puzzle):
-    s_puzzle = {}
-    s_puzzle["curr_grid"] = puzzle.grids
-    s_puzzle["categories"] = [category_to_json(cat) for cat in puzzle.categories]
-    s_puzzle["left_right"] = [category_to_json(cat) for cat in puzzle.left_right]
-    s_puzzle["top_bottom"] = [category_to_json(cat) for cat in puzzle.top_bottom]
-    return s_puzzle
-
-
-@app.route("/get_available_moves", methods=["POST"])
-@cross_origin()
-def get_available_moves(*args):
-    request_data = request.get_json()
-
-    puzzle = get_puzzle(request_data)
-
-    currGrid = request_data["currGrid"]
-    puzzle.grids = currGrid
-    print(request_data["puzzle"]["hint_grammar"])
-    hints = [
-        deserialized_hint_grammar(hint, puzzle.categories)
-        for hint in request_data["puzzle"]["hint_grammar"]
-    ]
-
-    is_valid, available_moves = Evolution.get_available_moves(puzzle, hints)
-    result = {
-        "is_valid": is_valid,
-        "available_moves": list(map(serialize_move, available_moves)),
-        "suggested_lazy_move": serialize_move(choose_move_lazy(available_moves, 0)),
-    }
-
-    return jsonify(result)
-
-@app.route('/map_evolve', methods=['POST'])
+@app.route("/map_evolve", methods=["POST"])
 @cross_origin()
 def map_evolve_api(*args):
     print("args", args)
 
-    request_data = request.get_json() 
+    request_data = request.get_json()
 
     print("data", request_data)
 
-
-    puzzle = get_puzzle(request_data) 
+    puzzle = get_puzzle(request_data)
     gen_len, pop_size, x_rate, mut_rate, add_rate, elits = get_gen_data(request_data)
-    
-    elit_grid, infeasible, history = map_evolve(puzzle, gen_len, pop_size, x_rate, mut_rate, add_rate, elits) 
+
+    # return jsonify("get fucked")
+    elit_grid, infeasible, history = map_evolve(
+        puzzle, gen_len, pop_size, x_rate, mut_rate, add_rate, elits
+    )
+
+    # print(elit_grid)
+
+    # print(elite_grid_to_json(elit_grid))
 
     return elite_grid_to_json(elit_grid)
+    # return "hello world"
+
 
 @app.route("/iterate_map_evolve", methods=["POST"])
 @cross_origin()

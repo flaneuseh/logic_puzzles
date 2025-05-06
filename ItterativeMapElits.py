@@ -184,6 +184,8 @@ class EliteGrid:
         return li  
     def get_top_layer(self):
         top_layer = len(self.grids) - 1 
+        if top_layer < 0:
+            return []
         return self.get_new_to_layer(top_layer)
 
             

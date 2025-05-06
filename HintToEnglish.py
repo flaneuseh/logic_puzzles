@@ -1,10 +1,8 @@
-from LogicPuzzles import generate_hint, Puzzle, Category
-import random
-
-# random.seed(42)
-suspects = Category(
-    "suspect", ["Ms. Scarlet", "Ms. White", "Col Mustard", "Prof Plum"], False
-)
+from LogicPuzzles import generate_hint, Puzzle , Category
+import random 
+from string import Template
+#random.seed(42)
+suspects = Category("suspect", ["Ms. Scarlet", "Ms. White", "Col Mustard", "Prof Plum"], False)
 weapons = Category("weapon", ["Knife", "Rope", "Candle Stick", "Wrench"], False)
 rooms = Category("room", ["Ball room", "Living Room", "Kitchen", "Study"], False)
 time = Category("hour", ["1:00 pm", "2:00 pm", "3:00 pm", "4:00 pm"], True)
@@ -71,9 +69,11 @@ grammar_dict = {
     },
 }
 
+def toTemplate(str):
+    return Template(str.replace("{", "${"))
 
-def is_to_english(attributes, grammar_dict={}):
-    cat1 = attributes[0].title
+def is_to_english(attributes, grammar_dict = {}):
+    cat1 = attributes[0].title 
     ent1 = attributes[1]
     cat2 = attributes[2].title
     ent2 = attributes[3]
@@ -84,14 +84,34 @@ def is_to_english(attributes, grammar_dict={}):
         and "is" in grammar_dict[cat1][cat2]
     ):
         template = grammar_dict[cat1][cat2]["is"]
+        if isinstance(template, list): 
+            template = template[0]
+    
     else:
         template = "The {cat1} {ent1} is the {cat2} {ent2}"
+    template = toTemplate(template)
 
-    return template.format(cat1=cat1, cat2=cat2, ent1=ent1, ent2=ent2)
+    return template.substitute(cat1=cat1, cat2 = cat2, ent1=ent1, ent2=ent2) 
 
 
 def not_to_english(attributes, grammar_dict={}):
     attributes = attributes[0]["is"]
+    cat1 = attributes[0].title 
+    ent1 = attributes[1]
+    cat2 = attributes[2].title 
+    ent2 = attributes[3]
+
+    if cat1 in grammar_dict and cat2 in grammar_dict[cat1] and "not" in grammar_dict[cat1][cat2]:
+        template = grammar_dict[cat1][cat2]["not"]
+        if isinstance(template, list): 
+            template = template[0]
+    else: 
+        template = "The {cat1} {ent1} was not the {cat2} {ent2}"
+
+    template = toTemplate(template) 
+    return template.substitute(cat1=cat1, cat2=cat2, ent1=ent1, ent2=ent2) 
+
+def before_to_english(attributes,  grammar_dict = {}):
     cat1 = attributes[0].title
     ent1 = attributes[1]
     cat2 = attributes[2].title
@@ -119,16 +139,14 @@ def before_to_english(attributes, grammar_dict={}):
 
     timed = len(attributes) == 6
     if timed:
-        amount = attributes[5]
-    else:
-        amount = -1
-    if (
-        cat1 in grammar_dict
-        and cat2 in grammar_dict[cat1]
-        and num_cat in grammar_dict[cat1][cat2]
-        and "before" in grammar_dict[cat1][cat2][num_cat]
-    ):
+        amount  = attributes[5] 
+    else: 
+        amount = -1 
+
+    if cat1 in grammar_dict and cat2 in grammar_dict[cat1] and num_cat in grammar_dict[cat1][cat2] and  "before" in grammar_dict[cat1][cat2][num_cat]:
         template_info = grammar_dict[cat1][cat2][num_cat]["before"]
+        if isinstance(template_info, list): 
+            template_info = template[0]
         step = attributes[4].increment
     else:
         template_info = None 
@@ -140,14 +158,17 @@ def before_to_english(attributes, grammar_dict={}):
         else:
 
             template = "The {cat1} {ent1} is at least {step} {num_cat} before the {cat2} {ent2}"
-        return template.format(
-            cat1=cat1, cat2=cat2, num_cat=num_cat, step=step, ent1=ent1, ent2=ent2
-        )
+        template = toTemplate(template) 
+        return template.substitute(cat1= cat1, cat2=cat2, num_cat=num_cat, step=step, ent1=ent1, ent2=ent2 )
     else:
         amount = amount * step
         if not template_info is None:
             template = template_info["timed"]
         else:
+            
+            template = "The {cat1} {ent1} is {amount} {num_cat}s before the {cat2} {ent2}"
+        template = toTemplate(template) 
+        return template.substitute(cat1= cat1, cat2=cat2, num_cat=num_cat, step=step, ent1=ent1, ent2=ent2, amount=amount )
 
             template = (
                 "The {cat1} {ent1} is {amount} {num_cat}s before the {cat2} {ent2}"
@@ -172,21 +193,17 @@ def simple_or_to_english(attributes, grammar_dict={}):
     is_cat = attributes[4].title
     is_ent = attributes[5]
 
-    if (
-        cat1 in grammar_dict
-        and cat2 in grammar_dict[cat1]
-        and is_cat in grammar_dict[cat1][cat2]
-        and "or" in grammar_dict[cat1][cat2][is_cat]
-    ):
-        template = grammar_dict[cat1][cat2][is_cat]["or"]
+    if cat1 in grammar_dict and cat2 in grammar_dict[cat1] and is_cat in grammar_dict[cat1][cat2] and "or" in grammar_dict[cat1][cat2][is_cat]:
+        template =  grammar_dict[cat1][cat2][is_cat]["or"]
+        if isinstance(template, list): 
+            template = template[0]
     else:
         template = (
             "Either the {cat1} {ent1} or the {cat2} {ent2} is the {is_cat} {is_ent}"
         )
 
-    return template.format(
-        cat1=cat1, cat2=cat2, ent1=ent1, ent2=ent2, is_cat=is_cat, is_ent=is_ent
-    )
+    template = toTemplate(template) 
+    return template.substitute(cat1=cat1, cat2=cat2, ent1=ent1, ent2=ent2, is_cat=is_cat, is_ent=is_ent)
 
 
 def compound_or_to_english(attributes, grammar_dict={}):
@@ -204,7 +221,6 @@ def compound_or_to_english(attributes, grammar_dict={}):
 
 def hint_to_english(hint, grammar_dict={}):
     kind = next(iter(hint))
-
     if kind == "is":
         return is_to_english(hint[kind], grammar_dict=grammar_dict)
     elif kind == "not":

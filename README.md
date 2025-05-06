@@ -1,6 +1,26 @@
 # logic_puzzles
 This is a project for generating new logic grid puzzle. It uses a FI-2Pop genetic algorithm to generate puzzles that are both solvable and challenging. Solvable puzzles with complete and valid solution. Challenging puzzles are ones that require many round to complete. 
 
+
+## Hosting on a VM 
+
+* Step 1: SSH into vm 
+* step 2: cd into logic_puzzle
+* step 3: pull latest code 
+* step 4: reload systemctl 
+
+```sudo systemctl daemon-reload```
+
+* step 5: re-start the gunicorn service 
+
+```sudo systemctl restart logic_puzzle_app.service``` 
+
+If there is an error you can check with 
+
+```sudo systemctl status logic_puzzle_app.service``` 
+
+You can reference this tutorial: https://medium.com/@adityaarya1/deploy-a-flask-application-to-azure-vm-with-a-ssl-certificate-d2960c50783d 
+
 ## Quick Start 
 
 ### Playing generated puzzles 
