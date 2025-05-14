@@ -23,10 +23,11 @@ scenarios = list(scenarioDatabase.find({}, {}))
 print(scenarios)"""
 
 
+users = list(userDB.find({})) 
+print([user["publicKey"] for user in users])
 
 
-
-userDB.insert_one({ "privateKey": "******", "publicKey": "Admin 2", "nextPuzzleIdx":0, "likedPuzzles":[], "grammar": {}, "evolveSessions": {"nextIdx": 0}, "categories":[]})
+#userDB.insert_one({ "privateKey": "******", "publicKey": "Admin 2", "nextPuzzleIdx":0, "likedPuzzles":[], "grammar": {}, "evolveSessions": {"nextIdx": 0}, "categories":[]})
 #userDB.insert_one({ "privateKey": "password", "publicKey": "user", "nextPuzzleIdx":0, "likedPuzzles":[], "grammar": {}, "evolveSessions": {"nextIdx": 0}, "categories":[]})
 
 
