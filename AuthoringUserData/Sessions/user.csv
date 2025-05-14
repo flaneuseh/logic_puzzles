@@ -1,0 +1,343 @@
+_id,user,startTime,totalCasual,totalSerious,totalNeutral,clicks,totalTime
+67ed98ab21aa43b134fc2db3,user,2025-04-02T20:06:03.944Z,0,0,0,[],0
+67ed996866b79c45062f1864,user,2025-04-02T20:09:12.836Z,0,0,0,[],0
+67ed99be24fb33718095a144,user,2025-04-02T20:10:38.546Z,0,0,0,[],0
+67ed9a0824fb33718095a145,user,2025-04-02T20:11:52.418Z,0,0,0,[],0
+67ed9a405435a7ca8b035b41,user,2025-04-02T20:12:48.038Z,0,0,0,[],0
+67ed9a854b969991ade34735,user,2025-04-02T20:13:57.833Z,0,0,0,[],0
+67ed9b7d4b969991ade34737,user,2025-04-02T20:18:05.151Z,0,0,0,[],0
+67ed9c9b4b969991ade34738,user,2025-04-02T20:22:51.043Z,0,0,0,[],0
+67ed9cb94b969991ade34739,user,2025-04-02T20:23:21.492Z,0,0,0,[],0
+67ed9d7a30ebf87daab2c83d,user,2025-04-02T20:26:34.368Z,6,49,15,"['select scenario', 'add example category', 'add example category', 'add example category', 'select recommendation', 'view similar', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by hint']",36956
+67eeb95530ebf87daab2c83f,user,2025-04-03T16:37:41.420Z,0,0,0,[],0
+67eeb98030ebf87daab2c840,user,2025-04-03T16:38:24.809Z,0,0,0,[],0
+67eeb99f30ebf87daab2c841,user,2025-04-03T16:38:55.391Z,0,0,0,[],0
+67eeb9c430ebf87daab2c842,user,2025-04-03T16:39:32.081Z,0,0,0,[],0
+67eeba0330ebf87daab2c843,user,2025-04-03T16:40:35.529Z,0,0,0,[],0
+67eeba2c30ebf87daab2c844,user,2025-04-03T16:41:16.171Z,0,0,0,[],0
+67eebaad30ebf87daab2c845,user,2025-04-03T16:43:25.388Z,4,0,0,"['select scenario', 'add example category', 'add example category', 'add example category']",45956
+67eebb5930ebf87daab2c846,user,2025-04-03T16:46:17.628Z,1,0,0,['select scenario'],3752
+67eebb7930ebf87daab2c847,user,2025-04-03T16:46:49.217Z,1,0,0,['select scenario'],2238
+67eebbb030ebf87daab2c848,user,2025-04-03T16:47:44.645Z,5,0,0,"['select scenario', 'select scenario', 'add example category', 'add example category', 'add example category']",14660
+67eebbf330ebf87daab2c849,user,2025-04-03T16:48:51.617Z,4,0,0,"['select scenario', 'add example category', 'add example category', 'add example category']",8520
+67eebc3330ebf87daab2c84a,user,2025-04-03T16:49:55.326Z,4,96,0,"['select scenario', 'add example category', 'add example category', 'add example category', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution']",50392
+67eebc7f30ebf87daab2c84c,user,2025-04-03T16:51:11.967Z,0,0,0,[],0
+67eebcbd30ebf87daab2c84d,user,2025-04-03T16:52:13.288Z,0,0,0,[],0
+67eebd6130ebf87daab2c84e,user,2025-04-03T16:54:57.253Z,0,0,0,[],0
+67eebd7f30ebf87daab2c84f,user,2025-04-03T16:55:27.418Z,0,0,0,[],0
+67eebdca30ebf87daab2c850,user,2025-04-03T16:56:41.998Z,0,0,0,[],0
+67eebde430ebf87daab2c851,user,2025-04-03T16:57:08.192Z,0,0,0,[],0
+67eebdfc30ebf87daab2c852,user,2025-04-03T16:57:31.979Z,7,48,0,"['select scenario', 'select scenario', 'select scenario', 'select scenario', 'add example category', 'add example category', 'add example category', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution']",48129
+67eebe9230ebf87daab2c854,user,2025-04-03T17:00:02.359Z,0,0,0,[],0
+67eebefa30ebf87daab2c855,user,2025-04-03T17:01:46.594Z,0,0,0,[],0
+67eebf2230ebf87daab2c856,user,2025-04-03T17:02:26.321Z,0,0,0,[],0
+67eebf9030ebf87daab2c857,user,2025-04-03T17:04:16.358Z,0,0,0,[],0
+67eebfbb30ebf87daab2c858,user,2025-04-03T17:04:59.343Z,0,0,0,[],0
+67eebfdd30ebf87daab2c859,user,2025-04-03T17:05:33.363Z,0,0,0,[],0
+67eebffc30ebf87daab2c85a,user,2025-04-03T17:06:04.705Z,0,0,0,[],0
+67eec01430ebf87daab2c85b,user,2025-04-03T17:06:28.639Z,0,0,0,[],0
+67eec02d30ebf87daab2c85c,user,2025-04-03T17:06:53.916Z,0,0,0,[],0
+67eec05a30ebf87daab2c85d,user,2025-04-03T17:07:38.846Z,0,0,0,[],0
+67eec08b30ebf87daab2c85e,user,2025-04-03T17:08:27.182Z,0,0,0,[],0
+67eec0a730ebf87daab2c85f,user,2025-04-03T17:08:55.163Z,0,0,0,[],0
+67eec0c030ebf87daab2c860,user,2025-04-03T17:09:20.798Z,0,0,0,[],0
+67eec0f230ebf87daab2c861,user,2025-04-03T17:10:10.147Z,0,0,0,[],0
+67eec13630ebf87daab2c862,user,2025-04-03T17:11:18.249Z,0,0,0,[],0
+67eec15c30ebf87daab2c863,user,2025-04-03T17:11:56.041Z,0,0,0,[],0
+67eec17230ebf87daab2c864,user,2025-04-03T17:12:18.483Z,0,0,0,[],0
+67eec17d30ebf87daab2c865,user,2025-04-03T17:12:29.866Z,0,0,0,[],0
+67eec1bb30ebf87daab2c866,user,2025-04-03T17:13:31.056Z,0,0,0,[],0
+67eec1d330ebf87daab2c867,user,2025-04-03T17:13:55.757Z,4,0,0,"['select scenario', 'add example category', 'add example category', 'add example category']",169416
+67eec32c30ebf87daab2c868,user,2025-04-03T17:19:40.396Z,0,0,0,[],0
+67ef0231ac852f986830b1c8,user,2025-04-03T21:48:33.853Z,0,0,0,[],0
+67ef024aac852f986830b1c9,user,2025-04-03T21:48:58.183Z,0,0,0,[],0
+67ef02a1665af9d7a5c2fdc9,user,2025-04-03T21:50:25.546Z,0,0,0,[],0
+67ef035e064fde73c6f970ac,user,2025-04-03T21:53:34.540Z,0,0,0,[],0
+67ef0399064fde73c6f970ad,user,2025-04-03T21:54:33.717Z,0,0,0,[],0
+67ef03b4064fde73c6f970ae,user,2025-04-03T21:55:00.657Z,0,0,0,[],0
+67ef049d064fde73c6f970af,user,2025-04-03T21:58:53.884Z,0,0,0,[],0
+67ef04cc064fde73c6f970b0,user,2025-04-03T21:59:40.775Z,0,0,0,[],0
+67ef04ea064fde73c6f970b1,user,2025-04-03T22:00:10.695Z,0,0,0,[],0
+67ef05c0064fde73c6f970b2,user,2025-04-03T22:03:44.429Z,0,0,0,[],0
+67ef05d4064fde73c6f970b3,user,2025-04-03T22:04:04.739Z,0,0,0,[],0
+67ef05eb064fde73c6f970b4,user,2025-04-03T22:04:27.172Z,0,0,0,[],0
+67ef0616064fde73c6f970b5,user,2025-04-03T22:05:10.288Z,0,0,0,[],0
+67ef0632064fde73c6f970b6,user,2025-04-03T22:05:38.311Z,0,0,0,[],0
+67ef0665064fde73c6f970b7,user,2025-04-03T22:06:29.700Z,0,0,0,[],0
+67ef0690064fde73c6f970b8,user,2025-04-03T22:07:12.028Z,0,0,0,[],0
+67ef069e064fde73c6f970b9,user,2025-04-03T22:07:26.180Z,0,0,0,[],0
+67ef0785a651afb19a11dfb4,user,2025-04-03T22:11:17.870Z,0,0,0,[],0
+67ef07c99a6f94d4fd7e2b93,user,2025-04-03T22:12:25.041Z,0,0,0,[],0
+67ef081f3c77477515b6814d,user,2025-04-03T22:13:51.785Z,0,0,0,[],0
+67ef084f0507de36e8f05fd1,user,2025-04-03T22:14:39.499Z,0,0,0,[],0
+67ef08940507de36e8f05fd3,user,2025-04-03T22:15:48.811Z,0,0,0,[],0
+67ef08d30507de36e8f05fd4,user,2025-04-03T22:16:51.610Z,0,0,0,[],0
+67ef08fc0507de36e8f05fd5,user,2025-04-03T22:17:32.647Z,0,0,0,[],0
+67f039a90507de36e8f05fd6,user,2025-04-04T19:57:29.904Z,3,142,0,"['new scenario', 'new category', 'edit entity', 'new category', 'new category', 'select recommendation', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'new scenario', 'new category', 'edit entity', 'new category', 'new category', 'edit entity', 'select recommendation', 'view similar', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'new scenario', 'new category', 'new category', 'new category', 'edit entity', 'edit entity', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by hint', 'edit puzzle']",2555817
+67f043d30507de36e8f05fda,user,2025-04-04T20:40:51.283Z,0,0,0,[],0
+67f41ff64f4cffc95be050cb,user,2025-04-07T18:56:54.040Z,0,0,0,[],0
+67f420bb4f4cffc95be050cc,user,2025-04-07T19:00:11.299Z,0,0,0,[],0
+67f421144f4cffc95be050cd,user,2025-04-07T19:01:40.468Z,0,0,0,[],0
+67f4216c4f4cffc95be050ce,user,2025-04-07T19:03:08.489Z,0,0,0,[],0
+67f4218b4f4cffc95be050cf,user,2025-04-07T19:03:39.689Z,0,0,0,[],0
+67f422234f4cffc95be050d0,user,2025-04-07T19:06:10.980Z,0,0,0,[],0
+67f422334f4cffc95be050d1,user,2025-04-07T19:06:27.480Z,0,0,0,[],0
+67f4228b4f4cffc95be050d2,user,2025-04-07T19:07:55.576Z,0,0,0,[],0
+67f422d64f4cffc95be050d3,user,2025-04-07T19:09:10.642Z,0,0,0,[],0
+67f423444f4cffc95be050d4,user,2025-04-07T19:11:00.375Z,0,0,0,[],0
+67f4236c4f4cffc95be050d5,user,2025-04-07T19:11:40.328Z,0,0,0,[],0
+67f4238c4f4cffc95be050d6,user,2025-04-07T19:12:12.495Z,0,0,0,[],0
+67f4294e4f4cffc95be050d7,user,2025-04-07T19:36:46.398Z,0,0,0,[],0
+67f4296f4f4cffc95be050d8,user,2025-04-07T19:37:19.178Z,0,0,0,[],0
+67f429834f4cffc95be050d9,user,2025-04-07T19:37:39.072Z,0,0,0,[],0
+67f429a64f4cffc95be050da,user,2025-04-07T19:38:14.079Z,0,0,0,[],0
+67f42a904f4cffc95be050db,user,2025-04-07T19:42:08.396Z,0,0,0,[],0
+67f42b164f4cffc95be050dc,user,2025-04-07T19:44:22.734Z,0,0,0,[],0
+67f42b354f4cffc95be050dd,user,2025-04-07T19:44:53.799Z,0,0,0,[],0
+67f42b5c4f4cffc95be050de,user,2025-04-07T19:45:32.945Z,0,0,0,[],0
+67f42cac4f4cffc95be050df,user,2025-04-07T19:51:08.632Z,0,0,0,[],0
+67f42cc74f4cffc95be050e0,user,2025-04-07T19:51:35.182Z,0,0,0,[],0
+67f42d014f4cffc95be050e1,user,2025-04-07T19:52:33.650Z,0,0,0,[],0
+67f42d1c4f4cffc95be050e2,user,2025-04-07T19:53:00.351Z,0,0,0,[],0
+67f42e2a4f4cffc95be050e3,user,2025-04-07T19:57:30.120Z,0,0,0,[],0
+67f42e514f4cffc95be050e4,user,2025-04-07T19:58:09.384Z,0,0,0,[],0
+67f42ee54f4cffc95be050e5,user,2025-04-07T20:00:37.989Z,0,0,0,[],0
+67f42f604f4cffc95be050e6,user,2025-04-07T20:02:40.273Z,0,0,0,[],0
+67f42f9a4f4cffc95be050e7,user,2025-04-07T20:03:38.340Z,0,0,0,[],0
+67f42fe34f4cffc95be050e8,user,2025-04-07T20:04:51.803Z,0,0,0,[],0
+67f431134f4cffc95be050e9,user,2025-04-07T20:09:55.082Z,0,0,0,[],0
+67f431324f4cffc95be050ea,user,2025-04-07T20:10:26.320Z,0,0,0,[],0
+67f4314e4f4cffc95be050eb,user,2025-04-07T20:10:54.281Z,0,0,0,[],0
+67f431804f4cffc95be050ec,user,2025-04-07T20:11:44.075Z,0,0,0,[],0
+67f4319e4f4cffc95be050ed,user,2025-04-07T20:12:14.447Z,0,0,0,[],0
+67f431da4f4cffc95be050ee,user,2025-04-07T20:13:14.045Z,0,0,0,[],0
+67f4325e4f4cffc95be050ef,user,2025-04-07T20:15:26.066Z,0,0,0,[],0
+67f4327c4f4cffc95be050f0,user,2025-04-07T20:15:56.982Z,0,0,0,[],0
+67f432964f4cffc95be050f1,user,2025-04-07T20:16:22.219Z,0,0,0,[],0
+67f432c24f4cffc95be050f2,user,2025-04-07T20:17:06.111Z,0,0,0,[],0
+67f432d94f4cffc95be050f3,user,2025-04-07T20:17:29.966Z,0,0,0,[],0
+67f4385c4747e470dae97459,user,2025-04-07T20:41:00.108Z,0,0,0,[],0
+67f439114747e470dae9745b,user,2025-04-07T20:44:01.944Z,0,0,0,[],0
+67f439614747e470dae9745c,user,2025-04-07T20:45:21.433Z,0,0,0,[],0
+67f439f94747e470dae9745d,user,2025-04-07T20:47:53.251Z,0,0,0,[],0
+67f43a220659f657513fecf2,user,2025-04-07T20:48:34.195Z,0,0,0,[],0
+67f43b2e0659f657513fecf3,user,2025-04-07T20:53:02.355Z,0,0,0,[],0
+67f55ca80659f657513fecf4,user,2025-04-08T17:28:08.922Z,0,0,0,[],0
+67f55cec0659f657513fecf5,user,2025-04-08T17:29:16.290Z,0,0,0,[],0
+67f55d120659f657513fecf6,user,2025-04-08T17:29:54.646Z,0,0,0,[],0
+67f55eaed54bb164c4cdd4a2,user,2025-04-08T17:36:46.794Z,0,0,0,[],0
+67f560dad54bb164c4cdd4a3,user,2025-04-08T17:46:02.359Z,0,0,0,[],0
+67f5621e570ca7c82c5e8118,user,2025-04-08T17:51:26.175Z,0,0,0,[],0
+67f56277570ca7c82c5e8119,user,2025-04-08T17:52:55.567Z,0,0,0,[],0
+67f56318b3a38ac9caef65f0,user,2025-04-08T17:55:35.994Z,0,0,0,[],0
+67f56338b3a38ac9caef65f1,user,2025-04-08T17:56:08.157Z,0,0,0,[],0
+67f5659435e7b69d02d17f23,user,2025-04-08T18:06:12.255Z,0,0,0,[],0
+67f56660403e57a8109ac1fc,user,2025-04-08T18:09:36.686Z,0,0,0,[],0
+67f566db403e57a8109ac1fd,user,2025-04-08T18:11:39.578Z,0,0,0,[],0
+67f56774403e57a8109ac1fe,user,2025-04-08T18:14:12.235Z,4,0,0,"['select scenario', 'add example category', 'add example category', 'add example category']",85170
+67f5687d403e57a8109ac200,user,2025-04-08T18:18:37.930Z,4,0,0,"['select scenario', 'add example category', 'add example category', 'add example category']",6834
+67f568aa403e57a8109ac202,user,2025-04-08T18:19:22.522Z,4,0,0,"['select scenario', 'add example category', 'add example category', 'add example category']",3666
+67f56dbc403e57a8109ac204,user,2025-04-08T18:41:00.288Z,4,0,0,"['select scenario', 'add example category', 'add example category', 'add example category']",3614
+67f56f0425b6bb5d5b36b3f5,user,2025-04-08T18:46:28.670Z,16,1,0,"['select scenario', 'add example category', 'add example category', 'add example category', 'select recommendation', 'edit puzzle', 'select scenario', 'add example category', 'add example category', 'add example category', 'select recommendation', 'view similar', 'select scenario', 'add example category', 'add example category', 'add example category', 'select recommendation']",203043
+67f5718725b6bb5d5b36b3f9,user,2025-04-08T18:57:11.759Z,0,0,0,[],0
+67f5719325b6bb5d5b36b3fa,user,2025-04-08T18:57:23.372Z,0,0,0,[],0
+67f571ac9b93d99318d042ef,user,2025-04-08T18:57:48.629Z,0,1,0,['edit puzzle'],32289
+67f6b86c9b93d99318d042f0,user,2025-04-09T18:11:56.871Z,13,209,21,"['select scenario', 'add example category', 'add example category', 'add example category', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'edit puzzle', 'select scenario', 'add example category', 'add example category', 'add example category', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by hint size', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'select scenario', 'add example category', 'add example category', 'add example category', 'select recommendation', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution']",4274456
+67f6cb559b93d99318d042f4,user,2025-04-09T19:32:37.844Z,0,0,0,[],0
+67f6cb9e9b93d99318d042f5,user,2025-04-09T19:33:50.088Z,0,0,0,[],0
+67f6cc639b93d99318d042f6,user,2025-04-09T19:37:07.811Z,0,0,0,[],0
+67f6cc789b93d99318d042f7,user,2025-04-09T19:37:28.298Z,0,0,0,[],0
+67f6ccae9b93d99318d042f8,user,2025-04-09T19:38:22.604Z,0,0,0,[],0
+67f6ccca9b93d99318d042f9,user,2025-04-09T19:38:50.470Z,0,0,0,[],0
+67f6cf099b93d99318d042fa,user,2025-04-09T19:48:25.450Z,0,0,0,[],0
+67f6cf299b93d99318d042fb,user,2025-04-09T19:48:57.268Z,0,0,0,[],0
+67f6cf439b93d99318d042fc,user,2025-04-09T19:49:23.285Z,0,0,0,[],0
+67f6cf5d9b93d99318d042fd,user,2025-04-09T19:49:49.039Z,0,0,0,[],0
+67f6d2969b93d99318d042fe,user,2025-04-09T20:03:34.594Z,0,0,0,[],0
+67f6d3429b93d99318d042ff,user,2025-04-09T20:06:26.189Z,0,0,0,[],0
+67f6d3669b93d99318d04300,user,2025-04-09T20:07:02.194Z,0,0,0,[],0
+67f6d3cf9b93d99318d04301,user,2025-04-09T20:08:47.706Z,0,0,0,[],0
+67f6d4189b93d99318d04302,user,2025-04-09T20:10:00.896Z,0,0,0,[],0
+67f6d4539b93d99318d04303,user,2025-04-09T20:10:59.963Z,0,0,0,[],0
+67f6d51c9b93d99318d04304,user,2025-04-09T20:14:20.399Z,0,0,0,[],0
+67f6d5459b93d99318d04305,user,2025-04-09T20:15:01.024Z,0,0,0,[],0
+67f6d55a9b93d99318d04306,user,2025-04-09T20:15:22.964Z,0,0,0,[],0
+67f6d57b9b93d99318d04307,user,2025-04-09T20:15:55.405Z,0,0,0,[],0
+67f6d5909b93d99318d04308,user,2025-04-09T20:16:16.641Z,0,0,0,[],0
+67f6d5ba9b93d99318d04309,user,2025-04-09T20:16:58.481Z,0,0,0,[],0
+67f6d5da9b93d99318d0430a,user,2025-04-09T20:17:30.795Z,0,0,0,[],0
+67f6d5fe9b93d99318d0430b,user,2025-04-09T20:18:06.216Z,0,0,0,[],0
+67f6d6639b93d99318d0430c,user,2025-04-09T20:19:47.643Z,0,0,0,[],0
+67f6d6879b93d99318d0430d,user,2025-04-09T20:20:23.104Z,0,0,0,[],0
+67f6d6a19b93d99318d0430e,user,2025-04-09T20:20:48.987Z,0,0,0,[],0
+67f6d6b39b93d99318d0430f,user,2025-04-09T20:21:07.306Z,0,0,0,[],0
+67f6d6d39b93d99318d04310,user,2025-04-09T20:21:39.971Z,0,0,0,[],0
+67f6d7029b93d99318d04311,user,2025-04-09T20:22:26.080Z,0,0,0,[],0
+67f6d7169b93d99318d04312,user,2025-04-09T20:22:46.847Z,0,0,0,[],0
+67f6d7459b93d99318d04313,user,2025-04-09T20:23:33.612Z,0,0,0,[],0
+67f6d7659b93d99318d04314,user,2025-04-09T20:24:05.655Z,0,0,0,[],0
+67f6d7799b93d99318d04315,user,2025-04-09T20:24:25.231Z,0,0,0,[],0
+67f6d7a69b93d99318d04316,user,2025-04-09T20:25:10.765Z,0,0,0,[],0
+67f6d8049b93d99318d04317,user,2025-04-09T20:26:44.006Z,0,0,0,[],0
+67f6d8149b93d99318d04318,user,2025-04-09T20:27:00.287Z,0,0,0,[],0
+67f6d88f9b93d99318d04319,user,2025-04-09T20:29:03.434Z,0,0,0,[],0
+67f6d8b19b93d99318d0431a,user,2025-04-09T20:29:37.172Z,0,0,0,[],0
+67f6d8d59b93d99318d0431b,user,2025-04-09T20:30:13.358Z,0,0,0,[],0
+67f6d90c9b93d99318d0431c,user,2025-04-09T20:31:08.770Z,0,0,0,[],0
+67f6d91d9b93d99318d0431d,user,2025-04-09T20:31:25.508Z,0,0,0,[],0
+67f6d93f9b93d99318d0431e,user,2025-04-09T20:31:59.690Z,0,0,0,[],0
+67f6d9559b93d99318d0431f,user,2025-04-09T20:32:21.206Z,0,0,0,[],0
+67f6d9659b93d99318d04320,user,2025-04-09T20:32:37.747Z,0,0,0,[],0
+67f6da099b93d99318d04321,user,2025-04-09T20:35:21.530Z,0,0,0,[],0
+67f6da319b93d99318d04322,user,2025-04-09T20:36:01.113Z,0,0,0,[],0
+67f6da5b9b93d99318d04323,user,2025-04-09T20:36:43.875Z,0,0,0,[],0
+67f6da919b93d99318d04324,user,2025-04-09T20:37:37.828Z,0,0,0,[],0
+67f6dba39b93d99318d04325,user,2025-04-09T20:42:11.163Z,0,0,0,[],0
+67f6dc149b93d99318d04326,user,2025-04-09T20:44:04.845Z,0,0,0,[],0
+67f6dc3f9b93d99318d04327,user,2025-04-09T20:44:47.049Z,0,0,0,[],0
+67f6dc689b93d99318d04328,user,2025-04-09T20:45:28.640Z,0,0,0,[],0
+67f6dc9a9b93d99318d04329,user,2025-04-09T20:46:18.574Z,0,0,0,[],0
+67f6dcbd9b93d99318d0432a,user,2025-04-09T20:46:53.395Z,0,0,0,[],0
+67f6dcd99b93d99318d0432b,user,2025-04-09T20:47:21.794Z,0,0,0,[],0
+67f6dd199b93d99318d0432c,user,2025-04-09T20:48:25.195Z,0,0,0,[],0
+67f6dd379b93d99318d0432d,user,2025-04-09T20:48:55.887Z,0,0,0,[],0
+67f6df789b93d99318d0432e,user,2025-04-09T20:58:32.488Z,0,0,0,[],0
+67f6df8b9b93d99318d0432f,user,2025-04-09T20:58:51.152Z,0,0,0,[],0
+67f6df9e9b93d99318d04330,user,2025-04-09T20:59:10.607Z,0,0,0,[],0
+67f6e0569b93d99318d04331,user,2025-04-09T21:02:14.953Z,0,0,0,[],0
+67f6e09c9b93d99318d04332,user,2025-04-09T21:03:24.982Z,0,0,0,[],0
+67f6e0ca9b93d99318d04333,user,2025-04-09T21:04:10.897Z,0,1,0,['edit puzzle'],5391
+67f6e0f09b93d99318d04334,user,2025-04-09T21:04:48.699Z,0,1,0,['edit puzzle'],4558
+67f6e10f9b93d99318d04335,user,2025-04-09T21:05:19.093Z,0,0,0,[],0
+67f6e1249b93d99318d04336,user,2025-04-09T21:05:40.572Z,0,0,0,[],0
+67f6e1489b93d99318d04337,user,2025-04-09T21:06:16.552Z,0,0,0,[],0
+67f6e1589b93d99318d04338,user,2025-04-09T21:06:32.896Z,0,1,0,['edit puzzle'],4561
+67f6e1789b93d99318d04339,user,2025-04-09T21:07:04.849Z,0,3,0,"['edit puzzle', 'edit puzzle', 'edit puzzle']",71913
+67f6e1e19b93d99318d0433a,user,2025-04-09T21:08:49.037Z,0,1,0,['edit puzzle'],3390
+67f6e2199b93d99318d0433b,user,2025-04-09T21:09:45.568Z,0,1,0,['edit puzzle'],4789
+67f6e45d9b93d99318d0433c,user,2025-04-09T21:19:25.751Z,0,0,0,[],0
+67f6e47e9b93d99318d0433d,user,2025-04-09T21:19:58.107Z,0,0,0,[],0
+67f6e4a59b93d99318d0433e,user,2025-04-09T21:20:37.092Z,0,0,0,[],0
+67f6e4f89b93d99318d0433f,user,2025-04-09T21:22:00.943Z,0,0,0,[],0
+67f6e54c9b93d99318d04340,user,2025-04-09T21:23:24.378Z,0,0,0,[],0
+67f6e58b9b93d99318d04341,user,2025-04-09T21:24:27.372Z,0,0,0,[],0
+67f6e5b79b93d99318d04342,user,2025-04-09T21:25:11.739Z,0,0,0,[],0
+67f6e5d39b93d99318d04343,user,2025-04-09T21:25:39.241Z,0,0,0,[],0
+67f6e60b9b93d99318d04344,user,2025-04-09T21:26:35.711Z,0,0,0,[],0
+67f6e6299b93d99318d04345,user,2025-04-09T21:27:05.183Z,0,0,0,[],0
+67f6e65e9b93d99318d04346,user,2025-04-09T21:27:58.688Z,0,0,0,[],0
+67f6e6a79b93d99318d04347,user,2025-04-09T21:29:11.945Z,0,0,0,[],0
+67f6e6ec9b93d99318d04348,user,2025-04-09T21:30:19.996Z,0,0,0,[],0
+67f6e7029b93d99318d04349,user,2025-04-09T21:30:42.729Z,0,0,0,[],0
+67f6e7379b93d99318d0434a,user,2025-04-09T21:31:35.865Z,0,0,0,[],0
+67f6e7b39b93d99318d0434b,user,2025-04-09T21:33:39.959Z,0,0,0,[],0
+67f6e7ff9b93d99318d0434c,user,2025-04-09T21:34:55.679Z,0,0,0,[],0
+67f6e8359b93d99318d0434d,user,2025-04-09T21:35:49.492Z,0,0,0,[],0
+67f6e85a9b93d99318d0434e,user,2025-04-09T21:36:26.619Z,0,0,0,[],0
+67f6e8729b93d99318d0434f,user,2025-04-09T21:36:50.248Z,0,0,0,[],0
+67f6e8ef9b93d99318d04350,user,2025-04-09T21:38:55.710Z,0,0,0,[],0
+67f6e9469b93d99318d04351,user,2025-04-09T21:40:22.426Z,0,0,0,[],0
+67f6e9599b93d99318d04352,user,2025-04-09T21:40:41.008Z,0,0,0,[],0
+67f6e9689b93d99318d04353,user,2025-04-09T21:40:56.311Z,0,0,0,[],0
+67f6e98a9b93d99318d04354,user,2025-04-09T21:41:30.924Z,0,0,0,[],0
+67f6e9a99b93d99318d04355,user,2025-04-09T21:42:01.938Z,0,0,0,[],0
+67f6e9d79b93d99318d04356,user,2025-04-09T21:42:47.841Z,0,0,0,[],0
+67f6e9f79b93d99318d04357,user,2025-04-09T21:43:19.072Z,0,0,0,[],0
+67f7cae09b93d99318d04358,user,2025-04-10T13:42:56.369Z,0,0,0,[],0
+67f7cb4b9b93d99318d04359,user,2025-04-10T13:44:43.805Z,0,0,0,[],0
+67f7cd269b93d99318d0435a,user,2025-04-10T13:52:38.953Z,0,0,0,[],0
+67f7cd489b93d99318d0435b,user,2025-04-10T13:53:12.857Z,0,0,0,[],0
+67f7cd8c9b93d99318d0435c,user,2025-04-10T13:54:20.247Z,0,0,0,[],0
+67f7ceae9b93d99318d0435d,user,2025-04-10T13:59:10.785Z,0,0,0,[],0
+67f7cec49b93d99318d0435e,user,2025-04-10T13:59:32.941Z,0,0,0,[],0
+67f7cf3b9b93d99318d0435f,user,2025-04-10T14:01:31.650Z,0,0,0,[],0
+67f7cf569b93d99318d04360,user,2025-04-10T14:01:58.738Z,0,0,0,[],0
+67f7cf8f9b93d99318d04361,user,2025-04-10T14:02:55.216Z,0,0,0,[],0
+67f7cfce9b93d99318d04362,user,2025-04-10T14:03:58.562Z,0,0,0,[],0
+67f7cfe79b93d99318d04363,user,2025-04-10T14:04:23.131Z,0,0,0,[],0
+67f7d0129b93d99318d04364,user,2025-04-10T14:05:06.031Z,0,0,0,[],0
+67f7d0489b93d99318d04365,user,2025-04-10T14:06:00.013Z,0,0,0,[],0
+67f7d0799b93d99318d04366,user,2025-04-10T14:06:49.756Z,0,0,0,[],0
+67f7d0989b93d99318d04367,user,2025-04-10T14:07:20.311Z,0,0,0,[],0
+67f7d0b69b93d99318d04368,user,2025-04-10T14:07:50.957Z,0,0,0,[],0
+67f7d1799b93d99318d04369,user,2025-04-10T14:11:05.666Z,0,0,0,[],0
+67f7d22f9b93d99318d0436a,user,2025-04-10T14:14:07.795Z,0,0,0,[],0
+67f7d2539b93d99318d0436b,user,2025-04-10T14:14:43.372Z,0,0,0,[],0
+67f7d2739b93d99318d0436c,user,2025-04-10T14:15:15.942Z,0,1,0,['edit puzzle'],11006
+67f7d2fb9b93d99318d0436d,user,2025-04-10T14:17:31.335Z,0,0,0,[],0
+67f7d3389b93d99318d0436e,user,2025-04-10T14:18:32.819Z,0,0,0,[],0
+67f7d3929b93d99318d0436f,user,2025-04-10T14:20:02.463Z,0,0,0,[],0
+67f7d3a59b93d99318d04370,user,2025-04-10T14:20:21.874Z,0,0,0,[],0
+67f7d3d19b93d99318d04371,user,2025-04-10T14:21:05.475Z,0,0,0,[],0
+67f7d3f09b93d99318d04372,user,2025-04-10T14:21:36.081Z,0,0,0,[],0
+67f7d4099b93d99318d04373,user,2025-04-10T14:22:01.010Z,0,0,0,[],0
+67f7d4239b93d99318d04374,user,2025-04-10T14:22:27.472Z,0,0,0,[],0
+67f7d4449b93d99318d04375,user,2025-04-10T14:23:00.726Z,0,0,0,[],0
+67f7d45d9b93d99318d04376,user,2025-04-10T14:23:25.146Z,0,0,0,[],0
+67f7d4b89b93d99318d04377,user,2025-04-10T14:24:56.323Z,0,0,0,[],0
+67f7d4d89b93d99318d04378,user,2025-04-10T14:25:28.206Z,14,54,0,"['edit puzzle', 'select scenario', 'add example category', 'add example category', 'add example category', 'select recommendation', 'edit puzzle', 'view similar', 'edit puzzle', 'edit puzzle', 'view similar', 'select scenario', 'add example category', 'add example category', 'add example category', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'edit puzzle', 'view similar', 'edit puzzle', 'view similar', 'view similar']",220200
+67f7d5de9b93d99318d0437b,user,2025-04-10T14:29:50.215Z,6,53,0,"['edit puzzle', 'edit puzzle', 'edit puzzle', 'select scenario', 'add example category', 'add example category', 'add example category', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'edit puzzle', 'view similar', 'edit puzzle', 'view similar']",25705
+67f7d61f9b93d99318d0437d,user,2025-04-10T14:30:55.121Z,0,0,0,[],0
+67f7d6319b93d99318d0437e,user,2025-04-10T14:31:13.258Z,6,55,0,"['edit puzzle', 'edit puzzle', 'edit puzzle', 'edit puzzle', 'edit puzzle', 'select scenario', 'add example category', 'add example category', 'add example category', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'edit puzzle', 'view similar', 'edit puzzle', 'view similar']",41192
+67f7d6929b93d99318d04380,user,2025-04-10T14:32:50.402Z,5,49,0,"['select scenario', 'add example category', 'add example category', 'add example category', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'edit puzzle', 'view similar']",32716
+67f7d77b9b93d99318d04382,user,2025-04-10T14:36:43.354Z,5,48,0,"['select scenario', 'add example category', 'add example category', 'add example category', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'view similar']",12261
+67f7d7aa9b93d99318d04384,user,2025-04-10T14:37:30.058Z,5,48,0,"['select scenario', 'add example category', 'add example category', 'add example category', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'view similar']",14866
+67f7d7e59b93d99318d04386,user,2025-04-10T14:38:29.913Z,5,48,0,"['select scenario', 'add example category', 'add example category', 'add example category', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'view similar']",9996
+67f7d8169b93d99318d04388,user,2025-04-10T14:39:18.752Z,5,48,0,"['select scenario', 'add example category', 'add example category', 'add example category', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'view similar']",9639
+67f7d8619b93d99318d0438a,user,2025-04-10T14:40:33.798Z,5,48,0,"['select scenario', 'add example category', 'add example category', 'add example category', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'view similar']",13027
+67f7d8bc9b93d99318d0438c,user,2025-04-10T14:42:04.003Z,7,50,0,"['select scenario', 'add example category', 'add example category', 'add example category', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'edit puzzle', 'view similar', 'edit puzzle', 'view similar', 'view similar']",42121
+67f7d9279b93d99318d0438e,user,2025-04-10T14:43:51.378Z,5,48,0,"['select scenario', 'add example category', 'add example category', 'add example category', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'view similar']",17359
+67f7d9659b93d99318d04390,user,2025-04-10T14:44:53.303Z,5,48,0,"['select scenario', 'add example category', 'add example category', 'add example category', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'view similar']",10030
+67f7d9929b93d99318d04392,user,2025-04-10T14:45:38.858Z,0,2,0,"['edit puzzle', 'edit puzzle']",16091
+67f7da339b93d99318d04393,user,2025-04-10T14:48:19.123Z,0,1,0,['edit puzzle'],5429
+67f7da509b93d99318d04394,user,2025-04-10T14:48:48.607Z,0,2,0,"['edit puzzle', 'edit puzzle']",81876
+67f7db959b93d99318d04395,user,2025-04-10T14:54:13.240Z,0,0,0,[],0
+67f7dbb19b93d99318d04396,user,2025-04-10T14:54:41.788Z,0,1,0,['edit puzzle'],14928
+67f7dc129b93d99318d04397,user,2025-04-10T14:56:18.253Z,0,1,0,['edit puzzle'],2466586
+67f7e5d99b93d99318d04398,user,2025-04-10T15:38:01.125Z,0,0,0,[],0
+67f7e5f89b93d99318d04399,user,2025-04-10T15:38:32.589Z,0,0,0,[],0
+67f7e61d9b93d99318d0439a,user,2025-04-10T15:39:09.934Z,0,0,0,[],0
+67f7e6639b93d99318d0439b,user,2025-04-10T15:40:19.109Z,0,0,0,[],0
+67f809fbe5afc81b24c99332,user,2025-04-10T18:12:11.284Z,0,0,0,[],0
+67f80a40e5afc81b24c99333,user,2025-04-10T18:13:20.269Z,0,0,0,[],0
+67f80a51e5afc81b24c99334,user,2025-04-10T18:13:37.646Z,0,0,0,[],0
+67f80a8ce5afc81b24c99335,user,2025-04-10T18:14:36.787Z,0,0,0,[],0
+67f80ac7e5afc81b24c99336,user,2025-04-10T18:15:35.448Z,0,0,0,[],0
+67f80ae5e5afc81b24c99337,user,2025-04-10T18:16:05.274Z,0,0,0,[],0
+67f80b04e5afc81b24c99338,user,2025-04-10T18:16:36.379Z,0,0,0,[],0
+67f80b19e5afc81b24c99339,user,2025-04-10T18:16:57.342Z,0,0,0,[],0
+67f80b42e5afc81b24c9933a,user,2025-04-10T18:17:38.166Z,0,0,0,[],0
+67f80ba3fc2068325c3f6c59,user,2025-04-10T18:19:15.593Z,0,0,0,[],0
+67f810d0fc2068325c3f6c5a,user,2025-04-10T18:41:20.451Z,5,60,24,"['select scenario', 'add example category', 'add example category', 'add example category', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by difficulty', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'edit puzzle', 'edit narrative', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'view similar']",290500
+680fefb5257b3e61673fe4d4,user,2025-04-28T21:14:29.963Z,8,49,0,"['select scenario', 'add example category', 'add example category', 'add example category', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'select scenario', 'add example category', 'add example category', 'add example category', 'add grammar']",120175
+680ff0918ad8479c70dde3e3,user,2025-04-28T21:18:09.440Z,4,0,0,"['select scenario', 'add example category', 'add example category', 'add example category']",4512
+680ff0ed7ac3ef5912785b63,user,2025-04-28T21:19:41.125Z,5,51,0,"['select scenario', 'add example category', 'add example category', 'add example category', 'add example category', 'add grammar', 'add grammar', 'add grammar', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution']",161686
+680ff8b80b727088c4a8ce9b,user,2025-04-28T21:52:56.192Z,0,0,0,[],0
+680ff9102d843467df4b3fca,user,2025-04-28T21:54:24.937Z,0,0,0,[],0
+680ff93e5cdb4a9f93cff8ab,user,2025-04-28T21:55:10.528Z,0,0,0,[],0
+680ffa275cdb4a9f93cff8ac,user,2025-04-28T21:59:03.647Z,0,0,0,[],0
+680ffa8c091e638bb39e0aaa,user,2025-04-28T22:00:44.577Z,0,0,0,[],0
+680ffac5091e638bb39e0aac,user,2025-04-28T22:01:41.587Z,0,0,0,[],0
+680ffad777dd0f6fcfe2bafd,user,2025-04-28T22:01:59.945Z,0,0,0,[],0
+680ffb44d1c53283cc472a97,user,2025-04-28T22:03:48.764Z,0,0,0,[],0
+680ffbacd1c53283cc472a9c,user,2025-04-28T22:05:32.085Z,0,0,0,[],0
+6810f5a3a84cea05c6a432fb,user,2025-04-29T15:52:03.385Z,4,48,0,"['select scenario', 'add example category', 'add example category', 'add example category', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution', 'filter by solution']",17989
+68113d6ea84cea05c6a432fd,user,2025-04-29T20:58:22.252Z,0,0,0,[],0
+68113dd3a84cea05c6a432fe,user,2025-04-29T21:00:03.428Z,0,0,0,[],0
+68113e0ab9de78acf3648219,user,2025-04-29T21:00:58.719Z,0,0,0,[],0
+68113e24b9de78acf364821a,user,2025-04-29T21:01:24.905Z,0,0,0,[],0
+68113ecdb9de78acf364821b,user,2025-04-29T21:04:13.794Z,0,0,0,[],0
+68114127a2bae323a76606a0,user,2025-04-29T21:14:15.864Z,0,0,0,[],0
+6813ab5e5c5388e4911918bf,user,2025-05-01T17:11:58.522Z,4,0,0,"['select scenario', 'add example category', 'add example category', 'add example category']",4443
+6813abd3f6877a57e84188cd,user,2025-05-01T17:13:55.955Z,3,0,0,"['add example category', 'add example category', 'add example category']",6301
+6813abfcb18fb04bf9f49fc0,user,2025-05-01T17:14:36.678Z,4,0,0,"['select scenario', 'add example category', 'add example category', 'add example category']",3869
+6813ac32d12a088772dfa403,user,2025-05-01T17:15:30.279Z,4,0,0,"['select scenario', 'add example category', 'add example category', 'add example category']",6142
+6813ac69d12a088772dfa404,user,2025-05-01T17:16:25.051Z,4,0,0,"['select scenario', 'add example category', 'add example category', 'add example category']",10608
+6813ac92d12a088772dfa405,user,2025-05-01T17:17:06.087Z,4,1,0,"['select scenario', 'add example category', 'add example category', 'add example category', 'add grammar']",28523
+6813acf8d12a088772dfa406,user,2025-05-01T17:18:48.943Z,3,0,0,"['add example category', 'add example category', 'add example category']",4933
+6813ad198d643201263ef4c5,user,2025-05-01T17:19:21.593Z,3,0,0,"['add example category', 'add example category', 'add example category']",2630
+6813ad318d643201263ef4c6,user,2025-05-01T17:19:45.924Z,4,0,0,"['select scenario', 'add example category', 'add example category', 'add example category']",4292
+6818f5300c4da1cb01bc245e,user,2025-05-05T17:28:16.189Z,0,0,0,[],0
+6818f5520c4da1cb01bc245f,user,2025-05-05T17:28:50.922Z,0,0,0,[],0
+6818f56a0c4da1cb01bc2460,user,2025-05-05T17:29:14.701Z,0,0,0,[],0
+6818f6160c4da1cb01bc2464,user,2025-05-05T17:32:06.249Z,0,0,0,[],0
