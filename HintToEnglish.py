@@ -147,10 +147,10 @@ def before_to_english(attributes, grammar_dict={}):
         template_info = grammar_dict[cat1][cat2][num_cat]["before"]
         if isinstance(template_info, list): 
             template_info = template[0]
-        step = attributes[4].increment
+        step =  1 if not hasattr(attributes[4], 'increment') else attributes[4].increment
     else:
         template_info = None 
-        step = attributes[4].increment
+        step =  1 if not hasattr(attributes[4], 'increment') else attributes[4].increment
 
     if not timed:
         if not template_info is None:
@@ -168,9 +168,9 @@ def before_to_english(attributes, grammar_dict={}):
             
             template = "The {cat1} {ent1} is {amount} {num_cat}s before the {cat2} {ent2}"
         template = toTemplate(template) 
-        return template.substitute(cat1= cat1, cat2=cat2, num_cat=num_cat, step=step, ent1=ent1, ent2=ent2, amount=amount )
 
-            template = (
+
+        template = (
                 "The {cat1} {ent1} is {amount} {num_cat}s before the {cat2} {ent2}"
             )
         return template.format(

@@ -296,6 +296,61 @@ def get_needed(puzzle, hints):
     return needed
 
 
+def get_needed2(puzzle, hints):
+    completed_puzzle, is_valid, _, _ = apply_hints(
+        puzzle, hints, print_soln=False
+    )
+    assert(completed_puzzle.is_complete() and is_valid)
+
+  
+
+    needed = set()
+
+    for insight in reversed(Insight):
+        test_insights = set()
+        test_insights.add(insight)
+
+        completed_without_maybe = can_solve_without_forbidden(
+        puzzle, hints, test_insights
+        )
+
+        if not completed_without_maybe:
+            needed.add(insight)
+
+    return needed
+
+def minimal_subsets(puzzle, hints, unchecked=None, required = None):
+  
+    if unchecked is None:
+        unchecked = ALL_INSIGHTS.copy()
+    if required is None:
+        required = get_needed2(puzzle, hints) 
+    else:
+        required = required.copy()
+
+    forbidden = ALL_INSIGHTS.copy() - required
+
+    # can be solved with the required insights 
+    if can_solve_without_forbidden(puzzle, hints, forbidden):
+        return [required] 
+    elif len(unchecked) == 0:
+        return []
+    #check other insight 
+    else:
+        insight = unchecked.pop()
+        # check not including the insight 
+        subset1 = minimal_subsets(puzzle, hints, unchecked, required)
+
+        # check including the insight 
+        required.add(insight)
+        subset2 = minimal_subsets(puzzle, hints, unchecked, required)
+
+        return subset1 + subset2
+
+
+
+
+
 def can_solve_without_forbidden(puzzle, hints, forbidden_insights):
     completed_puzzle, is_valid, _, used_insights = apply_hints(
         puzzle, hints, print_soln=False, forbidden_insights=forbidden_insights
