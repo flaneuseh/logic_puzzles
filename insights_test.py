@@ -13,17 +13,27 @@ insightsNeededIndex ={}
 for key in index:
     hintSet = index[key]["hintset"]
 
-    needed = get_needed(hintSet.puzzle,hintSet.non_duplicates()) 
+    needed1 = get_needed(hintSet.puzzle,hintSet.non_duplicates()) 
 
     print("needed 1") 
-    print(needed)
+    print(needed1)
 
     print("needed 2")
-    needed = get_needed2(hintSet.puzzle,hintSet.non_duplicates()) 
-    print(needed)
+    needed2 = get_needed2(hintSet.puzzle,hintSet.non_duplicates()) 
+    print(needed2)
+
+
+    
 
     print("minimal subsets")
-    needed = minimal_subsets(hintSet.puzzle,hintSet.non_duplicates()) 
-    print(needed)
-    print(len(needed))
+    needed3 = minimal_subsets(hintSet.puzzle,hintSet.non_duplicates()) 
+    print(needed3)
+    print(len(needed3))
     print("\n\n")
+
+    insightsNeededIndex[key] = {"easiestInsights": needed1, "requiredInsights":needed2, "minimalSubsets": needed3}
+
+new_json = jsonpickle.encode(insightsNeededIndex)
+
+file = open("InsightsKey.json", "w")
+file.write(new_json)
