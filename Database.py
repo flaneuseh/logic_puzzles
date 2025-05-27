@@ -30,6 +30,13 @@ posted_puzzles_serious = mydb["community_serious"]
 survey_db = mydb["surveys"]
 
 
+def get_user_data(user):
+    user = get_user(user)
+
+    del user["_id"]
+    del user["community_puzzles"]
+
+    return user 
 
 
 def add_survey(user, data):

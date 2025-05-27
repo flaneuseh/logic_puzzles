@@ -17,6 +17,7 @@ app = Flask(__name__)
 ACCOUNT_DATABASE_FILE_STRING = "UserData.json"
 
 
+
 def get_user_database():
     file = open(ACCOUNT_DATABASE_FILE_STRING, "r")
     json_str = file.read()
@@ -262,6 +263,14 @@ def get_formatted_unused_grammar(di, cats):
         }
     return return_di
 
+@app.route("/get_user_data", methods=["POST"])
+@cross_origin()
+def get_user_data():
+    request_data = request.get_json()
+    user = request_data["user"]
+
+    return jsonify(Database.get_user_data(user))
+    
 
 @app.route("/get_unused_grammar", methods=["POST"])
 @cross_origin()
