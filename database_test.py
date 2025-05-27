@@ -23,9 +23,11 @@ samples = list(sampleDatabase.find({}, {}))
 
 
 grammar = samples[0]["grammar"] 
+brainstorm = samples[0]["brainstorms"] if "brainstorm" in samples[0] else []
+categories = samples[0]["categories"]
 scenarios = list(scenarioDatabase.find({}, {})) 
 
-data = {"grammar": grammar, "scenarios": scenarios}
+data = {"grammar": grammar, "brainstorms": brainstorm, "categories":categories, "scenarios": scenarios}
 
 database = open("database.json", "w")
 
