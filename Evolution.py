@@ -320,13 +320,18 @@ def get_needed2(puzzle, hints):
     return needed
 
 def minimal_subsets(puzzle, hints, unchecked=None, required = None):
-  
-    if unchecked is None:
-        unchecked = ALL_INSIGHTS.copy()
+
     if required is None:
         required = get_needed2(puzzle, hints) 
     else:
         required = required.copy()
+  
+    if unchecked is None:
+        unchecked = ALL_INSIGHTS.copy()
+        unchecked = unchecked - required
+    else:
+        unchecked = unchecked.copy()
+
 
     forbidden = ALL_INSIGHTS.copy() - required
 
