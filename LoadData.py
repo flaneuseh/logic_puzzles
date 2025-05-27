@@ -23,8 +23,8 @@ sampleDatabase.delete_many({}, {})
 
 with open("database.json", 'r') as file:
     database = json.load(file)
-samples = { "brainstorms": database["brainstorm"], "categories":database["categories"], "scenarios": database["scenarios"]}
-scenarios = database["scenarios"][0]
+samples = { "brainstorm": database["brainstorm"], "categories":database["categories"], "scenarios": database["scenarios"]}
+scenarios = database["scenarios"]
 i = sampleDatabase.insert_one(samples)
 j = scenarioDatabase.insert_one(scenarios)
 

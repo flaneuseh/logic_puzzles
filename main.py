@@ -6,7 +6,6 @@ from HintToEnglish import hint_to_english, serialized_hint_grammar
 from LogicPuzzles import Category, Puzzle
 from ItterativeMapElits import evolve as itterative_evolve
 from ItterativeMapElits import EliteGrid
-import json
 import jsonpickle
 import random
 import Database

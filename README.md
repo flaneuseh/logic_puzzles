@@ -1,8 +1,78 @@
 # logic_puzzles
-This is a project for generating new logic grid puzzle. It uses a FI-2Pop genetic algorithm to generate puzzles that are both solvable and challenging. Solvable puzzles with complete and valid solution. Challenging puzzles are ones that require many round to complete. 
+This project is to host a backend generator server for logic puzzles. The generator using a constrained quality diversity algorithm to create puzzles that are valid and vary in terms of solution and difficulty. This server can be run locally or on a virtual machine. 
 
+
+## Run the backend locally 
+
+### Step 1: Install Python 
+Install python onto your computer. This project was based on python version 3.10.12 
+
+https://www.python.org/ 
+
+### Step 2: Install MongoDB 
+
+Following the instructions to install Mongo on your computer. 
+
+https://www.mongodb.com/docs/manual/installation/ 
+
+Make sure a MongoDB instance is running before starting 
+
+### Step 3: Download Code and Install Packages 
+Install code onto your computer and go to that directory in your terminal. 
+
+Start a python virtual environment with the following code: 
+
+```
+python3 -m venv
+```
+
+Run the environment with the following command 
+
+```
+source venv/bin/activate 
+```
+
+Install all the necessary packages: 
+
+```
+pip install flask==3.1.0
+pip install flask_cors==5.0.0
+pip install jsonpickle==3.0.2
+pip install pymongo==4.11.1
+```
+
+### Load data 
+If you want to add a user, add the data.json file to the main code directory. Then run the following code (with the virtual environment active): 
+
+```
+python LoadData.py
+```
+
+### Run main.py 
+In the code directory run the code to launch the database: 
+
+```
+python main.py
+```
+
+The flask server should now be running on localhost:3000 
 
 ## Hosting on a VM 
+
+### Setting up VM  
+We mostly followed this tutorial: https://medium.com/@adityaarya1/deploy-a-flask-application-to-azure-vm-with-a-ssl-certificate-d2960c50783d 
+
+The main steps are: 
+
+1. Create a VM 
+2. Set up the code as you would locally 
+3. Set up a Gunicorn instance to run the falsk server
+4. Set up a Nginx server 
+5. User certbox to run on https 
+
+
+
+### Updating VM once set up 
 
 * Step 1: SSH into vm 
 * step 2: cd into logic_puzzle
@@ -28,22 +98,183 @@ You can find/modify the Gunicorn configuration with:
 
 ```sudo nano /etc/systemd/system/logic_puzzle_app.service```
 
-You can reference this tutorial: https://medium.com/@adityaarya1/deploy-a-flask-application-to-azure-vm-with-a-ssl-certificate-d2960c50783d 
 
-## Quick Start 
 
-### Playing generated puzzles 
-The generated puzzles are located in the Difficulty-Only and Hints-And-Difficulty folders. The Hints-and-Difficulty contains puzzles that were optimized both for difficulty and for small hint sizes, where the Difficulty-Only contians puzzles that were optimized for difficulty only. Each folder contains a hint.txt that contains the hints for each puzzle. For the puzzles you can use the BlankPuzzle.png to mark the your answers. You can check your solutions agains't the solutions in the solutions.txt file that is each both folders. 
+## Major API end points 
 
-### Looking at Experiment data 
-Each experiment folder also contains several visualizations about the generated puzzles and the generation process. The "data.txt" file also contains key information from the experiment. Each "pop_<i>.p" file contains a pickled version of the feasible and infeasible population of the last generation for that trial, along with a history object, which tracks fitness over generations. 
 
-### Running a new experiement 
-New experiements can be run by modifying the "Experiments.py" file. At the top, several contains are defined. Most important is the "folder" which tells the program where to put experiement data. We recommend created a new folder for each experiement run. You can also modify the puzzle to generate puzzles with different themes. Note that currenlty puzzles are required to have at least one numeric category. 
+### /iterate_map_evolve
+Conduct a cycle of generation. 
+Parameters: 
+* user: password for user 
+* id: id of mapElites grid to generate. If not included, a new grid will be create and the id will be returned 
+* puzzle: base puzzle (categories, entities, scenario) to evolve hints for 
 
-After the experiement finishes running, you will need to run the "DataVisualisation.py" file, with the updated folder. This will produce "hint.txt" and "solutions.txt" files, of which you can look at and play your generated puzzles. 
+Optional Evolution parameters: 
+* gens: number of generations to run 
+* pop_size: number of children to create per generation 
+* x_rate: cross over rate 
+* mut_rate: mutation rate 
+* add_rate: ratio of how often to add hint in mutation 
+* elites: number of elites in the infeasible population 
+
+### /add_account 
+admin accounts can add users. 
+
+Parameters: 
+* user: admin password
+* privateKey: password of new account 
+* publicKey: username of new user
+* mode: interface type out of [casual, serious, mixed, admin]
+
+### /like_puzzle
+Add puzzle to users liked puzzles. 
+
+Parameters: 
+* username: password of user 
+* puzzle: json representation of puzzle 
+### /remove_puzzle 
+Remove puzzle from users liked puzzles.
+
+Parameters: 
+* username: password of user
+* key: unique index of puzzle to remove
+
+### /update_puzzle 
+Replace liked puzzles with new version. 
+
+Parameters: 
+* username: password of user
+* key: unique index of puzzle to update
+* puzzle: json representation of updated puzzle 
+
+### /get_liked_puzzles 
+Returns a list of all liked puzzles for user.
+
+Parameters: 
+* username: password of user
+
+### /add_scenario 
+Adds a new scenario for user to access later. 
+
+Parameters: 
+* user: password of user, if admin scenario will be added to sample  
+* name: name of scenario
+* scenario: text explanation of scenario 
+* categories: list of categories within scenario 
+
+### /update_scenario 
+Updates an existing scenario with new data 
+
+Parameters: 
+* user: password of user, if admin scenario will be added to sample  
+* name: name of scenario
+* scenario: text explanation of scenario 
+* categories: list of categories within scenario 
+
+### /delete_scenario 
+Remove a scenario 
+
+Parameters: 
+* user: password of user
+* name: name of scenario
+
+### /get_scenarios 
+Get the scenarios for a user 
+
+Parameters: 
+* user: password of user 
+
+### /get_unused_grammar 
+Returns the list of hints that will have the default grammar
+
+Parameters: 
+* username: password of user 
+* cats: list of categories to test for 
+
+### /add_grammar_rule
+Add a new grammar template for a hint. 
+
+Parameters: 
+* user: password of user, if admin grammar will be added to sample 
+* type: type of hint from [is, not, before, or]
+* all hint parameters: all categories for hint type from: cat1, cat2, is_cat, num_cat 
+* template [times and untimed for before]: String template for hint. Parameters should be surrounded by curly braces. For example "{ent1} is {ent2}" 
+
+### /get_template 
+
+Get the template of a hint for a user 
+
+parameters: 
+* user: password of user 
+* type: type of hint 
+* all hint parameters: all categories for hint type from: cat1, cat2, is_cat, num_cat
+
+### /get_brainstorm 
+Gets all the narrative brainstorms of a hint for a user 
+
+parameters: 
+* user: password of user 
+* type: type of hint 
+* all hint parameters: all categories for hint type from: cat1, cat2, is_cat, num_cat 
+
+### /add_brainstorm 
+Add a narrative brainstorm for a hint 
+
+Parameters: 
+* user: password of user, if admin grammar will be added to sample 
+* type: type of hint from [is, not, before, or]
+* all hint parameters: all categories for hint type from: cat1, cat2, is_cat, num_cat 
+* template [times and untimed for before]: String template for hint. Parameters should be surrounded by curly braces. For example "{ent1} is {ent2}" 
+
+### /get_public_key
+Gets the username and mode of a user 
+
+Parameters: 
+* user: password of user 
+
+### /get_posted_puzzles
+Returns all puzzles in community of user 
+
+Parameter: 
+* user: password of user 
+ 
+
+
+### /post_puzzle 
+Post a puzzle to the community 
+
+Parameters: 
+* username: password of user 
+* puzzle : json representation of puzzle 
+* title: title of post 
+* body: body of post 
+* time: time of post as string 
+
+### /add_comment
+Add a comment to a posted puzzle 
+
+Parameters: 
+* username: password of user 
+* comment: text of comment 
+* puzzleId: Id of post 
+* time: time of comment as string 
+
+
+### /get_user_data
+Get all data associated with a user
+
+Parameters: 
+* user: password of user 
+
 
 ## Important Files 
+
+### Database.py 
+Functions to manage the MonogDB database 
+
+### main.py 
+End points for the flask API. 
 
 ### LogicPuzzle.py 
 This file defines the objects and logics for logic puzzles. 
@@ -176,6 +407,3 @@ Data structure for representing the map elite grid. Some important parameters an
  * infeasiblePopulation: list of infeasible children in last generation 
 * history: history object across evolution 
 
-## Aiide-24 Files 
-
-The trials presented in the AIIDE-24 paper are provided in the school3 folder, including the graphs generated. The code used for anayalsis and visualization is given in the MapElitesVisualation.py file. 
