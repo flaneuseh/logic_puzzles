@@ -1,0 +1,446 @@
+Hints for grid cell [0][0]
+	The order 3 is the shapes Shell
+	The order 2 was not the shapes Elbow
+	The shapes Bowtie is 2 orders before the shapes Shell
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>, <Insight.APPLY_NOT: 4>}
+
+Hints for grid cell [0][1]
+	The shapes Bowtie is 2 orders before the shapes Shell
+	Either the shapes Bowtie or the shapes Linguine is the order 2
+	The shapes Bowtie is the order 1
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [0][2]
+	The shapes Linguine is at least 1 order before the shapes Shell
+	The shapes Linguine is 2 orders before the shapes Elbow
+	The order 2 is the shapes Linguine
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [1][0]
+	The shapes Shell is the order 1
+	The shapes Shell is 2 orders before the shapes Elbow
+	Either the shapes Elbow is the order 3 or the shapes Linguine is the order 2
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [1][1]
+	The shapes Shell is 2 orders before the shapes Elbow
+	The shapes Shell is the order 1
+	Either the shapes Elbow is the order 3 or the shapes Linguine is the order 2
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [1][2]
+	Either the shapes Elbow is the order 3 or the shapes Linguine is the order 2
+	The shapes Shell is 2 orders before the shapes Elbow
+	The shapes Shell is the order 1
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [2][0]
+	The order 2 is the shapes Shell
+	Either the shapes Elbow is the order 3 or the shapes Linguine is the order 2
+	The shapes Shell is 2 orders before the shapes Bowtie
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [2][1]
+	The shapes Shell is 2 orders before the shapes Bowtie
+	The order 2 is the shapes Shell
+	Either the shapes Elbow is the order 2 or the order 1 is the shapes Linguine
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [2][2]
+	Either the order 4 or the order 1 is the shapes Linguine
+	The shapes Shell is 2 orders before the shapes Bowtie
+	The order 2 is the shapes Shell
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [3][0]
+	The shapes Shell is the order 1
+	The order 4 is the shapes Elbow
+	The shapes Shell is 2 orders before the shapes Bowtie
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [3][1]
+	The shapes Shell is 2 orders before the shapes Bowtie
+	The order 4 is the shapes Elbow
+	The shapes Shell is the order 1
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [3][2]
+	The shapes Linguine is at least 1 order before the shapes Bowtie
+	The shapes Shell is 2 orders before the shapes Bowtie
+	The order 3 is the shapes Bowtie
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [4][0]
+	The order 2 is the shapes Linguine
+	The order 1 was not the shapes Shell
+	The shapes Linguine is 2 orders before the shapes Bowtie
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>, <Insight.APPLY_NOT: 4>}
+
+Hints for grid cell [4][1]
+	The shapes Linguine is 2 orders before the shapes Bowtie
+	The order 2 is the shapes Linguine
+	The shapes Shell was not the order 1
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>, <Insight.APPLY_NOT: 4>}
+
+Hints for grid cell [4][2]
+	The shapes Linguine is at least 1 order before the shapes Shell
+	The shapes Linguine is 2 orders before the shapes Bowtie
+	The order 2 is the shapes Linguine
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [5][0]
+	The shapes Bowtie is the order 2
+	The shapes Bowtie is 2 orders before the shapes Elbow
+	Either the shapes Elbow is the order 4 or the order 1 is the shapes Shell
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [5][1]
+	The shapes Bowtie is 2 orders before the shapes Elbow
+	Either the shapes Elbow is the order 4 or the order 1 is the shapes Shell
+	The order 3 is the shapes Shell
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [5][2]
+	Either the shapes Elbow is the order 4 or the order 1 is the shapes Shell
+	The shapes Bowtie is 2 orders before the shapes Elbow
+	The shapes Bowtie is the order 2
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [6][0]
+	The order 3 is the shapes Bowtie
+	The shapes Shell is 2 orders before the shapes Bowtie
+	Either the shapes Elbow is the order 2 or the order 1 is the shapes Linguine
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [6][1]
+	The shapes Elbow is 2 orders before the shapes Linguine
+	The shapes Elbow is at least 1 order before the shapes Bowtie
+	Either the order 4 or the order 2 is the shapes Elbow
+Insights: {<Insight.APPLY_OR: 5>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [6][2]
+	Either the order 4 or the order 1 is the shapes Linguine
+	The shapes Shell is 2 orders before the shapes Bowtie
+	The order 3 is the shapes Bowtie
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [7][0]
+	The order 4 is the shapes Elbow
+	The shapes Bowtie is 2 orders before the shapes Elbow
+	The shapes Shell is the order 1
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [7][1]
+	The shapes Bowtie is 2 orders before the shapes Elbow
+	The order 4 is the shapes Elbow
+	The shapes Bowtie is 1 orders before the shapes Linguine
+Insights: {<Insight.APPLY_BEFORE_ONE_SPOT: 6>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [7][2]
+	The shapes Bowtie is 1 orders before the shapes Linguine
+	The shapes Bowtie is 2 orders before the shapes Elbow
+	The order 4 is the shapes Elbow
+Insights: {<Insight.APPLY_BEFORE_ONE_SPOT: 6>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [8][0]
+	The shapes Shell is the order 1
+	The shapes Shell is 2 orders before the shapes Elbow
+	The order 2 is the shapes Linguine
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [8][1]
+	The shapes Linguine is 2 orders before the shapes Bowtie
+	The order 2 is the shapes Linguine
+	The shapes Linguine is at least 1 order before the shapes Elbow
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [8][2]
+	The shapes Linguine is at least 1 order before the shapes Elbow
+	The shapes Linguine is 2 orders before the shapes Bowtie
+	The order 2 is the shapes Linguine
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [9][0]
+	The order 2 is the shapes Elbow
+	The shapes Elbow is 2 orders before the shapes Bowtie
+	Either the order 4 or the order 3 is the shapes Linguine
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [9][1]
+	The order 2 is the shapes Elbow
+	The shapes Elbow is 2 orders before the shapes Bowtie
+	The shapes Shell is at least 1 order before the shapes Linguine
+Insights: {<Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [9][2]
+	Either the shapes Elbow is the order 2 or the order 1 is the shapes Linguine
+	The shapes Elbow is 2 orders before the shapes Bowtie
+	The shapes Bowtie is the order 4
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [10][0]
+	The order 3 is the shapes Shell
+	Either the shapes Elbow is the order 2 or the shapes Shell is the order 1
+	The shapes Bowtie is 2 orders before the shapes Shell
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [10][1]
+	Either the order 3 is the shapes Elbow or the shapes Linguine is the order 4
+	The shapes Bowtie is 2 orders before the shapes Shell
+	The order 3 is the shapes Shell
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [10][2]
+	Either the shapes Elbow is the order 2 or the order 1 is the shapes Linguine
+	The shapes Bowtie is 2 orders before the shapes Shell
+	The order 3 is the shapes Shell
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [11][0]
+	The shapes Shell is the order 2
+	The shapes Bowtie is the order 3
+	The shapes Linguine is 2 orders before the shapes Bowtie
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [11][1]
+	The shapes Linguine is 2 orders before the shapes Bowtie
+	The shapes Shell is the order 2
+	The shapes Bowtie is the order 3
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [11][2]
+	Either the order 4 or the order 1 is the shapes Linguine
+	The shapes Shell is 2 orders before the shapes Elbow
+	The order 2 is the shapes Shell
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [12][0]
+	The shapes Bowtie is the order 2
+	The shapes Bowtie is 2 orders before the shapes Shell
+	The order 3 was not the shapes Elbow
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>, <Insight.APPLY_NOT: 4>}
+
+Hints for grid cell [12][1]
+	The shapes Bowtie is 2 orders before the shapes Shell
+	The shapes Bowtie is the order 2
+	The shapes Bowtie is 1 orders before the shapes Linguine
+Insights: {<Insight.APPLY_BEFORE_ONE_SPOT: 6>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [12][2]
+	Either the order 1 is the shapes Elbow or the order 1 is the shapes Bowtie
+	The shapes Bowtie is 2 orders before the shapes Shell
+	The order 4 is the shapes Shell
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [12][3]
+	The shapes Elbow is at least 1 order before the shapes Shell
+	Either the order 1 is the shapes Elbow or the order 1 is the shapes Bowtie
+	The shapes Bowtie is 2 orders before the shapes Shell
+	The order 4 is the shapes Shell
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [13][0]
+	The order 3 is the shapes Shell
+	The order 2 is the shapes Elbow
+	The shapes Elbow is 2 orders before the shapes Bowtie
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [13][1]
+	The order 3 is the shapes Shell
+	The shapes Elbow is 2 orders before the shapes Bowtie
+	The order 2 is the shapes Elbow
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [13][2]
+	Either the order 4 or the order 1 is the shapes Linguine
+	The shapes Elbow is 2 orders before the shapes Bowtie
+	The order 2 is the shapes Elbow
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [14][0]
+	The shapes Bowtie is the order 2
+	The shapes Bowtie is 2 orders before the shapes Shell
+	The shapes Linguine was not the order 3
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>, <Insight.APPLY_NOT: 4>}
+
+Hints for grid cell [14][1]
+	The shapes Bowtie is 2 orders before the shapes Shell
+	Either the shapes Elbow is the order 2 or the order 1 is the shapes Linguine
+	The shapes Bowtie is the order 2
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [14][2]
+	Either the order 3 is the shapes Elbow or the shapes Linguine is the order 4
+	The shapes Bowtie is 2 orders before the shapes Shell
+	The shapes Bowtie is the order 2
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [15][0]
+	The order 4 is the shapes Shell
+	The shapes Elbow is 2 orders before the shapes Shell
+	Either the order 4 or the order 1 is the shapes Linguine
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [15][1]
+	The shapes Elbow is 2 orders before the shapes Shell
+	Either the order 4 or the order 1 is the shapes Linguine
+	The order 2 is the shapes Elbow
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [15][2]
+	Either the order 4 or the order 1 is the shapes Linguine
+	The shapes Elbow is 2 orders before the shapes Shell
+	The order 2 is the shapes Elbow
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [16][0]
+	The shapes Shell is the order 2
+	The shapes Shell is 2 orders before the shapes Linguine
+	The shapes Elbow was not the order 1
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>, <Insight.APPLY_NOT: 4>}
+
+Hints for grid cell [16][1]
+	The shapes Shell is 2 orders before the shapes Linguine
+	The shapes Shell is the order 2
+	The shapes Bowtie is 1 orders before the shapes Shell
+Insights: {<Insight.APPLY_BEFORE_ONE_SPOT: 6>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [16][2]
+	The shapes Bowtie is 2 orders before the shapes Elbow
+	Either the shapes Elbow is the order 3 or the order 2 is the shapes Linguine
+	The order 2 was not the shapes Linguine
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_NOT: 4>}
+
+Hints for grid cell [17][0]
+	The order 2 is the shapes Linguine
+	The order 3 was not the shapes Elbow
+	The shapes Linguine is 2 orders before the shapes Shell
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>, <Insight.APPLY_NOT: 4>}
+
+Hints for grid cell [17][1]
+	The shapes Elbow is 2 orders before the shapes Bowtie
+	The shapes Linguine is at least 1 order before the shapes Bowtie
+	The order 1 is the shapes Elbow
+Insights: {<Insight.APPLY_BEFORE_UNDEFINED_SPOTS: 8>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [17][2]
+	The shapes Linguine is at least 1 order before the shapes Bowtie
+	The shapes Elbow is 2 orders before the shapes Bowtie
+	The shapes Elbow is the order 1
+Insights: {<Insight.APPLY_BEFORE_UNDEFINED_SPOTS: 8>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [18][0]
+	The order 1 is the shapes Bowtie
+	The shapes Bowtie is 2 orders before the shapes Elbow
+	The shapes Elbow is at least 1 order before the shapes Shell
+Insights: {<Insight.APPLY_BEFORE_UNDEFINED_SPOTS: 8>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [18][1]
+	The shapes Bowtie is 2 orders before the shapes Elbow
+	The order 1 is the shapes Bowtie
+	The shapes Elbow is at least 1 order before the shapes Shell
+Insights: {<Insight.APPLY_BEFORE_UNDEFINED_SPOTS: 8>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [18][2]
+	Either the order 1 is the shapes Elbow or the order 1 is the shapes Bowtie
+	The shapes Linguine is at least 1 order before the shapes Elbow
+	The shapes Bowtie is 2 orders before the shapes Elbow
+Insights: {<Insight.APPLY_OR: 5>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>}
+
+Hints for grid cell [19][0]
+	The shapes Shell is the order 2
+	The shapes Shell is 2 orders before the shapes Linguine
+	Either the order 3 is the shapes Elbow or the shapes Linguine is the order 4
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [19][1]
+	Either the order 3 is the shapes Elbow or the shapes Linguine is the order 4
+	The shapes Bowtie is the order 3
+	The shapes Shell is 2 orders before the shapes Linguine
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [19][2]
+	Either the order 3 is the shapes Elbow or the shapes Linguine is the order 4
+	The shapes Shell is 2 orders before the shapes Linguine
+	The shapes Shell is the order 2
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [20][0]
+	The order 4 is the shapes Shell
+	The shapes Bowtie is the order 1
+	The shapes Elbow is 2 orders before the shapes Shell
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [20][1]
+	Either the order 1 is the shapes Elbow or the shapes Bowtie is the order 1
+	The shapes Elbow is 2 orders before the shapes Shell
+	The order 2 is the shapes Elbow
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [20][2]
+	Either the shapes Elbow is the order 2 or the order 1 is the shapes Linguine
+	The shapes Elbow is 2 orders before the shapes Shell
+	The order 4 is the shapes Shell
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [20][3]
+	The shapes Linguine is at least 1 order before the shapes Shell
+	Either the shapes Elbow is the order 2 or the order 1 is the shapes Linguine
+	The shapes Elbow is 2 orders before the shapes Shell
+	The order 4 is the shapes Shell
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [21][0]
+	The order 2 is the shapes Shell
+	The order 1 was not the shapes Linguine
+	The shapes Shell is 2 orders before the shapes Elbow
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>, <Insight.APPLY_NOT: 4>}
+
+Hints for grid cell [21][1]
+	The shapes Shell is 2 orders before the shapes Elbow
+	The shapes Shell is at least 1 order before the shapes Linguine
+	The order 2 is the shapes Shell
+Insights: {<Insight.APPLY_BEFORE_UNDEFINED_SPOTS: 8>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [21][2]
+	The shapes Shell is at least 1 order before the shapes Linguine
+	The shapes Shell is 2 orders before the shapes Elbow
+	The order 2 is the shapes Shell
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [22][0]
+	The order 3 is the shapes Shell
+	The shapes Elbow is 2 orders before the shapes Shell
+	Either the order 2 is the shapes Bowtie or the shapes Linguine is the order 1
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [22][1]
+	Either the order 2 or the order 4 is the shapes Bowtie
+	The shapes Elbow is 2 orders before the shapes Shell
+	The shapes Bowtie is 1 orders before the shapes Shell
+Insights: {<Insight.APPLY_OR: 5>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_BEFORE_ONE_SPOT: 6>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.OPENING: 2>}
+
+Hints for grid cell [22][2]
+	The shapes Bowtie is 2 orders before the shapes Linguine
+	Either the shapes Shell is the order 1 or the shapes Shell is the order 3
+	The shapes Bowtie is 1 orders before the shapes Shell
+Insights: {<Insight.APPLY_OR: 5>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_BEFORE_ONE_SPOT: 6>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.OPENING: 2>}
+
+Hints for grid cell [23][0]
+	The shapes Shell is the order 2
+	The shapes Shell is 2 orders before the shapes Bowtie
+	Either the shapes Bowtie or the shapes Linguine is the order 3
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [23][1]
+	The shapes Shell is 2 orders before the shapes Bowtie
+	The shapes Shell is the order 2
+	Either the shapes Bowtie or the shapes Linguine is the order 3
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [23][2]
+	The shapes Shell is at least 1 order before the shapes Linguine
+	The shapes Shell is 2 orders before the shapes Bowtie
+	The shapes Shell is the order 2
+Insights: {<Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+

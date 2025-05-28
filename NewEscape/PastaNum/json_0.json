@@ -1,0 +1,2298 @@
+[
+    {
+        "solution": "------\n|XOXX|\n|XXOX|\n|XXXO|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The order 3 is the shapes Shell",
+            "The order 2 was not the shapes Elbow",
+            "The shapes Bowtie is 2 orders before the shapes Shell"
+        ],
+        "id": "0:0"
+    },
+    {
+        "solution": "------\n|XOXX|\n|XXOX|\n|XXXO|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Bowtie is 2 orders before the shapes Shell",
+            "Either the shapes Bowtie or the shapes Linguine is the order 2",
+            "The shapes Bowtie is the order 1"
+        ],
+        "id": "0:1"
+    },
+    {
+        "solution": "------\n|XOXX|\n|XXOX|\n|XXXO|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Linguine is at least 1 order before the shapes Shell",
+            "The shapes Linguine is 2 orders before the shapes Elbow",
+            "The order 2 is the shapes Linguine"
+        ],
+        "id": "0:2"
+    },
+    {
+        "solution": "------\n|XXXO|\n|XOXX|\n|OXXX|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Shell is the order 1",
+            "The shapes Shell is 2 orders before the shapes Elbow",
+            "Either the shapes Elbow is the order 3 or the shapes Linguine is the order 2"
+        ],
+        "id": "1:0"
+    },
+    {
+        "solution": "------\n|XXXO|\n|XOXX|\n|OXXX|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Shell is 2 orders before the shapes Elbow",
+            "The shapes Shell is the order 1",
+            "Either the shapes Elbow is the order 3 or the shapes Linguine is the order 2"
+        ],
+        "id": "1:1"
+    },
+    {
+        "solution": "------\n|XXXO|\n|XOXX|\n|OXXX|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "Either the shapes Elbow is the order 3 or the shapes Linguine is the order 2",
+            "The shapes Shell is 2 orders before the shapes Elbow",
+            "The shapes Shell is the order 1"
+        ],
+        "id": "1:2"
+    },
+    {
+        "solution": "------\n|XXOX|\n|XXXO|\n|OXXX|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The order 2 is the shapes Shell",
+            "Either the shapes Elbow is the order 3 or the shapes Linguine is the order 2",
+            "The shapes Shell is 2 orders before the shapes Bowtie"
+        ],
+        "id": "2:0"
+    },
+    {
+        "solution": "------\n|XXOX|\n|XXXO|\n|OXXX|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Shell is 2 orders before the shapes Bowtie",
+            "The order 2 is the shapes Shell",
+            "Either the shapes Elbow is the order 2 or the order 1 is the shapes Linguine"
+        ],
+        "id": "2:1"
+    },
+    {
+        "solution": "------\n|XXOX|\n|XXXO|\n|OXXX|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "Either the order 4 or the order 1 is the shapes Linguine",
+            "The shapes Shell is 2 orders before the shapes Bowtie",
+            "The order 2 is the shapes Shell"
+        ],
+        "id": "2:2"
+    },
+    {
+        "solution": "------\n|XXXO|\n|XXOX|\n|XOXX|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Shell is the order 1",
+            "The order 4 is the shapes Elbow",
+            "The shapes Shell is 2 orders before the shapes Bowtie"
+        ],
+        "id": "3:0"
+    },
+    {
+        "solution": "------\n|XXXO|\n|XXOX|\n|XOXX|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Shell is 2 orders before the shapes Bowtie",
+            "The order 4 is the shapes Elbow",
+            "The shapes Shell is the order 1"
+        ],
+        "id": "3:1"
+    },
+    {
+        "solution": "------\n|XXXO|\n|XXOX|\n|XOXX|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Linguine is at least 1 order before the shapes Bowtie",
+            "The shapes Shell is 2 orders before the shapes Bowtie",
+            "The order 3 is the shapes Bowtie"
+        ],
+        "id": "3:2"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XXOX|\n|XXXO|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The order 2 is the shapes Linguine",
+            "The order 1 was not the shapes Shell",
+            "The shapes Linguine is 2 orders before the shapes Bowtie"
+        ],
+        "id": "4:0"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XXOX|\n|XXXO|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Linguine is 2 orders before the shapes Bowtie",
+            "The order 2 is the shapes Linguine",
+            "The shapes Shell was not the order 1"
+        ],
+        "id": "4:1"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XXOX|\n|XXXO|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Linguine is at least 1 order before the shapes Shell",
+            "The shapes Linguine is 2 orders before the shapes Bowtie",
+            "The order 2 is the shapes Linguine"
+        ],
+        "id": "4:2"
+    },
+    {
+        "solution": "------\n|XXOX|\n|XOXX|\n|XXXO|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Bowtie is the order 2",
+            "The shapes Bowtie is 2 orders before the shapes Elbow",
+            "Either the shapes Elbow is the order 4 or the order 1 is the shapes Shell"
+        ],
+        "id": "5:0"
+    },
+    {
+        "solution": "------\n|XXOX|\n|XOXX|\n|XXXO|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Bowtie is 2 orders before the shapes Elbow",
+            "Either the shapes Elbow is the order 4 or the order 1 is the shapes Shell",
+            "The order 3 is the shapes Shell"
+        ],
+        "id": "5:1"
+    },
+    {
+        "solution": "------\n|XXOX|\n|XOXX|\n|XXXO|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "Either the shapes Elbow is the order 4 or the order 1 is the shapes Shell",
+            "The shapes Bowtie is 2 orders before the shapes Elbow",
+            "The shapes Bowtie is the order 2"
+        ],
+        "id": "5:2"
+    },
+    {
+        "solution": "------\n|XXXO|\n|OXXX|\n|XOXX|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The order 3 is the shapes Bowtie",
+            "The shapes Shell is 2 orders before the shapes Bowtie",
+            "Either the shapes Elbow is the order 2 or the order 1 is the shapes Linguine"
+        ],
+        "id": "6:0"
+    },
+    {
+        "solution": "------\n|XXXO|\n|OXXX|\n|XOXX|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Elbow is 2 orders before the shapes Linguine",
+            "The shapes Elbow is at least 1 order before the shapes Bowtie",
+            "Either the order 4 or the order 2 is the shapes Elbow"
+        ],
+        "id": "6:1"
+    },
+    {
+        "solution": "------\n|XXXO|\n|OXXX|\n|XOXX|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "Either the order 4 or the order 1 is the shapes Linguine",
+            "The shapes Shell is 2 orders before the shapes Bowtie",
+            "The order 3 is the shapes Bowtie"
+        ],
+        "id": "6:2"
+    },
+    {
+        "solution": "------\n|XXXO|\n|XOXX|\n|XXOX|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The order 4 is the shapes Elbow",
+            "The shapes Bowtie is 2 orders before the shapes Elbow",
+            "The shapes Shell is the order 1"
+        ],
+        "id": "7:0"
+    },
+    {
+        "solution": "------\n|XXXO|\n|XOXX|\n|XXOX|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Bowtie is 2 orders before the shapes Elbow",
+            "The order 4 is the shapes Elbow",
+            "The shapes Bowtie is 1 orders before the shapes Linguine"
+        ],
+        "id": "7:1"
+    },
+    {
+        "solution": "------\n|XXXO|\n|XOXX|\n|XXOX|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Bowtie is 1 orders before the shapes Linguine",
+            "The shapes Bowtie is 2 orders before the shapes Elbow",
+            "The order 4 is the shapes Elbow"
+        ],
+        "id": "7:2"
+    },
+    {
+        "solution": "------\n|XXXO|\n|XXOX|\n|OXXX|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Shell is the order 1",
+            "The shapes Shell is 2 orders before the shapes Elbow",
+            "The order 2 is the shapes Linguine"
+        ],
+        "id": "8:0"
+    },
+    {
+        "solution": "------\n|XXXO|\n|XXOX|\n|OXXX|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Linguine is 2 orders before the shapes Bowtie",
+            "The order 2 is the shapes Linguine",
+            "The shapes Linguine is at least 1 order before the shapes Elbow"
+        ],
+        "id": "8:1"
+    },
+    {
+        "solution": "------\n|XXXO|\n|XXOX|\n|OXXX|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Linguine is at least 1 order before the shapes Elbow",
+            "The shapes Linguine is 2 orders before the shapes Bowtie",
+            "The order 2 is the shapes Linguine"
+        ],
+        "id": "8:2"
+    },
+    {
+        "solution": "------\n|XXXO|\n|OXXX|\n|XXOX|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The order 2 is the shapes Elbow",
+            "The shapes Elbow is 2 orders before the shapes Bowtie",
+            "Either the order 4 or the order 3 is the shapes Linguine"
+        ],
+        "id": "9:0"
+    },
+    {
+        "solution": "------\n|XXXO|\n|OXXX|\n|XXOX|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The order 2 is the shapes Elbow",
+            "The shapes Elbow is 2 orders before the shapes Bowtie",
+            "The shapes Shell is at least 1 order before the shapes Linguine"
+        ],
+        "id": "9:1"
+    },
+    {
+        "solution": "------\n|XXXO|\n|OXXX|\n|XXOX|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "Either the shapes Elbow is the order 2 or the order 1 is the shapes Linguine",
+            "The shapes Elbow is 2 orders before the shapes Bowtie",
+            "The shapes Bowtie is the order 4"
+        ],
+        "id": "9:2"
+    },
+    {
+        "solution": "------\n|XOXX|\n|OXXX|\n|XXXO|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The order 3 is the shapes Shell",
+            "Either the shapes Elbow is the order 2 or the shapes Shell is the order 1",
+            "The shapes Bowtie is 2 orders before the shapes Shell"
+        ],
+        "id": "10:0"
+    },
+    {
+        "solution": "------\n|XOXX|\n|OXXX|\n|XXXO|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "Either the order 3 is the shapes Elbow or the shapes Linguine is the order 4",
+            "The shapes Bowtie is 2 orders before the shapes Shell",
+            "The order 3 is the shapes Shell"
+        ],
+        "id": "10:1"
+    },
+    {
+        "solution": "------\n|XOXX|\n|OXXX|\n|XXXO|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "Either the shapes Elbow is the order 2 or the order 1 is the shapes Linguine",
+            "The shapes Bowtie is 2 orders before the shapes Shell",
+            "The order 3 is the shapes Shell"
+        ],
+        "id": "10:2"
+    },
+    {
+        "solution": "------\n|XXOX|\n|XXXO|\n|XOXX|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Shell is the order 2",
+            "The shapes Bowtie is the order 3",
+            "The shapes Linguine is 2 orders before the shapes Bowtie"
+        ],
+        "id": "11:0"
+    },
+    {
+        "solution": "------\n|XXOX|\n|XXXO|\n|XOXX|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Linguine is 2 orders before the shapes Bowtie",
+            "The shapes Shell is the order 2",
+            "The shapes Bowtie is the order 3"
+        ],
+        "id": "11:1"
+    },
+    {
+        "solution": "------\n|XXOX|\n|XXXO|\n|XOXX|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "Either the order 4 or the order 1 is the shapes Linguine",
+            "The shapes Shell is 2 orders before the shapes Elbow",
+            "The order 2 is the shapes Shell"
+        ],
+        "id": "11:2"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XOXX|\n|XXOX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Bowtie is the order 2",
+            "The shapes Bowtie is 2 orders before the shapes Shell",
+            "The order 3 was not the shapes Elbow"
+        ],
+        "id": "12:0"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XOXX|\n|XXOX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Bowtie is 2 orders before the shapes Shell",
+            "The shapes Bowtie is the order 2",
+            "The shapes Bowtie is 1 orders before the shapes Linguine"
+        ],
+        "id": "12:1"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XOXX|\n|XXOX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "Either the order 1 is the shapes Elbow or the order 1 is the shapes Bowtie",
+            "The shapes Bowtie is 2 orders before the shapes Shell",
+            "The order 4 is the shapes Shell"
+        ],
+        "id": "12:2"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XOXX|\n|XXOX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Elbow is at least 1 order before the shapes Shell",
+            "Either the order 1 is the shapes Elbow or the order 1 is the shapes Bowtie",
+            "The shapes Bowtie is 2 orders before the shapes Shell",
+            "The order 4 is the shapes Shell"
+        ],
+        "id": "12:3"
+    },
+    {
+        "solution": "------\n|XXOX|\n|OXXX|\n|XXXO|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The order 3 is the shapes Shell",
+            "The order 2 is the shapes Elbow",
+            "The shapes Elbow is 2 orders before the shapes Bowtie"
+        ],
+        "id": "13:0"
+    },
+    {
+        "solution": "------\n|XXOX|\n|OXXX|\n|XXXO|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The order 3 is the shapes Shell",
+            "The shapes Elbow is 2 orders before the shapes Bowtie",
+            "The order 2 is the shapes Elbow"
+        ],
+        "id": "13:1"
+    },
+    {
+        "solution": "------\n|XXOX|\n|OXXX|\n|XXXO|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "Either the order 4 or the order 1 is the shapes Linguine",
+            "The shapes Elbow is 2 orders before the shapes Bowtie",
+            "The order 2 is the shapes Elbow"
+        ],
+        "id": "13:2"
+    },
+    {
+        "solution": "------\n|XXOX|\n|XOXX|\n|OXXX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Bowtie is the order 2",
+            "The shapes Bowtie is 2 orders before the shapes Shell",
+            "The shapes Linguine was not the order 3"
+        ],
+        "id": "14:0"
+    },
+    {
+        "solution": "------\n|XXOX|\n|XOXX|\n|OXXX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Bowtie is 2 orders before the shapes Shell",
+            "Either the shapes Elbow is the order 2 or the order 1 is the shapes Linguine",
+            "The shapes Bowtie is the order 2"
+        ],
+        "id": "14:1"
+    },
+    {
+        "solution": "------\n|XXOX|\n|XOXX|\n|OXXX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "Either the order 3 is the shapes Elbow or the shapes Linguine is the order 4",
+            "The shapes Bowtie is 2 orders before the shapes Shell",
+            "The shapes Bowtie is the order 2"
+        ],
+        "id": "14:2"
+    },
+    {
+        "solution": "------\n|XXOX|\n|OXXX|\n|XOXX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The order 4 is the shapes Shell",
+            "The shapes Elbow is 2 orders before the shapes Shell",
+            "Either the order 4 or the order 1 is the shapes Linguine"
+        ],
+        "id": "15:0"
+    },
+    {
+        "solution": "------\n|XXOX|\n|OXXX|\n|XOXX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Elbow is 2 orders before the shapes Shell",
+            "Either the order 4 or the order 1 is the shapes Linguine",
+            "The order 2 is the shapes Elbow"
+        ],
+        "id": "15:1"
+    },
+    {
+        "solution": "------\n|XXOX|\n|OXXX|\n|XOXX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "Either the order 4 or the order 1 is the shapes Linguine",
+            "The shapes Elbow is 2 orders before the shapes Shell",
+            "The order 2 is the shapes Elbow"
+        ],
+        "id": "15:2"
+    },
+    {
+        "solution": "------\n|XOXX|\n|XXXO|\n|OXXX|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Shell is the order 2",
+            "The shapes Shell is 2 orders before the shapes Linguine",
+            "The shapes Elbow was not the order 1"
+        ],
+        "id": "16:0"
+    },
+    {
+        "solution": "------\n|XOXX|\n|XXXO|\n|OXXX|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Shell is 2 orders before the shapes Linguine",
+            "The shapes Shell is the order 2",
+            "The shapes Bowtie is 1 orders before the shapes Shell"
+        ],
+        "id": "16:1"
+    },
+    {
+        "solution": "------\n|XOXX|\n|XXXO|\n|OXXX|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Bowtie is 2 orders before the shapes Elbow",
+            "Either the shapes Elbow is the order 3 or the order 2 is the shapes Linguine",
+            "The order 2 was not the shapes Linguine"
+        ],
+        "id": "16:2"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XXOX|\n|XOXX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The order 2 is the shapes Linguine",
+            "The order 3 was not the shapes Elbow",
+            "The shapes Linguine is 2 orders before the shapes Shell"
+        ],
+        "id": "17:0"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XXOX|\n|XOXX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Elbow is 2 orders before the shapes Bowtie",
+            "The shapes Linguine is at least 1 order before the shapes Bowtie",
+            "The order 1 is the shapes Elbow"
+        ],
+        "id": "17:1"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XXOX|\n|XOXX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Linguine is at least 1 order before the shapes Bowtie",
+            "The shapes Elbow is 2 orders before the shapes Bowtie",
+            "The shapes Elbow is the order 1"
+        ],
+        "id": "17:2"
+    },
+    {
+        "solution": "------\n|XOXX|\n|XXOX|\n|OXXX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The order 1 is the shapes Bowtie",
+            "The shapes Bowtie is 2 orders before the shapes Elbow",
+            "The shapes Elbow is at least 1 order before the shapes Shell"
+        ],
+        "id": "18:0"
+    },
+    {
+        "solution": "------\n|XOXX|\n|XXOX|\n|OXXX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Bowtie is 2 orders before the shapes Elbow",
+            "The order 1 is the shapes Bowtie",
+            "The shapes Elbow is at least 1 order before the shapes Shell"
+        ],
+        "id": "18:1"
+    },
+    {
+        "solution": "------\n|XOXX|\n|XXOX|\n|OXXX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "Either the order 1 is the shapes Elbow or the order 1 is the shapes Bowtie",
+            "The shapes Linguine is at least 1 order before the shapes Elbow",
+            "The shapes Bowtie is 2 orders before the shapes Elbow"
+        ],
+        "id": "18:2"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XXXO|\n|XOXX|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Shell is the order 2",
+            "The shapes Shell is 2 orders before the shapes Linguine",
+            "Either the order 3 is the shapes Elbow or the shapes Linguine is the order 4"
+        ],
+        "id": "19:0"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XXXO|\n|XOXX|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "Either the order 3 is the shapes Elbow or the shapes Linguine is the order 4",
+            "The shapes Bowtie is the order 3",
+            "The shapes Shell is 2 orders before the shapes Linguine"
+        ],
+        "id": "19:1"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XXXO|\n|XOXX|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "Either the order 3 is the shapes Elbow or the shapes Linguine is the order 4",
+            "The shapes Shell is 2 orders before the shapes Linguine",
+            "The shapes Shell is the order 2"
+        ],
+        "id": "19:2"
+    },
+    {
+        "solution": "------\n|XOXX|\n|OXXX|\n|XXOX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The order 4 is the shapes Shell",
+            "The shapes Bowtie is the order 1",
+            "The shapes Elbow is 2 orders before the shapes Shell"
+        ],
+        "id": "20:0"
+    },
+    {
+        "solution": "------\n|XOXX|\n|OXXX|\n|XXOX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "Either the order 1 is the shapes Elbow or the shapes Bowtie is the order 1",
+            "The shapes Elbow is 2 orders before the shapes Shell",
+            "The order 2 is the shapes Elbow"
+        ],
+        "id": "20:1"
+    },
+    {
+        "solution": "------\n|XOXX|\n|OXXX|\n|XXOX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "Either the shapes Elbow is the order 2 or the order 1 is the shapes Linguine",
+            "The shapes Elbow is 2 orders before the shapes Shell",
+            "The order 4 is the shapes Shell"
+        ],
+        "id": "20:2"
+    },
+    {
+        "solution": "------\n|XOXX|\n|OXXX|\n|XXOX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Linguine is at least 1 order before the shapes Shell",
+            "Either the shapes Elbow is the order 2 or the order 1 is the shapes Linguine",
+            "The shapes Elbow is 2 orders before the shapes Shell",
+            "The order 4 is the shapes Shell"
+        ],
+        "id": "20:3"
+    },
+    {
+        "solution": "------\n|XOXX|\n|XXXO|\n|XXOX|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The order 2 is the shapes Shell",
+            "The order 1 was not the shapes Linguine",
+            "The shapes Shell is 2 orders before the shapes Elbow"
+        ],
+        "id": "21:0"
+    },
+    {
+        "solution": "------\n|XOXX|\n|XXXO|\n|XXOX|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Shell is 2 orders before the shapes Elbow",
+            "The shapes Shell is at least 1 order before the shapes Linguine",
+            "The order 2 is the shapes Shell"
+        ],
+        "id": "21:1"
+    },
+    {
+        "solution": "------\n|XOXX|\n|XXXO|\n|XXOX|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Shell is at least 1 order before the shapes Linguine",
+            "The shapes Shell is 2 orders before the shapes Elbow",
+            "The order 2 is the shapes Shell"
+        ],
+        "id": "21:2"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XOXX|\n|XXXO|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The order 3 is the shapes Shell",
+            "The shapes Elbow is 2 orders before the shapes Shell",
+            "Either the order 2 is the shapes Bowtie or the shapes Linguine is the order 1"
+        ],
+        "id": "22:0"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XOXX|\n|XXXO|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "Either the order 2 or the order 4 is the shapes Bowtie",
+            "The shapes Elbow is 2 orders before the shapes Shell",
+            "The shapes Bowtie is 1 orders before the shapes Shell"
+        ],
+        "id": "22:1"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XOXX|\n|XXXO|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Bowtie is 2 orders before the shapes Linguine",
+            "Either the shapes Shell is the order 1 or the shapes Shell is the order 3",
+            "The shapes Bowtie is 1 orders before the shapes Shell"
+        ],
+        "id": "22:2"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XXXO|\n|XXOX|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Shell is the order 2",
+            "The shapes Shell is 2 orders before the shapes Bowtie",
+            "Either the shapes Bowtie or the shapes Linguine is the order 3"
+        ],
+        "id": "23:0"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XXXO|\n|XXOX|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Shell is 2 orders before the shapes Bowtie",
+            "The shapes Shell is the order 2",
+            "Either the shapes Bowtie or the shapes Linguine is the order 3"
+        ],
+        "id": "23:1"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XXXO|\n|XXOX|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "shapes",
+                "entities": [
+                    "Elbow",
+                    "Bowtie",
+                    "Linguine",
+                    "Shell"
+                ],
+                "is_numeric": false
+            },
+            {
+                "name": "order",
+                "entities": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "is_numeric": true
+            }
+        ],
+        "hints": [
+            "The shapes Shell is at least 1 order before the shapes Linguine",
+            "The shapes Shell is 2 orders before the shapes Bowtie",
+            "The shapes Shell is the order 2"
+        ],
+        "id": "23:2"
+    }
+]

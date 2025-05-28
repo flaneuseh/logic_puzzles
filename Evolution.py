@@ -212,6 +212,7 @@ def apply_hints(puzzle, hints, print_soln=False, forbidden_insights=set()):
         loop += 1
 
         for hint in queue:
+            og = deepcopy(copy)
             a, is_valid, complete, hint_insights = apply_hint(
                 copy, hint, forbidden_insights=forbidden_insights
             )
@@ -241,64 +242,76 @@ def apply_hints(puzzle, hints, print_soln=False, forbidden_insights=set()):
                     if not is_valid:
                         return copy, is_valid, loop, insights
                     applied = applied or a_2 or a_3  # test if anything was changed
-                    insights = insights | trans_insights | opening_insights
+                    hint_insights = hint_insights | trans_insights | opening_insights
+                    insights = insights | hint_insights
                 if not is_valid:
                     return copy, is_valid, loop, insights
             if print_soln and a:
                 print("hint: ", hint_to_english(hint))
+                print("insights: ", hint_insights)
                 print("updated grid: ")
-                print(copy.print_grid())
+                move_diff = get_move_diff(og, copy)
+                print(move_diff.print_grid())
         queue = backlog
         backlog = []
 
     return copy, is_valid, loop, insights
 
 
-def get_needed(puzzle, hints):
+def get_needed(puzzle, hints, print_soln=False):
+    if print_soln:
+        print("Initial solution")
     completed_puzzle, is_valid, _, _ = apply_hints(
-        puzzle, hints, print_soln=False
+        puzzle, hints, print_soln=print_soln
     )
     assert(completed_puzzle.is_complete() and is_valid)
 
     needed = set()
     unneeded = ALL_INSIGHTS.copy()
 
+    assert not can_solve_without_forbidden(puzzle, hints, unneeded), "No insights are needed to solve the puzzle; something has gone wrong somewhere."
+    
     # Add insights easiest first until the puzzle can be solved.
     completed_without_maybe = can_solve_without_forbidden(
-        puzzle, hints, unneeded
+        puzzle, hints, unneeded, print_soln
     )
     for insight in Insight:
         if not completed_without_maybe:
-            needed = needed | {insight}
             unneeded = unneeded - {insight}
             completed_without_maybe = can_solve_without_forbidden(
-                puzzle, hints, unneeded
+                puzzle, hints, unneeded, print_soln
             )
+        else:
+            break
+    needed = ALL_INSIGHTS - unneeded
+    assert len(needed & unneeded) == 0
     assert len(needed | unneeded) == len(ALL_INSIGHTS)
-    assert can_solve_without_forbidden(puzzle, hints, unneeded), "can't solve without some of {}".format(unneeded)
-    assert not can_solve_without_forbidden(puzzle, hints, needed), "can solve without {}".format(needed)
+    assert can_solve_without_forbidden(puzzle, hints, unneeded, print_soln), "can't solve without some of the insights judged unneeded: {}".format(unneeded)
     # Remove any insights that don't result in the puzzle breaking, starting from the hardest
     for insight in reversed(Insight):
         if insight in needed:
             needed = needed - {insight}
+            unneeded = ALL_INSIGHTS - needed
+            # Test whether the insight is really needed
             completed_without_maybe = can_solve_without_forbidden(
-                puzzle, hints, ALL_INSIGHTS - needed
+                puzzle, hints, unneeded, print_soln
             )
             
             if not completed_without_maybe:
+                # The insight is needed, add it back
                 needed = needed | {insight}
-            else:
-                unneeded = unneeded | {insight}
+    unneeded = ALL_INSIGHTS - needed
     assert len(needed | unneeded) == len(ALL_INSIGHTS)
-    assert len(ALL_INSIGHTS - needed) == len(unneeded)
-    assert can_solve_without_forbidden(puzzle, hints, ALL_INSIGHTS - needed), "can't solve without some of {}".format(ALL_INSIGHTS - needed)
-    assert not can_solve_without_forbidden(puzzle, hints, needed), "can solve without {}".format(needed)
+    assert len(needed & unneeded) == 0
+    assert can_solve_without_forbidden(puzzle, hints, ALL_INSIGHTS - needed, print_soln), "can't solve without some of the insights judged as unneeded: {}".format(unneeded)
     return needed
 
 
-def can_solve_without_forbidden(puzzle, hints, forbidden_insights):
+def can_solve_without_forbidden(puzzle, hints, forbidden_insights, print_soln=False):
+    if print_soln:
+        print("Soln without {}".format(forbidden_insights))
     completed_puzzle, is_valid, _, used_insights = apply_hints(
-        puzzle, hints, print_soln=False, forbidden_insights=forbidden_insights
+        puzzle, hints, print_soln=print_soln, forbidden_insights=forbidden_insights
     )
     assert (
         len(used_insights & forbidden_insights) == 0
@@ -337,7 +350,7 @@ class HintSet:
             return True
         return can_solve_without_forbidden(
             self.puzzle, self.hints, self.forbidden_insights
-        ) and len(self.insights & self.required_insights) == len(self.required_insights)
+        ) and len(self.insights & self.required_insights) == len(self.required_insights) and len(self.insights & self.forbidden_insights) == 0
 
     def get_duplicates(self):
         english_dict = {}

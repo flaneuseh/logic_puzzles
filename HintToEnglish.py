@@ -170,9 +170,9 @@ def before_to_english(attributes, grammar_dict={}):
         template = toTemplate(template) 
         return template.substitute(cat1= cat1, cat2=cat2, num_cat=num_cat, step=step, ent1=ent1, ent2=ent2, amount=amount )
 
-            template = (
-                "The {cat1} {ent1} is {amount} {num_cat}s before the {cat2} {ent2}"
-            )
+        template = (
+            "The {cat1} {ent1} is {amount} {num_cat}s before the {cat2} {ent2}"
+        )
         return template.format(
             cat1=cat1,
             cat2=cat2,

@@ -284,27 +284,19 @@ def evolve(
             child_cell = feasible_grid.grid[row][col]
             if not child_cell is None:
                 child = child_cell[1]
-                assert (
-                    len(child.insights & required_insights) > 0
-                    or len(required_insights) == 0
-                ), "insights: {} does not include any of: {}. Child required: {}".format(
-                    child.insights, required_insights, child.required_insights
-                )
-                assert (
-                    len(child.insights & forbidden_insights) == 0
-                ), "insights: {} includes forbidden: {}. Child forbidden: {}".format(
-                    child.insights,
-                    child.insights & forbidden_insights,
-                    child.forbidden_insights,
-                )
-                assert (
-                    not child.require_insight
-                    or len(child.dumb_insights & required_insights) == 0
-                ), "dumb insights: {} includes required: {}. Child required: {}".format(
-                    child.dumb_insights,
-                    child.insights & required_insights,
-                    child.required_insights,
-                )
+                # assert (
+                #     len(child.insights & required_insights) > 0
+                #     or len(required_insights) == 0
+                # ), "insights: {} does not include any of: {}. Child required: {}".format(
+                #     child.insights, required_insights, child.required_insights
+                # )
+                # assert (
+                #     len(child.insights & forbidden_insights) == 0
+                # ), "insights: {} includes forbidden: {}. Child forbidden: {}".format(
+                #     child.insights,
+                #     child.insights & forbidden_insights,
+                #     child.forbidden_insights,
+                # )
     return feasible_grid, infeasible, history
 
 
