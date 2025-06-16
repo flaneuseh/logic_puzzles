@@ -1,0 +1,82 @@
+Puzzle:
+      2h  4h  6h  8h
+    --------------------
+Pum|  *    *    *    *  |
+Kal|  *    *    *    *  |
+Blu|  *    *    *    *  |
+Cau|  *    *    *    *  |
+    --------------------
+Hints:
+Either the plants Pumpkins or the plants Cauliflower is the hours 2h
+The plants Pumpkins is 1 hourss before the plants Kale
+The plants Blueberries is 2 hourss before the plants Kale
+      2h  4h  6h  8h                                                                 2h  4h  6h  8h                                                                 2h  4h  6h  8h                                                           
+    --------------------                                                           --------------------                                                           --------------------                                                       
+Pum|  *    *    *    *  |                                                      Pum|  *    *    *    X  |                                                      Pum|  *    *    *    *  |                                                      
+Kal|  X    *    *    *  |                                                      Kal|  X    *    *    *  |                                                      Kal|  X    X    *    *  |                                                      
+Blu|  X    *    *    *  |                                                      Blu|  *    *    *    *  |                                                      Blu|  *    *    X    X  |                                                      
+Cau|  *    *    *    *  |                                                      Cau|  *    *    *    *  |                                                      Cau|  *    *    *    *  |                                                      
+    --------------------                                                           --------------------                                                           --------------------                                                       
+hint: Either the plants Pumpkins or the plants Cauliflower is the hours 2h     hint: The plants Pumpkins is 1 hourss before the plants Kale                   hint: The plants Blueberries is 2 hourss before the plants Kale                
+insights: SIMPLE_OR_SAME_CAT (9),                                              insights: BEFORE_ONE_SPOT_NOINFO (12),                                         insights: BEFORE_N_SPOTS_NOINFO (13),                                          
+CHOSEN BY SOLVER                                                                                                                                                                                                                             
+      2h  4h  6h  8h                                                      2h  4h  6h  8h                                                
+    --------------------                                                --------------------                                            
+Pum|  *    *    *    X  |                                           Pum|  *    *    *    *  |                                           
+Kal|  x    *    *    *  |                                           Kal|  x    X    *    *  |                                           
+Blu|  x    *    *    *  |                                           Blu|  x    *    X    X  |                                           
+Cau|  *    *    *    *  |                                           Cau|  *    *    *    *  |                                           
+    --------------------                                                --------------------                                            
+hint: The plants Pumpkins is 1 hourss before the plants Kale        hint: The plants Blueberries is 2 hourss before the plants Kale     
+insights: BEFORE_ONE_SPOT_NOINFO (12),                              insights: BEFORE_N_SPOTS_NOINFO (13),                               
+CHOSEN BY SOLVER                                                                                                                        
+      2h  4h  6h  8h                                                
+    --------------------                                            
+Pum|  *    *    *    x  |                                           
+Kal|  x    X    *    *  |                                           
+Blu|  x    *    X    X  |                                           
+Cau|  *    *    *    *  |                                           
+    --------------------                                            
+hint: The plants Blueberries is 2 hourss before the plants Kale     
+insights: BEFORE_N_SPOTS_NOINFO (13),                               
+CHOSEN BY SOLVER                                                    
+      2h  4h  6h  8h                                                      2h  4h  6h  8h                                                      2h  4h  6h  8h                                                
+    --------------------                                                --------------------                                                --------------------                                            
+Pum|  *    X    *    x  |                                           Pum|  X    *    *    x  |                                           Pum|  *    *    *    x  |                                           
+Kal|  x    x    *    *  |                                           Kal|  x    x    *    *  |                                           Kal|  x    x    X    *  |                                           
+Blu|  x    O    x    x  |                                           Blu|  x    *    x    x  |                                           Blu|  x    *    x    x  |                                           
+Cau|  *    X    *    *  |                                           Cau|  *    *    *    *  |                                           Cau|  *    *    *    *  |                                           
+    --------------------                                                --------------------                                                --------------------                                            
+openings                                                            hint: The plants Pumpkins is 1 hourss before the plants Kale        hint: The plants Blueberries is 2 hourss before the plants Kale     
+insights: OPENING (2),                                              insights: BEFORE_N_SPOTS_CROSSCHECK (17),                           insights: BEFORE_N_SPOTS_SHIFT (16),                                
+CHOSEN BY SOLVER                                                                                                                                                                                            
+      2h  4h  6h  8h                                                      2h  4h  6h  8h                                                
+    --------------------                                                --------------------                                            
+Pum|  X    x    *    x  |                                           Pum|  *    x    *    x  |                                           
+Kal|  x    x    X    *  |                                           Kal|  x    x    X    O  |                                           
+Blu|  x    o    x    x  |                                           Blu|  x    o    x    x  |                                           
+Cau|  *    x    *    *  |                                           Cau|  *    x    *    X  |                                           
+    --------------------                                                --------------------                                            
+hint: The plants Pumpkins is 1 hourss before the plants Kale        hint: The plants Blueberries is 2 hourss before the plants Kale     
+insights: BEFORE_N_SPOTS_CROSSCHECK (17),                           insights: APPLY_BEFORE_N_SPOTS (7),                                 
+                                                                    CHOSEN BY SOLVER                                                    
+      2h  4h  6h  8h                                             
+    --------------------                                         
+Pum|  X    x    O    x  |                                        
+Kal|  x    x    x    o  |                                        
+Blu|  x    o    x    x  |                                        
+Cau|  *    x    X    x  |                                        
+    --------------------                                         
+hint: The plants Pumpkins is 1 hourss before the plants Kale     
+insights: APPLY_BEFORE_ONE_SPOT (6),                             
+CHOSEN BY SOLVER                                                 
+      2h  4h  6h  8h                                                                 2h  4h  6h  8h                                                           
+    --------------------                                                           --------------------                                                       
+Pum|  x    x    o    x  |                                                      Pum|  x    x    o    x  |                                                      
+Kal|  x    x    x    o  |                                                      Kal|  x    x    x    o  |                                                      
+Blu|  x    o    x    x  |                                                      Blu|  x    o    x    x  |                                                      
+Cau|  O    x    x    x  |                                                      Cau|  O    x    x    x  |                                                      
+    --------------------                                                           --------------------                                                       
+openings                                                                       hint: Either the plants Pumpkins or the plants Cauliflower is the hours 2h     
+insights: OPENING (2),                                                         insights: APPLY_OR (5),                                                        
+CHOSEN BY SOLVER                                                                                                                                              

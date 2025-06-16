@@ -33,10 +33,10 @@ def decide(rate):
 # ### Heuristic 
 #
 # #### Feasibility 
-# The fesability heuristic is the percentage of empty (unsolved). A valid puzzle is completely filled, but if the hints are incomplete or inlogical the resulting puzzle will have many empty pieces. This assumes that the hints will stop being applied when an invalid hint is attempted. 
+# The feasibility heuristic is the percentage of empty (unsolved). A valid puzzle is completely filled, but if the hints are incomplete or inlogical the resulting puzzle will have many empty pieces. This assumes that the hints will stop being applied when an invalid hint is attempted. 
 #
 # #### Optimization 
-# We are hoping to optimize for challenge. Certain hint types are more challenging then others, so the algorithm will find the average of the difficulty of each hint (according to a dicitonary). In the future more complex algorithms could be considered (what types of deductions need to be made, etc.). This way harder hints (ex: or) will be selected over easier hints (ex: is)
+# We are hoping to optimize for challenge. Certain hint types are more challenging than others, so the algorithm will find the average of the difficulty of each hint (according to a dicitionary). In the future more complex algorithms could be considered (what types of deductions need to be made, etc.). This way harder hints (ex: or) will be selected over easier hints (ex: is)
 
 class EliteGrid:
 
@@ -169,6 +169,9 @@ class EliteGrid:
         return largest_rows
     
     def get_new_to_layer(self, layer = 0):
+        if layer < 0:
+            return []
+        
         grid = self.grids[layer]
 
         li = [] 

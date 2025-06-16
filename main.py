@@ -2,7 +2,11 @@ from flask import Flask, render_template, request, url_for, jsonify
 from flask_cors import CORS, cross_origin
 from MapElites import evolve as map_evolve
 from HintSetToJson import category_to_json
-from HintToEnglish import hint_to_english, serialized_hint_grammar
+from HintToEnglish import (
+    hint_to_english,
+    serialized_hint_grammar,
+    deserialized_hint_grammar,
+)
 from LogicPuzzles import Category, Puzzle
 from ItterativeMapElits import evolve as itterative_evolve
 from ItterativeMapElits import EliteGrid
@@ -10,6 +14,8 @@ import jsonpickle
 import random
 import Database
 from AddToGrammar import get_empty_before, get_empty_is, get_empty_not, get_empty_or
+import Evolution
+from insight_tree import choose_move_lazy
 
 app = Flask(__name__)
 
@@ -77,9 +83,10 @@ def get_puzzle(request_data):
     if "puzzle" in request_data:
         categories = []
         puzzle_data = request_data["puzzle"]
-
+        print(puzzle_data)
         if "categories" in puzzle_data:
             for element in puzzle_data["categories"]:
+                print(element)
                 name = element["name"]
                 entities = element["entities"]
                 is_numeric = element["is_numeric"]

@@ -96,177 +96,14 @@ Or for more detail logs, check the journal with (where 200 is the number of line
 
 You can find/modify the Gunicorn configuration with: 
 
-```sudo nano /etc/systemd/system/logic_puzzle_app.service```
+### Running a new experiment 
+New experiments can be run by modifying the "Experiments.py" file. At the top, several contains are defined. Most important is the "folder" which tells the program where to put experiement data. We recommend creating a new folder for each experiment run. You can also modify the puzzle to generate puzzles with different themes. Note that currently puzzles are required to have at least three categories, one of which must be numeric. 
 
+After the experiement finishes running, you will need to run the "DataVisualisation.py" file, with the updated folder. This will produce "hint.txt" and "solutions.txt" files, which contain the hints and solutions for your generated puzzles. 
 
-
-## Major API end points 
-
-
-### /iterate_map_evolve
-Conduct a cycle of generation. 
-Parameters: 
-* user: password for user 
-* id: id of mapElites grid to generate. If not included, a new grid will be create and the id will be returned 
-* puzzle: base puzzle (categories, entities, scenario) to evolve hints for 
-
-Optional Evolution parameters: 
-* gens: number of generations to run 
-* pop_size: number of children to create per generation 
-* x_rate: cross over rate 
-* mut_rate: mutation rate 
-* add_rate: ratio of how often to add hint in mutation 
-* elites: number of elites in the infeasible population 
-
-### /add_account 
-admin accounts can add users. 
-
-Parameters: 
-* user: admin password
-* privateKey: password of new account 
-* publicKey: username of new user
-* mode: interface type out of [casual, serious, mixed, admin]
-
-### /like_puzzle
-Add puzzle to users liked puzzles. 
-
-Parameters: 
-* username: password of user 
-* puzzle: json representation of puzzle 
-### /remove_puzzle 
-Remove puzzle from users liked puzzles.
-
-Parameters: 
-* username: password of user
-* key: unique index of puzzle to remove
-
-### /update_puzzle 
-Replace liked puzzles with new version. 
-
-Parameters: 
-* username: password of user
-* key: unique index of puzzle to update
-* puzzle: json representation of updated puzzle 
-
-### /get_liked_puzzles 
-Returns a list of all liked puzzles for user.
-
-Parameters: 
-* username: password of user
-
-### /add_scenario 
-Adds a new scenario for user to access later. 
-
-Parameters: 
-* user: password of user, if admin scenario will be added to sample  
-* name: name of scenario
-* scenario: text explanation of scenario 
-* categories: list of categories within scenario 
-
-### /update_scenario 
-Updates an existing scenario with new data 
-
-Parameters: 
-* user: password of user, if admin scenario will be added to sample  
-* name: name of scenario
-* scenario: text explanation of scenario 
-* categories: list of categories within scenario 
-
-### /delete_scenario 
-Remove a scenario 
-
-Parameters: 
-* user: password of user
-* name: name of scenario
-
-### /get_scenarios 
-Get the scenarios for a user 
-
-Parameters: 
-* user: password of user 
-
-### /get_unused_grammar 
-Returns the list of hints that will have the default grammar
-
-Parameters: 
-* username: password of user 
-* cats: list of categories to test for 
-
-### /add_grammar_rule
-Add a new grammar template for a hint. 
-
-Parameters: 
-* user: password of user, if admin grammar will be added to sample 
-* type: type of hint from [is, not, before, or]
-* all hint parameters: all categories for hint type from: cat1, cat2, is_cat, num_cat 
-* template [times and untimed for before]: String template for hint. Parameters should be surrounded by curly braces. For example "{ent1} is {ent2}" 
-
-### /get_template 
-
-Get the template of a hint for a user 
-
-parameters: 
-* user: password of user 
-* type: type of hint 
-* all hint parameters: all categories for hint type from: cat1, cat2, is_cat, num_cat
-
-### /get_brainstorm 
-Gets all the narrative brainstorms of a hint for a user 
-
-parameters: 
-* user: password of user 
-* type: type of hint 
-* all hint parameters: all categories for hint type from: cat1, cat2, is_cat, num_cat 
-
-### /add_brainstorm 
-Add a narrative brainstorm for a hint 
-
-Parameters: 
-* user: password of user, if admin grammar will be added to sample 
-* type: type of hint from [is, not, before, or]
-* all hint parameters: all categories for hint type from: cat1, cat2, is_cat, num_cat 
-* template [times and untimed for before]: String template for hint. Parameters should be surrounded by curly braces. For example "{ent1} is {ent2}" 
-
-### /get_public_key
-Gets the username and mode of a user 
-
-Parameters: 
-* user: password of user 
-
-### /get_posted_puzzles
-Returns all puzzles in community of user 
-
-Parameter: 
-* user: password of user 
- 
-
-
-### /post_puzzle 
-Post a puzzle to the community 
-
-Parameters: 
-* username: password of user 
-* puzzle : json representation of puzzle 
-* title: title of post 
-* body: body of post 
-* time: time of post as string 
-
-### /add_comment
-Add a comment to a posted puzzle 
-
-Parameters: 
-* username: password of user 
-* comment: text of comment 
-* puzzleId: Id of post 
-* time: time of comment as string 
-
-
-### /get_user_data
-Get all data associated with a user
-
-Parameters: 
-* user: password of user 
-
+### Running the Flask API Server
+The Flask API server can be run using the command line with command ```python main.py```.
+To start a mock database, start MongoDB, then run command ```python mock-db.py```.
 
 ## Important Files 
 
@@ -283,7 +120,7 @@ This file defines the objects and logics for logic puzzles.
 A category object is a set of entities, that is either numerical or categorical. To create a new category, you need to provide a title for the category, list of string names for the entities, and whether the category is numerical or categorical.
 
 ```
-suspects = Category("suspect", ["Ms. carlet", "Mrs. White", "Col. Mustard", "Prof. Plum"], False) 
+suspects = Category("suspect", ["Ms. Scarlet", "Mrs. White", "Col. Mustard", "Prof. Plum"], False) 
 ```
 
 #### Puzzle 

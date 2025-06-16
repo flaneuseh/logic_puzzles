@@ -1,0 +1,295 @@
+Hints for grid cell [0][1]
+	The plant Green Onions is 2 mLs before the plant Eggplant
+	The mL 40oz is the plant Broccoli
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [0][2]
+	Either the plant Potatoes or the plant Eggplant is the mL 80oz
+	The plant Green Onions is 2 mLs before the plant Eggplant
+	The mL 40oz is the plant Broccoli
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [1][1]
+	The plant Eggplant is 2 mLs before the plant Green Onions
+	Either the mL 60oz is the plant Potatoes or the mL 40oz is the plant Green Onions
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [1][2]
+	Either the mL 60oz is the plant Potatoes or the mL 80oz is the plant Broccoli
+	The plant Eggplant is 2 mLs before the plant Green Onions
+	The plant Eggplant was not the mL 20oz
+Insights: {<Insight.APPLY_OR: 5>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_NOT: 4>, <Insight.OPENING: 2>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [2][1]
+	Either the plant Potatoes is the mL 20oz or the plant Broccoli is the mL 40oz
+	The plant Eggplant is 2 mLs before the plant Broccoli
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [2][2]
+	Either the plant Green Onions is the mL 40oz or the plant Potatoes is the mL 20oz
+	Either the plant Potatoes is the mL 20oz or the plant Broccoli is the mL 40oz
+	The plant Eggplant is 2 mLs before the plant Broccoli
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [3][1]
+	Either the plant Broccoli is the mL 80oz or the mL 80oz is the plant Eggplant
+	The plant Broccoli is 2 mLs before the plant Green Onions
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [3][2]
+	Either the plant Potatoes or the plant Eggplant is the mL 40oz
+	Either the plant Broccoli is the mL 80oz or the mL 80oz is the plant Eggplant
+	The plant Broccoli is 2 mLs before the plant Green Onions
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [4][1]
+	The plant Green Onions is 2 mLs before the plant Broccoli
+	The plant Eggplant is the mL 20oz
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [4][2]
+	The plant Green Onions is 2 mLs before the plant Broccoli
+	Either the plant Eggplant is the mL 20oz or the mL 40oz is the plant Potatoes
+	Either the mL 60oz or the mL 80oz is the plant Potatoes
+Insights: {<Insight.APPLY_OR: 5>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.OPENING: 2>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [5][1]
+	The plant Green Onions is 2 mLs before the plant Potatoes
+	The mL 60oz is the plant Eggplant
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [5][2]
+	Either the plant Potatoes or the plant Eggplant is the mL 80oz
+	The plant Green Onions is 2 mLs before the plant Potatoes
+	Either the mL 20oz or the mL 80oz is the plant Broccoli
+Insights: {<Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [6][1]
+	The plant Eggplant is the mL 40oz
+	The plant Green Onions is 2 mLs before the plant Potatoes
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [6][2]
+	The plant Eggplant is the mL 40oz
+	The plant Green Onions is at least 1 mL before the plant Broccoli
+	The plant Green Onions is 2 mLs before the plant Potatoes
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [6][3]
+	Either the plant Broccoli or the plant Eggplant is the mL 40oz
+	Either the plant Broccoli is the mL 60oz or the plant Eggplant is the mL 40oz
+	The plant Green Onions is 2 mLs before the plant Potatoes
+Insights: {<Insight.APPLY_OR: 5>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.OPENING: 2>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [7][1]
+	Either the plant Potatoes is the mL 20oz or the plant Broccoli is the mL 40oz
+	The plant Green Onions is 2 mLs before the plant Potatoes
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [7][2]
+	Either the plant Broccoli or the plant Eggplant is the mL 40oz
+	The plant Green Onions is 2 mLs before the plant Potatoes
+	Either the plant Potatoes or the plant Eggplant is the mL 80oz
+Insights: {<Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [7][3]
+	Either the plant Broccoli or the plant Eggplant is the mL 40oz
+	Either the mL 60oz is the plant Potatoes or the mL 80oz is the plant Broccoli
+	The plant Green Onions is 2 mLs before the plant Potatoes
+Insights: {<Insight.APPLY_OR: 5>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.OPENING: 2>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [8][1]
+	The plant Eggplant is the mL 40oz
+	The plant Broccoli is 2 mLs before the plant Green Onions
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [8][2]
+	The plant Eggplant is at least 1 mL before the plant Potatoes
+	The plant Broccoli is 2 mLs before the plant Green Onions
+	Either the mL 40oz or the mL 60oz is the plant Eggplant
+Insights: {<Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.OPENING: 2>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [9][1]
+	Either the plant Potatoes or the plant Eggplant is the mL 80oz
+	The plant Eggplant is 2 mLs before the plant Green Onions
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [9][2]
+	The plant Eggplant is at least 1 mL before the plant Potatoes
+	The plant Eggplant is 2 mLs before the plant Green Onions
+	The plant Green Onions is at least 1 mL before the plant Potatoes
+Insights: {<Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_BEFORE_UNDEFINED_SPOTS: 8>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.OPENING: 2>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [10][1]
+	The plant Broccoli is 2 mLs before the plant Green Onions
+	Either the mL 60oz is the plant Eggplant or the plant Broccoli is the mL 80oz
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [10][2]
+	Either the mL 60oz is the plant Eggplant or the plant Broccoli is the mL 80oz
+	The plant Broccoli is at least 1 mL before the plant Green Onions
+	The plant Broccoli is 2 mLs before the plant Green Onions
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [11][1]
+	The mL 20oz is the plant Eggplant
+	The plant Green Onions is 2 mLs before the plant Potatoes
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [11][2]
+	Either the mL 60oz is the plant Potatoes or the mL 40oz is the plant Green Onions
+	The plant Eggplant is 2 mLs before the plant Broccoli
+	Either the plant Eggplant is the mL 20oz or the plant Broccoli is the mL 40oz
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [12][1]
+	The plant Eggplant is the mL 80oz
+	The plant Potatoes is 2 mLs before the plant Green Onions
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [12][2]
+	The plant Broccoli is 1 mLs before the plant Green Onions
+	The plant Potatoes is 2 mLs before the plant Green Onions
+	The plant Potatoes is at least 1 mL before the plant Eggplant
+Insights: {<Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.BEFORE_N_SPOTS_CROSSCHECK: 17>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.OPENING: 2>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [13][1]
+	The plant Broccoli is 2 mLs before the plant Green Onions
+	The mL 20oz is the plant Eggplant
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [13][2]
+	The plant Broccoli is at least 1 mL before the plant Green Onions
+	The plant Broccoli is 2 mLs before the plant Green Onions
+	The mL 20oz is the plant Eggplant
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [14][1]
+	The plant Green Onions is 2 mLs before the plant Broccoli
+	The plant Eggplant is the mL 40oz
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [14][2]
+	Either the plant Potatoes or the plant Eggplant is the mL 40oz
+	The plant Green Onions is 2 mLs before the plant Broccoli
+	Either the plant Potatoes or the plant Broccoli is the mL 80oz
+Insights: {<Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [14][3]
+	Either the plant Potatoes or the plant Eggplant is the mL 40oz
+	Either the mL 40oz is the plant Eggplant or the plant Broccoli is the mL 80oz
+	The plant Green Onions is 2 mLs before the plant Broccoli
+Insights: {<Insight.APPLY_OR: 5>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.OPENING: 2>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [15][1]
+	Either the mL 20oz is the plant Broccoli or the plant Green Onions is the mL 60oz
+	The plant Green Onions is 2 mLs before the plant Eggplant
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [15][2]
+	Either the plant Broccoli is the mL 80oz or the mL 80oz is the plant Eggplant
+	Either the mL 20oz is the plant Broccoli or the plant Green Onions is the mL 60oz
+	The plant Green Onions is 2 mLs before the plant Eggplant
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [16][1]
+	The plant Green Onions is 2 mLs before the plant Broccoli
+	The plant Eggplant is the mL 60oz
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [16][2]
+	Either the plant Broccoli is the mL 80oz or the mL 80oz is the plant Eggplant
+	Either the mL 20oz is the plant Broccoli or the plant Eggplant is the mL 60oz
+	The plant Green Onions is 2 mLs before the plant Broccoli
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [17][1]
+	Either the plant Green Onions is the mL 40oz or the plant Potatoes is the mL 20oz
+	The plant Eggplant is 2 mLs before the plant Green Onions
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [17][2]
+	Either the plant Potatoes is the mL 20oz or the plant Broccoli is the mL 40oz
+	Either the plant Green Onions is the mL 40oz or the plant Potatoes is the mL 20oz
+	The plant Eggplant is 2 mLs before the plant Green Onions
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [18][1]
+	The plant Green Onions is 2 mLs before the plant Broccoli
+	The plant Broccoli is 1 mLs before the plant Eggplant
+Insights: {<Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_BEFORE_ONE_SPOT: 6>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.OPENING: 2>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [18][2]
+	Either the plant Potatoes is the mL 20oz or the plant Potatoes is the mL 40oz
+	The plant Green Onions is 2 mLs before the plant Broccoli
+	The plant Broccoli is 1 mLs before the plant Eggplant
+Insights: {<Insight.APPLY_OR: 5>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.OPENING: 2>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [18][3]
+	Either the plant Potatoes or the plant Eggplant is the mL 40oz
+	Either the plant Broccoli is the mL 80oz or the mL 80oz is the plant Eggplant
+	The plant Green Onions is 2 mLs before the plant Broccoli
+Insights: {<Insight.APPLY_OR: 5>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.SIMPLE_OR_SAME_CAT: 9>, <Insight.OPENING: 2>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [19][1]
+	The plant Potatoes is 2 mLs before the plant Green Onions
+	The mL 60oz is the plant Eggplant
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [19][2]
+	The plant Broccoli is at least 1 mL before the plant Green Onions
+	The plant Potatoes is 2 mLs before the plant Green Onions
+	The mL 60oz is the plant Eggplant
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [19][3]
+	The plant Eggplant was not the mL 80oz
+	The plant Broccoli is at least 1 mL before the plant Green Onions
+	Either the mL 60oz is the plant Broccoli or the mL 40oz is the plant Potatoes
+	The plant Potatoes is 2 mLs before the plant Green Onions
+Insights: {<Insight.APPLY_OR: 5>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_NOT: 4>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.OPENING: 2>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [20][1]
+	The mL 40oz is the plant Potatoes
+	The plant Eggplant is 2 mLs before the plant Green Onions
+Insights: {<Insight.BEFORE_N_SPOTS_NOINFO: 13>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_IS: 3>}
+
+Hints for grid cell [20][2]
+	Either the plant Potatoes or the plant Eggplant is the mL 40oz
+	Either the plant Broccoli is the mL 80oz or the mL 80oz is the plant Eggplant
+	The plant Eggplant is 2 mLs before the plant Green Onions
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [21][1]
+	The plant Eggplant is 2 mLs before the plant Broccoli
+	The plant Broccoli is at least 1 mL before the plant Green Onions
+Insights: {<Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.APPLY_BEFORE_UNDEFINED_SPOTS: 8>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.OPENING: 2>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [21][2]
+	The plant Eggplant is at least 1 mL before the plant Potatoes
+	The plant Broccoli is 1 mLs before the plant Green Onions
+	The plant Eggplant is 2 mLs before the plant Broccoli
+Insights: {<Insight.APPLY_BEFORE_ONE_SPOT: 6>, <Insight.OPENING: 2>, <Insight.BEFORE_ONE_SPOT_NOINFO: 12>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [22][1]
+	Either the mL 60oz is the plant Potatoes or the mL 40oz is the plant Green Onions
+	The plant Potatoes is 2 mLs before the plant Broccoli
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [22][2]
+	The plant Potatoes is at least 1 mL before the plant Eggplant
+	Either the mL 60oz is the plant Potatoes or the mL 40oz is the plant Green Onions
+	The plant Potatoes is 2 mLs before the plant Broccoli
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [23][1]
+	The plant Green Onions is 2 mLs before the plant Eggplant
+	Either the mL 40oz is the plant Eggplant or the plant Broccoli is the mL 80oz
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+
+Hints for grid cell [23][2]
+	The plant Green Onions is 2 mLs before the plant Eggplant
+	Either the mL 60oz is the plant Potatoes or the plant Potatoes is the mL 40oz
+	The plant Potatoes is 2 mLs before the plant Broccoli
+Insights: {<Insight.APPLY_OR: 5>, <Insight.OPENING: 2>, <Insight.APPLY_BEFORE_N_SPOTS: 7>, <Insight.BEFORE_N_SPOTS_NOINFO: 13>}
+

@@ -1,0 +1,52 @@
+Puzzle:
+      2h  4h  6h  8h
+    --------------------
+Pum|  *    *    *    *  |
+Kal|  *    *    *    *  |
+Blu|  *    *    *    *  |
+Cau|  *    *    *    *  |
+    --------------------
+Hints:
+The plants Blueberries is the hours 2h
+Either the plants Kale is the hours 4h or the plants Blueberries is the hours 6h
+The plants Blueberries is 2 hourss before the plants Cauliflower
+      2h  4h  6h  8h                                                             2h  4h  6h  8h                                                       
+    --------------------                                                       --------------------                                                   
+Pum|  X    *    *    *  |                                                  Pum|  *    *    *    *  |                                                  
+Kal|  X    *    *    *  |                                                  Kal|  *    *    *    *  |                                                  
+Blu|  O    X    X    X  |                                                  Blu|  *    *    X    X  |                                                  
+Cau|  X    *    *    *  |                                                  Cau|  X    X    *    *  |                                                  
+    --------------------                                                       --------------------                                                   
+hint: The plants Blueberries is the hours 2h                               hint: The plants Blueberries is 2 hourss before the plants Cauliflower     
+insights: APPLY_IS (3),                                                    insights: BEFORE_N_SPOTS_NOINFO (13),                                      
+CHOSEN BY SOLVER                                                                                                                                      
+      2h  4h  6h  8h                                                                             2h  4h  6h  8h                                                                       
+    --------------------                                                                       --------------------                                                                   
+Pum|  x    X    *    *  |                                                                  Pum|  x    *    X    *  |                                                                  
+Kal|  x    O    X    X  |                                                                  Kal|  x    *    X    *  |                                                                  
+Blu|  o    x    x    x  |                                                                  Blu|  o    x    x    x  |                                                                  
+Cau|  x    X    *    *  |                                                                  Cau|  x    X    O    X  |                                                                  
+    --------------------                                                                       --------------------                                                                   
+hint: Either the plants Kale is the hours 4h or the plants Blueberries is the hours 6h     hint: The plants Blueberries is 2 hourss before the plants Cauliflower                     
+insights: APPLY_OR (5),                                                                    insights: APPLY_BEFORE_N_SPOTS (7),                                                        
+CHOSEN BY SOLVER                                                                                                                                                                      
+      2h  4h  6h  8h                                                       
+    --------------------                                                   
+Pum|  x    x    X    *  |                                                  
+Kal|  x    o    x    x  |                                                  
+Blu|  o    x    x    x  |                                                  
+Cau|  x    x    O    X  |                                                  
+    --------------------                                                   
+hint: The plants Blueberries is 2 hourss before the plants Cauliflower     
+insights: APPLY_BEFORE_N_SPOTS (7),                                        
+CHOSEN BY SOLVER                                                           
+      2h  4h  6h  8h          
+    --------------------      
+Pum|  x    x    x    O  |     
+Kal|  x    o    x    x  |     
+Blu|  o    x    x    x  |     
+Cau|  x    x    o    x  |     
+    --------------------      
+openings                      
+insights: OPENING (2),        
+CHOSEN BY SOLVER              

@@ -1,0 +1,590 @@
+Solution for grid cell [0][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    O    X  |
+4h|  X    X    X    O  |
+6h|  X    O    X    X  |
+8h|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [0][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    O    X  |
+4h|  X    X    X    O  |
+6h|  X    O    X    X  |
+8h|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [0][3]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    O    X  |
+4h|  X    X    X    O  |
+6h|  X    O    X    X  |
+8h|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [1][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  O    X    X    X  |
+4h|  X    O    X    X  |
+6h|  X    X    O    X  |
+8h|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [1][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  O    X    X    X  |
+4h|  X    O    X    X  |
+6h|  X    X    O    X  |
+8h|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [2][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    X    O  |
+4h|  O    X    X    X  |
+6h|  X    X    O    X  |
+8h|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [2][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    X    O  |
+4h|  O    X    X    X  |
+6h|  X    X    O    X  |
+8h|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [3][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  O    X    X    X  |
+4h|  X    O    X    X  |
+6h|  X    X    X    O  |
+8h|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [3][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  O    X    X    X  |
+4h|  X    O    X    X  |
+6h|  X    X    X    O  |
+8h|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [3][3]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  O    X    X    X  |
+4h|  X    O    X    X  |
+6h|  X    X    X    O  |
+8h|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [4][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    O    X  |
+4h|  O    X    X    X  |
+6h|  X    X    X    O  |
+8h|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [4][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    O    X  |
+4h|  O    X    X    X  |
+6h|  X    X    X    O  |
+8h|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [5][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    O    X  |
+4h|  X    X    X    O  |
+6h|  O    X    X    X  |
+8h|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [5][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    O    X  |
+4h|  X    X    X    O  |
+6h|  O    X    X    X  |
+8h|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [6][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    X    O  |
+4h|  X    X    O    X  |
+6h|  X    O    X    X  |
+8h|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [6][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    X    O  |
+4h|  X    X    O    X  |
+6h|  X    O    X    X  |
+8h|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [6][3]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    X    O  |
+4h|  X    X    O    X  |
+6h|  X    O    X    X  |
+8h|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [7][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    O    X    X  |
+4h|  X    X    O    X  |
+6h|  X    X    X    O  |
+8h|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [7][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    O    X    X  |
+4h|  X    X    O    X  |
+6h|  X    X    X    O  |
+8h|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [8][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    X    O  |
+4h|  O    X    X    X  |
+6h|  X    O    X    X  |
+8h|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [8][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    X    O  |
+4h|  O    X    X    X  |
+6h|  X    O    X    X  |
+8h|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [9][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    O    X  |
+4h|  O    X    X    X  |
+6h|  X    O    X    X  |
+8h|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [9][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    O    X  |
+4h|  O    X    X    X  |
+6h|  X    O    X    X  |
+8h|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [9][3]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    O    X  |
+4h|  O    X    X    X  |
+6h|  X    O    X    X  |
+8h|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [10][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    O    X    X  |
+4h|  O    X    X    X  |
+6h|  X    X    O    X  |
+8h|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [10][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    O    X    X  |
+4h|  O    X    X    X  |
+6h|  X    X    O    X  |
+8h|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [11][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    O    X  |
+4h|  X    O    X    X  |
+6h|  O    X    X    X  |
+8h|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [11][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    O    X  |
+4h|  X    O    X    X  |
+6h|  O    X    X    X  |
+8h|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [12][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  O    X    X    X  |
+4h|  X    X    O    X  |
+6h|  X    X    X    O  |
+8h|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [12][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  O    X    X    X  |
+4h|  X    X    O    X  |
+6h|  X    X    X    O  |
+8h|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [12][3]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  O    X    X    X  |
+4h|  X    X    O    X  |
+6h|  X    X    X    O  |
+8h|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [13][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    X    O  |
+4h|  X    X    O    X  |
+6h|  O    X    X    X  |
+8h|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [13][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    X    O  |
+4h|  X    X    O    X  |
+6h|  O    X    X    X  |
+8h|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [13][3]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    X    O  |
+4h|  X    X    O    X  |
+6h|  O    X    X    X  |
+8h|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [14][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    O    X    X  |
+4h|  X    X    X    O  |
+6h|  O    X    X    X  |
+8h|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [14][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    O    X    X  |
+4h|  X    X    X    O  |
+6h|  O    X    X    X  |
+8h|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [14][3]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    O    X    X  |
+4h|  X    X    X    O  |
+6h|  O    X    X    X  |
+8h|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [15][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    O    X    X  |
+4h|  X    X    X    O  |
+6h|  X    X    O    X  |
+8h|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [15][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    O    X    X  |
+4h|  X    X    X    O  |
+6h|  X    X    O    X  |
+8h|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [15][3]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    O    X    X  |
+4h|  X    X    X    O  |
+6h|  X    X    O    X  |
+8h|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [16][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    O    X  |
+4h|  X    O    X    X  |
+6h|  X    X    X    O  |
+8h|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [16][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    O    X  |
+4h|  X    O    X    X  |
+6h|  X    X    X    O  |
+8h|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [16][3]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    O    X  |
+4h|  X    O    X    X  |
+6h|  X    X    X    O  |
+8h|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [17][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    O    X    X  |
+4h|  O    X    X    X  |
+6h|  X    X    X    O  |
+8h|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [17][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    O    X    X  |
+4h|  O    X    X    X  |
+6h|  X    X    X    O  |
+8h|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [18][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  O    X    X    X  |
+4h|  X    X    O    X  |
+6h|  X    O    X    X  |
+8h|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [18][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  O    X    X    X  |
+4h|  X    X    O    X  |
+6h|  X    O    X    X  |
+8h|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [19][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    X    O  |
+4h|  X    O    X    X  |
+6h|  X    X    O    X  |
+8h|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [19][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    X    O  |
+4h|  X    O    X    X  |
+6h|  X    X    O    X  |
+8h|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [20][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  O    X    X    X  |
+4h|  X    X    X    O  |
+6h|  X    O    X    X  |
+8h|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [20][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  O    X    X    X  |
+4h|  X    X    X    O  |
+6h|  X    O    X    X  |
+8h|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [21][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    X    O  |
+4h|  X    O    X    X  |
+6h|  O    X    X    X  |
+8h|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [21][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    X    O  |
+4h|  X    O    X    X  |
+6h|  O    X    X    X  |
+8h|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [21][3]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    X    X    O  |
+4h|  X    O    X    X  |
+6h|  O    X    X    X  |
+8h|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [22][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    O    X    X  |
+4h|  X    X    O    X  |
+6h|  O    X    X    X  |
+8h|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [22][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    O    X    X  |
+4h|  X    X    O    X  |
+6h|  O    X    X    X  |
+8h|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [22][3]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  X    O    X    X  |
+4h|  X    X    O    X  |
+6h|  O    X    X    X  |
+8h|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [23][1]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  O    X    X    X  |
+4h|  X    X    X    O  |
+6h|  X    X    O    X  |
+8h|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [23][2]
+      Pum  Kal  Blu  Cau
+    --------------------
+2h|  O    X    X    X  |
+4h|  X    X    X    O  |
+6h|  X    X    O    X  |
+8h|  X    O    X    X  |
+    --------------------
+
+

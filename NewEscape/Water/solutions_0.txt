@@ -1,0 +1,530 @@
+Solution for grid cell [0][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    X    O  |
+Gre|  O    X    X    X  |
+Egg|  X    X    O    X  |
+Bro|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [0][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    X    O  |
+Gre|  O    X    X    X  |
+Egg|  X    X    O    X  |
+Bro|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [1][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    O    X  |
+Gre|  X    X    X    O  |
+Egg|  X    O    X    X  |
+Bro|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [1][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    O    X  |
+Gre|  X    X    X    O  |
+Egg|  X    O    X    X  |
+Bro|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [2][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  O    X    X    X  |
+Gre|  X    X    O    X  |
+Egg|  X    O    X    X  |
+Bro|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [2][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  O    X    X    X  |
+Gre|  X    X    O    X  |
+Egg|  X    O    X    X  |
+Bro|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [3][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  X    X    O    X  |
+Egg|  X    X    X    O  |
+Bro|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [3][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  X    X    O    X  |
+Egg|  X    X    X    O  |
+Bro|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [4][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    O    X  |
+Gre|  X    O    X    X  |
+Egg|  O    X    X    X  |
+Bro|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [4][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    O    X  |
+Gre|  X    O    X    X  |
+Egg|  O    X    X    X  |
+Bro|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [5][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    X    O  |
+Gre|  X    O    X    X  |
+Egg|  X    X    O    X  |
+Bro|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [5][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    X    O  |
+Gre|  X    O    X    X  |
+Egg|  X    X    O    X  |
+Bro|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [6][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    O    X  |
+Gre|  O    X    X    X  |
+Egg|  X    O    X    X  |
+Bro|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [6][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    O    X  |
+Gre|  O    X    X    X  |
+Egg|  X    O    X    X  |
+Bro|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [6][3]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    O    X  |
+Gre|  O    X    X    X  |
+Egg|  X    O    X    X  |
+Bro|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [7][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    O    X  |
+Gre|  O    X    X    X  |
+Egg|  X    X    X    O  |
+Bro|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [7][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    O    X  |
+Gre|  O    X    X    X  |
+Egg|  X    X    X    O  |
+Bro|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [7][3]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    O    X  |
+Gre|  O    X    X    X  |
+Egg|  X    X    X    O  |
+Bro|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [8][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    X    O  |
+Gre|  X    X    O    X  |
+Egg|  X    O    X    X  |
+Bro|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [8][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    X    O  |
+Gre|  X    X    O    X  |
+Egg|  X    O    X    X  |
+Bro|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [9][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    X    O  |
+Gre|  X    X    O    X  |
+Egg|  O    X    X    X  |
+Bro|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [9][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    X    O  |
+Gre|  X    X    O    X  |
+Egg|  O    X    X    X  |
+Bro|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [10][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  O    X    X    X  |
+Gre|  X    X    X    O  |
+Egg|  X    X    O    X  |
+Bro|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [10][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  O    X    X    X  |
+Gre|  X    X    X    O  |
+Egg|  X    X    O    X  |
+Bro|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [11][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    X    O  |
+Gre|  X    O    X    X  |
+Egg|  O    X    X    X  |
+Bro|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [11][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    X    O  |
+Gre|  X    O    X    X  |
+Egg|  O    X    X    X  |
+Bro|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [12][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  O    X    X    X  |
+Gre|  X    X    O    X  |
+Egg|  X    X    X    O  |
+Bro|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [12][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  O    X    X    X  |
+Gre|  X    X    O    X  |
+Egg|  X    X    X    O  |
+Bro|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [13][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    O    X  |
+Gre|  X    X    X    O  |
+Egg|  O    X    X    X  |
+Bro|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [13][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    O    X  |
+Gre|  X    X    X    O  |
+Egg|  O    X    X    X  |
+Bro|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [14][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    X    O  |
+Gre|  O    X    X    X  |
+Egg|  X    O    X    X  |
+Bro|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [14][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    X    O  |
+Gre|  O    X    X    X  |
+Egg|  X    O    X    X  |
+Bro|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [14][3]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    X    O  |
+Gre|  O    X    X    X  |
+Egg|  X    O    X    X  |
+Bro|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [15][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    O    X  |
+Gre|  X    O    X    X  |
+Egg|  X    X    X    O  |
+Bro|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [15][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    X    O    X  |
+Gre|  X    O    X    X  |
+Egg|  X    X    X    O  |
+Bro|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [16][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  O    X    X    X  |
+Gre|  X    O    X    X  |
+Egg|  X    X    O    X  |
+Bro|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [16][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  O    X    X    X  |
+Gre|  X    O    X    X  |
+Egg|  X    X    O    X  |
+Bro|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [17][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  O    X    X    X  |
+Gre|  X    X    X    O  |
+Egg|  X    O    X    X  |
+Bro|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [17][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  O    X    X    X  |
+Gre|  X    X    X    O  |
+Egg|  X    O    X    X  |
+Bro|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [18][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  O    X    X    X  |
+Egg|  X    X    X    O  |
+Bro|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [18][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  O    X    X    X  |
+Egg|  X    X    X    O  |
+Bro|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [18][3]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  O    X    X    X  |
+Egg|  X    X    X    O  |
+Bro|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [19][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  X    X    X    O  |
+Egg|  X    X    O    X  |
+Bro|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [19][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  X    X    X    O  |
+Egg|  X    X    O    X  |
+Bro|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [19][3]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  X    X    X    O  |
+Egg|  X    X    O    X  |
+Bro|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [20][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  X    X    O    X  |
+Egg|  O    X    X    X  |
+Bro|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [20][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  X    X    O    X  |
+Egg|  O    X    X    X  |
+Bro|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [21][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  X    X    X    O  |
+Egg|  O    X    X    X  |
+Bro|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [21][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  X    X    X    O  |
+Egg|  O    X    X    X  |
+Bro|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [22][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  O    X    X    X  |
+Gre|  X    O    X    X  |
+Egg|  X    X    X    O  |
+Bro|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [22][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  O    X    X    X  |
+Gre|  X    O    X    X  |
+Egg|  X    X    X    O  |
+Bro|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [23][1]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  O    X    X    X  |
+Egg|  X    X    O    X  |
+Bro|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [23][2]
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  O    X    X    X  |
+Egg|  X    X    O    X  |
+Bro|  X    X    X    O  |
+    --------------------
+
+

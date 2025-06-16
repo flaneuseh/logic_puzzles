@@ -1,0 +1,3270 @@
+Solution for grid cell [0][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | O    X    X    X  |
+Fox|  O    X    X    X  | X    O    X    X  |
+Tan|  X    X    X    O  | X    X    O    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [0][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | O    X    X    X  |
+Fox|  O    X    X    X  | X    O    X    X  |
+Tan|  X    X    X    O  | X    X    O    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [1][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    X    O    X  |
+Fox|  X    X    X    O  | X    O    X    X  |
+Tan|  O    X    X    X  | O    X    X    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [1][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    X    O    X  |
+Fox|  X    X    X    O  | X    O    X    X  |
+Tan|  O    X    X    X  | O    X    X    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [2][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | O    X    X    X  |
+Fox|  X    X    O    X  | X    X    O    X  |
+Tan|  X    O    X    X  | X    X    X    O  |
+Qui|  O    X    X    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [3][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    X    O    X  |
+Fox|  O    X    X    X  | X    X    X    O  |
+Tan|  X    X    X    O  | X    O    X    X  |
+Qui|  X    X    O    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    X    X    O  |
+Mis|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [3][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    X    O    X  |
+Fox|  O    X    X    X  | X    X    X    O  |
+Tan|  X    X    X    O  | X    O    X    X  |
+Qui|  X    X    O    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    X    X    O  |
+Mis|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [4][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    X    O  |
+Fox|  X    O    X    X  | X    O    X    X  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    X    O    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [5][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    X    X    O  |
+Fox|  X    X    O    X  | X    O    X    X  |
+Tan|  X    O    X    X  | X    X    O    X  |
+Qui|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    X    O    X  |
+Mis|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [6][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    O    X    X  |
+Fox|  X    X    X    O  | O    X    X    X  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [7][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    X    O  |
+Fox|  X    O    X    X  | X    O    X    X  |
+Tan|  O    X    X    X  | O    X    X    X  |
+Qui|  X    X    X    O  | X    X    O    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [7][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    X    O  |
+Fox|  X    O    X    X  | X    O    X    X  |
+Tan|  O    X    X    X  | O    X    X    X  |
+Qui|  X    X    X    O  | X    X    O    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [8][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | O    X    X    X  |
+Fox|  X    X    O    X  | X    O    X    X  |
+Tan|  X    O    X    X  | X    X    O    X  |
+Qui|  X    X    X    O  | X    X    X    O  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    O    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [9][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    O    X  |
+Fox|  O    X    X    X  | X    X    X    O  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  X    X    O    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [10][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    X    O  |
+Fox|  O    X    X    X  | X    X    O    X  |
+Tan|  X    X    X    O  | X    O    X    X  |
+Qui|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    X    O  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [11][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    X    O  |
+Fox|  O    X    X    X  | O    X    X    X  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  X    X    O    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [11][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    X    O  |
+Fox|  O    X    X    X  | O    X    X    X  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  X    X    O    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [12][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    X    O  |
+Fox|  X    O    X    X  | X    X    O    X  |
+Tan|  O    X    X    X  | O    X    X    X  |
+Qui|  X    X    O    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    O    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [12][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    X    O  |
+Fox|  X    O    X    X  | X    X    O    X  |
+Tan|  O    X    X    X  | O    X    X    X  |
+Qui|  X    X    O    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    O    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [12][3]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    X    O  |
+Fox|  X    O    X    X  | X    X    O    X  |
+Tan|  O    X    X    X  | O    X    X    X  |
+Qui|  X    X    O    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    O    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [13][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    O    X    X  |
+Fox|  X    X    X    O  | X    X    X    O  |
+Tan|  O    X    X    X  | O    X    X    X  |
+Qui|  X    X    O    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [13][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    O    X    X  |
+Fox|  X    X    X    O  | X    X    X    O  |
+Tan|  O    X    X    X  | O    X    X    X  |
+Qui|  X    X    O    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [13][3]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    O    X    X  |
+Fox|  X    X    X    O  | X    X    X    O  |
+Tan|  O    X    X    X  | O    X    X    X  |
+Qui|  X    X    O    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [14][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    O    X    X  |
+Fox|  X    X    X    O  | X    X    O    X  |
+Tan|  O    X    X    X  | X    X    X    O  |
+Qui|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    O    X  |
+Mis|  X    X    X    O  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [15][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    O    X  |
+Fox|  X    X    X    O  | O    X    X    X  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  O    X    X    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [16][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | O    X    X    X  |
+Fox|  X    X    O    X  | X    O    X    X  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    X    X    O  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    O    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [17][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    O    X    X  |
+Fox|  O    X    X    X  | O    X    X    X  |
+Tan|  X    O    X    X  | X    X    O    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [17][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    O    X    X  |
+Fox|  O    X    X    X  | O    X    X    X  |
+Tan|  X    O    X    X  | X    X    O    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [18][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | O    X    X    X  |
+Fox|  X    O    X    X  | X    O    X    X  |
+Tan|  X    X    X    O  | X    X    X    O  |
+Qui|  X    X    O    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [18][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | O    X    X    X  |
+Fox|  X    O    X    X  | X    O    X    X  |
+Tan|  X    X    X    O  | X    X    X    O  |
+Qui|  X    X    O    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [19][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    O    X  |
+Fox|  O    X    X    X  | O    X    X    X  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  X    X    X    O  | X    X    X    O  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [20][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    X    O  |
+Fox|  X    X    X    O  | X    X    O    X  |
+Tan|  O    X    X    X  | O    X    X    X  |
+Qui|  X    O    X    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [20][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    X    O  |
+Fox|  X    X    X    O  | X    X    O    X  |
+Tan|  O    X    X    X  | O    X    X    X  |
+Qui|  X    O    X    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [21][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    O    X    X  |
+Fox|  X    X    X    O  | O    X    X    X  |
+Tan|  X    O    X    X  | X    X    X    O  |
+Qui|  O    X    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    X    O    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [21][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    O    X    X  |
+Fox|  X    X    X    O  | O    X    X    X  |
+Tan|  X    O    X    X  | X    X    X    O  |
+Qui|  O    X    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    X    O    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [21][3]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    O    X    X  |
+Fox|  X    X    X    O  | O    X    X    X  |
+Tan|  X    O    X    X  | X    X    X    O  |
+Qui|  O    X    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    X    O    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [22][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | O    X    X    X  |
+Fox|  X    X    O    X  | X    X    O    X  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  O    X    X    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [22][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | O    X    X    X  |
+Fox|  X    X    O    X  | X    X    O    X  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  O    X    X    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [23][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    O    X    X  |
+Fox|  O    X    X    X  | X    X    X    O  |
+Tan|  X    O    X    X  | X    X    O    X  |
+Qui|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    X    O    X  |
+Mis|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [24][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | O    X    X    X  |
+Fox|  X    X    X    O  | X    X    X    O  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  O    X    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [24][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | O    X    X    X  |
+Fox|  X    X    X    O  | X    X    X    O  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  O    X    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [25][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    O    X    X  |
+Fox|  O    X    X    X  | X    X    X    O  |
+Tan|  X    X    X    O  | O    X    X    X  |
+Qui|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    X    O    X  |
+Mis|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [25][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    O    X    X  |
+Fox|  O    X    X    X  | X    X    X    O  |
+Tan|  X    X    X    O  | O    X    X    X  |
+Qui|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    X    O    X  |
+Mis|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [25][3]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    O    X    X  |
+Fox|  O    X    X    X  | X    X    X    O  |
+Tan|  X    X    X    O  | O    X    X    X  |
+Qui|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    X    O    X  |
+Mis|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [26][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    X    O    X  |
+Fox|  X    X    X    O  | X    X    X    O  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  X    X    O    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [27][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    O    X  |
+Fox|  X    O    X    X  | O    X    X    X  |
+Tan|  O    X    X    X  | X    X    X    O  |
+Qui|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    X    O    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [28][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    O    X  |
+Fox|  O    X    X    X  | X    O    X    X  |
+Tan|  X    O    X    X  | O    X    X    X  |
+Qui|  X    X    X    O  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [28][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    O    X  |
+Fox|  O    X    X    X  | X    O    X    X  |
+Tan|  X    O    X    X  | O    X    X    X  |
+Qui|  X    X    X    O  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [29][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    X    O  |
+Fox|  X    O    X    X  | X    O    X    X  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [29][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    X    O  |
+Fox|  X    O    X    X  | X    O    X    X  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [30][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    X    O  |
+Fox|  X    X    X    O  | O    X    X    X  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    O    X    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [30][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    X    O  |
+Fox|  X    X    X    O  | O    X    X    X  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    O    X    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [31][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    X    X    O  |
+Fox|  X    X    O    X  | X    X    O    X  |
+Tan|  X    X    X    O  | O    X    X    X  |
+Qui|  O    X    X    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [31][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    X    X    O  |
+Fox|  X    X    O    X  | X    X    O    X  |
+Tan|  X    X    X    O  | O    X    X    X  |
+Qui|  O    X    X    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [32][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | O    X    X    X  |
+Fox|  O    X    X    X  | X    X    O    X  |
+Tan|  X    X    X    O  | X    X    X    O  |
+Qui|  X    O    X    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [33][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    X    O  |
+Fox|  X    O    X    X  | X    X    O    X  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    X    O    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  O    X    X    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [33][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    X    O  |
+Fox|  X    O    X    X  | X    X    O    X  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    X    O    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  O    X    X    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [34][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    O    X  |
+Fox|  X    X    X    O  | X    X    X    O  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [35][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    X    O  |
+Fox|  X    X    X    O  | O    X    X    X  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [35][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    X    O  |
+Fox|  X    X    X    O  | O    X    X    X  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [36][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    O    X  |
+Fox|  O    X    X    X  | X    X    X    O  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [36][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    O    X  |
+Fox|  O    X    X    X  | X    X    X    O  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [37][3]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    O    X  |
+Fox|  X    O    X    X  | X    O    X    X  |
+Tan|  X    X    O    X  | O    X    X    X  |
+Qui|  O    X    X    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [38][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    X    X    O  |
+Fox|  X    O    X    X  | O    X    X    X  |
+Tan|  X    X    O    X  | X    O    X    X  |
+Qui|  X    X    X    O  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    O    X  |
+Mis|  X    X    X    O  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [39][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | O    X    X    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  O    X    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [39][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | O    X    X    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  O    X    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [40][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    X    O  |
+Fox|  X    X    O    X  | X    X    O    X  |
+Tan|  X    O    X    X  | O    X    X    X  |
+Qui|  O    X    X    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [41][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    O    X    X  |
+Fox|  X    X    O    X  | O    X    X    X  |
+Tan|  X    X    X    O  | X    X    X    O  |
+Qui|  O    X    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [41][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    O    X    X  |
+Fox|  X    X    O    X  | O    X    X    X  |
+Tan|  X    X    X    O  | X    X    X    O  |
+Qui|  O    X    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [42][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | O    X    X    X  |
+Fox|  O    X    X    X  | X    X    O    X  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  X    X    X    O  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [43][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    X    O  |
+Fox|  X    X    X    O  | X    O    X    X  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    X    O  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [43][3]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    X    O  |
+Fox|  X    X    X    O  | X    O    X    X  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    X    O  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [44][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | O    X    X    X  |
+Fox|  X    X    O    X  | X    X    O    X  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    X    X    O  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [45][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    X    X    O  |
+Fox|  X    X    O    X  | O    X    X    X  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    X    X    O  |
+Mis|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [45][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    X    X    O  |
+Fox|  X    X    O    X  | O    X    X    X  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    X    X    O  |
+Mis|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [46][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    X    O    X  |
+Fox|  X    X    X    O  | O    X    X    X  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [46][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    X    O    X  |
+Fox|  X    X    X    O  | O    X    X    X  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [47][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | O    X    X    X  |
+Fox|  X    X    X    O  | X    X    X    O  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    O    X    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [47][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | O    X    X    X  |
+Fox|  X    X    X    O  | X    X    X    O  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    O    X    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [48][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | O    X    X    X  |
+Fox|  X    O    X    X  | X    X    X    O  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    X    X    O  |
+Mis|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [49][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | O    X    X    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    X    O  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [49][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | O    X    X    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    X    O  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [50][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    X    O  |
+Fox|  O    X    X    X  | X    X    O    X  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [50][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    X    O  |
+Fox|  O    X    X    X  | X    X    O    X  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [51][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | O    X    X    X  |
+Fox|  O    X    X    X  | X    X    O    X  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [51][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | O    X    X    X  |
+Fox|  O    X    X    X  | X    X    O    X  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [52][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    O    X    X  |
+Fox|  X    X    X    O  | O    X    X    X  |
+Tan|  O    X    X    X  | X    X    X    O  |
+Qui|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    X    O    X  |
+Mis|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [52][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    O    X    X  |
+Fox|  X    X    X    O  | O    X    X    X  |
+Tan|  O    X    X    X  | X    X    X    O  |
+Qui|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    X    O    X  |
+Mis|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [53][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    O    X  |
+Fox|  X    X    X    O  | X    O    X    X  |
+Tan|  O    X    X    X  | X    X    X    O  |
+Qui|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    X    O    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [54][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    X    O    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [54][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    X    O    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [54][3]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    X    O    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [55][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    O    X    X  |
+Fox|  X    X    X    O  | O    X    X    X  |
+Tan|  X    X    O    X  | X    X    O    X  |
+Qui|  X    O    X    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [56][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    O    X    X  |
+Fox|  O    X    X    X  | O    X    X    X  |
+Tan|  X    X    X    O  | X    X    O    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [57][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    O    X    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  O    X    X    X  | O    X    X    X  |
+Qui|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [57][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    O    X    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  O    X    X    X  | O    X    X    X  |
+Qui|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [57][3]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    O    X    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  O    X    X    X  | O    X    X    X  |
+Qui|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [58][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    O    X    X  |
+Fox|  X    X    X    O  | O    X    X    X  |
+Tan|  X    O    X    X  | X    X    O    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [58][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    O    X    X  |
+Fox|  X    X    X    O  | O    X    X    X  |
+Tan|  X    O    X    X  | X    X    O    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [59][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    X    O    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  O    X    X    X  | O    X    X    X  |
+Qui|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [59][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    X    O    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  O    X    X    X  | O    X    X    X  |
+Qui|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [60][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    O    X    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [61][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    O    X    X  |
+Fox|  X    X    X    O  | X    X    O    X  |
+Tan|  O    X    X    X  | O    X    X    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [62][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | O    X    X    X  |
+Fox|  X    X    X    O  | X    X    O    X  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [63][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | O    X    X    X  |
+Fox|  O    X    X    X  | X    X    X    O  |
+Tan|  X    X    X    O  | X    O    X    X  |
+Qui|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    X    X    O  |
+Mis|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [64][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    O    X    X  |
+Fox|  X    O    X    X  | X    X    O    X  |
+Tan|  O    X    X    X  | O    X    X    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [64][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    O    X    X  |
+Fox|  X    O    X    X  | X    X    O    X  |
+Tan|  O    X    X    X  | O    X    X    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [64][3]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    O    X    X  |
+Fox|  X    O    X    X  | X    X    O    X  |
+Tan|  O    X    X    X  | O    X    X    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [65][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    O    X    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  X    O    X    X  | O    X    X    X  |
+Qui|  X    X    X    O  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [66][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    X    O    X  |
+Fox|  X    O    X    X  | O    X    X    X  |
+Tan|  X    X    O    X  | X    O    X    X  |
+Qui|  X    X    X    O  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    O    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [67][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    X    O  |
+Fox|  X    O    X    X  | O    X    X    X  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    X    X    O  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [67][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    X    O  |
+Fox|  X    O    X    X  | O    X    X    X  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    X    X    O  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [68][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | O    X    X    X  |
+Fox|  X    O    X    X  | X    X    O    X  |
+Tan|  X    X    O    X  | X    O    X    X  |
+Qui|  X    X    X    O  | X    X    X    O  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    O    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [69][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | O    X    X    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  X    X    X    O  | X    O    X    X  |
+Qui|  O    X    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    X    O  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [69][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | O    X    X    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  X    X    X    O  | X    O    X    X  |
+Qui|  O    X    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    X    O  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [70][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    X    O  |
+Fox|  X    O    X    X  | X    X    O    X  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [71][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    O    X    X  |
+Fox|  X    X    X    O  | O    X    X    X  |
+Tan|  X    X    O    X  | X    X    X    O  |
+Qui|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [71][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    O    X    X  |
+Fox|  X    X    X    O  | O    X    X    X  |
+Tan|  X    X    O    X  | X    X    X    O  |
+Qui|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [71][3]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    O    X    X  |
+Fox|  X    X    X    O  | O    X    X    X  |
+Tan|  X    X    O    X  | X    X    X    O  |
+Qui|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [72][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | O    X    X    X  |
+Fox|  X    O    X    X  | X    X    X    O  |
+Tan|  X    X    X    O  | X    O    X    X  |
+Qui|  X    X    O    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    X    O    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [73][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    O    X    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  X    X    X    O  | O    X    X    X  |
+Qui|  O    X    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [73][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    O    X    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  X    X    X    O  | O    X    X    X  |
+Qui|  O    X    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [74][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    X    O  |
+Fox|  X    O    X    X  | X    O    X    X  |
+Tan|  O    X    X    X  | O    X    X    X  |
+Qui|  X    X    O    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [74][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    X    O  |
+Fox|  X    O    X    X  | X    O    X    X  |
+Tan|  O    X    X    X  | O    X    X    X  |
+Qui|  X    X    O    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [75][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    X    O    X  |
+Fox|  O    X    X    X  | O    X    X    X  |
+Tan|  X    X    X    O  | X    O    X    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [76][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    X    O  |
+Fox|  X    X    X    O  | X    X    O    X  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [76][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    X    O  |
+Fox|  X    X    X    O  | X    X    O    X  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [76][3]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    X    O  |
+Fox|  X    X    X    O  | X    X    O    X  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [77][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | O    X    X    X  |
+Fox|  O    X    X    X  | X    O    X    X  |
+Tan|  X    X    O    X  | X    X    X    O  |
+Qui|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [78][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    X    O    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  X    O    X    X  | O    X    X    X  |
+Qui|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    X    O  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [78][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    X    O    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  X    O    X    X  | O    X    X    X  |
+Qui|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    X    O  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [79][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    O    X  |
+Fox|  O    X    X    X  | X    O    X    X  |
+Tan|  X    X    O    X  | X    X    X    O  |
+Qui|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [79][3]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    O    X  |
+Fox|  O    X    X    X  | X    O    X    X  |
+Tan|  X    X    O    X  | X    X    X    O  |
+Qui|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [80][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    O    X  |
+Fox|  X    O    X    X  | O    X    X    X  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    X    X    O  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [80][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    O    X  |
+Fox|  X    O    X    X  | O    X    X    X  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    X    X    O  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [80][3]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    O    X  |
+Fox|  X    O    X    X  | O    X    X    X  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    X    X    O  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [81][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | O    X    X    X  |
+Fox|  X    X    X    O  | X    O    X    X  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    X    O  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [82][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | O    X    X    X  |
+Fox|  X    X    X    O  | X    X    X    O  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  X    X    O    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [82][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | O    X    X    X  |
+Fox|  X    X    X    O  | X    X    X    O  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  X    X    O    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [83][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | O    X    X    X  |
+Fox|  O    X    X    X  | X    X    X    O  |
+Tan|  X    X    X    O  | X    O    X    X  |
+Qui|  X    X    O    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    X    O    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [84][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    O    X    X  |
+Fox|  X    O    X    X  | X    X    O    X  |
+Tan|  O    X    X    X  | X    X    X    O  |
+Qui|  X    X    O    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    X    X    O  |
+Mis|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [85][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    X    O  |
+Fox|  X    O    X    X  | X    O    X    X  |
+Tan|  X    X    O    X  | O    X    X    X  |
+Qui|  O    X    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [86][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    O    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [86][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    O    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [87][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | O    X    X    X  |
+Fox|  X    O    X    X  | X    X    O    X  |
+Tan|  O    X    X    X  | X    X    X    O  |
+Qui|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    X    X    O  |
+Mis|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [88][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    O    X    X  |
+Fox|  X    X    X    O  | X    X    X    O  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    X    O    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [89][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    O    X    X  |
+Fox|  X    X    O    X  | O    X    X    X  |
+Tan|  X    O    X    X  | X    X    X    O  |
+Qui|  O    X    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    X    X    O  |
+Mis|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [89][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    O    X    X  |
+Fox|  X    X    O    X  | O    X    X    X  |
+Tan|  X    O    X    X  | X    X    X    O  |
+Qui|  O    X    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    X    X    O  |
+Mis|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [90][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | O    X    X    X  |
+Fox|  X    O    X    X  | X    O    X    X  |
+Tan|  X    X    X    O  | X    X    O    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [91][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | O    X    X    X  |
+Fox|  O    X    X    X  | X    X    O    X  |
+Tan|  X    X    X    O  | X    O    X    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    X    O  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [92][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    O    X  |
+Fox|  O    X    X    X  | X    O    X    X  |
+Tan|  X    O    X    X  | O    X    X    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [93][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    O    X    X  |
+Fox|  X    O    X    X  | X    X    X    O  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    X    O    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [94][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | O    X    X    X  |
+Fox|  X    X    X    O  | X    O    X    X  |
+Tan|  X    O    X    X  | X    X    X    O  |
+Qui|  X    X    O    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    X    O    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [94][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | O    X    X    X  |
+Fox|  X    X    X    O  | X    O    X    X  |
+Tan|  X    O    X    X  | X    X    X    O  |
+Qui|  X    X    O    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    X    O    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [95][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    X    O  |
+Fox|  X    X    O    X  | X    X    O    X  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [95][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    X    O  |
+Fox|  X    X    O    X  | X    X    O    X  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [95][3]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    X    O  |
+Fox|  X    X    O    X  | X    X    O    X  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [96][3]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    O    X    X  |
+Fox|  X    X    O    X  | X    X    O    X  |
+Tan|  X    O    X    X  | O    X    X    X  |
+Qui|  X    X    X    O  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [97][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    X    O  |
+Fox|  X    X    O    X  | O    X    X    X  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    O    X    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [98][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    O    X  |
+Fox|  X    X    O    X  | X    O    X    X  |
+Tan|  X    O    X    X  | O    X    X    X  |
+Qui|  O    X    X    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    O    X  |
+Mis|  X    X    X    O  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [99][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | O    X    X    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    X    X    O  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [100][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    O    X    X  |
+Fox|  X    X    X    O  | O    X    X    X  |
+Tan|  X    X    O    X  | X    X    O    X  |
+Qui|  O    X    X    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [100][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    O    X    X  |
+Fox|  X    X    X    O  | O    X    X    X  |
+Tan|  X    X    O    X  | X    X    O    X  |
+Qui|  O    X    X    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [101][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    O    X    X  |
+Fox|  X    X    O    X  | X    X    O    X  |
+Tan|  X    X    X    O  | O    X    X    X  |
+Qui|  O    X    X    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [102][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    O    X    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  X    O    X    X  | X    X    O    X  |
+Qui|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [103][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    O    X    X  |
+Fox|  X    X    X    O  | X    X    O    X  |
+Tan|  X    X    O    X  | X    X    X    O  |
+Qui|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [104][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    O    X    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  X    X    X    O  | X    X    O    X  |
+Qui|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [105][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    O    X    X  |
+Fox|  X    O    X    X  | X    X    O    X  |
+Tan|  X    X    X    O  | O    X    X    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [106][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    O    X  |
+Fox|  O    X    X    X  | O    X    X    X  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [106][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    O    X  |
+Fox|  O    X    X    X  | O    X    X    X  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [107][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    X    O    X  |
+Fox|  X    X    O    X  | O    X    X    X  |
+Tan|  O    X    X    X  | X    X    X    O  |
+Qui|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    X    X    O  |
+Mis|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [108][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    O    X  |
+Fox|  X    O    X    X  | O    X    X    X  |
+Tan|  O    X    X    X  | X    X    X    O  |
+Qui|  X    X    O    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    O    X  |
+Mis|  X    X    X    O  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [108][3]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    O    X  |
+Fox|  X    O    X    X  | O    X    X    X  |
+Tan|  O    X    X    X  | X    X    X    O  |
+Qui|  X    X    O    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    O    X  |
+Mis|  X    X    X    O  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [109][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    O    X    X  |
+Fox|  X    O    X    X  | O    X    X    X  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    X    O  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [109][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    O    X    X  |
+Fox|  X    O    X    X  | O    X    X    X  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    X    O  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [110][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    O    X  |
+Fox|  O    X    X    X  | X    X    X    O  |
+Tan|  X    X    O    X  | O    X    X    X  |
+Qui|  X    O    X    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [111][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    X    X    O  |
+Fox|  X    X    X    O  | X    X    O    X  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    X    O    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [112][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    O    X  |
+Fox|  X    O    X    X  | O    X    X    X  |
+Tan|  X    X    X    O  | X    O    X    X  |
+Qui|  O    X    X    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    X    O    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [113][3]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    X    O    X  |
+Fox|  X    X    X    O  | O    X    X    X  |
+Tan|  O    X    X    X  | X    X    X    O  |
+Qui|  X    X    O    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    X    O    X  |
+Mis|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [114][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    X    O    X  |
+Fox|  X    X    X    O  | X    O    X    X  |
+Tan|  X    X    O    X  | X    X    X    O  |
+Qui|  X    O    X    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    X    O  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [115][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | O    X    X    X  |
+Fox|  X    X    O    X  | X    O    X    X  |
+Tan|  X    X    X    O  | X    X    O    X  |
+Qui|  X    O    X    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    O    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [116][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | O    X    X    X  |
+Fox|  O    X    X    X  | X    X    O    X  |
+Tan|  X    O    X    X  | X    X    X    O  |
+Qui|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    X    X    O  |
+Mis|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [117][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    O    X    X  |
+Fox|  X    O    X    X  | X    X    O    X  |
+Tan|  O    X    X    X  | X    X    X    O  |
+Qui|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    X    O    X  |
+Mis|  X    O    X    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [118][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | O    X    X    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  X    X    X    O  | X    X    O    X  |
+Qui|  O    X    X    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [119][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    X    O  |
+Fox|  O    X    X    X  | X    X    O    X  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  X    X    O    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [120][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | O    X    X    X  |
+Fox|  X    O    X    X  | X    O    X    X  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    X    X    O  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [121][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    O    X  |
+Fox|  X    X    X    O  | O    X    X    X  |
+Tan|  X    O    X    X  | X    X    X    O  |
+Qui|  O    X    X    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [122][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    O    X    X  |
+Fox|  X    O    X    X  | O    X    X    X  |
+Tan|  X    X    O    X  | X    X    X    O  |
+Qui|  X    X    X    O  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [123][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | O    X    X    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  O    X    X    X  | X    X    O    X  |
+Qui|  X    O    X    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [124][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    X    O  |
+Fox|  O    X    X    X  | X    X    O    X  |
+Tan|  X    O    X    X  | O    X    X    X  |
+Qui|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    X    O  |
+Mis|  O    X    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [125][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    O    X    X  |
+Fox|  X    X    X    O  | X    X    O    X  |
+Tan|  X    X    O    X  | O    X    X    X  |
+Qui|  O    X    X    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [125][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    O    X    X  |
+Fox|  X    X    X    O  | X    X    O    X  |
+Tan|  X    X    O    X  | O    X    X    X  |
+Qui|  O    X    X    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [126][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    X    O  |
+Fox|  O    X    X    X  | X    O    X    X  |
+Tan|  X    O    X    X  | X    X    O    X  |
+Qui|  X    X    O    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  O    X    X    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [127][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    X    X    O  |
+Fox|  X    X    O    X  | X    X    O    X  |
+Tan|  X    X    X    O  | X    O    X    X  |
+Qui|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    X    O    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [128][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | O    X    X    X  |
+Fox|  O    X    X    X  | X    X    X    O  |
+Tan|  X    X    O    X  | X    O    X    X  |
+Qui|  X    X    X    O  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    O    X  |
+Mis|  X    X    X    O  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [129][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    O    X    X  |
+Fox|  X    O    X    X  | O    X    X    X  |
+Tan|  O    X    X    X  | X    X    X    O  |
+Qui|  X    X    X    O  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    O    X  |
+Mis|  X    X    X    O  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [129][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    O    X    X  |
+Fox|  X    O    X    X  | O    X    X    X  |
+Tan|  O    X    X    X  | X    X    X    O  |
+Qui|  X    X    X    O  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    O    X  |
+Mis|  X    X    X    O  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [130][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    X    O    X  |
+Fox|  X    X    O    X  | O    X    X    X  |
+Tan|  X    O    X    X  | X    X    X    O  |
+Qui|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    X    O    X  |
+Lor|  X    X    X    O  |
+Mis|  O    X    X    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [131][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    X    O    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  X    X    X    O  | O    X    X    X  |
+Qui|  O    X    X    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [132][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    O    X    X  |
+Fox|  O    X    X    X  | X    X    X    O  |
+Tan|  X    O    X    X  | O    X    X    X  |
+Qui|  X    X    X    O  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    O    X  |
+Mis|  X    X    X    O  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [133][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | O    X    X    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [133][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | O    X    X    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  O    X    X    X  | X    O    X    X  |
+Qui|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [134][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    X    O  |
+Fox|  X    O    X    X  | X    O    X    X  |
+Tan|  X    X    X    O  | X    X    O    X  |
+Qui|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [135][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    X    X    O  |
+Fox|  X    X    O    X  | X    X    O    X  |
+Tan|  X    O    X    X  | O    X    X    X  |
+Qui|  X    X    X    O  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    X    O    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [136][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | O    X    X    X  |
+Fox|  X    O    X    X  | X    X    O    X  |
+Tan|  X    X    X    O  | X    O    X    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [137][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | O    X    X    X  |
+Fox|  X    X    X    O  | X    X    O    X  |
+Tan|  X    X    O    X  | X    X    X    O  |
+Qui|  O    X    X    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [138][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    O    X    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  X    X    X    O  | O    X    X    X  |
+Qui|  X    O    X    X  | X    X    O    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [139][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    O    X  |
+Fox|  X    X    X    O  | X    X    X    O  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [140][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | O    X    X    X  |
+Fox|  X    X    O    X  | X    X    O    X  |
+Tan|  X    X    X    O  | X    O    X    X  |
+Qui|  O    X    X    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    X    O    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [141][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    O    X  |
+Fox|  X    O    X    X  | X    O    X    X  |
+Tan|  X    X    X    O  | O    X    X    X  |
+Qui|  O    X    X    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [142][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | O    X    X    X  |
+Fox|  X    O    X    X  | X    O    X    X  |
+Tan|  X    X    O    X  | X    X    O    X  |
+Qui|  X    X    X    O  | X    X    X    O  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [143][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    X    X    O  |
+Fox|  X    X    O    X  | X    X    O    X  |
+Tan|  X    O    X    X  | X    O    X    X  |
+Qui|  X    X    X    O  | O    X    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  X    O    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [144][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    O    X  |
+Fox|  X    O    X    X  | X    X    X    O  |
+Tan|  X    X    X    O  | O    X    X    X  |
+Qui|  O    X    X    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    X    X    O  |
+Lor|  O    X    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [145][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    O    X    X  |
+Fox|  X    X    X    O  | X    X    O    X  |
+Tan|  X    O    X    X  | O    X    X    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [145][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  O    X    X    X  | X    O    X    X  |
+Fox|  X    X    X    O  | X    X    O    X  |
+Tan|  X    O    X    X  | O    X    X    X  |
+Qui|  X    X    O    X  | X    X    X    O  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [146][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    O    X    X  | X    X    O    X  |
+Fox|  X    X    O    X  | X    X    X    O  |
+Tan|  X    X    X    O  | X    O    X    X  |
+Qui|  O    X    X    X  | O    X    X    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    X    X    O  |
+Mis|  X    O    X    X  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [147][2]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    X    O  | X    X    O    X  |
+Fox|  O    X    X    X  | O    X    X    X  |
+Tan|  X    X    O    X  | X    X    X    O  |
+Qui|  X    O    X    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  O    X    X    X  |
+Lor|  X    O    X    X  |
+Mis|  X    X    X    O  |
+Mr.|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [148][1]
+      1  2  3  4  Lad  Lor  Mis  Mr.
+    ----------------------------------------
+Wal|  X    X    O    X  | X    X    O    X  |
+Fox|  X    O    X    X  | O    X    X    X  |
+Tan|  X    X    X    O  | X    X    X    O  |
+Qui|  O    X    X    X  | X    O    X    X  |
+    ----------------------------------------
+Lad|  X    O    X    X  |
+Lor|  O    X    X    X  |
+Mis|  X    X    O    X  |
+Mr.|  X    X    X    O  |
+    --------------------
+
+

@@ -3,7 +3,10 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl 
 import seaborn as sns
 import numpy as np
+import json
 from HintToEnglish import hint_to_english 
+from HintSetToJson import category_to_json, hintset_to_json
+
 def heat_map(grid, reverse, title = "", xlabel = "", ylabel = "", colorbar_label="", vmin = 0):
     
     # create the value mask
@@ -123,6 +126,8 @@ def make_hint_file(map_grid, file_path):
             if(not child is None):
                 file.write("Hints for grid cell [{}][{}]\n".format(row, col))
                 file.write(hintset_to_string(child[1]))
+                file.write("Insights: ")
+                file.write(str(child[1].insights))
                 file.write("\n\n")
 
     file.close()
@@ -139,6 +144,24 @@ def make_solution_file(map_grid, file_path):
 
     file.close()
 
+def make_json_file(map_grid, file_path):
+    grid_di = []
+
+    file = open(file_path, "w")
+
+    file = open(file_path, "w") 
+    for row in range(map_grid.height):
+        for col in range(map_grid.width):
+            child = map_grid.grid[row][col]
+            if(not child is None):
+                hintset = child[1]
+                id = f"{row}:{col}"
+                hint_di = hintset_to_json(hintset, id)
+                grid_di.append(hint_di)
+    
+    json.dump(grid_di,file)
+    file.close()
+
 
 
 def write_hint_files(folder, trial_size):
@@ -147,18 +170,20 @@ def write_hint_files(folder, trial_size):
         grid = jsonpickle.decode(json) 
         make_hint_file(grid, folder + "/hints_{}.txt".format(trial))
         make_solution_file(grid, folder + "/solutions_{}.txt".format(trial))
+        make_json_file(grid, folder + "/json_{}.json".format(trial))
 
 
 if __name__ == "__main__":
-    folder = "Ballroom"
+    folders = ["NewEscape/SoupSimple"]
     trials = 1
-    agg_grid = get_agg_hint_grids(folder, trials)
+    """agg_grid = get_agg_hint_grids(folder, trials)
     heat_map(agg_grid, True, title = "Average Hint Size by Cell", ylabel="Gini Coefficent", xlabel="Solver loops", colorbar_label="Average Hint Size", vmin = 3)
 
     agg_total_grid = get_agg_children_grids(folder, trials)
     heat_map(agg_total_grid, False, title = "Average Children Produced by Cell", ylabel="Gini Coefficent", xlabel="Solver loops", colorbar_label="Average Children Produced")
 
     agg_grid = get_agg_duplicate_grids(folder, trials)
-    heat_map(agg_grid, True, title = "Average Duplicates by Cell", ylabel="Gini Coefficent", xlabel="Solver loops", colorbar_label="Average Duplicates")
+    heat_map(agg_grid, True, title = "Average Duplicates by Cell", ylabel="Gini Coefficent", xlabel="Solver loops", colorbar_label="Average Duplicates")"""
 
-    write_hint_files(folder, trials)
+    for folder in folders:
+        write_hint_files(folder, trials)

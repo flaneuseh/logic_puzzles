@@ -276,7 +276,6 @@ def add_click(sessionId, data):
 
 
 def like_puzzle(user_id, puzzle):
-
     user = get_user(user_id)
     next_idx = user["nextPuzzleIdx"]
 
