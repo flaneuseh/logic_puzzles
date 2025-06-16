@@ -16,6 +16,7 @@ import Database
 from AddToGrammar import get_empty_before, get_empty_is, get_empty_not, get_empty_or
 import Evolution
 from insight_tree import choose_move_lazy
+from CreateReflectivePrompt import get_prompt
 
 app = Flask(__name__)
 
@@ -78,12 +79,14 @@ def get_new_puzzles(grid, database={}, data={}):
 
     return formated_list
 
-
+def get_hints(hint_grammar):
+    hints = [deserialized_hint_grammar(hint) for hint in hint_grammar]
+    return hints 
+    
 def get_puzzle(request_data):
     if "puzzle" in request_data:
         categories = []
         puzzle_data = request_data["puzzle"]
-        print(puzzle_data)
         if "categories" in puzzle_data:
             for element in puzzle_data["categories"]:
                 print(element)
@@ -268,6 +271,23 @@ def get_formatted_unused_grammar(di, cats):
             "empty": empty_formatted,
         }
     return return_di
+
+
+
+@app.route("/get_reflective_prompt", methods=["POST"])
+@cross_origin()
+def get_user_data():
+    request_data = request.get_json()
+    puzzle = get_puzzle(request_data)
+    
+    currGrid = request_data["currGrid"]
+    puzzle.grids = currGrid
+    hints = get_hints(request_data["hints"])
+
+    prompt = get_prompt(puzzle, hints)
+
+    return jsonify(prompt) 
+
 
 @app.route("/get_user_data", methods=["POST"])
 @cross_origin()

@@ -34,6 +34,7 @@ from LogicPuzzles import (
     find_transitives,
     ALL_INSIGHTS,
     repair,
+    get_entities_to_repair,
     Insight,
 )
 from HintToEnglish import hint_to_english
@@ -79,6 +80,51 @@ HINT_VALUES = {
     "compound_or": 0.1,
 }
 
+def get_move_information(puzzle, hints):
+    """
+    get all possible next moves in the solution:
+        any openings
+        any transitive moves possible in order
+        all currently applicable hints and their moves in order
+        any insights needed
+        if the current board is invalid, get the most salient contradiction (highlight the cell(s) that create the contradiction)
+    """
+    moves = []
+    solution, is_valid, _, _ = apply_hints(puzzle, hints)
+    if not is_valid:
+        # The puzzle itself is broken. this should never happen.
+        raise Exception("INVALID_PUZZLE")
+
+    #result = deepcopy(puzzle)
+    entities_to_repair = get_entities_to_repair(puzzle, solution)
+    if len(entities_to_repair) > 0:
+        moves = [{"type":"repair","ents":ents, "hint":[]} for ents in entities_to_repair]
+
+        return moves  
+
+
+
+    # We know that so far the puzzle is correct.
+    result = deepcopy(puzzle)
+    openings  = find_openings(result, slow=True, return_entities=True)
+
+    if len(openings) == 5 and len(openings[4]) > 0:
+        moves += openings[4]
+
+    transitives  = find_transitives(result, slow=True, return_entities=True)
+
+    if len(transitives) == 5 and len(transitives[4]) > 0:
+        moves += transitives[4]
+    
+ 
+    for idx, hint in enumerate(hints):
+        result = deepcopy(puzzle)
+        hint_app = apply_hint(result, hint, slow=True, return_entities = True)
+        if len(hint_app) == 5 and len(hint_app[4]) > 0:
+            for move in hint_app[4]:
+                move["hint"] = (idx, hint)
+            moves += hint_app[4]
+    return moves
 
 def get_available_moves(puzzle, hints):
     """

@@ -1046,9 +1046,28 @@ def repair(puzzle, solution):
                                 puzzle.answer(cat1, cat2, ent1, ent2, "*")
     return applied
 
+def get_entities_to_repair(puzzle, solution):
+    applied = False
+    places_to_fix = [] 
+    for cat1 in puzzle.left_right:
+        for cat2 in puzzle.top_bottom:
+            curr_grid = puzzle.get_grid(cat1, cat2)
+            soln_grid = solution.get_grid(cat1, cat2)
+            if curr_grid is None or soln_grid is None:
+                continue
+            for ent2_idx, ent2 in enumerate(cat2.entities):
+                for ent1_idx, ent1 in enumerate(cat1.entities):
+                    if (
+                        curr_grid[ent2_idx][ent1_idx] != "*"
+                        and curr_grid[ent2_idx][ent1_idx]
+                        is not soln_grid[ent2_idx][ent1_idx]
+                    ):
+                        places_to_fix.append(((cat1, ent1), (cat2, ent2)))
+    return places_to_fix
+
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
-def apply_is(puzzle, terms, forbidden_insights=set()):
+def apply_is(puzzle, terms, forbidden_insights=set(), return_entities = False):
     """
     Apply the is rule to puzzle, will always complete in one step
     puzzle: the current state of the grid
@@ -1064,6 +1083,8 @@ def apply_is(puzzle, terms, forbidden_insights=set()):
     cat2 = terms[2]
     ent2 = terms[3]
 
+    entities = []
+
     current_term = puzzle.get_symbol(cat1, cat2, ent1, ent2)
 
     if current_term == "*" and Insight.APPLY_IS not in forbidden_insights:
@@ -1073,6 +1094,7 @@ def apply_is(puzzle, terms, forbidden_insights=set()):
         is_valid = cross_out(puzzle, cat1, cat2, ent1, ent2)
         if is_valid:
             insights.add(Insight.APPLY_IS)
+            entities.append({"type": "is", "ents":((cat1.title, ent1), (cat2.title, ent2))})
 
     elif current_term == "X":
         # something logic error occured
@@ -1082,7 +1104,8 @@ def apply_is(puzzle, terms, forbidden_insights=set()):
     elif current_term == "O":
         # someone already answered
         complete = True
-
+    if return_entities:
+        return applied, is_valid, complete, insights, entities 
     return applied, is_valid, complete, insights
 
 
@@ -1133,7 +1156,7 @@ if __name__ == "__main__":
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
-def apply_not(puzzle, terms, forbidden_insights=set()):
+def apply_not(puzzle, terms, forbidden_insights=set(), return_entities=False):
     """
     Apply the not rule to puzzle, will always complete in one step
     puzzle: the current state of the grid
@@ -1148,6 +1171,7 @@ def apply_not(puzzle, terms, forbidden_insights=set()):
     ent1 = terms[1]
     cat2 = terms[2]
     ent2 = terms[3]
+    entities = [] 
 
     current_term = puzzle.get_symbol(cat1, cat2, ent1, ent2)
 
@@ -1156,13 +1180,15 @@ def apply_not(puzzle, terms, forbidden_insights=set()):
         applied = True
         complete = True
         insights.add(Insight.APPLY_NOT)
+        entities.append({"type": "not", "ents": ((cat1.title, ent1), (cat2.title, ent2))})
     elif current_term == "O":
         is_valid = False
         complete = True
     elif current_term == "X":
         complete = True
         
-
+    if return_entities:
+        return applied, is_valid, complete, insights, entities
     return applied, is_valid, complete, insights
 
 
@@ -1220,11 +1246,12 @@ if __name__ == "__main__":
 # If a row/column has 1 * and the rest are X then fill out a O there.
 # If a row/column is all X or has more than one O then contradiction.
 # In "slow" mode, take care to only apply current openings, skipping any openings that may be found after filling in some of the openings.
-def find_openings(puzzle, slow=True, forbidden_insights=set()):
+def find_openings(puzzle, slow=True, return_entities=False, forbidden_insights=set()):
     applied = False
     complete = False
     is_valid = True
     insights = set()
+    entities = []
     # The puzzle to update. Update in place in normal mode; in slow mode update a copy.
     update_puzzle = puzzle
     if slow:
@@ -1299,6 +1326,7 @@ def find_openings(puzzle, slow=True, forbidden_insights=set()):
                         ent2 = cat2.entities[os[0]]
                         applied = True
                         is_valid = cross_out(update_puzzle, cat1, cat2, ent1, ent2)
+                        entities.append({"type":"cross_out", "ents":[(cat1.title, ent1), (cat2.title, ent2)]})
                         if not is_valid:
                             applied = False
                             return applied, is_valid, complete, insights
@@ -1310,6 +1338,7 @@ def find_openings(puzzle, slow=True, forbidden_insights=set()):
                         applied = True
                         # Answer it as 0.
                         update_puzzle.answer(cat1, cat2, ent1, ent2, "O")
+                        entities.append({"type":"opening", "ents":[(cat1.title, ent1), (cat2.title, ent2)]})
                         is_valid = cross_out(update_puzzle, cat1, cat2, ent1, ent2)
                         if not is_valid:
                             applied = False
@@ -1317,6 +1346,8 @@ def find_openings(puzzle, slow=True, forbidden_insights=set()):
                         insights.add(Insight.OPENING)
     # Apply updates.
     puzzle.grids = update_puzzle.grids
+    if return_entities:
+        return applied, is_valid, complete, insights, entities
     return applied, is_valid, complete, insights
 
 
@@ -1495,7 +1526,7 @@ if __name__ == "__main__":
 # If A is B and B is C then A is C
 # If A is B and B is not C then A is not C
 # ...
-def find_transitives(puzzle, forbidden_insights=set(), slow=False):
+def find_transitives(puzzle, forbidden_insights=set(), slow=False, return_entities = False):
     """
     slow: set to True to apply only the first valid insight.
     """
@@ -1503,6 +1534,7 @@ def find_transitives(puzzle, forbidden_insights=set(), slow=False):
     complete = False
     is_valid = True
     insights = set()
+    entities = [] 
 
     # For every pair of related entities:
     #   If A == B and B == C then A != C
@@ -1535,6 +1567,7 @@ def find_transitives(puzzle, forbidden_insights=set(), slow=False):
                                 insights.add(Insight.TRANS_ABC_TRUE)
                                 applied = True
                                 puzzle.answer(catA, catC, entA, entC, "O")
+                                entities.append({"type":"abc_true", "ents": ((catA.title, entA), (catB.title, entB), (catC.title, entC))})
                                 is_valid = cross_out(puzzle, catA, catC, entA, entC)
                                 if not is_valid or slow:
                                     return applied, is_valid, complete, insights
@@ -1553,6 +1586,7 @@ def find_transitives(puzzle, forbidden_insights=set(), slow=False):
                                 insights.add(Insight.TRANS_ABC_FALSE)
                                 applied = True
                                 puzzle.answer(catA, catC, entA, entC, "X")
+                                entities.append({"type":"abc_false", "ents": ((catA.title, entA), (catB.title, entB), (catC.title, entC))})
                                 if slow:
                                     return applied, is_valid, complete, insights
                             elif sy == "O":
@@ -1607,9 +1641,12 @@ def find_transitives(puzzle, forbidden_insights=set(), slow=False):
                                     insights.add(Insight.TRANS_SETS)
                                     applied = True
                                     puzzle.answer(catA, catB, entA, entB, "X")
+                                    entities.append({"type":"trans_set", "ents": ((catA.title, entA), (catB.title, entB), (catC.title))})
                                     if slow:
                                         return applied, is_valid, complete, insights
-
+    if return_entities:
+        return applied, is_valid, complete, insights, entities
+    
     return applied, is_valid, complete, insights
 
 
@@ -1879,7 +1916,7 @@ if __name__ == "__main__":
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
-def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
+def apply_before(puzzle, terms, forbidden_insights=set(), slow=False, return_entities=False):
     """
     apply the before rule to the puzzle
     puzzle: the current state of the grid
@@ -1899,6 +1936,7 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
     aft_ent = terms[3]
 
     num_cat = terms[4]
+    entities = [] 
 
     num = 1
     if numbered:
@@ -1911,7 +1949,10 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
             insights.add(Insight.BEFORE_DIFF_CAT)
             applied = True
             puzzle.answer(bef_cat, aft_cat, bef_ent, aft_ent, "X")
+            entities.append({"type": "before_diff_cat", "ents":((bef_cat.title, bef_ent), (aft_cat.title, aft_ent))})
             if slow:
+                if return_entities: 
+                    return applied, is_valid, complete, insights, entities 
                 return applied, is_valid, complete, insights
         elif sy == "O":
             # Contradiction
@@ -1975,14 +2016,16 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
                 puzzle.answer(
                     aft_cat, num_cat, aft_ent, num_cat.entities[aft_index], "O"
                 )
+                entities.append({"type": "apply_before", "ents": ((aft_cat.title, aft_ent), (bef_cat.title, bef_ent), (num_cat.title, num_cat.entities[aft_index]))})
                 is_valid = cross_out(
                     puzzle, aft_cat, num_cat, aft_ent, num_cat.entities[aft_index]
                 )
                 if not is_valid or slow:
+                    if return_entities: 
+                        return applied, is_valid, complete, insights, entities 
                     return applied, is_valid, complete, insights
         else:
             for i in range(0, bef_index):
-                sy = puzzle.get_symbol(aft_cat, num_cat, aft_ent, num_cat.entities[i])
                 if sy == "*":
                     applied = True
                     puzzle.answer(aft_cat, num_cat, aft_ent, num_cat.entities[i], "X")
@@ -1991,6 +2034,8 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
                     is_valid = False
                     return applied, is_valid, complete, insights
             if applied and slow:
+                if return_entities: 
+                    return applied, is_valid, complete, insights, entities 
                 return applied, is_valid, complete, insights
 
     # determine the possible before entities if the after entity is solved
@@ -2020,10 +2065,12 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
             else:
                 needed_insight = Insight.APPLY_BEFORE_UNDEFINED_SPOTS
             if needed_insight not in forbidden_insights:
+               
                 insights.add(needed_insight)
                 complete = True
                 bef_index = pos_bef_index[0]
                 applied = True
+                entities.append({"type": "apply_before", "ents": ((bef_cat.title, bef_ent), (aft_cat.title, aft_ent), (num_cat.title, num_cat.entities[bef_index]))})
                 puzzle.answer(
                     bef_cat, num_cat, bef_ent, num_cat.entities[bef_index], "O"
                 )
@@ -2043,6 +2090,8 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
                     is_valid = False
                     return applied, is_valid, complete, insights
             if applied and slow:
+                if return_entities: 
+                    return applied, is_valid, complete, insights, entities 
                 return applied, is_valid, complete, insights
 
     # Narrow down possiblities with no information for entities yet
@@ -2056,6 +2105,7 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
             insights.add(needed_insight)
             applied = True
             puzzle.answer(bef_cat, num_cat, bef_ent, num_cat.entities[i], "X")
+            entities.append({"type": "before_noinfo", "ents":((bef_cat.title, bef_ent), (num_cat.title, num_cat.entities[i]))})
         elif sy == "O":
             complete = True
             is_valid = False
@@ -2069,12 +2119,15 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
         if sy == "*" and needed_insight not in forbidden_insights:
             insights.add(needed_insight)
             applied = True
+            entities.append({"type": "before_noinfo", "ents":((aft_cat.title, aft_ent), (num_cat.title, num_cat.entities[i]))})
             puzzle.answer(aft_cat, num_cat, aft_ent, num_cat.entities[i], "X")
         elif sy == "O":
             complete = True
             is_valid = False
             return applied, is_valid, complete, insights
     if applied and slow:
+        if return_entities: 
+            return applied, is_valid, complete, insights, entities
         return applied, is_valid, complete, insights
 
     # Determine possible answers with constraints on either entity
@@ -2088,6 +2141,7 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
                 insights.add(Insight.BEFORE_N_SPOTS_SHIFT)
                 applied = True
                 puzzle.answer(aft_cat, num_cat, aft_ent, num_cat.entities[i + num], "X")
+                entities.append({"type": "spots_shift", "ents":((aft_cat.title, aft_ent), (bef_cat.title, bef_ent), (num_cat.title, num_cat.entities[i + num]))})
 
         for i in range(len(after_symbols) - 1, num - 1, -1):
             if after_symbols[i] != "X":
@@ -2097,8 +2151,11 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
                 insights.add(Insight.BEFORE_N_SPOTS_SHIFT)
                 applied = True
                 puzzle.answer(bef_cat, num_cat, bef_ent, num_cat.entities[i - num], "X")
+                entities.append({"type": "spots_shift", "ents":((bef_cat.title, bef_ent), (aft_cat.title, aft_ent), (num_cat.title, num_cat.entities[i - num]))})
 
         if applied and slow:
+            if return_entities: 
+                return applied, is_valid, complete, insights, entities
             return applied, is_valid, complete, insights
 
         if numbered:
@@ -2126,6 +2183,8 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
                     puzzle.answer(
                         aft_cat, num_cat, aft_ent, num_cat.entities[i + num], "X"
                     )
+                    entities.append({"type": "spots_cross", "ents":((aft_cat.title, aft_ent),(bef_cat.title, bef_ent), (num_cat.title, num_cat.entities[i + num]))})
+
             for i in after_Xs:
                 sy = puzzle.get_symbol(
                     bef_cat, num_cat, bef_ent, num_cat.entities[i - num]
@@ -2136,9 +2195,14 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
                     puzzle.answer(
                         bef_cat, num_cat, bef_ent, num_cat.entities[i - num], "X"
                     )
-            if applied and slow:
-                return applied, is_valid, complete, insights
+                    entities.append({"type": "spots_cross", "ents":((bef_cat.title, bef_ent),(aft_cat.title, aft_cat), (num_cat.title, num_cat.entities[i - num]))})
 
+            if applied and slow:
+                if return_entities: 
+                    return applied, is_valid, complete, insights, entities
+                return applied, is_valid, complete, insights
+    if return_entities: 
+        return applied, is_valid, complete, insights, entities
     return applied, is_valid, complete, insights
 
 
@@ -2554,7 +2618,7 @@ if __name__ == "__main__":
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
-def apply_simple_or(puzzle, terms, forbidden_insights=set(), slow=False):
+def apply_simple_or(puzzle, terms, forbidden_insights=set(), slow=False, return_entities=False):
     """
     Apply the or rule to puzzle, will be incomplete if not enough information is known
     slow: set to True to apply only the first valid insight
@@ -2572,6 +2636,7 @@ def apply_simple_or(puzzle, terms, forbidden_insights=set(), slow=False):
 
     ans_cat = terms[4]
     ans_ent = terms[5]
+    entities= [] 
 
     pos_symb1 = puzzle.get_symbol(pos_cat1, ans_cat, pos_ent1, ans_ent)
     pos_symb2 = puzzle.get_symbol(pos_cat2, ans_cat, pos_ent2, ans_ent)
@@ -2591,7 +2656,10 @@ def apply_simple_or(puzzle, terms, forbidden_insights=set(), slow=False):
             applied = True
             complete = True
             puzzle.answer(pos_cat2, ans_cat, pos_ent2, ans_ent, "X")
+            entities.append({"type":"or_false", "ents":((pos_cat2.title, pos_ent2), (pos_cat1.title, pos_ent1), (ans_cat.title, ans_ent))})
             insights.add(Insight.APPLY_OR)
+            if return_entities: 
+                return applied, is_valid, complete, insights, entities 
             return applied, is_valid, complete, insights
         elif pos_symb2 == "X":
             # game state is correct, but nothing to change
@@ -2605,6 +2673,9 @@ def apply_simple_or(puzzle, terms, forbidden_insights=set(), slow=False):
             puzzle.answer(pos_cat2, ans_cat, pos_ent2, ans_ent, "O")
             is_valid = cross_out(puzzle, pos_cat2, ans_cat, pos_ent2, ans_ent)
             insights.add(Insight.APPLY_OR)
+            entities.append({"type":"or_true", "ents":((pos_cat2.title, pos_ent2), (pos_cat1.title, pos_ent1), (ans_cat.title, ans_ent))})
+            if return_entities: 
+                return applied, is_valid, complete, insights, entities 
             return applied, is_valid, complete, insights
         elif pos_symb2 == "O":
             # game state is correct, but we cannot change
@@ -2616,6 +2687,9 @@ def apply_simple_or(puzzle, terms, forbidden_insights=set(), slow=False):
             complete = True
             puzzle.answer(pos_cat1, ans_cat, pos_ent1, ans_ent, "X")
             insights.add(Insight.APPLY_OR)
+            entities.append({"type":"or_false", "ents":((pos_cat1.title, pos_ent1), (pos_cat2.title, pos_ent2), (ans_cat.title, ans_ent))})
+            if return_entities: 
+                return applied, is_valid, complete, insights, entities 
             return applied, is_valid, complete, insights
         elif pos_symb2 == "X" and Insight.APPLY_OR not in forbidden_insights:
             # hint says ent1 is ans_ent and we can change this
@@ -2624,6 +2698,9 @@ def apply_simple_or(puzzle, terms, forbidden_insights=set(), slow=False):
             puzzle.answer(pos_cat1, ans_cat, pos_ent1, ans_ent, "O")
             is_valid = cross_out(puzzle, pos_cat1, ans_cat, pos_ent1, ans_ent)
             insights.add(Insight.APPLY_OR)
+            entities.append({"type":"or_true", "ents":((pos_cat1.title, pos_ent1), (pos_cat2.title, pos_ent2), (ans_cat.title, ans_ent))})
+            if return_entities: 
+                return applied, is_valid, complete, insights, entities 
             return applied, is_valid, complete, insights
 
     if pos_cat1 != pos_cat2:
@@ -2635,7 +2712,10 @@ def apply_simple_or(puzzle, terms, forbidden_insights=set(), slow=False):
             )
             if applied:
                 insights.add(Insight.SIMPLE_OR_DIFF_CAT)
+                entities.append({"type":"or_diff", "ents":((pos_cat1.title, pos_ent1), (pos_cat2.title, pos_ent2), (ans_cat.title, ans_ent))})
             if slow or not is_valid:
+                if return_entities: 
+                    return applied, is_valid, complete, insights, entities 
                 return applied, is_valid, complete, insights
     else:
         # A and B are in the same category
@@ -2653,8 +2733,15 @@ def apply_simple_or(puzzle, terms, forbidden_insights=set(), slow=False):
                     insights.add(Insight.SIMPLE_OR_SAME_CAT)
                     applied = True
                     puzzle.answer(pos_cat1, ans_cat, ent, ans_ent, "X")
+                    entities.append({"type":"or_same", "ents":((pos_cat1.title, ent), (ans_cat.title, ans_ent))})
+            
+                    
         if applied and slow:
+            if return_entities: 
+                return applied, is_valid, complete, insights, entities 
             return applied, is_valid, complete, insights
+    if return_entities: 
+        return applied, is_valid, complete, insights, entities 
     return applied, is_valid, complete, insights
 
 
@@ -2832,7 +2919,7 @@ if __name__ == "__main__":
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
-def apply_compound_or(puzzle, options, forbidden_insights = set()):
+def apply_compound_or(puzzle, options, forbidden_insights = set(), return_entities=False):
     """
     Apply the compound or rule to puzzle, will be incomplete if not enough information is known
     return: applied, is_valid, complete
@@ -2843,6 +2930,7 @@ def apply_compound_or(puzzle, options, forbidden_insights = set()):
     insights = (
         set()
     )  # There are no insights for compound or, but keep the return signature consistent
+    entities = [] 
 
     optionA = options[0]
     catA1 = optionA[0]
@@ -2881,17 +2969,22 @@ def apply_compound_or(puzzle, options, forbidden_insights = set()):
         puzzle.answer(catB1, catB2, entB1, entB2, "O")
         insights.add(Insight.APPLY_OR)
         is_valid = cross_out(puzzle, catB1, catB2, entB1, entB2)
+        entities.append({"type": "or_true", "ents": ((catB1.title, entB1), (catA1.title, entA1), (catB2.title, entB2))})
     elif currentB == "X" and Insight.APPLY_OR not in forbidden_insights:
         puzzle.answer(catA1, catA2, entA1, entA2, "O")
         insights.add(Insight.APPLY_OR)
+        entities.append({"type": "or_true", "ents": ((catA1.title, entA1), (catB1.title, entB1), (catA2.title, entA2))})
         is_valid = cross_out(puzzle, catA1, catA2, entA1, entA2)
     elif currentA == "O" and Insight.APPLY_OR not in forbidden_insights:
         insights.add(Insight.APPLY_OR)
+        entities.append({"type": "or_false", "ents": ((catB1.title, entB1), (catA1.title, entA1), (catB2.title, entB2))})
         puzzle.answer(catB1, catB2, entB1, entB2, "X")
     elif currentB == "O" and Insight.APPLY_OR not in forbidden_insights:
         insights.add(Insight.APPLY_OR)
         puzzle.answer(catA1, catA2, entA1, entA2, "X")
-
+        entities.append({"type": "or_false", "ents": ((catA1.title, entA1), (catB1.title, entB1), (catA2.title, entA2))})
+    if return_entities:
+        return applied, is_valid, complete, insights, entities
     return applied, is_valid, complete, insights
 
 
@@ -3016,7 +3109,7 @@ if __name__ == "__main__":
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
-def apply_hint(puzzle, hint, forbidden_insights=set(), slow=False):
+def apply_hint(puzzle, hint, forbidden_insights=set(), slow=False, return_entities=False):
     """
     Given a hint dictionary and a puzzle, apply next step of the hint to the puzzle
 
@@ -3034,25 +3127,26 @@ def apply_hint(puzzle, hint, forbidden_insights=set(), slow=False):
     complete = False
     is_valid = True
     insights = set()
+    entities = [] 
 
     rule = list(hint.keys())[0]
     terms = hint[rule]
     if rule == "simple_hint":
         rule = list(hint.keys())[0]
     if rule == "is":
-        return apply_is(puzzle, terms, forbidden_insights=forbidden_insights)
+        return apply_is(puzzle, terms, forbidden_insights=forbidden_insights, return_entities=return_entities)
     elif rule == "not":
-        return apply_not(puzzle, terms[0]["is"], forbidden_insights=forbidden_insights)
+        return apply_not(puzzle, terms[0]["is"], forbidden_insights=forbidden_insights, return_entities=return_entities)
     elif rule == "before":
         return apply_before(
-            puzzle, terms, forbidden_insights=forbidden_insights, slow=slow
+            puzzle, terms, forbidden_insights=forbidden_insights, slow=slow, return_entities=return_entities
         )
     elif rule == "simple_or":
         return apply_simple_or(
-            puzzle, terms, forbidden_insights=forbidden_insights, slow=slow
+            puzzle, terms, forbidden_insights=forbidden_insights, slow=slow, return_entities=return_entities
         )
     elif rule == "compound_or":
-        return apply_compound_or(puzzle, [terms[0]["is"], terms[1]["is"]], forbidden_insights=forbidden_insights)
+        return apply_compound_or(puzzle, [terms[0]["is"], terms[1]["is"]], forbidden_insights=forbidden_insights, return_entities=return_entities)
     else:
         print(
             "This hint has no apply rules! Something has gone horribly wrong. The offending hint: "
