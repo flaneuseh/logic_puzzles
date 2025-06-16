@@ -1,0 +1,1622 @@
+[
+    {
+        "solution": "------\n|XXXO|\n|OXXX|\n|XXOX|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Green Onions is 2 mLs before the plant Eggplant",
+            "The mL 40oz is the plant Broccoli"
+        ],
+        "id": "0:1"
+    },
+    {
+        "solution": "------\n|XXXO|\n|OXXX|\n|XXOX|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the plant Potatoes or the plant Eggplant is the mL 80oz",
+            "The plant Green Onions is 2 mLs before the plant Eggplant",
+            "The mL 40oz is the plant Broccoli"
+        ],
+        "id": "0:2"
+    },
+    {
+        "solution": "------\n|XXOX|\n|XXXO|\n|XOXX|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Eggplant is 2 mLs before the plant Green Onions",
+            "Either the mL 60oz is the plant Potatoes or the mL 40oz is the plant Green Onions"
+        ],
+        "id": "1:1"
+    },
+    {
+        "solution": "------\n|XXOX|\n|XXXO|\n|XOXX|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the mL 60oz is the plant Potatoes or the mL 80oz is the plant Broccoli",
+            "The plant Eggplant is 2 mLs before the plant Green Onions",
+            "The plant Eggplant was not the mL 20oz"
+        ],
+        "id": "1:2"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XXOX|\n|XOXX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the plant Potatoes is the mL 20oz or the plant Broccoli is the mL 40oz",
+            "The plant Eggplant is 2 mLs before the plant Broccoli"
+        ],
+        "id": "2:1"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XXOX|\n|XOXX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the plant Green Onions is the mL 40oz or the plant Potatoes is the mL 20oz",
+            "Either the plant Potatoes is the mL 20oz or the plant Broccoli is the mL 40oz",
+            "The plant Eggplant is 2 mLs before the plant Broccoli"
+        ],
+        "id": "2:2"
+    },
+    {
+        "solution": "------\n|XOXX|\n|XXOX|\n|XXXO|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the plant Broccoli is the mL 80oz or the mL 80oz is the plant Eggplant",
+            "The plant Broccoli is 2 mLs before the plant Green Onions"
+        ],
+        "id": "3:1"
+    },
+    {
+        "solution": "------\n|XOXX|\n|XXOX|\n|XXXO|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the plant Potatoes or the plant Eggplant is the mL 40oz",
+            "Either the plant Broccoli is the mL 80oz or the mL 80oz is the plant Eggplant",
+            "The plant Broccoli is 2 mLs before the plant Green Onions"
+        ],
+        "id": "3:2"
+    },
+    {
+        "solution": "------\n|XXOX|\n|XOXX|\n|OXXX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Green Onions is 2 mLs before the plant Broccoli",
+            "The plant Eggplant is the mL 20oz"
+        ],
+        "id": "4:1"
+    },
+    {
+        "solution": "------\n|XXOX|\n|XOXX|\n|OXXX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Green Onions is 2 mLs before the plant Broccoli",
+            "Either the plant Eggplant is the mL 20oz or the mL 40oz is the plant Potatoes",
+            "Either the mL 60oz or the mL 80oz is the plant Potatoes"
+        ],
+        "id": "4:2"
+    },
+    {
+        "solution": "------\n|XXXO|\n|XOXX|\n|XXOX|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Green Onions is 2 mLs before the plant Potatoes",
+            "The mL 60oz is the plant Eggplant"
+        ],
+        "id": "5:1"
+    },
+    {
+        "solution": "------\n|XXXO|\n|XOXX|\n|XXOX|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the plant Potatoes or the plant Eggplant is the mL 80oz",
+            "The plant Green Onions is 2 mLs before the plant Potatoes",
+            "Either the mL 20oz or the mL 80oz is the plant Broccoli"
+        ],
+        "id": "5:2"
+    },
+    {
+        "solution": "------\n|XXOX|\n|OXXX|\n|XOXX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Eggplant is the mL 40oz",
+            "The plant Green Onions is 2 mLs before the plant Potatoes"
+        ],
+        "id": "6:1"
+    },
+    {
+        "solution": "------\n|XXOX|\n|OXXX|\n|XOXX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Eggplant is the mL 40oz",
+            "The plant Green Onions is at least 1 mL before the plant Broccoli",
+            "The plant Green Onions is 2 mLs before the plant Potatoes"
+        ],
+        "id": "6:2"
+    },
+    {
+        "solution": "------\n|XXOX|\n|OXXX|\n|XOXX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the plant Broccoli or the plant Eggplant is the mL 40oz",
+            "Either the plant Broccoli is the mL 60oz or the plant Eggplant is the mL 40oz",
+            "The plant Green Onions is 2 mLs before the plant Potatoes"
+        ],
+        "id": "6:3"
+    },
+    {
+        "solution": "------\n|XXOX|\n|OXXX|\n|XXXO|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the plant Potatoes is the mL 20oz or the plant Broccoli is the mL 40oz",
+            "The plant Green Onions is 2 mLs before the plant Potatoes"
+        ],
+        "id": "7:1"
+    },
+    {
+        "solution": "------\n|XXOX|\n|OXXX|\n|XXXO|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the plant Broccoli or the plant Eggplant is the mL 40oz",
+            "The plant Green Onions is 2 mLs before the plant Potatoes",
+            "Either the plant Potatoes or the plant Eggplant is the mL 80oz"
+        ],
+        "id": "7:2"
+    },
+    {
+        "solution": "------\n|XXOX|\n|OXXX|\n|XXXO|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the plant Broccoli or the plant Eggplant is the mL 40oz",
+            "Either the mL 60oz is the plant Potatoes or the mL 80oz is the plant Broccoli",
+            "The plant Green Onions is 2 mLs before the plant Potatoes"
+        ],
+        "id": "7:3"
+    },
+    {
+        "solution": "------\n|XXXO|\n|XXOX|\n|XOXX|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Eggplant is the mL 40oz",
+            "The plant Broccoli is 2 mLs before the plant Green Onions"
+        ],
+        "id": "8:1"
+    },
+    {
+        "solution": "------\n|XXXO|\n|XXOX|\n|XOXX|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Eggplant is at least 1 mL before the plant Potatoes",
+            "The plant Broccoli is 2 mLs before the plant Green Onions",
+            "Either the mL 40oz or the mL 60oz is the plant Eggplant"
+        ],
+        "id": "8:2"
+    },
+    {
+        "solution": "------\n|XXXO|\n|XXOX|\n|OXXX|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the plant Potatoes or the plant Eggplant is the mL 80oz",
+            "The plant Eggplant is 2 mLs before the plant Green Onions"
+        ],
+        "id": "9:1"
+    },
+    {
+        "solution": "------\n|XXXO|\n|XXOX|\n|OXXX|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Eggplant is at least 1 mL before the plant Potatoes",
+            "The plant Eggplant is 2 mLs before the plant Green Onions",
+            "The plant Green Onions is at least 1 mL before the plant Potatoes"
+        ],
+        "id": "9:2"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XXXO|\n|XXOX|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Broccoli is 2 mLs before the plant Green Onions",
+            "Either the mL 60oz is the plant Eggplant or the plant Broccoli is the mL 80oz"
+        ],
+        "id": "10:1"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XXXO|\n|XXOX|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the mL 60oz is the plant Eggplant or the plant Broccoli is the mL 80oz",
+            "The plant Broccoli is at least 1 mL before the plant Green Onions",
+            "The plant Broccoli is 2 mLs before the plant Green Onions"
+        ],
+        "id": "10:2"
+    },
+    {
+        "solution": "------\n|XXXO|\n|XOXX|\n|OXXX|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The mL 20oz is the plant Eggplant",
+            "The plant Green Onions is 2 mLs before the plant Potatoes"
+        ],
+        "id": "11:1"
+    },
+    {
+        "solution": "------\n|XXXO|\n|XOXX|\n|OXXX|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the mL 60oz is the plant Potatoes or the mL 40oz is the plant Green Onions",
+            "The plant Eggplant is 2 mLs before the plant Broccoli",
+            "Either the plant Eggplant is the mL 20oz or the plant Broccoli is the mL 40oz"
+        ],
+        "id": "11:2"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XXOX|\n|XXXO|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Eggplant is the mL 80oz",
+            "The plant Potatoes is 2 mLs before the plant Green Onions"
+        ],
+        "id": "12:1"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XXOX|\n|XXXO|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Broccoli is 1 mLs before the plant Green Onions",
+            "The plant Potatoes is 2 mLs before the plant Green Onions",
+            "The plant Potatoes is at least 1 mL before the plant Eggplant"
+        ],
+        "id": "12:2"
+    },
+    {
+        "solution": "------\n|XXOX|\n|XXXO|\n|OXXX|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Broccoli is 2 mLs before the plant Green Onions",
+            "The mL 20oz is the plant Eggplant"
+        ],
+        "id": "13:1"
+    },
+    {
+        "solution": "------\n|XXOX|\n|XXXO|\n|OXXX|\n|XOXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Broccoli is at least 1 mL before the plant Green Onions",
+            "The plant Broccoli is 2 mLs before the plant Green Onions",
+            "The mL 20oz is the plant Eggplant"
+        ],
+        "id": "13:2"
+    },
+    {
+        "solution": "------\n|XXXO|\n|OXXX|\n|XOXX|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Green Onions is 2 mLs before the plant Broccoli",
+            "The plant Eggplant is the mL 40oz"
+        ],
+        "id": "14:1"
+    },
+    {
+        "solution": "------\n|XXXO|\n|OXXX|\n|XOXX|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the plant Potatoes or the plant Eggplant is the mL 40oz",
+            "The plant Green Onions is 2 mLs before the plant Broccoli",
+            "Either the plant Potatoes or the plant Broccoli is the mL 80oz"
+        ],
+        "id": "14:2"
+    },
+    {
+        "solution": "------\n|XXXO|\n|OXXX|\n|XOXX|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the plant Potatoes or the plant Eggplant is the mL 40oz",
+            "Either the mL 40oz is the plant Eggplant or the plant Broccoli is the mL 80oz",
+            "The plant Green Onions is 2 mLs before the plant Broccoli"
+        ],
+        "id": "14:3"
+    },
+    {
+        "solution": "------\n|XXOX|\n|XOXX|\n|XXXO|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the mL 20oz is the plant Broccoli or the plant Green Onions is the mL 60oz",
+            "The plant Green Onions is 2 mLs before the plant Eggplant"
+        ],
+        "id": "15:1"
+    },
+    {
+        "solution": "------\n|XXOX|\n|XOXX|\n|XXXO|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the plant Broccoli is the mL 80oz or the mL 80oz is the plant Eggplant",
+            "Either the mL 20oz is the plant Broccoli or the plant Green Onions is the mL 60oz",
+            "The plant Green Onions is 2 mLs before the plant Eggplant"
+        ],
+        "id": "15:2"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XOXX|\n|XXOX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Green Onions is 2 mLs before the plant Broccoli",
+            "The plant Eggplant is the mL 60oz"
+        ],
+        "id": "16:1"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XOXX|\n|XXOX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the plant Broccoli is the mL 80oz or the mL 80oz is the plant Eggplant",
+            "Either the mL 20oz is the plant Broccoli or the plant Eggplant is the mL 60oz",
+            "The plant Green Onions is 2 mLs before the plant Broccoli"
+        ],
+        "id": "16:2"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XXXO|\n|XOXX|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the plant Green Onions is the mL 40oz or the plant Potatoes is the mL 20oz",
+            "The plant Eggplant is 2 mLs before the plant Green Onions"
+        ],
+        "id": "17:1"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XXXO|\n|XOXX|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the plant Potatoes is the mL 20oz or the plant Broccoli is the mL 40oz",
+            "Either the plant Green Onions is the mL 40oz or the plant Potatoes is the mL 20oz",
+            "The plant Eggplant is 2 mLs before the plant Green Onions"
+        ],
+        "id": "17:2"
+    },
+    {
+        "solution": "------\n|XOXX|\n|OXXX|\n|XXXO|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Green Onions is 2 mLs before the plant Broccoli",
+            "The plant Broccoli is 1 mLs before the plant Eggplant"
+        ],
+        "id": "18:1"
+    },
+    {
+        "solution": "------\n|XOXX|\n|OXXX|\n|XXXO|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the plant Potatoes is the mL 20oz or the plant Potatoes is the mL 40oz",
+            "The plant Green Onions is 2 mLs before the plant Broccoli",
+            "The plant Broccoli is 1 mLs before the plant Eggplant"
+        ],
+        "id": "18:2"
+    },
+    {
+        "solution": "------\n|XOXX|\n|OXXX|\n|XXXO|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the plant Potatoes or the plant Eggplant is the mL 40oz",
+            "Either the plant Broccoli is the mL 80oz or the mL 80oz is the plant Eggplant",
+            "The plant Green Onions is 2 mLs before the plant Broccoli"
+        ],
+        "id": "18:3"
+    },
+    {
+        "solution": "------\n|XOXX|\n|XXXO|\n|XXOX|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Potatoes is 2 mLs before the plant Green Onions",
+            "The mL 60oz is the plant Eggplant"
+        ],
+        "id": "19:1"
+    },
+    {
+        "solution": "------\n|XOXX|\n|XXXO|\n|XXOX|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Broccoli is at least 1 mL before the plant Green Onions",
+            "The plant Potatoes is 2 mLs before the plant Green Onions",
+            "The mL 60oz is the plant Eggplant"
+        ],
+        "id": "19:2"
+    },
+    {
+        "solution": "------\n|XOXX|\n|XXXO|\n|XXOX|\n|OXXX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Eggplant was not the mL 80oz",
+            "The plant Broccoli is at least 1 mL before the plant Green Onions",
+            "Either the mL 60oz is the plant Broccoli or the mL 40oz is the plant Potatoes",
+            "The plant Potatoes is 2 mLs before the plant Green Onions"
+        ],
+        "id": "19:3"
+    },
+    {
+        "solution": "------\n|XOXX|\n|XXOX|\n|OXXX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The mL 40oz is the plant Potatoes",
+            "The plant Eggplant is 2 mLs before the plant Green Onions"
+        ],
+        "id": "20:1"
+    },
+    {
+        "solution": "------\n|XOXX|\n|XXOX|\n|OXXX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the plant Potatoes or the plant Eggplant is the mL 40oz",
+            "Either the plant Broccoli is the mL 80oz or the mL 80oz is the plant Eggplant",
+            "The plant Eggplant is 2 mLs before the plant Green Onions"
+        ],
+        "id": "20:2"
+    },
+    {
+        "solution": "------\n|XOXX|\n|XXXO|\n|OXXX|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Eggplant is 2 mLs before the plant Broccoli",
+            "The plant Broccoli is at least 1 mL before the plant Green Onions"
+        ],
+        "id": "21:1"
+    },
+    {
+        "solution": "------\n|XOXX|\n|XXXO|\n|OXXX|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Eggplant is at least 1 mL before the plant Potatoes",
+            "The plant Broccoli is 1 mLs before the plant Green Onions",
+            "The plant Eggplant is 2 mLs before the plant Broccoli"
+        ],
+        "id": "21:2"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XOXX|\n|XXXO|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "Either the mL 60oz is the plant Potatoes or the mL 40oz is the plant Green Onions",
+            "The plant Potatoes is 2 mLs before the plant Broccoli"
+        ],
+        "id": "22:1"
+    },
+    {
+        "solution": "------\n|OXXX|\n|XOXX|\n|XXXO|\n|XXOX|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Potatoes is at least 1 mL before the plant Eggplant",
+            "Either the mL 60oz is the plant Potatoes or the mL 40oz is the plant Green Onions",
+            "The plant Potatoes is 2 mLs before the plant Broccoli"
+        ],
+        "id": "22:2"
+    },
+    {
+        "solution": "------\n|XOXX|\n|OXXX|\n|XXOX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Green Onions is 2 mLs before the plant Eggplant",
+            "Either the mL 40oz is the plant Eggplant or the plant Broccoli is the mL 80oz"
+        ],
+        "id": "23:1"
+    },
+    {
+        "solution": "------\n|XOXX|\n|OXXX|\n|XXOX|\n|XXXO|\n",
+        "categories": [
+            {
+                "name": "mL",
+                "entities": [
+                    "20oz",
+                    "40oz",
+                    "60oz",
+                    "80oz"
+                ],
+                "is_numeric": true
+            },
+            {
+                "name": "plant",
+                "entities": [
+                    "Potatoes",
+                    "Green Onions",
+                    "Eggplant",
+                    "Broccoli"
+                ],
+                "is_numeric": false
+            }
+        ],
+        "hints": [
+            "The plant Green Onions is 2 mLs before the plant Eggplant",
+            "Either the mL 60oz is the plant Potatoes or the plant Potatoes is the mL 40oz",
+            "The plant Potatoes is 2 mLs before the plant Broccoli"
+        ],
+        "id": "23:2"
+    }
+]

@@ -1057,7 +1057,7 @@ def apply_is(puzzle, terms, forbidden_insights=set()):
     """
     applied = False
     is_valid = True
-    complete = True  # this rule can only be applied once
+    complete = False  
     insights = set()
     cat1 = terms[0]
     ent1 = terms[1]
@@ -1068,6 +1068,7 @@ def apply_is(puzzle, terms, forbidden_insights=set()):
 
     if current_term == "*" and Insight.APPLY_IS not in forbidden_insights:
         applied = True
+        complete = True
         puzzle.answer(cat1, cat2, ent1, ent2, "O")
         is_valid = cross_out(puzzle, cat1, cat2, ent1, ent2)
         if is_valid:
@@ -1076,11 +1077,11 @@ def apply_is(puzzle, terms, forbidden_insights=set()):
     elif current_term == "X":
         # something logic error occured
         is_valid = False
-        applied = False
+        complete = True
 
     elif current_term == "O":
         # someone already answered
-        applied = False
+        complete = True
 
     return applied, is_valid, complete, insights
 
@@ -1141,7 +1142,7 @@ def apply_not(puzzle, terms, forbidden_insights=set()):
     """
     applied = False
     is_valid = True
-    complete = True  # this rule can only be applied once
+    complete = False  
     insights = set()
     cat1 = terms[0]
     ent1 = terms[1]
@@ -1153,11 +1154,13 @@ def apply_not(puzzle, terms, forbidden_insights=set()):
     if current_term == "*" and Insight.APPLY_NOT not in forbidden_insights:
         puzzle.answer(cat1, cat2, ent1, ent2, "X")
         applied = True
+        complete = True
         insights.add(Insight.APPLY_NOT)
     elif current_term == "O":
         is_valid = False
-    # elif current_term == "X":
-        # do nothing, already applied
+        complete = True
+    elif current_term == "X":
+        complete = True
         
 
     return applied, is_valid, complete, insights

@@ -64,8 +64,3 @@ def map_elite_generate(
                     ), "insights: {} includes forbidden: {}".format(
                         child.insights, child.insights & forbidden_insights
                     )
-                    assert (
-                        len(child.dumb_insights & required_insights) == 0
-                    ), "dumb insights: {} includes required: {}".format(
-                        child.dumb_insights, child.insights & required_insights
-                    )

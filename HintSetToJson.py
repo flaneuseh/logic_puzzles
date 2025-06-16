@@ -12,7 +12,7 @@ def category_to_json(cat):
 
 
 
-def hintset_to_json(hintset, file_path, id):
+def hintset_to_json(hintset, id):
     di = {}
 
     di["solution"] = hintset.completed_puzzle.print_grid_small()
@@ -20,10 +20,9 @@ def hintset_to_json(hintset, file_path, id):
     di["hints"] = [hint_to_english(hint) for hint in hintset.hints]
     di["id"] = id 
 
-    file = open(file_path, "w")
-    json.dump(di,file)
-    file.close()
+    return di
 
+    
 
 
 if __name__ == "__main__":
@@ -32,7 +31,10 @@ if __name__ == "__main__":
     json_str = open( file, "r").read()
     grid = jsonpickle.decode(json_str) 
     child = grid.grid[387][2][1]
-    hintset_to_json(child, write_to, 0) 
+    di = hintset_to_json(child, 0) 
+    file = open(write_to, "w")
+    json.dump(di,file)
+    file.close()
 
     fitness_grid = grid.get_fitness_grid()
     """puzzle_index = {}
