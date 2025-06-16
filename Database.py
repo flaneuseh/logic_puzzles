@@ -30,10 +30,18 @@ posted_puzzles_serious = mydb["community_serious"]
 survey_db = mydb["surveys"]
 
 
+def get_user_data(user):
+    user = get_user(user)
+
+    del user["_id"]
+    del user["community_puzzles"]
+
+    return user 
+
+
 def add_survey(user, data):
-    print(user)
-    user = get_user(user) 
-    print(user)
+ 
+    user = get_user(user)
     if user != None:
         data["username"] = user["publicKey"]
         survey_db.insert_one(data)
@@ -75,19 +83,35 @@ def add_user(user_id, privateKey, publicKey, mode):
 
 def get_posted_puzzles(user_id):
     user = get_user(user_id) 
-    if user != None:
+    if user != None and user["mode"] != "admin":
         posted_puzzles = posted_puzzles_hybrid if user["mode"] == "mixed" else posted_puzzles_serious
         puzzles = list(posted_puzzles.find({}))
    
         for p in puzzles:
             p["_id"] = str(p["_id"])
         return puzzles
+    elif user != None and user["mode"] == "admin":
+        mixed_puzzles = list(posted_puzzles_hybrid.find({}))
+   
+        for p in mixed_puzzles:
+            p["_id"] = str(p["_id"])
+        
+        serious_puzzles = list(posted_puzzles_serious.find({}))
+   
+        for p in serious_puzzles:
+            p["_id"] = str(p["_id"])
+
+        return {"mixed": mixed_puzzles, "serious": serious_puzzles}
+        
+        
     else:
         return None
 
 
-def view_puzzle(user_id, puzzle_id):
+def view_puzzle(user_id, puzzle_id, mode = None):
+    user = get_user(user_id)
     if get_user(user_id) != None:
+        posted_puzzles = posted_puzzles_hybrid if (user["mode"] == "mixed" or mode == "mixed") else posted_puzzles_serious
         result = posted_puzzles.find_one_and_update({"_id": ObjectId(puzzle_id)}, {"$inc": {"views": 1}})
         return result 
     
@@ -108,17 +132,30 @@ def post_puzzle(user_id, post_title, post_body, time,  puzzle):
         }
 
         puzzle = posted_puzzles.insert_one(data)
+
+
+        if user["mode"] == "admin":
+            posted_puzzles_hybrid.insert_one(data)
         return puzzle
     else:
         return None
 
+def delete_puzzle(admin_id, mode, puzzle_id):
+    admin = get_user(admin_id)
 
-def post_comment(user_id, puzzle_id, comment, time):
+    if (admin["mode"] == "admin"):
+        posted_puzzles = posted_puzzles_hybrid if mode == "mixed" else posted_puzzles_serious
+        result = posted_puzzles.find_one_and_delete({"_id": ObjectId(puzzle_id)})
+        return result 
+    else:
+        return None 
+
+def post_comment(user_id, puzzle_id, comment, time, mode = None):
 
     user = get_user(user_id)
 
     if user != None:
-        posted_puzzles = posted_puzzles_hybrid if user["mode"] == "mixed" else posted_puzzles_serious
+        posted_puzzles = posted_puzzles_hybrid if (user["mode"] == "mixed" or mode == "mixed") else posted_puzzles_serious
         data = {"username": user["publicKey"], "time": time, "comment": comment}
 
         result = posted_puzzles.find_one_and_update(
@@ -127,7 +164,15 @@ def post_comment(user_id, puzzle_id, comment, time):
         return result
     else:
         return -1
+def delete_comment(admin_id, mode, puzzle_id, time):
+    admin = get_user(admin_id)
 
+    if (admin != None and admin["mode"] == "admin"):
+        posted_puzzles = posted_puzzles_hybrid if mode == "mixed" else posted_puzzles_serious
+        result = posted_puzzles.find_one_and_update({"_id": ObjectId(puzzle_id)}, {"$pull": {"comments": {"time": time}}})
+        return result
+    else: 
+        return None 
 
 def like_posted_puzzles(user_id, puzzle_id):
 

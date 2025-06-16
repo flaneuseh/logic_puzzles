@@ -1,8 +1,78 @@
 # logic_puzzles
-This is a project for generating new logic grid puzzle. It uses a FI-2Pop genetic algorithm to generate puzzles that are both solvable and challenging. Solvable puzzles with complete and valid solution. Challenging puzzles are ones that require many round to complete. 
+This project is to host a backend generator server for logic puzzles. The generator using a constrained quality diversity algorithm to create puzzles that are valid and vary in terms of solution and difficulty. This server can be run locally or on a virtual machine. 
 
+
+## Run the backend locally 
+
+### Step 1: Install Python 
+Install python onto your computer. This project was based on python version 3.10.12 
+
+https://www.python.org/ 
+
+### Step 2: Install MongoDB 
+
+Following the instructions to install Mongo on your computer. 
+
+https://www.mongodb.com/docs/manual/installation/ 
+
+Make sure a MongoDB instance is running before starting 
+
+### Step 3: Download Code and Install Packages 
+Install code onto your computer and go to that directory in your terminal. 
+
+Start a python virtual environment with the following code: 
+
+```
+python3 -m venv
+```
+
+Run the environment with the following command 
+
+```
+source venv/bin/activate 
+```
+
+Install all the necessary packages: 
+
+```
+pip install flask==3.1.0
+pip install flask_cors==5.0.0
+pip install jsonpickle==3.0.2
+pip install pymongo==4.11.1
+```
+
+### Load data 
+If you want to add a user, add the data.json file to the main code directory. Then run the following code (with the virtual environment active): 
+
+```
+python LoadData.py
+```
+
+### Run main.py 
+In the code directory run the code to launch the database: 
+
+```
+python main.py
+```
+
+The flask server should now be running on localhost:3000 
 
 ## Hosting on a VM 
+
+### Setting up VM  
+We mostly followed this tutorial: https://medium.com/@adityaarya1/deploy-a-flask-application-to-azure-vm-with-a-ssl-certificate-d2960c50783d 
+
+The main steps are: 
+
+1. Create a VM 
+2. Set up the code as you would locally 
+3. Set up a Gunicorn instance to run the falsk server
+4. Set up a Nginx server 
+5. User certbox to run on https 
+
+
+
+### Updating VM once set up 
 
 * Step 1: SSH into vm 
 * step 2: cd into logic_puzzle
@@ -19,15 +89,12 @@ If there is an error you can check with
 
 ```sudo systemctl status logic_puzzle_app.service``` 
 
-You can reference this tutorial: https://medium.com/@adityaarya1/deploy-a-flask-application-to-azure-vm-with-a-ssl-certificate-d2960c50783d 
+Or for more detail logs, check the journal with (where 200 is the number of lines to print): 
 
-## Quick Start 
+```sudo journalctl -u logic_puzzle_app.service -n 200```
 
-### Playing generated puzzles 
-The generated puzzles are located in the Difficulty-Only and Hints-And-Difficulty folders. The Hints-and-Difficulty contains puzzles that were optimized both for difficulty and for small hint sizes, where the Difficulty-Only contians puzzles that were optimized for difficulty only. Each folder contains a hint.txt that contains the hints for each puzzle. For the puzzles you can use the BlankPuzzle.png to mark the your answers. You can check your solutions agains't the solutions in the solutions.txt file that is each both folders. 
 
-### Looking at Experiment data 
-Each experiment folder also contains several visualizations about the generated puzzles and the generation process. The "data.txt" file also contains key information from the experiment. Each "pop_<i>.p" file contains a pickled version of the feasible and infeasible population of the last generation for that trial, along with a history object, which tracks fitness over generations. 
+You can find/modify the Gunicorn configuration with: 
 
 ### Running a new experiment 
 New experiments can be run by modifying the "Experiments.py" file. At the top, several contains are defined. Most important is the "folder" which tells the program where to put experiement data. We recommend creating a new folder for each experiment run. You can also modify the puzzle to generate puzzles with different themes. Note that currently puzzles are required to have at least three categories, one of which must be numeric. 
@@ -39,6 +106,12 @@ The Flask API server can be run using the command line with command ```python ma
 To start a mock database, start MongoDB, then run command ```python mock-db.py```.
 
 ## Important Files 
+
+### Database.py 
+Functions to manage the MonogDB database 
+
+### main.py 
+End points for the flask API. 
 
 ### LogicPuzzle.py 
 This file defines the objects and logics for logic puzzles. 
@@ -171,6 +244,3 @@ Data structure for representing the map elite grid. Some important parameters an
  * infeasiblePopulation: list of infeasible children in last generation 
 * history: history object across evolution 
 
-## Aiide-24 Files 
-
-The trials presented in the AIIDE-24 paper are provided in the school3 folder, including the graphs generated. The code used for anayalsis and visualization is given in the MapElitesVisualation.py file. 

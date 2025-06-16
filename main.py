@@ -10,7 +10,6 @@ from HintToEnglish import (
 from LogicPuzzles import Category, Puzzle
 from ItterativeMapElits import evolve as itterative_evolve
 from ItterativeMapElits import EliteGrid
-import json
 import jsonpickle
 import random
 import Database
@@ -21,6 +20,7 @@ from insight_tree import choose_move_lazy
 app = Flask(__name__)
 
 ACCOUNT_DATABASE_FILE_STRING = "UserData.json"
+
 
 
 def get_user_database():
@@ -269,6 +269,14 @@ def get_formatted_unused_grammar(di, cats):
         }
     return return_di
 
+@app.route("/get_user_data", methods=["POST"])
+@cross_origin()
+def get_user_data():
+    request_data = request.get_json()
+    user = request_data["user"]
+
+    return jsonify(Database.get_user_data(user))
+    
 
 @app.route("/get_unused_grammar", methods=["POST"])
 @cross_origin()
@@ -603,9 +611,10 @@ def get_public_key():
 
     result = Database.get_user(id)
 
-    mode = result["mode"] if "mode" in result else "mixed"
+    
 
     if not result is None:
+        mode = result["mode"] if "mode" in result else "mixed"
         response = jsonify({"publicKey": result["publicKey"], "mode": mode})
         return response
     elif result is None:
@@ -684,6 +693,8 @@ def post_puzzle():
         return response, 406
 
 
+
+
 @app.route("/view_puzzle", methods=["POST"])
 @cross_origin()
 def view_puzzle():
@@ -692,7 +703,12 @@ def view_puzzle():
 
     username = request_data["username"]
 
-    result = Database.view_puzzle(username, request_data["puzzleId"])
+    if "mode" in request_data:
+        mode = request_data["mode"]
+    else:
+        mode = None
+
+    result = Database.view_puzzle(username, request_data["puzzleId"],mode)
 
     if not result is None:
         return "success"
@@ -701,6 +717,39 @@ def view_puzzle():
         response = jsonify("user not found")
         return response, 406
 
+@app.route("/delete_post", methods=["POST"])
+@cross_origin()
+def delete_post():
+
+    request_data = request.get_json()
+
+    username = request_data["username"]
+
+    result = Database.delete_puzzle(username, request_data["mode"], request_data["puzzleId"])
+
+    if not result is None:
+        return "success"
+
+    else:
+        response = jsonify("user not found")
+        return response, 406
+
+@app.route("/delete_comment", methods=["POST"])
+@cross_origin()
+def delete_comment():
+
+    request_data = request.get_json()
+
+    username = request_data["username"]
+
+    result = Database.delete_comment(username, request_data["mode"], request_data["puzzleId"], request_data["time"])
+
+    if not result is None:
+        return "success"
+
+    else:
+        response = jsonify("user not found")
+        return response, 406
 
 @app.route("/like_posted_puzzle", methods=["POST"])
 @cross_origin()
@@ -752,7 +801,12 @@ def add_comment():
 
     time = request_data["time"]
 
-    result = Database.post_comment(username, id, comment, time)
+    if "mode" in request_data:
+        mode = request_data["mode"]
+    else:
+        mode = None
+ 
+    result = Database.post_comment(username, id, comment, time,mode)
 
     if not result is None:
         return "success"

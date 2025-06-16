@@ -1,0 +1,11 @@
+_id,user,startTime,totalCasual,totalSerious,totalNeutral,clicks,totalTime
+6813aaf45c5388e4911918be,Admin 1,2025-05-01T17:10:12.127Z,4,6,0,"['select scenario', 'add example category', 'add example category', 'add example category', 'add grammar', 'add grammar', 'add grammar', 'add grammar', 'add grammar', 'add grammar']",99045
+6813ad488d643201263ef4c7,Admin 1,2025-05-01T17:20:08.411Z,3,0,0,"['add example category', 'add example category', 'add example category']",3139
+6813ade18d643201263ef4c8,Admin 1,2025-05-01T17:22:41.001Z,3,0,0,"['add example category', 'add example category', 'add example category']",5595
+6818ef87118d112f0e5f536a,Admin 1,2025-05-05T17:04:07.407Z,0,0,0,[],0
+6818efa8118d112f0e5f536b,Admin 1,2025-05-05T17:04:40.379Z,0,0,0,[],0
+6818efbb118d112f0e5f536c,Admin 1,2025-05-05T17:04:59.248Z,0,0,0,[],0
+6818f3e0118d112f0e5f536d,Admin 1,2025-05-05T17:22:40.556Z,0,0,1,['add comment'],11555
+6818f4890c4da1cb01bc245d,Admin 1,2025-05-05T17:25:29.954Z,0,0,1,['add comment'],14285
+6818f5810c4da1cb01bc2461,Admin 1,2025-05-05T17:29:37.550Z,5,0,2,"['select scenario', 'add example category', 'add example category', 'add example category', 'select recommendation', 'like puzzle', 'post puzzle']",32580
+6818f6430c4da1cb01bc2465,Admin 1,2025-05-05T17:32:51.190Z,0,0,0,[],0

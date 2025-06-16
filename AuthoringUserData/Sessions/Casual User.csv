@@ -1,0 +1,2 @@
+_id,user,startTime,totalCasual,totalSerious,totalNeutral,clicks,totalTime
+67eecba330ebf87daab2c869,Casual User,2025-04-03T17:55:47.769Z,7,0,0,"['select scenario', 'add example category', 'add example category', 'add example category', 'select recommendation', 'view similar', 'view similar']",21217
