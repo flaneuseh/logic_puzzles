@@ -79,8 +79,8 @@ def get_new_puzzles(grid, database={}, data={}):
 
     return formated_list
 
-def get_hints(hint_grammar):
-    hints = [deserialized_hint_grammar(hint) for hint in hint_grammar]
+def get_hints(hint_grammar, categories):
+    hints = [deserialized_hint_grammar(hint, categories) for hint in hint_grammar]
     return hints 
     
 def get_puzzle(request_data):
@@ -276,13 +276,13 @@ def get_formatted_unused_grammar(di, cats):
 
 @app.route("/get_reflective_prompt", methods=["POST"])
 @cross_origin()
-def get_user_data():
+def get_reflective_prompt():
     request_data = request.get_json()
     puzzle = get_puzzle(request_data)
     
     currGrid = request_data["currGrid"]
     puzzle.grids = currGrid
-    hints = get_hints(request_data["hints"])
+    hints = get_hints(request_data["hints"], puzzle.categories)
 
     prompt = get_prompt(puzzle, hints)
 

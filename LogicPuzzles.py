@@ -366,6 +366,17 @@ class Puzzle:
                 elif self._to_key(cat2, category) in self.grids:
                     grid = self.grids[self._to_key(cat2, category)]
                     answers = grid[index]
+                else:
+                    print("SOMETHING HAS GONE HORRIBLY WRONG")
+                    print(type(category))
+                    print(category)
+                    print("\n")
+                    print(type(cat2))
+                    print(cat2)
+
+                    print("\n")
+                    print(self.grids)
+         
 
                 for i, val in enumerate(answers):
                     if val == "O":
@@ -2026,6 +2037,7 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False, return_ent
                     return applied, is_valid, complete, insights
         else:
             for i in range(0, bef_index):
+                sy = puzzle.get_symbol(aft_cat, num_cat, aft_ent, num_cat.entities[i])
                 if sy == "*":
                     applied = True
                     puzzle.answer(aft_cat, num_cat, aft_ent, num_cat.entities[i], "X")

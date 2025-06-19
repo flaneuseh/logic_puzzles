@@ -29,8 +29,8 @@ PROMPT_DICT = {
 # Repair (Cat1, ent1) x (cat2, ent2) is incorrect 
 
 "repair": [
-    ("What assumptions have you made about the '{0}' and '{1}'? How could you question those?",[("ents", 0, 1), ("ents", 0,0)]),
-    ("What was the process that made you decide the answer for '{0}' and '{1}'?", [("ents", 0,0), ("ents", 0,0)])
+    ("What assumptions have you made about the '{0}' and '{1}'? How could you question those?",[("ents", 0, 0), ("ents", 1,1)]),
+    ("What was the process that made you decide the answer for '{0}' and '{1}'?", [("ents", 0,0), ("ents", 1,0)])
     ],
 
 # cross out (cat1, ent1) x (cat2, ent2) is True, others can be cross out 
@@ -74,7 +74,7 @@ PROMPT_DICT = {
 # before_diff_cat (befcat, befent) X (aftcat, aftent) bef_ent is different from after_ent from clue 
 "before_diff_cat": [
     ("How does '{0}' relate to '{1}'?", [("ents", 0,1), ("ents", 1,1)]),
-    ("How does the {0} hint inform what you know about {1}?", [("hints", 0), ("ents", 0,1)])
+    ("How does the {0} hint inform what you know about '{1}'?", [("hints", 0), ("ents", 0,1)])
 ],
 # apply_before (cat1, ent1) x (cat2, ent2)x (cat3, ent3) ent1=ent3 based on the restrictions on ent2 on cat3 
 "apply_before":[
@@ -93,13 +93,13 @@ PROMPT_DICT = {
 ],
 # spots cross (ent1, ent2, ent3) ent!=ent3 based on the before and what's available in ent2 
 "spots_cross":[
-    ("How does what you have eliminated from '{0}' inform the possibilities for '{1}", [("ents", 1,1), ("ents", 0, 1)]),
-    ("What does the {0} hint tell you about '{1}, given the current state of the puzzle?", (("hints",0), ("ents", 0,0)))
+    ("How does what you have eliminated from '{0}' inform the possibilities for '{1}'", [("ents", 1,1), ("ents", 0, 1)]),
+    ("What does the {0} hint tell you about '{1}', given the current state of the puzzle?", (("hints",0), ("ents", 0,0)))
 ],
 # or false (pos_cat1, pos_ent1), (pos_cat2, pos_ent2), (ans_cat, ans_ent) ent1!=ans_ent bc other is answered 
 "or_false":[
      ("What does the {0} hint tell about the puzzle, given the current state of the puzzle?", (("hints",0))),
-     ("What possibilities remain for {0}, given the information you currently have?", (("ents", 0,0)))
+     ("What possibilities remain for '{0}', given the information you currently have?", (("ents", 0,0)))
 ], 
 # or true  (pos_cat1, pos_ent1), (pos_cat2, pos_ent2), (ans_cat, ans_ent) ent1==ans_ent bc other is answered 
 "or_true":[
@@ -109,12 +109,12 @@ PROMPT_DICT = {
 # or diff  (pos_cat1, pos_ent1), (pos_cat2, pos_ent2), (ans_cat, ans_ent) ent1!=ent2 bc of or clue 
 "or_diff":[
     ("What does the {0} hint tell about '{1}'?", [("hints", 0), ("ents", 0,1)]), 
-    ("What information do you have about {0} and {1}?", [("ents", 0,1), ("ents", 1,1)])
+    ("What information do you have about '{0}' and '{1}'?", [("ents", 0,1), ("ents", 1,1)])
 ], 
 # or same (pos_cat1, ent1)(ans_cat, ans_ent) ent1!=ans_ent bc only pos1 or pos2 must be ans_ent 
 "or_same":[
-    ("What does the {0} hint tell about the possibilities for '{}'?", [("hints", 0), ("ents", 1,1)]), 
-    ("What possibilities could be eliminated for {1}", [("ents", 1,1)])
+    ("What does the {0} hint tell about the possibilities for '{1}'?", [("hints", 0), ("ents", 1,1)]), 
+    ("What possibilities could be eliminated for '{1}'?", [("ents", 1,1)])
 ]
 }
 

@@ -3,14 +3,16 @@ from LogicPuzzles import Puzzle, Category, Insight
 import jsonpickle
 import random
 
-shapes = Category("shapes", ["Elbow", "Bowtie", "Linguine", "Shell"], False)
-# sauces = Category("sauces", ["Tomato", "Alfredo", "Pesto", "Carbonara"], False)
-plate = Category("order", ["1", "2", "3", "4"], True)
-pasta = Puzzle([shapes, plate])
+shapes = Category("shape", ["Elbow", "Bowtie", "Linguine", "Shell"], False)
+sauces = Category("sauce", ["Tomato", "Alfredo", "Pesto", "Carbonara"], False)
+#plate = Category("order", ["1", "2", "3", "4"], True)
+
+pasta = Puzzle([shapes, sauces])
 
 mL = Category("mL", ["20oz", "40oz", "60oz", "80oz"], True)
+lightCondition = Category("light", ["Full Shade", "Partial Shade", "Partial Sun", "Full Sun"], False)
 plants = Category("plant", ["Potatoes", "Green Onions", "Eggplant", "Broccoli"], False)
-water = Puzzle([mL, plants])
+water = Puzzle([lightCondition, plants])
 
 order = Category("order", ["1st", "2nd", "3rd", "4th"], True)
 method = Category("method", ["whole", "halved", "chopped", "mashed"], False)
@@ -54,21 +56,33 @@ experiments = [
     #     },
     #     "forbidden_insights": {Insight.BEFORE_N_SPOTS_SHIFT, Insight.TRANS_ABC_FALSE, Insight.SIMPLE_OR_DIFF_CAT},
     # },
+    #{
+    #    "folder": "NewEscape/SoupSimple",
+    #    "puzzle": soup,
+    #    "required_insights": {
+    #        Insight.BEFORE_N_SPOTS_SHIFT,
+    #    },
+    #    "forbidden_insights": set(),
+    #},
     {
-        "folder": "NewEscape/SoupSimple",
-        "puzzle": soup,
-        "required_insights": {
-            Insight.BEFORE_N_SPOTS_SHIFT,
-        },
-        "forbidden_insights": set(),
-    },
+        "folder": "EscapeHelperPuzzles/Pasta",
+        "puzzle": pasta,
+        "required_insights": set(),
+        "forbidden_insights": set()
+    }, 
+    {
+        "folder": "EscapeHelperPuzzles/plants",
+        "puzzle": water,
+        "required_insights": set(),
+        "forbidden_insights": set()
+    }
 ]
 
 
 starting = 0
 num_trials = 1
-gen_len = 1000
-pop_size = 300
+gen_len = 100
+pop_size = 50
 mut_rate = 0.8
 x_rate = 0.6
 add_rate = 0.5

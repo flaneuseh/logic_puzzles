@@ -1,6 +1,6 @@
 import json 
 import jsonpickle
-from HintToEnglish import hint_to_english
+from HintToEnglish import hint_to_english, serialized_hint_grammar
 
 
 def category_to_json(cat):
@@ -22,16 +22,34 @@ def hintset_to_json(hintset, id):
 
     return di
 
+def hintset_to_di(hintset, row, col, database={}, data={}):
+    di = {}
+    di["solution"] = hintset.completed_puzzle.print_grid_small()
+    di["categories"] = [
+        category_to_json(cat) for cat in hintset.completed_puzzle.categories
+    ]
+    di["hints"] = [
+        hint_to_english(hint, grammar_dict=database) for hint in hintset.hints
+    ]
+    di["hint_grammar"] = [serialized_hint_grammar(hint) for hint in hintset.hints]
+    di["diff"] = col + 1
+    di["sol"] = row
+    if "name" in data:
+        di["name"] = data["name"]
+    if "scenario" in data:
+        di["scenario"] = data["scenario"]
+    return di
+
     
 
 
 if __name__ == "__main__":
-    file = "Ballroom/map_grid_trial_0.p"
-    write_to = "Ballroom/ballroomInfo.json"
+    file = "EscapeHelperPuzzles/Pasta/map_grid_trial_0.p"
+    write_to = "EscapeHelperPuzzles/Pasta/puzzle.json"
     json_str = open( file, "r").read()
     grid = jsonpickle.decode(json_str) 
-    child = grid.grid[387][2][1]
-    di = hintset_to_json(child, 0) 
+    child = grid.grid[0][1][1]
+    di = hintset_to_di(child, 0, 1) 
     file = open(write_to, "w")
     json.dump(di,file)
     file.close()
