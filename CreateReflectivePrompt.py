@@ -20,7 +20,7 @@ def create_prompt(text, params, ents, hints):
             hint_num = hints[param[1]]
             hint_num += 1 
             value = str(p.ordinal(hint_num))
-        
+        value = str(value)
         text = text.replace("{" + str(i) +"}", value)
     return text 
 

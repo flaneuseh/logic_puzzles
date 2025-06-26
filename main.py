@@ -17,12 +17,13 @@ from AddToGrammar import get_empty_before, get_empty_is, get_empty_not, get_empt
 import Evolution
 from insight_tree import choose_move_lazy
 from CreateReflectivePrompt import get_prompt
+import GamePlayDatabase
 
 app = Flask(__name__)
 
 ACCOUNT_DATABASE_FILE_STRING = "UserData.json"
 
-
+########################################## HELPER FUNCTIONS ####################################################################
 
 def get_user_database():
     file = open(ACCOUNT_DATABASE_FILE_STRING, "r")
@@ -273,6 +274,9 @@ def get_formatted_unused_grammar(di, cats):
     return return_di
 
 
+########################################## GAME PLAY API ####################################################################
+
+
 
 @app.route("/get_reflective_prompt", methods=["POST"])
 @cross_origin()
@@ -288,6 +292,49 @@ def get_reflective_prompt():
 
     return jsonify(prompt) 
 
+@app.route("/add_participant", methods=["POST"])
+@cross_origin()
+def add_participant():
+    request_data = request.get_json()
+    return jsonify(GamePlayDatabase.addUser(request_data["data"]))
+
+
+@app.route("/update_participant", methods=["POST"])
+@cross_origin()
+def update_participant():
+    request_data = request.get_json()
+    userId = request_data["id"]
+    print(request_data)
+    data = request_data["data"]
+    return jsonify(GamePlayDatabase.updateUser(userId, data))
+
+@app.route("/add_gameplay", methods=["POST"])
+@cross_origin()
+def add_gameplay():
+    request_data = request.get_json()
+    return jsonify(GamePlayDatabase.addGameplayInstance(request_data["data"]))
+
+@app.route("/add_gameplay_action", methods=["POST"])
+@cross_origin()
+def add_gameplay_action():
+    request_data = request.get_json()
+    return jsonify(GamePlayDatabase.addGameplayAction(request_data["id"], request_data["update"], request_data["action"]))
+
+@app.route("/add_gameplay_reflection", methods=["POST"])
+@cross_origin()
+def add_gameplay_reflection():
+    request_data = request.get_json()
+    return jsonify(GamePlayDatabase.addGameplayReflection(request_data["id"], request_data["update"], request_data["reflection"]))
+
+@app.route("/add_gameplay_survey", methods=["POST"])
+@cross_origin()
+def add_gameplay_survey():
+    request_data = request.get_json()
+    return jsonify(GamePlayDatabase.addSurvey(request_data["data"]))
+
+
+
+########################################## AUTHORING API ####################################################################
 
 @app.route("/get_user_data", methods=["POST"])
 @cross_origin()
