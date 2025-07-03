@@ -35,7 +35,7 @@ PROMPT_DICT = {
 
 # cross out (cat1, ent1) x (cat2, ent2) is True, others can be cross out 
 "cross_out": [
-    ("Think about the '{0}' and '{1}'. Can this information be useful anywhere else in the puzzle?", [("ents", 0,1), ("ents", 1 ,1)]),
+    ("Think about '{0}' and '{1}'. Can this information be useful anywhere else in the puzzle?", [("ents", 0,1), ("ents", 1 ,1)]),
     ("How does what you know about '{0}' inform how you are thinking about the category '{1}'?", [("ents", 0,1), ("ents", 1,0)])
 ],
 ## Opening (cat1, ent1) x (cat2, ent2) is the only one that can be true 
@@ -89,7 +89,7 @@ PROMPT_DICT = {
 # spots shift (cat1, ent1)X(comCat, comEnt)X(cat2, ent2) ent1!=ent2 based on possibilities of compEnt
 "spots_shift":[
     ("How does what you know about '{0}' inform what is possible for '{1}'?", [("ents", 1,1), ("ents", 0,1)]),
-    ("What does the {0} hint tell you about '{1}, given the current state of the puzzle?", (("hints",0), ("ents", 0,0)))
+    ("What does the {0} hint tell you about '{1}', given the current state of the puzzle?", (("hints",0), ("ents", 0,0)))
 ],
 # spots cross (ent1, ent2, ent3) ent!=ent3 based on the before and what's available in ent2 
 "spots_cross":[
