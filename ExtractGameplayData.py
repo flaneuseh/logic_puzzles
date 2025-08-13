@@ -48,6 +48,7 @@ def get_survey_for_game(gameData):
 
 
 def get_all_data(folder):
+    numHub = 0 
     all_users = userDB.find({})
     all_user_data = []  
     gameplay_data = []
@@ -71,6 +72,8 @@ def get_all_data(folder):
             game_data["promptMode"] = user["promptMode"]
             game_data["logicExp"] = user["logicPuzzleExp"]
             game_data["gridExp"] = user["gridPuzzleExp"]
+            if "hub" in game_data["pid"]:
+                numHub += 1 
 
             if not "isSolved" in game_data: 
                 game_data["isSolved"] = False 
@@ -90,8 +93,9 @@ def get_all_data(folder):
         user_data["timeSpent"] = total_time
         user_data["totalGames"] = total_games 
         all_user_data.append(user_data)
+        print("Number of hub plays:", numHub)
 
-    print(all_user_data)
+    #print(all_user_data)
     list_to_csv(all_user_data, folder + "/user_data.csv")
     list_to_csv(gameplay_data, folder + "/gameplay_data.csv")
     
