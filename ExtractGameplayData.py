@@ -2,6 +2,7 @@ import pymongo
 import Database
 import json 
 import csv
+import numbers 
 
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 
@@ -87,13 +88,19 @@ def get_all_data(folder):
                 game_reflections[game_data["_id"]] = game_data["reflections"] 
                 del game_data["reflections"]
             
-            total_time += game_data["totalTime"]
+            if "totalTime" in game_data:
+                if isinstance(game_data["totalTime"], numbers.Number):
+                    total_time += game_data["totalTime"]
+                else:
+                    print("Something is weird here doc")
+                    print(game_data["totalTime"])
             gameplay_data.append(game_data)
         
         user_data["timeSpent"] = total_time
         user_data["totalGames"] = total_games 
         all_user_data.append(user_data)
-        print("Number of hub plays:", numHub)
+    
+    print("Number of hub plays:", numHub)
 
     #print(all_user_data)
     list_to_csv(all_user_data, folder + "/user_data.csv")
