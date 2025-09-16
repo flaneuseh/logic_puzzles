@@ -12,7 +12,7 @@ from ItterativeMapElits import evolve as itterative_evolve
 from ItterativeMapElits import EliteGrid
 import jsonpickle
 import random
-import Database
+import Authoring.Database as Database
 from AddToGrammar import get_empty_before, get_empty_is, get_empty_not, get_empty_or
 import Evolution
 from insight_tree import choose_move_lazy

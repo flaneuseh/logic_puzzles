@@ -1,5 +1,5 @@
 from pymongo import MongoClient 
-import Database
+import Authoring.Database as Database
 import json 
 
   

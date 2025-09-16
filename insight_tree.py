@@ -5,12 +5,12 @@ from HintToEnglish import hint_to_english
 from LogicPuzzles import Category, Puzzle, Insight
 
 
-# Get insights found by the solver from the current state to the end.
+# Recursively get insights found by the solver from the current state to the end.
 def gen_move_tree(curr_state, hints, choose_fn):
     curr_hint_idx = 0
     tree = {
         "curr_state": deepcopy(curr_state),
-        "moves_from_here": r_gen_move_tree(
+        "moves_from_here": _r_gen_move_tree(
             deepcopy(curr_state), hints, curr_hint_idx, choose_fn
         ),
     }
@@ -18,8 +18,8 @@ def gen_move_tree(curr_state, hints, choose_fn):
     return tree
 
 
-# Recursively get the move tree for the next move as chosen by choose_fn
-def r_gen_move_tree(curr_state, hints, curr_hint_idx, choose_fn):
+# Recursive subfunction to get the move tree for the next move as chosen by choose_fn
+def _r_gen_move_tree(curr_state, hints, curr_hint_idx, choose_fn):
     children = []
     _, available_moves = get_available_moves(curr_state, hints)
     if len(available_moves) == 0:
@@ -38,14 +38,14 @@ def r_gen_move_tree(curr_state, hints, curr_hint_idx, choose_fn):
                 else:
                     # move on to the next hint
                     curr_hint_idx += 1
-            move["moves_from_here"] = r_gen_move_tree(
+            move["moves_from_here"] = _r_gen_move_tree(
                 deepcopy(move["result"]), hints, curr_hint_idx, choose_fn
             )
         children.append(move)
     return children
 
 
-# Sequence of moves similar to the OG solver, following the hints in order and making all insights at each hint before moving on
+# Choose the next move similar to the OG solver, following the hints in order and making all insights at each hint before moving on
 def choose_move_ordered(available_moves, curr_hint_idx):
     best_move = available_moves[0]
     best_move_hint_idx = get_hint_idx(best_move)
@@ -86,7 +86,7 @@ def choose_move_ordered(available_moves, curr_hint_idx):
     return best_move
 
 
-# Sequence of moves as made by a lazy solver choosing the first easiest insight available
+# Choose the next move as made by a lazy solver choosing the first easiest insight available. Note - easiest is highly subjective at the moment.
 def choose_move_lazy(available_moves, curr_hint_idx):
     best_move = available_moves[0]
     best_move_hint_idx = get_hint_idx(best_move)
@@ -128,7 +128,7 @@ def choose_move_lazy(available_moves, curr_hint_idx):
     return best_move
 
 
-# hint_idx is the idx of the hint. openings and transitives are given a high idx to ensure they come after the hints.
+# hint_idx is the order idx of the hint. Openings are given a low index to ensure they are taken first, and transitives get a high index to ensure they are taken last.
 def get_hint_idx(move):
     if "indexed_hint" in move:
         return move["indexed_hint"]["idx"]
@@ -147,7 +147,7 @@ def get_hardest_insight(move):
             move_hardest_insight = insight
     return move_hardest_insight
 
-
+# Save the move tree to a text file (recursive).
 def save_move_tree(puzzle, hints, choose_fn, name):
     file = open("tree_{}.txt".format(name), "w")
     file.write("Puzzle:\n")
@@ -159,13 +159,13 @@ def save_move_tree(puzzle, hints, choose_fn, name):
     tree = gen_move_tree(puzzle, hints, choose_fn)
     next_moves = tree["moves_from_here"]
     if len(next_moves) > 0:
-        r_print_moves(file, next_moves)
+        _r_print_moves(file, next_moves)
 
     file.close()
     return
 
-
-def r_print_moves(file, moves):
+# Recursive subfunction to print moves to a file
+def _r_print_moves(file, moves):
     next_move = moves[0]
     move_liness = []
     max_lines = 0
@@ -197,10 +197,10 @@ def r_print_moves(file, moves):
         file.write(line_str + "\n")
 
     if len(next_move["moves_from_here"]) > 0:
-        r_print_moves(file, next_move["moves_from_here"])
+        _r_print_moves(file, next_move["moves_from_here"])
     return
 
-
+# Write a list of insights as a string.
 def insights_to_string(insights):
     str = ""
     for insight in insights:

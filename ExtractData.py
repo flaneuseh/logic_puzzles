@@ -1,5 +1,5 @@
 import pymongo 
-import Database
+import Authoring.Database as Database
 import json 
 
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")

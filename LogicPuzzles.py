@@ -3061,6 +3061,247 @@ def apply_hint(puzzle, hint, forbidden_insights=set(), slow=False):
 
     return applied, is_valid, complete, insights
 
+def get_available_moves(puzzle, hints):
+    """
+    get all possible next moves in the solution:
+        any openings
+        any transitive moves possible in order
+        all currently applicable hints and their moves in order
+        any insights needed
+        if the current board is invalid, get the most salient contradiction (highlight the cell(s) that create the contradiction)
+    """
+    moves = []
+    solution, is_valid, _, _ = apply_hints(puzzle, hints)
+    if not is_valid:
+        # The puzzle itself is broken. this should never happen.
+        raise Exception("INVALID_PUZZLE")
+
+    result = deepcopy(puzzle)
+    broken_state = repair(result, solution)
+    if broken_state:
+        # If there are any errors, the only valid move is to remove all invalid marks.
+        moves.append({
+            "type": "repair",
+            "result": result,
+            "move_diff": get_move_diff(puzzle, result),
+            "insights": [Insight.REPAIR],
+        })
+
+    state_is_valid = not broken_state
+
+    # We know that so far the puzzle is correct.
+    result = deepcopy(puzzle)
+    applied, is_valid, _, insights = find_openings(result, slow=True)
+    if len(insights) == 0:
+        insights = [Insight.NO_INSIGHT]
+    if applied and is_valid:
+        moves.append({
+            "type": "openings",
+            "result": result,
+            "move_diff": get_move_diff(puzzle, result),
+            "insights": insights,
+        })
+    result = deepcopy(puzzle)
+    applied, is_valid, _, insights = find_transitives(result, slow=True)
+    if len(insights) == 0:
+        insights = [Insight.NO_INSIGHT]
+    if applied and is_valid:
+        moves.append({
+            "type": "transitives",
+            "result": result,
+            "move_diff": get_move_diff(puzzle, result),
+            "insights": insights,
+        })
+    for idx, hint in enumerate(hints):
+        result = deepcopy(puzzle)
+        applied, is_valid, _, insights = apply_hint(result, hint, slow=True)
+        if len(insights) == 0:
+            insights = [Insight.NO_INSIGHT]
+        if applied and is_valid:
+            moves.append({
+                "type": "hint",
+                "indexed_hint": {"idx": idx, "hint": hint},
+                "result": result,
+                "move_diff": get_move_diff(puzzle, result),
+                "insights": insights,
+            })
+    return state_is_valid, moves
+
+
+def get_move_diff(before, after):
+    diff = deepcopy(after)
+
+    for cat1 in before.left_right:
+        for cat2 in before.top_bottom:
+            before_grid = before.get_grid(cat1, cat2)
+            after_grid = after.get_grid(cat1, cat2)
+            if before_grid is None or after_grid is None:
+                continue
+            for ent2_idx in range(0, len(before_grid)):
+                for ent1_idx in range(0, len(before_grid[ent2_idx])):
+                    if (
+                        before_grid[ent2_idx][ent1_idx]
+                        == after_grid[ent2_idx][ent1_idx]
+                    ):
+                        diff.answer(
+                            cat1,
+                            cat2,
+                            cat1.entities[ent1_idx],
+                            cat2.entities[ent2_idx],
+                            lowercase_grid_symbol(after_grid[ent2_idx][ent1_idx]),
+                        )
+                    elif after_grid[ent2_idx][ent1_idx] == "*":
+                        # This is a repair operation
+                        diff.answer(
+                            cat1,
+                            cat2,
+                            cat1.entities[ent1_idx],
+                            cat2.entities[ent2_idx],
+                            "_",
+                        )
+    return diff
+
+
+def lowercase_grid_symbol(S):
+    if S == "X":
+        return "x"
+    elif S == "O":
+        return "o"
+    elif S == "*":
+        return "*"
+    return "__"
+
+
+# %%
+def apply_hints(puzzle, hints, print_soln=False, forbidden_insights=set()):
+    """
+    solver
+    """
+    is_valid = True
+    copy = Puzzle(puzzle.categories)
+    queue = hints[:]
+    # trace = {}
+    backlog = []
+    applied = True
+    insights = set()
+    loop = 0
+    if len(hints) == 0:
+        is_valid = False
+        return copy, is_valid, loop, insights
+    while is_valid and applied and len(queue) > 0:
+        applied = False
+        loop += 1
+
+        for hint in queue:
+            og = deepcopy(copy)
+            a, is_valid, complete, hint_insights = apply_hint(
+                copy, hint, forbidden_insights=forbidden_insights
+            )
+            applied = applied or a
+            insights = insights | hint_insights
+            if not complete:
+                backlog.append(hint)
+            elif print_soln:
+                print("HINT NO LONGER NEEDED: ", hint_to_english(hint))
+            if not is_valid:
+                return copy, is_valid, loop, insights
+
+            # Apply additional logic
+            if a:
+                a_2 = True
+                a_3 = True
+                while a_2 or a_3:
+                    # Apply openings and transitives as many times as you can.
+                    a_2, is_valid, complete, opening_insights = find_openings(
+                        copy, forbidden_insights=forbidden_insights
+                    )
+                    if not is_valid:
+                        return copy, is_valid, loop, insights
+                    a_3, is_valid, complete, trans_insights = find_transitives(
+                        copy, forbidden_insights=forbidden_insights
+                    )
+                    if not is_valid:
+                        return copy, is_valid, loop, insights
+                    applied = applied or a_2 or a_3  # test if anything was changed
+                    hint_insights = hint_insights | trans_insights | opening_insights
+                    insights = insights | hint_insights
+                if not is_valid:
+                    return copy, is_valid, loop, insights
+            if print_soln and a:
+                print("hint: ", hint_to_english(hint))
+                print("insights: ", hint_insights)
+                print("updated grid: ")
+                move_diff = get_move_diff(og, copy)
+                print(move_diff.print_grid())
+        queue = backlog
+        backlog = []
+
+    return copy, is_valid, loop, insights
+
+
+def get_needed(puzzle, hints, print_soln=False):
+    if print_soln:
+        print("Initial solution")
+    completed_puzzle, is_valid, _, _ = apply_hints(
+        puzzle, hints, print_soln=print_soln
+    )
+    assert(completed_puzzle.is_complete() and is_valid)
+
+    needed = set()
+    unneeded = ALL_INSIGHTS.copy()
+
+    assert not can_solve_without_forbidden(puzzle, hints, unneeded), "No insights are needed to solve the puzzle; something has gone wrong somewhere."
+    
+    # Add insights easiest first until the puzzle can be solved.
+    completed_without_maybe = can_solve_without_forbidden(
+        puzzle, hints, unneeded, print_soln
+    )
+    for insight in Insight:
+        if not completed_without_maybe:
+            unneeded = unneeded - {insight}
+            completed_without_maybe = can_solve_without_forbidden(
+                puzzle, hints, unneeded, print_soln
+            )
+        else:
+            break
+    needed = ALL_INSIGHTS - unneeded
+    assert len(needed & unneeded) == 0
+    assert len(needed | unneeded) == len(ALL_INSIGHTS)
+    assert can_solve_without_forbidden(puzzle, hints, unneeded, print_soln), "can't solve without some of the insights judged unneeded: {}".format(unneeded)
+    # Remove any insights that don't result in the puzzle breaking, starting from the hardest
+    for insight in reversed(Insight):
+        if insight in needed:
+            needed = needed - {insight}
+            unneeded = ALL_INSIGHTS - needed
+            # Test whether the insight is really needed
+            completed_without_maybe = can_solve_without_forbidden(
+                puzzle, hints, unneeded, print_soln
+            )
+            
+            if not completed_without_maybe:
+                # The insight is needed, add it back
+                needed = needed | {insight}
+    unneeded = ALL_INSIGHTS - needed
+    assert len(needed | unneeded) == len(ALL_INSIGHTS)
+    assert len(needed & unneeded) == 0
+    assert can_solve_without_forbidden(puzzle, hints, ALL_INSIGHTS - needed, print_soln), "can't solve without some of the insights judged as unneeded: {}".format(unneeded)
+    return needed
+
+
+def can_solve_without_forbidden(puzzle, hints, forbidden_insights, print_soln=False):
+    if print_soln:
+        print("Soln without {}".format(forbidden_insights))
+    completed_puzzle, is_valid, _, used_insights = apply_hints(
+        puzzle, hints, print_soln=print_soln, forbidden_insights=forbidden_insights
+    )
+    assert (
+        len(used_insights & forbidden_insights) == 0
+    ), "insights: {} includes forbidden: {}".format(
+        used_insights, used_insights & forbidden_insights
+    )
+    assert is_valid, "not valid with forbidden {}".format(forbidden_insights)
+    return completed_puzzle.is_complete()
+
 
 # %% colab={"base_uri": "https://localhost:8080/"} id="cIlFA0mXSH5R" outputId="274d1a0b-cd33-4b36-c0eb-6214b679cec5"
 # apply some randomly generated hints and print results
@@ -3080,3 +3321,4 @@ if __name__ == "__main__":
             print("Openings: ", find_openings(puzzle))
             print("Transitives: ", find_transitives(puzzle))
         print(puzzle.print_grid())
+
