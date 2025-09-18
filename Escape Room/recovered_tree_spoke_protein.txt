@@ -1,0 +1,93 @@
+Puzzle:
+      10g  15g  20g  25g
+    --------------------
+Fis|  *    *    *    *  |
+Egg|  *    *    *    *  |
+Tof|  *    *    *    *  |
+Pea|  *    *    *    *  |
+    --------------------
+Hints:
+The food Eggs is the grams 15g
+The food Fish is 1 gramss before the food Peanuts
+
+user move 0:
+      10g  15g  20g  25g
+    --------------------
+Fis|  *    X    *    *  |
+Egg|  X    O    X    X  |
+Tof|  *    X    *    *  |
+Pea|  *    X    *    *  |
+    --------------------
+predicted move type: hint - "The food Eggs is the grams 15g"
+predicted insights: APPLY_IS (3), 
+
+user move 1:
+      10g  15g  20g  25g
+    --------------------
+Fis|  X    x    *    *  |
+Egg|  x    o    x    x  |
+Tof|  *    x    *    *  |
+Pea|  *    x    *    *  |
+    --------------------
+predicted move type: unknown
+predicted insights: unknown
+
+
+user move 2:
+      10g  15g  20g  25g
+    --------------------
+Fis|  x    x    *    *  |
+Egg|  x    o    x    x  |
+Tof|  *    x    *    *  |
+Pea|  *    x    *    *  |
+    --------------------
+predicted move type: unknown
+predicted insights: unknown
+
+
+user move 3:
+      10g  15g  20g  25g
+    --------------------
+Fis|  x    x    *    X  |
+Egg|  x    o    x    x  |
+Tof|  *    x    *    X  |
+Pea|  X    x    X    O  |
+    --------------------
+predicted move type: unknown
+predicted insights: unknown
+
+
+user move 4:
+      10g  15g  20g  25g
+    --------------------
+Fis|  x    x    *    x  |
+Egg|  x    o    x    x  |
+Tof|  *    x    *    x  |
+Pea|  x    x    x    o  |
+    --------------------
+predicted move type: unknown
+predicted insights: unknown
+
+
+user move 5:
+      10g  15g  20g  25g
+    --------------------
+Fis|  x    x    O    x  |
+Egg|  x    o    x    x  |
+Tof|  *    x    X    x  |
+Pea|  x    x    x    o  |
+    --------------------
+predicted move type: hint - "The food Fish is 1 gramss before the food Peanuts"
+predicted insights: APPLY_BEFORE_ONE_SPOT (6), 
+
+user move 6:
+      10g  15g  20g  25g
+    --------------------
+Fis|  x    x    o    x  |
+Egg|  x    o    x    x  |
+Tof|  O    x    x    x  |
+Pea|  x    x    x    o  |
+    --------------------
+predicted move type: openings
+predicted insights: OPENING (2), 
+

@@ -1,0 +1,69 @@
+Puzzle:
+      Gre  Car  Kal  Pot
+    --------------------
+20o|  *    *    *    *  |
+40o|  *    *    *    *  |
+60o|  *    *    *    *  |
+80o|  *    *    *    *  |
+    --------------------
+Hints:
+The plants Carrots is the amounts 40oz
+The plants Green Onions is at least 1 amounts before the plants Carrots
+Either the plants Green Onions or the plants Potatoes is the amounts 80oz
+
+user move 0:
+      Gre  Car  Kal  Pot
+    --------------------
+20o|  *    X    *    *  |
+40o|  X    O    X    X  |
+60o|  *    X    *    *  |
+80o|  *    X    *    *  |
+    --------------------
+predicted move type: hint - "The plants Carrots is the amounts 40oz"
+predicted insights: APPLY_IS (3), 
+
+user move 1:
+      Gre  Car  Kal  Pot
+    --------------------
+20o|  *    x    X    *  |
+40o|  x    o    x    x  |
+60o|  X    x    O    X  |
+80o|  *    x    X    *  |
+    --------------------
+predicted move type: unknown
+predicted insights: unknown
+
+
+user move 2:
+      Gre  Car  Kal  Pot
+    --------------------
+20o|  O    x    x    X  |
+40o|  x    o    x    x  |
+60o|  x    x    o    x  |
+80o|  X    x    x    *  |
+    --------------------
+predicted move type: hint - "The plants Green Onions is at least 1 amounts before the plants Carrots"
+predicted insights: APPLY_BEFORE_UNDEFINED_SPOTS (8), 
+
+user move 3:
+      Gre  Car  Kal  Pot
+    --------------------
+20o|  o    x    x    x  |
+40o|  x    o    x    x  |
+60o|  x    x    o    x  |
+80o|  x    x    x    O  |
+    --------------------
+predicted move type: openings
+predicted insights: OPENING (2), 
+
+user move 4:
+      Gre  Car  Kal  Pot
+    --------------------
+20o|  o    x    x    x  |
+40o|  x    o    x    x  |
+60o|  x    x    o    x  |
+80o|  x    x    x    O  |
+    --------------------
+predicted move type: hint - "Either the plants Green Onions or the plants Potatoes is the amounts 80oz"
+predicted insights: APPLY_OR (5), 
+

@@ -1,0 +1,252 @@
+Puzzle:
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c
+    ----------------------------------------
+Bea|  *    *    *    *  | *    *    *    *  |
+Pas|  *    *    *    *  | *    *    *    *  |
+Tom|  *    *    *    *  | *    *    *    *  |
+Car|  *    *    *    *  | *    *    *    *  |
+    ----------------------------------------
+1 c|  *    *    *    *  |
+2 c|  *    *    *    *  |
+3 c|  *    *    *    *  |
+4 c|  *    *    *    *  |
+    --------------------
+Hints:
+The ingredient Beans is 1 cups before the ingredient Carrots
+Either the cup 2 cups or the ingredient Beans is the order 4th
+The ingredient Beans is 2 orders before the ingredient Carrots
+The ingredient Pasta is 2 cups before the ingredient Carrots
+
+user move 0:
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c
+    ----------------------------------------
+Bea|  *    *    *    *  | *    *    *    *  |
+Pas|  *    *    *    *  | *    *    *    *  |
+Tom|  X    *    *    *  | *    *    *    *  |
+Car|  *    *    *    *  | *    *    *    *  |
+    ----------------------------------------
+1 c|  *    *    *    *  |
+2 c|  *    *    *    *  |
+3 c|  *    *    *    *  |
+4 c|  *    *    *    *  |
+    --------------------
+predicted move type: unknown
+predicted insights: unknown
+
+
+user move 1:
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c
+    ----------------------------------------
+Bea|  *    *    *    *  | *    *    *    *  |
+Pas|  *    *    *    *  | *    *    *    *  |
+Tom|  x    *    *    *  | *    *    *    *  |
+Car|  *    *    *    *  | *    *    X    *  |
+    ----------------------------------------
+1 c|  *    *    *    *  |
+2 c|  *    *    *    *  |
+3 c|  *    *    *    *  |
+4 c|  *    *    *    *  |
+    --------------------
+predicted move type: unknown
+predicted insights: unknown
+
+
+user move 2:
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c
+    ----------------------------------------
+Bea|  *    *    *    *  | *    *    *    X  |
+Pas|  *    *    *    *  | *    *    *    X  |
+Tom|  x    *    *    *  | *    *    *    X  |
+Car|  *    *    *    *  | X    X    x    O  |
+    ----------------------------------------
+1 c|  *    *    *    *  |
+2 c|  *    *    *    *  |
+3 c|  *    *    *    *  |
+4 c|  *    *    *    *  |
+    --------------------
+predicted move type: unknown
+predicted insights: unknown
+
+
+user move 3:
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c
+    ----------------------------------------
+Bea|  *    *    *    *  | *    X    *    x  |
+Pas|  *    *    *    *  | *    *    *    x  |
+Tom|  x    *    *    *  | *    *    *    x  |
+Car|  *    *    *    *  | x    x    x    o  |
+    ----------------------------------------
+1 c|  *    *    *    *  |
+2 c|  *    *    *    *  |
+3 c|  *    *    *    *  |
+4 c|  *    *    *    *  |
+    --------------------
+predicted move type: hint - "Either the cup 2 cups or the ingredient Beans is the order 4th"
+predicted insights: SIMPLE_OR_DIFF_CAT (10), 
+
+user move 4:
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c
+    ----------------------------------------
+Bea|  *    *    *    *  | X    x    O    x  |
+Pas|  *    *    *    *  | *    *    X    x  |
+Tom|  x    *    *    *  | *    *    X    x  |
+Car|  *    *    *    *  | x    x    x    o  |
+    ----------------------------------------
+1 c|  *    *    *    *  |
+2 c|  *    *    *    *  |
+3 c|  *    *    *    *  |
+4 c|  *    *    *    *  |
+    --------------------
+predicted move type: hint - "The ingredient Beans is 1 cups before the ingredient Carrots"
+predicted insights: APPLY_BEFORE_ONE_SPOT (6), 
+
+user move 5:
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c
+    ----------------------------------------
+Bea|  *    *    *    *  | x    x    o    x  |
+Pas|  *    *    *    *  | X    *    x    x  |
+Tom|  x    *    *    *  | *    *    x    x  |
+Car|  *    *    *    *  | x    x    x    o  |
+    ----------------------------------------
+1 c|  *    *    *    *  |
+2 c|  *    *    *    *  |
+3 c|  *    *    *    *  |
+4 c|  *    *    *    *  |
+    --------------------
+predicted move type: unknown
+predicted insights: unknown
+
+
+user move 6:
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c
+    ----------------------------------------
+Bea|  *    *    *    *  | x    x    o    x  |
+Pas|  *    *    *    *  | x    O    x    x  |
+Tom|  x    *    *    *  | *    X    x    x  |
+Car|  *    *    *    *  | x    x    x    o  |
+    ----------------------------------------
+1 c|  *    *    *    *  |
+2 c|  *    *    *    *  |
+3 c|  *    *    *    *  |
+4 c|  *    *    *    *  |
+    --------------------
+predicted move type: hint - "The ingredient Pasta is 2 cups before the ingredient Carrots"
+predicted insights: APPLY_BEFORE_N_SPOTS (7), 
+
+user move 7:
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c
+    ----------------------------------------
+Bea|  *    *    *    X  | x    x    o    x  |
+Pas|  *    *    *    *  | x    o    x    x  |
+Tom|  x    *    *    *  | *    x    x    x  |
+Car|  *    *    *    *  | x    x    x    o  |
+    ----------------------------------------
+1 c|  *    *    *    *  |
+2 c|  *    *    *    *  |
+3 c|  *    *    *    *  |
+4 c|  *    *    *    *  |
+    --------------------
+predicted move type: unknown
+predicted insights: unknown
+
+
+user move 8:
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c
+    ----------------------------------------
+Bea|  *    *    *    x  | x    x    o    x  |
+Pas|  X    X    X    O  | x    o    x    x  |
+Tom|  x    *    *    X  | *    x    x    x  |
+Car|  *    *    *    X  | x    x    x    o  |
+    ----------------------------------------
+1 c|  *    *    *    *  |
+2 c|  *    *    *    *  |
+3 c|  *    *    *    *  |
+4 c|  *    *    *    *  |
+    --------------------
+predicted move type: unknown
+predicted insights: unknown
+
+
+user move 9:
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c
+    ----------------------------------------
+Bea|  O    X    X    x  | x    x    o    x  |
+Pas|  x    x    x    o  | x    o    x    x  |
+Tom|  x    *    *    x  | *    x    x    x  |
+Car|  X    *    *    x  | x    x    x    o  |
+    ----------------------------------------
+1 c|  *    *    *    *  |
+2 c|  *    *    *    *  |
+3 c|  *    *    *    *  |
+4 c|  *    *    *    *  |
+    --------------------
+predicted move type: unknown
+predicted insights: unknown
+
+
+user move 10:
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c
+    ----------------------------------------
+Bea|  o    x    x    x  | x    x    o    x  |
+Pas|  x    x    x    o  | x    o    x    x  |
+Tom|  x    *    *    x  | *    x    x    x  |
+Car|  x    X    *    x  | x    x    x    o  |
+    ----------------------------------------
+1 c|  *    *    *    *  |
+2 c|  *    *    *    *  |
+3 c|  *    *    *    *  |
+4 c|  *    *    *    *  |
+    --------------------
+predicted move type: unknown
+predicted insights: unknown
+
+
+user move 11:
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c
+    ----------------------------------------
+Bea|  o    x    x    x  | x    x    o    x  |
+Pas|  x    x    x    o  | x    o    x    x  |
+Tom|  x    *    X    x  | *    x    x    x  |
+Car|  x    x    O    x  | x    x    x    o  |
+    ----------------------------------------
+1 c|  *    *    *    *  |
+2 c|  *    *    *    *  |
+3 c|  *    *    *    *  |
+4 c|  *    *    *    *  |
+    --------------------
+predicted move type: hint - "The ingredient Beans is 2 orders before the ingredient Carrots"
+predicted insights: APPLY_BEFORE_N_SPOTS (7), 
+
+user move 12:
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c
+    ----------------------------------------
+Bea|  o    x    x    x  | x    x    o    x  |
+Pas|  x    x    x    o  | x    o    x    x  |
+Tom|  x    O    x    x  | *    x    x    x  |
+Car|  x    x    o    x  | x    x    x    o  |
+    ----------------------------------------
+1 c|  *    *    *    *  |
+2 c|  *    *    *    *  |
+3 c|  *    *    *    *  |
+4 c|  *    *    *    *  |
+    --------------------
+predicted move type: unknown
+predicted insights: unknown
+
+
+user move 13:
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c
+    ----------------------------------------
+Bea|  o    x    x    x  | x    x    o    x  |
+Pas|  x    x    x    o  | x    o    x    x  |
+Tom|  x    o    x    x  | O    x    x    x  |
+Car|  x    x    o    x  | x    x    x    o  |
+    ----------------------------------------
+1 c|  *    *    *    *  |
+2 c|  *    *    *    *  |
+3 c|  *    *    *    *  |
+4 c|  *    *    *    *  |
+    --------------------
+predicted move type: openings
+predicted insights: OPENING (2), 
+

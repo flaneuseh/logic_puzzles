@@ -21,10 +21,14 @@
 # %%
 # !pip install import_ipynb
 
+import ultraimport
+
+ultraimport("__dir__/./LogicPuzzles.py", package="main")
+
 # %%
 # Imports Baby
 # import import_ipynb
-from LogicPuzzles import (
+from main.LogicPuzzles import (
     Puzzle,
     generate_hint,
     str_hint,
@@ -39,7 +43,6 @@ from LogicPuzzles import (
     apply_hints,
     can_solve_without_forbidden
 )
-from HintToEnglish import hint_to_english
 
 # from DataVisualization import plot_history
 import random
@@ -47,7 +50,7 @@ import math
 import numpy.random as npr
 import pickle
 from itertools import combinations
-from HintToEnglish import hint_to_english
+from main.HintToEnglish import hint_to_english
 from copy import deepcopy
 
 

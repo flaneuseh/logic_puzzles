@@ -1,8 +1,9 @@
 from copy import deepcopy
+import ultraimport
 
-from Evolution import get_available_moves
-from HintToEnglish import hint_to_english
-from LogicPuzzles import Category, Puzzle, Insight
+ultraimport("__dir__/./LogicPuzzles.py", package="main")
+from main.HintToEnglish import hint_to_english
+from main.LogicPuzzles import Category, Puzzle, get_available_moves
 
 
 # Recursively get insights found by the solver from the current state to the end.
@@ -159,30 +160,19 @@ def save_move_tree(puzzle, hints, choose_fn, name):
     tree = gen_move_tree(puzzle, hints, choose_fn)
     next_moves = tree["moves_from_here"]
     if len(next_moves) > 0:
-        _r_print_moves(file, next_moves)
+        r_print_moves(file, next_moves)
 
     file.close()
     return
 
-# Recursive subfunction to print moves to a file
-def _r_print_moves(file, moves):
+# Recursive function to print moves to a file
+def r_print_moves(file, moves):
     next_move = moves[0]
     move_liness = []
     max_lines = 0
     max_line_len = 0
     for move in moves:
-        move_lines = move["move_diff"].print_grid().splitlines()
-        if "indexed_hint" in move:
-            hint = move["indexed_hint"]["hint"]
-            move_lines.append("hint: {}".format(hint_to_english(hint)))
-        else:
-            move_lines.append(move["type"])
-        move_lines.append("insights: {}".format(insights_to_string(move["insights"])))
-        if "chosen_by_fn" in move:
-            next_move = move
-            move_lines.append("CHOSEN BY SOLVER")
-        else:
-            move_lines.append("")
+        move_lines = get_move_lines(move)
         move_liness.append(move_lines)
         if len(move_lines) > max_lines:
             max_lines = len(move_lines)
@@ -197,8 +187,23 @@ def _r_print_moves(file, moves):
         file.write(line_str + "\n")
 
     if len(next_move["moves_from_here"]) > 0:
-        _r_print_moves(file, next_move["moves_from_here"])
+        r_print_moves(file, next_move["moves_from_here"])
     return
+
+def get_move_lines(move):
+    move_lines = move["move_diff"].print_grid().splitlines()
+    if "indexed_hint" in move:
+        hint = move["indexed_hint"]["hint"]
+        move_lines.append("hint: {}".format(hint_to_english(hint)))
+    else:
+        move_lines.append(move["type"])
+    move_lines.append("insights: {}".format(insights_to_string(move["insights"])))
+    if "chosen_by_fn" in move:
+        next_move = move
+        move_lines.append("CHOSEN BY SOLVER")
+    else:
+        move_lines.append("")
+    return move_lines
 
 # Write a list of insights as a string.
 def insights_to_string(insights):
