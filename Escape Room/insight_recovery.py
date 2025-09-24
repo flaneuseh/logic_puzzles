@@ -1,6 +1,7 @@
 import pandas as pd
 import ultraimport
 from copy import deepcopy
+import os
 
 ultraimport("__dir__/../LogicPuzzles.py", package="main")
 from main.LogicPuzzles import (
@@ -31,7 +32,7 @@ from puzzle_defs import (
 
 def recover_moves(puzzle, hints, u_moves):
     r_moves = []
-    for u_move in u_moves:
+    for raw_move, u_move in u_moves:
         result = deepcopy(puzzle)
         result.answer(*u_move)
         u_move_diff = get_move_diff(puzzle, result, True)
@@ -77,7 +78,7 @@ def recover_moves(puzzle, hints, u_moves):
                 "type": "unknown",
                 "insights": [],
             })
-        r_moves.append(r_move)
+        r_moves.append((raw_move, r_move))
         puzzle = deepcopy(result)
     return r_moves
 
@@ -152,7 +153,20 @@ def _clean_puzzle_moves__spoke_pasta(raw_moves):
         entities = raw_move.split("Pasta Bowl - ")
         if len(entities) == 1:
             entities = raw_move.split("Pata Bowl - ")
-        clean_moves.append([PASTA_SHAPES, PASTA_SAUCES, entities[0], entities[1], "O"])
+        if len(entities) == 1:
+            entities = raw_move.split("Pata Bowl  - ")
+        if len(entities) == 1:
+            entities = raw_move.split("Pasta Bowl  - ")
+
+        move = []
+        if entities[1] == "Reset":
+            cat1 = puzzle.categories[1]
+            for ent in cat1.entities:
+                move = [PASTA_SHAPES, PASTA_SAUCES, entities[0], ent, "*"]
+        else:
+            move = [PASTA_SHAPES, PASTA_SAUCES, entities[0], entities[1], "O"]
+
+        clean_moves.append((raw_move, move))
 
     return {
         "puzzle": puzzle,
@@ -169,18 +183,26 @@ def _clean_puzzle_moves__spoke_sunlight(raw_moves):
     for raw_move in raw_moves:
         parts = raw_move.split(" - ")
         if len(parts) < 2:
+            print(f"Unable to process move: {raw_move}")
             continue
-        hr_parts = parts[0].split("Snap Area ")
-        hr = hr_parts[-1]
+        hr_parts = parts[0].split(" ")
+        hr = hr_parts[1].strip("s")
         plant_parts = parts[1].split(" ")
-        plant = plant_parts[1]
-        terms = [SUNLIGHT_HOURS, SUNLIGHT_PLANTS, hr, plant]
-        if len(plant_parts) == 3:
-            terms.append("X")
-            clean_moves.append(terms)
+        plant = ""
+        if len(plant_parts) < 2:
+            plant = plant_parts[0]
         else:
-            terms.append("O")
-            clean_moves.append(terms)
+            plant = plant_parts[1]
+        if plant not in SUNLIGHT_PLANTS.entities:
+            print(f"Unable to process move: {raw_move}")
+            continue
+        move = [SUNLIGHT_HOURS, SUNLIGHT_PLANTS, hr, plant]
+        if len(plant_parts) == 3:
+            move.append("X")
+        else:
+            move.append("O")
+
+        clean_moves.append((raw_move, move))
 
     return {
         "puzzle": puzzle,
@@ -220,7 +242,8 @@ def _clean_puzzle_moves__spoke_water(raw_moves):
                 oz = "80oz"
             case _:
                 continue
-        clean_moves.append([WATER_PLANTS, WATER_OZ, plant, oz, "O"])
+        move = [WATER_PLANTS, WATER_OZ, plant, oz, "O"]
+        clean_moves.append((raw_move, move))
 
     return {
         "puzzle": puzzle,
@@ -242,13 +265,13 @@ def _clean_puzzle_moves__spoke_protein(raw_moves):
             food = "Peanuts"
         grams_idx = int(entity_parts[1].strip("()")) - 1
         grams = PROTEIN_GRAMS.entities[grams_idx]
-        terms = [PROTEIN_FOODS, PROTEIN_GRAMS, food, grams]
+        move = [PROTEIN_FOODS, PROTEIN_GRAMS, food, grams]
         if parts[1] == "Filled":
-            terms.append("O")
-            clean_moves.append(terms)
+            move.append("O")
         else:
-            terms.append("X")
-            clean_moves.append(terms)
+            move.append("X")
+
+        clean_moves.append((raw_move, move))
 
     return {
         "puzzle": puzzle,
@@ -265,36 +288,54 @@ def _clean_puzzle_moves__hub_soup(raw_moves):
     for raw_move in raw_moves:
         parts = raw_move.split(" - ")
         entity_parts = parts[0].split(" ")
-        ingredient = entity_parts[0]
-        match ingredient:
-            case "Carrot":
-                ingredient = "Carrots"
-            case "Tomato":
-                ingredient = "Tomatoes"
+        ent1 = ""
+        ent2 = ""
+        cat1 = None
         cat2 = None
-        match entity_parts[1]:
+        cat2_idx = 0
+        if entity_parts[0] == "Amount":
+            cat1 = HUB_QUANTITY
+            cat1_idx = int(entity_parts[1]) - 1
+            ent1 = cat1.entities[cat1_idx]
+            cat2_idx = 3
+        elif entity_parts[0] in set(HUB_FOOD.entities) | {"Carrot", "Tomato"}:
+            cat1 = HUB_FOOD
+            ent1 = entity_parts[0]
+            match ent1:
+                case "Carrot":
+                    ent1 = "Carrots"
+                case "Tomato":
+                    ent1 = "Tomatoes"
+            cat2_idx = 1
+
+        ent2_ent_idx = cat2_idx + 2
+        match entity_parts[cat2_idx]:
             case "Amount":
                 cat2 = HUB_QUANTITY
             case "Order":
                 cat2 = HUB_ORDER
+            case "OrderSpot":
+                cat2 = HUB_ORDER
+                ent2_ent_idx -= 1
             case _:
+                print(f"Unable to process move: {raw_move}")
                 continue
-        cat2_idx = int(entity_parts[3].strip("()")) - 1
-        ent2 = cat2.entities[cat2_idx]
-        terms = [HUB_FOOD, cat2, ingredient, ent2]
 
+        ent2_idx = int(entity_parts[ent2_ent_idx].strip("()")) - 1
+        ent2 = cat2.entities[ent2_idx]
+
+        move = [cat1, cat2, ent1, ent2]
         match parts[1]:
             case "Filled GreenPin":
-                terms.append("O")
-                clean_moves.append(terms)
+                move.append("O")
             case "Removed GreenPin":
-                terms.append("X")
-                clean_moves.append(terms)
+                move.append("X")
             case "Filled RedPin":
-                terms.append("X")
-                clean_moves.append(terms)
+                move.append("X")
             case _:
                 continue
+
+        clean_moves.append((raw_move, move))
 
     return {
         "puzzle": puzzle,
@@ -311,8 +352,8 @@ def print_moves(file, puzzle, hints, moves):
         file.write(hint_to_english(hint) + "\n")
     file.write("\n")
 
-    for idx, move in enumerate(moves):
-        file.write(f"User Move {idx+1}:\n")
+    for idx, (raw_move, move) in enumerate(moves):
+        file.write(f"Correct User Move {idx+1}: {raw_move}\n")
         board_str = move["move_diff"].print_grid().splitlines()
         for line in board_str:
             file.write(f"{line}\n")
@@ -348,10 +389,16 @@ def load_user_data(file):
 
 
 if __name__ == "__main__":
-    file = "user_data/vr_study/user_log.csv"
-    raw_df = load_user_data(file)
-    clean_data = clean_user_data(raw_df)
-    for key, info in clean_data.items():
-        recovered_moves = recover_moves(info["puzzle"], info["hints"], info["moves"])
-        file = open("recovered_tree_{}.txt".format(key), "w")
-        print_moves(file, info["puzzle"], info["hints"], recovered_moves)
+    vr_dir = "user_data/vr_study"
+    vr_users = [f.name for f in os.scandir("user_data/vr_study") if f.is_dir()]
+    for user in vr_users:
+        print(user)
+        userfile = f"{vr_dir}/{user}/{user}_PuzzleLogs.csv"
+        raw_df = load_user_data(userfile)
+        clean_data = clean_user_data(raw_df)
+        for key, info in clean_data.items():
+            recovered_moves = recover_moves(
+                info["puzzle"], info["hints"], info["moves"]
+            )
+            move_file = open(f"{vr_dir}/{user}/recovered_tree_{key}.txt", "w")
+            print_moves(move_file, info["puzzle"], info["hints"], recovered_moves)
