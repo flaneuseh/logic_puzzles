@@ -3,7 +3,12 @@ import ultraimport
 from copy import deepcopy
 
 ultraimport("__dir__/../LogicPuzzles.py", package="main")
-from main.LogicPuzzles import apply_hint, get_available_moves, get_move_diff
+from main.LogicPuzzles import (
+    get_available_moves,
+    get_move_diff,
+    find_openings,
+    Insight,
+)
 from main.HintToEnglish import hint_to_english
 from main.insight_tree import insights_to_string
 from puzzle_defs import (
@@ -28,24 +33,73 @@ def recover_moves(puzzle, hints, u_moves):
     r_moves = []
     for u_move in u_moves:
         result = deepcopy(puzzle)
-        apply_hint(result, u_move)
-        u_move_diff = get_move_diff(puzzle, result)
-        _, s_moves = get_available_moves(puzzle, hints)
+        result.answer(*u_move)
+        u_move_diff = get_move_diff(puzzle, result, True)
+        opened_puzzle = deepcopy(puzzle)
+        find_openings(opened_puzzle)
+        _, s_moves = get_available_moves(puzzle, hints, True)
+        _, opened_moves = get_available_moves(opened_puzzle, hints, True)
+        dedupe_moves = s_moves
+        dedupe_o_moves = []
+        for o_move in opened_moves:
+            duplicate = False
+            for s_move in s_moves:
+                if (
+                    o_move["type"] == s_move["type"]
+                    and set(o_move["insights"]) == set(s_move["insights"])
+                    and o_move["move_diff"].print_grid()
+                    == s_move["move_diff"].print_grid()
+                ):
+                    duplicate = True
+                    if "indexed_hint" in o_move and "indexed_hint" in s_move:
+                        if o_move["indexed_hint"] != s_move["indexed_hint"]:
+                            # Not same hint
+                            duplicate = False
+            if not duplicate:
+                o_move["type"] = f"(after filling in openings) {o_move['type']}"
+                dedupe_o_moves.append(o_move)
+        dedupe_moves.extend(dedupe_o_moves)
         recovered = False
-        for s_move in s_moves:
+        r_move = {"move_diff": get_move_diff(puzzle, result), "possible_moves": []}
+        for s_move in dedupe_moves:
             s_move_diff = s_move["move_diff"]
             if u_move_diff.print_grid() == s_move_diff.print_grid():
-                r_moves.append(s_move)
+                poss_move = {
+                    "type": s_move["type"],
+                    "insights": s_move["insights"],
+                }
+                if "indexed_hint" in s_move:
+                    poss_move["indexed_hint"] = s_move["indexed_hint"]
+                r_move["possible_moves"].append(poss_move)
                 recovered = True
         if not recovered:
-            r_moves.append({
+            r_move["possible_moves"].append({
                 "type": "unknown",
-                "move_diff": u_move_diff,
-                "result": deepcopy(result),
                 "insights": [],
             })
+        r_moves.append(r_move)
         puzzle = deepcopy(result)
     return r_moves
+
+
+def apply_move(puzzle, move):
+    diff = move["move_diff"]
+    for cat1 in puzzle.left_right:
+        for cat2 in puzzle.top_bottom:
+            move_grid = diff.get_grid(cat1, cat2)
+            if move_grid is None:
+                continue
+            for ent2_idx in range(0, len(move_grid)):
+                for ent1_idx in range(0, len(move_grid[ent2_idx])):
+                    if move_grid[ent2_idx][ent1_idx] != "*":
+                        puzzle.answer(
+                            cat1,
+                            cat2,
+                            cat1.entities[ent1_idx],
+                            cat2.entities[ent2_idx],
+                            move_grid[ent2_idx][ent1_idx],
+                            False,
+                        )
 
 
 def clean_user_data(raw_df):
@@ -98,9 +152,7 @@ def _clean_puzzle_moves__spoke_pasta(raw_moves):
         entities = raw_move.split("Pasta Bowl - ")
         if len(entities) == 1:
             entities = raw_move.split("Pata Bowl - ")
-        clean_moves.append(
-            {"is": [PASTA_SHAPES, entities[0], PASTA_SAUCES, entities[1]]}
-        )
+        clean_moves.append([PASTA_SHAPES, PASTA_SAUCES, entities[0], entities[1], "O"])
 
     return {
         "puzzle": puzzle,
@@ -122,11 +174,13 @@ def _clean_puzzle_moves__spoke_sunlight(raw_moves):
         hr = hr_parts[-1]
         plant_parts = parts[1].split(" ")
         plant = plant_parts[1]
-        terms = [SUNLIGHT_HOURS, hr, SUNLIGHT_PLANTS, plant]
+        terms = [SUNLIGHT_HOURS, SUNLIGHT_PLANTS, hr, plant]
         if len(plant_parts) == 3:
-            clean_moves.append({"not": [{"is": terms}]})
+            terms.append("X")
+            clean_moves.append(terms)
         else:
-            clean_moves.append({"is": terms})
+            terms.append("O")
+            clean_moves.append(terms)
 
     return {
         "puzzle": puzzle,
@@ -166,7 +220,7 @@ def _clean_puzzle_moves__spoke_water(raw_moves):
                 oz = "80oz"
             case _:
                 continue
-        clean_moves.append({"is": [WATER_PLANTS, plant, WATER_OZ, oz]})
+        clean_moves.append([WATER_PLANTS, WATER_OZ, plant, oz, "O"])
 
     return {
         "puzzle": puzzle,
@@ -188,11 +242,13 @@ def _clean_puzzle_moves__spoke_protein(raw_moves):
             food = "Peanuts"
         grams_idx = int(entity_parts[1].strip("()")) - 1
         grams = PROTEIN_GRAMS.entities[grams_idx]
-        terms = [PROTEIN_FOODS, food, PROTEIN_GRAMS, grams]
+        terms = [PROTEIN_FOODS, PROTEIN_GRAMS, food, grams]
         if parts[1] == "Filled":
-            clean_moves.append({"is": terms})
+            terms.append("O")
+            clean_moves.append(terms)
         else:
-            clean_moves.append({"not": [{"is": terms}]})
+            terms.append("X")
+            clean_moves.append(terms)
 
     return {
         "puzzle": puzzle,
@@ -225,15 +281,18 @@ def _clean_puzzle_moves__hub_soup(raw_moves):
                 continue
         cat2_idx = int(entity_parts[3].strip("()")) - 1
         ent2 = cat2.entities[cat2_idx]
-        terms = [HUB_FOOD, ingredient, cat2, ent2]
+        terms = [HUB_FOOD, cat2, ingredient, ent2]
 
         match parts[1]:
             case "Filled GreenPin":
-                clean_moves.append({"is": terms})
+                terms.append("O")
+                clean_moves.append(terms)
             case "Removed GreenPin":
-                clean_moves.append({"not": [{"is": terms}]})
+                terms.append("X")
+                clean_moves.append(terms)
             case "Filled RedPin":
-                clean_moves.append({"not": [{"is": terms}]})
+                terms.append("X")
+                clean_moves.append(terms)
             case _:
                 continue
 
@@ -253,21 +312,21 @@ def print_moves(file, puzzle, hints, moves):
     file.write("\n")
 
     for idx, move in enumerate(moves):
-        file.write(f"user move {idx}:\n")
+        file.write(f"User Move {idx+1}:\n")
         board_str = move["move_diff"].print_grid().splitlines()
         for line in board_str:
             file.write(f"{line}\n")
-        file.write(f"predicted move type: ")
-        if "indexed_hint" in move:
-            hint = move["indexed_hint"]["hint"]
-            file.write(f'hint - "{hint_to_english(hint)}"\n')
-        else:
-            file.write(f"{move['type']}\n")
-        file.write(f"predicted insights: ")
-        insights = move["insights"]
-        if len(insights) == 0:
-            file.write("unknown\n")
-        file.write(f"{insights_to_string(insights)}\n\n")
+
+        file.write("Possible Reasonings: \n")
+        for i, poss_move in enumerate(move["possible_moves"]):
+            typestr = poss_move["type"]
+            if "indexed_hint" in poss_move:
+                typestr += (
+                    f" - \"{hint_to_english(poss_move['indexed_hint']['hint'])}\""
+                )
+            file.write(f"{i+1}: {typestr} - {poss_move['insights']}\n")
+
+        file.write(f"\n\n")
 
 
 def load_user_data(file):
@@ -289,7 +348,7 @@ def load_user_data(file):
 
 
 if __name__ == "__main__":
-    file = "user_log.csv"
+    file = "user_data/vr_study/user_log.csv"
     raw_df = load_user_data(file)
     clean_data = clean_user_data(raw_df)
     for key, info in clean_data.items():

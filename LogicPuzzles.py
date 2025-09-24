@@ -144,7 +144,7 @@ class Puzzle:
         """
         return cat1.title + ":" + cat2.title
 
-    def answer(self, cat1, cat2, ent1, ent2, new_symbol):
+    def answer(self, cat1, cat2, ent1, ent2, new_symbol, ret_diff=True):
         """
         given ent1 in cat1 and ent2 in cat1
         change the symbol in the grid.
@@ -154,13 +154,20 @@ class Puzzle:
         """
         index1 = cat1.entities.index(ent1)
         index2 = cat2.entities.index(ent2)
+        diff = Puzzle(self.categories)
         if self._to_key(cat1, cat2) in self.grids:
             grid = self.grids[self._to_key(cat1, cat2)]
             grid[index2][index1] = new_symbol
+            diff_grid = diff.grids[self._to_key(cat1, cat2)]
+            diff_grid[index2][index1] = new_symbol
 
         elif self._to_key(cat2, cat1) in self.grids:
             grid = self.grids[self._to_key(cat2, cat1)]
             grid[index1][index2] = new_symbol
+            diff_grid = diff.grids[self._to_key(cat2, cat1)]
+            diff_grid[index1][index2] = new_symbol
+
+        return diff
 
     def _print_row(self, top_cats, cat2, remove_top=False):
         """
@@ -722,6 +729,7 @@ class Insight(Enum):
     TRANS_SETS = 18  # A and B don't share any possibilities; A != B
     REPAIR = 100  # Repair broken puzzle
 
+
 # def l_get_prerequisites(insights):
 #     prerequisites = set()
 #     for insight in insights:
@@ -1002,28 +1010,51 @@ def cross_out(puzzle, cat1, cat2, ent1, ent2):
     after you found a correct hint
     """
     is_valid = True
+    applied = False
+
+    steps = []
+    update_puzzle = deepcopy(puzzle)
 
     # x out the cross sections
     for ent in cat1.entities:
         if ent != ent1:
             symb = puzzle.get_symbol(cat1, cat2, ent, ent2)
-            if symb == "*":
-                puzzle.answer(cat1, cat2, ent, ent2, "X")
-            elif symb == "O":
-                is_valid = False
+            if symb != "X":
+                if symb == "*":
+                    move_diff = update_puzzle.answer(cat1, cat2, ent, ent2, "X")
+                    steps.append({
+                        "result": update_puzzle,
+                        "move_diff": move_diff,
+                        "insights": [Insight.CROSS_OUT],
+                    })
+                    applied = True
+                elif symb == "O":
+                    is_valid = False
 
     for ent in cat2.entities:
         if ent != ent2:
             symb = puzzle.get_symbol(cat1, cat2, ent1, ent)
-            if symb == "*":
-                puzzle.answer(cat1, cat2, ent1, ent, "X")
-            elif symb == "O":
-                is_valid = False
+            if symb != "X":
+                if symb == "*":
+                    move_diff = update_puzzle.answer(cat1, cat2, ent1, ent, "X")
+                    steps.append({
+                        "result": update_puzzle,
+                        "move_diff": move_diff,
+                        "insights": [Insight.CROSS_OUT],
+                    })
+                    applied = True
+                elif symb == "O":
+                    is_valid = False
 
-    return is_valid
+    if not is_valid:
+        return False, is_valid, []
+    
+    puzzle.grids = update_puzzle.grids
+    return applied, is_valid, steps
 
 
 # remove errors (discrepancies between the current puzzle and the canonical solution)
+# TODO: detect which specific constraints are violated
 def repair(puzzle, solution):
     applied = False
     for cat1 in puzzle.left_right:
@@ -1057,7 +1088,7 @@ def apply_is(puzzle, terms, forbidden_insights=set()):
     """
     applied = False
     is_valid = True
-    complete = False  
+    complete = False
     insights = set()
     cat1 = terms[0]
     ent1 = terms[1]
@@ -1066,13 +1097,23 @@ def apply_is(puzzle, terms, forbidden_insights=set()):
 
     current_term = puzzle.get_symbol(cat1, cat2, ent1, ent2)
 
+    steps = []
+    update_puzzle = deepcopy(puzzle)
+
     if current_term == "*" and Insight.APPLY_IS not in forbidden_insights:
         applied = True
         complete = True
-        puzzle.answer(cat1, cat2, ent1, ent2, "O")
-        is_valid = cross_out(puzzle, cat1, cat2, ent1, ent2)
-        if is_valid:
-            insights.add(Insight.APPLY_IS)
+        move_diff = update_puzzle.answer(cat1, cat2, ent1, ent2, "O")
+        steps.append({
+            "result": update_puzzle,
+            "move_diff": move_diff,
+            "insights": [Insight.APPLY_IS],
+        })
+        insights.add(Insight.APPLY_IS)
+        _, is_valid, cross_steps = cross_out(update_puzzle, cat1, cat2, ent1, ent2)
+        for step in cross_steps:
+            step["insights"].append(Insight.APPLY_IS)
+        steps.extend(cross_steps)
 
     elif current_term == "X":
         # something logic error occured
@@ -1083,7 +1124,10 @@ def apply_is(puzzle, terms, forbidden_insights=set()):
         # someone already answered
         complete = True
 
-    return applied, is_valid, complete, insights
+    if not is_valid:
+        return False, is_valid, []
+    puzzle.grids = update_puzzle.grids
+    return applied, is_valid, complete, insights, steps
 
 
 # %%
@@ -1142,7 +1186,7 @@ def apply_not(puzzle, terms, forbidden_insights=set()):
     """
     applied = False
     is_valid = True
-    complete = False  
+    complete = False
     insights = set()
     cat1 = terms[0]
     ent1 = terms[1]
@@ -1150,9 +1194,16 @@ def apply_not(puzzle, terms, forbidden_insights=set()):
     ent2 = terms[3]
 
     current_term = puzzle.get_symbol(cat1, cat2, ent1, ent2)
+    steps = []
+    update_puzzle = deepcopy(puzzle)
 
     if current_term == "*" and Insight.APPLY_NOT not in forbidden_insights:
-        puzzle.answer(cat1, cat2, ent1, ent2, "X")
+        move_diff = update_puzzle.answer(cat1, cat2, ent1, ent2, "X")
+        steps.append({
+            "result": update_puzzle,
+            "move_diff": move_diff,
+            "insights": [Insight.APPLY_NOT],
+        })
         applied = True
         complete = True
         insights.add(Insight.APPLY_NOT)
@@ -1161,9 +1212,11 @@ def apply_not(puzzle, terms, forbidden_insights=set()):
         complete = True
     elif current_term == "X":
         complete = True
-        
 
-    return applied, is_valid, complete, insights
+    if not is_valid:
+        return False, is_valid, []
+    puzzle.grids = update_puzzle.grids
+    return applied, is_valid, complete, insights, steps
 
 
 # %%
@@ -1220,15 +1273,14 @@ if __name__ == "__main__":
 # If a row/column has 1 * and the rest are X then fill out a O there.
 # If a row/column is all X or has more than one O then contradiction.
 # In "slow" mode, take care to only apply current openings, skipping any openings that may be found after filling in some of the openings.
-def find_openings(puzzle, slow=True, forbidden_insights=set()):
+def find_openings(puzzle, forbidden_insights=set()):
     applied = False
     complete = False
     is_valid = True
     insights = set()
     # The puzzle to update. Update in place in normal mode; in slow mode update a copy.
-    update_puzzle = puzzle
-    if slow:
-        update_puzzle = deepcopy(puzzle)
+    steps = []
+    update_puzzle = deepcopy(puzzle)
 
     # For every combination of categories:
     for cat1 in puzzle.categories:
@@ -1243,13 +1295,11 @@ def find_openings(puzzle, slow=True, forbidden_insights=set()):
                         # The row is all Xs; contradiction
                         is_valid = False
                         applied = False
-                        return applied, is_valid, complete, insights
-                    if len(os) > 1:
+                    elif len(os) > 1:
                         # There are multiple Os; this is a contradiction
                         is_valid = False
                         applied = False
-                        return applied, is_valid, complete, insights
-                    if (
+                    elif (
                         len(os) == 1
                         and len(blanks) >= 1
                         and Insight.CROSS_OUT not in forbidden_insights
@@ -1257,24 +1307,34 @@ def find_openings(puzzle, slow=True, forbidden_insights=set()):
                         # There is an O; the rest of the row and column can be crossed out.
                         ent1 = cat1.entities[os[0]]
                         ent2 = cat2.entities[i]
-                        applied = True
-                        is_valid = cross_out(update_puzzle, cat1, cat2, ent1, ent2)
-                        if not is_valid:
-                            applied = False
-                            return applied, is_valid, complete, insights
                         insights.add(Insight.CROSS_OUT)
+                        capplied, is_valid, cross_steps = cross_out(
+                            update_puzzle, cat1, cat2, ent1, ent2
+                        )
+                        if capplied:
+                            applied = True
+                        steps.extend(cross_steps)
                     # If there is only 1 blank value:
                     elif len(blanks) == 1 and Insight.OPENING not in forbidden_insights:
                         ent1 = cat1.entities[blanks[0]]
                         ent2 = cat2.entities[i]
                         applied = True
                         # Answer it as 0.
-                        update_puzzle.answer(cat1, cat2, ent1, ent2, "O")
-                        is_valid = cross_out(update_puzzle, cat1, cat2, ent1, ent2)
-                        if not is_valid:
-                            applied = False
-                            return applied, is_valid, complete, insights
                         insights.add(Insight.OPENING)
+                        move_diff = update_puzzle.answer(cat1, cat2, ent1, ent2, "O")
+                        steps.append({
+                            "result": update_puzzle,
+                            "move_diff": move_diff,
+                            "insights": [Insight.OPENING],
+                        })
+                        _, is_valid, cross_steps = cross_out(
+                            update_puzzle, cat1, cat2, ent1, ent2
+                        )
+                        for step in cross_steps:
+                            step["insights"].append(Insight.OPENING)
+                        steps.extend(cross_steps)
+                    if not is_valid:
+                        return False, is_valid, complete, set(), []
                 # For each column:
                 for j in range(len(grid[0])):
                     blanks = [i for i in range(len(grid)) if grid[i][j] == "*"]
@@ -1283,13 +1343,11 @@ def find_openings(puzzle, slow=True, forbidden_insights=set()):
                         # The row is all Xs; contradiction
                         is_valid = False
                         applied = False
-                        return applied, is_valid, complete, insights
-                    if len(os) > 1:
+                    elif len(os) > 1:
                         # There are multiple Os; this is a contradiction
                         is_valid = False
                         applied = False
-                        return applied, is_valid, complete, insights
-                    if (
+                    elif (
                         len(os) == 1
                         and len(blanks) >= 1
                         and Insight.CROSS_OUT not in forbidden_insights
@@ -1297,27 +1355,42 @@ def find_openings(puzzle, slow=True, forbidden_insights=set()):
                         # There is an O; the rest of the row and column can be crossed out.
                         ent1 = cat1.entities[j]
                         ent2 = cat2.entities[os[0]]
-                        applied = True
-                        is_valid = cross_out(update_puzzle, cat1, cat2, ent1, ent2)
-                        if not is_valid:
-                            applied = False
-                            return applied, is_valid, complete, insights
+                        
                         insights.add(Insight.CROSS_OUT)
+                        capplied, is_valid, cross_steps = cross_out(
+                            update_puzzle, cat1, cat2, ent1, ent2
+                        )
+                        if capplied:
+                            applied = True
+                        steps.extend(cross_steps)
                     # If there is only one blank value:
                     elif len(blanks) == 1 and Insight.OPENING not in forbidden_insights:
                         ent1 = cat1.entities[j]
                         ent2 = cat2.entities[blanks[0]]
                         applied = True
-                        # Answer it as 0.
-                        update_puzzle.answer(cat1, cat2, ent1, ent2, "O")
-                        is_valid = cross_out(update_puzzle, cat1, cat2, ent1, ent2)
-                        if not is_valid:
-                            applied = False
-                            return applied, is_valid, complete, insights
                         insights.add(Insight.OPENING)
+                        # Answer it as 0.
+                        move_diff = update_puzzle.answer(cat1, cat2, ent1, ent2, "O")
+                        steps.append({
+                            "result": update_puzzle,
+                            "move_diff": move_diff,
+                            "insights": [Insight.OPENING],
+                        })
+                        _, is_valid, cross_steps = cross_out(
+                            update_puzzle, cat1, cat2, ent1, ent2
+                        )
+                        for step in cross_steps:
+                            step["insights"].append(Insight.OPENING)
+                        steps.extend(cross_steps)
+                    if not is_valid:
+                        return False, is_valid, complete, set(), []
+
+    if not is_valid:
+        return False, is_valid, complete, set(), []
+
     # Apply updates.
     puzzle.grids = update_puzzle.grids
-    return applied, is_valid, complete, insights
+    return applied, is_valid, complete, insights, steps
 
 
 # %%
@@ -1504,6 +1577,9 @@ def find_transitives(puzzle, forbidden_insights=set(), slow=False):
     is_valid = True
     insights = set()
 
+    steps = []
+    update_puzzle = deepcopy(puzzle)
+
     # For every pair of related entities:
     #   If A == B and B == C then A != C
     #   If A == B and B == C then A != C
@@ -1534,14 +1610,29 @@ def find_transitives(puzzle, forbidden_insights=set(), slow=False):
                             ):
                                 insights.add(Insight.TRANS_ABC_TRUE)
                                 applied = True
-                                puzzle.answer(catA, catC, entA, entC, "O")
-                                is_valid = cross_out(puzzle, catA, catC, entA, entC)
-                                if not is_valid or slow:
-                                    return applied, is_valid, complete, insights
+                                move_diff = update_puzzle.answer(
+                                    catA, catC, entA, entC, "O"
+                                )
+                                steps.append({
+                                    "result": update_puzzle,
+                                    "move_diff": move_diff,
+                                    "insights": [Insight.TRANS_ABC_TRUE],
+                                })
+                                _, is_valid, cross_steps = cross_out(
+                                    update_puzzle, catA, catC, entA, entC
+                                )
+                                for step in cross_steps:
+                                    step["insights"].append(Insight.TRANS_ABC_TRUE)
+                                steps.extend(cross_steps)
+                                if not is_valid:
+                                    return False, is_valid, complete, set(), []
+                                if slow:
+                                    puzzle.grids = update_puzzle.grids
+                                    return applied, is_valid, complete, insights, steps
                             elif sy == "X":
                                 # Can't link A to C
                                 is_valid = False
-                                return applied, is_valid, complete, insights
+                                return False, is_valid, complete, set(), []
                         # For all false values for B in category C
                         for entC in catC_relations["false"]:
                             # A -> B and B !> C, so A !> C
@@ -1552,13 +1643,21 @@ def find_transitives(puzzle, forbidden_insights=set(), slow=False):
                             ):
                                 insights.add(Insight.TRANS_ABC_FALSE)
                                 applied = True
-                                puzzle.answer(catA, catC, entA, entC, "X")
+                                move_diff = update_puzzle.answer(
+                                    catA, catC, entA, entC, "X"
+                                )
+                                steps.append({
+                                    "result": update_puzzle,
+                                    "move_diff": move_diff,
+                                    "insights": [Insight.TRANS_ABC_FALSE],
+                                })
                                 if slow:
-                                    return applied, is_valid, complete, insights
+                                    puzzle.grids = update_puzzle.grids
+                                    return applied, is_valid, complete, insights, steps
                             elif sy == "O":
                                 # Can't reject A to C
                                 is_valid = False
-                                return applied, is_valid, complete, insights
+                                return False, is_valid, complete, set(), []
 
     # For every pair of entities:
     #   If A and B don't share any possible values for category C, then A != B
@@ -1602,15 +1701,32 @@ def find_transitives(puzzle, forbidden_insights=set(), slow=False):
                                 sy = puzzle.get_symbol(catA, catB, entA, entB)
                                 if sy == "O":
                                     is_valid = False
-                                    return applied, is_valid, complete, insights
+                                    return False, is_valid, complete, set(), []
                                 elif sy == "*":
                                     insights.add(Insight.TRANS_SETS)
                                     applied = True
-                                    puzzle.answer(catA, catB, entA, entB, "X")
+                                    move_diff = update_puzzle.answer(
+                                        catA, catB, entA, entB, "X"
+                                    )
+                                    steps.append({
+                                        "result": update_puzzle,
+                                        "move_diff": move_diff,
+                                        "insights": [Insight.TRANS_SETS],
+                                    })
                                     if slow:
-                                        return applied, is_valid, complete, insights
+                                        puzzle.grids = update_puzzle.grids
+                                        return (
+                                            applied,
+                                            is_valid,
+                                            complete,
+                                            insights,
+                                            steps,
+                                        )
 
-    return applied, is_valid, complete, insights
+    if not is_valid:
+        return False, is_valid, complete, set(), []
+    puzzle.grids = update_puzzle.grids
+    return applied, is_valid, complete, insights, steps
 
 
 # %%
@@ -1885,6 +2001,7 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
     puzzle: the current state of the grid
     terms: the terms making up the is hint's grammar
     slow: set to True to apply only the first insight
+    return_steps: return each mark/insight as a separate move
     return: applied, is_valid, complete
     """
     applied = False
@@ -1904,20 +2021,31 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
     if numbered:
         num = terms[5]
 
+    update_puzzle = puzzle
+    steps = []
+    update_puzzle = deepcopy(puzzle)
+
     # If A < B and A, B are not in the same category, then A is not B.
     if bef_cat != aft_cat:
         sy = puzzle.get_symbol(bef_cat, aft_cat, bef_ent, aft_ent)
         if sy == "*" and Insight.BEFORE_DIFF_CAT not in forbidden_insights:
             insights.add(Insight.BEFORE_DIFF_CAT)
             applied = True
-            puzzle.answer(bef_cat, aft_cat, bef_ent, aft_ent, "X")
+            move_diff = update_puzzle.answer(bef_cat, aft_cat, bef_ent, aft_ent, "X")
+            steps.append({
+                "result": update_puzzle,
+                "move_diff": move_diff,
+                "insights": [Insight.BEFORE_DIFF_CAT],
+            })
             if slow:
-                return applied, is_valid, complete, insights
+                puzzle.grids = update_puzzle.grids
+                return applied, is_valid, complete, insights, steps
         elif sy == "O":
             # Contradiction
             complete = True
             is_valid = False
-            return applied, is_valid, complete, insights
+            if not is_valid:
+                return False, is_valid, complete, set(), []
 
     # Get all the current symbols for the two entities in the num category
     before_symbols = [
@@ -1935,147 +2063,205 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
             is_valid = after_symbols.index("O") - before_symbols.index("O") == num
         else:
             is_valid = before_symbols.index("O") < after_symbols.index("O")
-        return applied, is_valid, complete, insights
+        if not is_valid:
+            return False, is_valid, complete, set(), []
+        puzzle.grids = update_puzzle.grids
+        return applied, is_valid, complete, insights, steps
 
     # determine the possible after entities if the before entity is solved
     if "O" in before_symbols:
+        needed_insight = None
         bef_index = before_symbols.index("O")
+        pos_aft_index = [
+            i
+            for i in list(range(bef_index, len(after_symbols)))
+            if after_symbols[i] == "*"
+        ]
+        if len(pos_aft_index) == 1:
+            needed_insight = Insight.APPLY_BEFORE_UNDEFINED_SPOTS
         if numbered:
             if (
                 bef_index + num < len(after_symbols)
                 and after_symbols[bef_index + num] == "*"
             ):
                 pos_aft_index = [bef_index + num]
+                if needed_insight == None:
+                    if num == 1:
+                        needed_insight = Insight.APPLY_BEFORE_ONE_SPOT
+                    else:
+                        needed_insight = Insight.APPLY_BEFORE_N_SPOTS
             else:
                 pos_aft_index = []
-        else:
-            pos_aft_index = [
-                i
-                for i in list(range(bef_index, len(after_symbols)))
-                if after_symbols[i] == "*"
-            ]
         if len(pos_aft_index) == 0:
             complete = True
             is_valid = False
-            return applied, is_valid, complete, insights
+            return False, is_valid, complete, set(), []
         elif len(pos_aft_index) == 1:
-            needed_insight = None
-            if numbered:
-                if num == 1:
-                    needed_insight = Insight.APPLY_BEFORE_ONE_SPOT
-                else:
-                    needed_insight = Insight.APPLY_BEFORE_N_SPOTS
-            else:
-                needed_insight = Insight.APPLY_BEFORE_UNDEFINED_SPOTS
             if needed_insight not in forbidden_insights:
                 insights.add(needed_insight)
                 complete = True
                 aft_index = pos_aft_index[0]
                 applied = True
-                puzzle.answer(
+                move_diff = update_puzzle.answer(
                     aft_cat, num_cat, aft_ent, num_cat.entities[aft_index], "O"
                 )
-                is_valid = cross_out(
-                    puzzle, aft_cat, num_cat, aft_ent, num_cat.entities[aft_index]
+                steps.append({
+                    "result": update_puzzle,
+                    "move_diff": move_diff,
+                    "insights": [needed_insight],
+                })
+                _, is_valid, cross_steps = cross_out(
+                    update_puzzle,
+                    aft_cat,
+                    num_cat,
+                    aft_ent,
+                    num_cat.entities[aft_index],
                 )
-                if not is_valid or slow:
-                    return applied, is_valid, complete, insights
+                for step in cross_steps:
+                    step["insights"].append(needed_insight)
+                steps.extend(cross_steps)
+                if not is_valid:
+                    return False, is_valid, complete, set(), []
+                if slow:
+                    puzzle.grids = update_puzzle.grids
+                    return applied, is_valid, complete, insights, steps
         else:
             for i in range(0, bef_index):
                 sy = puzzle.get_symbol(aft_cat, num_cat, aft_ent, num_cat.entities[i])
                 if sy == "*":
+                    insights.add(Insight.APPLY_BEFORE_UNDEFINED_SPOTS)
                     applied = True
-                    puzzle.answer(aft_cat, num_cat, aft_ent, num_cat.entities[i], "X")
+                    move_diff = update_puzzle.answer(
+                        aft_cat, num_cat, aft_ent, num_cat.entities[i], "X"
+                    )
+                    steps.append({
+                        "result": update_puzzle,
+                        "move_diff": move_diff,
+                        "insights": [Insight.APPLY_BEFORE_UNDEFINED_SPOTS],
+                    })
                 elif sy == "O":
                     complete = True
                     is_valid = False
-                    return applied, is_valid, complete, insights
+                    return False, is_valid, complete, set(), []
             if applied and slow:
-                return applied, is_valid, complete, insights
+                return applied, is_valid, complete, insights, steps
 
     # determine the possible before entities if the after entity is solved
     if "O" in after_symbols:
+        needed_insight = None
         aft_index = after_symbols.index("O")
+        pos_bef_index = [
+            i for i in list(range(0, aft_index)) if before_symbols[i] == "*"
+        ]
+        if len(pos_bef_index) == 1:
+            needed_insight = Insight.APPLY_BEFORE_UNDEFINED_SPOTS
         if numbered:
             if aft_index - num >= 0 and before_symbols[aft_index - num] == "*":
                 pos_bef_index = [aft_index - num]
+                if needed_insight == None:
+                    if num == 1:
+                        needed_insight = Insight.APPLY_BEFORE_ONE_SPOT
+                    else:
+                        needed_insight = Insight.APPLY_BEFORE_N_SPOTS
             else:
                 pos_bef_index = []
-        else:
-            pos_bef_index = [
-                i for i in list(range(0, aft_index)) if before_symbols[i] == "*"
-            ]
 
         if len(pos_bef_index) == 0:
             complete = True
             is_valid = False
-            return applied, is_valid, complete, insights
+            return False, is_valid, complete, set(), []
         elif len(pos_bef_index) == 1:
-            needed_insight = None
-            if numbered:
-                if num == 1:
-                    needed_insight = Insight.APPLY_BEFORE_ONE_SPOT
-                else:
-                    needed_insight = Insight.APPLY_BEFORE_N_SPOTS
-            else:
-                needed_insight = Insight.APPLY_BEFORE_UNDEFINED_SPOTS
             if needed_insight not in forbidden_insights:
                 insights.add(needed_insight)
                 complete = True
                 bef_index = pos_bef_index[0]
                 applied = True
-                puzzle.answer(
+                move_diff = update_puzzle.answer(
                     bef_cat, num_cat, bef_ent, num_cat.entities[bef_index], "O"
                 )
-                is_valid = cross_out(
+                steps.append({
+                    "result": update_puzzle,
+                    "move_diff": move_diff,
+                    "insights": [needed_insight],
+                })
+                _, is_valid, cross_steps = cross_out(
                     puzzle, bef_cat, num_cat, bef_ent, num_cat.entities[bef_index]
                 )
-                if not is_valid or slow:
-                    return applied, is_valid, complete, insights
+                for step in cross_steps:
+                    step["insights"].append(needed_insight)
+                steps.extend(cross_steps)
+                if not is_valid:
+                    return False, is_valid, complete, set(), []
+                if slow:
+                    puzzle.grids = update_puzzle.grids
+                    return applied, is_valid, complete, insights, steps
         else:
             for i in range(aft_index, len(before_symbols)):
                 sy = puzzle.get_symbol(bef_cat, num_cat, bef_ent, num_cat.entities[i])
                 if sy == "*":
                     applied = True
-                    puzzle.answer(bef_cat, num_cat, bef_ent, num_cat.entities[i], "X")
+                    move_diff = update_puzzle.answer(
+                        bef_cat, num_cat, bef_ent, num_cat.entities[i], "X"
+                    )
+                    steps.append({
+                        "result": update_puzzle,
+                        "move_diff": move_diff,
+                        "insights": [Insight.APPLY_BEFORE_UNDEFINED_SPOTS],
+                    })
                 elif sy == "O":
                     complete = True
                     is_valid = False
-                    return applied, is_valid, complete, insights
+                    return False, is_valid, complete, set(), []
             if applied and slow:
-                return applied, is_valid, complete, insights
+                puzzle.grids = update_puzzle.grids
+                return applied, is_valid, complete, insights, steps
 
     # Narrow down possiblities with no information for entities yet
     # The before entity can't be in the last num spots (or there won't be room for the after entity)
     for i in range(len(before_symbols) - num, len(before_symbols)):
         sy = puzzle.get_symbol(bef_cat, num_cat, bef_ent, num_cat.entities[i])
         needed_insight = Insight.BEFORE_ONE_SPOT_NOINFO
-        if num > 1:
+        if i > len(before_symbols) - num:
             needed_insight = Insight.BEFORE_N_SPOTS_NOINFO
         if sy == "*" and needed_insight not in forbidden_insights:
             insights.add(needed_insight)
             applied = True
-            puzzle.answer(bef_cat, num_cat, bef_ent, num_cat.entities[i], "X")
+            move_diff = update_puzzle.answer(
+                bef_cat, num_cat, bef_ent, num_cat.entities[i], "X"
+            )
+            steps.append({
+                "result": update_puzzle,
+                "move_diff": move_diff,
+                "insights": [needed_insight],
+            })
         elif sy == "O":
             complete = True
             is_valid = False
-            return applied, is_valid, complete, insights
+            return False, is_valid, complete, set(), []
     # And the inverse is true for the after entity
     for i in range(0, num):
         sy = puzzle.get_symbol(aft_cat, num_cat, aft_ent, num_cat.entities[i])
         needed_insight = Insight.BEFORE_ONE_SPOT_NOINFO
-        if num > 1:
+        if i > 0:
             needed_insight = Insight.BEFORE_N_SPOTS_NOINFO
         if sy == "*" and needed_insight not in forbidden_insights:
             insights.add(needed_insight)
             applied = True
-            puzzle.answer(aft_cat, num_cat, aft_ent, num_cat.entities[i], "X")
+            move_diff = update_puzzle.answer(
+                aft_cat, num_cat, aft_ent, num_cat.entities[i], "X"
+            )
+            steps.append({
+                "result": update_puzzle,
+                "move_diff": move_diff,
+                "insights": [needed_insight],
+            })
         elif sy == "O":
             complete = True
             is_valid = False
-            return applied, is_valid, complete, insights
+            return False, is_valid, complete, set(), []
     if applied and slow:
-        return applied, is_valid, complete, insights
+        puzzle.grids = update_puzzle.grids
+        return applied, is_valid, complete, insights, steps
 
     # Determine possible answers with constraints on either entity
     if "X" in before_symbols or "X" in after_symbols:
@@ -2087,7 +2273,14 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
             if sy == "*" and Insight.BEFORE_N_SPOTS_SHIFT not in forbidden_insights:
                 insights.add(Insight.BEFORE_N_SPOTS_SHIFT)
                 applied = True
-                puzzle.answer(aft_cat, num_cat, aft_ent, num_cat.entities[i + num], "X")
+                move_diff = update_puzzle.answer(
+                    aft_cat, num_cat, aft_ent, num_cat.entities[i + num], "X"
+                )
+                steps.append({
+                    "result": update_puzzle,
+                    "move_diff": move_diff,
+                    "insights": [Insight.BEFORE_N_SPOTS_SHIFT],
+                })
 
         for i in range(len(after_symbols) - 1, num - 1, -1):
             if after_symbols[i] != "X":
@@ -2096,10 +2289,18 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
             if sy == "*" and Insight.BEFORE_N_SPOTS_SHIFT not in forbidden_insights:
                 insights.add(Insight.BEFORE_N_SPOTS_SHIFT)
                 applied = True
-                puzzle.answer(bef_cat, num_cat, bef_ent, num_cat.entities[i - num], "X")
+                move_diff = update_puzzle.answer(
+                    bef_cat, num_cat, bef_ent, num_cat.entities[i - num], "X"
+                )
+                steps.append({
+                    "result": update_puzzle,
+                    "move_diff": move_diff,
+                    "insights": [Insight.BEFORE_N_SPOTS_SHIFT],
+                })
 
         if applied and slow:
-            return applied, is_valid, complete, insights
+            puzzle.grids = update_puzzle.grids
+            return applied, is_valid, complete, insights, steps
 
         if numbered:
             # All Xs for the before entity where the index is valid (i+num exists).
@@ -2120,26 +2321,45 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
                 sy = puzzle.get_symbol(
                     aft_cat, num_cat, aft_ent, num_cat.entities[i + num]
                 )
-                if sy == "*" and Insight.BEFORE_N_SPOTS_CROSSCHECK not in forbidden_insights:
+                if (
+                    sy == "*"
+                    and Insight.BEFORE_N_SPOTS_CROSSCHECK not in forbidden_insights
+                ):
                     insights.add(Insight.BEFORE_N_SPOTS_CROSSCHECK)
                     applied = True
-                    puzzle.answer(
+                    move_diff = update_puzzle.answer(
                         aft_cat, num_cat, aft_ent, num_cat.entities[i + num], "X"
                     )
+                    steps.append({
+                        "result": update_puzzle,
+                        "move_diff": move_diff,
+                        "insights": [Insight.BEFORE_N_SPOTS_CROSSCHECK],
+                    })
             for i in after_Xs:
                 sy = puzzle.get_symbol(
                     bef_cat, num_cat, bef_ent, num_cat.entities[i - num]
                 )
-                if sy == "*" and Insight.BEFORE_N_SPOTS_CROSSCHECK not in forbidden_insights:
+                if (
+                    sy == "*"
+                    and Insight.BEFORE_N_SPOTS_CROSSCHECK not in forbidden_insights
+                ):
                     insights.add(Insight.BEFORE_N_SPOTS_CROSSCHECK)
                     applied = True
-                    puzzle.answer(
+                    move_diff = update_puzzle.answer(
                         bef_cat, num_cat, bef_ent, num_cat.entities[i - num], "X"
                     )
+                    steps.append({
+                        "result": update_puzzle,
+                        "move_diff": move_diff,
+                        "insights": [Insight.BEFORE_N_SPOTS_CROSSCHECK],
+                    })
             if applied and slow:
-                return applied, is_valid, complete, insights
-
-    return applied, is_valid, complete, insights
+                puzzle.grids = update_puzzle.grids
+                return applied, is_valid, complete, insights, steps
+    if not is_valid:
+        return False, is_valid, complete, set(), []
+    puzzle.grids = update_puzzle.grids
+    return applied, is_valid, complete, insights, steps
 
 
 # %%
@@ -2558,12 +2778,16 @@ def apply_simple_or(puzzle, terms, forbidden_insights=set(), slow=False):
     """
     Apply the or rule to puzzle, will be incomplete if not enough information is known
     slow: set to True to apply only the first valid insight
+    return_steps: return each mark as its own move with the insight
     return: applied, is_valid, complete
     """
     applied = False
     is_valid = True
     complete = False
     insights = set()
+
+    steps = []
+    update_puzzle = deepcopy(puzzle)
 
     pos_cat1 = terms[0]
     pos_ent1 = terms[1]  # either ent1 or ent2 = ans_ent
@@ -2583,16 +2807,22 @@ def apply_simple_or(puzzle, terms, forbidden_insights=set(), slow=False):
         # this rule can't be applied (both are true or both are false)
         complete = True
         is_valid = False
-        return applied, is_valid, complete, insights
+        return False, is_valid, complete, set(), []
     elif pos_symb1 == "O":
         # hint says that ent2 cannot be the answer ent
         if pos_symb2 == "*" and Insight.APPLY_OR not in forbidden_insights:
             # we can change game state
             applied = True
             complete = True
-            puzzle.answer(pos_cat2, ans_cat, pos_ent2, ans_ent, "X")
+            move_diff = update_puzzle.answer(pos_cat2, ans_cat, pos_ent2, ans_ent, "X")
+            steps.append({
+                "result": update_puzzle,
+                "move_diff": move_diff,
+                "insights": [Insight.APPLY_OR],
+            })
             insights.add(Insight.APPLY_OR)
-            return applied, is_valid, complete, insights
+            puzzle.grids = update_puzzle.grids
+            return applied, is_valid, complete, insights, steps
         elif pos_symb2 == "X":
             # game state is correct, but nothing to change
             complete = True
@@ -2602,10 +2832,23 @@ def apply_simple_or(puzzle, terms, forbidden_insights=set(), slow=False):
             # we can change the game state
             applied = True
             complete = True
-            puzzle.answer(pos_cat2, ans_cat, pos_ent2, ans_ent, "O")
-            is_valid = cross_out(puzzle, pos_cat2, ans_cat, pos_ent2, ans_ent)
             insights.add(Insight.APPLY_OR)
-            return applied, is_valid, complete, insights
+            move_diff = update_puzzle.answer(pos_cat2, ans_cat, pos_ent2, ans_ent, "O")
+            steps.append({
+                "result": update_puzzle,
+                "move_diff": move_diff,
+                "insights": [Insight.APPLY_OR],
+            })
+            _, is_valid, cross_steps = cross_out(
+                puzzle, pos_cat2, ans_cat, pos_ent2, ans_ent
+            )
+            for step in cross_steps:
+                step["insights"].append(Insight.APPLY_OR)
+            steps.extend(cross_steps)
+            if not is_valid:
+                return False, is_valid, complete, set(), []
+            puzzle.grids = update_puzzle.grids
+            return applied, is_valid, complete, insights, steps
         elif pos_symb2 == "O":
             # game state is correct, but we cannot change
             complete = True
@@ -2614,29 +2857,60 @@ def apply_simple_or(puzzle, terms, forbidden_insights=set(), slow=False):
             # hint says ent1 is not ans_ent and we can change this
             applied = True
             complete = True
-            puzzle.answer(pos_cat1, ans_cat, pos_ent1, ans_ent, "X")
+            move_diff = update_puzzle.answer(pos_cat1, ans_cat, pos_ent1, ans_ent, "X")
+            steps.append({
+                "result": update_puzzle,
+                "move_diff": move_diff,
+                "insights": [Insight.APPLY_OR],
+            })
             insights.add(Insight.APPLY_OR)
-            return applied, is_valid, complete, insights
+            puzzle.grids = update_puzzle.grids
+            return applied, is_valid, complete, insights, steps
         elif pos_symb2 == "X" and Insight.APPLY_OR not in forbidden_insights:
             # hint says ent1 is ans_ent and we can change this
             applied = True
             complete = True
-            puzzle.answer(pos_cat1, ans_cat, pos_ent1, ans_ent, "O")
-            is_valid = cross_out(puzzle, pos_cat1, ans_cat, pos_ent1, ans_ent)
+            move_diff = update_puzzle.answer(pos_cat1, ans_cat, pos_ent1, ans_ent, "O")
+            steps.append({
+                "result": update_puzzle,
+                "move_diff": move_diff,
+                "insights": [Insight.APPLY_OR],
+            })
             insights.add(Insight.APPLY_OR)
-            return applied, is_valid, complete, insights
+            _, is_valid, cross_steps = cross_out(
+                puzzle, pos_cat1, ans_cat, pos_ent1, ans_ent
+            )
+            for step in cross_steps:
+                step["insights"].append(Insight.APPLY_OR)
+            steps.extend(cross_steps)
+            if not is_valid:
+                return False, is_valid, complete, set(), []
+
+            puzzle.grids = update_puzzle.grids
+            return applied, is_valid, complete, insights, steps
 
     if pos_cat1 != pos_cat2:
-        if  Insight.SIMPLE_OR_DIFF_CAT not in forbidden_insights:
+        if Insight.SIMPLE_OR_DIFF_CAT not in forbidden_insights:
             # A and B are in different categories
             # If A or B is C then A is not B
-            applied, is_valid, _, _ = apply_not(
-                puzzle, [pos_cat1, pos_ent1, pos_cat2, pos_ent2]
-            )
-            if applied:
+            sy = puzzle.get_symbol(pos_cat1, pos_cat2, pos_ent1, pos_ent2)
+            if sy == "0":
+                is_valid = False
+            elif sy == "*":
+                move_diff = update_puzzle.answer(
+                    pos_cat1, pos_cat2, pos_ent1, pos_ent2, "X"
+                )
+                steps.append({
+                    "result": update_puzzle,
+                    "move_diff": move_diff,
+                    "insights": [Insight.SIMPLE_OR_DIFF_CAT],
+                })
                 insights.add(Insight.SIMPLE_OR_DIFF_CAT)
-            if slow or not is_valid:
-                return applied, is_valid, complete, insights
+            if not is_valid:
+                return False, is_valid, complete, set(), []
+            if slow:
+                puzzle.grids = update_puzzle.grids
+                return applied, is_valid, complete, insights, steps
     else:
         # A and B are in the same category
         # If A or B from category 0 is C then no other entity from category 0 is C
@@ -2647,15 +2921,26 @@ def apply_simple_or(puzzle, terms, forbidden_insights=set(), slow=False):
                     # Logical error.
                     is_valid = False
                     complete = True
-                    return applied, is_valid, complete, insights
+                    return False, is_valid, complete, set(), []
                 elif sy == "*" and Insight.SIMPLE_OR_SAME_CAT not in forbidden_insights:
                     # No other entity from cat1 is ans_ent
                     insights.add(Insight.SIMPLE_OR_SAME_CAT)
                     applied = True
-                    puzzle.answer(pos_cat1, ans_cat, ent, ans_ent, "X")
+                    move_diff = update_puzzle.answer(
+                        pos_cat1, ans_cat, ent, ans_ent, "X"
+                    )
+                    steps.append({
+                        "result": update_puzzle,
+                        "move_diff": move_diff,
+                        "insights": [Insight.SIMPLE_OR_SAME_CAT],
+                    })
         if applied and slow:
-            return applied, is_valid, complete, insights
-    return applied, is_valid, complete, insights
+            puzzle.grids = update_puzzle.grids
+            return applied, is_valid, complete, insights, steps
+    if not is_valid:
+        return False, is_valid, complete, set(), []
+    puzzle.grids = update_puzzle.grids
+    return applied, is_valid, complete, insights, steps
 
 
 # %%
@@ -2832,7 +3117,7 @@ if __name__ == "__main__":
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
-def apply_compound_or(puzzle, options, forbidden_insights = set()):
+def apply_compound_or(puzzle, options, forbidden_insights=set(), return_steps=False):
     """
     Apply the compound or rule to puzzle, will be incomplete if not enough information is known
     return: applied, is_valid, complete
@@ -2843,6 +3128,11 @@ def apply_compound_or(puzzle, options, forbidden_insights = set()):
     insights = (
         set()
     )  # There are no insights for compound or, but keep the return signature consistent
+
+    update_puzzle = puzzle
+    steps = []
+    if return_steps:
+        update_puzzle = deepcopy(puzzle)
 
     optionA = options[0]
     catA1 = optionA[0]
@@ -2864,7 +3154,7 @@ def apply_compound_or(puzzle, options, forbidden_insights = set()):
             is_valid = False
             complete = True
         # There is no info to apply.
-        return applied, is_valid, complete, insights
+        return applied, is_valid, complete, insights, steps
 
     # At least one term is answered; the hint is guaranteed complete.
     complete = True
@@ -2872,27 +3162,60 @@ def apply_compound_or(puzzle, options, forbidden_insights = set()):
     currents = [currentA, currentB]
     if "X" in currents and "O" in currents:
         # Someone already answered.
-        return applied, is_valid, complete, insights
+        return applied, is_valid, complete, insights, steps
 
     # One is answered and the other is not; we are guaranteed to apply.
     applied = True
 
     if currentA == "X" and Insight.APPLY_OR not in forbidden_insights:
-        puzzle.answer(catB1, catB2, entB1, entB2, "O")
+        move_diff = update_puzzle.answer(catB1, catB2, entB1, entB2, "O")
         insights.add(Insight.APPLY_OR)
-        is_valid = cross_out(puzzle, catB1, catB2, entB1, entB2)
+        steps.append({
+            "result": update_puzzle,
+            "move_diff": move_diff,
+            "insights": [Insight.APPLY_OR],
+        })
+        _, is_valid, cross_steps = cross_out(puzzle, catB1, catB2, entB1, entB2)
+        for step in cross_steps:
+            step["insights"].append(Insight.APPLY_OR)
+        steps.extend(cross_steps)
+        if not is_valid:
+            return False, is_valid, complete, set(), []
     elif currentB == "X" and Insight.APPLY_OR not in forbidden_insights:
-        puzzle.answer(catA1, catA2, entA1, entA2, "O")
+        move_diff = update_puzzle.answer(catA1, catA2, entA1, entA2, "O")
         insights.add(Insight.APPLY_OR)
-        is_valid = cross_out(puzzle, catA1, catA2, entA1, entA2)
+        steps.append({
+            "result": update_puzzle,
+            "move_diff": move_diff,
+            "insights": [Insight.APPLY_OR],
+        })
+        _, is_valid, cross_steps = cross_out(puzzle, catA1, catA2, entA1, entA2)
+        for step in cross_steps:
+            step["insights"].append(Insight.APPLY_OR)
+        steps.extend(cross_steps)
+        if not is_valid:
+            return False, is_valid, complete, set(), []
     elif currentA == "O" and Insight.APPLY_OR not in forbidden_insights:
         insights.add(Insight.APPLY_OR)
-        puzzle.answer(catB1, catB2, entB1, entB2, "X")
+        move_diff = update_puzzle.answer(catB1, catB2, entB1, entB2, "X")
+        steps.append({
+            "result": update_puzzle,
+            "move_diff": move_diff,
+            "insights": [Insight.APPLY_OR],
+        })
     elif currentB == "O" and Insight.APPLY_OR not in forbidden_insights:
         insights.add(Insight.APPLY_OR)
-        puzzle.answer(catA1, catA2, entA1, entA2, "X")
+        move_diff = update_puzzle.answer(catA1, catA2, entA1, entA2, "X")
+        steps.append({
+            "result": update_puzzle,
+            "move_diff": move_diff,
+            "insights": [Insight.APPLY_OR],
+        })
 
-    return applied, is_valid, complete, insights
+    if not is_valid:
+        return False, is_valid, complete, set(), []
+    puzzle.grids = update_puzzle.grids
+    return applied, is_valid, complete, insights, steps
 
 
 # %%
@@ -3052,7 +3375,11 @@ def apply_hint(puzzle, hint, forbidden_insights=set(), slow=False):
             puzzle, terms, forbidden_insights=forbidden_insights, slow=slow
         )
     elif rule == "compound_or":
-        return apply_compound_or(puzzle, [terms[0]["is"], terms[1]["is"]], forbidden_insights=forbidden_insights)
+        return apply_compound_or(
+            puzzle,
+            [terms[0]["is"], terms[1]["is"]],
+            forbidden_insights=forbidden_insights,
+        )
     else:
         print(
             "This hint has no apply rules! Something has gone horribly wrong. The offending hint: "
@@ -3061,7 +3388,9 @@ def apply_hint(puzzle, hint, forbidden_insights=set(), slow=False):
 
     return applied, is_valid, complete, insights
 
-def get_available_moves(puzzle, hints):
+
+# TODO: step moves should all be available at the same time.
+def get_available_moves(puzzle, hints, as_steps=False):
     """
     get all possible next moves in the solution:
         any openings
@@ -3091,46 +3420,61 @@ def get_available_moves(puzzle, hints):
 
     # We know that so far the puzzle is correct.
     result = deepcopy(puzzle)
-    applied, is_valid, _, insights = find_openings(result, slow=True)
+    applied, is_valid, _, insights, steps = find_openings(result)
     if len(insights) == 0:
         insights = [Insight.NO_INSIGHT]
     if applied and is_valid:
-        moves.append({
-            "type": "openings",
-            "result": result,
-            "move_diff": get_move_diff(puzzle, result),
-            "insights": insights,
-        })
-    result = deepcopy(puzzle)
-    applied, is_valid, _, insights = find_transitives(result, slow=True)
-    if len(insights) == 0:
-        insights = [Insight.NO_INSIGHT]
-    if applied and is_valid:
-        moves.append({
-            "type": "transitives",
-            "result": result,
-            "move_diff": get_move_diff(puzzle, result),
-            "insights": insights,
-        })
-    for idx, hint in enumerate(hints):
-        result = deepcopy(puzzle)
-        applied, is_valid, _, insights = apply_hint(result, hint, slow=True)
-        if len(insights) == 0:
-            insights = [Insight.NO_INSIGHT]
-        if applied and is_valid:
+        if not as_steps:
             moves.append({
-                "type": "hint",
-                "indexed_hint": {"idx": idx, "hint": hint},
+                "type": "openings",
                 "result": result,
                 "move_diff": get_move_diff(puzzle, result),
                 "insights": insights,
             })
+        else:
+            for step in steps:
+                step["type"] = "openings"
+            moves.extend(steps)
+    result = deepcopy(puzzle)
+    applied, is_valid, _, insights, steps = find_transitives(result)
+    if len(insights) == 0:
+        insights = [Insight.NO_INSIGHT]
+    if applied and is_valid:
+        if not as_steps:
+            moves.append({
+                "type": "transitives",
+                "result": result,
+                "move_diff": get_move_diff(puzzle, result),
+                "insights": insights,
+            })
+        else:
+            for step in steps:
+                step["type"] = "transitives"
+            moves.extend(steps)
+    for idx, hint in enumerate(hints):
+        result = deepcopy(puzzle)
+        applied, is_valid, _, insights, steps = apply_hint(result, hint)
+        if len(insights) == 0:
+            insights = [Insight.NO_INSIGHT]
+        if applied and is_valid:
+            if not as_steps:
+                moves.append({
+                    "type": "hint",
+                    "indexed_hint": {"idx": idx, "hint": hint},
+                    "result": result,
+                    "move_diff": get_move_diff(puzzle, result),
+                    "insights": insights,
+                })
+            else:
+                for step in steps:
+                    step["type"] = "hint"
+                    step["indexed_hint"] = {"idx": idx, "hint": hint}
+                moves.extend(steps)
     return state_is_valid, moves
 
 
-def get_move_diff(before, after):
+def get_move_diff(before, after, changes_only=False):
     diff = deepcopy(after)
-
     for cat1 in before.left_right:
         for cat2 in before.top_bottom:
             before_grid = before.get_grid(cat1, cat2)
@@ -3143,13 +3487,24 @@ def get_move_diff(before, after):
                         before_grid[ent2_idx][ent1_idx]
                         == after_grid[ent2_idx][ent1_idx]
                     ):
-                        diff.answer(
-                            cat1,
-                            cat2,
-                            cat1.entities[ent1_idx],
-                            cat2.entities[ent2_idx],
-                            lowercase_grid_symbol(after_grid[ent2_idx][ent1_idx]),
-                        )
+                        if not changes_only:
+                            diff.answer(
+                                cat1,
+                                cat2,
+                                cat1.entities[ent1_idx],
+                                cat2.entities[ent2_idx],
+                                lowercase_grid_symbol(after_grid[ent2_idx][ent1_idx]),
+                                False,
+                            )
+                        else:
+                            diff.answer(
+                                cat1,
+                                cat2,
+                                cat1.entities[ent1_idx],
+                                cat2.entities[ent2_idx],
+                                "*",
+                                False,
+                            )
                     elif after_grid[ent2_idx][ent1_idx] == "*":
                         # This is a repair operation
                         diff.answer(
@@ -3158,6 +3513,7 @@ def get_move_diff(before, after):
                             cat1.entities[ent1_idx],
                             cat2.entities[ent2_idx],
                             "_",
+                            False,
                         )
     return diff
 
@@ -3194,7 +3550,7 @@ def apply_hints(puzzle, hints, print_soln=False, forbidden_insights=set()):
 
         for hint in queue:
             og = deepcopy(copy)
-            a, is_valid, complete, hint_insights = apply_hint(
+            a, is_valid, complete, hint_insights, _ = apply_hint(
                 copy, hint, forbidden_insights=forbidden_insights
             )
             applied = applied or a
@@ -3212,12 +3568,12 @@ def apply_hints(puzzle, hints, print_soln=False, forbidden_insights=set()):
                 a_3 = True
                 while a_2 or a_3:
                     # Apply openings and transitives as many times as you can.
-                    a_2, is_valid, complete, opening_insights = find_openings(
+                    a_2, is_valid, complete, opening_insights, _ = find_openings(
                         copy, forbidden_insights=forbidden_insights
                     )
                     if not is_valid:
                         return copy, is_valid, loop, insights
-                    a_3, is_valid, complete, trans_insights = find_transitives(
+                    a_3, is_valid, complete, trans_insights, _ = find_transitives(
                         copy, forbidden_insights=forbidden_insights
                     )
                     if not is_valid:
@@ -3242,16 +3598,16 @@ def apply_hints(puzzle, hints, print_soln=False, forbidden_insights=set()):
 def get_needed(puzzle, hints, print_soln=False):
     if print_soln:
         print("Initial solution")
-    completed_puzzle, is_valid, _, _ = apply_hints(
-        puzzle, hints, print_soln=print_soln
-    )
-    assert(completed_puzzle.is_complete() and is_valid)
+    completed_puzzle, is_valid, _, _ = apply_hints(puzzle, hints, print_soln=print_soln)
+    assert completed_puzzle.is_complete() and is_valid
 
     needed = set()
     unneeded = ALL_INSIGHTS.copy()
 
-    assert not can_solve_without_forbidden(puzzle, hints, unneeded), "No insights are needed to solve the puzzle; something has gone wrong somewhere."
-    
+    assert not can_solve_without_forbidden(
+        puzzle, hints, unneeded
+    ), "No insights are needed to solve the puzzle; something has gone wrong somewhere."
+
     # Add insights easiest first until the puzzle can be solved.
     completed_without_maybe = can_solve_without_forbidden(
         puzzle, hints, unneeded, print_soln
@@ -3267,7 +3623,9 @@ def get_needed(puzzle, hints, print_soln=False):
     needed = ALL_INSIGHTS - unneeded
     assert len(needed & unneeded) == 0
     assert len(needed | unneeded) == len(ALL_INSIGHTS)
-    assert can_solve_without_forbidden(puzzle, hints, unneeded, print_soln), "can't solve without some of the insights judged unneeded: {}".format(unneeded)
+    assert can_solve_without_forbidden(
+        puzzle, hints, unneeded, print_soln
+    ), "can't solve without some of the insights judged unneeded: {}".format(unneeded)
     # Remove any insights that don't result in the puzzle breaking, starting from the hardest
     for insight in reversed(Insight):
         if insight in needed:
@@ -3277,14 +3635,18 @@ def get_needed(puzzle, hints, print_soln=False):
             completed_without_maybe = can_solve_without_forbidden(
                 puzzle, hints, unneeded, print_soln
             )
-            
+
             if not completed_without_maybe:
                 # The insight is needed, add it back
                 needed = needed | {insight}
     unneeded = ALL_INSIGHTS - needed
     assert len(needed | unneeded) == len(ALL_INSIGHTS)
     assert len(needed & unneeded) == 0
-    assert can_solve_without_forbidden(puzzle, hints, ALL_INSIGHTS - needed, print_soln), "can't solve without some of the insights judged as unneeded: {}".format(unneeded)
+    assert can_solve_without_forbidden(
+        puzzle, hints, ALL_INSIGHTS - needed, print_soln
+    ), "can't solve without some of the insights judged as unneeded: {}".format(
+        unneeded
+    )
     return needed
 
 
@@ -3321,4 +3683,3 @@ if __name__ == "__main__":
             print("Openings: ", find_openings(puzzle))
             print("Transitives: ", find_transitives(puzzle))
         print(puzzle.print_grid())
-

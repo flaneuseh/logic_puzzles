@@ -11,7 +11,7 @@ The plants Tomato is the hours 2hr
 Either the plants Spinach is the hours 4hr or the plants Tomato is the hours 6hr
 The plants Tomato is 2 hourss before the plants Cauliflower
 
-user move 0:
+User Move 1:
       2hr  4hr  6hr  8hr
     --------------------
 Tom|  *    *    X    *  |
@@ -19,11 +19,12 @@ Spi|  *    *    *    *  |
 Cau|  *    *    *    *  |
 Pum|  *    *    *    *  |
     --------------------
-predicted move type: unknown
-predicted insights: unknown
+Possible Reasonings: 
+1: hint - "The plants Tomato is the hours 2hr" - [<Insight.CROSS_OUT: 1>, <Insight.APPLY_IS: 3>]
+2: hint - "The plants Tomato is 2 hourss before the plants Cauliflower" - [<Insight.BEFORE_ONE_SPOT_NOINFO: 12>]
 
 
-user move 1:
+User Move 2:
       2hr  4hr  6hr  8hr
     --------------------
 Tom|  *    *    x    *  |
@@ -31,51 +32,56 @@ Spi|  *    *    *    *  |
 Cau|  *    *    *    *  |
 Pum|  *    *    *    *  |
     --------------------
-predicted move type: unknown
-predicted insights: unknown
+Possible Reasonings: 
+1: unknown - []
 
 
-user move 2:
+User Move 3:
       2hr  4hr  6hr  8hr
     --------------------
-Tom|  *    X    x    *  |
-Spi|  X    O    X    X  |
-Cau|  *    X    *    *  |
-Pum|  *    X    *    *  |
+Tom|  *    *    x    *  |
+Spi|  *    O    *    *  |
+Cau|  *    *    *    *  |
+Pum|  *    *    *    *  |
     --------------------
-predicted move type: hint - "Either the plants Spinach is the hours 4hr or the plants Tomato is the hours 6hr"
-predicted insights: APPLY_OR (5), 
+Possible Reasonings: 
+1: hint - "Either the plants Spinach is the hours 4hr or the plants Tomato is the hours 6hr" - [<Insight.APPLY_OR: 5>]
 
-user move 3:
+
+User Move 4:
       2hr  4hr  6hr  8hr
     --------------------
-Tom|  O    x    x    X  |
-Spi|  x    o    x    x  |
-Cau|  X    x    *    *  |
-Pum|  X    x    *    *  |
+Tom|  O    *    x    *  |
+Spi|  *    o    *    *  |
+Cau|  *    *    *    *  |
+Pum|  *    *    *    *  |
     --------------------
-predicted move type: hint - "The plants Tomato is the hours 2hr"
-predicted insights: APPLY_IS (3), 
+Possible Reasonings: 
+1: hint - "The plants Tomato is the hours 2hr" - [<Insight.APPLY_IS: 3>]
 
-user move 4:
+
+User Move 5:
       2hr  4hr  6hr  8hr
     --------------------
-Tom|  o    x    x    x  |
-Spi|  x    o    x    x  |
-Cau|  x    x    O    X  |
-Pum|  x    x    X    *  |
+Tom|  o    *    x    *  |
+Spi|  *    o    *    *  |
+Cau|  *    *    O    *  |
+Pum|  *    *    *    *  |
     --------------------
-predicted move type: hint - "The plants Tomato is 2 hourss before the plants Cauliflower"
-predicted insights: APPLY_BEFORE_N_SPOTS (7), 
+Possible Reasonings: 
+1: hint - "The plants Tomato is 2 hourss before the plants Cauliflower" - [<Insight.APPLY_BEFORE_N_SPOTS: 7>]
 
-user move 5:
+
+User Move 6:
       2hr  4hr  6hr  8hr
     --------------------
-Tom|  o    x    x    x  |
-Spi|  x    o    x    x  |
-Cau|  x    x    o    x  |
-Pum|  x    x    x    O  |
+Tom|  o    *    x    *  |
+Spi|  *    o    *    *  |
+Cau|  *    *    o    *  |
+Pum|  *    *    *    O  |
     --------------------
-predicted move type: openings
-predicted insights: OPENING (2), 
+Possible Reasonings: 
+1: (after filling in openings) openings - [<Insight.OPENING: 2>]
+2: (after filling in openings) openings - [<Insight.OPENING: 2>]
+
 

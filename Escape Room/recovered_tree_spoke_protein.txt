@@ -10,84 +10,92 @@ Hints:
 The food Eggs is the grams 15g
 The food Fish is 1 gramss before the food Peanuts
 
-user move 0:
+User Move 1:
       10g  15g  20g  25g
     --------------------
-Fis|  *    X    *    *  |
-Egg|  X    O    X    X  |
-Tof|  *    X    *    *  |
+Fis|  *    *    *    *  |
+Egg|  *    O    *    *  |
+Tof|  *    *    *    *  |
+Pea|  *    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: hint - "The food Eggs is the grams 15g" - [<Insight.APPLY_IS: 3>]
+
+
+User Move 2:
+      10g  15g  20g  25g
+    --------------------
+Fis|  X    *    *    *  |
+Egg|  *    o    *    *  |
+Tof|  *    *    *    *  |
+Pea|  *    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: (after filling in openings) hint - "The food Fish is 1 gramss before the food Peanuts" - [<Insight.BEFORE_N_SPOTS_CROSSCHECK: 17>]
+
+
+User Move 3:
+      10g  15g  20g  25g
+    --------------------
+Fis|  x    *    *    *  |
+Egg|  *    o    *    *  |
+Tof|  *    *    *    *  |
 Pea|  *    X    *    *  |
     --------------------
-predicted move type: hint - "The food Eggs is the grams 15g"
-predicted insights: APPLY_IS (3), 
+Possible Reasonings: 
+1: openings - [<Insight.CROSS_OUT: 1>]
+2: hint - "The food Fish is 1 gramss before the food Peanuts" - [<Insight.BEFORE_N_SPOTS_SHIFT: 16>]
+3: hint - "The food Fish is 1 gramss before the food Peanuts" - [<Insight.BEFORE_N_SPOTS_CROSSCHECK: 17>]
 
-user move 1:
+
+User Move 4:
       10g  15g  20g  25g
     --------------------
-Fis|  X    x    *    *  |
-Egg|  x    o    x    x  |
-Tof|  *    x    *    *  |
-Pea|  *    x    *    *  |
+Fis|  x    *    *    *  |
+Egg|  *    o    *    *  |
+Tof|  *    *    *    *  |
+Pea|  *    x    *    O  |
     --------------------
-predicted move type: unknown
-predicted insights: unknown
+Possible Reasonings: 
+1: unknown - []
 
 
-user move 2:
+User Move 5:
       10g  15g  20g  25g
     --------------------
-Fis|  x    x    *    *  |
-Egg|  x    o    x    x  |
-Tof|  *    x    *    *  |
-Pea|  *    x    *    *  |
+Fis|  x    *    *    *  |
+Egg|  *    o    *    *  |
+Tof|  *    *    *    *  |
+Pea|  *    x    *    o  |
     --------------------
-predicted move type: unknown
-predicted insights: unknown
+Possible Reasonings: 
+1: unknown - []
 
 
-user move 3:
+User Move 6:
       10g  15g  20g  25g
     --------------------
-Fis|  x    x    *    X  |
-Egg|  x    o    x    x  |
-Tof|  *    x    *    X  |
-Pea|  X    x    X    O  |
+Fis|  x    *    O    *  |
+Egg|  *    o    *    *  |
+Tof|  *    *    *    *  |
+Pea|  *    x    *    o  |
     --------------------
-predicted move type: unknown
-predicted insights: unknown
+Possible Reasonings: 
+1: hint - "The food Fish is 1 gramss before the food Peanuts" - [<Insight.APPLY_BEFORE_ONE_SPOT: 6>]
+2: (after filling in openings) openings - [<Insight.OPENING: 2>]
+3: (after filling in openings) hint - "The food Fish is 1 gramss before the food Peanuts" - [<Insight.APPLY_BEFORE_UNDEFINED_SPOTS: 8>]
 
 
-user move 4:
+User Move 7:
       10g  15g  20g  25g
     --------------------
-Fis|  x    x    *    x  |
-Egg|  x    o    x    x  |
-Tof|  *    x    *    x  |
-Pea|  x    x    x    o  |
+Fis|  x    *    o    *  |
+Egg|  *    o    *    *  |
+Tof|  O    *    *    *  |
+Pea|  *    x    *    o  |
     --------------------
-predicted move type: unknown
-predicted insights: unknown
+Possible Reasonings: 
+1: (after filling in openings) openings - [<Insight.OPENING: 2>]
+2: (after filling in openings) openings - [<Insight.OPENING: 2>]
 
-
-user move 5:
-      10g  15g  20g  25g
-    --------------------
-Fis|  x    x    O    x  |
-Egg|  x    o    x    x  |
-Tof|  *    x    X    x  |
-Pea|  x    x    x    o  |
-    --------------------
-predicted move type: hint - "The food Fish is 1 gramss before the food Peanuts"
-predicted insights: APPLY_BEFORE_ONE_SPOT (6), 
-
-user move 6:
-      10g  15g  20g  25g
-    --------------------
-Fis|  x    x    o    x  |
-Egg|  x    o    x    x  |
-Tof|  O    x    x    x  |
-Pea|  x    x    x    o  |
-    --------------------
-predicted move type: openings
-predicted insights: OPENING (2), 
 

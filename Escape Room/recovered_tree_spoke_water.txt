@@ -11,59 +11,53 @@ The plants Carrots is the amounts 40oz
 The plants Green Onions is at least 1 amounts before the plants Carrots
 Either the plants Green Onions or the plants Potatoes is the amounts 80oz
 
-user move 0:
+User Move 1:
       Gre  Car  Kal  Pot
     --------------------
-20o|  *    X    *    *  |
-40o|  X    O    X    X  |
-60o|  *    X    *    *  |
-80o|  *    X    *    *  |
+20o|  *    *    *    *  |
+40o|  *    O    *    *  |
+60o|  *    *    *    *  |
+80o|  *    *    *    *  |
     --------------------
-predicted move type: hint - "The plants Carrots is the amounts 40oz"
-predicted insights: APPLY_IS (3), 
+Possible Reasonings: 
+1: hint - "The plants Carrots is the amounts 40oz" - [<Insight.APPLY_IS: 3>]
 
-user move 1:
+
+User Move 2:
       Gre  Car  Kal  Pot
     --------------------
-20o|  *    x    X    *  |
-40o|  x    o    x    x  |
-60o|  X    x    O    X  |
-80o|  *    x    X    *  |
+20o|  *    *    *    *  |
+40o|  *    o    *    *  |
+60o|  *    *    O    *  |
+80o|  *    *    *    *  |
     --------------------
-predicted move type: unknown
-predicted insights: unknown
+Possible Reasonings: 
+1: unknown - []
 
 
-user move 2:
+User Move 3:
       Gre  Car  Kal  Pot
     --------------------
-20o|  O    x    x    X  |
-40o|  x    o    x    x  |
-60o|  x    x    o    x  |
-80o|  X    x    x    *  |
+20o|  O    *    *    *  |
+40o|  *    o    *    *  |
+60o|  *    *    o    *  |
+80o|  *    *    *    *  |
     --------------------
-predicted move type: hint - "The plants Green Onions is at least 1 amounts before the plants Carrots"
-predicted insights: APPLY_BEFORE_UNDEFINED_SPOTS (8), 
+Possible Reasonings: 
+1: hint - "The plants Green Onions is at least 1 amounts before the plants Carrots" - [<Insight.APPLY_BEFORE_UNDEFINED_SPOTS: 8>]
 
-user move 3:
+
+User Move 4:
       Gre  Car  Kal  Pot
     --------------------
-20o|  o    x    x    x  |
-40o|  x    o    x    x  |
-60o|  x    x    o    x  |
-80o|  x    x    x    O  |
+20o|  o    *    *    *  |
+40o|  *    o    *    *  |
+60o|  *    *    o    *  |
+80o|  *    *    *    O  |
     --------------------
-predicted move type: openings
-predicted insights: OPENING (2), 
+Possible Reasonings: 
+1: (after filling in openings) openings - [<Insight.OPENING: 2>]
+2: (after filling in openings) openings - [<Insight.OPENING: 2>]
+3: (after filling in openings) hint - "Either the plants Green Onions or the plants Potatoes is the amounts 80oz" - [<Insight.APPLY_OR: 5>]
 
-user move 4:
-      Gre  Car  Kal  Pot
-    --------------------
-20o|  o    x    x    x  |
-40o|  x    o    x    x  |
-60o|  x    x    o    x  |
-80o|  x    x    x    O  |
-    --------------------
-predicted move type: hint - "Either the plants Green Onions or the plants Potatoes is the amounts 80oz"
-predicted insights: APPLY_OR (5), 
 
