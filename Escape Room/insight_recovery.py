@@ -110,9 +110,10 @@ def get_max_insight(move):
 
 
 def get_grid_id(puzzle_id, state):
-    # opened_puzzle = deepcopy(state)
-    # find_openings(opened_puzzle)
-    grid_str = state.print_grid()
+    opened_puzzle = deepcopy(state)
+    find_openings(opened_puzzle)
+    grid_str = opened_puzzle.print_grid()
+    # grid_str = state.print_grid()
     grid_id = f"{puzzle_id}:{grid_str}"
     return grid_id
 
