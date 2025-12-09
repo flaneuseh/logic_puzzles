@@ -7,6 +7,7 @@ import re
 from pathlib import Path
 import csv
 from random import randint
+from statistics import fmean as mean
 
 ultraimport("__dir__/../LogicPuzzles.py", package="main")
 from main.LogicPuzzles import (
@@ -39,9 +40,8 @@ from puzzle_defs import (
 
 
 # Determine whether move is correct, incorrect, or neutral.
-def get_move_value(move_diff, hints):
+def get_move_value(move_diff, solution):
     value = ""
-    solution, _, _, _ = apply_hints(move_diff, hints)
     for cat1 in move_diff.left_right:
         for cat2 in move_diff.top_bottom:
             diff_grid = move_diff.get_grid(cat1, cat2)
@@ -52,19 +52,24 @@ def get_move_value(move_diff, hints):
                 for ent1_idx in range(0, len(diff_grid[ent2_idx])):
                     diff_cell = diff_grid[ent2_idx][ent1_idx]
                     soln_cell = soln_grid[ent2_idx][ent1_idx]
-                    if diff_cell in ["_", "X", "O"]:
+                    if diff_cell in ["_", "X", "O", "Y", "N"]:
                         # Part of the current move.
-                        if diff_cell == "_" and value not in ["Correct", "Incorrect"]:
-                            value = "Neutral"
+                        if diff_cell in ["_", "Y", "N"] and value not in [
+                            "correct",
+                            "incorrect",
+                        ]:
+                            value = "neutral"
                         elif diff_cell != soln_cell:
-                            value = "Incorrect"
-                        elif value != "Incorrect":
-                            value = "Correct"
+                            value = "incorrect"
+                        elif value != "incorrect":
+                            value = "correct"
 
     return value
 
 
 def replace_sy(puzzle, loc, sy):
+    if loc == None:
+        return puzzle
     (cat1, cat2, ent1_idx, ent2_idx) = loc
     puzzle.answer(cat1, cat2, cat1.entities[ent1_idx], cat2.entities[ent2_idx], sy)
     return puzzle
@@ -110,22 +115,27 @@ def get_max_insight(move):
 
 
 def get_grid_id(puzzle_id, state):
-    opened_puzzle = deepcopy(state)
-    find_openings(opened_puzzle)
-    grid_str = opened_puzzle.print_grid()
-    # grid_str = state.print_grid()
+    # opened_puzzle = deepcopy(state)
+    # find_openings(opened_puzzle)
+    # grid_str = opened_puzzle.print_grid()
+    grid_str = state.print_grid()
     grid_id = f"{puzzle_id}:{grid_str}"
     return grid_id
 
 
-def get_composite_moves(puzzle_id, solution, moves):
+def get_composite_moves(puzzle_id, curr_state, solution, moves):
     # Moves that reach the same grid state are collapsed to only the move with the lowest ranked max insight
     # We check the max insight because the insights returned by the solver are all necessary to the move,
     # not a list of possible ways to reach the move.
     collapsed_moves = {}
     for s_move in moves:
-        state = s_move["result"]
-        grid_id = get_grid_id(puzzle_id, state)
+        move_state = deepcopy(curr_state)
+        move_diff = s_move["move_diff"]
+        diff_loc, diff_sy = get_diff_sy(move_diff)
+        if diff_loc == None:
+            continue
+        replace_sy(move_state, diff_loc, diff_sy)
+        grid_id = get_grid_id(puzzle_id, move_state)
         max_insight = get_max_insight(s_move)
 
         if (
@@ -134,21 +144,20 @@ def get_composite_moves(puzzle_id, solution, moves):
         ):
             # Keep the move with the lowest ranked max insight, as before
             type = s_move["type"]
-            correct = not repair(state, solution)
             grid_value = "correct"
-            if not correct:
+            if repair(move_state, solution, False):
                 grid_value = "incorrect"
             diff_loc, diff_sy = get_diff_sy(s_move["move_diff"])
             collapsed_moves[grid_id] = {
                 "type": type,
                 "max_insight": max_insight,
                 "move_diff": s_move["move_diff"],
-                "state": state,
+                "state": move_state,
                 "grid_value": grid_value,
                 "simple_diff": (diff_loc, diff_sy),
             }
             if "indexed_hint" in s_move:
-                hint = hint_to_english(s_move["indexed_hint"]["hint"])
+                hint = s_move["indexed_hint"]["idx"]
                 collapsed_moves[grid_id]["hint"] = hint
             if s_move["repair"]:
                 collapsed_moves[grid_id]["solver_value"] = "repair"
@@ -190,7 +199,7 @@ def get_composite_moves(puzzle_id, solution, moves):
             alt_move["simple_diff"] = simple_diff
             alt_move["state"] = alt_state
             alt_move["og_sy"] = diff_sy
-            correct = not repair(alt_state, solution)
+            correct = not repair(alt_state, solution, False)
             grid_value = "correct"
             if not correct:
                 grid_value = "incorrect"
@@ -293,7 +302,7 @@ def get_solver_moves(puzzle, hints):
                 duplicate = True
                 break
         if not duplicate:
-            o_move["type"] = f"(after filling in openings) {o_move['type']}"
+            # o_move["type"] = f"(after filling in openings) {o_move['type']}"
             dedupe_o_moves.append(o_move)
     dedupe_moves.extend(dedupe_o_moves)
     return dedupe_moves
@@ -304,6 +313,7 @@ def get_possible_moves(puzzle, u_moves, available_moves):
     recovered = False
     temp = deepcopy(puzzle)
 
+    u_move_diff = None
     for move in u_moves:
         puzzle.answer(*move)
         u_move_diff, changed = get_move_diff(temp, puzzle, True)
@@ -393,12 +403,20 @@ def get_possible_moves(puzzle, u_moves, available_moves):
     return possible_moves
 
 
-def get_node_id(user_history, curr_grid_value, puzzle_id, node_df, state_to_node_id):
+def get_node_id(
+    user_history, curr_grid_value, puzzle_id, node_df, state_to_node_id, curr_move_id
+):
     # Sort all the hint insights the user has made so that users reaching insights in different orders are considered to reach the same state.
 
-    move_ids = set()
+    move_ids = {curr_move_id}
     for move_id, _ in user_history.values():
-        move_ids.add(move_id)
+        if (
+            "unknown" not in move_id
+            and "OPENING" not in curr_move_id
+            and "CROSS_OUT" not in curr_move_id
+        ):
+            # Only save the current unknown
+            move_ids.add(move_id)
     move_ids = sorted(list(move_ids))
     state = f"{puzzle_id}:{curr_grid_value}:{move_ids}"
 
@@ -416,8 +434,14 @@ def get_node_id(user_history, curr_grid_value, puzzle_id, node_df, state_to_node
     return state_to_node_id[state]
 
 
+def get_diff_loc_str(diff_loc):
+    (cat1, cat2, ent1_idx, ent2_idx) = diff_loc
+    return f"{cat1.title}:{cat2.title}:{ent1_idx}:{ent2_idx}"
+
+
 # Analyze user data to hypothesize which insights participants used.
 def recover_moves(
+    puzzle_id,
     puzzle,
     hints,
     user_id,
@@ -428,27 +452,42 @@ def recover_moves(
     state_to_node_id,
     node_df,
     edge_df,
+    action_json,
+    session_id,
+    session_outcome_json,
 ):
     # The history of which insights and composite moves are associated with which moves for this user.
     user_history = {}
 
     # Empty state node.
-    source_id = get_node_id(user_history, "start", puzzle_id, node_df, state_to_node_id)
+    source_id = get_node_id(
+        user_history, "start", puzzle_id, node_df, state_to_node_id, "start"
+    )
+    success_id = get_node_id(
+        user_history, "success", puzzle_id, node_df, state_to_node_id, "success"
+    )
+    failure_id = get_node_id(
+        user_history, "failure", puzzle_id, node_df, state_to_node_id, "failure"
+    )
+    partial_id = get_node_id(
+        user_history, "partial", puzzle_id, node_df, state_to_node_id, "partial"
+    )
 
     solution, _, _, _ = apply_hints(puzzle, hints)
 
     r_moves = []
-    for raw_move, rec_moves in u_moves:
+    mi = 0
+    for time, raw_str, rec_moves in u_moves:
         result = deepcopy(puzzle)  # copy that will have current move applied
 
         available_moves = get_solver_moves(puzzle, hints)  # All solver-aware moves
         composite_moves, grid_id_to_comp_id = get_composite_moves(
-            puzzle_id, solution, available_moves
+            puzzle_id, puzzle, solution, available_moves
         )  # Available solver moves collapsed into individual insights
 
         possible_moves = get_possible_moves(result, rec_moves, available_moves)
 
-        u_move_diff, _ = get_move_diff(puzzle, result)
+        u_move_diff, _ = get_move_diff(puzzle, result, True)
         diff_loc, diff_sy = get_diff_sy(u_move_diff)
         if diff_sy == None:
             continue
@@ -459,15 +498,26 @@ def recover_moves(
             "move_diff": u_move_diff,
             "simple_diff": (diff_loc, diff_sy),
             "possible_moves": possible_moves,
-            "value": get_move_value(u_move_diff, hints),
+            "value": get_move_value(u_move_diff, solution),
         }
 
-        r_moves.append((raw_move, r_move))
+        if get_move_value(u_move_diff, solution) == "":
+            print("WE SHOULD HAVE A MOVE VALUE BUT WE DON'T!!!!!")
+
+        r_moves.append((time, raw_str, r_move))
 
         grid_id = get_grid_id(puzzle_id, result)
 
         solver_value = "unknown"
-        move_id = f"unknown:{diff_loc}:{diff_sy}"
+        if diff_sy in ["Y", "N", "_"]:
+            solver_value = "unknown-neutral"
+        elif repair(u_move_diff, solution, False):
+            solver_value = "unknown-incorrect"
+        else:
+            solver_value = "unknown-correct"
+
+        diff_loc_str = get_diff_loc_str(diff_loc)
+        move_id = f"{solver_value}:{diff_loc_str}:{diff_sy}"
         if grid_id in grid_id_to_comp_id:
             comp_id = grid_id_to_comp_id[grid_id]
             composite = composite_moves[comp_id]
@@ -480,11 +530,18 @@ def recover_moves(
             hint = composite["hint"]
             solver_value = composite["solver_value"]
             if composite["solver_value"] == "contradiction":
-                insight_str = f"{insight_str}-contradiction"
+                continue
+            # Add the insight to the action JSON.
+            move_idx = 0
+            for i, move_data in enumerate(action_json[session_id]):
+                if move_data["time"] == time:
+                    move_idx = i
+                    break
+            action_json[session_id][move_idx]["insight"] = insight_str
             move_id = f"{type}:{hint}:{insight_str}"
 
         curr_grid_value = "correct"
-        if repair(result, solution):
+        if repair(result, solution, False):
             curr_grid_value = "incorrect"
 
         if diff_loc in user_history:
@@ -494,19 +551,21 @@ def recover_moves(
         else:
             user_history[diff_loc] = (move_id, diff_sy)
         target_id = get_node_id(
-            user_history, curr_grid_value, puzzle_id, node_df, state_to_node_id
+            user_history, curr_grid_value, puzzle_id, node_df, state_to_node_id, move_id
         )
 
         edge_row = [
             source_id,
             target_id,
             user_id,
+            mi,
             u_success,
             solver_value,
             r_move["value"],
             prompt_mode,
             level_mode,
         ]
+        mi = mi + 1
         if (edge_df == edge_row).all(1).any():
             # Only add an edge once per user (while user retracing their steps could be interesting if looking at single user, we are interested in comparing users.)
             continue
@@ -515,6 +574,42 @@ def recover_moves(
 
         puzzle = deepcopy(result)
 
+    target_id = ""
+    if u_success == "success":
+        target_id = success_id
+    elif u_success == "failure":
+        target_id = failure_id
+    elif u_success == "partial":
+        target_id = partial_id
+    edge_row = [
+        source_id,
+        target_id,
+        user_id,
+        mi,
+        u_success,
+        "",
+        "",
+        prompt_mode,
+        level_mode,
+    ]
+
+    # Get available insights at the end.
+    available_insights = set()
+    if u_success != "success":
+        # If the user was successful, ignore any optional insights.
+        available_moves = get_solver_moves(puzzle, hints)
+        for s_move in available_moves:
+            available_insights.add(f"{get_max_insight(s_move)}")
+
+    session_outcome_json[session_id] = {
+        "outcome": u_success,
+        "available_insights": list(available_insights),
+    }
+
+    if (edge_df == edge_row).all(1).any():
+        # Only add an edge once per user (while user retracing their steps could be interesting if looking at single user, we are interested in comparing users.)
+        return r_moves
+    edge_df.loc[len(edge_df)] = edge_row
     return r_moves
 
 
@@ -549,6 +644,7 @@ def clean_online_moves(puzzle, hints, raw_moves):
     raw_moves = list(filter(lambda rm: rm["type"] == "cellChange", raw_moves))
     raw_moves = sorted(raw_moves, key=lambda m: m["time"])
     for _, raw_move in enumerate(raw_moves):
+        time = raw_move["time"]
         moves = []
         puzzle_str = raw_move["puzzleState"]
         topdown_rows = re.split("-+", puzzle_str)
@@ -576,9 +672,9 @@ def clean_online_moves(puzzle, hints, raw_moves):
         for move in moves:
             user_puzzle.answer(*move)
 
-        clean_moves.append((puzzle_str, moves))
+        clean_moves.append((time, puzzle_str, moves))
     solution, _, _, _ = apply_hints(puzzle, hints)
-    correct = not repair(user_puzzle, solution)
+    correct = not repair(user_puzzle, solution, False)
     user_success = "failure"
     if correct:
         if is_solved(user_puzzle):
@@ -850,11 +946,11 @@ def print_moves(file, puzzle, hints, moves):
         file.write(hint_to_english(hint) + "\n")
     file.write("\n")
 
-    for idx, (raw_move, move) in enumerate(moves):
+    for idx, (time, raw_state, move) in enumerate(moves):
         if move == None:
-            file.write(f"User Move {idx+1} (Wrong, Ignored): {raw_move}\n")
+            file.write(f"{time}: User Move {idx+1} (Wrong, Ignored): {raw_state}\n")
         else:
-            file.write(f"User Move {idx+1} ({move['value']}): {raw_move}\n")
+            file.write(f"User Move {idx+1} ({move['value']}): {raw_state}\n")
             board_str = move["move_diff"].print_grid().splitlines()
             for line in board_str:
                 file.write(f"{line}\n")
@@ -899,6 +995,7 @@ def load_online_data(dir):
     action_json = None
     with open(f"{dir}/action_data.json") as f:
         action_json = json.load(f)
+
     gameplay_df = pd.read_csv(f"{dir}/gameplay_data.csv")
     puzzle_names = [
         "helper1_1",
@@ -1073,28 +1170,534 @@ def load_online_data(dir):
             "hints": hints,
             "moves": cleaned_moves,
             "success": user_success,
+            "session_id": session_id,
         }
-    return clean_data
+    return clean_data, action_json
+
+
+def gen_data_views(dir, edge_df, node_df):
+    user_success_vals = set(edge_df["UserSuccess"].unique())
+    user_success_vals.add(None)
+    prompt_mode_vals = set(edge_df["PromptMode"].unique())
+    prompt_mode_vals.add(None)
+    level_mode_vals = set(edge_df["LevelMode"].unique())
+    level_mode_vals.add(None)
+
+    for u in user_success_vals:
+        for p in prompt_mode_vals:
+            for l in level_mode_vals:
+                edge_view = edge_df.copy()
+                view_name = ""
+                if u != None:
+                    view_name += f"_endstate={u}"
+                    edge_view = edge_view[edge_view["UserSuccess"] == u]
+                else:
+                    view_name += "_endstate=all"
+                if p != None:
+                    view_name += f"_prompts={p}"
+                    edge_view = edge_view[edge_view["PromptMode"] == p]
+                else:
+                    view_name += "_prompts=all"
+                if l != None:
+                    view_name += f"_levels={l}"
+                    edge_view = edge_view[edge_view["LevelMode"] == l]
+                else:
+                    view_name += "_levels=all"
+                node_view_name = f"nodegraph{view_name}"
+                edge_nodes = list(edge_view["Source"])
+                edge_nodes.extend(list(edge_view["Target"]))
+                node_view = node_df[node_df["Id"].isin(edge_nodes)]
+                edge_view_name = f"edgegraph{view_name}"
+                edge_view.to_csv(f"{dir}/{edge_view_name}.csv", index=False)
+                node_view.to_csv(f"{dir}/{node_view_name}.csv", index=False)
+
+                if u == None:
+                    combined_view = pd.merge(
+                        edge_view, node_view, left_on="Target", right_on="Id"
+                    )
+
+                    puzzle_ids = list(combined_view["PuzzleId"].unique())
+
+                    stats_by_pid = {}
+                    for pid in puzzle_ids:
+                        pg_view = combined_view.copy()
+                        pg_view = pg_view[pg_view["PuzzleId"] == pid]
+
+                        # % successful, % concede, % success but failed at least once, % concede while partially correct
+
+                        user_view = pg_view.copy()
+                        user_view.drop_duplicates(["UserId", "UserSuccess"])
+                        success_counts = user_view.value_counts("UserSuccess")
+                        if "success" not in success_counts:
+                            success_counts["success"] = 0
+                        if "partial" not in success_counts:
+                            success_counts["partial"] = 0
+                        if "failure" not in success_counts:
+                            success_counts["failure"] = 0
+
+                        user_move_correctness = pg_view.copy()
+                        user_move_correctness.drop_duplicates(
+                            ["UserId", "UserSuccess", "GridValue"]
+                        )
+
+                        success_and_incorrect = user_move_correctness[
+                            user_move_correctness["UserSuccess"] == "success"
+                        ]
+                        success_and_incorrect = success_and_incorrect[
+                            success_and_incorrect["GridValue"] == "incorrect"
+                        ]
+
+                        view_stats = {}
+                        if len(user_view) == 0:
+                            view_stats["pct_success"] = 0
+                            view_stats["pct_fail"] = 0
+                            view_stats["pct_partial"] = 0
+                            view_stats["pct_concede"] = 0
+                        else:
+                            view_stats["pct_success"] = success_counts["success"] / len(
+                                user_view
+                            )
+                            view_stats["pct_fail"] = success_counts["failure"] / len(
+                                user_view
+                            )
+                            view_stats["pct_partial"] = success_counts["partial"] / len(
+                                user_view
+                            )
+                            view_stats["pct_concede"] = (
+                                success_counts["failure"] + success_counts["partial"]
+                            ) / len(user_view)
+                        if success_counts["failure"] + success_counts["partial"] == 0:
+                            view_stats["pct_partial_of_concede"] = 0
+                        else:
+                            view_stats["pct_partial_of_concede"] = success_counts[
+                                "partial"
+                            ] / (success_counts["failure"] + success_counts["partial"])
+                        if success_counts["success"] == 0:
+                            view_stats["pct_had_error_of_success"] = 0
+                        else:
+                            view_stats["pct_had_error_of_success"] = (
+                                len(success_and_incorrect) / success_counts["success"]
+                            )
+
+                        all_view = pg_view.copy()
+                        success_view = all_view.copy()
+                        success_view = success_view[
+                            success_view["UserSuccess"] == "success"
+                        ]
+                        concede_view = all_view.copy()
+                        concede_view = concede_view[
+                            concede_view["UserSuccess"] != "success"
+                        ]
+
+                        first_move = all_view[all_view["MoveNumber"] == 0]
+                        second_move = all_view[all_view["MoveNumber"] == 1]
+                        third_move = all_view[all_view["MoveNumber"] == 2]
+
+                        third_move_users = third_move["UserId"]
+                        if len(third_move_users) != len(third_move_users.unique()):
+                            print("EXTRA MOVES WERE FOUND")
+                            print(pid)
+                            print(third_move_users)
+
+                        first_move = first_move[
+                            first_move["UserId"].isin(third_move_users)
+                        ]
+                        second_move = second_move[
+                            second_move["UserId"].isin(third_move_users)
+                        ]
+
+                        if len(first_move) != len(second_move) or len(second_move) != len(third_move):
+                            print("MOVES ARE NOT EQUAL")
+
+                            print(pid)
+                            print("first three moves")
+                            print(first_move[["UserId", "Target"]])
+                            print(second_move[["UserId", "Target"]])
+                            print(third_move[["UserId", "Target"]])
+
+                        first_move_counts = (
+                            first_move.value_counts("Target")
+                            .rename_axis("Target")
+                            .reset_index(name="target_first_move_count")
+                        )
+                        first_move_counts = pd.merge(
+                            first_move, first_move_counts, on="Target"
+                        )
+                        first_move_counts = first_move_counts[
+                            first_move_counts["target_first_move_count"] > 1
+                        ]
+
+                        second_move_counts = (
+                            second_move.value_counts("Target")
+                            .rename_axis("Target")
+                            .reset_index(name="target_second_move_count")
+                        )
+                        second_move_counts = pd.merge(
+                            second_move, second_move_counts, on="Target"
+                        )
+                        second_move_counts = second_move_counts[
+                            second_move_counts["target_second_move_count"] > 1
+                        ]
+
+                        third_move_counts = (
+                            third_move.value_counts("Target")
+                            .rename_axis("Target")
+                            .reset_index(name="target_third_move_count")
+                        )
+                        third_move_counts = pd.merge(
+                            third_move, third_move_counts, on="Target"
+                        )
+                        third_move_counts = third_move_counts[
+                            third_move_counts["target_third_move_count"] > 1
+                        ]
+
+                        last_move = all_view[all_view["MoveValue"] == ""]
+                        last_move_counts = (
+                            last_move.value_counts("Source")
+                            .rename_axis("Source")
+                            .reset_index(name="source_last_move_count")
+                        )
+                        last_move_counts = pd.merge(
+                            last_move, last_move_counts, on="Source"
+                        )
+                        last_move_counts = last_move_counts[
+                            last_move_counts["source_last_move_count"] > 1
+                        ]
+
+                        user_views = [
+                            ("success", success_view),
+                            ("concede", concede_view),
+                            ("all_users", all_view),
+                        ]
+                        for u_name, u_view in user_views:
+                            view_stats[u_name] = {}
+                            correct_states = u_view[u_view["GridValue"] == "correct"]
+                            incorrect_states = u_view[
+                                u_view["GridValue"] == "incorrect"
+                            ]
+                            real_moves = u_view[u_view["MoveValue"].isin(["correct", "incorrect", "neutral"])]
+                            correct_moves = u_view[u_view["MoveValue"] == "correct"]
+                            incorrect_moves = u_view[u_view["MoveValue"] == "incorrect"]
+                            neutral_moves = u_view[u_view["MoveValue"] == "neutral"]
+
+                            count_states = (
+                                real_moves.value_counts("UserId")
+                                .rename_axis("UserId")
+                                .reset_index(name="move_count")
+                            )
+                            count_correct_states = (
+                                correct_states.value_counts("UserId")
+                                .rename_axis("UserId")
+                                .reset_index(name="correct_state_count")
+                            )
+                            count_incorrect_states = (
+                                incorrect_states.value_counts("UserId")
+                                .rename_axis("UserId")
+                                .reset_index(name="incorrect_state_count")
+                            )
+
+                            count_correct_moves = (
+                                correct_moves.value_counts("UserId")
+                                .rename_axis("UserId")
+                                .reset_index(name="correct_move_count")
+                            )
+                            count_incorrect_moves = (
+                                incorrect_moves.value_counts("UserId")
+                                .rename_axis("UserId")
+                                .reset_index(name="incorrect_move_count")
+                            )
+                            count_neutral_moves = (
+                                neutral_moves.value_counts("UserId")
+                                .rename_axis("UserId")
+                                .reset_index(name="neutral_move_count")
+                            )
+
+                            user_counts = pd.merge(
+                                count_states,
+                                count_correct_states,
+                                on="UserId",
+                                how="outer",
+                            )
+                            user_counts = pd.merge(
+                                user_counts,
+                                count_incorrect_states,
+                                on="UserId",
+                                how="outer",
+                            )
+
+                            user_counts = pd.merge(
+                                user_counts,
+                                count_correct_moves,
+                                on="UserId",
+                                how="outer",
+                            )
+                            user_counts = pd.merge(
+                                user_counts,
+                                count_incorrect_moves,
+                                on="UserId",
+                                how="outer",
+                            )
+                            user_counts = pd.merge(
+                                user_counts,
+                                count_neutral_moves,
+                                on="UserId",
+                                how="outer",
+                            )
+
+                            user_counts = user_counts.fillna(0)
+
+                            user_counts["PctCorrectState"] = (
+                                user_counts["correct_state_count"]
+                                / user_counts["move_count"]
+                            )
+                            user_counts["PctIncorrectState"] = (
+                                user_counts["incorrect_state_count"]
+                                / user_counts["move_count"]
+                            )
+
+                            user_counts["PctCorrectMove"] = (
+                                user_counts["correct_move_count"]
+                                / user_counts["move_count"]
+                            )
+                            user_counts["PctIncorrectMove"] = (
+                                user_counts["incorrect_move_count"]
+                                / user_counts["move_count"]
+                            )
+                            user_counts["PctNeutralMove"] = (
+                                user_counts["neutral_move_count"]
+                                / user_counts["move_count"]
+                            )
+
+                            view_stats[u_name]["avg_pct_correct_state"] = user_counts[
+                                "PctCorrectState"
+                            ].mean()
+                            view_stats[u_name]["avg_pct_incorrect_state"] = user_counts[
+                                "PctIncorrectState"
+                            ].mean()
+
+                            view_stats[u_name]["avg_pct_correct_move"] = user_counts[
+                                "PctCorrectMove"
+                            ].mean()
+                            view_stats[u_name]["avg_pct_incorrect_move"] = user_counts[
+                                "PctIncorrectMove"
+                            ].mean()
+                            view_stats[u_name]["avg_pct_neutral_move"] = user_counts[
+                                "PctNeutralMove"
+                            ].mean()
+
+                            u_view = u_view.replace({
+                                "SolverValue": {
+                                    "contradiction": "unknown-incorrect",
+                                    "uncertain": "insight",
+                                    "overconfident": "insight",
+                                }
+                            })
+                            insight_moves = u_view[u_view["SolverValue"] == "insight"]
+                            unknown_correct_moves = u_view[
+                                u_view["SolverValue"] == "unknown-correct"
+                            ]
+                            unknown_incorrect_moves = u_view[
+                                u_view["SolverValue"] == "unknown-incorrect"
+                            ]
+                            unknown_neutral_moves = u_view[
+                                u_view["SolverValue"] == "unknown-neutral"
+                            ]
+                            insight_move_count = (
+                                insight_moves.value_counts("UserId")
+                                .rename_axis("UserId")
+                                .reset_index(name="insight_move_count")
+                            )
+                            unknown_correct_move_count = (
+                                unknown_correct_moves.value_counts("UserId")
+                                .rename_axis("UserId")
+                                .reset_index(name="unknown_correct_move_count")
+                            )
+                            unknown_incorrect_move_count = (
+                                unknown_incorrect_moves.value_counts("UserId")
+                                .rename_axis("UserId")
+                                .reset_index(name="unknown_incorrect_move_count")
+                            )
+                            unknown_neutral_move_count = (
+                                unknown_neutral_moves.value_counts("UserId")
+                                .rename_axis("UserId")
+                                .reset_index(name="unknown_neutral_move_count")
+                            )
+
+                            user_counts = pd.merge(
+                                user_counts,
+                                insight_move_count,
+                                on="UserId",
+                                how="outer",
+                            )
+                            user_counts = pd.merge(
+                                user_counts,
+                                unknown_correct_move_count,
+                                on="UserId",
+                                how="outer",
+                            )
+                            user_counts = pd.merge(
+                                user_counts,
+                                unknown_incorrect_move_count,
+                                on="UserId",
+                                how="outer",
+                            )
+                            user_counts = pd.merge(
+                                user_counts,
+                                unknown_neutral_move_count,
+                                on="UserId",
+                                how="outer",
+                            )
+
+                            user_counts["PctInsight"] = (
+                                user_counts["insight_move_count"]
+                                / user_counts["move_count"]
+                            )
+                            user_counts["PctUnknownCorrect"] = (
+                                user_counts["unknown_correct_move_count"]
+                                / user_counts["move_count"]
+                            )
+                            user_counts["PctUnknownIncorrect"] = (
+                                user_counts["unknown_incorrect_move_count"]
+                                / user_counts["move_count"]
+                            )
+                            user_counts["PctUnknownNeutral"] = (
+                                user_counts["unknown_neutral_move_count"]
+                                / user_counts["move_count"]
+                            )
+                            user_counts = user_counts.fillna(0)
+
+                            view_stats[u_name]["avg_pct_insight"] = user_counts[
+                                "PctInsight"
+                            ].mean()
+                            view_stats[u_name]["avg_pct_unknown_correct"] = user_counts[
+                                "PctUnknownCorrect"
+                            ].mean()
+                            view_stats[u_name]["avg_pct_unknown_incorrect"] = (
+                                user_counts["PctUnknownIncorrect"].mean()
+                            )
+                            view_stats[u_name]["avg_pct_unknown_neutral"] = user_counts[
+                                "PctUnknownNeutral"
+                            ].mean()
+
+                            curr_users = u_view["UserId"].unique()
+                            curr_num = len(curr_users)
+                            if curr_num == 0:
+                                view_stats[u_name]["pct_users_share_first_move"] = 0
+                                view_stats[u_name]["pct_users_share_second_move"] = 0
+                                view_stats[u_name]["pct_users_share_third_move"] = 0
+                                view_stats[u_name]["pct_users_share_last_move"] = 0
+                                continue
+                        
+                            curr_first_moves = first_move_counts[first_move_counts["UserId"].isin(curr_users)]
+                            first_users = curr_first_moves["UserId"]
+
+                            view_stats[u_name]["pct_users_share_first_move"] = (
+                                len(first_users) / curr_num
+                            )
+
+                            curr_second_moves = second_move_counts[
+                                second_move_counts["UserId"].isin(first_users)
+                            ]
+                            second_users = curr_second_moves["UserId"]
+
+                            view_stats[u_name]["pct_users_share_second_move"] = (
+                                len(second_users) / curr_num
+                            )
+
+                            curr_third_moves = third_move_counts[
+                                third_move_counts["UserId"].isin(second_users)
+                            ]
+                            third_users = curr_third_moves["UserId"]
+                            
+                            view_stats[u_name]["pct_users_share_third_move"] = (
+                                len(third_users) / curr_num
+                            )
+
+                            curr_last_moves = last_move_counts[last_move_counts["UserId"].isin(curr_users)]
+                            last_users = curr_last_moves["UserId"]
+                            view_stats[u_name]["pct_users_share_last_move"] = (
+                                len(last_users) / curr_num
+                            )
+
+                        for sname, stat in view_stats.items():
+                            if sname not in ["success", "concede", "all_users"]:
+                                if pd.isna(stat):
+                                    view_stats[sname] = 0
+                            else:
+                                for us_name, u_stat in stat.items():
+                                    if pd.isna(u_stat):
+                                        view_stats[sname][us_name] = 0
+                        stats_by_pid[pid] = view_stats
+
+                    puzzle_groups = ["all", "spoke", "hub", "help"]
+
+                    stats_by_group = {}
+                    for group_name in puzzle_groups:
+                        group_stat_lists = {}
+
+                        for pid, stats in stats_by_pid.items():
+                            if pid == None or (group_name != "all" and group_name not in pid):
+                                continue
+                            for sname, stat in stats.items():
+                                if sname not in ["success", "concede", "all_users"]:
+                                    if sname not in group_stat_lists:
+                                        group_stat_lists[sname] = []
+                                    group_stat_lists[sname].append(stat)
+                                else:
+                                    if sname not in group_stat_lists:
+                                        group_stat_lists[sname] = {}
+                                    for us_name, u_stat in stat.items():
+                                        if us_name not in group_stat_lists[sname]:
+                                            group_stat_lists[sname][us_name] = []
+                                        group_stat_lists[sname][us_name].append(u_stat)
+                        group_stats = {}
+                        for sname, statlist in group_stat_lists.items():
+                            if sname not in ["success", "concede", "all_users"]:
+                                group_stats[sname] = mean(statlist)
+                            else:
+                                group_stats[sname] = {}
+                                for us_name, u_statlist in statlist.items():
+                                    group_stats[sname][us_name] = mean(u_statlist)
+
+                        stats_by_group[group_name] = group_stats
+
+                    stats = {
+                        "endstate": "all",
+                        "prompts": "all",
+                        "levels": "all",
+                        "stats_by_pid": stats_by_pid,
+                        "stats_by_group": stats_by_group,
+                    }
+                    if u != None:
+                        stats["endstate"] = u
+                    if p != None:
+                        stats["prompts"] = p
+                    if l != None:
+                        stats["levels"] = l
+
+                    with open(f"{dir}/stats{view_name}.json", "w") as f:
+                        json.dump(stats, f)
 
 
 if __name__ == "__main__":
-    node_df = pd.DataFrame(columns=["Id", "PuzzleId", "State", "Value", "MoveIds"])
+    node_df = pd.DataFrame(columns=["Id", "PuzzleId", "State", "GridValue", "MoveIds"])
     edge_df = pd.DataFrame(
         columns=[
             "Source",
             "Target",
             "UserId",
+            "MoveNumber",
             "UserSuccess",
             "SolverValue",
-            "Value",
+            "MoveValue",
             "PromptMode",
             "LevelMode",
         ]
     )
     state_to_node_id = {}
     label_to_grid = {}
-    vr_dir = "user_data/vr_study"
-    vr_users = [f.name for f in os.scandir("user_data/vr_study") if f.is_dir()]
+    # vr_dir = "user_data/vr_study"
+    # vr_users = [f.name for f in os.scandir("user_data/vr_study") if f.is_dir()]
     # for user in vr_users:
     #     print(user)
     #     userfile = f"{vr_dir}/{user}/{user}_PuzzleLogs.csv"
@@ -1121,30 +1724,44 @@ if __name__ == "__main__":
     #             "vr",
     #         )
 
-    online_dir = "user_data/online_puzzle_study"
-    clean_data = load_online_data(online_dir)
-    for user_id, user_data in clean_data.items():
-        print(user_id)
-        for puzzle_id, session in user_data["puzzles"].items():
-            print(puzzle_id)
-            recovered_moves = recover_moves(
-                session["puzzle"],
-                session["hints"],
-                user_id,
-                user_data["promptMode"],
-                user_data["levelMode"],
-                session["moves"],
-                session["success"],
-                state_to_node_id,
-                node_df,
-                edge_df,
-            )
-            output_path = (
-                f"{online_dir}/recovered_trees/{user_id}/recovered_tree_{puzzle_id}.txt"
-            )
-            output_file = Path(output_path)
-            output_file.parent.mkdir(exist_ok=True, parents=True)
-            move_file = open(output_path, "w")
-            print_moves(move_file, session["puzzle"], session["hints"], recovered_moves)
-    node_df.to_csv("user_data/nodegraph.csv", index=False)
-    edge_df.to_csv("user_data/edgegraph.csv", index=False)
+    # online_dir = "user_data/online_puzzle_study"
+    # clean_data, action_json = load_online_data(online_dir)
+    # session_outcome_json = {}
+    # for user_id, user_data in clean_data.items():
+    #     print(user_id)
+    #     for puzzle_id, session in user_data["puzzles"].items():
+    #         print(puzzle_id)
+    #         recovered_moves = recover_moves(
+    #             puzzle_id,
+    #             session["puzzle"],
+    #             session["hints"],
+    #             user_id,
+    #             user_data["promptMode"],
+    #             user_data["levelMode"],
+    #             session["moves"],
+    #             session["success"],
+    #             state_to_node_id,
+    #             node_df,
+    #             edge_df,
+    #             action_json,
+    #             session["session_id"],
+    #             session_outcome_json,
+    #         )
+    #         output_path = (
+    #             f"{online_dir}/recovered_trees/{user_id}/recovered_tree_{puzzle_id}.txt"
+    #         )
+    #         output_file = Path(output_path)
+    #         output_file.parent.mkdir(exist_ok=True, parents=True)
+    #         move_file = open(output_path, "w")
+    #         print_moves(move_file, session["puzzle"], session["hints"], recovered_moves)
+    # with open(f"{online_dir}/updated_action_data.json", "w") as f:
+    #     json.dump(action_json, f)
+    # with open(f"{online_dir}/session_outcome.json", "w") as f:
+    #     json.dump(session_outcome_json, f)
+
+    dir = "user_data/online_puzzle_study"
+    # edge_df.to_csv(f"{dir}/edgegraph.csv", index=False)
+    # node_df.to_csv(f"{dir}/nodegraph.csv", index=False)
+    edge_df = pd.read_csv(f"{dir}/edgegraph.csv")
+    node_df = pd.read_csv(f"{dir}/nodegraph.csv")
+    gen_data_views(dir, edge_df, node_df)
