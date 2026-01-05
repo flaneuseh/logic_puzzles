@@ -1,13 +1,6 @@
-from LogicPuzzles import generate_hint, Puzzle , Category
+# from LogicPuzzles import generate_hint, Puzzle , Category
 import random 
 from string import Template
-#random.seed(42)
-suspects = Category("suspect", ["Ms. Scarlet", "Ms. White", "Col Mustard", "Prof Plum"], False)
-weapons = Category("weapon", ["Knife", "Rope", "Candle Stick", "Wrench"], False)
-rooms = Category("room", ["Ball room", "Living Room", "Kitchen", "Study"], False)
-time = Category("hour", ["1:00 pm", "2:00 pm", "3:00 pm", "4:00 pm"], True)
-
-puzzle = Puzzle([suspects, weapons, time])
 
 from copy import deepcopy
 
@@ -333,44 +326,50 @@ def deserialized_hint_grammar(hint, categories):
         hint[kind] = [hint1, hint2]
     return hint
 
+#random.seed(42)
+# suspects = Category("suspect", ["Ms. Scarlet", "Ms. White", "Col Mustard", "Prof Plum"], False)
+# weapons = Category("weapon", ["Knife", "Rope", "Candle Stick", "Wrench"], False)
+# rooms = Category("room", ["Ball room", "Living Room", "Kitchen", "Study"], False)
+# time = Category("hour", ["1:00 pm", "2:00 pm", "3:00 pm", "4:00 pm"], True)
 
-if __name__ == "__main__":
-    """is_hint = generate_hint(puzzle)
-    print(is_hint)
-    print(hint_to_english(is_hint))
-    print("")
+# puzzle = Puzzle([suspects, weapons, time])
+# if __name__ == "__main__":
+#     """is_hint = generate_hint(puzzle)
+#     print(is_hint)
+#     print(hint_to_english(is_hint))
+#     print("")
 
-    compond_or_hint = generate_hint(puzzle)
-    print(hint_to_english(compond_or_hint))
-    print("")
+#     compond_or_hint = generate_hint(puzzle)
+#     print(hint_to_english(compond_or_hint))
+#     print("")
 
-    before_hint = generate_hint(puzzle)
-    print(before_hint)
-    print(hint_to_english(before_hint))
-    print("")
+#     before_hint = generate_hint(puzzle)
+#     print(before_hint)
+#     print(hint_to_english(before_hint))
+#     print("")
 
-    hint = generate_hint(puzzle)
-    hint = generate_hint(puzzle)
+#     hint = generate_hint(puzzle)
+#     hint = generate_hint(puzzle)
 
-    not_hint = generate_hint(puzzle)
-    print(not_hint)
-    print(hint_to_english(not_hint))
-    print("")
+#     not_hint = generate_hint(puzzle)
+#     print(not_hint)
+#     print(hint_to_english(not_hint))
+#     print("")
 
-    hint = generate_hint(puzzle)
-    hint = generate_hint(puzzle)
-    hint = generate_hint(puzzle)
-    hint = generate_hint(puzzle)
-    hint = generate_hint(puzzle)
-    hint = generate_hint(puzzle)
-    hint = generate_hint(puzzle)
-    hint = generate_hint(puzzle)
+#     hint = generate_hint(puzzle)
+#     hint = generate_hint(puzzle)
+#     hint = generate_hint(puzzle)
+#     hint = generate_hint(puzzle)
+#     hint = generate_hint(puzzle)
+#     hint = generate_hint(puzzle)
+#     hint = generate_hint(puzzle)
+#     hint = generate_hint(puzzle)
 
-    simple_or_hint = generate_hint(puzzle)
-    print(simple_or_hint)
-    print(hint_to_english(simple_or_hint))
-    print("")"""
+#     simple_or_hint = generate_hint(puzzle)
+#     print(simple_or_hint)
+#     print(hint_to_english(simple_or_hint))
+#     print("")"""
 
-    for i in range(10):
-        hint = generate_hint(puzzle)
-        print(hint_to_english(hint, grammar_dict=grammar_dict))
+#     for i in range(10):
+#         hint = generate_hint(puzzle)
+#         print(hint_to_english(hint, grammar_dict=grammar_dict))
