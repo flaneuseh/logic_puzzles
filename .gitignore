@@ -161,3 +161,4 @@ cython_debug/
 
 */user_data/*
 .DS_store
+*/UserData/*
