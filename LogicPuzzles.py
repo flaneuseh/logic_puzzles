@@ -736,7 +736,6 @@ class Insight(Enum):
     TRANS_SETS = 18  # A and B don't share any possibilities; A != B
     REPAIR = 100  # Repair broken puzzle
 
-
 # def l_get_prerequisites(insights):
 #     prerequisites = set()
 #     for insight in insights:
@@ -2232,7 +2231,7 @@ if __name__ == "__main__":
 
 
 # %% colab={"base_uri": "https://localhost:8080/", "height": 143} id="suJQHIxpSFEZ" outputId="0f9190cf-07af-4e22-8006-46fc71cde693"
-def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
+def apply_before(puzzle, terms, forbidden_insights=set(), slow=False, allow_uncertain_moves=True):
     """
     apply the before rule to the puzzle
     puzzle: the current state of the grid
@@ -2464,7 +2463,7 @@ def apply_before(puzzle, terms, forbidden_insights=set(), slow=False):
                     if "O" in o_step["move_diff"].print_grid():
                         o_step["insights"].add(Insight.APPLY_BEFORE_UNDEFINED_SPOTS)
                         steps.append(o_step)
-            for i in pos_aft_index:
+            for i in pos_aft_index and allow_uncertain_moves:
                 # Make an uncertain mark for possible answers.
                 sy = puzzle.get_symbol(aft_cat, num_cat, aft_ent, num_cat.entities[i])
                 if sy == "*":
