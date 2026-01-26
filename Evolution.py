@@ -30,18 +30,10 @@ ultraimport("__dir__/./LogicPuzzles.py", package="main")
 # import import_ipynb
 from main.LogicPuzzles import (
     Puzzle,
-    generate_hint,
-    str_hint,
+    Grammar,
     Category,
-    apply_hint,
-    find_openings,
-    find_transitives,
-    ALL_INSIGHTS,
-    repair,
+    Solver,
     Insight,
-    get_needed,
-    apply_hints,
-    can_solve_without_forbidden
 )
 
 # from DataVisualization import plot_history
@@ -85,6 +77,7 @@ HINT_VALUES = {
     "compound_or": 0.1,
 }
 
+
 # %%
 class HintSet:
     def __init__(
@@ -95,25 +88,28 @@ class HintSet:
         self.required_insights = required_insights
         self.require_insight = len(self.required_insights) > 0
         self.forbidden_insights = forbidden_insights
+        solver = Solver()
         self.completed_puzzle, self.valid, self.loops, self.solver_insights = (
-            apply_hints(
+            solver.apply_hints(
                 self.puzzle,
                 self.non_duplicates(),
             )
         )
 
-        self.insights = set()
-        if self.valid and self.completed_puzzle.is_complete():
-            self.insights = get_needed(self.puzzle, self.hints)
+        # self.insights = set()
+        # if self.valid and self.completed_puzzle.is_complete():
+        #     self.insights = Solver.get_needed(self.puzzle, self.hints)
 
     def follows_insight_requirements(self):
-        # Should be solvable without the forbidden insights, 
+        # Should be solvable without the forbidden insights,
         # and should not be solvable without the required insights
         if not self.valid or not self.completed_puzzle.is_complete():
             return True
-        return can_solve_without_forbidden(
-            self.puzzle, self.hints, self.forbidden_insights
-        ) and len(self.insights & self.required_insights) == len(self.required_insights) and len(self.insights & self.forbidden_insights) == 0
+        forbidden_solver = Solver(self.forbidden_insights)
+        required_solver = Solver(self.required_insights)
+        return forbidden_solver.can_solve_without_forbidden(
+            self.puzzle, self.hints
+        ) and not required_solver.can_solve_without_forbidden(self.puzzle, self.hints)
 
     def get_duplicates(self):
         english_dict = {}
@@ -146,46 +142,51 @@ class HintSet:
                 non_duplicates.append(hint)
                 english_hints.append(english)
 
+        solver = Solver()
         final_puzzle_without_duplicates, valid_without_duplicates, _, _ = (
-            apply_hints(
+            solver.apply_hints(
                 self.puzzle,
                 non_duplicates,
             )
         )
-        final_puzzle_with_duplicates, valid_with_duplicates, _, _ = (
-            apply_hints(
+        final_puzzle_with_duplicates, valid_with_duplicates, _, _ = solver.apply_hints(
+            self.puzzle,
+            self.hints,
+        )
+        print("--------------------------------------")
+        print("original hints ", [hint_to_english(hint) for hint in self.hints])
+        print("non duplicates: ", [hint_to_english(hint) for hint in non_duplicates])
+        print("with dupes complete ", final_puzzle_with_duplicates.is_complete())
+        print("without dupes complete ", final_puzzle_without_duplicates.is_complete())
+        print("with dupes grid")
+        print(final_puzzle_with_duplicates.print_grid())
+        print("without dupes grid")
+        print(final_puzzle_without_duplicates.print_grid())
+        print("with dupes valid ", valid_with_duplicates)
+        print("without dupes valid ", valid_without_duplicates)
+
+        solver = Solver()
+        if valid_with_duplicates != valid_without_duplicates or valid_with_duplicates and final_puzzle_with_duplicates.is_complete() != final_puzzle_without_duplicates.is_complete():
+            print("WITHOUT DUPES SOLVER")
+            solver.apply_hints(
+                self.puzzle,
+                non_duplicates,
+                print_soln = True
+            )
+            print("WITH DUPES SOLVER")
+            solver.apply_hints(
                 self.puzzle,
                 self.hints,
+                print_soln = True
             )
-        )
-        # print("--------------------------------------")
-        # print("original hints ", [hint_to_english(hint) for hint in self.hints])
-        # print("non duplicates: ", [hint_to_english(hint) for hint in non_duplicates])
-        # print("with dupes complete ", final_puzzle_with_duplicates.is_complete())
-        # print("without dupes complete ", final_puzzle_without_duplicates.is_complete())
-        # print("with dupes grid")
-        # print(final_puzzle_with_duplicates.print_grid())
-        # print("without dupes grid")
-        # print(final_puzzle_without_duplicates.print_grid())
-        # print("with dupes valid ", valid_with_duplicates)
-        # print("without dupes valid ", valid_without_duplicates)
-        
-        # if valid_with_duplicates != valid_without_duplicates or valid_with_duplicates and final_puzzle_with_duplicates.is_complete() != final_puzzle_without_duplicates.is_complete():
-        #     print("WITHOUT DUPES SOLVER")
-        #     apply_hints(
-        #         self.puzzle,
-        #         non_duplicates,
-        #         print_soln = True
-        #     )
-        #     print("WITH DUPES SOLVER")
-        #     apply_hints(
-        #         self.puzzle,
-        #         self.hints,
-        #         print_soln = True
-        #     )
-        assert(valid_with_duplicates == valid_without_duplicates)
+        assert valid_with_duplicates == valid_without_duplicates
         if valid_with_duplicates:
-            assert(final_puzzle_with_duplicates.is_complete() == final_puzzle_without_duplicates.is_complete())
+            complete_with_duplicates = final_puzzle_with_duplicates.is_complete()
+            complete_without_duplicates = final_puzzle_without_duplicates.is_complete()
+            assert (
+                complete_with_duplicates
+                == complete_without_duplicates
+            ), f"with duplicates: {complete_with_duplicates}; without: {complete_without_duplicates}. Puzzle: {english_hints}"
 
         return non_duplicates
 
@@ -193,7 +194,7 @@ class HintSet:
         hint_copy = self.hints[:]
         roll = random.random()
         if ((roll < 0.45) and len(hint_copy) <= 20) or len(hint_copy) <= 0:
-            new_hint = generate_hint(self.puzzle)
+            new_hint = Grammar.generate_hint(self.puzzle)
             hint_copy.append(new_hint)
         elif roll < 0.90:
             index = random.randint(0, len(hint_copy) - 1)
@@ -293,8 +294,12 @@ class HintSet:
     def feasibility(self):
         complete, valid = self.completed_puzzle.percent_complete()
         # violations = self.completed_puzzle.num_violations()
-        #return (0.5 * complete) + (0.5 * valid)
-        if not self.require_insight or not valid or not self.completed_puzzle.is_complete():
+        # return (0.5 * complete) + (0.5 * valid)
+        if (
+            not self.require_insight
+            or not valid
+            or not self.completed_puzzle.is_complete()
+        ):
             return (0.5 * complete) + (0.5 * valid)
         else:
             return (
@@ -338,7 +343,10 @@ class HintSet:
         # return 1 - (len(self.hints) / 20)
 
         # Fn 5: optimize using insights
-        return (0.45 * min(num_loops, 10) / 10) + (0.45 * (1 - (len(self.hints) / 20)) + .1 * self.follows_insight_requirements())
+        return (0.45 * min(num_loops, 10) / 10) + (
+            0.45 * (1 - (len(self.hints) / 20))
+            + 0.1 * self.follows_insight_requirements()
+        )
 
 
 class History:
@@ -364,7 +372,7 @@ class History:
 # %%
 def random_hint_set(puzzle, required_insights=set(), forbidden_insights=set()):
     num = random.randint(1, 5)
-    hints = [generate_hint(puzzle) for i in range(num)]
+    hints = [Grammar.generate_hint(puzzle.categories) for i in range(num)]
     return HintSet(hints, puzzle, required_insights, forbidden_insights)
 
 
@@ -484,13 +492,13 @@ def evolve(
         feasible = new_feasible
         infeasible = new_infeasible
     for child in feasible:
-        assert len(child.insights & required_insights) == len(
-            required_insights
-        ), "insights: {} does not include all of: {}".format(
-            child.insights, required_insights
-        )
-        assert can_solve_without_forbidden(
-            child.puzzle, child.hints, child.forbidden_insights
+        solver = Solver(required_insights)
+        assert not solver.can_solve_without_forbidden(
+            child.puzzle, child.hints
+        ), "can solve without required insights: {}".format(required_insights)
+        solver = Solver(forbidden_insights)
+        assert solver.can_solve_without_forbidden(
+            child.puzzle, child.hints
         ), "can't solve without forbidden insights {}".format(forbidden_insights)
     return feasible, infeasible, history
 
@@ -504,7 +512,9 @@ if __name__ == "__main__":
 
     puzzle = Puzzle([suspects, weapons, rooms, time])
 
-    pop = evolve(puzzle, 100, 50, 0.2, 1, 0.5, 2, required_insights=ALL_INSIGHTS)
+    pop = evolve(
+        puzzle, 100, 50, 0.2, 1, 0.5, 2, required_insights=Insight.ALL_INSIGHTS
+    )
 
     file = open("InsightExp/pop.p", "wb")
     pickle.dump(pop, file)

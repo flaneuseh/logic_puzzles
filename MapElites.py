@@ -1,26 +1,23 @@
 # %%
 import random
+import ultraimport
 
 # Imports Baby
 # import import_ipynb
 from copy import deepcopy
-from LogicPuzzles import (
+ultraimport("__dir__/Evolution.py", package="main")
+from main.LogicPuzzles import (
     Puzzle,
-    generate_hint,
-    str_hint,
     Category,
-    apply_hint,
-    find_openings,
-    find_transitives,
 )
-from HintToEnglish import hint_to_english
+from main.HintToEnglish import hint_to_english
 
 # from DataVisualization import plot_history
 import math
 import numpy.random as npr
 import pickle
 from itertools import combinations
-from Evolution import HintSet, random_hint_set
+from main.Evolution import random_hint_set
 
 
 # %%

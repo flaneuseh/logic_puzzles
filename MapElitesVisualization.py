@@ -4,8 +4,10 @@ import matplotlib as mpl
 import seaborn as sns
 import numpy as np
 import json
-from HintToEnglish import hint_to_english 
-from HintSetToJson import category_to_json, hintset_to_json
+import ultraimport
+ultraimport("__dir__/LogicPuzzles.py", package="main")
+from main.HintToEnglish import hint_to_english 
+from main.HintSetToJson import hintset_to_json
 
 def heat_map(grid, reverse, title = "", xlabel = "", ylabel = "", colorbar_label="", vmin = 0):
     

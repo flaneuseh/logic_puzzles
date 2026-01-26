@@ -1,7 +1,9 @@
 import jsonpickle
 import random
+import ultraimport
 
-from MapElites import evolve
+ultraimport("__dir__/MapElites.py", package="main")
+from main.MapElites import evolve
 
 
 def map_elite_generate(
