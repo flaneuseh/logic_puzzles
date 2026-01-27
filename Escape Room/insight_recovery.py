@@ -177,12 +177,12 @@ def get_composite_moves(puzzle_id, curr_state, solution, moves):
         diff_loc, diff_sy = c_move["simple_diff"]
         alt_moves = {}
         if diff_sy == "O":
-            # alt_moves["X"] = "contradiction"
+            alt_moves["X"] = "contradiction"
             alt_moves["Y"] = "uncertain"
-            # alt_moves["N"] = "contradiction"
+            alt_moves["N"] = "contradiction"
         elif diff_sy == "X":
-            # alt_moves["O"] = "contradiction"
-            # alt_moves["Y"] = "contradiction"
+            alt_moves["O"] = "contradiction"
+            alt_moves["Y"] = "contradiction"
             alt_moves["N"] = "uncertain"
         elif diff_sy == "Y":
             alt_moves["O"] = "overconfident"
@@ -570,8 +570,8 @@ def recover_moves(
                 if move_idx >= 0:
                     action_json[session_id][move_idx]["insight"] = insight_str
                 move_id = f"{type}:{hint}:{insight_str}"
-            else:
-                move_id = f"{type}:{hint}:unknown"
+                # else:
+                #     move_id = f"{type}:{hint}:unknown"
 
         curr_grid_value = "correct"
         if repair(result, solution, False):
@@ -1846,51 +1846,51 @@ if __name__ == "__main__":
     )
     state_to_node_id = {}
     label_to_grid = {}
-    vr_dir = "user_data/vr_study"
-    vr_users = [f.name for f in os.scandir("user_data/vr_study") if f.is_dir()]
-    session_outcome_json = {}
-    action_json = {}
-    for user in vr_users:
-        print(user)
-        userfile = f"{vr_dir}/{user}/{user}_PuzzleLogs.csv"
-        raw_df = load_vr_data(userfile)
+    # vr_dir = "user_data/vr_study"
+    # vr_users = [f.name for f in os.scandir("user_data/vr_study") if f.is_dir()]
+    # session_outcome_json = {}
+    # action_json = {}
+    # for user in vr_users:
+    #     print(user)
+    #     userfile = f"{vr_dir}/{user}/{user}_PuzzleLogs.csv"
+    #     raw_df = load_vr_data(userfile)
 
-        clean_data = clean_vr_data(raw_df)
-        for puzzle_id, session in clean_data.items():
-            session_id = f"{user}:{puzzle_id}"
-            action_json[session_id] = action_json_movelist_from_moves(session["moves"])
-            recovered_moves = recover_moves(
-                puzzle_id,
-                session["puzzle"],
-                session["hints"],
-                user,
-                "",
-                "",
-                session["moves"],
-                session["success"],
-                state_to_node_id,
-                node_df,
-                edge_df,
-                action_json,
-                session_id,
-                session_outcome_json,
-            )
-            output_path = f"{vr_dir}/{user}/recovered_tree_{puzzle_id}.txt"
-            output_file = Path(output_path)
-            output_file.parent.mkdir(exist_ok=True, parents=True)
-            move_file = open(output_path, "w")
-            print_moves(move_file, session["puzzle"], session["hints"], recovered_moves)
+    #     clean_data = clean_vr_data(raw_df)
+    #     for puzzle_id, session in clean_data.items():
+    #         session_id = f"{user}:{puzzle_id}"
+    #         action_json[session_id] = action_json_movelist_from_moves(session["moves"])
+    #         recovered_moves = recover_moves(
+    #             puzzle_id,
+    #             session["puzzle"],
+    #             session["hints"],
+    #             user,
+    #             "",
+    #             "",
+    #             session["moves"],
+    #             session["success"],
+    #             state_to_node_id,
+    #             node_df,
+    #             edge_df,
+    #             action_json,
+    #             session_id,
+    #             session_outcome_json,
+    #         )
+    #         output_path = f"{vr_dir}/{user}/recovered_tree_{puzzle_id}.txt"
+    #         output_file = Path(output_path)
+    #         output_file.parent.mkdir(exist_ok=True, parents=True)
+    #         move_file = open(output_path, "w")
+    #         print_moves(move_file, session["puzzle"], session["hints"], recovered_moves)
 
-    dir = "user_data/vr_study"
-    edge_df.to_csv(f"{vr_dir}/edgegraph.csv", index=False)
-    node_df.to_csv(f"{vr_dir}/nodegraph.csv", index=False)
-    with open(f"{vr_dir}/updated_action_data.json", "w") as f:
-        json.dump(action_json, f)
-    with open(f"{dir}/session_outcome.json", "w") as f:
-        json.dump(session_outcome_json, f)
-    edge_df = pd.read_csv(f"{vr_dir}/edgegraph.csv")
-    node_df = pd.read_csv(f"{vr_dir}/nodegraph.csv")
-    gen_data_views(vr_dir, edge_df, node_df)
+    # dir = "user_data/vr_study"
+    # edge_df.to_csv(f"{vr_dir}/edgegraph.csv", index=False)
+    # node_df.to_csv(f"{vr_dir}/nodegraph.csv", index=False)
+    # with open(f"{vr_dir}/updated_action_data.json", "w") as f:
+    #     json.dump(action_json, f)
+    # with open(f"{dir}/session_outcome.json", "w") as f:
+    #     json.dump(session_outcome_json, f)
+    # edge_df = pd.read_csv(f"{vr_dir}/edgegraph.csv")
+    # node_df = pd.read_csv(f"{vr_dir}/nodegraph.csv")
+    # gen_data_views(vr_dir, edge_df, node_df)
 
     online_dir = "user_data/online_puzzle_study"
     clean_data, action_json = load_online_data(online_dir)
