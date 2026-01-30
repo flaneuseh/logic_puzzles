@@ -520,11 +520,18 @@ class Puzzle:
         and there are no truth violations
         """
         if self.is_valid():
-            for grid in self.grids.values():
-                if not self._grid_is_complete(grid):
-                    return False
+            solved_lr = True
+            solved_tb = True
+            for cat1 in self.left_right:
+                for cat2 in self.top_bottom:
+                    grid_lr = self.get_grid(cat1, cat2)
+                    grid_tb = self.get_grid(cat2, cat1)
+                    if grid_lr and not self._grid_is_complete(grid_lr):
+                        solved_lr = False
+                    if grid_tb and not self._grid_is_complete(grid_tb):
+                        solved_tb = False
 
-            return True
+            return (solved_lr or solved_tb)
         else:
             return False
 
@@ -872,15 +879,17 @@ class Grammar:
                 filled_word[key] = new_terms
         return filled_word
 
-    def generate_hint(categories):
+    def generate_hint(categories, depth = 0):
         """
         given a puzzle generate a random, valid hint
         """
         word = Grammar.generate_word(Grammar.GRAMMAR)
         try:
             return Grammar.fill_in_word(word, categories)["hint"]
-        except:
-            return Grammar.generate_hint(categories)
+        except Exception as e:
+            if depth > 100:
+                raise e
+            return Grammar.generate_hint(categories, depth+1)
 
     def str_hint(hint, str_so_far=""):
         if isinstance(hint, dict):
@@ -2650,27 +2659,26 @@ class Solver:
             complete = True
             return applied, is_valid, complete, insights, steps
 
-        if currentA == currentB:
-            if currentA in ["O", "X"]:
-                # Both can't be true or false, something has gone wrong.
-                is_valid = False
-                complete = True
-                repair_steps = []
-                move_applied, move_steps = self.uncross_repair(
-                    update_puzzle, catA1, catA2, entA1, entA2
-                )
-                applied = applied or move_applied
-                if move_applied:
-                    repair_steps.extend(move_steps)
-                move_applied, move_steps = self.uncross_repair(
-                    update_puzzle, catB1, catB2, entB1, entB2
-                )
-                applied = applied or move_applied
-                if move_applied:
-                    repair_steps.extend(move_steps)
-                    for step in repair_steps:
-                        step["insights"].add(Insight.APPLY_OR)
-                steps.extend(repair_steps)
+        if currentA == currentB and currentA in ["O", "X"]:
+            # Both can't be true or false, something has gone wrong.
+            is_valid = False
+            complete = True
+            repair_steps = []
+            move_applied, move_steps = uncross_repair(
+                update_puzzle, catA1, catA2, entA1, entA2
+            )
+            applied = applied or move_applied
+            if move_applied:
+                repair_steps.extend(move_steps)
+            move_applied, move_steps = uncross_repair(
+                update_puzzle, catB1, catB2, entB1, entB2
+            )
+            applied = applied or move_applied
+            if move_applied:
+                repair_steps.extend(move_steps)
+                for step in repair_steps:
+                    step["insights"].add(Insight.APPLY_OR)
+            steps.extend(repair_steps)
 
         elif (
             currentA in ["O", "X"]

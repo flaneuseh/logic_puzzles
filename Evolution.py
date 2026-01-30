@@ -105,11 +105,17 @@ class HintSet:
         # and should not be solvable without the required insights
         if not self.valid or not self.completed_puzzle.is_complete():
             return True
-        forbidden_solver = Solver(self.forbidden_insights)
-        required_solver = Solver(self.required_insights)
-        return forbidden_solver.can_solve_without_forbidden(
-            self.puzzle, self.hints
-        ) and not required_solver.can_solve_without_forbidden(self.puzzle, self.hints)
+        can_solve_without_required = False
+        can_solve_without_forbidden = True
+        if len(self.required_insights) > 0:
+            required_solver = Solver(self.required_insights | self.forbidden_insights)
+            can_solve_without_required = required_solver.can_solve_without_forbidden(self.puzzle, self.hints)
+        if len(self.forbidden_insights) > 0:
+            forbidden_solver = Solver(self.forbidden_insights)
+            can_solve_without_forbidden = forbidden_solver.can_solve_without_forbidden(
+                self.puzzle, self.hints
+            )
+        return not can_solve_without_required and can_solve_without_forbidden
 
     def get_duplicates(self):
         english_dict = {}
@@ -153,32 +159,10 @@ class HintSet:
             self.puzzle,
             self.hints,
         )
-        print("--------------------------------------")
-        print("original hints ", [hint_to_english(hint) for hint in self.hints])
-        print("non duplicates: ", [hint_to_english(hint) for hint in non_duplicates])
-        print("with dupes complete ", final_puzzle_with_duplicates.is_complete())
-        print("without dupes complete ", final_puzzle_without_duplicates.is_complete())
-        print("with dupes grid")
-        print(final_puzzle_with_duplicates.print_grid())
-        print("without dupes grid")
-        print(final_puzzle_without_duplicates.print_grid())
-        print("with dupes valid ", valid_with_duplicates)
-        print("without dupes valid ", valid_without_duplicates)
 
         solver = Solver()
         if valid_with_duplicates != valid_without_duplicates or valid_with_duplicates and final_puzzle_with_duplicates.is_complete() != final_puzzle_without_duplicates.is_complete():
-            print("WITHOUT DUPES SOLVER")
-            solver.apply_hints(
-                self.puzzle,
-                non_duplicates,
-                print_soln = True
-            )
-            print("WITH DUPES SOLVER")
-            solver.apply_hints(
-                self.puzzle,
-                self.hints,
-                print_soln = True
-            )
+            raise f"Puzzle with and without duplicates are inequivalent: {self.hints} vs {non_duplicates}"
         assert valid_with_duplicates == valid_without_duplicates
         if valid_with_duplicates:
             complete_with_duplicates = final_puzzle_with_duplicates.is_complete()
@@ -194,7 +178,7 @@ class HintSet:
         hint_copy = self.hints[:]
         roll = random.random()
         if ((roll < 0.45) and len(hint_copy) <= 20) or len(hint_copy) <= 0:
-            new_hint = Grammar.generate_hint(self.puzzle)
+            new_hint = Grammar.generate_hint(self.puzzle.categories)
             hint_copy.append(new_hint)
         elif roll < 0.90:
             index = random.randint(0, len(hint_copy) - 1)
@@ -372,7 +356,7 @@ class History:
 # %%
 def random_hint_set(puzzle, required_insights=set(), forbidden_insights=set()):
     num = random.randint(1, 5)
-    hints = [Grammar.generate_hint(puzzle.categories) for i in range(num)]
+    hints = [Grammar.generate_hint(puzzle.categories) for _ in range(num)]
     return HintSet(hints, puzzle, required_insights, forbidden_insights)
 
 

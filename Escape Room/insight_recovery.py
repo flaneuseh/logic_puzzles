@@ -8,6 +8,9 @@ from pathlib import Path
 import csv
 from random import randint
 from statistics import fmean as mean
+import arrow
+from datetime import timezone
+
 
 ultraimport("__dir__/../LogicPuzzles.py", package="main")
 from main.LogicPuzzles import (
@@ -370,6 +373,9 @@ def get_possible_moves(puzzle, u_moves, available_moves):
                                                 poss_move["indexed_hint"] = s_move[
                                                     "indexed_hint"
                                                 ]
+                                            if (u_move_sy == "_" and s_move_sy == "_"):
+                                                print("POSSIBLE ERASE INSIGHT FOUND")
+                                                print(poss_move)
                                             possible_moves.append(poss_move)
                                             recovered = True
                                         elif u_move_sy != "_" and s_move_sy in [
@@ -555,19 +561,21 @@ def recover_moves(
             type = composite["type"]
             insight_str = f"{composite['insight']}"
             hint = composite["hint"]
-            if composite["solver_value"] != "contradiction": 
+            if composite["solver_value"] != "contradiction":
                 solver_value = composite["solver_value"]
                 if solver_value in ["uncertain", "overconfident"]:
                     solver_value = "insight"
-            
-            # Add the insight to the action JSON.
-            move_idx = 0
-            for i, move_data in enumerate(action_json[session_id]):
-                if move_data["time"] == time:
-                    move_idx = i
-                    break
-            action_json[session_id][move_idx]["insight"] = insight_str
-            move_id = f"{type}:{hint}:{insight_str}"
+
+                # Add the insight to the action JSON.
+                move_idx = 0
+                for i, move_data in enumerate(action_json[session_id]):
+                    if move_data["time"] == time:
+                        move_idx = i
+                        break
+                action_json[session_id][move_idx]["insight"] = insight_str
+                move_id = f"{type}:{hint}:{insight_str}"
+            else:
+                move_id = f"{type}:{hint}:unknown"
 
         curr_grid_value = "correct"
         if repair(result, solution, False):
@@ -642,7 +650,7 @@ def recover_moves(
     return r_moves
 
 
-def clean_user_data(raw_df):
+def clean_vr_data(raw_df, start_time):
     puzzle_name_mapping = {
         "spoke_pasta": "Pasta in Sauce",
         "spoke_sunlight": "Amount of Sunlight",
@@ -659,10 +667,24 @@ def clean_user_data(raw_df):
         "hub_soup": [],
     }
 
-    for [clean_key, raw_key] in puzzle_name_mapping.items():
-        raw_puzzle_df = raw_df[raw_df["ParentChain"].str.contains(raw_key)].copy()
-        raw_moves = raw_puzzle_df["PuzzleUniqueID"].tolist()
-        clean_data[clean_key] = clean_puzzle_moves(clean_key, raw_moves)
+    for [puzzle_id, raw_puzzle_id] in puzzle_name_mapping.items():
+        raw_session_df = raw_df[
+            raw_df["ParentChain"].str.contains(raw_puzzle_id)
+        ].copy()
+        raw_moves = list(
+            raw_session_df[["TimeStampUTC", "PuzzleUniqueID"]].itertuples(
+                index=False, name=None
+            )
+        )
+
+        start_dt = arrow.get(start_time).datetime
+        start_secs = start_dt.replace(tzinfo=timezone.utc).timestamp()
+        timed_moves = []
+        for time, raw_move in raw_moves:
+            dt = arrow.get(time).datetime
+            secs = dt.replace(tzinfo=timezone.utc).timestamp() - start_secs
+            timed_moves.append((secs, raw_move))
+        clean_data[puzzle_id] = clean_vr_moves(puzzle_id, timed_moves)
 
     return clean_data
 
@@ -670,7 +692,13 @@ def clean_user_data(raw_df):
 def clean_online_moves(puzzle, hints, raw_moves):
     user_puzzle = deepcopy(puzzle)
     clean_moves = []
-    raw_moves = list(filter(lambda rm: rm["type"] == "cellChange" or (rm["type"] == "button" and rm["button"] == "clear"), raw_moves))
+    raw_moves = list(
+        filter(
+            lambda rm: rm["type"] == "cellChange"
+            or (rm["type"] == "button" and rm["button"] == "clear"),
+            raw_moves,
+        )
+    )
     raw_moves = sorted(raw_moves, key=lambda m: m["time"])
     for _, raw_move in enumerate(raw_moves):
         time = raw_move["time"]
@@ -708,35 +736,49 @@ def clean_online_moves(puzzle, hints, raw_moves):
     correct = not repair(user_puzzle, solution, False)
     user_success = "failure"
     if correct:
-        if is_solved(user_puzzle):
+        if user_puzzle.is_complete():
             user_success = "success"
         else:
             user_success = "partial"
     return clean_moves, user_success
 
 
-def clean_puzzle_moves(clean_key, raw_moves):
+def clean_vr_moves(clean_key, raw_moves):
     match clean_key:
         case "spoke_pasta":
-            return _clean_puzzle_moves__spoke_pasta(raw_moves)
+            session = _clean_vr_moves__spoke_pasta(raw_moves)
         case "spoke_sunlight":
-            return _clean_puzzle_moves__spoke_sunlight(raw_moves)
+            session = _clean_vr_moves__spoke_sunlight(raw_moves)
         case "spoke_water":
-            return _clean_puzzle_moves__spoke_water(raw_moves)
+            session = _clean_vr_moves__spoke_water(raw_moves)
         case "spoke_protein":
-            return _clean_puzzle_moves__spoke_protein(raw_moves)
+            session = _clean_vr_moves__spoke_protein(raw_moves)
         case "hub_soup":
-            return _clean_puzzle_moves__hub_soup(raw_moves)
-        case _:
-            return []
+            session = _clean_vr_moves__hub_soup(raw_moves)
+    solution, _, _, _ = apply_hints(session["puzzle"], session["hints"])
+    user_puzzle = deepcopy(session["puzzle"])
+    for move in session["moves"]:
+        _, _, rec_moves = move
+        for rec_move in rec_moves:
+            user_puzzle.answer(*rec_move)
+    correct = not repair(user_puzzle, solution, False)
+    user_success = "failure"
+    if correct:
+        if user_puzzle.is_complete():
+            user_success = "success"
+        else:
+            user_success = "partial"
+    session["success"] = user_success
+
+    return session
 
 
-def _clean_puzzle_moves__spoke_pasta(raw_moves):
+def _clean_vr_moves__spoke_pasta(raw_moves):
     puzzle = PUZZLE_DEFS["spoke_pasta"]["puzzle"]
     hints = PUZZLE_DEFS["spoke_pasta"]["hints"]
     clean_moves = []
 
-    for raw_move in raw_moves:
+    for time, raw_move in raw_moves:
         entities = raw_move.split("Pasta Bowl - ")
         if len(entities) == 1:
             entities = raw_move.split("Pata Bowl - ")
@@ -745,20 +787,30 @@ def _clean_puzzle_moves__spoke_pasta(raw_moves):
         if len(entities) == 1:
             entities = raw_move.split("Pasta Bowl  - ")
 
-        moves = []
-        if entities[1] == "Reset":
-            for sauce in PASTA_SAUCES.entities:
-                moves.append([PASTA_SHAPES, PASTA_SAUCES, entities[0], sauce, "*"])
-        else:
+        ordered_moves = []
+        for sauce in PASTA_SAUCES.entities:
+            ordered_moves.append((
+                time,
+                f"{raw_move} ({entities[0]}, {sauce}, *)",
+                [[PASTA_SHAPES, PASTA_SAUCES, entities[0], sauce, "*"]],
+            ))
+        if entities[1] != "Reset":
+            non_os = []
             for sauce in PASTA_SAUCES.entities:
                 move = [PASTA_SHAPES, PASTA_SAUCES, entities[0], sauce]
                 if sauce == entities[1]:
                     move.append("O")
+                    ordered_moves.append((time, f"{raw_move} ({entities[0]}, {sauce}, O)", [move]))
                 else:
                     # Each pasta can only have one sauce at a time.
                     move.append("X")
-                moves.append(move)
-        clean_moves.append((raw_move, moves))
+                    non_os.append((time, f"{raw_move} ({entities[0]}, {sauce}, X)", [move]))
+            ordered_moves.extend(non_os)
+            for i, move in enumerate(ordered_moves):
+                move = list(move)
+                time = move[0]
+                move[0] = f"{time}:{i}"
+                clean_moves.append(tuple(move))
 
     return {
         "puzzle": puzzle,
@@ -767,12 +819,12 @@ def _clean_puzzle_moves__spoke_pasta(raw_moves):
     }
 
 
-def _clean_puzzle_moves__spoke_sunlight(raw_moves):
+def _clean_vr_moves__spoke_sunlight(raw_moves):
     puzzle = PUZZLE_DEFS["spoke_sunlight"]["puzzle"]
     hints = PUZZLE_DEFS["spoke_sunlight"]["hints"]
     clean_moves = []
 
-    for raw_move in raw_moves:
+    for time, raw_move in raw_moves:
         parts = raw_move.split(" - ")
         if len(parts) < 2:
             print(f"Unable to process move: {raw_move}")
@@ -788,20 +840,30 @@ def _clean_puzzle_moves__spoke_sunlight(raw_moves):
         if plant not in SUNLIGHT_PLANTS.entities:
             print(f"Unable to process move: {raw_move}")
             continue
-        moves = []
-        if len(plant_parts) == 3:
-            for h in SUNLIGHT_HOURS.entities:
-                moves.append([SUNLIGHT_HOURS, SUNLIGHT_PLANTS, h, plant, "*"])
-        else:
+
+        ordered_moves = []
+        for h in SUNLIGHT_HOURS.entities:
+            ordered_moves.append((
+                time,
+                f"{raw_move} ({h}, {plant}, *)",
+                [[SUNLIGHT_HOURS, SUNLIGHT_PLANTS, h, plant, "*"]],
+            ))
+        if len(plant_parts) != 3:
+            non_os = []
             for h in SUNLIGHT_HOURS.entities:
                 move = [SUNLIGHT_HOURS, SUNLIGHT_PLANTS, h, plant]
                 if h == hr:
                     move.append("O")
+                    ordered_moves.append((time, f"{raw_move} ({h}, {plant}, O)", [move]))
                 else:
                     move.append("X")
-                moves.append(move)
-
-        clean_moves.append((raw_move, moves))
+                    non_os.append((time, f"{raw_move} ({h}, {plant}, X)", [move]))
+            ordered_moves.extend(non_os)
+        for i, move in enumerate(ordered_moves):
+            move = list(move)
+            time = move[0]
+            move[0] = f"{time}:{i}"
+            clean_moves.append(tuple(move))
 
     return {
         "puzzle": puzzle,
@@ -810,12 +872,12 @@ def _clean_puzzle_moves__spoke_sunlight(raw_moves):
     }
 
 
-def _clean_puzzle_moves__spoke_water(raw_moves):
+def _clean_vr_moves__spoke_water(raw_moves):
     puzzle = PUZZLE_DEFS["spoke_water"]["puzzle"]
     hints = PUZZLE_DEFS["spoke_water"]["hints"]
     clean_moves = []
 
-    for raw_move in raw_moves:
+    for time, raw_move in raw_moves:
         parts = raw_move.split(" Valve Combo - ")
         plant = parts[0]
         match plant:
@@ -841,15 +903,26 @@ def _clean_puzzle_moves__spoke_water(raw_moves):
                 oz = "80oz"
             case _:
                 continue
-        moves = []
+        ordered_moves = []
+        for o in ["20oz", "40oz", "60oz", "80oz"]:
+            ordered_moves.append(
+                (time, f"{raw_move} ({plant}, {o}, *)", [[WATER_PLANTS, WATER_OZ, plant, o, "*"]])
+            )
+        non_os = []
         for o in ["20oz", "40oz", "60oz", "80oz"]:
             move = [WATER_PLANTS, WATER_OZ, plant, o]
             if o == oz:
                 move.append("O")
+                ordered_moves.append((time, f"{raw_move} ({plant}, {o}, O)", [move]))
             else:
                 move.append("X")
-            moves.append(move)
-        clean_moves.append((raw_move, moves))
+                non_os.append((time, f"{raw_move} ({plant}, {o}, X)", [move]))
+        ordered_moves.extend(non_os)
+        for i, move in enumerate(ordered_moves):
+            move = list(move)
+            time = move[0]
+            move[0] = f"{time}:{i}"
+            clean_moves.append(tuple(move))
 
     return {
         "puzzle": puzzle,
@@ -858,12 +931,12 @@ def _clean_puzzle_moves__spoke_water(raw_moves):
     }
 
 
-def _clean_puzzle_moves__spoke_protein(raw_moves):
+def _clean_vr_moves__spoke_protein(raw_moves):
     puzzle = PUZZLE_DEFS["spoke_protein"]["puzzle"]
     hints = PUZZLE_DEFS["spoke_protein"]["hints"]
     clean_moves = []
 
-    for raw_move in raw_moves:
+    for time, raw_move in raw_moves:
         parts = raw_move.split(" - ")
         entity_parts = parts[0].split(" Token Socket ")
         food = entity_parts[0]
@@ -877,7 +950,7 @@ def _clean_puzzle_moves__spoke_protein(raw_moves):
         else:
             move.append("*")
 
-        clean_moves.append((raw_move, [move]))
+        clean_moves.append((f"{time}:0", raw_move, [move]))
 
     return {
         "puzzle": puzzle,
@@ -886,12 +959,12 @@ def _clean_puzzle_moves__spoke_protein(raw_moves):
     }
 
 
-def _clean_puzzle_moves__hub_soup(raw_moves):
+def _clean_vr_moves__hub_soup(raw_moves):
     puzzle = PUZZLE_DEFS["hub_soup_alt"]["puzzle"]
     hints = PUZZLE_DEFS["hub_soup_alt"]["hints"]
     clean_moves = []
 
-    for raw_move in raw_moves:
+    for time, raw_move in raw_moves:
         parts = raw_move.split(" - ")
         entity_parts = parts[0].split(" ")
         ent1 = ""
@@ -943,30 +1016,13 @@ def _clean_puzzle_moves__hub_soup(raw_moves):
             case _:
                 continue
 
-        clean_moves.append((raw_move, [move]))
+        clean_moves.append((f"{time}:0", raw_move, [move]))
 
     return {
         "puzzle": puzzle,
         "hints": hints,
         "moves": clean_moves,
     }
-
-
-def is_solved(puzzle):
-    for cat1 in puzzle.left_right:
-        for cat2 in puzzle.top_bottom:
-            grid = puzzle.get_grid(cat1, cat2)
-            if grid is None:
-                continue
-
-            for ent2_idx in range(0, len(grid)):
-                row_O = False
-                for ent1_idx in range(0, len(grid[ent2_idx])):
-                    if grid[ent2_idx][ent1_idx] == "O":
-                        row_O = True
-                if not row_O:
-                    return False
-    return True
 
 
 def print_moves(file, puzzle, hints, moves):
@@ -1004,14 +1060,20 @@ def print_moves(file, puzzle, hints, moves):
         file.write(f"\n\n")
 
 
-def load_user_data(file):
+def load_vr_data(file):
     df = pd.read_csv(file)
+
+    first_move = df.iloc[0]
+    if first_move["PuzzleUniqueID"] != "GameStart" or first_move["ElementType"] != "Scene":
+        print("FIRST MOVE IN UNEXPECTED FORMAT:")
+        print(first_move)
+    
+    start_time = first_move["TimeStampUTC"]
 
     df = df[df["ElementType"] == "Interaction"].copy()
     # df = df[df["Outcome"] != "WrongMove"].copy()
     df = df.drop(
         columns=[
-            "TimeStampUTC",
             "TimeFromLastMove",
             "ElementType",
             "IsCompleted",
@@ -1019,7 +1081,7 @@ def load_user_data(file):
         ]
     )
 
-    return df
+    return df, start_time
 
 
 def load_online_data(dir):
@@ -1185,7 +1247,7 @@ def load_online_data(dir):
             print(f"{user_id}:{session_id} for {puzzle_id} not in action json")
             continue
         raw_moves = action_json[session_id]
-        
+
         if puzzle_id not in puzzles:
             print(f"couldn't find puzzle {puzzle_id} :(")
             continue
@@ -1245,11 +1307,8 @@ def gen_data_views(dir, edge_df, node_df):
     node_view.to_csv(f"{dir}/{node_view_name}.csv", index=False)
 
     # if u == None and p == None and l == None:
-    combined_view = pd.merge(
-        edge_view, node_view, left_on="Target", right_on="Id"
-    )
+    combined_view = pd.merge(edge_view, node_view, left_on="Target", right_on="Id")
     # % successful, % concede, % success but failed at least once, % concede while partially correct
-    
 
     puzzle_ids = list(combined_view["PuzzleId"].unique())
 
@@ -1258,11 +1317,9 @@ def gen_data_views(dir, edge_df, node_df):
         pg_view = combined_view.copy()
         pg_view = pg_view[pg_view["PuzzleId"] == pid]
         real_moves = pg_view[
-            pg_view["MoveValue"].isin(
-                ["correct", "incorrect", "neutral"]
-            )
+            pg_view["MoveValue"].isin(["correct", "incorrect", "neutral"])
         ]
-        
+
         pg_all = pg_view["UserId"].unique()
         pg_view = pg_view[pg_view["UserId"].isin(real_moves["UserId"])]
         pg_real = pg_view["UserId"].unique()
@@ -1310,49 +1367,42 @@ def gen_data_views(dir, edge_df, node_df):
             view_stats["pct_concede"] = 0
         else:
             view_stats["num_success"] = int(success_counts["success"])
-            view_stats["pct_success"] = float(success_counts["success"] / len(
-                user_view
-            ))
+            view_stats["pct_success"] = float(
+                success_counts["success"] / len(user_view)
+            )
             view_stats["num_fail"] = int(success_counts["failure"])
-            view_stats["pct_fail"] = float(success_counts["failure"] / len(
-                user_view
-            ))
+            view_stats["pct_fail"] = float(success_counts["failure"] / len(user_view))
             view_stats["num_partial"] = int(success_counts["partial"])
-            view_stats["pct_partial"] = float(success_counts["partial"] / len(
-                user_view
-            ))
+            view_stats["pct_partial"] = float(
+                success_counts["partial"] / len(user_view)
+            )
             view_stats["num_concede"] = int(
                 success_counts["failure"] + success_counts["partial"]
             )
-            view_stats["pct_concede"] = float((
-                success_counts["failure"] + success_counts["partial"]
-            ) / len(user_view))
+            view_stats["pct_concede"] = float(
+                (success_counts["failure"] + success_counts["partial"]) / len(user_view)
+            )
         if success_counts["failure"] + success_counts["partial"] == 0:
             view_stats["pct_partial_of_concede"] = 0
         else:
-            view_stats["pct_partial_of_concede"] = float(success_counts[
-                "partial"
-            ] / (success_counts["failure"] + success_counts["partial"]))
+            view_stats["pct_partial_of_concede"] = float(
+                success_counts["partial"]
+                / (success_counts["failure"] + success_counts["partial"])
+            )
         if success_counts["success"] == 0:
             view_stats["num_had_error_of_success"] = 0
             view_stats["pct_had_error_of_success"] = 0
         else:
-            view_stats["num_had_error_of_success"] = len(
-                success_and_incorrect
-            )
+            view_stats["num_had_error_of_success"] = len(success_and_incorrect)
             view_stats["pct_had_error_of_success"] = float(
                 len(success_and_incorrect) / success_counts["success"]
             )
 
         all_view = pg_view.copy()
         success_view = all_view.copy()
-        success_view = success_view[
-            success_view["UserSuccess"] == "success"
-        ]
+        success_view = success_view[success_view["UserSuccess"] == "success"]
         concede_view = all_view.copy()
-        concede_view = concede_view[
-            concede_view["UserSuccess"] != "success"
-        ]
+        concede_view = concede_view[concede_view["UserSuccess"] != "success"]
 
         first_move = all_view[all_view["MoveNumber"] == 0]
         second_move = all_view[all_view["MoveNumber"] == 1]
@@ -1364,16 +1414,10 @@ def gen_data_views(dir, edge_df, node_df):
             print(pid)
             print(third_move_users)
 
-        first_move = first_move[
-            first_move["UserId"].isin(third_move_users)
-        ]
-        second_move = second_move[
-            second_move["UserId"].isin(third_move_users)
-        ]
+        first_move = first_move[first_move["UserId"].isin(third_move_users)]
+        second_move = second_move[second_move["UserId"].isin(third_move_users)]
 
-        if len(first_move) != len(second_move) or len(
-            second_move
-        ) != len(third_move):
+        if len(first_move) != len(second_move) or len(second_move) != len(third_move):
             print("MOVES ARE NOT EQUAL")
 
             print(pid)
@@ -1387,9 +1431,7 @@ def gen_data_views(dir, edge_df, node_df):
             .rename_axis("Target")
             .reset_index(name="target_first_move_count")
         )
-        first_move_counts = pd.merge(
-            first_move, first_move_counts, on="Target"
-        )
+        first_move_counts = pd.merge(first_move, first_move_counts, on="Target")
         first_move_counts = first_move_counts[
             first_move_counts["target_first_move_count"] > 1
         ]
@@ -1399,9 +1441,7 @@ def gen_data_views(dir, edge_df, node_df):
             .rename_axis("Target")
             .reset_index(name="target_second_move_count")
         )
-        second_move_counts = pd.merge(
-            second_move, second_move_counts, on="Target"
-        )
+        second_move_counts = pd.merge(second_move, second_move_counts, on="Target")
         second_move_counts = second_move_counts[
             second_move_counts["target_second_move_count"] > 1
         ]
@@ -1411,9 +1451,7 @@ def gen_data_views(dir, edge_df, node_df):
             .rename_axis("Target")
             .reset_index(name="target_third_move_count")
         )
-        third_move_counts = pd.merge(
-            third_move, third_move_counts, on="Target"
-        )
+        third_move_counts = pd.merge(third_move, third_move_counts, on="Target")
         third_move_counts = third_move_counts[
             third_move_counts["target_third_move_count"] > 1
         ]
@@ -1424,9 +1462,7 @@ def gen_data_views(dir, edge_df, node_df):
             .rename_axis("Source")
             .reset_index(name="source_last_move_count")
         )
-        last_move_counts = pd.merge(
-            last_move, last_move_counts, on="Source"
-        )
+        last_move_counts = pd.merge(last_move, last_move_counts, on="Source")
         last_move_counts = last_move_counts[
             last_move_counts["source_last_move_count"] > 1
         ]
@@ -1439,13 +1475,9 @@ def gen_data_views(dir, edge_df, node_df):
         for u_name, u_view in user_views:
             view_stats[u_name] = {}
             correct_states = u_view[u_view["GridValue"] == "correct"]
-            incorrect_states = u_view[
-                u_view["GridValue"] == "incorrect"
-            ]
+            incorrect_states = u_view[u_view["GridValue"] == "incorrect"]
             real_moves = u_view[
-                u_view["MoveValue"].isin(
-                    ["correct", "incorrect", "neutral"]
-                )
+                u_view["MoveValue"].isin(["correct", "incorrect", "neutral"])
             ]
             correct_moves = u_view[u_view["MoveValue"] == "correct"]
             incorrect_moves = u_view[u_view["MoveValue"] == "incorrect"]
@@ -1518,23 +1550,23 @@ def gen_data_views(dir, edge_df, node_df):
             user_counts = user_counts.fillna(0)
             if len(user_counts) == 0:
                 view_stats[u_name] = {
-                    "pct_correct_state": [],
+                    "per_user_pct_correct_state": [],
                     "avg_pct_correct_state": 0,
-                    "pct_incorrect_state": [],
+                    "per_user_pct_incorrect_state": [],
                     "avg_pct_incorrect_state": 0,
-                    "pct_correct_move": [],
+                    "per_user_pct_correct_move": [],
                     "avg_pct_correct_move": 0,
-                    "pct_incorrect_move": [],
+                    "per_user_pct_incorrect_move": [],
                     "avg_pct_incorrect_move": 0,
-                    "pct_neutral_move": [],
+                    "per_user_pct_neutral_move": [],
                     "avg_pct_neutral_move": 0,
-                    "pct_insight": [],
+                    "per_user_pct_insight": [],
                     "avg_pct_insight": 0,
-                    "pct_unknown_correct": [],
+                    "per_user_pct_unknown_correct": [],
                     "avg_pct_unknown_correct": 0,
-                    "pct_unknown_incorrect": [],
+                    "per_user_pct_unknown_incorrect": [],
                     "avg_pct_unknown_incorrect": 0,
-                    "pct_unknown_neutral": [],
+                    "per_user_pct_unknown_neutral": [],
                     "avg_pct_unknown_neutral": 0,
                     "num_users_had_three_moves": 0,
                     "pct_users_share_first_move": 0,
@@ -1544,63 +1576,58 @@ def gen_data_views(dir, edge_df, node_df):
                     "num_users_share_first_move": 0,
                     "num_users_share_second_move": 0,
                     "num_users_share_third_move": 0,
-                    "num_users_share_last_move": 0
+                    "num_users_share_last_move": 0,
                 }
                 continue
 
             user_counts["PctCorrectState"] = (
-                user_counts["correct_state_count"]
-                / user_counts["move_count"]
+                user_counts["correct_state_count"] / user_counts["move_count"]
             )
             user_counts["PctIncorrectState"] = (
-                user_counts["incorrect_state_count"]
-                / user_counts["move_count"]
+                user_counts["incorrect_state_count"] / user_counts["move_count"]
             )
 
             user_counts["PctCorrectMove"] = (
-                user_counts["correct_move_count"]
-                / user_counts["move_count"]
+                user_counts["correct_move_count"] / user_counts["move_count"]
             )
             user_counts["PctIncorrectMove"] = (
-                user_counts["incorrect_move_count"]
-                / user_counts["move_count"]
+                user_counts["incorrect_move_count"] / user_counts["move_count"]
             )
             user_counts["PctNeutralMove"] = (
-                user_counts["neutral_move_count"]
-                / user_counts["move_count"]
+                user_counts["neutral_move_count"] / user_counts["move_count"]
             )
 
-            view_stats[u_name]["pct_correct_state"] = user_counts[
+            view_stats[u_name]["per_user_pct_correct_state"] = user_counts[
                 "PctCorrectState"
             ].tolist()
-            view_stats[u_name]["avg_pct_correct_state"] = float(user_counts[
-                "PctCorrectState"
-            ].mean())
-            view_stats[u_name]["pct_incorrect_state"] = user_counts[
+            view_stats[u_name]["avg_pct_correct_state"] = float(
+                user_counts["PctCorrectState"].mean()
+            )
+            view_stats[u_name]["per_user_pct_incorrect_state"] = user_counts[
                 "PctIncorrectState"
             ].tolist()
-            view_stats[u_name]["avg_pct_incorrect_state"] = float(user_counts[
-                "PctIncorrectState"
-            ].mean())
+            view_stats[u_name]["avg_pct_incorrect_state"] = float(
+                user_counts["PctIncorrectState"].mean()
+            )
 
-            view_stats[u_name]["pct_correct_move"] = user_counts[
+            view_stats[u_name]["per_user_pct_correct_move"] = user_counts[
                 "PctCorrectMove"
             ].tolist()
-            view_stats[u_name]["avg_pct_correct_move"] = float(user_counts[
-                "PctCorrectMove"
-            ].mean())
-            view_stats[u_name]["pct_incorrect_move"] = user_counts[
+            view_stats[u_name]["avg_pct_correct_move"] = float(
+                user_counts["PctCorrectMove"].mean()
+            )
+            view_stats[u_name]["per_user_pct_incorrect_move"] = user_counts[
                 "PctIncorrectMove"
             ].tolist()
-            view_stats[u_name]["avg_pct_incorrect_move"] = float(user_counts[
-                "PctIncorrectMove"
-            ].mean())
-            view_stats[u_name]["pct_neutral_move"] = user_counts[
+            view_stats[u_name]["avg_pct_incorrect_move"] = float(
+                user_counts["PctIncorrectMove"].mean()
+            )
+            view_stats[u_name]["per_user_pct_neutral_move"] = user_counts[
                 "PctNeutralMove"
             ].tolist()
-            view_stats[u_name]["avg_pct_neutral_move"] = float(user_counts[
-                "PctNeutralMove"
-            ].mean())
+            view_stats[u_name]["avg_pct_neutral_move"] = float(
+                user_counts["PctNeutralMove"].mean()
+            )
 
             u_view = u_view.replace({
                 "SolverValue": {
@@ -1610,15 +1637,11 @@ def gen_data_views(dir, edge_df, node_df):
                 }
             })
             insight_moves = u_view[u_view["SolverValue"] == "insight"]
-            unknown_correct_moves = u_view[
-                u_view["SolverValue"] == "unknown-correct"
-            ]
+            unknown_correct_moves = u_view[u_view["SolverValue"] == "unknown-correct"]
             unknown_incorrect_moves = u_view[
                 u_view["SolverValue"] == "unknown-incorrect"
             ]
-            unknown_neutral_moves = u_view[
-                u_view["SolverValue"] == "unknown-neutral"
-            ]
+            unknown_neutral_moves = u_view[u_view["SolverValue"] == "unknown-neutral"]
             insight_move_count = (
                 insight_moves.value_counts("UserId")
                 .rename_axis("UserId")
@@ -1666,52 +1689,44 @@ def gen_data_views(dir, edge_df, node_df):
             )
 
             user_counts["PctInsight"] = (
-                user_counts["insight_move_count"]
-                / user_counts["move_count"]
+                user_counts["insight_move_count"] / user_counts["move_count"]
             )
             user_counts["PctUnknownCorrect"] = (
-                user_counts["unknown_correct_move_count"]
-                / user_counts["move_count"]
+                user_counts["unknown_correct_move_count"] / user_counts["move_count"]
             )
             user_counts["PctUnknownIncorrect"] = (
-                user_counts["unknown_incorrect_move_count"]
-                / user_counts["move_count"]
+                user_counts["unknown_incorrect_move_count"] / user_counts["move_count"]
             )
             user_counts["PctUnknownNeutral"] = (
-                user_counts["unknown_neutral_move_count"]
-                / user_counts["move_count"]
+                user_counts["unknown_neutral_move_count"] / user_counts["move_count"]
             )
             user_counts = user_counts.fillna(0)
 
-            view_stats[u_name]["pct_insight"] = user_counts[
-                "PctInsight"
-            ].tolist()
-            view_stats[u_name]["avg_pct_insight"] = float(user_counts[
-                "PctInsight"
-            ].mean())
-            view_stats[u_name]["pct_unknown_correct"] = user_counts[
+            view_stats[u_name]["per_user_pct_insight"] = user_counts["PctInsight"].tolist()
+            view_stats[u_name]["avg_pct_insight"] = float(
+                user_counts["PctInsight"].mean()
+            )
+            view_stats[u_name]["per_user_pct_unknown_correct"] = user_counts[
                 "PctUnknownCorrect"
             ].tolist()
-            view_stats[u_name]["avg_pct_unknown_correct"] = float(user_counts[
-                "PctUnknownCorrect"
-            ].mean())
-            view_stats[u_name]["pct_unknown_incorrect"] = user_counts[
+            view_stats[u_name]["avg_pct_unknown_correct"] = float(
+                user_counts["PctUnknownCorrect"].mean()
+            )
+            view_stats[u_name]["per_user_pct_unknown_incorrect"] = user_counts[
                 "PctUnknownIncorrect"
             ].tolist()
             view_stats[u_name]["avg_pct_unknown_incorrect"] = float(
                 user_counts["PctUnknownIncorrect"].mean()
             )
-            view_stats[u_name]["pct_unknown_neutral"] = user_counts[
+            view_stats[u_name]["per_user_pct_unknown_neutral"] = user_counts[
                 "PctUnknownNeutral"
             ].tolist()
-            view_stats[u_name]["avg_pct_unknown_neutral"] = float(user_counts[
-                "PctUnknownNeutral"
-            ].mean())
+            view_stats[u_name]["avg_pct_unknown_neutral"] = float(
+                user_counts["PctUnknownNeutral"].mean()
+            )
 
             curr_users = u_view["UserId"].unique()
-            three_moves_curr = third_move[
-                third_move["UserId"].isin(curr_users)
-            ]
+            three_moves_curr = third_move[third_move["UserId"].isin(curr_users)]
             curr_users = three_moves_curr["UserId"]
             curr_num = len(curr_users)
             view_stats[u_name]["num_users_had_three_moves"] = curr_num
@@ -1761,9 +1776,7 @@ def gen_data_views(dir, edge_df, node_df):
             ]
             last_users = curr_last_moves["UserId"]
             view_stats[u_name]["num_users_share_last_move"] = len(last_users)
-            view_stats[u_name]["pct_users_share_last_move"] = (
-                len(last_users) / curr_num
-            )
+            view_stats[u_name]["pct_users_share_last_move"] = len(last_users) / curr_num
 
         for sname, stat in view_stats.items():
             if sname not in ["success", "concede", "all_users"]:
@@ -1783,39 +1796,42 @@ def gen_data_views(dir, edge_df, node_df):
             group_stat_lists = {}
 
             for pid, stats in stats_by_pid.items():
-                if pid == None or (
-                    group_name != "all" and group_name not in pid
-                ):
+                if pid == None or (group_name != "all" and group_name not in pid):
                     continue
                 for sname, stat in stats.items():
                     if sname not in ["success", "concede", "all_users"]:
-                        if sname not in group_stat_lists:
-                            group_stat_lists[sname] = []
-                        if isinstance(stat, list):
-                            group_stat_lists[sname].extend(stat)
-                        else:
-                            group_stat_lists[sname].append(stat)
+                        g_name = f"per_puzzle_{sname}"
+                        if g_name not in group_stat_lists:
+                            group_stat_lists[g_name] = []
+                        group_stat_lists[g_name].append(stat)
                     else:
                         if sname not in group_stat_lists:
                             group_stat_lists[sname] = {}
                         for us_name, u_stat in stat.items():
-                            if us_name not in group_stat_lists[sname]:
-                                group_stat_lists[sname][us_name] = []
+                            per_user_name = f"{us_name}"
+                            per_puzzle_name = f"puzzle_{us_name}"
+                            
                             if isinstance(u_stat, list):
-                                group_stat_lists[sname][us_name].extend(u_stat)
+                                if per_user_name not in group_stat_lists[sname]:
+                                    group_stat_lists[sname][per_user_name] = []
+                                group_stat_lists[sname][per_user_name].extend(u_stat)
                             else:
-                                group_stat_lists[sname][us_name].append(u_stat)
+                                if per_puzzle_name not in group_stat_lists[sname]:
+                                    group_stat_lists[sname][per_puzzle_name] = []
+                                group_stat_lists[sname][per_puzzle_name].append(u_stat)
             group_stats = {}
             for sname, statlist in group_stat_lists.items():
                 if sname not in ["success", "concede", "all_users"]:
-                    group_stats[sname] = mean(statlist)
+                    g_name = f"avg_{sname}"
+                    group_stats[g_name] = mean(statlist)
                 else:
                     group_stats[sname] = {}
                     for us_name, u_statlist in statlist.items():
+                        g_name = f"avg_{us_name}"
                         if len(u_statlist) == 0:
-                            group_stats[sname][us_name] = 0
+                            group_stats[sname][g_name] = 0
                         else:
-                            group_stats[sname][us_name] = mean(u_statlist)
+                            group_stats[sname][g_name] = mean(u_statlist)
 
             statlists_by_group[group_name] = group_stat_lists
             stats_by_group[group_name] = group_stats
@@ -1826,7 +1842,7 @@ def gen_data_views(dir, edge_df, node_df):
             "levels": "all",
             "stats_by_pid": stats_by_pid,
             "stats_by_group": stats_by_group,
-            "statlists_by_group": statlists_by_group
+            "statlists_by_group": statlists_by_group,
         }
         # if u != None:
         #     stats["endstate"] = u
@@ -1838,6 +1854,26 @@ def gen_data_views(dir, edge_df, node_df):
         with open(f"{dir}/stats{view_name}.json", "w") as f:
             json.dump(stats, f)
 
+
+def action_json_movelist_from_moves(moves):
+    action_list = []
+    for time, raw_move, _ in moves:
+        action_list.append({
+            "time": time,
+            "raw_move": raw_move,
+        })
+    return action_list
+
+def reformat_vr_action_json(action_json):
+    for session in action_json.values():
+        for move_data in session:
+            time = move_data["time"]
+            real_time = time[:-2]
+            move_no = time[-1]
+            move_data["time"] = real_time
+            move_data["move_no"] = move_no
+    return action_json
+    
 
 if __name__ == "__main__":
     node_df = pd.DataFrame(columns=["Id", "PuzzleId", "State", "GridValue", "MoveIds"])
@@ -1856,80 +1892,90 @@ if __name__ == "__main__":
     )
     state_to_node_id = {}
     label_to_grid = {}
-    # vr_dir = "user_data/vr_study"
-    # vr_users = [f.name for f in os.scandir("user_data/vr_study") if f.is_dir()]
-    # for user in vr_users:
-    #     print(user)
-    #     userfile = f"{vr_dir}/{user}/{user}_PuzzleLogs.csv"
-    #     raw_df = load_user_data(userfile)
-    #     clean_data = clean_user_data(raw_df)
-    #     for key, info in clean_data.items():
-    #         print(key)
-    #         recovered_moves = recover_moves(
-    #             info["puzzle"], info["hints"], info["moves"]
-    #         )
-    #         move_file = open(f"{vr_dir}/{user}/recovered_tree_{key}.txt", "w")
-    #         print_moves(move_file, info["puzzle"], info["hints"], recovered_moves)
-    #         update_state_df(
-    #             node_df,
-    #             edge_df,
-    #             grid_to_label,
-    #             label_to_grid,
-    #             key,
-    #             info["puzzle"],
-    #             info["hints"],
-    #             recovered_moves,
-    #             user,
-    #             "vr",
-    #             "vr",
-    #         )
-
-    online_dir = "user_data/online_puzzle_study"
-    clean_data, action_json = load_online_data(online_dir)
+    vr_dir = "user_data/vr_study"
+    vr_users = [f.name for f in os.scandir("user_data/vr_study") if f.is_dir()]
     session_outcome_json = {}
-    puzzle_checks = {
-        "hub2.1": 0,
-        "hub2.2": 0,
-        "hub2.3": 0
-    }
-    for user_id, user_data in clean_data.items():
-        for puzzle_id, session in user_data["puzzles"].items():
-            if puzzle_id in puzzle_checks:
-                puzzle_checks[puzzle_id] = puzzle_checks[puzzle_id] + 1
-            else:
-                continue
+    action_json = {}
+    for user in vr_users:
+        print(user)
+        userfile = f"{vr_dir}/{user}/{user}_PuzzleLogs.csv"
+        raw_df, start_time = load_vr_data(userfile)
+
+        clean_data = clean_vr_data(raw_df, start_time)
+        for puzzle_id, session in clean_data.items():
+            session_id = f"{user}:{puzzle_id}"
+            action_json[session_id] = action_json_movelist_from_moves(session["moves"])
             recovered_moves = recover_moves(
                 puzzle_id,
                 session["puzzle"],
                 session["hints"],
-                user_id,
-                user_data["promptMode"],
-                user_data["levelMode"],
+                user,
+                "",
+                "",
                 session["moves"],
                 session["success"],
                 state_to_node_id,
                 node_df,
                 edge_df,
                 action_json,
-                session["session_id"],
+                session_id,
                 session_outcome_json,
             )
-            output_path = (
-                f"{online_dir}/recovered_trees/{user_id}/recovered_tree_{puzzle_id}.txt"
-            )
+            output_path = f"{vr_dir}/{user}/recovered_tree_{puzzle_id}.txt"
             output_file = Path(output_path)
             output_file.parent.mkdir(exist_ok=True, parents=True)
             move_file = open(output_path, "w")
             print_moves(move_file, session["puzzle"], session["hints"], recovered_moves)
-    with open(f"{online_dir}/updated_action_data.json", "w") as f:
-        json.dump(action_json, f)
-    with open(f"{online_dir}/session_outcome.json", "w") as f:
-        json.dump(session_outcome_json, f)
-    print(puzzle_checks)
 
-    dir = "user_data/online_puzzle_study"
-    # edge_df.to_csv(f"{dir}/edgegraph.csv", index=False)
-    # node_df.to_csv(f"{dir}/nodegraph.csv", index=False)
-    edge_df = pd.read_csv(f"{dir}/edgegraph.csv")
-    node_df = pd.read_csv(f"{dir}/nodegraph.csv")
-    gen_data_views(dir, edge_df, node_df)
+    dir = "user_data/vr_study"
+    edge_df.to_csv(f"{vr_dir}/edgegraph.csv", index=False)
+    node_df.to_csv(f"{vr_dir}/nodegraph.csv", index=False)
+    action_json = reformat_vr_action_json(action_json)
+    with open(f"{vr_dir}/updated_action_data.json", "w") as f:
+        json.dump(action_json, f)
+    with open(f"{dir}/session_outcome.json", "w") as f:
+        json.dump(session_outcome_json, f)
+    edge_df = pd.read_csv(f"{vr_dir}/edgegraph.csv")
+    node_df = pd.read_csv(f"{vr_dir}/nodegraph.csv")
+    gen_data_views(vr_dir, edge_df, node_df)
+
+    # online_dir = "user_data/online_puzzle_study"
+    # clean_data, action_json = load_online_data(online_dir)
+    # session_outcome_json = {}
+    # for user_id, user_data in clean_data.items():
+    #     for puzzle_id, session in user_data["puzzles"].items():
+    #         if session["session_id"] != "689b5a0a6bc6c32c3cb589a9":
+    #             continue
+    #         recovered_moves = recover_moves(
+    #             puzzle_id,
+    #             session["puzzle"],
+    #             session["hints"],
+    #             user_id,
+    #             user_data["promptMode"],
+    #             user_data["levelMode"],
+    #             session["moves"],
+    #             session["success"],
+    #             state_to_node_id,
+    #             node_df,
+    #             edge_df,
+    #             action_json,
+    #             session["session_id"],
+    #             session_outcome_json,
+    #         )
+    #         output_path = (
+    #             f"{online_dir}/recovered_trees/{user_id}/recovered_tree_{puzzle_id}.txt"
+    #         )
+    #         output_file = Path(output_path)
+    #         output_file.parent.mkdir(exist_ok=True, parents=True)
+    #         move_file = open(output_path, "w")
+    #         print_moves(move_file, session["puzzle"], session["hints"], recovered_moves)
+    # with open(f"{online_dir}/updated_action_data.json", "w") as f:
+    #     json.dump(action_json, f)
+    # with open(f"{online_dir}/session_outcome.json", "w") as f:
+    #     json.dump(session_outcome_json, f)
+
+    # # edge_df.to_csv(f"{online_dir}/edgegraph.csv", index=False)
+    # # node_df.to_csv(f"{online_dir}/nodegraph.csv", index=False)
+    # edge_df = pd.read_csv(f"{online_dir}/edgegraph.csv")
+    # node_df = pd.read_csv(f"{online_dir}/nodegraph.csv")
+    # gen_data_views(online_dir, edge_df, node_df)

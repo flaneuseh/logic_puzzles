@@ -9,6 +9,7 @@ ultraimport("__dir__/Evolution.py", package="main")
 from main.LogicPuzzles import (
     Puzzle,
     Category,
+    Solver,
 )
 from main.HintToEnglish import hint_to_english
 
@@ -231,6 +232,42 @@ def evolve(
                 print(infeasible[0])
                 print(infeasible[0][1].completed_puzzle.print_grid())
                 print(infeasible[0][1].completed_puzzle.num_violations())
+            
+                infeasible_reasons = {
+                    "no_hints": 0,
+                    "not_valid": 0,
+                    "not_complete": 0,
+                    "not_follows_insight_reqs": 0,
+                    "cant_solve_without_forbidden": 0,
+                    "can_solve_without_required": 0,
+                }
+                for _, child in infeasible:
+                    if len(child.hints) == 0:
+                        infeasible_reasons["no_hints"] += 1
+                    elif not child.valid:
+                        infeasible_reasons["not_valid"] += 1
+                    elif not child.completed_puzzle.is_complete():
+                        infeasible_reasons["not_complete"] += 1
+                    elif not child.follows_insight_requirements():
+                        forbidden_solver = Solver(forbidden_insights)
+                        required_solver = Solver(required_insights | forbidden_insights)
+
+                        if not forbidden_solver.can_solve_without_forbidden(
+                            puzzle, child.hints
+                        ):
+                            infeasible_reasons["cant_solve_without_forbidden"] += 1
+                        if required_solver.can_solve_without_forbidden(puzzle, child.hints):
+                            infeasible_reasons["can_solve_without_required"] += 1
+                            completed_puzzle, is_valid, _, used_insights = required_solver.apply_hints(puzzle, child.hints)
+                            print(child.hints)
+                            used = []
+                            for insight in used_insights:
+                                used.append(insight.name)
+                            print(f"USED: {used}")
+                            print(completed_puzzle.print_grid())
+                        infeasible_reasons["not_follows_insight_reqs"] += 1
+                print("Reasons for infeasible:")
+                print(infeasible_reasons)
 
             print("feasible:")
 

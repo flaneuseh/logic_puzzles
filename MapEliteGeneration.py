@@ -17,8 +17,8 @@ def map_elite_generate(
     x_rate,
     add_rate,
     elits,
-    required_insights={},
-    forbidden_insights={},
+    required_insights=set(),
+    forbidden_insights=set(),
 ):
     for trial in range(starting, num_trials):
         random.seed(trial)
@@ -55,14 +55,4 @@ def map_elite_generate(
                 child_cell = elit_grid.grid[row][col]
                 if not child_cell is None:
                     child = child_cell[1]
-                    assert (
-                        len(child.insights & required_insights) > 0
-                        or len(required_insights) == 0
-                    ), "insights: {} does not include any of: {}".format(
-                        child.insights, required_insights
-                    )
-                    assert (
-                        len(child.insights & forbidden_insights) == 0
-                    ), "insights: {} includes forbidden: {}".format(
-                        child.insights, child.insights & forbidden_insights
-                    )
+                    

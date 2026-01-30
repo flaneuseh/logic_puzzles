@@ -37,14 +37,17 @@ def generate_insight_candidates(insight, categories):
     folder = "GeneratedInsightProblems"
     starting = 0
     num_trials = 1
-    gen_len = 101
+    gen_len = 501
     pop_size = 100
     mut_rate = 0.8
     x_rate = 0.6
     add_rate = 0.5
     elits = 10
 
-    print(f"generating insight candidates for {insight.name}")
+    children = []
+    for child in Insight.sub_dag(insight) - {insight}:
+        children.append(child.name)
+    print(f"generating insight candidates for {insight.name} - forbidding {children}")
     map_elite_generate(
         puzzle,
         folder,
@@ -57,7 +60,7 @@ def generate_insight_candidates(insight, categories):
         add_rate,
         elits,
         required_insights={insight},
-        forbidden_insights=insight.children,
+        forbidden_insights=Insight.sub_dag(insight) - {insight},
     )
     write_hint_files(folder, num_trials)
 
@@ -76,4 +79,4 @@ if __name__ == "__main__":
     )
     weapon = Category("weapon", ["candlestick", "rope", "lead pipe", "revolver"], False)
 
-    generate_insight_candidates(Insight.OPENING, [time, suspect, weapon])
+    generate_insight_candidates(Insight.APPLY_OR, [time, suspect, weapon])
