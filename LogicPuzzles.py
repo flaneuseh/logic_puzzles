@@ -513,23 +513,30 @@ class Puzzle:
     def is_complete(self):
         """
         return true if there is exactly 1 "O"
-        in each row and column
+        in each row and column after all possible TRANS_ABC_TRUE moves have been applied (in a loop)
 
         and there are no truth violations
         """
         if self.is_valid():
-            solved_lr = True
-            solved_tb = True
+            applied = True
+            is_valid = True
+            complete = False
+            while applied and is_valid and not complete:
+                applied, is_valid, _, _, _ = find_transitives(self, {Insight.TRANS_ABC_FALSE})
+            if not is_valid:
+                return False
+
+            solved = True
             for cat1 in self.left_right:
                 for cat2 in self.top_bottom:
-                    grid_lr = self.get_grid(cat1, cat2)
-                    grid_tb = self.get_grid(cat2, cat1)
-                    if grid_lr and not self._grid_is_complete(grid_lr):
-                        solved_lr = False
-                    if grid_tb and not self._grid_is_complete(grid_tb):
-                        solved_tb = False
+                    grid_a = self.get_grid(cat1, cat2)
+                    grid_b = self.get_grid(cat2, cat1)
+                    if grid_a and not self._grid_is_complete(grid_a):
+                        solved= False
+                    if grid_b and not self._grid_is_complete(grid_b):
+                        solved = False
 
-            return (solved_lr or solved_tb)
+            return solved
         else:
             return False
 
