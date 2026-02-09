@@ -1,0 +1,56 @@
+Hints for grid cell [0][1]
+	The weapon lead pipe is at least 1 time before the weapon candlestick
+	The weapon candlestick is at least 1 time before the weapon rope
+
+
+Hints for grid cell [0][2]
+	The weapon lead pipe is 1 times before the weapon candlestick
+	The weapon lead pipe is at least 1 time before the weapon rope
+
+
+Hints for grid cell [1][1]
+	The weapon rope is 1 times before the weapon lead pipe
+	The weapon lead pipe is at least 1 time before the weapon candlestick
+
+
+Hints for grid cell [1][2]
+	Either the weapon lead pipe or the weapon rope is the time 1
+	The weapon rope is 1 times before the weapon lead pipe
+	Either the weapon lead pipe or the weapon candlestick is the time 3
+
+
+Hints for grid cell [2][1]
+	The weapon rope is the time 1
+	The weapon candlestick is at least 1 time before the weapon lead pipe
+
+
+Hints for grid cell [2][2]
+	Either the time 2 or the time 1 is the weapon rope
+	The weapon candlestick is 1 times before the weapon lead pipe
+
+
+Hints for grid cell [3][1]
+	The weapon lead pipe is at least 1 time before the weapon rope
+	The weapon candlestick is 1 times before the weapon lead pipe
+
+
+Hints for grid cell [3][2]
+	The weapon candlestick is at least 1 time before the weapon rope
+	The weapon lead pipe is 1 times before the weapon rope
+
+
+Hints for grid cell [4][1]
+	The weapon rope is the time 2
+	The weapon lead pipe is at least 1 time before the weapon candlestick
+
+
+Hints for grid cell [4][2]
+	The weapon lead pipe is 1 times before the weapon rope
+	Either the time 3 or the time 2 is the weapon candlestick
+
+
+Hints for grid cell [5][1]
+	The time 3 is the weapon lead pipe
+	The weapon candlestick is 1 times before the weapon rope
+
+

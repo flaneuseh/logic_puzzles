@@ -1,0 +1,54 @@
+Solution for grid cell [0][1]
+      Mrs  Mis  Col
+    ---------------
+rop|  X    X    O  |
+lea|  O    X    X  |
+can|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [1][1]
+      Mrs  Mis  Col
+    ---------------
+rop|  X    O    X  |
+lea|  O    X    X  |
+can|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [2][1]
+      Mrs  Mis  Col
+    ---------------
+rop|  X    X    O  |
+lea|  X    O    X  |
+can|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [3][1]
+      Mrs  Mis  Col
+    ---------------
+rop|  X    O    X  |
+lea|  X    X    O  |
+can|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [4][1]
+      Mrs  Mis  Col
+    ---------------
+rop|  O    X    X  |
+lea|  X    O    X  |
+can|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [5][1]
+      Mrs  Mis  Col
+    ---------------
+rop|  O    X    X  |
+lea|  X    X    O  |
+can|  X    O    X  |
+    ---------------
+
+

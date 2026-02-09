@@ -1,0 +1,54 @@
+      can  rop  lea
+    ---------------
+Mis|  *    *    *  |
+Col|  *    *    *  |
+Mrs|  *    *    *  |
+    ---------------
+APPLY_IS
+*0. The weapon rope is the suspect Mrs. White
+1. The weapon candlestick is the suspect Col. Mustard
+      can  rop  lea
+    ---------------
+Mis|  *    *    *  |
+Col|  *    *    *  |
+Mrs|  *    *    *  |
+    ---------------
+APPLY_IS
+*0. The suspect Col. Mustard is the weapon rope
+1. The suspect Mrs. White is the weapon candlestick
+      can  rop  lea
+    ---------------
+Mis|  *    *    *  |
+Col|  *    *    *  |
+Mrs|  *    *    *  |
+    ---------------
+APPLY_IS
+*0. The weapon lead pipe is the suspect Mrs. White
+1. The weapon candlestick is the suspect Col. Mustard
+      can  rop  lea
+    ---------------
+Mis|  *    *    *  |
+Col|  *    *    *  |
+Mrs|  *    *    *  |
+    ---------------
+APPLY_IS
+*0. The weapon rope is the suspect Miss Scarlet
+1. The weapon candlestick is the suspect Mrs. White
+      can  rop  lea
+    ---------------
+Mis|  *    *    *  |
+Col|  *    *    *  |
+Mrs|  *    *    *  |
+    ---------------
+APPLY_IS
+*0. The weapon rope is the suspect Mrs. White
+1. The suspect Miss Scarlet is the weapon candlestick
+      can  rop  lea
+    ---------------
+Mis|  *    *    *  |
+Col|  *    *    *  |
+Mrs|  *    *    *  |
+    ---------------
+APPLY_IS
+*0. The weapon candlestick is the suspect Miss Scarlet
+1. The suspect Col. Mustard is the weapon rope

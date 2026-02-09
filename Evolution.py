@@ -104,7 +104,7 @@ class HintSet:
         # Should be solvable without the forbidden insights,
         # and should not be solvable without the required insights
         if not self.valid or not self.completed_puzzle.is_complete():
-            return True
+            return False
         can_solve_without_required = False
         can_solve_without_forbidden = True
         if len(self.required_insights) > 0:
@@ -281,7 +281,7 @@ class HintSet:
         # return (0.5 * complete) + (0.5 * valid)
         if (
             not self.require_insight
-            or not valid
+            or not self.valid
             or not self.completed_puzzle.is_complete()
         ):
             return (0.5 * complete) + (0.5 * valid)
@@ -476,7 +476,7 @@ def evolve(
         feasible = new_feasible
         infeasible = new_infeasible
     for child in feasible:
-        solver = Solver(required_insights)
+        solver = Solver(required_insights | forbidden_insights)
         assert not solver.can_solve_without_forbidden(
             child.puzzle, child.hints
         ), "can solve without required insights: {}".format(required_insights)

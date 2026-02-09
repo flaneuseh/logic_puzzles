@@ -141,14 +141,14 @@ class EliteGrid:
                 largest_rows.append(row)
         return largest_rows
 
-    def print_progress(self):
-        print("Stats:")
-        print("\t Height:{}".format(self.height))
-        print("\t Total pop:{}".format(self.pop_size))
+    def print_progress(self, file):
+        file.write("Stats:\n")
+        file.write("\t Height:{}\n".format(self.height))
+        file.write("\t Total pop:{}\n".format(self.pop_size))
 
         for row in self.get_largest_rows():
             row = [str(val).rjust(2) for val in row]
-            print(row)
+            file.write(f"{row}\n")
 
 
 class History:
@@ -205,6 +205,8 @@ def evolve(
     elits,
     required_insights=set(),
     forbidden_insights=set(),
+    folder="",
+    trial=0,
 ):
     feasible_grid = EliteGrid(10)
     infeasible = []
@@ -215,64 +217,61 @@ def evolve(
         hints = random_hint_set(puzzle, required_insights, forbidden_insights)
         _add_child(hints, feasible_grid, infeasible)
 
-    for gen in range(generations):
+    with open(folder + "/log_trial_{}.txt".format(trial), "w") as log:
+        for gen in range(generations):
 
-        new_infeasible = []
+            new_infeasible = []
 
-        infeasible.sort(reverse=True, key=lambda a: a[0])
+            infeasible.sort(reverse=True, key=lambda a: a[0])
 
-        history.update(feasible_grid, infeasible)
+            history.update(feasible_grid, infeasible)
 
-        if gen % 50 == 0:
-            print("-" * 40)
-            print("GENERATION " + str(gen))
-            print("-" * 80)
-            if len(infeasible) > 0:
-                print("Infeasible")
-                print(infeasible[0])
-                print(infeasible[0][1].completed_puzzle.print_grid())
-                print(infeasible[0][1].completed_puzzle.num_violations())
-            
-                infeasible_reasons = {
-                    "no_hints": 0,
-                    "not_valid": 0,
-                    "not_complete": 0,
-                    "not_follows_insight_reqs": 0,
-                    "cant_solve_without_forbidden": 0,
-                    "can_solve_without_required": 0,
-                }
-                for _, child in infeasible:
-                    if len(child.hints) == 0:
-                        infeasible_reasons["no_hints"] += 1
-                    elif not child.valid:
-                        infeasible_reasons["not_valid"] += 1
-                    elif not child.completed_puzzle.is_complete():
-                        infeasible_reasons["not_complete"] += 1
-                    elif not child.follows_insight_requirements():
-                        forbidden_solver = Solver(forbidden_insights)
-                        required_solver = Solver(required_insights | forbidden_insights)
+            if gen % 50 == 0:
+                
+                log.write("-" * 40 + "\n")
+                log.write("GENERATION " + str(gen) + "\n")
+                log.write("-" * 80 + "\n")
+                if len(infeasible) > 0:
+                    log.write("Infeasible\n")
+                    log.write(f"{infeasible[0]}\n")
+                    log.write(f"{infeasible[0][1].completed_puzzle.print_grid()}\n")
+                    log.write(f"{infeasible[0][1].completed_puzzle.num_violations()}\n")
+                
+                    infeasible_reasons = {
+                        "no_hints": 0,
+                        "not_valid": 0,
+                        "not_complete": 0,
+                        "not_follows_insight_reqs": 0,
+                        "cant_solve_without_forbidden": 0,
+                        "can_solve_without_required": 0,
+                    }
+                    for _, child in infeasible:
+                        if len(child.hints) == 0:
+                            infeasible_reasons["no_hints"] += 1
+                        elif not child.valid:
+                            infeasible_reasons["not_valid"] += 1
+                        elif not child.completed_puzzle.is_complete():
+                            infeasible_reasons["not_complete"] += 1
+                        elif not child.follows_insight_requirements():
+                            infeasible_reasons["not_follows_insight_reqs"] += 1
+                            
+                            forbidden_solver = Solver(forbidden_insights)
+                            required_solver = Solver(required_insights | forbidden_insights)
 
-                        if not forbidden_solver.can_solve_without_forbidden(
-                            puzzle, child.hints
-                        ):
-                            infeasible_reasons["cant_solve_without_forbidden"] += 1
-                        if required_solver.can_solve_without_forbidden(puzzle, child.hints):
-                            infeasible_reasons["can_solve_without_required"] += 1
-                            completed_puzzle, is_valid, _, used_insights = required_solver.apply_hints(puzzle, child.hints)
-                            print(child.hints)
-                            used = []
-                            for insight in used_insights:
-                                used.append(insight.name)
-                            print(f"USED: {used}")
-                            print(completed_puzzle.print_grid())
-                        infeasible_reasons["not_follows_insight_reqs"] += 1
-                print("Reasons for infeasible:")
-                print(infeasible_reasons)
+                            if not forbidden_solver.can_solve_without_forbidden(
+                                puzzle, child.hints
+                            ):
+                                infeasible_reasons["cant_solve_without_forbidden"] += 1
+                            if required_solver.can_solve_without_forbidden(puzzle, child.hints):
+                                infeasible_reasons["can_solve_without_required"] += 1
+                            
+                    log.write("Reasons for infeasible: ")
+                    log.write(f"{infeasible_reasons}\n")
 
-            print("feasible:")
+                log.write("feasible:")
 
-            feasible_grid.print_progress()
-            print("-" * 80)
+                feasible_grid.print_progress(log)
+                log.write("-" * 80)
 
         # elitism
         if len(infeasible) > 0:
@@ -318,19 +317,16 @@ def evolve(
             child_cell = feasible_grid.grid[row][col]
             if not child_cell is None:
                 child = child_cell[1]
-                # assert (
-                #     len(child.insights & required_insights) > 0
-                #     or len(required_insights) == 0
-                # ), "insights: {} does not include any of: {}. Child required: {}".format(
-                #     child.insights, required_insights, child.required_insights
-                # )
-                # assert (
-                #     len(child.insights & forbidden_insights) == 0
-                # ), "insights: {} includes forbidden: {}. Child forbidden: {}".format(
-                #     child.insights,
-                #     child.insights & forbidden_insights,
-                #     child.forbidden_insights,
-                # )
+                solver = Solver()
+                assert solver.can_solve_without_forbidden(child.puzzle, child.hints), "can't solve with all insights available"
+                solver = Solver(required_insights | forbidden_insights)
+                assert not solver.can_solve_without_forbidden(
+                    child.puzzle, child.hints
+                ), "can solve without required insights: {}".format(required_insights)
+                solver = Solver(forbidden_insights)
+                assert solver.can_solve_without_forbidden(
+                    child.puzzle, child.hints
+                ), "can't solve without forbidden insights {}".format(forbidden_insights)
     return feasible_grid, infeasible, history
 
 

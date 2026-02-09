@@ -1,0 +1,143 @@
+Solution for grid cell [0][1]
+      1  2  3  Col  Mis  Mrs
+    ------------------------------
+can|  X    X    O  | X    O    X  |
+lea|  X    O    X  | O    X    X  |
+rop|  O    X    X  | X    X    O  |
+    ------------------------------
+Col|  X    O    X  |
+Mis|  X    X    O  |
+Mrs|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [1][2]
+      1  2  3  Col  Mis  Mrs
+    ------------------------------
+can|  X    O    X  | X    O    X  |
+lea|  X    X    O  | O    X    X  |
+rop|  O    X    X  | X    X    O  |
+    ------------------------------
+Col|  X    X    O  |
+Mis|  X    O    X  |
+Mrs|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [2][1]
+      1  2  3  Col  Mis  Mrs
+    ------------------------------
+can|  X    O    X  | O    X    X  |
+lea|  X    X    O  | X    O    X  |
+rop|  O    X    X  | X    X    O  |
+    ------------------------------
+Col|  X    O    X  |
+Mis|  X    X    O  |
+Mrs|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [3][2]
+      1  2  3  Col  Mis  Mrs
+    ------------------------------
+can|  O    X    X  | X    O    X  |
+lea|  X    X    O  | X    X    O  |
+rop|  X    O    X  | O    X    X  |
+    ------------------------------
+Col|  X    O    X  |
+Mis|  O    X    X  |
+Mrs|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [4][2]
+      1  2  3  Col  Mis  Mrs
+    ------------------------------
+can|  X    X    O  | X    X    O  |
+lea|  X    O    X  | X    O    X  |
+rop|  O    X    X  | O    X    X  |
+    ------------------------------
+Col|  O    X    X  |
+Mis|  X    O    X  |
+Mrs|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [5][1]
+      1  2  3  Col  Mis  Mrs
+    ------------------------------
+can|  X    O    X  | X    X    O  |
+lea|  X    X    O  | O    X    X  |
+rop|  O    X    X  | X    O    X  |
+    ------------------------------
+Col|  X    X    O  |
+Mis|  O    X    X  |
+Mrs|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [5][2]
+      1  2  3  Col  Mis  Mrs
+    ------------------------------
+can|  X    O    X  | X    X    O  |
+lea|  X    X    O  | O    X    X  |
+rop|  O    X    X  | X    O    X  |
+    ------------------------------
+Col|  X    X    O  |
+Mis|  O    X    X  |
+Mrs|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [6][2]
+      1  2  3  Col  Mis  Mrs
+    ------------------------------
+can|  X    O    X  | O    X    X  |
+lea|  X    X    O  | X    X    O  |
+rop|  O    X    X  | X    O    X  |
+    ------------------------------
+Col|  X    O    X  |
+Mis|  O    X    X  |
+Mrs|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [7][2]
+      1  2  3  Col  Mis  Mrs
+    ------------------------------
+can|  X    O    X  | O    X    X  |
+lea|  O    X    X  | X    O    X  |
+rop|  X    X    O  | X    X    O  |
+    ------------------------------
+Col|  X    O    X  |
+Mis|  O    X    X  |
+Mrs|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [8][3]
+      1  2  3  Col  Mis  Mrs
+    ------------------------------
+can|  X    O    X  | O    X    X  |
+lea|  O    X    X  | X    X    O  |
+rop|  X    X    O  | X    O    X  |
+    ------------------------------
+Col|  X    O    X  |
+Mis|  X    X    O  |
+Mrs|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [9][1]
+      1  2  3  Col  Mis  Mrs
+    ------------------------------
+can|  O    X    X  | O    X    X  |
+lea|  X    O    X  | X    O    X  |
+rop|  X    X    O  | X    X    O  |
+    ------------------------------
+Col|  O    X    X  |
+Mis|  X    O    X  |
+Mrs|  X    X    O  |
+    ---------------
+
+

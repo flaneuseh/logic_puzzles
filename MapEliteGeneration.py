@@ -4,6 +4,7 @@ import ultraimport
 
 ultraimport("__dir__/MapElites.py", package="main")
 from main.MapElites import evolve
+from main.LogicPuzzles import Solver
 
 
 def map_elite_generate(
@@ -22,7 +23,7 @@ def map_elite_generate(
 ):
     for trial in range(starting, num_trials):
         random.seed(trial)
-        print("Starting Trial:{}".format(trial))
+        #print("Starting Trial:{}".format(trial))
         elit_grid, infeasible, history = evolve(
             puzzle,
             gen_len,
@@ -33,6 +34,8 @@ def map_elite_generate(
             elits,
             required_insights,
             forbidden_insights,
+            folder,
+            trial,
         )
 
         elite_json = jsonpickle.encode(elit_grid)
@@ -55,4 +58,16 @@ def map_elite_generate(
                 child_cell = elit_grid.grid[row][col]
                 if not child_cell is None:
                     child = child_cell[1]
+                    solver = Solver()
+                    assert solver.can_solve_without_forbidden(child.puzzle, child.hints), "can't solve with all insights available"
+                    solver = Solver(required_insights | forbidden_insights)
+                    assert not solver.can_solve_without_forbidden(
+                        child.puzzle, child.hints
+                    ), "can solve without required insights: {}".format(required_insights)
+                    solver = Solver(forbidden_insights)
+                    assert solver.can_solve_without_forbidden(
+                        child.puzzle, child.hints
+                    ), "can't solve without forbidden insights {}".format(forbidden_insights)
+        
+        return elit_grid
                     

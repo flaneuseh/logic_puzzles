@@ -1,0 +1,20 @@
+Hints for grid cell [0][1]
+	Either the suspect Mrs. White or the suspect Miss Scarlet is the weapon lead pipe
+	Either the weapon lead pipe or the weapon rope is the suspect Col. Mustard
+	Either the weapon rope or the weapon candlestick is the suspect Mrs. White
+	Either the suspect Miss Scarlet or the suspect Mrs. White is the weapon lead pipe
+
+
+Hints for grid cell [1][1]
+	Either the suspect Mrs. White or the suspect Col. Mustard is the weapon candlestick
+	Either the weapon lead pipe or the weapon rope is the suspect Mrs. White
+	Either the weapon candlestick or the weapon rope is the suspect Miss Scarlet
+
+
+Hints for grid cell [2][1]
+	Either the suspect Miss Scarlet or the suspect Col. Mustard is the weapon candlestick
+	Either the suspect Col. Mustard or the suspect Miss Scarlet is the weapon candlestick
+	Either the weapon candlestick or the weapon rope is the suspect Mrs. White
+	Either the weapon lead pipe or the weapon rope is the suspect Col. Mustard
+
+

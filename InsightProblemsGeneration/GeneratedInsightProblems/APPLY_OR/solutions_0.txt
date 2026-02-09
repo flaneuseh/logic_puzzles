@@ -1,0 +1,54 @@
+Solution for grid cell [0][1]
+      can  lea  rop
+    ---------------
+Mrs|  X    O    X  |
+Col|  O    X    X  |
+Mis|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [1][1]
+      can  lea  rop
+    ---------------
+Mrs|  X    X    O  |
+Col|  O    X    X  |
+Mis|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [2][1]
+      can  lea  rop
+    ---------------
+Mrs|  X    X    O  |
+Col|  X    O    X  |
+Mis|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [3][1]
+      can  lea  rop
+    ---------------
+Mrs|  O    X    X  |
+Col|  X    O    X  |
+Mis|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [4][1]
+      can  lea  rop
+    ---------------
+Mrs|  X    O    X  |
+Col|  X    X    O  |
+Mis|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [5][1]
+      can  lea  rop
+    ---------------
+Mrs|  O    X    X  |
+Col|  X    X    O  |
+Mis|  X    O    X  |
+    ---------------
+
+
