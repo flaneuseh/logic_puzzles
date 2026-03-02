@@ -89,7 +89,7 @@ class HintSet:
         self.require_insight = len(self.required_insights) > 0
         self.forbidden_insights = forbidden_insights
         solver = Solver()
-        self.completed_puzzle, self.valid, self.loops, self.solver_insights = (
+        self.completed_puzzle, self.valid, self.loops = (
             solver.apply_hints(
                 self.puzzle,
                 self.non_duplicates(),
@@ -149,13 +149,13 @@ class HintSet:
                 english_hints.append(english)
 
         solver = Solver()
-        final_puzzle_without_duplicates, valid_without_duplicates, _, _ = (
+        final_puzzle_without_duplicates, valid_without_duplicates, _ = (
             solver.apply_hints(
                 self.puzzle,
                 non_duplicates,
             )
         )
-        final_puzzle_with_duplicates, valid_with_duplicates, _, _ = solver.apply_hints(
+        final_puzzle_with_duplicates, valid_with_duplicates, _ = solver.apply_hints(
             self.puzzle,
             self.hints,
         )
@@ -287,9 +287,9 @@ class HintSet:
             return (0.5 * complete) + (0.5 * valid)
         else:
             return (
-                (0.45 * complete)
-                + (0.45 * valid)
-                + (0.1 * self.follows_insight_requirements())
+                (0.35 * complete)
+                + (0.35 * valid)
+                + (0.3 * self.follows_insight_requirements())
             )
 
     def solver_loops(self):

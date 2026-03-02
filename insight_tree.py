@@ -3,8 +3,9 @@ import ultraimport
 
 ultraimport("__dir__/./LogicPuzzles.py", package="main")
 from main.HintToEnglish import hint_to_english
-from main.LogicPuzzles import Category, Puzzle, get_available_moves
+from main.LogicPuzzles import Category, Puzzle, Solver
 
+SOLVER = Solver()
 
 # Recursively get insights found by the solver from the current state to the end.
 def gen_move_tree(curr_state, hints, choose_fn):
@@ -22,7 +23,7 @@ def gen_move_tree(curr_state, hints, choose_fn):
 # Recursive subfunction to get the move tree for the next move as chosen by choose_fn
 def _r_gen_move_tree(curr_state, hints, curr_hint_idx, choose_fn):
     children = []
-    _, available_moves = get_available_moves(curr_state, hints)
+    _, available_moves = SOLVER.get_available_moves(curr_state, hints)
     if len(available_moves) == 0:
         return []
 

@@ -1,1 +1,0 @@
-{"py/object": "main.MapElites.EliteGrid", "width": 10, "grid": [], "total_children": [], "solutions": {}, "pop_size": 0, "height": 0}

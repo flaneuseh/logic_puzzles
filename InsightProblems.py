@@ -57,7 +57,7 @@ def get_insight_problem(puzzle, hints, insight):
 
     # Do as much of the puzzle as possible without the insight (or its descendants).
     #print("Fast forward without insight")
-    puzzle_before_insight, _, _, _ = solver.apply_hints(
+    puzzle_before_insight, _ = solver.fast_forward(
         puzzle, hints
     )
 

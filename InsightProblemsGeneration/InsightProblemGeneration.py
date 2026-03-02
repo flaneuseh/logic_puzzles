@@ -43,8 +43,8 @@ def generate_insight_candidates(insight, categories, folder):
     puzzle = Puzzle(insight_cats)
     starting = 0
     num_trials = 1
-    gen_len = 5001
-    pop_size = 500
+    gen_len = 100000
+    pop_size = 5000
     mut_rate = 0.8
     x_rate = 0.6
     add_rate = 0.5
@@ -73,18 +73,21 @@ def generate_insight_candidates(insight, categories, folder):
 
 
 if __name__ == "__main__":
-    time = Category("time", ["1", "2", "3", "4"], True)
+    time = Category("time", ["1", "2", "3", "4", "5", "6"], True)
     suspect = Category(
         "suspect",
         [
-            "Miss Scarlet",
-            "Prof. Plum",
-            "Mrs. White",
-            "Col. Mustard",
+            "Scarlet",
+            "Plum",
+            "White",
+            "Mustard",
+            "Peacock",
+            "Green",
         ],
         False,
     )
-    weapon = Category("weapon", ["candlestick", "rope", "lead pipe", "revolver"], False)
+    weapon = Category("weapon", ["candlestick", "rope", "lead pipe", "revolver", "poison", "polearm"])
+    room = Category("room", ["Greenhouse", "Library", "Salon", "Dining Room", "Kitchen", "Bedroom"])
 
     base = "GeneratedInsightProblems"
     
@@ -93,7 +96,7 @@ if __name__ == "__main__":
     for insight in Insight.ALL_INSIGHTS:
         folder = f"{base}/{insight.name}"
         Path(folder).mkdir(parents=True, exist_ok=True)
-        grid = generate_insight_candidates(insight, [time, suspect, weapon], folder)
+        grid = generate_insight_candidates(insight, [time, suspect, weapon, room], folder)
         file = open(f"{folder}/insight_problems.txt", "w") 
         num_problems = 0
         for row in range(grid.height):
