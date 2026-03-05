@@ -43,7 +43,7 @@ from puzzle_defs import (
 )
 
 
-SOLVER = Solver()
+SOLVER = Solver(set(), True)
 
 # Determine whether move is correct, incorrect, or neutral,
 # with respect to the solution grid (not the solution-blind insights)
@@ -52,15 +52,20 @@ def get_move_value(curr_state, move, solution):
     loc, move_sy = move
     curr_sy = curr_state.get_symbol(*loc)
     soln_sy = solution.get_symbol(*loc)
-    # The cell is part of the current move.
-    if move_sy == soln_sy:
+    if move_sy == curr_sy:
+        # The move is not actually a change.
+        value = "neutral"    
+    elif move_sy == soln_sy:
         value = "correct"
+    elif curr_sy == soln_sy:
+        # The move is replacing a correct mark.
+        value = "incorrect"
     elif move_sy in CONFIDENT_MARKS:
         value = "incorrect"
     elif curr_sy in CONFIDENT_MARKS and curr_sy != soln_sy:
             # The current cell is wrong.
-            if move_sy == "_" or (move_sy in YES_MARKS and soln_sy in YES_MARKS) or (move_sy in NO_MARKS and soln_sy in NO_MARKS):
-                # The move is correcting a mistake.
+            if move_sy in BLANK_MARKS or (move_sy in YES_MARKS and soln_sy in YES_MARKS) or (move_sy in NO_MARKS and soln_sy in NO_MARKS):
+                # The move is erasing a mistake.
                 value = "correct"
 
     return value
@@ -129,9 +134,6 @@ def get_composite_moves(puzzle_id, curr_state, solution, s_moves):
                 collapsed_moves[grid_id]["solver_value"] = "repair"
             else:
                 collapsed_moves[grid_id]["solver_value"] = "insight"
-        if comparison_insight and insight != comparison_insight and insight.depth() == comparison_insight.depth():
-            # If this ever triggers, we will have to decide how to handle the edge case
-            print(f"found equivalent moves with equally ranked different insights: {insight} vs {comparison_insight}")
 
     for c_move in collapsed_moves.copy().values():
         # Find alternative states by setting the changed symbol to the other options.
@@ -167,7 +169,7 @@ def get_composite_moves(puzzle_id, curr_state, solution, s_moves):
             alt_move["grid_value"] = grid_value
 
             alt_state = deepcopy(curr_state)
-            alt_state.answer(*move)
+            alt_state.answer(*alt_move["move"])
             grid_id = get_grid_id(puzzle_id, alt_state)
             if grid_id not in collapsed_moves:
                 collapsed_moves[grid_id] = alt_move
@@ -186,10 +188,7 @@ def get_composite_moves(puzzle_id, curr_state, solution, s_moves):
                         # take the lower-depth insight.
                         if alt_insight < ex_insight:
                             collapsed_moves[grid_id] = alt_move
-                            continue
-                        if alt_insight != ex_insight and alt_insight.depth() == ex_insight.depth:
-                            # Again, we will handle this edge case if it triggers. 
-                            print(f"found equivalent moves with equally ranked different insights: {insight} vs {comparison_insight}")       
+                            continue   
                     else:
                         # Different og_sy and different solver_values.
                         if alt_solver_value in ["overconfident", "uncertain"] and ex_solver_value == "contradiction":
@@ -234,6 +233,21 @@ def get_composite_moves(puzzle_id, curr_state, solution, s_moves):
 
     return composite_moves, grid_id_to_comp_id
 
+def dedupe_moves(moves):
+    dedupe_moves = []
+    for move in moves:
+        duplicate = False
+        for d_move in dedupe_moves:
+            if (
+                d_move["hint_idx"] == move["hint_idx"]
+                and d_move["insight"] == move["insight"]
+                and d_move["move"] == move["move"]
+            ):
+                duplicate = True
+                break
+        if not duplicate:
+            dedupe_moves.append(move)
+    return dedupe_moves
 
 def get_solver_moves(puzzle, hints):
     # Get all conceivable moves for the puzzle state. Include moves from the "opened"(crossed out) version of the puzzle,
@@ -242,24 +256,22 @@ def get_solver_moves(puzzle, hints):
     SOLVER.apply_cross_out(opened_puzzle, True)
     _, s_moves = SOLVER.get_available_moves(puzzle, hints)
     _, opened_moves = SOLVER.get_available_moves(opened_puzzle, hints)
-    dedupe_moves = s_moves
-    dedupe_o_moves = []
-    for o_move in opened_moves:
-        duplicate = False
-        for s_move in s_moves:
-            if (
-                o_move["hint_idx"] == s_move["hint_idx"]
-                and o_move["insight"] == s_move["insight"]
-                and o_move["move"] == s_move["move"]
-            ):
-                duplicate = True
-                break
-        if not duplicate:
-            # o_move["type"] = f"(after filling in openings) {o_move['type']}"
-            dedupe_o_moves.append(o_move)
-    dedupe_moves.extend(dedupe_o_moves)
-    return dedupe_moves
+    s_moves.extend(opened_moves)
+    d_moves = dedupe_moves(s_moves)
+    return d_moves
 
+# True if the categories and entities are the same (even if transposed), False otherwise.
+def loc_are_equal(loc_a, loc_b):
+    a_cat1, a_cat2, a_ent1, a_ent2 = loc_a
+    b_cat1, b_cat2, b_ent1, b_ent2 = loc_b
+
+    if a_cat1 == b_cat1 and a_ent1 == b_ent1:
+        if a_cat2 == b_cat2 and a_ent2 == b_ent2:
+            return True
+    elif a_cat1 == b_cat2 and a_ent1 == b_ent2:
+        if a_cat2 == b_cat1 and a_ent2 == b_ent1:
+            return True
+    return False
 
 def get_possible_moves(puzzle, move, available_moves):
     possible_moves = []
@@ -267,13 +279,11 @@ def get_possible_moves(puzzle, move, available_moves):
 
     changed, _ = puzzle.answer(*move)
     (u_loc, u_sy) = move
-    if not changed:
-        return possible_moves
 
     for s_move in available_moves:
         (s_loc, s_sy) = s_move["move"] 
         
-        if u_loc == s_loc:
+        if loc_are_equal(s_loc, u_loc):
             # The moves affect the same grid location and have symbols in the same "sign"
             if (
                 (
@@ -284,7 +294,7 @@ def get_possible_moves(puzzle, move, available_moves):
                     u_sy in NO_MARKS
                     and s_sy in NO_MARKS
                 )
-                or (u_sy == "_" and s_sy == "_")
+                or (u_sy in BLANK_MARKS and s_sy in BLANK_MARKS)
             ):
                 poss_move = {
                     "hint_idx": s_move["hint_idx"],
@@ -311,12 +321,12 @@ def get_possible_moves(puzzle, move, available_moves):
                     poss_move["indexed_hint"] = s_move[
                         "indexed_hint"
                     ]
-                if (u_sy == "_" and s_sy == "_"):
+                if (u_sy in BLANK_MARKS and s_sy in BLANK_MARKS):
                     print("POSSIBLE ERASE INSIGHT FOUND")
                     print(poss_move)
                 possible_moves.append(poss_move)
                 recovered = True
-            elif u_sy != "_" and s_sy in CONFIDENT_MARKS:
+            elif u_sy not in BLANK_MARKS and s_sy in CONFIDENT_MARKS:
                 # The user made a move that contradicts the solver.
                 poss_move = {
                     "hint_idx": s_move["hint_idx"],
@@ -343,7 +353,7 @@ def get_possible_moves(puzzle, move, available_moves):
             "confidence": "unknown",
         })
 
-    return possible_moves
+    return changed, possible_moves
 
 
 def get_insight_node_id(
@@ -383,6 +393,8 @@ def get_diff_loc_str(diff_loc):
 
 def get_type_str(hint_idx):
     typestr = "hint"
+    if hint_idx == -100:
+        typestr = "unknown"
     if hint_idx == -3:
         typestr = "transitives"
     elif hint_idx == -2:
@@ -432,52 +444,72 @@ def recover_moves(
     r_moves = []
     mi = 0
     for time, raw_str, rec_moves in u_moves:
-        result = deepcopy(puzzle)  # copy that will have current move applied
-
-        available_moves = get_solver_moves(puzzle, hints)  # All solver-aware moves
-        composite_moves, grid_id_to_comp_id = get_composite_moves(
-            puzzle_id, puzzle, solution, available_moves
-        )  # Available solver moves collapsed into individual insights
-
-        for move in rec_moves:
-            result.answer(*move)
-        u_move_diff, changed = SOLVER.get_move_diff(puzzle, result, True)
-
-        if not changed:
-            continue
-
-        if result.print_grid() == blank_puzzle.print_grid():
-            # This is a "clear" move; reset progress
-            target_id = source_id
-            user_history = {}
-            edge_row = [
-                source_id,
-                target_id,
-                user_id,
-                mi,
-                u_success,
-                "unknown-neutral",
-                "neutral",
-                prompt_mode,
-                level_mode,
-            ]
-            mi = mi + 1
-            if (edge_df == edge_row).all(1).any():
-                # Only add an edge once per user (while user retracing their steps could be interesting if looking at single user, we are interested in comparing users.)
-                continue
-            edge_df.loc[len(edge_df)] = edge_row  # adding a row
-            source_id = target_id
-
-            puzzle = deepcopy(result)
-            continue
-
-        # Reset result to apply rec_moves one at a time.
+        # Copy that will have moves applied.
         result = deepcopy(puzzle)
         for rec_move in rec_moves:
-            possible_moves = get_possible_moves(result, rec_move, available_moves)
-    
+            available_moves = get_solver_moves(puzzle, hints)  # All solver-aware moves
+            composite_moves, grid_id_to_comp_id = get_composite_moves(
+                puzzle_id, puzzle, solution, available_moves
+            )  # Available solver moves collapsed into individual insights
+
+            possible_moves = []
+            move_value = "neutral"
+
+            loc, sy = rec_move
+            if loc == None and sy == "*":
+                # This is a "clear" move; reset progress
+                target_id = source_id
+                user_history = {}
+                edge_row = [
+                    source_id,
+                    target_id,
+                    user_id,
+                    mi,
+                    u_success,
+                    "unknown-neutral",
+                    "neutral",
+                    prompt_mode,
+                    level_mode,
+                ]
+                mi = mi + 1
+                if (edge_df == edge_row).all(1).any():
+                    # Only add an edge once per user (while user retracing their steps could be interesting if looking at single user, we are interested in comparing users.)
+                    continue
+                edge_df.loc[len(edge_df)] = edge_row  # adding a row
+                source_id = target_id
+                possible_moves = [{
+                    "hint_idx": -100,
+                    "insight": None,
+                    "repair": False,
+                    "move": rec_move,
+                    "violation": False,
+                    "confidence": "unknown",
+                }]
+                result = deepcopy(blank_puzzle)
+                _, changed = SOLVER.get_move_diff(puzzle, result)
+                if not changed:
+                    # Skip moves that don't change the puzzle state
+                    continue
+                board_state = result.print_grid()
+                r_move = {
+                    "puzzle_state": deepcopy(result),
+                    "board_state": board_state,
+                    "move": rec_move,
+                    "possible_moves": possible_moves,
+                    "value": move_value,
+                    "likely_move": f"clear"
+                }
+
+                r_moves.append((time, raw_str, r_move))
+                continue
+            
+            changed, possible_moves = get_possible_moves(result, rec_move, available_moves)
+            move_value = get_move_value(puzzle, rec_move, solution)
+            
+            if not changed:
+                # Skip moves that don't change the puzzle state
+                continue
             board_state = result.print_grid()
-            move_value = get_move_value(u_move_diff, rec_move, solution)
             r_move = {
                 "puzzle_state": deepcopy(result),
                 "board_state": board_state,
@@ -505,7 +537,10 @@ def recover_moves(
                 hint_idx = composite["hint_idx"]
                 typestr = get_type_str(hint_idx)
                 insight_str = f"{composite['insight']}"
-                hint = hints[hint_idx]
+                hint_str = ""
+                if typestr == "hint":
+                    hint = hints[hint_idx]
+                    hint_str = hint_to_english(hint)
                 if composite["solver_value"] != "contradiction":
                     solver_value = composite["solver_value"]
                     if solver_value in ["uncertain", "overconfident"]:
@@ -518,9 +553,11 @@ def recover_moves(
                             move_idx = i
                             break
                     action_json[session_id][move_idx]["insight"] = insight_str
-                    move_id = f"{typestr}:{hint}:{insight_str}"
+                    move_id = f"{typestr}:{hint_str}:{insight_str}"
                 else:
-                    move_id = f"{typestr}:{hint}:unknown"
+                    move_id = f"{typestr}:{hint_str}:unknown"
+
+            r_move["likely_move"] = f"{move_id} ({solver_value})"
 
             curr_grid_value = "correct"
             if SOLVER.repair(result, solution, False):
@@ -648,10 +685,16 @@ def clean_online_moves(puzzle, hints, raw_moves):
     raw_moves = sorted(raw_moves, key=lambda m: m["time"])
     for _, raw_move in enumerate(raw_moves):
         time = raw_move["time"]
-        moves = []
-        puzzle_str = puzzle
+    
+        puzzle_str = puzzle.print_grid()
+        if raw_move["button"] == "clear":
+            # Reset
+            user_puzzle = deepcopy(puzzle)
+            clean_moves.append((time, puzzle_str, [(None, "*")]))
+            continue
         if raw_move["type"] == "cellChange":
             puzzle_str = raw_move["puzzleState"]
+        moves = []
         topdown_rows = re.split("-+", puzzle_str)
         topdown_rows = list(filter(lambda tdr: len(tdr) > 0, topdown_rows))
         for tdr, topdown_row in enumerate(topdown_rows):
@@ -944,7 +987,7 @@ def _clean_vr_moves__hub_soup(raw_moves):
         ent2_idx = int(entity_parts[ent2_ent_idx].strip("()")) - 1
         ent2 = cat2.entities[ent2_idx]
 
-        loc = [cat1, cat2, ent1, ent2]
+        loc = (cat1, cat2, ent1, ent2)
         sy = ""
         match parts[1]:
             case "Filled GreenPin":
@@ -971,8 +1014,8 @@ def print_moves(file, puzzle, hints, moves):
     file.write("Puzzle:\n")
     file.write(puzzle.print_grid())
     file.write("Hints:\n")
-    for hint in hints:
-        file.write(hint_to_english(hint) + "\n")
+    for i, hint in enumerate(hints):
+        file.write(f"{i}. {hint_to_english(hint)} \n")
     file.write("\n")
 
     pre = deepcopy(puzzle)
@@ -983,13 +1026,28 @@ def print_moves(file, puzzle, hints, moves):
             file.write(f"{time}: User Move {idx+1} (Wrong, Ignored): {raw_state}\n")
         else:
             file.write(f"User Move {idx+1} ({move['value']}): {raw_state}\n")
-            post.answer(*move["move"])
+            loc, sy = move["move"]
+            if loc == None and sy == "*":
+                post = deepcopy(puzzle)
+            else:
+                post.answer(*move["move"])
+            
+            opened_puzzle = deepcopy(pre)
+            SOLVER.apply_cross_out(opened_puzzle, True)
             move_diff, _ = SOLVER.get_move_diff(pre, post, False)
+            _, s_moves = SOLVER.get_available_moves(pre, hints)
+            _, opened_moves = SOLVER.get_available_moves(opened_puzzle, hints)
+            s_moves.extend(opened_moves)
+            s_moves = dedupe_moves(s_moves)
+            file.write("Available Moves: \n")
+            for s_move in s_moves:
+                s_loc, _ = s_move["move"]
+                u_loc, _ = move["move"]
+                file.write(f"(eq? {loc_are_equal(s_loc, u_loc)}) {s_move['move']}:{s_move['hint_idx']}:{s_move['insight']}\n")
             pre = deepcopy(post)
             board_str = move_diff.print_grid().splitlines()
             for line in board_str:
                 file.write(f"{line}\n")
-
             file.write("Possible Reasonings: \n")
             for i, poss_move in enumerate(move["possible_moves"]):
                 typestr = get_type_str(poss_move["hint_idx"])
@@ -1000,11 +1058,12 @@ def print_moves(file, puzzle, hints, moves):
                 if poss_move["violation"]:
                     typestr += " (violation)"
 
-                if "typestr" == "hint":
+                if "hint" in typestr:
                     typestr += (
-                        f" - \"{hint_to_english(hints['poss_move']['hint_idx'])}\""
+                        f" - \"{hint_to_english(hints[poss_move['hint_idx']])}\""
                     )
                 file.write(f"{i+1}: {typestr} - {poss_move['insight']}\n")
+            file.write(f"Likely Reasoning: {move['likely_move']}\n")
 
         file.write(f"\n\n")
 
@@ -1893,8 +1952,6 @@ if __name__ == "__main__":
     session_outcome_json = {}
     for user_id, user_data in clean_data.items():
         for puzzle_id, session in user_data["puzzles"].items():
-            if session["session_id"] != "689b5a0a6bc6c32c3cb589a9":
-                continue
             recovered_moves = recover_moves(
                 puzzle_id,
                 session["puzzle"],

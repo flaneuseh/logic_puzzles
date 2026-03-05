@@ -35,8 +35,8 @@ ultraimport("__dir__/HintToEnglish.py", package="main")
 from main.HintToEnglish import hint_to_english
 
 MOVE_MARKS = {"X", "O", "Y", "N", "_"}
-YES_MARKS = {"X", "Y"}
-NO_MARKS = {"O", "N"}
+YES_MARKS = {"O", "Y"}
+NO_MARKS = {"X", "N"}
 TENTATIVE_MARKS = {"Y", "N"}
 BLANK_MARKS = {"*", "_"}
 CONFIDENT_MARKS = {"X", "O"}
@@ -77,6 +77,23 @@ class Category:
 
     def __repr__(self):
         return str(self)
+    
+    def __eq__(self, other):
+        if self.title != other.title:
+            return False
+        if self.is_numeric != other.is_numeric:
+            return False
+        if self.increment != other.increment:
+            return False
+        if len(self.entities) != len(other.entities):
+            return False
+        for ent in self.entities:
+            if ent not in other.entities:
+                return False
+        return True
+    
+    def __hash__(self):
+        return hash(f"{self.title}:{self.is_numeric}:{self.increment}:{sorted(self.entities)}")
 
 
 # %% id="EFhbSHGwKlRs"
@@ -625,14 +642,18 @@ class Insight:
         return str(self)
 
     def __lt__(self, other):
-        if self.depth() >= other.depth():
+        if other in self.sub_dag(True):
+            return True
+        if self in other.sub_dag(True):
             return False
-        return self.depth() < other.depth() or self.value < other.value
+        return self.value < other.value
 
     def __gt__(self, other):
-        if self.depth() <= other.depth():
+        if other in self.sub_dag(True):
             return False
-        return self.depth() > other.depth() or self.value > other.value
+        if self in other.sub_dag(True):
+            return True
+        return self.value < other.value
 
     def depth(self):
         return self._depth(0)
