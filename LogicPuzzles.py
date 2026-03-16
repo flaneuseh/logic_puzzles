@@ -561,10 +561,16 @@ class Puzzle:
         if self.is_valid():
             applied = True
             is_valid = True
-            complete = False
             solver = Solver({Insight.TRANS_ABC_FALSE})
-            while applied and is_valid and not complete:
-                applied, is_valid, _, _, _ = solver.find_transitives(self)
+            i = 0
+            while applied and is_valid:
+                i += 1
+                assert(i < 1000) # Break the infinite loop, if there is one.
+                contradiction, solver_moves = solver.find_transitives(self, True)
+                if contradiction:
+                    is_valid = False
+                if len(solver_moves) == 0:
+                    applied = False
             if not is_valid:
                 return False
 
@@ -681,7 +687,7 @@ class Insight:
             sub_dag.add(curr_node)
 
         if children_only:
-            return sub_dag - self
+            return sub_dag - {self}
 
         return sub_dag
 
@@ -1128,7 +1134,7 @@ class Solver:
                         curr_sy = puzzle.get_symbol(*loc)
                         soln_sy = solution.get_symbol(*loc)
                         if (
-                            curr_sy not in TENTATIVE_MARKS | BLANK_MARKS
+                            curr_sy in CONFIDENT_MARKS
                             and curr_sy != soln_sy
                         ):
                             # The puzzle value does not match the canonical solution; unset subgrid and mark repair as applied
@@ -1471,9 +1477,6 @@ class Solver:
         if numbered:
             num = terms[5]
 
-        steps = []
-        update_puzzle = deepcopy(puzzle)
-
         # If A < B and A, B are not in the same category, then A is not B.
         if bef_cat != aft_cat:
             loc = (bef_cat, aft_cat, bef_ent, aft_ent)
@@ -1529,7 +1532,6 @@ class Solver:
             if len(pos_aft_index) == 0:
                 contradiction = True
             elif len(pos_aft_index) == 1:
-                complete = True
                 aft_index = pos_aft_index[0]
                 loc = (aft_cat, num_cat, aft_ent, num_cat.entities[aft_index])
                 contradiction = self.add_solver_move(

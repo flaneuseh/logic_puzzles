@@ -105,7 +105,7 @@ def get_grid_id(puzzle_id, state):
     return grid_id
 
 def get_composite_moves(puzzle_id, curr_state, solution, s_moves):
-    # Moves that reach the same grid state are collapsed to only the move that is the highest in the insight DAG
+    # Moves that reach the same grid state are collapsed to only the move that is the highest in the insight DAG / lowest in the insight ordering
     collapsed_moves = {}
     for s_move in s_moves:
         move = s_move["move"]
@@ -472,9 +472,6 @@ def recover_moves(
                     level_mode,
                 ]
                 mi = mi + 1
-                if (edge_df == edge_row).all(1).any():
-                    # Only add an edge once per user (while user retracing their steps could be interesting if looking at single user, we are interested in comparing users.)
-                    continue
                 edge_df.loc[len(edge_df)] = edge_row  # adding a row
                 source_id = target_id
                 possible_moves = [{
@@ -527,6 +524,12 @@ def recover_moves(
             diff_loc, diff_sy = rec_move
             diff_loc_str = get_diff_loc_str(diff_loc)
             move_id = f"{solver_value}:{diff_loc_str}:{diff_sy}"
+            # Move index from action json
+            move_idx = 0
+            for i, move_data in enumerate(action_json[session_id]):
+                if move_data["time"] == time:
+                    move_idx = i
+                    break
             if grid_id in grid_id_to_comp_id:
                 comp_id = grid_id_to_comp_id[grid_id]
                 composite = composite_moves[comp_id]
@@ -546,21 +549,20 @@ def recover_moves(
                     if solver_value in ["uncertain", "overconfident"]:
                         solver_value = f"insight-{solver_value}"
 
-                    # Add the insight to the action JSON.
-                    move_idx = 0
-                    for i, move_data in enumerate(action_json[session_id]):
-                        if move_data["time"] == time:
-                            move_idx = i
-                            break
                     action_json[session_id][move_idx]["insight"] = insight_str
                     move_id = f"{typestr}:{hint_str}:{insight_str}"
                 else:
                     move_id = f"{typestr}:{hint_str}:unknown"
+                    action_json[session_id][move_idx]["violated_insight"] = composite["violated_insight"]
 
             r_move["likely_move"] = f"{move_id} ({solver_value})"
+            action_json[session_id][move_idx]["solver_value"] = solver_value
+            action_json[session_id][move_idx]["move_value"] = move_value
+            
 
             curr_grid_value = "correct"
-            if SOLVER.repair(result, solution, False):
+            contradiction, _ = SOLVER.repair(result, solution, False)
+            if contradiction:
                 curr_grid_value = "incorrect"
 
             diff_loc_str = f"diff_loc"
@@ -586,50 +588,47 @@ def recover_moves(
                 level_mode,
             ]
             mi = mi + 1
-            if (edge_df == edge_row).all(1).any():
-                # Only add an edge once per user (while user retracing their steps could be interesting if looking at single user, we are interested in comparing users.)
-                continue
             edge_df.loc[len(edge_df)] = edge_row  # adding a row
             source_id = target_id
 
             puzzle = deepcopy(result)
 
-        target_id = ""
-        if u_success == "success":
-            target_id = success_id
-        elif u_success == "failure":
-            target_id = failure_id
-        elif u_success == "partial":
-            target_id = partial_id
-        edge_row = [
-            source_id,
-            target_id,
-            user_id,
-            mi,
-            u_success,
-            "",
-            "",
-            prompt_mode,
-            level_mode,
-        ]
+    target_id = ""
+    if u_success == "success":
+        target_id = success_id
+    elif u_success == "failure":
+        target_id = failure_id
+    elif u_success == "partial":
+        target_id = partial_id
+    edge_row = [
+        source_id,
+        target_id,
+        user_id,
+        mi,
+        u_success,
+        "",
+        "",
+        prompt_mode,
+        level_mode,
+    ]
 
-        # Get available insights at the end.
-        available_insights = set()
-        if u_success != "success":
-            # If the user was successful, ignore any optional insights.
-            available_moves = get_solver_moves(puzzle, hints)
-            for s_move in available_moves:
-                available_insights.add(f"{s_move['insight']}")
+    # Get available insights at the end.
+    available_insights = set()
+    if u_success != "success":
+        # If the user was successful, ignore any optional insights.
+        available_moves = get_solver_moves(puzzle, hints)  # All solver-aware moves
+        composite_moves, grid_id_to_comp_id = get_composite_moves(
+            puzzle_id, puzzle, solution, available_moves
+        )  # Available solver moves collapsed into individual insights
+        for s_move in composite_moves.values():
+            available_insights.add(f"{s_move['insight']}")
 
-        session_outcome_json[session_id] = {
-            "outcome": u_success,
-            "available_insights": list(available_insights),
-        }
+    session_outcome_json[session_id] = {
+        "outcome": u_success,
+        "available_insights": list(available_insights),
+    }
 
-        if (edge_df == edge_row).all(1).any():
-            # Only add an edge once per user (while user retracing their steps could be interesting if looking at single user, we are interested in comparing users.)
-            return r_moves
-        edge_df.loc[len(edge_df)] = edge_row
+    edge_df.loc[len(edge_df)] = edge_row
     return r_moves
 
 
@@ -659,7 +658,6 @@ def clean_vr_data(raw_df, start_time):
                 index=False, name=None
             )
         )
-
         start_dt = arrow.get(start_time).datetime
         start_secs = start_dt.replace(tzinfo=timezone.utc).timestamp()
         timed_moves = []
@@ -687,7 +685,7 @@ def clean_online_moves(puzzle, hints, raw_moves):
         time = raw_move["time"]
     
         puzzle_str = puzzle.print_grid()
-        if raw_move["button"] == "clear":
+        if raw_move["type"] == "button" and raw_move["button"] == "clear":
             # Reset
             user_puzzle = deepcopy(puzzle)
             clean_moves.append((time, puzzle_str, [(None, "*")]))
@@ -722,7 +720,8 @@ def clean_online_moves(puzzle, hints, raw_moves):
 
         clean_moves.append((time, puzzle_str, moves))
     solution, _, _ = SOLVER.apply_hints(puzzle, hints)
-    correct = not SOLVER.repair(user_puzzle, solution, False)
+    contradiction, _ = SOLVER.repair(user_puzzle, solution, False)
+    correct = not contradiction
     user_success = "failure"
     if correct:
         if user_puzzle.is_complete():
@@ -733,6 +732,7 @@ def clean_online_moves(puzzle, hints, raw_moves):
 
 
 def clean_vr_moves(clean_key, raw_moves):
+    session = None
     match clean_key:
         case "spoke_pasta":
             session = _clean_vr_moves__spoke_pasta(raw_moves)
@@ -751,7 +751,8 @@ def clean_vr_moves(clean_key, raw_moves):
         _, _, rec_moves = move
         for rec_move in rec_moves:
             user_puzzle.answer(*rec_move)
-    correct = not SOLVER.repair(user_puzzle, solution, False)
+    contradiction, _ = SOLVER.repair(user_puzzle, solution, False)
+    correct = not contradiction
     user_success = "failure"
     if correct:
         if user_puzzle.is_complete():
@@ -987,6 +988,9 @@ def _clean_vr_moves__hub_soup(raw_moves):
         ent2_idx = int(entity_parts[ent2_ent_idx].strip("()")) - 1
         ent2 = cat2.entities[ent2_idx]
 
+        if cat1 not in puzzle.categories or cat2 not in puzzle.categories or ent1 not in cat1.entities or ent2 not in cat2.entities:
+            print(f"Unable to process move {raw_move}")
+            continue
         loc = (cat1, cat2, ent1, ent2)
         sy = ""
         match parts[1]:
@@ -999,6 +1003,7 @@ def _clean_vr_moves__hub_soup(raw_moves):
             case "Removed RedPin":
                 sy = "*"
             case _:
+                print(f"Unable to process move: {raw_move}")
                 continue
 
         clean_moves.append((f"{time}:0", raw_move, [(loc, sy)]))
@@ -1010,7 +1015,7 @@ def _clean_vr_moves__hub_soup(raw_moves):
     }
 
 
-def print_moves(file, puzzle, hints, moves):
+def print_moves(file, puzzle, hints, moves, insight_contexts):
     file.write("Puzzle:\n")
     file.write(puzzle.print_grid())
     file.write("Hints:\n")
@@ -1043,7 +1048,8 @@ def print_moves(file, puzzle, hints, moves):
             for s_move in s_moves:
                 s_loc, _ = s_move["move"]
                 u_loc, _ = move["move"]
-                file.write(f"(eq? {loc_are_equal(s_loc, u_loc)}) {s_move['move']}:{s_move['hint_idx']}:{s_move['insight']}\n")
+                file.write(f"(loc? {loc_are_equal(s_loc, u_loc)}) {s_move['move']}:{s_move['hint_idx']}:{s_move['insight']}\n")
+
             pre = deepcopy(post)
             board_str = move_diff.print_grid().splitlines()
             for line in board_str:
@@ -1056,13 +1062,33 @@ def print_moves(file, puzzle, hints, moves):
                 if poss_move["confidence"] != "confident":
                     typestr += f" ({poss_move['confidence']})"
                 if poss_move["violation"]:
-                    typestr += " (violation)"
+                    typestr += f" (violation of {poss_move['violated_insight']})"
 
                 if "hint" in typestr:
                     typestr += (
                         f" - \"{hint_to_english(hints[poss_move['hint_idx']])}\""
                     )
-                file.write(f"{i+1}: {typestr} - {poss_move['insight']}\n")
+                insight = poss_move['insight']
+                file.write(f"{i+1}: {typestr} - {insight}\n")
+                if poss_move["repair"] or poss_move["confidence"] != "confident" or poss_move["violation"]:
+                    continue
+                if insight != None:
+                    if insight.name not in insight_contexts:
+                        insight_contexts[insight.name] = {}
+                        for o_insight in Insight.ALL_INSIGHTS:
+                            insight_contexts[insight.name][o_insight.name] = 0
+                    insights_seen = {insight}
+                    for o_move in move["possible_moves"]:
+                        if o_move["repair"] or o_move["confidence"] != "confident" or o_move["violation"]:
+                            continue
+                        o_insight = o_move["insight"]
+                        if o_insight != None and o_insight not in insights_seen:
+                            insights_seen.add(o_insight)
+                            insight_contexts[insight.name][o_insight.name] += 1
+                    if len(insights_seen) == 1:
+                        # this is the only insight seen.
+                        insight_contexts[insight.name][insight.name] += 1
+
             file.write(f"Likely Reasoning: {move['likely_move']}\n")
 
         file.write(f"\n\n")
@@ -1314,6 +1340,8 @@ def gen_data_views(dir, edge_df, node_df):
     edge_view.to_csv(f"{dir}/{edge_view_name}.csv", index=False)
     node_view.to_csv(f"{dir}/{node_view_name}.csv", index=False)
 
+    user_success_lookup = {}
+
     # if u == None and p == None and l == None:
     combined_view = pd.merge(edge_view, node_view, left_on="Target", right_on="Id")
     # % successful, % concede, % success but failed at least once, % concede while partially correct
@@ -1347,6 +1375,13 @@ def gen_data_views(dir, edge_df, node_df):
             success_counts["partial"] = 0
         if "failure" not in success_counts:
             success_counts["failure"] = 0
+
+        if pid not in user_success_lookup:
+            user_success_lookup[pid] = {}
+        for p_user in p_users:
+            user_moves = user_view[user_view["UserId"] == p_user]
+            success = user_moves["UserSuccess"].unique()[0]
+            user_success_lookup[pid][p_user] = success
 
         user_move_correctness = pg_view.copy()
         user_move_correctness = user_move_correctness.drop_duplicates(
@@ -1417,22 +1452,17 @@ def gen_data_views(dir, edge_df, node_df):
         third_move = all_view[all_view["MoveNumber"] == 2]
 
         third_move_users = third_move["UserId"]
-        if len(third_move_users) != len(third_move_users.unique()):
-            print("EXTRA MOVES WERE FOUND")
-            print(pid)
-            print(third_move_users)
+        assert len(third_move_users) == len(third_move_users.unique()), f"Duplicate third moves: {third_move_users}"
 
         first_move = first_move[first_move["UserId"].isin(third_move_users)]
+        first_move_users = first_move["UserId"]
+        assert len(first_move_users) == len(first_move_users.unique()), f"Duplicate first moves: {first_move_users}"
+
         second_move = second_move[second_move["UserId"].isin(third_move_users)]
+        second_move_users = second_move["UserId"]
+        assert len(second_move_users) == len(second_move_users.unique()), f"Duplicate second moves: {second_move_users}"
 
-        if len(first_move) != len(second_move) or len(second_move) != len(third_move):
-            print("MOVES ARE NOT EQUAL")
-
-            print(pid)
-            print("first three moves")
-            print(first_move[["UserId", "Target"]])
-            print(second_move[["UserId", "Target"]])
-            print(third_move[["UserId", "Target"]])
+        assert len(first_move) == len(second_move) and len(second_move) == len(third_move), f'Unequal lengths of moves between 1st, 2nd, 3rd: first-\n{first_move[["UserId", "Source", "Target", "PuzzleId", "MoveNumber"]]}; second-\n{second_move[["UserId", "Source", "Target", "PuzzleId", "MoveNumber"]]}; third-\n{third_move[["UserId", "Source", "Target", "PuzzleId", "MoveNumber"]]}'
 
         first_move_counts = (
             first_move.value_counts("Target")
@@ -1568,8 +1598,14 @@ def gen_data_views(dir, edge_df, node_df):
                     "avg_pct_incorrect_move": 0,
                     "per_user_pct_neutral_move": [],
                     "avg_pct_neutral_move": 0,
-                    "per_user_pct_insight": [],
-                    "avg_pct_insight": 0,
+                    "per_user_pct_full_insight": [],
+                    "avg_pct_full_insight": 0,
+                    "per_user_pct_uncertain": [],
+                    "avg_pct_uncertain": 0,
+                    "per_user_pct_overconfident": [],
+                    "avg_pct_overconfident": 0,
+                    "per_user_pct_tentative": [],
+                    "avg_pct_tentative": 0,
                     "per_user_pct_unknown_correct": [],
                     "avg_pct_unknown_correct": 0,
                     "per_user_pct_unknown_incorrect": [],
@@ -1640,20 +1676,37 @@ def gen_data_views(dir, edge_df, node_df):
             u_view = u_view.replace({
                 "SolverValue": {
                     "contradiction": "unknown-incorrect",
-                    "uncertain": "insight",
-                    "overconfident": "insight",
                 }
             })
-            insight_moves = u_view[u_view["SolverValue"] == "insight"]
+            full_insight_moves = u_view[u_view["SolverValue"] == "insight"]
+            uncertain_moves = u_view[u_view["SolverValue"] == "insight-uncertain"]
+            overconfident_moves = u_view[u_view["SolverValue"] == "insight-overconfident"]
+            tentative_moves = u_view[u_view["SolverValue"] == "insight-tentative"]
             unknown_correct_moves = u_view[u_view["SolverValue"] == "unknown-correct"]
             unknown_incorrect_moves = u_view[
                 u_view["SolverValue"] == "unknown-incorrect"
             ]
             unknown_neutral_moves = u_view[u_view["SolverValue"] == "unknown-neutral"]
-            insight_move_count = (
-                insight_moves.value_counts("UserId")
+
+            full_insight_move_count = (
+                full_insight_moves.value_counts("UserId")
                 .rename_axis("UserId")
-                .reset_index(name="insight_move_count")
+                .reset_index(name="full_insight_move_count")
+            )
+            uncertain_move_count = (
+                uncertain_moves.value_counts("UserId")
+                .rename_axis("UserId")
+                .reset_index(name="uncertain_move_count")
+            )
+            overconfident_move_count = (
+                overconfident_moves.value_counts("UserId")
+                .rename_axis("UserId")
+                .reset_index(name="overconfident_move_count")
+            )
+            tentative_move_count = (
+                tentative_moves.value_counts("UserId")
+                .rename_axis("UserId")
+                .reset_index(name="tentative_move_count")
             )
             unknown_correct_move_count = (
                 unknown_correct_moves.value_counts("UserId")
@@ -1670,10 +1723,29 @@ def gen_data_views(dir, edge_df, node_df):
                 .rename_axis("UserId")
                 .reset_index(name="unknown_neutral_move_count")
             )
+            
 
             user_counts = pd.merge(
                 user_counts,
-                insight_move_count,
+                full_insight_move_count,
+                on="UserId",
+                how="outer",
+            )
+            user_counts = pd.merge(
+                user_counts,
+                uncertain_move_count,
+                on="UserId",
+                how="outer",
+            )
+            user_counts = pd.merge(
+                user_counts,
+                overconfident_move_count,
+                on="UserId",
+                how="outer",
+            )
+            user_counts = pd.merge(
+                user_counts,
+                tentative_move_count,
                 on="UserId",
                 how="outer",
             )
@@ -1695,9 +1767,19 @@ def gen_data_views(dir, edge_df, node_df):
                 on="UserId",
                 how="outer",
             )
+            
 
-            user_counts["PctInsight"] = (
-                user_counts["insight_move_count"] / user_counts["move_count"]
+            user_counts["PctFullInsight"] = (
+                user_counts["full_insight_move_count"] / user_counts["move_count"]
+            )
+            user_counts["PctUncertain"] = (
+                user_counts["uncertain_move_count"] / user_counts["move_count"]
+            )
+            user_counts["PctOverconfident"] = (
+                user_counts["overconfident_move_count"] / user_counts["move_count"]
+            )
+            user_counts["PctTentative"] = (
+                user_counts["tentative_move_count"] / user_counts["move_count"]
             )
             user_counts["PctUnknownCorrect"] = (
                 user_counts["unknown_correct_move_count"] / user_counts["move_count"]
@@ -1710,9 +1792,21 @@ def gen_data_views(dir, edge_df, node_df):
             )
             user_counts = user_counts.fillna(0)
 
-            view_stats[u_name]["per_user_pct_insight"] = user_counts["PctInsight"].tolist()
-            view_stats[u_name]["avg_pct_insight"] = float(
-                user_counts["PctInsight"].mean()
+            view_stats[u_name]["per_user_pct_full_insight"] = user_counts["PctFullInsight"].tolist()
+            view_stats[u_name]["avg_pct_full_insight"] = float(
+                user_counts["PctFullInsight"].mean()
+            )
+            view_stats[u_name]["per_user_pct_uncertain"] = user_counts["PctUncertain"].tolist()
+            view_stats[u_name]["avg_pct_uncertain"] = float(
+                user_counts["PctUncertain"].mean()
+            )
+            view_stats[u_name]["per_user_pct_overconfident"] = user_counts["PctOverconfident"].tolist()
+            view_stats[u_name]["avg_pct_overconfident"] = float(
+                user_counts["PctOverconfident"].mean()
+            )
+            view_stats[u_name]["per_user_pct_tentative"] = user_counts["PctTentative"].tolist()
+            view_stats[u_name]["avg_pct_tentative"] = float(
+                user_counts["PctTentative"].mean()
             )
             view_stats[u_name]["per_user_pct_unknown_correct"] = user_counts[
                 "PctUnknownCorrect"
@@ -1861,6 +1955,8 @@ def gen_data_views(dir, edge_df, node_df):
 
         with open(f"{dir}/stats{view_name}.json", "w") as f:
             json.dump(stats, f)
+        
+    return user_success_lookup
 
 
 def action_json_movelist_from_moves(moves):
@@ -1882,10 +1978,32 @@ def reformat_vr_action_json(action_json):
             move_data["move_no"] = move_no
     return action_json
     
+def inc_insight_counts(insight_counts, puzzle_id, success, moves):
+    if puzzle_id not in insight_counts:
+        insight_counts[puzzle_id] = {}
+        for insight in Insight.ALL_INSIGHTS:
+            insight_counts[puzzle_id][insight.name] = {
+                "success": 0,
+                "partial": 0,
+                "failure": 0,
+                "available_at_concede": 0,
+            }
+    insights_seen = set()
+    for move in moves:
+        if "insight" in move:
+            insight = move["insight"]
+            if insight in insights_seen:
+                # Only increment insights once per session.
+                continue
+            insights_seen.add(insight)
+            insight_counts[puzzle_id][insight][success] += 1
+
 
 if __name__ == "__main__":
-    node_df = pd.DataFrame(columns=["Id", "PuzzleId", "State", "GridValue", "MoveIds"])
-    edge_df = pd.DataFrame(
+    insight_contexts = {}
+    
+    vr_node_df = pd.DataFrame(columns=["Id", "PuzzleId", "State", "GridValue", "MoveIds"])
+    vr_edge_df = pd.DataFrame(
         columns=[
             "Source",
             "Target",
@@ -1898,21 +2016,22 @@ if __name__ == "__main__":
             "LevelMode",
         ]
     )
-    state_to_node_id = {}
-    label_to_grid = {}
+    vr_state_to_node_id = {}
+    vr_label_to_grid = {}
     vr_dir = "user_data/vr_study"
     vr_users = [f.name for f in os.scandir("user_data/vr_study") if f.is_dir()]
-    session_outcome_json = {}
-    action_json = {}
+    vr_session_outcome_json = {}
+    vr_action_json = {}
     for user in vr_users:
         print(user)
         userfile = f"{vr_dir}/{user}/{user}_PuzzleLogs.csv"
         raw_df, start_time = load_vr_data(userfile)
 
-        clean_data = clean_vr_data(raw_df, start_time)
-        for puzzle_id, session in clean_data.items():
+        vr_clean_data = clean_vr_data(raw_df, start_time)
+        for puzzle_id, session in vr_clean_data.items():
             session_id = f"{user}:{puzzle_id}"
-            action_json[session_id] = action_json_movelist_from_moves(session["moves"])
+            print(session_id)
+            vr_action_json[session_id] = action_json_movelist_from_moves(session["moves"])
             recovered_moves = recover_moves(
                 puzzle_id,
                 session["puzzle"],
@@ -1922,36 +2041,53 @@ if __name__ == "__main__":
                 "",
                 session["moves"],
                 session["success"],
-                state_to_node_id,
-                node_df,
-                edge_df,
-                action_json,
+                vr_state_to_node_id,
+                vr_node_df,
+                vr_edge_df,
+                vr_action_json,
                 session_id,
-                session_outcome_json,
+                vr_session_outcome_json,
             )
-            output_path = f"{vr_dir}/{user}/recovered_tree_{puzzle_id}.txt"
+            output_path = f"{vr_dir}/{user}/recovered_moves_{puzzle_id}.txt"
             output_file = Path(output_path)
             output_file.parent.mkdir(exist_ok=True, parents=True)
             move_file = open(output_path, "w")
-            print_moves(move_file, session["puzzle"], session["hints"], recovered_moves)
+            print_moves(move_file, session["puzzle"], session["hints"], recovered_moves, insight_contexts)
 
-    dir = "user_data/vr_study"
-    edge_df.to_csv(f"{vr_dir}/edgegraph.csv", index=False)
-    node_df.to_csv(f"{vr_dir}/nodegraph.csv", index=False)
-    action_json = reformat_vr_action_json(action_json)
+    vr_dir = "user_data/vr_study"
+    vr_edge_df.to_csv(f"{vr_dir}/edgegraph.csv", index=False)
+    vr_node_df.to_csv(f"{vr_dir}/nodegraph.csv", index=False)
+    vr_action_json = reformat_vr_action_json(vr_action_json)
     with open(f"{vr_dir}/updated_action_data.json", "w") as f:
-        json.dump(action_json, f)
-    with open(f"{dir}/session_outcome.json", "w") as f:
-        json.dump(session_outcome_json, f)
-    edge_df = pd.read_csv(f"{vr_dir}/edgegraph.csv")
-    node_df = pd.read_csv(f"{vr_dir}/nodegraph.csv")
-    gen_data_views(vr_dir, edge_df, node_df)
+        json.dump(vr_action_json, f)
+    with open(f"{vr_dir}/session_outcome.json", "w") as f:
+        json.dump(vr_session_outcome_json, f)
+    vr_edge_df = pd.read_csv(f"{vr_dir}/edgegraph.csv")
+    vr_node_df = pd.read_csv(f"{vr_dir}/nodegraph.csv")
+    vr_success_lookup = gen_data_views(vr_dir, vr_edge_df, vr_node_df)
 
     online_dir = "user_data/online_puzzle_study"
-    clean_data, action_json = load_online_data(online_dir)
-    session_outcome_json = {}
-    for user_id, user_data in clean_data.items():
+    on_clean_data, on_action_json = load_online_data(online_dir)
+    on_session_outcome_json = {}
+    on_node_df = pd.DataFrame(columns=["Id", "PuzzleId", "State", "GridValue", "MoveIds"])
+    on_edge_df = pd.DataFrame(
+        columns=[
+            "Source",
+            "Target",
+            "UserId",
+            "MoveNumber",
+            "UserSuccess",
+            "SolverValue",
+            "MoveValue",
+            "PromptMode",
+            "LevelMode",
+        ]
+    )
+    on_state_to_node_id = {}
+    for user_id, user_data in on_clean_data.items():
+        print(user_id)
         for puzzle_id, session in user_data["puzzles"].items():
+            print(f"{user_id}:{puzzle_id}")
             recovered_moves = recover_moves(
                 puzzle_id,
                 session["puzzle"],
@@ -1961,27 +2097,79 @@ if __name__ == "__main__":
                 user_data["levelMode"],
                 session["moves"],
                 session["success"],
-                state_to_node_id,
-                node_df,
-                edge_df,
-                action_json,
+                on_state_to_node_id,
+                on_node_df,
+                on_edge_df,
+                on_action_json,
                 session["session_id"],
-                session_outcome_json,
+                on_session_outcome_json,
             )
             output_path = (
-                f"{online_dir}/recovered_trees/{user_id}/recovered_tree_{puzzle_id}.txt"
+                f"{online_dir}/recovered_moves/{user_id}/recovered_moves_{puzzle_id}.txt"
             )
             output_file = Path(output_path)
             output_file.parent.mkdir(exist_ok=True, parents=True)
             move_file = open(output_path, "w")
-            print_moves(move_file, session["puzzle"], session["hints"], recovered_moves)
+            print_moves(move_file, session["puzzle"], session["hints"], recovered_moves, insight_contexts)
     with open(f"{online_dir}/updated_action_data.json", "w") as f:
-        json.dump(action_json, f)
+        json.dump(on_action_json, f)
     with open(f"{online_dir}/session_outcome.json", "w") as f:
-        json.dump(session_outcome_json, f)
+        json.dump(on_session_outcome_json, f)
 
-    # edge_df.to_csv(f"{online_dir}/edgegraph.csv", index=False)
-    # node_df.to_csv(f"{online_dir}/nodegraph.csv", index=False)
-    edge_df = pd.read_csv(f"{online_dir}/edgegraph.csv")
-    node_df = pd.read_csv(f"{online_dir}/nodegraph.csv")
-    gen_data_views(online_dir, edge_df, node_df)
+    with open(f"insight_contexts.json", "w") as f:
+        json.dump(insight_contexts, f)
+    on_edge_df.to_csv(f"{online_dir}/edgegraph.csv", index=False)
+    on_node_df.to_csv(f"{online_dir}/nodegraph.csv", index=False)
+    on_edge_df = pd.read_csv(f"{online_dir}/edgegraph.csv")
+    on_node_df = pd.read_csv(f"{online_dir}/nodegraph.csv")
+    on_success_lookup = gen_data_views(online_dir, on_edge_df, on_node_df)
+
+    on_action_json = None
+    vr_action_json = None
+    on_session_outcome_json = None
+    vr_session_outcome_json = None
+    
+    with open(f"{online_dir}/updated_action_data.json") as f:
+        on_action_json = json.load(f)
+    with open(f"{vr_dir}/updated_action_data.json") as f:
+        vr_action_json = json.load(f)
+    with open(f"{online_dir}/session_outcome.json") as f:
+        on_session_outcome_json = json.load(f)
+    with open(f"{vr_dir}/session_outcome.json") as f:
+        vr_session_outcome_json = json.load(f)
+
+    insight_counts = {}
+    for user_id, user_data in on_clean_data.items():
+        for puzzle_id, session in user_data["puzzles"].items():
+            session_id = session["session_id"]
+            if session_id not in on_session_outcome_json:
+                continue
+            moves = on_action_json[session_id]
+            success = on_session_outcome_json[session_id]["outcome"]
+            inc_insight_counts(insight_counts, puzzle_id, success, moves)
+            available_at_end = on_session_outcome_json[session_id]["available_insights"]
+            insights_seen = set()
+            for insight in available_at_end:
+                if insight in insights_seen:
+                    continue
+                insights_seen.add(insight)
+                insight_counts[puzzle_id][insight]["available_at_concede"] += 1
+
+    for user in vr_users:
+        userfile = f"{vr_dir}/{user}/{user}_PuzzleLogs.csv"
+        raw_df, start_time = load_vr_data(userfile)
+
+        vr_clean_data = clean_vr_data(raw_df, start_time)
+        for puzzle_id, session in vr_clean_data.items():
+            session_id = f"{user}:{puzzle_id}"
+            if session_id not in vr_session_outcome_json:
+                continue
+            moves = vr_action_json[session_id]
+            success = vr_session_outcome_json[session_id]["outcome"]
+            inc_insight_counts(insight_counts, puzzle_id, success, moves)
+            available_at_end = vr_session_outcome_json[session_id]["available_insights"]
+            for insight in available_at_end:
+                insight_counts[puzzle_id][insight]["available_at_concede"] += 1
+
+    with open(f"insight_counts.json", "w") as f:
+        json.dump(insight_counts, f)
