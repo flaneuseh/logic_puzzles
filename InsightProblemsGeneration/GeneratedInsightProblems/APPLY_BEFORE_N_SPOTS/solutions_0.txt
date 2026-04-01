@@ -1,0 +1,36 @@
+Solution for grid cell [0][2]
+      1  2  3  4  5  6
+    ------------------------------
+Pea|  X    X    O    X    X    X  |
+Plu|  X    X    X    O    X    X  |
+Whi|  O    X    X    X    X    X  |
+Sca|  X    X    X    X    O    X  |
+Gre|  X    X    X    X    X    O  |
+Mus|  X    O    X    X    X    X  |
+    ------------------------------
+
+
+Solution for grid cell [1][1]
+      1  2  3  4  5  6
+    ------------------------------
+Pea|  O    X    X    X    X    X  |
+Plu|  X    X    O    X    X    X  |
+Whi|  X    X    X    X    O    X  |
+Sca|  X    X    X    X    X    O  |
+Gre|  X    X    X    O    X    X  |
+Mus|  X    O    X    X    X    X  |
+    ------------------------------
+
+
+Solution for grid cell [2][1]
+      1  2  3  4  5  6
+    ------------------------------
+Pea|  X    X    O    X    X    X  |
+Plu|  X    O    X    X    X    X  |
+Whi|  X    X    X    X    O    X  |
+Sca|  X    X    X    X    X    O  |
+Gre|  X    X    X    O    X    X  |
+Mus|  O    X    X    X    X    X  |
+    ------------------------------
+
+

@@ -1,0 +1,137 @@
+      1  2  3  4
+    --------------------
+rev|  *    X    *    X  |
+can|  X    X    X    O  |
+lea|  *    *    *    X  |
+rop|  *    *    *    X  |
+    --------------------
+APPLY_BEFORE_ONE_SPOT
+0. Either the weapon lead pipe or the weapon rope is the time 2
+1. The time 4 is the weapon candlestick
+2. The weapon rope is 1 times before the weapon candlestick
+      1  2  3  4
+    --------------------
+rev|  *    X    X    *  |
+can|  X    X    O    X  |
+lea|  *    X    X    *  |
+rop|  X    O    X    X  |
+    --------------------
+APPLY_BEFORE_ONE_SPOT
+0. The time 2 is the weapon rope
+1. The weapon candlestick is 1 times before the weapon lead pipe
+2. The time 3 is the weapon candlestick
+3. The weapon candlestick is the time 3
+      1  2  3  4
+    --------------------
+rev|  X    O    X    X  |
+can|  X    X    X    O  |
+lea|  *    X    *    X  |
+rop|  *    X    *    X  |
+    --------------------
+APPLY_BEFORE_ONE_SPOT
+0. The weapon revolver is 1 times before the weapon lead pipe
+1. The weapon candlestick is the time 4
+2. Either the weapon candlestick or the weapon revolver is the time 2
+3. The weapon lead pipe is at least 1 time before the weapon candlestick
+      1  2  3  4
+    --------------------
+rev|  X    O    X    X  |
+can|  X    X    X    O  |
+lea|  *    X    *    X  |
+rop|  *    X    *    X  |
+    --------------------
+APPLY_BEFORE_ONE_SPOT
+0. Either the weapon candlestick or the weapon revolver is the time 4
+1. The weapon lead pipe is 1 times before the weapon candlestick
+2. The weapon revolver is the time 2
+      1  2  3  4
+    --------------------
+rev|  *    X    *    X  |
+can|  X    O    X    X  |
+lea|  *    X    *    X  |
+rop|  X    X    X    O  |
+    --------------------
+APPLY_BEFORE_ONE_SPOT
+0. The time 4 is the weapon rope
+1. The time 2 is the weapon candlestick
+2. The weapon revolver is 1 times before the weapon rope
+      1  2  3  4
+    --------------------
+rev|  X    *    X    *  |
+can|  X    *    X    *  |
+lea|  X    X    O    X  |
+rop|  O    X    X    X  |
+    --------------------
+APPLY_BEFORE_ONE_SPOT
+0. The weapon rope is the time 1
+1. The weapon candlestick is 1 times before the weapon lead pipe
+2. The time 3 is the weapon lead pipe
+      1  2  3  4
+    --------------------
+rev|  *    X    *    X  |
+can|  X    O    X    X  |
+lea|  *    X    *    X  |
+rop|  X    X    X    O  |
+    --------------------
+APPLY_BEFORE_ONE_SPOT
+0. The weapon rope is the time 4
+1. The weapon candlestick is the time 2
+2. The weapon lead pipe is 1 times before the weapon rope
+3. The time 4 is the weapon rope
+      1  2  3  4
+    --------------------
+rev|  X    O    X    X  |
+can|  *    X    *    X  |
+lea|  X    X    X    O  |
+rop|  *    X    *    X  |
+    --------------------
+APPLY_BEFORE_ONE_SPOT
+0. The weapon revolver is the time 2
+1. The weapon lead pipe is the time 4
+2. The weapon revolver is 1 times before the weapon candlestick
+      1  2  3  4
+    --------------------
+rev|  X    X    X    O  |
+can|  *    *    X    X  |
+lea|  *    *    X    X  |
+rop|  X    X    O    X  |
+    --------------------
+APPLY_BEFORE_ONE_SPOT
+0. The weapon rope is 1 times before the weapon revolver
+1. The time 3 is the weapon rope
+2. The time 4 is the weapon revolver
+3. The weapon rope is at least 1 time before the weapon revolver
+4. The weapon lead pipe is 1 times before the weapon rope
+      1  2  3  4
+    --------------------
+rev|  X    O    X    X  |
+can|  *    X    *    X  |
+lea|  X    X    X    O  |
+rop|  *    X    *    X  |
+    --------------------
+APPLY_BEFORE_ONE_SPOT
+0. The time 4 is the weapon lead pipe
+1. The weapon revolver is the time 2
+2. The weapon candlestick is 1 times before the weapon revolver
+      1  2  3  4
+    --------------------
+rev|  X    X    X    O  |
+can|  X    X    O    X  |
+lea|  *    *    X    X  |
+rop|  *    *    X    X  |
+    --------------------
+APPLY_BEFORE_ONE_SPOT
+0. The time 3 is the weapon candlestick
+1. The weapon rope is 1 times before the weapon candlestick
+2. The time 4 is the weapon revolver
+      1  2  3  4
+    --------------------
+rev|  *    X    *    *  |
+can|  *    X    *    X  |
+lea|  X    O    X    X  |
+rop|  *    X    *    *  |
+    --------------------
+APPLY_BEFORE_ONE_SPOT
+0. The time 2 is the weapon lead pipe
+1. Either the time 1 or the time 3 is the weapon candlestick
+2. The weapon rope is 1 times before the weapon lead pipe

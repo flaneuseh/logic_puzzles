@@ -1,0 +1,54 @@
+Solution for grid cell [0][1]
+      Gre  Sca  Pea
+    ---------------
+Din|  X    X    O  |
+Kit|  O    X    X  |
+Gre|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [1][1]
+      Gre  Sca  Pea
+    ---------------
+Din|  X    O    X  |
+Kit|  O    X    X  |
+Gre|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [2][1]
+      Gre  Sca  Pea
+    ---------------
+Din|  X    X    O  |
+Kit|  X    O    X  |
+Gre|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [3][1]
+      Gre  Sca  Pea
+    ---------------
+Din|  X    O    X  |
+Kit|  X    X    O  |
+Gre|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [4][1]
+      Gre  Sca  Pea
+    ---------------
+Din|  O    X    X  |
+Kit|  X    O    X  |
+Gre|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [5][1]
+      Gre  Sca  Pea
+    ---------------
+Din|  O    X    X  |
+Kit|  X    X    O  |
+Gre|  X    O    X  |
+    ---------------
+
+

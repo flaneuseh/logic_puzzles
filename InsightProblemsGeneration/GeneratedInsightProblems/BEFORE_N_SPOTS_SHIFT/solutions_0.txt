@@ -1,0 +1,84 @@
+Solution for grid cell [0][2]
+      1  2  3  4  5  6
+    ------------------------------
+Gre|  X    X    O    X    X    X  |
+Bed|  X    X    X    X    X    O  |
+Kit|  O    X    X    X    X    X  |
+Sal|  X    X    X    O    X    X  |
+Din|  X    X    X    X    O    X  |
+Lib|  X    O    X    X    X    X  |
+    ------------------------------
+
+
+Solution for grid cell [1][2]
+      1  2  3  4  5  6
+    ------------------------------
+Gre|  X    O    X    X    X    X  |
+Bed|  X    X    X    O    X    X  |
+Kit|  X    X    O    X    X    X  |
+Sal|  X    X    X    X    O    X  |
+Din|  O    X    X    X    X    X  |
+Lib|  X    X    X    X    X    O  |
+    ------------------------------
+
+
+Solution for grid cell [2][2]
+      1  2  3  4  5  6
+    ------------------------------
+Gre|  X    O    X    X    X    X  |
+Bed|  X    X    X    X    O    X  |
+Kit|  X    X    X    O    X    X  |
+Sal|  O    X    X    X    X    X  |
+Din|  X    X    X    X    X    O  |
+Lib|  X    X    O    X    X    X  |
+    ------------------------------
+
+
+Solution for grid cell [3][2]
+      1  2  3  4  5  6
+    ------------------------------
+Gre|  O    X    X    X    X    X  |
+Bed|  X    O    X    X    X    X  |
+Kit|  X    X    O    X    X    X  |
+Sal|  X    X    X    O    X    X  |
+Din|  X    X    X    X    X    O  |
+Lib|  X    X    X    X    O    X  |
+    ------------------------------
+
+
+Solution for grid cell [4][2]
+      1  2  3  4  5  6
+    ------------------------------
+Gre|  X    X    X    O    X    X  |
+Bed|  X    X    O    X    X    X  |
+Kit|  X    X    X    X    O    X  |
+Sal|  X    O    X    X    X    X  |
+Din|  O    X    X    X    X    X  |
+Lib|  X    X    X    X    X    O  |
+    ------------------------------
+
+
+Solution for grid cell [5][2]
+      1  2  3  4  5  6
+    ------------------------------
+Gre|  X    X    X    X    X    O  |
+Bed|  X    O    X    X    X    X  |
+Kit|  X    X    O    X    X    X  |
+Sal|  O    X    X    X    X    X  |
+Din|  X    X    X    X    O    X  |
+Lib|  X    X    X    O    X    X  |
+    ------------------------------
+
+
+Solution for grid cell [6][4]
+      1  2  3  4  5  6
+    ------------------------------
+Gre|  X    X    O    X    X    X  |
+Bed|  X    X    X    X    O    X  |
+Kit|  X    X    X    O    X    X  |
+Sal|  X    O    X    X    X    X  |
+Din|  O    X    X    X    X    X  |
+Lib|  X    X    X    X    X    O  |
+    ------------------------------
+
+

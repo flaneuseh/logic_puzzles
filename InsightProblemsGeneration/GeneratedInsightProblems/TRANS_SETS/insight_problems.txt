@@ -1,0 +1,196 @@
+      rev  poi  pol  Sca  Gre  Plu
+    ------------------------------
+Lib|  X    *    *  | *    *    X  |
+Sal|  X    *    *  | X    X    O  |
+Bed|  O    X    X  | *    *    X  |
+    ------------------------------
+Sca|  X    X    O  |
+Gre|  *    *    X  |
+Plu|  *    *    X  |
+    ---------------
+TRANS_SETS
+0. The suspect Plum is the room Salon
+1. The weapon polearm is the suspect Scarlet
+2. The weapon revolver is the room Bedroom
+      rev  poi  pol  Sca  Gre  Plu
+    ------------------------------
+Lib|  *    *    *  | *    *    *  |
+Sal|  X    *    *  | *    *    *  |
+Bed|  *    *    *  | *    *    X  |
+    ------------------------------
+Sca|  X    X    O  |
+Gre|  X    O    X  |
+Plu|  O    X    X  |
+    ---------------
+TRANS_SETS
+0. Either the weapon poison or the weapon polearm is the room Salon
+1. Either the weapon poison or the suspect Plum is the room Salon
+2. The weapon revolver is the suspect Plum
+3. Either the suspect Green or the suspect Scarlet is the room Bedroom
+4. The weapon poison is the suspect Green
+      rev  poi  pol  Sca  Gre  Plu
+    ------------------------------
+Lib|  X    *    *  | X    O    X  |
+Sal|  O    X    X  | *    X    *  |
+Bed|  X    *    *  | *    X    *  |
+    ------------------------------
+Sca|  *    X    *  |
+Gre|  *    X    *  |
+Plu|  X    O    X  |
+    ---------------
+TRANS_SETS
+0. The room Library is the suspect Green
+1. The suspect Plum is the weapon poison
+2. The room Salon is the weapon revolver
+      rev  poi  pol  Sca  Gre  Plu
+    ------------------------------
+Lib|  *    *    X  | *    *    X  |
+Sal|  *    *    X  | X    X    O  |
+Bed|  X    X    O  | *    *    X  |
+    ------------------------------
+Sca|  X    O    X  |
+Gre|  *    X    *  |
+Plu|  *    X    *  |
+    ---------------
+TRANS_SETS
+0. The room Bedroom is the weapon polearm
+1. The suspect Scarlet is the weapon poison
+2. The room Salon is the suspect Plum
+3. Either the weapon polearm or the weapon poison is the suspect Scarlet
+      rev  poi  pol  Sca  Gre  Plu
+    ------------------------------
+Lib|  X    O    X  | *    *    X  |
+Sal|  *    X    *  | *    *    X  |
+Bed|  *    X    *  | X    X    O  |
+    ------------------------------
+Sca|  X    X    O  |
+Gre|  *    *    X  |
+Plu|  *    *    X  |
+    ---------------
+TRANS_SETS
+0. The suspect Scarlet is the weapon polearm
+1. The room Bedroom is the suspect Plum
+2. Either the room Salon or the room Bedroom is the suspect Plum
+3. The room Library is the weapon poison
+      rev  poi  pol  Sca  Gre  Plu
+    ------------------------------
+Lib|  O    X    X  | *    *    X  |
+Sal|  X    *    *  | *    *    X  |
+Bed|  X    *    *  | X    X    O  |
+    ------------------------------
+Sca|  X    O    X  |
+Gre|  *    X    *  |
+Plu|  *    X    *  |
+    ---------------
+TRANS_SETS
+0. The room Bedroom is the suspect Plum
+1. Either the room Salon or the room Library is the weapon revolver
+2. Either the weapon polearm or the weapon poison is the room Salon
+3. The weapon poison is the suspect Scarlet
+      rev  poi  pol  Sca  Gre  Plu
+    ------------------------------
+Lib|  *    *    *  | X    O    X  |
+Sal|  *    *    *  | X    X    O  |
+Bed|  *    *    *  | O    X    X  |
+    ------------------------------
+Sca|  *    X    *  |
+Gre|  *    *    *  |
+Plu|  *    *    *  |
+    ---------------
+TRANS_SETS
+0. Either the suspect Plum or the suspect Green is the weapon poison
+1. Either the suspect Scarlet or the room Library is the weapon revolver
+2. Either the suspect Plum or the room Bedroom is the weapon poison
+3. Either the room Library or the room Salon is the suspect Plum
+4. Either the suspect Plum or the room Library is the weapon polearm
+      rev  poi  pol  Sca  Gre  Plu
+    ------------------------------
+Lib|  O    X    X  | *    *    X  |
+Sal|  X    *    *  | *    *    X  |
+Bed|  X    *    *  | X    X    O  |
+    ------------------------------
+Sca|  X    X    O  |
+Gre|  *    *    X  |
+Plu|  *    *    X  |
+    ---------------
+TRANS_SETS
+0. The suspect Plum is the room Bedroom
+1. The weapon revolver is the room Library
+2. Either the room Library or the room Bedroom is the suspect Plum
+3. The suspect Scarlet is the weapon polearm
+      rev  poi  pol  Sca  Gre  Plu
+    ------------------------------
+Lib|  O    X    X  | *    *    X  |
+Sal|  X    *    *  | X    X    O  |
+Bed|  X    *    *  | *    *    X  |
+    ------------------------------
+Sca|  X    X    O  |
+Gre|  *    *    X  |
+Plu|  *    *    X  |
+    ---------------
+TRANS_SETS
+0. Either the weapon polearm or the suspect Green is the room Bedroom
+1. The room Library is the weapon revolver
+2. The room Salon is the suspect Plum
+3. Either the suspect Green or the suspect Scarlet is the weapon polearm
+      rev  poi  pol  Sca  Gre  Plu
+    ------------------------------
+Lib|  *    X    *  | X    *    *  |
+Sal|  X    O    X  | *    *    *  |
+Bed|  *    X    *  | *    X    *  |
+    ------------------------------
+Sca|  X    *    *  |
+Gre|  O    X    X  |
+Plu|  X    *    *  |
+    ---------------
+TRANS_SETS
+0. Either the suspect Plum or the suspect Scarlet is the room Bedroom
+1. Either the suspect Scarlet or the room Library is the weapon polearm
+2. The weapon revolver is the suspect Green
+3. The weapon poison is the room Salon
+      rev  poi  pol  Sca  Gre  Plu
+    ------------------------------
+Lib|  *    *    *  | X    *    *  |
+Sal|  *    *    *  | X    *    *  |
+Bed|  X    *    *  | O    X    X  |
+    ------------------------------
+Sca|  *    *    X  |
+Gre|  X    X    O  |
+Plu|  *    *    X  |
+    ---------------
+TRANS_SETS
+0. The room Bedroom is the suspect Scarlet
+1. Either the weapon poison or the suspect Green is the room Salon
+2. Either the room Library or the room Salon is the weapon revolver
+3. Either the suspect Scarlet or the suspect Plum is the weapon revolver
+      rev  poi  pol  Sca  Gre  Plu
+    ------------------------------
+Lib|  *    *    X  | X    O    X  |
+Sal|  X    X    O  | *    X    *  |
+Bed|  *    *    X  | *    X    *  |
+    ------------------------------
+Sca|  O    X    X  |
+Gre|  X    *    *  |
+Plu|  X    *    *  |
+    ---------------
+TRANS_SETS
+0. The suspect Scarlet is the weapon revolver
+1. Either the weapon poison or the weapon revolver is the room Bedroom
+2. Either the room Bedroom or the room Salon is the weapon polearm
+3. The room Library is the suspect Green
+4. Either the weapon revolver or the weapon polearm is the room Salon
+      rev  poi  pol  Sca  Gre  Plu
+    ------------------------------
+Lib|  *    *    X  | X    *    *  |
+Sal|  *    *    X  | O    X    X  |
+Bed|  X    X    O  | X    *    *  |
+    ------------------------------
+Sca|  *    X    *  |
+Gre|  *    X    *  |
+Plu|  X    O    X  |
+    ---------------
+TRANS_SETS
+0. The weapon polearm is the room Bedroom
+1. The suspect Plum is the weapon poison
+2. The suspect Scarlet is the room Salon
+3. Either the suspect Green or the suspect Plum is the weapon poison

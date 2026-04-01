@@ -1,0 +1,533 @@
+Solution for grid cell [0][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    O    X  | O    X    X  |
+Whi|  O    X    X  | X    X    O  |
+Sca|  X    X    O  | X    O    X  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  X    X    O  |
+Kit|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [0][2]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    O    X  | O    X    X  |
+Whi|  O    X    X  | X    X    O  |
+Sca|  X    X    O  | X    O    X  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  X    X    O  |
+Kit|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [1][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  O    X    X  | O    X    X  |
+Whi|  X    X    O  | X    O    X  |
+Sca|  X    O    X  | X    X    O  |
+    ------------------------------
+Bed|  O    X    X  |
+Gre|  X    X    O  |
+Kit|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [1][2]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  O    X    X  | O    X    X  |
+Whi|  X    X    O  | X    O    X  |
+Sca|  X    O    X  | X    X    O  |
+    ------------------------------
+Bed|  O    X    X  |
+Gre|  X    X    O  |
+Kit|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [2][2]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    O    X  | X    O    X  |
+Whi|  O    X    X  | O    X    X  |
+Sca|  X    X    O  | X    X    O  |
+    ------------------------------
+Bed|  O    X    X  |
+Gre|  X    O    X  |
+Kit|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [3][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    O    X  | O    X    X  |
+Whi|  X    X    O  | X    O    X  |
+Sca|  O    X    X  | X    X    O  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  X    X    O  |
+Kit|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [3][2]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    O    X  | O    X    X  |
+Whi|  X    X    O  | X    O    X  |
+Sca|  O    X    X  | X    X    O  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  X    X    O  |
+Kit|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [4][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    O    X  | X    X    O  |
+Whi|  X    X    O  | X    O    X  |
+Sca|  O    X    X  | O    X    X  |
+    ------------------------------
+Bed|  O    X    X  |
+Gre|  X    X    O  |
+Kit|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [5][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    X    O  | X    O    X  |
+Whi|  O    X    X  | X    X    O  |
+Sca|  X    O    X  | O    X    X  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  X    X    O  |
+Kit|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [5][2]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    X    O  | X    O    X  |
+Whi|  O    X    X  | X    X    O  |
+Sca|  X    O    X  | O    X    X  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  X    X    O  |
+Kit|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [6][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    O    X  | O    X    X  |
+Whi|  O    X    X  | X    O    X  |
+Sca|  X    X    O  | X    X    O  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  O    X    X  |
+Kit|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [7][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    O    X  | X    X    O  |
+Whi|  O    X    X  | X    O    X  |
+Sca|  X    X    O  | O    X    X  |
+    ------------------------------
+Bed|  X    X    O  |
+Gre|  O    X    X  |
+Kit|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [8][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    O    X  | X    O    X  |
+Whi|  O    X    X  | X    X    O  |
+Sca|  X    X    O  | O    X    X  |
+    ------------------------------
+Bed|  X    X    O  |
+Gre|  X    O    X  |
+Kit|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [9][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  O    X    X  | X    X    O  |
+Whi|  X    X    O  | X    O    X  |
+Sca|  X    O    X  | O    X    X  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  X    X    O  |
+Kit|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [10][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    O    X  | X    O    X  |
+Whi|  X    X    O  | X    X    O  |
+Sca|  O    X    X  | O    X    X  |
+    ------------------------------
+Bed|  O    X    X  |
+Gre|  X    O    X  |
+Kit|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [10][2]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    O    X  | X    O    X  |
+Whi|  X    X    O  | X    X    O  |
+Sca|  O    X    X  | O    X    X  |
+    ------------------------------
+Bed|  O    X    X  |
+Gre|  X    O    X  |
+Kit|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [11][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  O    X    X  | O    X    X  |
+Whi|  X    X    O  | X    X    O  |
+Sca|  X    O    X  | X    O    X  |
+    ------------------------------
+Bed|  O    X    X  |
+Gre|  X    O    X  |
+Kit|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [12][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  O    X    X  | X    X    O  |
+Whi|  X    O    X  | O    X    X  |
+Sca|  X    X    O  | X    O    X  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  X    X    O  |
+Kit|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [12][2]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  O    X    X  | X    X    O  |
+Whi|  X    O    X  | O    X    X  |
+Sca|  X    X    O  | X    O    X  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  X    X    O  |
+Kit|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [13][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    X    O  | X    X    O  |
+Whi|  X    O    X  | O    X    X  |
+Sca|  O    X    X  | X    O    X  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  O    X    X  |
+Kit|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [14][2]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    O    X  | O    X    X  |
+Whi|  X    X    O  | X    X    O  |
+Sca|  O    X    X  | X    O    X  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  O    X    X  |
+Kit|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [15][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    X    O  | X    X    O  |
+Whi|  O    X    X  | X    O    X  |
+Sca|  X    O    X  | O    X    X  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  O    X    X  |
+Kit|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [15][2]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    X    O  | X    X    O  |
+Whi|  O    X    X  | X    O    X  |
+Sca|  X    O    X  | O    X    X  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  O    X    X  |
+Kit|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [16][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    X    O  | X    X    O  |
+Whi|  O    X    X  | O    X    X  |
+Sca|  X    O    X  | X    O    X  |
+    ------------------------------
+Bed|  O    X    X  |
+Gre|  X    O    X  |
+Kit|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [16][2]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    X    O  | X    X    O  |
+Whi|  O    X    X  | O    X    X  |
+Sca|  X    O    X  | X    O    X  |
+    ------------------------------
+Bed|  O    X    X  |
+Gre|  X    O    X  |
+Kit|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [17][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  O    X    X  | X    O    X  |
+Whi|  X    O    X  | O    X    X  |
+Sca|  X    X    O  | X    X    O  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  O    X    X  |
+Kit|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [18][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  O    X    X  | X    O    X  |
+Whi|  X    X    O  | X    X    O  |
+Sca|  X    O    X  | O    X    X  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  O    X    X  |
+Kit|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [19][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    O    X  | X    X    O  |
+Whi|  O    X    X  | O    X    X  |
+Sca|  X    X    O  | X    O    X  |
+    ------------------------------
+Bed|  O    X    X  |
+Gre|  X    X    O  |
+Kit|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [19][2]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    O    X  | X    X    O  |
+Whi|  O    X    X  | O    X    X  |
+Sca|  X    X    O  | X    O    X  |
+    ------------------------------
+Bed|  O    X    X  |
+Gre|  X    X    O  |
+Kit|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [20][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  O    X    X  | X    X    O  |
+Whi|  X    X    O  | O    X    X  |
+Sca|  X    O    X  | X    O    X  |
+    ------------------------------
+Bed|  X    X    O  |
+Gre|  X    O    X  |
+Kit|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [21][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  O    X    X  | X    O    X  |
+Whi|  X    O    X  | X    X    O  |
+Sca|  X    X    O  | O    X    X  |
+    ------------------------------
+Bed|  X    X    O  |
+Gre|  O    X    X  |
+Kit|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [21][2]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  O    X    X  | X    O    X  |
+Whi|  X    O    X  | X    X    O  |
+Sca|  X    X    O  | O    X    X  |
+    ------------------------------
+Bed|  X    X    O  |
+Gre|  O    X    X  |
+Kit|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [22][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    X    O  | X    O    X  |
+Whi|  X    O    X  | O    X    X  |
+Sca|  O    X    X  | X    X    O  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  X    X    O  |
+Kit|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [23][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  O    X    X  | X    O    X  |
+Whi|  X    X    O  | O    X    X  |
+Sca|  X    O    X  | X    X    O  |
+    ------------------------------
+Bed|  X    X    O  |
+Gre|  O    X    X  |
+Kit|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [23][2]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  O    X    X  | X    O    X  |
+Whi|  X    X    O  | O    X    X  |
+Sca|  X    O    X  | X    X    O  |
+    ------------------------------
+Bed|  X    X    O  |
+Gre|  O    X    X  |
+Kit|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [24][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    O    X  | X    O    X  |
+Whi|  X    X    O  | O    X    X  |
+Sca|  O    X    X  | X    X    O  |
+    ------------------------------
+Bed|  X    X    O  |
+Gre|  X    O    X  |
+Kit|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [25][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    X    O  | O    X    X  |
+Whi|  O    X    X  | X    O    X  |
+Sca|  X    O    X  | X    X    O  |
+    ------------------------------
+Bed|  X    X    O  |
+Gre|  O    X    X  |
+Kit|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [25][2]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    X    O  | O    X    X  |
+Whi|  O    X    X  | X    O    X  |
+Sca|  X    O    X  | X    X    O  |
+    ------------------------------
+Bed|  X    X    O  |
+Gre|  O    X    X  |
+Kit|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [26][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    X    O  | X    O    X  |
+Whi|  O    X    X  | O    X    X  |
+Sca|  X    O    X  | X    X    O  |
+    ------------------------------
+Bed|  O    X    X  |
+Gre|  X    X    O  |
+Kit|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [27][2]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  O    X    X  | O    X    X  |
+Whi|  X    O    X  | X    O    X  |
+Sca|  X    X    O  | X    X    O  |
+    ------------------------------
+Bed|  O    X    X  |
+Gre|  X    O    X  |
+Kit|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [28][1]
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    X    O  | X    X    O  |
+Whi|  X    O    X  | X    O    X  |
+Sca|  O    X    X  | O    X    X  |
+    ------------------------------
+Bed|  O    X    X  |
+Gre|  X    O    X  |
+Kit|  X    X    O  |
+    ---------------
+
+

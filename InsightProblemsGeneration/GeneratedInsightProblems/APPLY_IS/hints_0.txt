@@ -1,0 +1,30 @@
+Hints for grid cell [0][1]
+	Either the weapon revolver or the weapon polearm is the suspect Plum
+	The suspect Scarlet is the weapon polearm
+
+
+Hints for grid cell [1][1]
+	The weapon polearm is the suspect Green
+	Either the weapon polearm or the weapon revolver is the suspect Plum
+
+
+Hints for grid cell [2][1]
+	The weapon polearm is the suspect Scarlet
+	Either the weapon revolver or the weapon polearm is the suspect Green
+
+
+Hints for grid cell [3][1]
+	The suspect Green is the weapon polearm
+	The weapon revolver is the suspect Scarlet
+
+
+Hints for grid cell [4][1]
+	The suspect Scarlet is the weapon poison
+	The weapon revolver is the suspect Green
+
+
+Hints for grid cell [5][1]
+	The weapon poison is the suspect Green
+	The weapon revolver is the suspect Scarlet
+
+

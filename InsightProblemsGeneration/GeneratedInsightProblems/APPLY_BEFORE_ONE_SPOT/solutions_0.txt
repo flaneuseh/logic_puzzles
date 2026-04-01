@@ -1,0 +1,120 @@
+Solution for grid cell [0][1]
+      1  2  3  4
+    --------------------
+rev|  O    X    X    X  |
+can|  X    X    X    O  |
+lea|  X    O    X    X  |
+rop|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [1][1]
+      1  2  3  4
+    --------------------
+rev|  O    X    X    X  |
+can|  X    X    O    X  |
+lea|  X    X    X    O  |
+rop|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [2][1]
+      1  2  3  4
+    --------------------
+rev|  X    O    X    X  |
+can|  X    X    X    O  |
+lea|  X    X    O    X  |
+rop|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [2][2]
+      1  2  3  4
+    --------------------
+rev|  X    O    X    X  |
+can|  X    X    X    O  |
+lea|  X    X    O    X  |
+rop|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [3][1]
+      1  2  3  4
+    --------------------
+rev|  X    X    O    X  |
+can|  X    O    X    X  |
+lea|  O    X    X    X  |
+rop|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [4][1]
+      1  2  3  4
+    --------------------
+rev|  X    X    X    O  |
+can|  X    O    X    X  |
+lea|  X    X    O    X  |
+rop|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [5][1]
+      1  2  3  4
+    --------------------
+rev|  O    X    X    X  |
+can|  X    O    X    X  |
+lea|  X    X    O    X  |
+rop|  X    X    X    O  |
+    --------------------
+
+
+Solution for grid cell [6][1]
+      1  2  3  4
+    --------------------
+rev|  X    O    X    X  |
+can|  X    X    O    X  |
+lea|  X    X    X    O  |
+rop|  O    X    X    X  |
+    --------------------
+
+
+Solution for grid cell [7][1]
+      1  2  3  4
+    --------------------
+rev|  X    X    X    O  |
+can|  O    X    X    X  |
+lea|  X    O    X    X  |
+rop|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [8][1]
+      1  2  3  4
+    --------------------
+rev|  X    O    X    X  |
+can|  O    X    X    X  |
+lea|  X    X    X    O  |
+rop|  X    X    O    X  |
+    --------------------
+
+
+Solution for grid cell [9][1]
+      1  2  3  4
+    --------------------
+rev|  X    X    X    O  |
+can|  X    X    O    X  |
+lea|  O    X    X    X  |
+rop|  X    O    X    X  |
+    --------------------
+
+
+Solution for grid cell [10][1]
+      1  2  3  4
+    --------------------
+rev|  X    X    X    O  |
+can|  X    X    O    X  |
+lea|  X    O    X    X  |
+rop|  O    X    X    X  |
+    --------------------
+
+

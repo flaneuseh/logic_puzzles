@@ -1,0 +1,92 @@
+Hints for grid cell [0][1]
+	The suspect Plum is the room Salon
+	The weapon polearm is the suspect Scarlet
+	The weapon revolver is the room Bedroom
+
+
+Hints for grid cell [1][2]
+	Either the weapon poison or the weapon polearm is the room Salon
+	Either the weapon poison or the suspect Plum is the room Salon
+	The weapon revolver is the suspect Plum
+	Either the suspect Green or the suspect Scarlet is the room Bedroom
+	The weapon poison is the suspect Green
+
+
+Hints for grid cell [2][1]
+	The room Library is the suspect Green
+	The suspect Plum is the weapon poison
+	The room Salon is the weapon revolver
+
+
+Hints for grid cell [3][1]
+	The room Bedroom is the weapon polearm
+	The suspect Scarlet is the weapon poison
+	The room Salon is the suspect Plum
+	Either the weapon polearm or the weapon poison is the suspect Scarlet
+
+
+Hints for grid cell [4][1]
+	The suspect Scarlet is the weapon polearm
+	The room Bedroom is the suspect Plum
+	Either the room Salon or the room Bedroom is the suspect Plum
+	The room Library is the weapon poison
+
+
+Hints for grid cell [5][1]
+	The room Bedroom is the suspect Plum
+	Either the room Salon or the room Library is the weapon revolver
+	Either the weapon polearm or the weapon poison is the room Salon
+	The weapon poison is the suspect Scarlet
+
+
+Hints for grid cell [6][2]
+	Either the suspect Plum or the suspect Green is the weapon poison
+	Either the suspect Scarlet or the room Library is the weapon revolver
+	Either the suspect Plum or the room Bedroom is the weapon poison
+	Either the room Library or the room Salon is the suspect Plum
+	Either the suspect Plum or the room Library is the weapon polearm
+
+
+Hints for grid cell [7][1]
+	The suspect Plum is the room Bedroom
+	The weapon revolver is the room Library
+	Either the room Library or the room Bedroom is the suspect Plum
+	The suspect Scarlet is the weapon polearm
+
+
+Hints for grid cell [8][1]
+	Either the weapon polearm or the suspect Green is the room Bedroom
+	The room Library is the weapon revolver
+	The room Salon is the suspect Plum
+	Either the suspect Green or the suspect Scarlet is the weapon polearm
+
+
+Hints for grid cell [8][2]
+	Either the suspect Plum or the suspect Scarlet is the room Bedroom
+	Either the suspect Scarlet or the room Library is the weapon polearm
+	The weapon revolver is the suspect Green
+	The weapon poison is the room Salon
+
+
+Hints for grid cell [9][2]
+	The room Bedroom is the suspect Scarlet
+	Either the weapon poison or the suspect Green is the room Salon
+	Either the room Library or the room Salon is the weapon revolver
+	Either the suspect Scarlet or the suspect Plum is the weapon revolver
+
+
+Hints for grid cell [10][1]
+	The suspect Scarlet is the weapon revolver
+	Either the weapon poison or the weapon revolver is the room Bedroom
+	Either the room Bedroom or the room Salon is the weapon polearm
+	The room Library is the suspect Green
+	Either the weapon revolver or the weapon polearm is the room Salon
+
+
+Hints for grid cell [11][1]
+	The weapon polearm is the room Bedroom
+	The suspect Plum is the weapon poison
+	The suspect Scarlet is the room Salon
+	Either the suspect Green or the suspect Plum is the weapon poison
+
+

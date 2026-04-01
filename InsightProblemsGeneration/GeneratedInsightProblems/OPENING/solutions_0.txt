@@ -1,0 +1,54 @@
+Solution for grid cell [0][1]
+      Bed  Lib  Sal
+    ---------------
+pol|  X    X    O  |
+rev|  O    X    X  |
+poi|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [1][1]
+      Bed  Lib  Sal
+    ---------------
+pol|  X    O    X  |
+rev|  O    X    X  |
+poi|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [2][1]
+      Bed  Lib  Sal
+    ---------------
+pol|  X    X    O  |
+rev|  X    O    X  |
+poi|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [3][1]
+      Bed  Lib  Sal
+    ---------------
+pol|  X    O    X  |
+rev|  X    X    O  |
+poi|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [4][1]
+      Bed  Lib  Sal
+    ---------------
+pol|  O    X    X  |
+rev|  X    O    X  |
+poi|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [5][1]
+      Bed  Lib  Sal
+    ---------------
+pol|  O    X    X  |
+rev|  X    X    O  |
+poi|  X    O    X  |
+    ---------------
+
+

@@ -1,0 +1,234 @@
+Solution for grid cell [0][2]
+      Lib  Bed  Sal  poi  rev  pol
+    ------------------------------
+Plu|  O    X    X  | O    X    X  |
+Sca|  X    O    X  | X    X    O  |
+Gre|  X    X    O  | X    O    X  |
+    ------------------------------
+poi|  O    X    X  |
+rev|  X    X    O  |
+pol|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [1][2]
+      Lib  Bed  Sal  poi  rev  pol
+    ------------------------------
+Plu|  X    X    O  | X    O    X  |
+Sca|  X    O    X  | O    X    X  |
+Gre|  O    X    X  | X    X    O  |
+    ------------------------------
+poi|  X    O    X  |
+rev|  X    X    O  |
+pol|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [2][2]
+      Lib  Bed  Sal  poi  rev  pol
+    ------------------------------
+Plu|  X    O    X  | X    O    X  |
+Sca|  X    X    O  | X    X    O  |
+Gre|  O    X    X  | O    X    X  |
+    ------------------------------
+poi|  O    X    X  |
+rev|  X    O    X  |
+pol|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [3][2]
+      Lib  Bed  Sal  poi  rev  pol
+    ------------------------------
+Plu|  X    O    X  | X    X    O  |
+Sca|  X    X    O  | O    X    X  |
+Gre|  O    X    X  | X    O    X  |
+    ------------------------------
+poi|  X    X    O  |
+rev|  O    X    X  |
+pol|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [4][2]
+      Lib  Bed  Sal  poi  rev  pol
+    ------------------------------
+Plu|  X    O    X  | O    X    X  |
+Sca|  O    X    X  | X    X    O  |
+Gre|  X    X    O  | X    O    X  |
+    ------------------------------
+poi|  X    O    X  |
+rev|  X    X    O  |
+pol|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [5][1]
+      Lib  Bed  Sal  poi  rev  pol
+    ------------------------------
+Plu|  O    X    X  | X    X    O  |
+Sca|  X    X    O  | O    X    X  |
+Gre|  X    O    X  | X    O    X  |
+    ------------------------------
+poi|  X    X    O  |
+rev|  X    O    X  |
+pol|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [6][2]
+      Lib  Bed  Sal  poi  rev  pol
+    ------------------------------
+Plu|  X    O    X  | X    X    O  |
+Sca|  O    X    X  | O    X    X  |
+Gre|  X    X    O  | X    O    X  |
+    ------------------------------
+poi|  O    X    X  |
+rev|  X    X    O  |
+pol|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [7][2]
+      Lib  Bed  Sal  poi  rev  pol
+    ------------------------------
+Plu|  X    X    O  | X    O    X  |
+Sca|  X    O    X  | X    X    O  |
+Gre|  O    X    X  | O    X    X  |
+    ------------------------------
+poi|  O    X    X  |
+rev|  X    X    O  |
+pol|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [8][1]
+      Lib  Bed  Sal  poi  rev  pol
+    ------------------------------
+Plu|  O    X    X  | X    O    X  |
+Sca|  X    X    O  | X    X    O  |
+Gre|  X    O    X  | O    X    X  |
+    ------------------------------
+poi|  X    O    X  |
+rev|  O    X    X  |
+pol|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [8][2]
+      Lib  Bed  Sal  poi  rev  pol
+    ------------------------------
+Plu|  O    X    X  | X    O    X  |
+Sca|  X    X    O  | X    X    O  |
+Gre|  X    O    X  | O    X    X  |
+    ------------------------------
+poi|  X    O    X  |
+rev|  O    X    X  |
+pol|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [9][2]
+      Lib  Bed  Sal  poi  rev  pol
+    ------------------------------
+Plu|  O    X    X  | O    X    X  |
+Sca|  X    O    X  | X    O    X  |
+Gre|  X    X    O  | X    X    O  |
+    ------------------------------
+poi|  O    X    X  |
+rev|  X    O    X  |
+pol|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [10][2]
+      Lib  Bed  Sal  poi  rev  pol
+    ------------------------------
+Plu|  X    O    X  | O    X    X  |
+Sca|  X    X    O  | X    O    X  |
+Gre|  O    X    X  | X    X    O  |
+    ------------------------------
+poi|  X    O    X  |
+rev|  X    X    O  |
+pol|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [11][2]
+      Lib  Bed  Sal  poi  rev  pol
+    ------------------------------
+Plu|  O    X    X  | X    O    X  |
+Sca|  X    O    X  | X    X    O  |
+Gre|  X    X    O  | O    X    X  |
+    ------------------------------
+poi|  X    X    O  |
+rev|  O    X    X  |
+pol|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [12][1]
+      Lib  Bed  Sal  poi  rev  pol
+    ------------------------------
+Plu|  X    X    O  | X    X    O  |
+Sca|  X    O    X  | X    O    X  |
+Gre|  O    X    X  | O    X    X  |
+    ------------------------------
+poi|  O    X    X  |
+rev|  X    O    X  |
+pol|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [13][2]
+      Lib  Bed  Sal  poi  rev  pol
+    ------------------------------
+Plu|  X    X    O  | O    X    X  |
+Sca|  X    O    X  | X    X    O  |
+Gre|  O    X    X  | X    O    X  |
+    ------------------------------
+poi|  X    X    O  |
+rev|  O    X    X  |
+pol|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [14][2]
+      Lib  Bed  Sal  poi  rev  pol
+    ------------------------------
+Plu|  X    X    O  | X    X    O  |
+Sca|  O    X    X  | X    O    X  |
+Gre|  X    O    X  | O    X    X  |
+    ------------------------------
+poi|  X    O    X  |
+rev|  O    X    X  |
+pol|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [15][2]
+      Lib  Bed  Sal  poi  rev  pol
+    ------------------------------
+Plu|  O    X    X  | X    X    O  |
+Sca|  X    O    X  | X    O    X  |
+Gre|  X    X    O  | O    X    X  |
+    ------------------------------
+poi|  X    X    O  |
+rev|  X    O    X  |
+pol|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [16][2]
+      Lib  Bed  Sal  poi  rev  pol
+    ------------------------------
+Plu|  X    X    O  | X    O    X  |
+Sca|  O    X    X  | X    X    O  |
+Gre|  X    O    X  | O    X    X  |
+    ------------------------------
+poi|  X    O    X  |
+rev|  X    X    O  |
+pol|  O    X    X  |
+    ---------------
+
+

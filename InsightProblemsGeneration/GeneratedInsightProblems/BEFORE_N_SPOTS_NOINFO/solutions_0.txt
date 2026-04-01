@@ -1,0 +1,84 @@
+Solution for grid cell [0][2]
+      1  2  3  4  5  6
+    ------------------------------
+Plu|  X    X    X    O    X    X  |
+Whi|  X    X    X    X    O    X  |
+Pea|  X    X    X    X    X    O  |
+Sca|  X    X    O    X    X    X  |
+Gre|  X    O    X    X    X    X  |
+Mus|  O    X    X    X    X    X  |
+    ------------------------------
+
+
+Solution for grid cell [1][3]
+      1  2  3  4  5  6
+    ------------------------------
+Plu|  X    X    O    X    X    X  |
+Whi|  X    X    X    X    O    X  |
+Pea|  X    X    X    O    X    X  |
+Sca|  O    X    X    X    X    X  |
+Gre|  X    O    X    X    X    X  |
+Mus|  X    X    X    X    X    O  |
+    ------------------------------
+
+
+Solution for grid cell [2][2]
+      1  2  3  4  5  6
+    ------------------------------
+Plu|  X    X    X    X    X    O  |
+Whi|  X    O    X    X    X    X  |
+Pea|  X    X    X    O    X    X  |
+Sca|  O    X    X    X    X    X  |
+Gre|  X    X    O    X    X    X  |
+Mus|  X    X    X    X    O    X  |
+    ------------------------------
+
+
+Solution for grid cell [3][1]
+      1  2  3  4  5  6
+    ------------------------------
+Plu|  O    X    X    X    X    X  |
+Whi|  X    X    X    X    X    O  |
+Pea|  X    X    X    O    X    X  |
+Sca|  X    X    O    X    X    X  |
+Gre|  X    O    X    X    X    X  |
+Mus|  X    X    X    X    O    X  |
+    ------------------------------
+
+
+Solution for grid cell [4][2]
+      1  2  3  4  5  6
+    ------------------------------
+Plu|  X    O    X    X    X    X  |
+Whi|  X    X    O    X    X    X  |
+Pea|  X    X    X    X    X    O  |
+Sca|  O    X    X    X    X    X  |
+Gre|  X    X    X    O    X    X  |
+Mus|  X    X    X    X    O    X  |
+    ------------------------------
+
+
+Solution for grid cell [5][1]
+      1  2  3  4  5  6
+    ------------------------------
+Plu|  X    X    O    X    X    X  |
+Whi|  O    X    X    X    X    X  |
+Pea|  X    O    X    X    X    X  |
+Sca|  X    X    X    X    O    X  |
+Gre|  X    X    X    X    X    O  |
+Mus|  X    X    X    O    X    X  |
+    ------------------------------
+
+
+Solution for grid cell [6][1]
+      1  2  3  4  5  6
+    ------------------------------
+Plu|  X    O    X    X    X    X  |
+Whi|  O    X    X    X    X    X  |
+Pea|  X    X    O    X    X    X  |
+Sca|  X    X    X    X    O    X  |
+Gre|  X    X    X    O    X    X  |
+Mus|  X    X    X    X    X    O  |
+    ------------------------------
+
+

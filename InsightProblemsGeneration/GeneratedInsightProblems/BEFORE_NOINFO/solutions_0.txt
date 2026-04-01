@@ -1,0 +1,36 @@
+Solution for grid cell [0][2]
+      1  2  3  4  5  6
+    ------------------------------
+rev|  X    X    X    O    X    X  |
+poi|  X    O    X    X    X    X  |
+pol|  X    X    X    X    O    X  |
+lea|  X    X    O    X    X    X  |
+can|  X    X    X    X    X    O  |
+rop|  O    X    X    X    X    X  |
+    ------------------------------
+
+
+Solution for grid cell [1][2]
+      1  2  3  4  5  6
+    ------------------------------
+rev|  X    X    X    X    X    O  |
+poi|  O    X    X    X    X    X  |
+pol|  X    X    X    O    X    X  |
+lea|  X    O    X    X    X    X  |
+can|  X    X    X    X    O    X  |
+rop|  X    X    O    X    X    X  |
+    ------------------------------
+
+
+Solution for grid cell [2][1]
+      1  2  3  4  5  6
+    ------------------------------
+rev|  O    X    X    X    X    X  |
+poi|  X    O    X    X    X    X  |
+pol|  X    X    X    O    X    X  |
+lea|  X    X    O    X    X    X  |
+can|  X    X    X    X    X    O  |
+rop|  X    X    X    X    O    X  |
+    ------------------------------
+
+

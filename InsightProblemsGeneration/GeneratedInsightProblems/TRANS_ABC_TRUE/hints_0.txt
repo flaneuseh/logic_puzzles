@@ -1,0 +1,302 @@
+Hints for grid cell [0][1]
+	Either the suspect White or the weapon polearm is the room Bedroom
+	The weapon candlestick is the room Kitchen
+	The weapon rope is the suspect Scarlet
+	The weapon polearm is the room Bedroom
+
+
+Hints for grid cell [0][2]
+	Either the weapon rope or the room Bedroom is the suspect Scarlet
+	The room Bedroom is the weapon polearm
+	The weapon polearm is the suspect Peacock
+	Either the suspect Peacock or the room Kitchen is the weapon candlestick
+
+
+Hints for grid cell [1][1]
+	The room Greenhouse is the suspect White
+	Either the room Kitchen or the room Greenhouse is the suspect Scarlet
+	The weapon candlestick is the room Bedroom
+	Either the suspect Peacock or the suspect White is the weapon rope
+
+
+Hints for grid cell [1][2]
+	Either the weapon rope or the suspect Scarlet is the room Greenhouse
+	The weapon polearm is the suspect Scarlet
+	Either the weapon polearm or the room Greenhouse is the suspect White
+	The suspect Peacock is the room Bedroom
+
+
+Hints for grid cell [2][2]
+	Either the room Bedroom or the weapon rope is the suspect Scarlet
+	Either the weapon rope or the room Greenhouse is the suspect Peacock
+	Either the room Greenhouse or the room Kitchen is the weapon polearm
+	The suspect White is the room Bedroom
+	Either the weapon polearm or the weapon candlestick is the room Greenhouse
+
+
+Hints for grid cell [3][1]
+	The room Bedroom is the weapon polearm
+	Either the weapon rope or the weapon candlestick is the suspect Scarlet
+	The room Bedroom is the suspect Peacock
+	Either the room Greenhouse or the weapon polearm is the suspect White
+	Either the room Greenhouse or the weapon candlestick is the suspect Scarlet
+
+
+Hints for grid cell [3][2]
+	Either the suspect Peacock or the room Kitchen is the weapon candlestick
+	The room Bedroom is the weapon polearm
+	The weapon polearm is the suspect Peacock
+	The room Kitchen is the suspect Scarlet
+
+
+Hints for grid cell [4][1]
+	Either the suspect Scarlet or the suspect White is the weapon rope
+	Either the room Bedroom or the weapon rope is the suspect Scarlet
+	The room Kitchen is the weapon polearm
+	The suspect Scarlet is the weapon candlestick
+
+
+Hints for grid cell [5][1]
+	The suspect Scarlet is the weapon polearm
+	The room Bedroom is the weapon polearm
+	Either the suspect Scarlet or the suspect Peacock is the weapon rope
+	The suspect Peacock is the room Greenhouse
+
+
+Hints for grid cell [5][2]
+	The suspect Peacock is the weapon rope
+	The room Kitchen is the weapon candlestick
+	Either the weapon polearm or the suspect White is the room Bedroom
+	Either the suspect Scarlet or the suspect Peacock is the weapon polearm
+
+
+Hints for grid cell [6][1]
+	Either the weapon candlestick or the suspect Peacock is the room Bedroom
+	The weapon polearm is the room Bedroom
+	Either the room Bedroom or the suspect Scarlet is the weapon rope
+	The room Kitchen is the weapon rope
+
+
+Hints for grid cell [7][1]
+	Either the room Bedroom or the room Greenhouse is the suspect White
+	The room Kitchen is the suspect Peacock
+	Either the suspect Peacock or the suspect Scarlet is the room Bedroom
+	The weapon rope is the room Bedroom
+	Either the weapon polearm or the room Greenhouse is the suspect White
+
+
+Hints for grid cell [8][1]
+	The room Bedroom is the suspect Scarlet
+	The room Kitchen is the suspect White
+	Either the room Kitchen or the weapon polearm is the suspect White
+	Either the suspect Scarlet or the suspect White is the room Kitchen
+	Either the weapon rope or the suspect White is the room Bedroom
+
+
+Hints for grid cell [9][1]
+	Either the weapon rope or the room Bedroom is the suspect White
+	Either the weapon candlestick or the weapon polearm is the room Kitchen
+	Either the room Greenhouse or the room Bedroom is the weapon polearm
+	The room Bedroom is the suspect Scarlet
+	Either the room Bedroom or the suspect White is the weapon rope
+
+
+Hints for grid cell [10][1]
+	The room Bedroom is the weapon candlestick
+	Either the room Greenhouse or the room Bedroom is the weapon polearm
+	Either the suspect Scarlet or the room Kitchen is the weapon rope
+	Either the suspect Peacock or the weapon rope is the room Greenhouse
+
+
+Hints for grid cell [10][2]
+	Either the room Kitchen or the weapon polearm is the suspect White
+	Either the suspect Peacock or the suspect White is the room Greenhouse
+	Either the room Greenhouse or the room Kitchen is the weapon rope
+	The weapon polearm is the suspect Peacock
+
+
+Hints for grid cell [11][1]
+	Either the room Bedroom or the weapon rope is the suspect White
+	Either the weapon candlestick or the room Greenhouse is the suspect Peacock
+	Either the room Kitchen or the room Bedroom is the weapon rope
+	The room Bedroom is the suspect Peacock
+	The suspect White is the weapon rope
+
+
+Hints for grid cell [12][1]
+	The suspect Peacock is the weapon candlestick
+	The weapon candlestick is the room Kitchen
+	Either the weapon polearm or the room Kitchen is the suspect White
+	Either the suspect White or the weapon candlestick is the room Bedroom
+
+
+Hints for grid cell [12][2]
+	Either the suspect White or the weapon rope is the room Greenhouse
+	The suspect White is the room Bedroom
+	The weapon rope is the suspect Scarlet
+	Either the room Bedroom or the weapon candlestick is the suspect Peacock
+
+
+Hints for grid cell [13][1]
+	Either the weapon candlestick or the weapon rope is the room Kitchen
+	Either the suspect Scarlet or the suspect White is the room Greenhouse
+	The suspect Scarlet is the weapon candlestick
+	Either the room Greenhouse or the suspect White is the weapon candlestick
+	Either the suspect Peacock or the suspect Scarlet is the room Kitchen
+
+
+Hints for grid cell [14][2]
+	Either the weapon candlestick or the suspect Peacock is the room Bedroom
+	Either the room Bedroom or the weapon rope is the suspect Peacock
+	The weapon rope is the room Kitchen
+	The suspect White is the room Kitchen
+	The weapon candlestick is the suspect Scarlet
+
+
+Hints for grid cell [15][1]
+	Either the suspect Scarlet or the room Greenhouse is the weapon candlestick
+	The suspect Scarlet is the room Bedroom
+	The suspect White is the weapon candlestick
+	Either the suspect White or the room Kitchen is the weapon rope
+
+
+Hints for grid cell [15][2]
+	Either the suspect Scarlet or the room Greenhouse is the weapon candlestick
+	The room Bedroom is the suspect Scarlet
+	The room Bedroom is the weapon polearm
+	The room Greenhouse is the suspect White
+
+
+Hints for grid cell [16][1]
+	Either the room Bedroom or the room Greenhouse is the suspect White
+	The suspect Peacock is the weapon rope
+	The room Greenhouse is the weapon polearm
+	Either the weapon rope or the weapon candlestick is the suspect White
+
+
+Hints for grid cell [16][2]
+	Either the room Bedroom or the suspect Peacock is the weapon rope
+	The suspect Scarlet is the weapon polearm
+	Either the weapon rope or the suspect White is the room Kitchen
+	The weapon candlestick is the room Bedroom
+	The suspect Scarlet is the weapon polearm
+
+
+Hints for grid cell [17][1]
+	Either the room Bedroom or the room Greenhouse is the weapon candlestick
+	The weapon polearm is the room Bedroom
+	The weapon rope is the suspect Scarlet
+	The suspect White is the room Bedroom
+
+
+Hints for grid cell [18][1]
+	Either the room Kitchen or the suspect Peacock is the weapon candlestick
+	The weapon rope is the room Kitchen
+	The weapon candlestick is the room Greenhouse
+	The suspect Scarlet is the room Bedroom
+
+
+Hints for grid cell [19][1]
+	The suspect White is the room Bedroom
+	The room Kitchen is the suspect Peacock
+	The weapon polearm is the room Kitchen
+	The suspect White is the weapon candlestick
+
+
+Hints for grid cell [19][2]
+	Either the weapon polearm or the room Greenhouse is the suspect Peacock
+	Either the room Kitchen or the suspect White is the weapon candlestick
+	The suspect Scarlet is the room Greenhouse
+	Either the weapon rope or the weapon polearm is the room Kitchen
+
+
+Hints for grid cell [20][1]
+	The room Kitchen is the weapon candlestick
+	The weapon polearm is the suspect Scarlet
+	Either the suspect Scarlet or the suspect Peacock is the room Greenhouse
+	The suspect Peacock is the weapon candlestick
+	The suspect Scarlet is the weapon polearm
+
+
+Hints for grid cell [21][1]
+	The suspect White is the weapon polearm
+	The suspect Peacock is the room Greenhouse
+	Either the room Greenhouse or the suspect Scarlet is the weapon rope
+	Either the room Kitchen or the room Greenhouse is the weapon polearm
+	The suspect Peacock is the weapon candlestick
+
+
+Hints for grid cell [21][2]
+	Either the room Bedroom or the room Greenhouse is the suspect Peacock
+	The weapon rope is the suspect Scarlet
+	Either the suspect White or the suspect Peacock is the weapon candlestick
+	Either the weapon polearm or the suspect Peacock is the room Greenhouse
+	Either the suspect Peacock or the weapon polearm is the room Kitchen
+	Either the room Greenhouse or the room Kitchen is the suspect White
+
+
+Hints for grid cell [22][1]
+	The weapon rope is the room Greenhouse
+	The room Kitchen is the suspect Scarlet
+	The room Bedroom is the weapon polearm
+	Either the room Kitchen or the weapon polearm is the suspect White
+
+
+Hints for grid cell [23][1]
+	Either the room Kitchen or the weapon candlestick is the suspect Scarlet
+	The room Bedroom is the weapon rope
+	The weapon rope is the suspect White
+	The weapon candlestick is the room Greenhouse
+	The room Greenhouse is the suspect Peacock
+
+
+Hints for grid cell [23][2]
+	The room Greenhouse is the weapon candlestick
+	Either the suspect Scarlet or the suspect White is the weapon rope
+	Either the weapon polearm or the suspect Peacock is the room Kitchen
+	The suspect Scarlet is the weapon polearm
+
+
+Hints for grid cell [24][1]
+	Either the suspect Scarlet or the suspect Peacock is the weapon candlestick
+	The room Greenhouse is the suspect Peacock
+	Either the suspect White or the room Kitchen is the weapon candlestick
+	Either the weapon rope or the suspect Peacock is the room Greenhouse
+
+
+Hints for grid cell [25][1]
+	The suspect Peacock is the weapon rope
+	The weapon candlestick is the room Greenhouse
+	The room Kitchen is the weapon polearm
+	The room Greenhouse is the suspect White
+
+
+Hints for grid cell [25][2]
+	Either the weapon polearm or the room Bedroom is the suspect Peacock
+	The suspect Scarlet is the weapon polearm
+	The weapon polearm is the room Kitchen
+	The weapon rope is the suspect Peacock
+
+
+Hints for grid cell [26][1]
+	Either the room Kitchen or the weapon candlestick is the suspect Scarlet
+	The room Greenhouse is the weapon rope
+	The room Bedroom is the suspect White
+	The room Greenhouse is the suspect Peacock
+
+
+Hints for grid cell [27][2]
+	Either the room Greenhouse or the weapon candlestick is the suspect White
+	Either the weapon rope or the suspect White is the room Greenhouse
+	The room Bedroom is the weapon candlestick
+	Either the weapon polearm or the suspect Peacock is the room Bedroom
+
+
+Hints for grid cell [28][1]
+	The weapon polearm is the suspect White
+	Either the weapon rope or the weapon candlestick is the suspect Peacock
+	The suspect Peacock is the weapon rope
+	Either the suspect Peacock or the room Greenhouse is the weapon polearm
+	The room Kitchen is the suspect Peacock
+
+

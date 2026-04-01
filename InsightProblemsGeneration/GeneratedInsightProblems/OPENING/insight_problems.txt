@@ -1,0 +1,54 @@
+      Bed  Lib  Sal
+    ---------------
+pol|  X    X    O  |
+rev|  O    X    X  |
+poi|  X    *    X  |
+    ---------------
+OPENING
+0. Either the room Salon or the room Bedroom is the weapon revolver
+1. The room Salon is the weapon polearm
+      Bed  Lib  Sal
+    ---------------
+pol|  X    *    X  |
+rev|  O    X    X  |
+poi|  X    X    O  |
+    ---------------
+OPENING
+0. The room Salon is the weapon poison
+1. The room Bedroom is the weapon revolver
+      Bed  Lib  Sal
+    ---------------
+pol|  X    X    *  |
+rev|  X    O    X  |
+poi|  O    X    X  |
+    ---------------
+OPENING
+0. The weapon revolver is the room Library
+1. The weapon poison is the room Bedroom
+      Bed  Lib  Sal
+    ---------------
+pol|  X    O    X  |
+rev|  X    X    O  |
+poi|  *    X    X  |
+    ---------------
+OPENING
+0. The weapon revolver is the room Salon
+1. Either the room Salon or the room Library is the weapon polearm
+      Bed  Lib  Sal
+    ---------------
+pol|  O    X    X  |
+rev|  X    O    X  |
+poi|  X    X    *  |
+    ---------------
+OPENING
+0. The weapon polearm is the room Bedroom
+1. The room Library is the weapon revolver
+      Bed  Lib  Sal
+    ---------------
+pol|  O    X    X  |
+rev|  X    X    O  |
+poi|  X    *    X  |
+    ---------------
+OPENING
+0. The room Bedroom is the weapon polearm
+1. The room Salon is the weapon revolver

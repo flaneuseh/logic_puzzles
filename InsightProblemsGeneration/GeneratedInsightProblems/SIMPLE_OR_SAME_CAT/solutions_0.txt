@@ -1,0 +1,36 @@
+Solution for grid cell [0][1]
+      Sca  Gre  Plu
+    ---------------
+pol|  X    O    X  |
+poi|  X    X    O  |
+rev|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [1][1]
+      Sca  Gre  Plu
+    ---------------
+pol|  X    X    O  |
+poi|  O    X    X  |
+rev|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [2][1]
+      Sca  Gre  Plu
+    ---------------
+pol|  O    X    X  |
+poi|  X    O    X  |
+rev|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [3][1]
+      Sca  Gre  Plu
+    ---------------
+pol|  O    X    X  |
+poi|  X    X    O  |
+rev|  X    O    X  |
+    ---------------
+
+

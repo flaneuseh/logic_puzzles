@@ -1,0 +1,52 @@
+Hints for grid cell [0][2]
+	The suspect Green is 4 times before the suspect Peacock
+	Either the suspect Peacock or the suspect Green is the time 2
+	The suspect Plum is the time 4
+	Either the time 4 or the time 3 is the suspect Scarlet
+	The suspect Mustard is at least 1 time before the suspect White
+
+
+Hints for grid cell [1][3]
+	The suspect Scarlet is 2 times before the suspect Plum
+	The suspect White is at least 1 time before the suspect Mustard
+	The time 5 is the suspect White
+	The suspect Peacock is 2 times before the suspect Mustard
+
+
+Hints for grid cell [2][2]
+	The suspect Green is 3 times before the suspect Plum
+	The time 2 is the suspect White
+	Either the time 1 or the time 5 is the suspect Mustard
+	The suspect Scarlet is at least 1 time before the suspect Green
+
+
+Hints for grid cell [3][1]
+	The suspect Plum is the time 1
+	The suspect Green is the time 2
+	The suspect Plum is at least 1 time before the suspect White
+	The suspect Scarlet is 3 times before the suspect White
+	The suspect Peacock is the time 4
+
+
+Hints for grid cell [4][2]
+	Either the suspect Plum or the suspect Scarlet is the time 2
+	The suspect White is 2 times before the suspect Mustard
+	The suspect Green is at least 1 time before the suspect Peacock
+	The time 1 is the suspect Scarlet
+	Either the suspect Scarlet or the suspect Green is the time 4
+
+
+Hints for grid cell [5][1]
+	The suspect Peacock is 3 times before the suspect Scarlet
+	The time 2 is the suspect Peacock
+	Either the suspect White or the suspect Green is the time 6
+	The suspect White is 3 times before the suspect Mustard
+
+
+Hints for grid cell [6][1]
+	Either the time 3 or the time 6 is the suspect Peacock
+	Either the time 1 or the time 5 is the suspect Scarlet
+	The suspect White is the time 1
+	The suspect Plum is 4 times before the suspect Mustard
+
+

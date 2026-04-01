@@ -213,7 +213,7 @@ def evolve(
     history = History()
 
     # Create initial population
-    for i in range(pop_size):
+    for _ in range(pop_size):
         hints = random_hint_set(puzzle, required_insights, forbidden_insights)
         _add_child(hints, feasible_grid, infeasible)
 
@@ -242,6 +242,7 @@ def evolve(
                         "not_valid": 0,
                         "not_complete": 0,
                         "not_follows_insight_reqs": 0,
+                        "not_insight_validate": 0,
                         "cant_solve_without_forbidden": 0,
                         "can_solve_without_required": 0,
                     }
@@ -252,18 +253,23 @@ def evolve(
                             infeasible_reasons["not_valid"] += 1
                         elif not child.completed_puzzle.is_complete():
                             infeasible_reasons["not_complete"] += 1
-                        elif not child.follows_insight_requirements():
+                        if not child.follows_insight_requirements():
                             infeasible_reasons["not_follows_insight_reqs"] += 1
                             
-                            forbidden_solver = Solver(forbidden_insights)
-                            required_solver = Solver(required_insights | forbidden_insights)
+                            for insight in child.required_insights:
+                                if not insight.validate(insight.requirements, puzzle, child.hints):
+                                    infeasible_reasons["not_insight_validate"] += 1
+                                    break
+                            if child.valid and child.completed_puzzle.is_complete():
+                                forbidden_solver = Solver(forbidden_insights)
+                                required_solver = Solver(required_insights | forbidden_insights)
 
-                            if not forbidden_solver.can_solve_without_forbidden(
-                                puzzle, child.hints
-                            ):
-                                infeasible_reasons["cant_solve_without_forbidden"] += 1
-                            if required_solver.can_solve_without_forbidden(puzzle, child.hints):
-                                infeasible_reasons["can_solve_without_required"] += 1
+                                if not forbidden_solver.can_solve_without_forbidden(
+                                    puzzle, child.hints
+                                ):
+                                    infeasible_reasons["cant_solve_without_forbidden"] += 1
+                                if required_solver.can_solve_without_forbidden(puzzle, child.hints):
+                                    infeasible_reasons["can_solve_without_required"] += 1
                             
                     log.write("Reasons for infeasible: ")
                     log.write(f"{infeasible_reasons}\n")

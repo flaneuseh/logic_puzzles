@@ -1,0 +1,102 @@
+      1  2  3  4  5  6
+    ------------------------------
+Gre|  X    X    *    *    X    X  |
+Bed|  X    X    X    X    X    O  |
+Kit|  O    X    X    X    X    X  |
+Sal|  X    X    *    *    X    X  |
+Din|  X    X    X    X    O    X  |
+Lib|  X    O    X    X    X    X  |
+    ------------------------------
+BEFORE_N_SPOTS_SHIFT
+0. The room Greenhouse is at least 1 time before the room Salon
+1. The room Salon is at least 1 time before the room Dining Room
+2. The room Library is at least 1 time before the room Bedroom
+3. The room Library is the time 2
+4. The room Kitchen is 4 times before the room Dining Room
+      1  2  3  4  5  6
+    ------------------------------
+Gre|  X    *    *    X    *    X  |
+Bed|  X    *    *    *    *    *  |
+Kit|  X    *    *    X    X    X  |
+Sal|  X    *    *    X    *    *  |
+Din|  O    X    X    X    X    X  |
+Lib|  X    X    X    *    *    *  |
+    ------------------------------
+BEFORE_N_SPOTS_SHIFT
+0. The room Greenhouse is at least 1 time before the room Kitchen
+1. The time 1 is the room Dining Room
+2. The room Kitchen is at least 1 time before the room Library
+3. Either the room Bedroom or the room Library is the time 4
+4. The room Kitchen is 3 times before the room Library
+      1  2  3  4  5  6
+    ------------------------------
+Gre|  X    O    X    X    X    X  |
+Bed|  X    X    X    X    O    X  |
+Kit|  X    X    *    *    X    X  |
+Sal|  O    X    X    X    X    X  |
+Din|  X    X    X    X    X    O  |
+Lib|  X    X    *    *    X    X  |
+    ------------------------------
+BEFORE_N_SPOTS_SHIFT
+0. The room Library is at least 1 time before the room Kitchen
+1. The room Bedroom is the time 5
+2. The room Salon is the time 1
+3. The room Greenhouse is the time 2
+4. The time 6 is the room Dining Room
+      1  2  3  4  5  6
+    ------------------------------
+Gre|  O    X    X    X    X    X  |
+Bed|  X    O    X    X    X    X  |
+Kit|  X    X    *    X    *    X  |
+Sal|  X    X    X    O    X    X  |
+Din|  X    X    X    X    X    O  |
+Lib|  X    X    *    X    *    X  |
+    ------------------------------
+BEFORE_N_SPOTS_SHIFT
+0. The room Kitchen is at least 1 time before the room Library
+1. Either the time 2 or the time 6 is the room Bedroom
+2. The time 4 is the room Salon
+3. The room Greenhouse is at least 1 time before the room Bedroom
+4. The time 6 is the room Dining Room
+      1  2  3  4  5  6
+    ------------------------------
+Gre|  X    X    *    *    X    X  |
+Bed|  X    X    *    *    X    *  |
+Kit|  X    X    X    X    O    X  |
+Sal|  X    O    X    X    X    X  |
+Din|  O    X    X    X    X    X  |
+Lib|  X    X    *    *    X    *  |
+    ------------------------------
+BEFORE_N_SPOTS_SHIFT
+0. The room Salon is the time 2
+1. The room Dining Room is 4 times before the room Kitchen
+2. The room Dining Room is at least 1 time before the room Kitchen
+3. The room Greenhouse is 2 times before the room Library
+      1  2  3  4  5  6
+    ------------------------------
+Gre|  X    X    X    X    X    O  |
+Bed|  X    *    X    *    X    X  |
+Kit|  X    X    O    X    X    X  |
+Sal|  O    X    X    X    X    X  |
+Din|  X    X    X    X    O    X  |
+Lib|  X    *    X    *    X    X  |
+    ------------------------------
+BEFORE_N_SPOTS_SHIFT
+0. The room Bedroom is at least 1 time before the room Library
+1. The time 3 is the room Kitchen
+2. Either the room Salon or the room Greenhouse is the time 6
+3. The room Dining Room is the time 5
+4. Either the time 1 or the time 3 is the room Salon
+      1  2  3  4  5  6
+    ------------------------------
+Gre|  *    *    *    *    *    *  |
+Bed|  X    *    *    *    *    *  |
+Kit|  X    X    X    *    *    X  |
+Sal|  *    *    X    X    X    X  |
+Din|  *    *    *    X    X    X  |
+Lib|  X    X    X    X    *    *  |
+    ------------------------------
+BEFORE_N_SPOTS_SHIFT
+0. The room Salon is 4 times before the room Library
+1. The room Dining Room is 3 times before the room Kitchen
+2. The room Kitchen is at least 1 time before the room Bedroom

@@ -1,0 +1,25 @@
+Hints for grid cell [0][2]
+	The time 3 is the suspect Peacock
+	The time 1 is the suspect White
+	The suspect Plum is 2 times before the suspect Green
+	The time 5 is the suspect Scarlet
+	Either the suspect Green or the suspect White is the time 6
+
+
+Hints for grid cell [1][1]
+	The suspect Mustard is the time 2
+	Either the suspect Scarlet or the suspect White is the time 6
+	The time 5 is the suspect White
+	The suspect Green is 2 times before the suspect Scarlet
+	The time 3 is the suspect Plum
+
+
+Hints for grid cell [2][1]
+	The suspect Green is 2 times before the suspect Scarlet
+	Either the suspect Scarlet or the suspect White is the time 6
+	The time 5 is the suspect White
+	The time 3 is the suspect Peacock
+	The suspect Plum is 2 times before the suspect Green
+	Either the suspect Scarlet or the suspect Green is the time 6
+
+

@@ -1,0 +1,12 @@
+Solution for grid cell [0][1]
+      1  2  3  4  5  6
+    ------------------------------
+Whi|  X    X    X    X    X    O  |
+Plu|  X    X    X    O    X    X  |
+Sca|  X    X    O    X    X    X  |
+Mus|  X    X    X    X    O    X  |
+Pea|  X    O    X    X    X    X  |
+Gre|  O    X    X    X    X    X  |
+    ------------------------------
+
+

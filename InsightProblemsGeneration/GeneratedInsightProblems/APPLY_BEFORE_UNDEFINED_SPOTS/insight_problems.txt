@@ -1,0 +1,15 @@
+      1  2  3  4  5  6
+    ------------------------------
+Whi|  X    X    X    *    X    *  |
+Plu|  X    X    X    *    X    *  |
+Sca|  X    X    O    X    X    X  |
+Mus|  X    X    X    X    O    X  |
+Pea|  X    O    X    X    X    X  |
+Gre|  O    X    X    X    X    X  |
+    ------------------------------
+APPLY_BEFORE_UNDEFINED_SPOTS
+0. The time 3 is the suspect Scarlet
+1. Either the suspect Peacock or the suspect Mustard is the time 5
+2. The time 1 is the suspect Green
+3. The suspect Peacock is the time 2
+4. The suspect Plum is at least 1 time before the suspect Mustard

@@ -1,0 +1,77 @@
+Hints for grid cell [0][1]
+	Either the weapon lead pipe or the weapon rope is the time 2
+	The time 4 is the weapon candlestick
+	The weapon rope is 1 times before the weapon candlestick
+
+
+Hints for grid cell [1][1]
+	The time 2 is the weapon rope
+	The weapon candlestick is 1 times before the weapon lead pipe
+	The time 3 is the weapon candlestick
+	The weapon candlestick is the time 3
+
+
+Hints for grid cell [2][1]
+	The weapon revolver is 1 times before the weapon lead pipe
+	The weapon candlestick is the time 4
+	Either the weapon candlestick or the weapon revolver is the time 2
+	The weapon lead pipe is at least 1 time before the weapon candlestick
+
+
+Hints for grid cell [2][2]
+	Either the weapon candlestick or the weapon revolver is the time 4
+	The weapon lead pipe is 1 times before the weapon candlestick
+	The weapon revolver is the time 2
+
+
+Hints for grid cell [3][1]
+	The time 4 is the weapon rope
+	The time 2 is the weapon candlestick
+	The weapon revolver is 1 times before the weapon rope
+
+
+Hints for grid cell [4][1]
+	The weapon rope is the time 1
+	The weapon candlestick is 1 times before the weapon lead pipe
+	The time 3 is the weapon lead pipe
+
+
+Hints for grid cell [5][1]
+	The weapon rope is the time 4
+	The weapon candlestick is the time 2
+	The weapon lead pipe is 1 times before the weapon rope
+	The time 4 is the weapon rope
+
+
+Hints for grid cell [6][1]
+	The weapon revolver is the time 2
+	The weapon lead pipe is the time 4
+	The weapon revolver is 1 times before the weapon candlestick
+
+
+Hints for grid cell [7][1]
+	The weapon rope is 1 times before the weapon revolver
+	The time 3 is the weapon rope
+	The time 4 is the weapon revolver
+	The weapon rope is at least 1 time before the weapon revolver
+	The weapon lead pipe is 1 times before the weapon rope
+
+
+Hints for grid cell [8][1]
+	The time 4 is the weapon lead pipe
+	The weapon revolver is the time 2
+	The weapon candlestick is 1 times before the weapon revolver
+
+
+Hints for grid cell [9][1]
+	The time 3 is the weapon candlestick
+	The weapon rope is 1 times before the weapon candlestick
+	The time 4 is the weapon revolver
+
+
+Hints for grid cell [10][1]
+	The time 2 is the weapon lead pipe
+	Either the time 1 or the time 3 is the weapon candlestick
+	The weapon rope is 1 times before the weapon lead pipe
+
+

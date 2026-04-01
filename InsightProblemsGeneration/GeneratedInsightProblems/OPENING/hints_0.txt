@@ -1,0 +1,30 @@
+Hints for grid cell [0][1]
+	Either the room Salon or the room Bedroom is the weapon revolver
+	The room Salon is the weapon polearm
+
+
+Hints for grid cell [1][1]
+	The room Salon is the weapon poison
+	The room Bedroom is the weapon revolver
+
+
+Hints for grid cell [2][1]
+	The weapon revolver is the room Library
+	The weapon poison is the room Bedroom
+
+
+Hints for grid cell [3][1]
+	The weapon revolver is the room Salon
+	Either the room Salon or the room Library is the weapon polearm
+
+
+Hints for grid cell [4][1]
+	The weapon polearm is the room Bedroom
+	The room Library is the weapon revolver
+
+
+Hints for grid cell [5][1]
+	The room Bedroom is the weapon polearm
+	The room Salon is the weapon revolver
+
+

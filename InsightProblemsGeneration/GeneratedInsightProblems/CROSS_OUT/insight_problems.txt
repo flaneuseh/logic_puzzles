@@ -1,0 +1,54 @@
+      Gre  Sca  Pea
+    ---------------
+Din|  *    *    *  |
+Kit|  O    *    *  |
+Gre|  *    O    *  |
+    ---------------
+CROSS_OUT
+0. The room Greenhouse is the suspect Scarlet
+1. The suspect Green is the room Kitchen
+      Gre  Sca  Pea
+    ---------------
+Din|  *    *    *  |
+Kit|  O    *    *  |
+Gre|  *    *    *  |
+    ---------------
+CROSS_OUT
+0. The room Kitchen is the suspect Green
+1. Either the suspect Green or the suspect Scarlet is the room Dining Room
+      Gre  Sca  Pea
+    ---------------
+Din|  *    *    *  |
+Kit|  *    O    *  |
+Gre|  O    *    *  |
+    ---------------
+CROSS_OUT
+0. The suspect Green is the room Greenhouse
+1. The room Kitchen is the suspect Scarlet
+      Gre  Sca  Pea
+    ---------------
+Din|  *    *    *  |
+Kit|  *    *    *  |
+Gre|  O    *    *  |
+    ---------------
+CROSS_OUT
+0. The room Greenhouse is the suspect Green
+1. Either the room Kitchen or the room Greenhouse is the suspect Peacock
+      Gre  Sca  Pea
+    ---------------
+Din|  *    *    *  |
+Kit|  *    *    *  |
+Gre|  *    *    O  |
+    ---------------
+CROSS_OUT
+0. The room Greenhouse is the suspect Peacock
+1. Either the room Greenhouse or the room Dining Room is the suspect Green
+      Gre  Sca  Pea
+    ---------------
+Din|  O    *    *  |
+Kit|  *    *    *  |
+Gre|  *    O    *  |
+    ---------------
+CROSS_OUT
+0. The room Greenhouse is the suspect Scarlet
+1. The room Dining Room is the suspect Green

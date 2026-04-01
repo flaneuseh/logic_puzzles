@@ -1,0 +1,114 @@
+      1  2  3  4  5  6
+    ------------------------------
+Whi|  X    *    *    X    *    X  |
+Pea|  X    X    X    X    X    O  |
+Sca|  X    X    X    O    X    X  |
+Mus|  X    *    *    X    X    X  |
+Gre|  X    X    *    X    *    X  |
+Plu|  O    X    X    X    X    X  |
+    ------------------------------
+BEFORE_N_SPOTS_CROSSCHECK
+0. Either the suspect Scarlet or the suspect Plum is the time 4
+1. The suspect Plum is the time 1
+2. The suspect Mustard is at least 1 time before the suspect Scarlet
+3. Either the time 6 or the time 1 is the suspect Peacock
+4. The suspect Mustard is 1 times before the suspect Green
+      1  2  3  4  5  6
+    ------------------------------
+Whi|  X    X    *    *    X    X  |
+Pea|  X    O    X    X    X    X  |
+Sca|  *    X    *    X    X    X  |
+Mus|  X    X    X    X    X    O  |
+Gre|  *    X    *    *    X    X  |
+Plu|  X    X    X    X    O    X  |
+    ------------------------------
+BEFORE_N_SPOTS_CROSSCHECK
+0. Either the time 6 or the time 1 is the suspect Mustard
+1. The suspect Scarlet is 1 times before the suspect White
+2. The suspect Peacock is 3 times before the suspect Plum
+3. The suspect Plum is the time 5
+4. The suspect Plum is at least 1 time before the suspect Mustard
+      1  2  3  4  5  6
+    ------------------------------
+Whi|  *    X    *    *    X    X  |
+Pea|  X    X    X    X    O    X  |
+Sca|  X    X    *    *    X    *  |
+Mus|  X    O    X    X    X    X  |
+Gre|  X    X    *    X    X    *  |
+Plu|  *    X    *    *    X    *  |
+    ------------------------------
+BEFORE_N_SPOTS_CROSSCHECK
+0. The suspect White is 1 times before the suspect Scarlet
+1. Either the time 3 or the time 6 is the suspect Green
+2. Either the time 5 or the time 2 is the suspect Mustard
+3. The time 5 is the suspect Peacock
+      1  2  3  4  5  6
+    ------------------------------
+Whi|  X    X    X    X    *    *  |
+Pea|  *    X    X    *    *    *  |
+Sca|  X    X    O    X    X    X  |
+Mus|  *    X    X    *    X    X  |
+Gre|  X    O    X    X    X    X  |
+Plu|  X    X    X    *    *    X  |
+    ------------------------------
+BEFORE_N_SPOTS_CROSSCHECK
+0. The time 3 is the suspect Scarlet
+1. The suspect Green is 1 times before the suspect Scarlet
+2. The suspect Plum is at least 1 time before the suspect White
+3. The suspect Mustard is 1 times before the suspect Plum
+      1  2  3  4  5  6
+    ------------------------------
+Whi|  X    X    X    *    *    *  |
+Pea|  *    X    X    *    X    X  |
+Sca|  X    X    O    X    X    X  |
+Mus|  X    X    X    *    *    *  |
+Gre|  *    X    X    *    *    *  |
+Plu|  X    O    X    X    X    X  |
+    ------------------------------
+BEFORE_N_SPOTS_CROSSCHECK
+0. The suspect Plum is at least 1 time before the suspect Mustard
+1. The suspect Scarlet is the time 3
+2. The suspect Peacock is 2 times before the suspect White
+3. The time 2 is the suspect Plum
+      1  2  3  4  5  6
+    ------------------------------
+Whi|  X    X    X    X    *    *  |
+Pea|  X    O    X    X    X    X  |
+Sca|  X    X    X    O    X    X  |
+Mus|  X    X    *    X    *    X  |
+Gre|  O    X    X    X    X    X  |
+Plu|  X    X    *    X    *    *  |
+    ------------------------------
+BEFORE_N_SPOTS_CROSSCHECK
+0. The time 2 is the suspect Peacock
+1. The time 4 is the suspect Scarlet
+2. The suspect Green is at least 1 time before the suspect Peacock
+3. The suspect Mustard is 1 times before the suspect White
+      1  2  3  4  5  6
+    ------------------------------
+Whi|  X    X    X    O    X    X  |
+Pea|  X    X    X    X    *    *  |
+Sca|  X    X    *    X    *    *  |
+Mus|  *    *    *    X    *    *  |
+Gre|  X    *    *    X    X    X  |
+Plu|  *    *    X    X    X    X  |
+    ------------------------------
+BEFORE_N_SPOTS_CROSSCHECK
+0. The suspect Green is at least 1 time before the suspect Scarlet
+1. The suspect Plum is 1 times before the suspect Green
+2. The suspect White is the time 4
+3. The suspect Green is 2 times before the suspect Peacock
+      1  2  3  4  5  6
+    ------------------------------
+Whi|  X    X    *    X    *    *  |
+Pea|  X    X    *    X    *    X  |
+Sca|  *    *    *    X    *    X  |
+Mus|  *    *    *    X    *    *  |
+Gre|  X    X    X    O    X    X  |
+Plu|  *    *    *    X    X    X  |
+    ------------------------------
+BEFORE_N_SPOTS_CROSSCHECK
+0. The suspect Plum is 2 times before the suspect White
+1. Either the time 5 or the time 3 is the suspect Peacock
+2. The suspect Scarlet is 1 times before the suspect White
+3. The time 4 is the suspect Green

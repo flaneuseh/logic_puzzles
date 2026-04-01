@@ -77,7 +77,7 @@ class Category:
 
     def __repr__(self):
         return str(self)
-    
+
     def __eq__(self, other):
         if self.title != other.title:
             return False
@@ -91,9 +91,11 @@ class Category:
             if ent not in other.entities:
                 return False
         return True
-    
+
     def __hash__(self):
-        return hash(f"{self.title}:{self.is_numeric}:{self.increment}:{sorted(self.entities)}")
+        return hash(
+            f"{self.title}:{self.is_numeric}:{self.increment}:{sorted(self.entities)}"
+        )
 
 
 # %% id="EFhbSHGwKlRs"
@@ -565,7 +567,7 @@ class Puzzle:
             i = 0
             while applied and is_valid:
                 i += 1
-                assert(i < 1000) # Break the infinite loop, if there is one.
+                assert i < 1000  # Break the infinite loop, if there is one.
                 contradiction, solver_moves = solver.find_transitives(self, True)
                 if contradiction:
                     is_valid = False
@@ -614,12 +616,26 @@ class Puzzle:
             grid_len += 1
         return grid_sums / grid_len, valid_sums / grid_len
 
+def validate__default(requirements, puzzle, hints):
+    cats = puzzle.categories
+    if len(cats) < requirements["num_cats"]:
+        return False
+    if len(cats[0].entities) < requirements["num_ents"]:
+        return False
+    hint_types = requirements["hint"]
+    if len(hint_types) == 0:
+        return True
+    for hint in hints:
+        rule = list(hint.keys())[0]
+        if rule in hint_types:
+            return True
+    return False
 
 class Insight:
     ALL_INSIGHTS = set()
 
     # Maintain an insight DAG in which each node points to its descendants (and its parents)
-    def __init__(self, name, value, parents=set(), requirements=None):
+    def __init__(self, name, value, parents=set(), requirements={}, validate=validate__default):
         self.name = name
         self.value = value
         self.parents = parents
@@ -630,15 +646,16 @@ class Insight:
             "num_cats": 2,
             "num_ents": 3,
             "numeric": False,
+            "hint": [],
+            "superceded_by": [],
         }
         for parent in parents:
             for key, value in parent.requirements.items():
                 if not self.requirements[key] or value > self.requirements[key]:
                     self.requirements[key] = value
-        if requirements:
-            for key, value in requirements.items():
-                self.requirements[key] = value
-
+        for key, value in requirements.items():
+            self.requirements[key] = value
+        self.validate = validate
         Insight.ALL_INSIGHTS.add(self)
 
     def __str__(self):
@@ -691,61 +708,104 @@ class Insight:
 
         return sub_dag
 
+
 # Apply an is hint (given)
-Insight.APPLY_IS = Insight("APPLY_IS", 1)
+Insight.APPLY_IS = Insight("APPLY_IS", 1, set(), {"hint": ["is"]})
 
 # If there is an O in a row/column, the rest of the row/column must be X (given)
 Insight.CROSS_OUT = Insight("CROSS_OUT", 2)
 # If a row/column has one opening and the rest are Xs, it must be O (given)
-Insight.OPENING = Insight("OPENING", 3, {Insight.APPLY_IS})
+Insight.OPENING = Insight("OPENING", 3)
 
 # Apply a not hint (given)
-Insight.APPLY_NOT = Insight("APPLY_NOT", 4)
+Insight.APPLY_NOT = Insight("APPLY_NOT", 4, set(), {"num_ents": 3, "hint": ["not"]})
 # Apply an or hint once one of the clauses has been answered. (given)
-Insight.APPLY_OR = Insight("APPLY_OR", 5, {Insight.APPLY_IS, Insight.APPLY_NOT})
+Insight.APPLY_OR = Insight("APPLY_OR", 5, set(), {"hint": ["simple_or", "compound_or"]})
 # If A is answered and B is 1 after A, then answer B is the next one after A (given)
+def validate__before_one(requirements, puzzle, hints):
+    if not validate__default(requirements, puzzle, hints):
+        return False
+    for hint in hints:
+        rule = list(hint.keys())[0]
+        if rule == "before":
+            terms = hint[rule]
+            if len(terms) == 6 and terms[5] == 1:
+                return True
+    return False
 Insight.APPLY_BEFORE_ONE_SPOT = Insight(
-    "APPLY_BEFORE_ONE_SPOT", 6, {Insight.APPLY_OR}, {"numeric": True, "num_ents": 4}
+    "APPLY_BEFORE_ONE_SPOT", 6, set(), {"numeric": True, "num_ents": 4, "hint": ["before"]}, validate__before_one
 )
 # If A is answered and B is N after A, then answer B is N after A (given)
+def validate__before_n(requirements, puzzle, hints):
+    if not validate__default(requirements, puzzle, hints):
+        return False
+    for hint in hints:
+        rule = list(hint.keys())[0]
+        if rule == "before":
+            terms = hint[rule]
+            if len(terms) == 6 and terms[5] > 1:
+                return True
+    return False
 Insight.APPLY_BEFORE_N_SPOTS = Insight(
     "APPLY_BEFORE_N_SPOTS",
     7,
     {Insight.APPLY_BEFORE_ONE_SPOT},
-    {"numeric": True, "num_ents": 6},
+    {"num_ents": 6}, validate__before_n
 )
 
 # If A is answered then B must be one of the spots after A and vice versa (X where that is not true)
 # Can be derived from APPLY_BEFORE_N_SPOTS by considering the possible values for N and finding that regardless of the N,
 # this must be true.
+def validate__before_undefined(requirements, puzzle, hints):
+    if not validate__default(requirements, puzzle, hints):
+        return False
+    for hint in hints:
+        rule = list(hint.keys())[0]
+        if rule == "before":
+            terms = hint[rule]
+            if len(terms) == 5:
+                return True
+    return False
 Insight.APPLY_BEFORE_UNDEFINED_SPOTS = Insight(
-    "APPLY_BEFORE_UNDEFINED_SPOTS", 8, {Insight.APPLY_BEFORE_N_SPOTS}
+    "APPLY_BEFORE_UNDEFINED_SPOTS", 8, {Insight.APPLY_BEFORE_N_SPOTS}, {}, validate__before_undefined
 )
 
 # The transitive property applies (A -> B and B -> C, so A -> C) (given)
-Insight.TRANS_ABC_TRUE = Insight(
-    "TRANS_ABC_TRUE", 14, {Insight.APPLY_BEFORE_ONE_SPOT}, {"num_cats": 3}
-)
+Insight.TRANS_ABC_TRUE = Insight("TRANS_ABC_TRUE", 14, set(), {"num_cats": 3})
 # A -> B and B !> C, so A !> C (given)
 # Can be derived from TRANS_ABC_TRUE (if A -> B and A -> C then B -> C, which is a contradiction)
-Insight.TRANS_ABC_FALSE = Insight("TRANS_ABC_FALSE", 15, {Insight.TRANS_ABC_TRUE})
+Insight.TRANS_ABC_FALSE = Insight("TRANS_ABC_FALSE", 15, {Insight.TRANS_ABC_TRUE}, {"num_ents": 4})
 # If A or B from category 0 is C then no other entity from category 0 is C
 # Can be derived by considering A -> C and B -> C and seeing that either way, all other entities from 0 are X.
+def validate__simple_or_same_cat(requirements, puzzle, hints):
+    if not validate__default(requirements, puzzle, hints):
+        return False
+    for hint in hints:
+        rule = list(hint.keys())[0]
+        if rule == "simple_or":
+            terms = hint[rule]
+            if terms[0] == terms[2]:
+                return True
+    return False
 Insight.SIMPLE_OR_SAME_CAT = Insight(
-    "SIMPLE_OR_SAME_CAT", 9, {Insight.APPLY_OR, Insight.CROSS_OUT}, {"num_ents": 4}
+    "SIMPLE_OR_SAME_CAT", 9, {Insight.APPLY_OR, Insight.CROSS_OUT}, {"num_ents": 4, "hint": ["simple_or"]}, validate__simple_or_same_cat
 )
 # If A or B is C then A is not B
 # Can be derived by applying the OR rule in turn and seeing that by TRANS_ABC_FALSE, A is not B either way.
+def validate__simple_or_diff_cat(requirements, puzzle, hints):
+    if not validate__default(requirements, puzzle, hints):
+        return False
+    for hint in hints:
+        rule = list(hint.keys())[0]
+        if rule == "simple_or":
+            terms = hint[rule]
+            if terms[0] != terms[2]:
+                return True
+    return False
 Insight.SIMPLE_OR_DIFF_CAT = Insight(
-    "SIMPLE_OR_DIFF_CAT", 10, {Insight.SIMPLE_OR_SAME_CAT, Insight.TRANS_ABC_FALSE}
+    "SIMPLE_OR_DIFF_CAT", 10, {Insight.APPLY_OR, Insight.TRANS_ABC_FALSE}, {"hint": ["simple_or"]}, validate__simple_or_diff_cat
 )
-# If A < B and A, B are not in the same category, then A is not B.
-# Can be derived by considering each possible value for A with APPLY_BEFORE_UNDEFINED_SPOTS and applying TRANS_ABC_FALSE
-Insight.BEFORE_DIFF_CAT = Insight(
-    "BEFORE_DIFF_CAT",
-    11,
-    {Insight.APPLY_BEFORE_UNDEFINED_SPOTS, Insight.TRANS_ABC_FALSE},
-)
+
 # The before entity can't be in the last spot (and vice versa for the after entity) Same for undefined spots
 # Can be derived by considering each possible value for A with APPLY_BEFORE_UNDEFINED_SPOTS and seeing that in the last spot,
 # there is no remaining possible value for B.
@@ -756,25 +816,44 @@ Insight.BEFORE_NOINFO = Insight(
 # The general case of BEFORE_NOINFO. It could also be derived directly from APPLY_BEFORE_N_SPOTS,
 # but expert knowledge suggests it will be easier for users to encounter BEFORE_NOINFO first.
 Insight.BEFORE_N_SPOTS_NOINFO = Insight(
-    "BEFORE_N_SPOTS_NOINFO", 13, {Insight.BEFORE_NOINFO}
+    "BEFORE_N_SPOTS_NOINFO", 13, {Insight.BEFORE_NOINFO}, validate=validate__before_n
 )
 
 # A streak of Xs at the beginning/end forces the first available position for the other entity to shift.
 # Can be derived in the same way as BEFORE_N_SPOTS_NOINFO;
 # again, it will be easier for users to encounter BEFORE_N_SPOTS_NOINFO first.
 Insight.BEFORE_N_SPOTS_SHIFT = Insight(
-    "BEFORE_N_SPOTS_SHIFT", 16, {Insight.BEFORE_N_SPOTS_NOINFO}
+    "BEFORE_N_SPOTS_SHIFT", 16, {Insight.BEFORE_N_SPOTS_NOINFO}, validate=validate__before_n
 )
 # For a position to be a valid answer, the corresponding position +/- num must be valid for the other entity
 # The most complex case of BEFORE_NOINFO.
 Insight.BEFORE_N_SPOTS_CROSSCHECK = Insight(
-    "BEFORE_N_SPOTS_CROSSCHECK", 17, {Insight.BEFORE_N_SPOTS_SHIFT}
+    "BEFORE_N_SPOTS_CROSSCHECK", 17, {Insight.BEFORE_N_SPOTS_SHIFT}, validate=validate__before_n
 )
+
 # A and B don't share any possibilities; A != B
 # Can be derived by considering all possible values for A and applying TRANS_ABC_FALSE.
 # Another kind of crosscheck.
-Insight.TRANS_SETS = Insight("TRANS_SETS", 18, {Insight.BEFORE_N_SPOTS_NOINFO, Insight.SIMPLE_OR_DIFF_CAT, Insight.TRANS_ABC_FALSE})
+Insight.TRANS_SETS = Insight("TRANS_SETS", 18, {Insight.TRANS_ABC_FALSE})
 
+# If A < B and A, B are not in the same category, then A is not B.
+# Can be derived by considering each possible value for A with APPLY_BEFORE_UNDEFINED_SPOTS and applying TRANS_ABC_FALSE
+def validate__before_diff_cat(requirements, puzzle, hints):
+    if not validate__default(requirements, puzzle, hints):
+        return False
+    for hint in hints:
+        rule = list(hint.keys())[0]
+        if rule == "before":
+            terms = hint[rule]
+            if terms[0] != terms[2]:
+                return True
+    return False
+Insight.BEFORE_DIFF_CAT = Insight(
+    "BEFORE_DIFF_CAT",
+    11,
+    {Insight.APPLY_BEFORE_UNDEFINED_SPOTS, Insight.TRANS_ABC_FALSE},
+    {"superceded_by": [Insight.BEFORE_N_SPOTS_SHIFT, Insight.TRANS_SETS, Insight.TRANS_ABC_TRUE]}, validate__before_diff_cat
+)
 
 # ## Hint Grammar
 #
@@ -1133,10 +1212,7 @@ class Solver:
                         loc = (cat1, cat2, ent1, ent2)
                         curr_sy = puzzle.get_symbol(*loc)
                         soln_sy = solution.get_symbol(*loc)
-                        if (
-                            curr_sy in CONFIDENT_MARKS
-                            and curr_sy != soln_sy
-                        ):
+                        if curr_sy in CONFIDENT_MARKS and curr_sy != soln_sy:
                             # The puzzle value does not match the canonical solution; unset subgrid and mark repair as applied
                             insight = None
                             contradiction = self.add_solver_move(
@@ -1374,7 +1450,7 @@ class Solver:
                         continue
 
                     # A is related to B, so A and B share relations for all other categories
-                    # Get all realations for B
+                    # Get all relations for B
                     entB_relations = puzzle.get_known_relations(catB, entB)
 
                     # Relate A to B's truth and false values.
@@ -1892,7 +1968,7 @@ class Solver:
 
         return contradiction, solver_moves
 
-    def get_available_moves(self, puzzle, hints):
+    def get_available_moves(self, puzzle, hints, include_forbidden=False):
         """
         get all possible next moves in the solution:
             any openings
@@ -1930,6 +2006,12 @@ class Solver:
                 h_contradiction, h_moves, contradiction, available_moves
             )
 
+        if not include_forbidden:
+            without_forbidden = []
+            for move in available_moves:
+                if move["insight"] not in self.forbidden_insights:
+                    without_forbidden.append(move)
+            available_moves = without_forbidden
         return contradiction, available_moves
 
     def get_move_diff(self, before, after, changes_only=True):
@@ -2012,12 +2094,14 @@ class Solver:
         applied = True
         is_valid = True
         while applied:
-            available_moves = self.get_available_moves(copy, hints)
+            contradiction, available_moves = self.get_available_moves(copy, hints)
+            applied = False
             for move in available_moves:
-                if move["contradiction"]:
-                    is_valid = False
                 if move["insight"] not in self.forbidden_insights:
-                    copy.answer(*move["move"])
+                    if copy.answer(*move["move"]):
+                        applied = True
+            if contradiction:
+                is_valid = False
 
         return copy, is_valid
 
@@ -2041,29 +2125,35 @@ class Solver:
         a_4 = True
         a_ever = False
         og = deepcopy(copy)
-        while a_2 or a_3 or a_4:
+        i = 0
+        while is_valid and (a_2 or a_3 or a_4):
+            i += 1
+            assert i < 1000
             # Apply openings and transitives as many times as you can.
             contradiction, solver_moves = self.apply_opening(copy, True)
             a_2 = len(solver_moves) > 0
             if contradiction:
-                print("not valid at first apply_opening")
+                if print_soln:
+                    print("not valid at first apply_opening")
                 is_valid = False
-            
+
             contradiction, solver_moves = self.apply_cross_out(copy, True)
             a_3 = len(solver_moves) > 0
             if contradiction:
-                print("not valid at first apply_cross_out")
+                if print_soln:
+                    print("not valid at first apply_cross_out")
                 is_valid = False
-            
+
             contradiction, solver_moves = self.find_transitives(copy, True)
             a_4 = len(solver_moves) > 0
             if contradiction:
-                print("not valid at first find_transitives")
+                if print_soln:
+                    print("not valid at first find_transitives")
                 is_valid = False
-            
+
             if a_2 or a_3 or a_4:
                 a_ever = True
-            
+
             applied = applied or a_ever  # test if anything was changed
 
         if print_soln:
@@ -2081,6 +2171,7 @@ class Solver:
         while is_valid and applied:
             applied = False
             loop += 1
+            assert loop < 1000
 
             for hint in hints:
                 str_hint = hint_to_english(hint)
@@ -2104,29 +2195,35 @@ class Solver:
                 a_4 = True
                 a_ever = False
                 og = deepcopy(copy)
-                while a_2 or a_3 or a_4:
+                i = 0
+                while is_valid and (a_2 or a_3 or a_4):
+                    i += 1
+                    assert i < 1000
                     # Apply openings and transitives as many times as you can.
                     contradiction, solver_moves = self.apply_opening(copy, True)
                     a_2 = len(solver_moves) > 0
                     if contradiction:
-                        print(f"not valid at apply_opening after hint {str_hint}")
+                        if print_soln:
+                            print(f"not valid at apply_opening after hint {str_hint}")
                         is_valid = False
-            
+
                     contradiction, solver_moves = self.apply_cross_out(copy, True)
                     a_3 = len(solver_moves) > 0
                     if contradiction:
-                        print(f"not valid at apply_cross_out after hint {str_hint}")
+                        if print_soln:
+                            print(f"not valid at apply_cross_out after hint {str_hint}")
                         is_valid = False
-                    
+
                     contradiction, solver_moves = self.find_transitives(copy, True)
                     a_4 = len(solver_moves) > 0
                     if contradiction:
-                        print("not valid at find_transitives after hint {str_hint}")
+                        if print_soln or i > 1000:
+                            print(f"not valid at find_transitives after hint {str_hint}")
                         is_valid = False
-                    
+
                     if a_2 or a_3 or a_4:
                         a_ever = True
-                    
+
                     applied = applied or a_ever  # test if anything was changed
                 if not a_ever and print_soln:
                     print(f"No transitives or openings applied after hint {hint}")

@@ -1,0 +1,630 @@
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  *    *    X  | *    *    *  |
+Whi|  *    *    X  | X    *    *  |
+Sca|  X    X    O  | *    *    *  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  X    X    O  |
+Kit|  O    X    X  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the suspect White or the weapon polearm is the room Bedroom
+1. The weapon candlestick is the room Kitchen
+2. The weapon rope is the suspect Scarlet
+3. The weapon polearm is the room Bedroom
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    O    X  | *    *    *  |
+Whi|  *    X    *  | *    *    *  |
+Sca|  *    X    *  | *    *    *  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  X    X    O  |
+Kit|  O    X    X  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the weapon rope or the room Bedroom is the suspect Scarlet
+1. The room Bedroom is the weapon polearm
+2. The weapon polearm is the suspect Peacock
+3. Either the suspect Peacock or the room Kitchen is the weapon candlestick
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  *    *    *  | O    X    X  |
+Whi|  *    *    *  | X    O    X  |
+Sca|  *    *    X  | X    X    O  |
+    ------------------------------
+Bed|  O    X    X  |
+Gre|  X    *    *  |
+Kit|  X    *    *  |
+    ---------------
+TRANS_ABC_TRUE
+0. The room Greenhouse is the suspect White
+1. Either the room Kitchen or the room Greenhouse is the suspect Scarlet
+2. The weapon candlestick is the room Bedroom
+3. Either the suspect Peacock or the suspect White is the weapon rope
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  *    X    *  | O    X    X  |
+Whi|  *    X    *  | X    O    X  |
+Sca|  X    O    X  | X    X    O  |
+    ------------------------------
+Bed|  *    *    X  |
+Gre|  X    X    O  |
+Kit|  *    *    X  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the weapon rope or the suspect Scarlet is the room Greenhouse
+1. The weapon polearm is the suspect Scarlet
+2. Either the weapon polearm or the room Greenhouse is the suspect White
+3. The suspect Peacock is the room Bedroom
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  *    *    X  | X    O    X  |
+Whi|  *    *    X  | O    X    X  |
+Sca|  X    X    O  | X    X    O  |
+    ------------------------------
+Bed|  *    X    *  |
+Gre|  *    *    X  |
+Kit|  *    *    *  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the room Bedroom or the weapon rope is the suspect Scarlet
+1. Either the weapon rope or the room Greenhouse is the suspect Peacock
+2. Either the room Greenhouse or the room Kitchen is the weapon polearm
+3. The suspect White is the room Bedroom
+4. Either the weapon polearm or the weapon candlestick is the room Greenhouse
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  *    *    *  | O    X    X  |
+Whi|  *    *    *  | X    *    *  |
+Sca|  *    X    *  | X    *    *  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  *    X    *  |
+Kit|  *    X    *  |
+    ---------------
+TRANS_ABC_TRUE
+0. The room Bedroom is the weapon polearm
+1. Either the weapon rope or the weapon candlestick is the suspect Scarlet
+2. The room Bedroom is the suspect Peacock
+3. Either the room Greenhouse or the weapon polearm is the suspect White
+4. Either the room Greenhouse or the weapon candlestick is the suspect Scarlet
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    O    X  | *    *    X  |
+Whi|  *    X    *  | *    *    X  |
+Sca|  *    X    *  | X    X    O  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  X    X    O  |
+Kit|  O    X    X  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the suspect Peacock or the room Kitchen is the weapon candlestick
+1. The room Bedroom is the weapon polearm
+2. The weapon polearm is the suspect Peacock
+3. The room Kitchen is the suspect Scarlet
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    O    X  | X    *    *  |
+Whi|  X    X    O  | X    *    *  |
+Sca|  O    X    X  | O    X    X  |
+    ------------------------------
+Bed|  *    X    *  |
+Gre|  *    X    *  |
+Kit|  X    O    X  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the suspect Scarlet or the suspect White is the weapon rope
+1. Either the room Bedroom or the weapon rope is the suspect Scarlet
+2. The room Kitchen is the weapon polearm
+3. The suspect Scarlet is the weapon candlestick
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    X    O  | X    O    X  |
+Whi|  O    X    X  | *    X    *  |
+Sca|  X    O    X  | *    X    *  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  *    X    *  |
+Kit|  *    X    *  |
+    ---------------
+TRANS_ABC_TRUE
+0. The suspect Scarlet is the weapon polearm
+1. The room Bedroom is the weapon polearm
+2. Either the suspect Scarlet or the suspect Peacock is the weapon rope
+3. The suspect Peacock is the room Greenhouse
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    X    O  | *    *    *  |
+Whi|  O    X    X  | *    *    *  |
+Sca|  X    O    X  | *    *    *  |
+    ------------------------------
+Bed|  X    *    *  |
+Gre|  X    *    *  |
+Kit|  O    X    X  |
+    ---------------
+TRANS_ABC_TRUE
+0. The suspect Peacock is the weapon rope
+1. The room Kitchen is the weapon candlestick
+2. Either the weapon polearm or the suspect White is the room Bedroom
+3. Either the suspect Scarlet or the suspect Peacock is the weapon polearm
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  *    *    X  | O    X    X  |
+Whi|  *    *    X  | X    *    *  |
+Sca|  X    X    O  | X    *    *  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  O    X    X  |
+Kit|  X    X    O  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the weapon candlestick or the suspect Peacock is the room Bedroom
+1. The weapon polearm is the room Bedroom
+2. Either the room Bedroom or the suspect Scarlet is the weapon rope
+3. The room Kitchen is the weapon rope
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  *    *    *  | X    X    O  |
+Whi|  *    X    *  | X    O    X  |
+Sca|  *    *    *  | O    X    X  |
+    ------------------------------
+Bed|  X    X    O  |
+Gre|  *    *    X  |
+Kit|  *    *    X  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the room Bedroom or the room Greenhouse is the suspect White
+1. The room Kitchen is the suspect Peacock
+2. Either the suspect Peacock or the suspect Scarlet is the room Bedroom
+3. The weapon rope is the room Bedroom
+4. Either the weapon polearm or the room Greenhouse is the suspect White
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  *    *    *  | X    O    X  |
+Whi|  *    X    *  | X    X    O  |
+Sca|  *    *    *  | O    X    X  |
+    ------------------------------
+Bed|  X    X    O  |
+Gre|  *    *    X  |
+Kit|  *    *    X  |
+    ---------------
+TRANS_ABC_TRUE
+0. The room Bedroom is the suspect Scarlet
+1. The room Kitchen is the suspect White
+2. Either the room Kitchen or the weapon polearm is the suspect White
+3. Either the suspect Scarlet or the suspect White is the room Kitchen
+4. Either the weapon rope or the suspect White is the room Bedroom
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  *    *    X  | X    *    *  |
+Whi|  X    X    O  | X    *    *  |
+Sca|  *    *    X  | O    X    X  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  X    X    O  |
+Kit|  O    X    X  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the weapon rope or the room Bedroom is the suspect White
+1. Either the weapon candlestick or the weapon polearm is the room Kitchen
+2. Either the room Greenhouse or the room Bedroom is the weapon polearm
+3. The room Bedroom is the suspect Scarlet
+4. Either the room Bedroom or the suspect White is the weapon rope
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  *    *    *  | X    O    X  |
+Whi|  *    *    *  | *    X    *  |
+Sca|  *    *    X  | *    X    *  |
+    ------------------------------
+Bed|  O    X    X  |
+Gre|  X    O    X  |
+Kit|  X    X    O  |
+    ---------------
+TRANS_ABC_TRUE
+0. The room Bedroom is the weapon candlestick
+1. Either the room Greenhouse or the room Bedroom is the weapon polearm
+2. Either the suspect Scarlet or the room Kitchen is the weapon rope
+3. Either the suspect Peacock or the weapon rope is the room Greenhouse
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    O    X  | X    O    X  |
+Whi|  *    X    *  | X    X    O  |
+Sca|  *    X    *  | O    X    X  |
+    ------------------------------
+Bed|  *    *    X  |
+Gre|  *    *    *  |
+Kit|  *    *    *  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the room Kitchen or the weapon polearm is the suspect White
+1. Either the suspect Peacock or the suspect White is the room Greenhouse
+2. Either the room Greenhouse or the room Kitchen is the weapon rope
+3. The weapon polearm is the suspect Peacock
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  O    X    X  | O    X    X  |
+Whi|  X    X    O  | X    *    *  |
+Sca|  X    O    X  | X    *    *  |
+    ------------------------------
+Bed|  *    *    *  |
+Gre|  *    *    X  |
+Kit|  *    *    *  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the room Bedroom or the weapon rope is the suspect White
+1. Either the weapon candlestick or the room Greenhouse is the suspect Peacock
+2. Either the room Kitchen or the room Bedroom is the weapon rope
+3. The room Bedroom is the suspect Peacock
+4. The suspect White is the weapon rope
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  O    X    X  | X    *    *  |
+Whi|  X    O    X  | O    X    X  |
+Sca|  X    X    O  | X    *    *  |
+    ------------------------------
+Bed|  X    *    *  |
+Gre|  X    *    *  |
+Kit|  O    X    X  |
+    ---------------
+TRANS_ABC_TRUE
+0. The suspect Peacock is the weapon candlestick
+1. The weapon candlestick is the room Kitchen
+2. Either the weapon polearm or the room Kitchen is the suspect White
+3. Either the suspect White or the weapon candlestick is the room Bedroom
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  O    X    X  | X    *    *  |
+Whi|  X    O    X  | O    X    X  |
+Sca|  X    X    O  | X    *    *  |
+    ------------------------------
+Bed|  *    *    X  |
+Gre|  X    X    O  |
+Kit|  *    *    X  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the suspect White or the weapon rope is the room Greenhouse
+1. The suspect White is the room Bedroom
+2. The weapon rope is the suspect Scarlet
+3. Either the room Bedroom or the weapon candlestick is the suspect Peacock
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    *    *  | *    X    *  |
+Whi|  X    *    *  | *    *    X  |
+Sca|  O    X    X  | *    *    *  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  O    X    X  |
+Kit|  X    X    O  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the weapon candlestick or the weapon rope is the room Kitchen
+1. Either the suspect Scarlet or the suspect White is the room Greenhouse
+2. The suspect Scarlet is the weapon candlestick
+3. Either the room Greenhouse or the suspect White is the weapon candlestick
+4. Either the suspect Peacock or the suspect Scarlet is the room Kitchen
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    *    *  | *    *    X  |
+Whi|  X    *    *  | X    X    O  |
+Sca|  O    X    X  | *    *    X  |
+    ------------------------------
+Bed|  *    *    X  |
+Gre|  *    *    X  |
+Kit|  X    X    O  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the weapon candlestick or the suspect Peacock is the room Bedroom
+1. Either the room Bedroom or the weapon rope is the suspect Peacock
+2. The weapon rope is the room Kitchen
+3. The suspect White is the room Kitchen
+4. The weapon candlestick is the suspect Scarlet
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    *    *  | X    *    *  |
+Whi|  O    X    X  | X    *    *  |
+Sca|  X    *    *  | O    X    X  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  O    X    X  |
+Kit|  X    X    O  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the suspect Scarlet or the room Greenhouse is the weapon candlestick
+1. The suspect Scarlet is the room Bedroom
+2. The suspect White is the weapon candlestick
+3. Either the suspect White or the room Kitchen is the weapon rope
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  *    *    *  | X    X    O  |
+Whi|  *    *    *  | X    O    X  |
+Sca|  *    *    *  | O    X    X  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  *    X    *  |
+Kit|  *    X    *  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the suspect Scarlet or the room Greenhouse is the weapon candlestick
+1. The room Bedroom is the suspect Scarlet
+2. The room Bedroom is the weapon polearm
+3. The room Greenhouse is the suspect White
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    X    O  | *    *    *  |
+Whi|  O    X    X  | *    *    X  |
+Sca|  X    O    X  | *    *    *  |
+    ------------------------------
+Bed|  *    X    *  |
+Gre|  X    O    X  |
+Kit|  *    X    *  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the room Bedroom or the room Greenhouse is the suspect White
+1. The suspect Peacock is the weapon rope
+2. The room Greenhouse is the weapon polearm
+3. Either the weapon rope or the weapon candlestick is the suspect White
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    X    O  | *    *    *  |
+Whi|  O    X    X  | *    *    *  |
+Sca|  X    O    X  | *    *    *  |
+    ------------------------------
+Bed|  O    X    X  |
+Gre|  X    *    *  |
+Kit|  X    *    *  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the room Bedroom or the suspect Peacock is the weapon rope
+1. The suspect Scarlet is the weapon polearm
+2. Either the weapon rope or the suspect White is the room Kitchen
+3. The weapon candlestick is the room Bedroom
+4. The suspect Scarlet is the weapon polearm
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  *    *    X  | X    *    *  |
+Whi|  *    *    X  | O    X    X  |
+Sca|  X    X    O  | X    *    *  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  O    X    X  |
+Kit|  X    X    O  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the room Bedroom or the room Greenhouse is the weapon candlestick
+1. The weapon polearm is the room Bedroom
+2. The weapon rope is the suspect Scarlet
+3. The suspect White is the room Bedroom
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  O    X    X  | X    *    *  |
+Whi|  X    *    *  | X    *    *  |
+Sca|  X    *    *  | O    X    X  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  O    X    X  |
+Kit|  X    X    O  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the room Kitchen or the suspect Peacock is the weapon candlestick
+1. The weapon rope is the room Kitchen
+2. The weapon candlestick is the room Greenhouse
+3. The suspect Scarlet is the room Bedroom
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    *    *  | X    X    O  |
+Whi|  O    X    X  | O    X    X  |
+Sca|  X    *    *  | X    O    X  |
+    ------------------------------
+Bed|  *    X    *  |
+Gre|  *    X    *  |
+Kit|  X    O    X  |
+    ---------------
+TRANS_ABC_TRUE
+0. The suspect White is the room Bedroom
+1. The room Kitchen is the suspect Peacock
+2. The weapon polearm is the room Kitchen
+3. The suspect White is the weapon candlestick
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    O    X  | *    X    *  |
+Whi|  O    X    X  | *    X    *  |
+Sca|  X    X    O  | X    O    X  |
+    ------------------------------
+Bed|  *    *    *  |
+Gre|  *    *    *  |
+Kit|  X    *    *  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the weapon polearm or the room Greenhouse is the suspect Peacock
+1. Either the room Kitchen or the suspect White is the weapon candlestick
+2. The suspect Scarlet is the room Greenhouse
+3. Either the weapon rope or the weapon polearm is the room Kitchen
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  O    X    X  | *    *    *  |
+Whi|  X    X    O  | *    X    *  |
+Sca|  X    O    X  | *    *    *  |
+    ------------------------------
+Bed|  X    *    *  |
+Gre|  X    *    *  |
+Kit|  O    X    X  |
+    ---------------
+TRANS_ABC_TRUE
+0. The room Kitchen is the weapon candlestick
+1. The weapon polearm is the suspect Scarlet
+2. Either the suspect Scarlet or the suspect Peacock is the room Greenhouse
+3. The suspect Peacock is the weapon candlestick
+4. The suspect Scarlet is the weapon polearm
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  O    X    X  | X    O    X  |
+Whi|  X    O    X  | *    X    *  |
+Sca|  X    X    O  | *    X    *  |
+    ------------------------------
+Bed|  *    X    *  |
+Gre|  *    *    X  |
+Kit|  *    *    *  |
+    ---------------
+TRANS_ABC_TRUE
+0. The suspect White is the weapon polearm
+1. The suspect Peacock is the room Greenhouse
+2. Either the room Greenhouse or the suspect Scarlet is the weapon rope
+3. Either the room Kitchen or the room Greenhouse is the weapon polearm
+4. The suspect Peacock is the weapon candlestick
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  *    *    X  | X    O    X  |
+Whi|  *    *    X  | X    X    O  |
+Sca|  X    X    O  | O    X    X  |
+    ------------------------------
+Bed|  *    X    *  |
+Gre|  *    X    *  |
+Kit|  X    O    X  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the room Bedroom or the room Greenhouse is the suspect Peacock
+1. The weapon rope is the suspect Scarlet
+2. Either the suspect White or the suspect Peacock is the weapon candlestick
+3. Either the weapon polearm or the suspect Peacock is the room Greenhouse
+4. Either the suspect Peacock or the weapon polearm is the room Kitchen
+5. Either the room Greenhouse or the room Kitchen is the suspect White
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  *    X    *  | *    *    X  |
+Whi|  X    O    X  | *    *    X  |
+Sca|  *    X    *  | X    X    O  |
+    ------------------------------
+Bed|  X    O    X  |
+Gre|  X    X    O  |
+Kit|  O    X    X  |
+    ---------------
+TRANS_ABC_TRUE
+0. The weapon rope is the room Greenhouse
+1. The room Kitchen is the suspect Scarlet
+2. The room Bedroom is the weapon polearm
+3. Either the room Kitchen or the weapon polearm is the suspect White
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  *    *    X  | X    O    X  |
+Whi|  X    X    O  | *    X    *  |
+Sca|  *    *    X  | *    X    *  |
+    ------------------------------
+Bed|  X    X    O  |
+Gre|  O    X    X  |
+Kit|  X    O    X  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the room Kitchen or the weapon candlestick is the suspect Scarlet
+1. The room Bedroom is the weapon rope
+2. The weapon rope is the suspect White
+3. The weapon candlestick is the room Greenhouse
+4. The room Greenhouse is the suspect Peacock
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  O    X    X  | *    *    *  |
+Whi|  X    X    O  | *    *    *  |
+Sca|  X    O    X  | *    *    *  |
+    ------------------------------
+Bed|  X    *    *  |
+Gre|  O    X    X  |
+Kit|  X    *    *  |
+    ---------------
+TRANS_ABC_TRUE
+0. The room Greenhouse is the weapon candlestick
+1. Either the suspect Scarlet or the suspect White is the weapon rope
+2. Either the weapon polearm or the suspect Peacock is the room Kitchen
+3. The suspect Scarlet is the weapon polearm
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  *    *    *  | X    O    X  |
+Whi|  X    *    *  | *    X    *  |
+Sca|  *    *    *  | *    X    *  |
+    ------------------------------
+Bed|  X    X    O  |
+Gre|  X    O    X  |
+Kit|  O    X    X  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the suspect Scarlet or the suspect Peacock is the weapon candlestick
+1. The room Greenhouse is the suspect Peacock
+2. Either the suspect White or the room Kitchen is the weapon candlestick
+3. Either the weapon rope or the suspect Peacock is the room Greenhouse
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    X    O  | *    X    *  |
+Whi|  *    *    X  | X    O    X  |
+Sca|  *    *    X  | *    X    *  |
+    ------------------------------
+Bed|  X    X    O  |
+Gre|  O    X    X  |
+Kit|  X    O    X  |
+    ---------------
+TRANS_ABC_TRUE
+0. The suspect Peacock is the weapon rope
+1. The weapon candlestick is the room Greenhouse
+2. The room Kitchen is the weapon polearm
+3. The room Greenhouse is the suspect White
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    X    O  | O    X    X  |
+Whi|  O    X    X  | X    *    *  |
+Sca|  X    O    X  | X    *    *  |
+    ------------------------------
+Bed|  *    X    *  |
+Gre|  *    X    *  |
+Kit|  X    O    X  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the weapon polearm or the room Bedroom is the suspect Peacock
+1. The suspect Scarlet is the weapon polearm
+2. The weapon polearm is the room Kitchen
+3. The weapon rope is the suspect Peacock
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  *    *    *  | X    O    X  |
+Whi|  *    *    *  | O    X    X  |
+Sca|  X    *    *  | X    X    O  |
+    ------------------------------
+Bed|  *    *    X  |
+Gre|  X    X    O  |
+Kit|  *    *    X  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the room Kitchen or the weapon candlestick is the suspect Scarlet
+1. The room Greenhouse is the weapon rope
+2. The room Bedroom is the suspect White
+3. The room Greenhouse is the suspect Peacock
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  *    *    *  | O    X    X  |
+Whi|  *    *    *  | X    *    *  |
+Sca|  *    *    *  | X    *    *  |
+    ------------------------------
+Bed|  O    X    X  |
+Gre|  X    *    *  |
+Kit|  X    *    *  |
+    ---------------
+TRANS_ABC_TRUE
+0. Either the room Greenhouse or the weapon candlestick is the suspect White
+1. Either the weapon rope or the suspect White is the room Greenhouse
+2. The room Bedroom is the weapon candlestick
+3. Either the weapon polearm or the suspect Peacock is the room Bedroom
+      can  pol  rop  Bed  Gre  Kit
+    ------------------------------
+Pea|  X    X    O  | X    X    O  |
+Whi|  X    O    X  | *    *    X  |
+Sca|  O    X    X  | *    *    X  |
+    ------------------------------
+Bed|  *    X    *  |
+Gre|  X    O    X  |
+Kit|  *    X    *  |
+    ---------------
+TRANS_ABC_TRUE
+0. The weapon polearm is the suspect White
+1. Either the weapon rope or the weapon candlestick is the suspect Peacock
+2. The suspect Peacock is the weapon rope
+3. Either the suspect Peacock or the room Greenhouse is the weapon polearm
+4. The room Kitchen is the suspect Peacock

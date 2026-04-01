@@ -99,12 +99,15 @@ class HintSet:
         # self.insights = set()
         # if self.valid and self.completed_puzzle.is_complete():
         #     self.insights = Solver.get_needed(self.puzzle, self.hints)
-
+    
     def follows_insight_requirements(self):
         # Should be solvable without the forbidden insights,
         # and should not be solvable without the required insights
         if not self.valid or not self.completed_puzzle.is_complete():
-            return False
+            for insight in self.required_insights:
+                if not insight.validate(insight.requirements, self.puzzle, self.hints):
+                    return False
+            return True
         can_solve_without_required = False
         can_solve_without_forbidden = True
         if len(self.required_insights) > 0:
@@ -275,22 +278,28 @@ class HintSet:
             + (violation_w * self._violations_fun(violations))
         )
 
+    # Fitness for infeasible individuals
     def feasibility(self):
         complete, valid = self.completed_puzzle.percent_complete()
         # violations = self.completed_puzzle.num_violations()
         # return (0.5 * complete) + (0.5 * valid)
-        if (
-            not self.require_insight
-            or not self.valid
-            or not self.completed_puzzle.is_complete()
-        ):
-            return (0.5 * complete) + (0.5 * valid)
-        else:
-            return (
-                (0.35 * complete)
-                + (0.35 * valid)
-                + (0.3 * self.follows_insight_requirements())
-            )
+        return (
+            (0.15 * complete)
+            + (0.15 * valid)
+            + (0.7 * int(self.follows_insight_requirements()))
+        )
+        # if (
+        #     not self.require_insight
+        #     or not self.valid
+        #     or not self.completed_puzzle.is_complete()
+        # ):
+        #     return (0.5 * complete) + (0.5 * valid)
+        # else:
+        #     return (
+        #         (0.35 * complete)
+        #         + (0.35 * valid)
+        #         + (0.3 * self.follows_insight_requirements())
+        #     )
 
     def solver_loops(self):
         if len(self.hints) == 0:
@@ -327,9 +336,8 @@ class HintSet:
         # return 1 - (len(self.hints) / 20)
 
         # Fn 5: optimize using insights
-        return (0.45 * min(num_loops, 10) / 10) + (
-            0.45 * (1 - (len(self.hints) / 20))
-            + 0.1 * self.follows_insight_requirements()
+        return (0.5 * min(num_loops, 10) / 10) + (
+            0.5 * (1 - (len(self.hints) / 20))
         )
 
 

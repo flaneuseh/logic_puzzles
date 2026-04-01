@@ -1,0 +1,53 @@
+Hints for grid cell [0][2]
+	The room Greenhouse is at least 1 time before the room Salon
+	The room Salon is at least 1 time before the room Dining Room
+	The room Library is at least 1 time before the room Bedroom
+	The room Library is the time 2
+	The room Kitchen is 4 times before the room Dining Room
+
+
+Hints for grid cell [1][2]
+	The room Greenhouse is at least 1 time before the room Kitchen
+	The time 1 is the room Dining Room
+	The room Kitchen is at least 1 time before the room Library
+	Either the room Bedroom or the room Library is the time 4
+	The room Kitchen is 3 times before the room Library
+
+
+Hints for grid cell [2][2]
+	The room Library is at least 1 time before the room Kitchen
+	The room Bedroom is the time 5
+	The room Salon is the time 1
+	The room Greenhouse is the time 2
+	The time 6 is the room Dining Room
+
+
+Hints for grid cell [3][2]
+	The room Kitchen is at least 1 time before the room Library
+	Either the time 2 or the time 6 is the room Bedroom
+	The time 4 is the room Salon
+	The room Greenhouse is at least 1 time before the room Bedroom
+	The time 6 is the room Dining Room
+
+
+Hints for grid cell [4][2]
+	The room Salon is the time 2
+	The room Dining Room is 4 times before the room Kitchen
+	The room Dining Room is at least 1 time before the room Kitchen
+	The room Greenhouse is 2 times before the room Library
+
+
+Hints for grid cell [5][2]
+	The room Bedroom is at least 1 time before the room Library
+	The time 3 is the room Kitchen
+	Either the room Salon or the room Greenhouse is the time 6
+	The room Dining Room is the time 5
+	Either the time 1 or the time 3 is the room Salon
+
+
+Hints for grid cell [6][4]
+	The room Salon is 4 times before the room Library
+	The room Dining Room is 3 times before the room Kitchen
+	The room Kitchen is at least 1 time before the room Bedroom
+
+

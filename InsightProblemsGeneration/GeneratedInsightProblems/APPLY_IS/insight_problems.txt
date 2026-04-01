@@ -1,0 +1,54 @@
+      Plu  Gre  Sca
+    ---------------
+pol|  *    *    *  |
+rev|  *    *    *  |
+poi|  X    *    *  |
+    ---------------
+APPLY_IS
+0. Either the weapon revolver or the weapon polearm is the suspect Plum
+1. The suspect Scarlet is the weapon polearm
+      Plu  Gre  Sca
+    ---------------
+pol|  *    *    *  |
+rev|  *    *    *  |
+poi|  X    *    *  |
+    ---------------
+APPLY_IS
+0. The weapon polearm is the suspect Green
+1. Either the weapon polearm or the weapon revolver is the suspect Plum
+      Plu  Gre  Sca
+    ---------------
+pol|  *    *    *  |
+rev|  *    *    *  |
+poi|  *    X    *  |
+    ---------------
+APPLY_IS
+0. The weapon polearm is the suspect Scarlet
+1. Either the weapon revolver or the weapon polearm is the suspect Green
+      Plu  Gre  Sca
+    ---------------
+pol|  *    *    *  |
+rev|  *    *    *  |
+poi|  *    *    *  |
+    ---------------
+APPLY_IS
+0. The suspect Green is the weapon polearm
+1. The weapon revolver is the suspect Scarlet
+      Plu  Gre  Sca
+    ---------------
+pol|  *    *    *  |
+rev|  *    *    *  |
+poi|  *    *    *  |
+    ---------------
+APPLY_IS
+0. The suspect Scarlet is the weapon poison
+1. The weapon revolver is the suspect Green
+      Plu  Gre  Sca
+    ---------------
+pol|  *    *    *  |
+rev|  *    *    *  |
+poi|  *    *    *  |
+    ---------------
+APPLY_IS
+0. The weapon poison is the suspect Green
+1. The weapon revolver is the suspect Scarlet

@@ -1,0 +1,30 @@
+Hints for grid cell [0][1]
+	The room Greenhouse is the suspect Scarlet
+	The suspect Green is the room Kitchen
+
+
+Hints for grid cell [1][1]
+	The room Kitchen is the suspect Green
+	Either the suspect Green or the suspect Scarlet is the room Dining Room
+
+
+Hints for grid cell [2][1]
+	The suspect Green is the room Greenhouse
+	The room Kitchen is the suspect Scarlet
+
+
+Hints for grid cell [3][1]
+	The room Greenhouse is the suspect Green
+	Either the room Kitchen or the room Greenhouse is the suspect Peacock
+
+
+Hints for grid cell [4][1]
+	The room Greenhouse is the suspect Peacock
+	Either the room Greenhouse or the room Dining Room is the suspect Green
+
+
+Hints for grid cell [5][1]
+	The room Greenhouse is the suspect Scarlet
+	The room Dining Room is the suspect Green
+
+

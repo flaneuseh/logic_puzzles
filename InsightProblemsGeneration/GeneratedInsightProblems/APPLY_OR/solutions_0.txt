@@ -1,0 +1,54 @@
+Solution for grid cell [0][1]
+      poi  lea  pol
+    ---------------
+Gre|  X    O    X  |
+Pea|  O    X    X  |
+Sca|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [1][1]
+      poi  lea  pol
+    ---------------
+Gre|  X    X    O  |
+Pea|  O    X    X  |
+Sca|  X    O    X  |
+    ---------------
+
+
+Solution for grid cell [2][1]
+      poi  lea  pol
+    ---------------
+Gre|  X    X    O  |
+Pea|  X    O    X  |
+Sca|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [3][1]
+      poi  lea  pol
+    ---------------
+Gre|  O    X    X  |
+Pea|  X    O    X  |
+Sca|  X    X    O  |
+    ---------------
+
+
+Solution for grid cell [4][1]
+      poi  lea  pol
+    ---------------
+Gre|  X    O    X  |
+Pea|  X    X    O  |
+Sca|  O    X    X  |
+    ---------------
+
+
+Solution for grid cell [5][1]
+      poi  lea  pol
+    ---------------
+Gre|  O    X    X  |
+Pea|  X    X    O  |
+Sca|  X    O    X  |
+    ---------------
+
+

@@ -1,0 +1,45 @@
+      1  2  3  4  5  6
+    ------------------------------
+rev|  X    X    X    *    X    *  |
+poi|  X    O    X    X    X    X  |
+pol|  X    X    X    X    O    X  |
+lea|  X    X    O    X    X    X  |
+can|  X    X    X    *    X    *  |
+rop|  O    X    X    X    X    X  |
+    ------------------------------
+BEFORE_NOINFO
+0. The time 1 is the weapon rope
+1. The weapon revolver is at least 1 time before the weapon candlestick
+2. The weapon poison is 3 times before the weapon polearm
+3. Either the time 3 or the time 5 is the weapon lead pipe
+4. The weapon poison is the time 2
+      1  2  3  4  5  6
+    ------------------------------
+rev|  *    *    X    *    *    *  |
+poi|  *    *    X    *    *    *  |
+pol|  *    *    X    *    *    *  |
+lea|  X    *    X    X    *    X  |
+can|  *    *    X    *    *    *  |
+rop|  X    X    O    X    X    X  |
+    ------------------------------
+BEFORE_NOINFO
+0. The weapon poison is 4 times before the weapon candlestick
+1. The weapon polearm is at least 1 time before the weapon revolver
+2. Either the time 5 or the time 2 is the weapon lead pipe
+3. The weapon rope is the time 3
+4. The weapon lead pipe is at least 1 time before the weapon polearm
+      1  2  3  4  5  6
+    ------------------------------
+rev|  *    X    X    *    X    *  |
+poi|  X    O    X    X    X    X  |
+pol|  X    X    X    *    X    *  |
+lea|  X    X    O    X    X    X  |
+can|  *    X    X    *    X    *  |
+rop|  X    X    X    X    O    X  |
+    ------------------------------
+BEFORE_NOINFO
+0. The weapon rope is the time 5
+1. The weapon poison is 3 times before the weapon rope
+2. The weapon lead pipe is at least 1 time before the weapon polearm
+3. The time 3 is the weapon lead pipe
+4. The weapon polearm is 2 times before the weapon candlestick
