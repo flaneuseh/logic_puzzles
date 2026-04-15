@@ -556,7 +556,7 @@ class Puzzle:
     def is_complete(self):
         """
         return true if there is exactly 1 "O"
-        in each row and column after all possible TRANS_ABC_TRUE moves have been applied (in a loop)
+        in each row and column after depth = 1all possible TRANS_ABC_TRUE moves have been applied (in a loop)
 
         and there are no truth violations
         """
@@ -871,7 +871,7 @@ Insight.BEFORE_DIFF_CAT = Insight(
 # define this grammar
 # # cat is any category with no resitrictions, however cat1 and cat2 must be different
 # similarly ent is any entity with in a caterogy (must have a cat immediately before), but ent1 and ent2 must be different
-# num must be a numerical caterogy, alp must be an alaphetbic
+# num must be a numerical caterogy, alp must be non-numeric
 # int is an integer 1-len(entities)
 class Grammar:
     TERMINALS = [
@@ -888,7 +888,17 @@ class Grammar:
         "ent4",
         "ent5",
         "num",
+        "num1",
+        "num2",
+        "num3",
+        "num4",
+        "num5"
         "alp",
+        "alp1",
+        "alp2",
+        "alp3",
+        "alp4",
+        "alp5",
         "int",
     ]
 
@@ -897,8 +907,8 @@ class Grammar:
             "is": [["cat1", "ent", "cat2", "ent"]],
             "not": [["is"]],
             "before": [
-                ["alp", "ent1", "alp", "ent2", "num"],
-                ["alp", "ent1", "alp", "ent2", "num", "int"],
+                ["cat", "ent1", "cat", "ent2", "num1"],
+                ["cat", "ent1", "cat", "ent2", "num1", "int"],
             ],
             "simple_or": [
                 ["cat1", "ent1", "cat1", "ent2", "cat2", "ent"],
@@ -935,7 +945,7 @@ class Grammar:
 
     def generate_word(sub_grammar, grand_grammar=None):
         """
-        randomly choice prodcution rules to create new hint base
+        randomly choose prodcution rules to create new hint base
         will fill out production rules until all terms are terminals
         """
         if grand_grammar is None:
@@ -985,12 +995,16 @@ class Grammar:
         """
         return all alphabetic categories
         """
+        if len(categories) > 0 and isinstance(categories[0], Category):
+            return [cat for cat in categories if not cat.is_numeric]
         return [cat for cat in categories if not cat[0].is_numeric]
 
     def get_num(categories):
         """
         return all numeric categories
         """
+        if len(categories) > 0 and isinstance(categories[0], Category):
+            return [cat for cat in categories if cat.is_numeric]
         return [cat for cat in categories if cat[0].is_numeric]
 
     def fill_in_word(word, categories):
@@ -1940,7 +1954,6 @@ class Solver:
         contradiction = the contradiction if the hint is invalid
         insights = the insights required for the move
         """
-
         contradiction = False
         solver_moves = []
 
@@ -2154,8 +2167,6 @@ class Solver:
             if a_2 or a_3 or a_4:
                 a_ever = True
 
-            applied = applied or a_ever  # test if anything was changed
-
         if print_soln:
             if a_ever:
                 print("applied openings/transitives; ")
@@ -2168,6 +2179,7 @@ class Solver:
             if print_soln:
                 print(f"No longer valid after initial transitives/openings")
             return copy, is_valid, loop
+        
         while is_valid and applied:
             applied = False
             loop += 1
