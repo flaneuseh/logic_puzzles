@@ -1,0 +1,2128 @@
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [0][1][0])
+	The suspect Plum is the weapon rope
+	Either the suspect Plum or the room Greenhouse is the weapon candlestick
+	Either the weapon rope or the room Greenhouse is the suspect Scarlet
+	Either the suspect Plum is the weapon candlestick or the suspect Plum is the room Salon
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [0][2][0])
+	The weapon candlestick is the room Greenhouse
+	Either the suspect Scarlet is the weapon rope or the weapon lead pipe is the room Library
+	Either the suspect Scarlet is the weapon candlestick or the weapon lead pipe is the room Greenhouse
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the room Salon
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [0][3][0])
+	Either the weapon candlestick is the room Library or the weapon rope is the room Salon
+	Either the suspect Plum is the weapon candlestick or the suspect White is the room Library
+	The suspect Scarlet is the weapon candlestick
+	Either the suspect Plum is the weapon candlestick or the suspect White is the weapon lead pipe
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_TRUE, 4 loops, 0th child (grid cell [0][4][0])
+	Either the suspect Scarlet is the weapon rope or the weapon lead pipe is the room Library
+	Either the suspect Scarlet is the weapon rope or the suspect Scarlet is the room Greenhouse
+	Either the suspect White is the weapon rope or the suspect Scarlet is the room Greenhouse
+	The suspect White is the weapon lead pipe
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [1][1][0])
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	Either the weapon candlestick is the room Library or the weapon rope is the room Salon
+	Either the room Greenhouse or the room Salon is the suspect Scarlet
+	Either the suspect Plum is the room Salon or the weapon lead pipe is the room Greenhouse
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [1][2][0])
+	Either the suspect Scarlet is the room Library or the weapon lead pipe is the room Library
+	Either the suspect Scarlet is the room Library or the suspect Plum is the room Salon
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+	Either the suspect Scarlet or the room Library is the weapon candlestick
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [1][3][0])
+	Either the weapon candlestick is the room Greenhouse or the weapon lead pipe is the room Salon
+	Either the suspect White is the room Library or the weapon rope is the room Library
+	Either the room Greenhouse or the room Salon is the suspect Scarlet
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	Either the suspect White is the room Library or the weapon candlestick is the room Library
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 1 loops, 0th child (grid cell [2][1][0])
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+	Either the suspect Scarlet or the room Library is the weapon candlestick
+	Either the suspect Scarlet is the weapon rope or the suspect White is the weapon lead pipe
+	Either the suspect Scarlet is the weapon rope or the weapon rope is the room Salon
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 2 loops, 0th child (grid cell [2][2][0])
+	Either the suspect Scarlet or the room Library is the weapon candlestick
+	Either the suspect Scarlet is the weapon rope or the weapon rope is the room Salon
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon lead pipe
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 3 loops, 0th child (grid cell [2][3][0])
+	Either the suspect Scarlet is the weapon candlestick or the weapon candlestick is the room Library
+	Either the suspect White is the weapon lead pipe or the weapon rope is the room Library
+	Either the weapon candlestick is the room Library or the weapon rope is the room Salon
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 4 loops, 0th child (grid cell [2][4][0])
+	Either the suspect Scarlet is the room Salon or the weapon lead pipe is the room Library
+	Either the suspect Plum is the weapon candlestick or the suspect Plum is the room Salon
+	Either the suspect Scarlet is the weapon candlestick or the weapon rope is the room Greenhouse
+	The suspect Plum was not the weapon lead pipe
+	Either the weapon candlestick or the weapon lead pipe is the room Greenhouse
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [3][1][0])
+	The weapon candlestick was not the room Salon
+	Either the suspect Scarlet or the room Library is the weapon candlestick
+	Either the suspect Scarlet is the room Library or the suspect Plum is the room Salon
+	Either the suspect Scarlet is the room Library or the weapon lead pipe is the room Library
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [3][2][0])
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	Either the suspect White is the weapon lead pipe or the weapon candlestick is the room Library
+	Either the suspect Scarlet is the weapon lead pipe or the weapon rope is the room Salon
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [3][3][0])
+	Either the suspect Scarlet is the weapon lead pipe or the weapon lead pipe is the room Library
+	Either the suspect Plum is the room Salon or the weapon candlestick is the room Salon
+	Either the weapon candlestick or the room Salon is the suspect Scarlet
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 4 loops, 0th child (grid cell [3][4][0])
+	Either the suspect Plum is the room Salon or the weapon candlestick is the room Salon
+	Either the suspect Scarlet is the weapon lead pipe or the suspect White is the room Library
+	Either the suspect White is the weapon lead pipe or the suspect Scarlet is the room Salon
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [4][1][0])
+	The suspect Scarlet was not the weapon lead pipe
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	Either the suspect Plum is the weapon rope or the weapon candlestick is the room Library
+	Either the weapon candlestick is the room Library or the weapon rope is the room Salon
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [4][2][0])
+	Either the suspect Scarlet is the room Library or the weapon lead pipe is the room Library
+	Either the suspect Plum is the weapon rope or the suspect Scarlet is the room Library
+	Either the suspect Scarlet or the room Library is the weapon candlestick
+	The weapon rope was not the room Greenhouse
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [4][3][0])
+	The suspect White was not the weapon rope
+	Either the suspect Plum is the weapon candlestick or the suspect Scarlet is the room Greenhouse
+	Either the suspect Scarlet is the room Salon or the weapon rope is the room Salon
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 4 loops, 0th child (grid cell [4][4][0])
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon lead pipe
+	Either the suspect White is the weapon candlestick or the weapon candlestick is the room Greenhouse
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	Either the weapon rope or the room Greenhouse is the suspect Scarlet
+	Either the suspect Scarlet is the weapon lead pipe or the weapon rope is the room Salon
+	Either the suspect Plum or the room Greenhouse is the weapon candlestick
+	The suspect Scarlet was not the weapon lead pipe
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [5][1][0])
+	The suspect White was not the room Salon
+	Either the suspect Scarlet is the room Greenhouse or the suspect White is the room Salon
+	The suspect Plum is the weapon rope
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon candlestick
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [5][2][0])
+	Either the suspect Plum or the room Greenhouse is the weapon candlestick
+	The suspect Scarlet was not the weapon lead pipe
+	The suspect Plum is the weapon rope
+	Either the weapon lead pipe is the room Greenhouse or the weapon lead pipe is the room Library
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 3 loops, 0th child (grid cell [5][3][0])
+	Either the suspect Plum is the room Salon or the weapon rope is the room Greenhouse
+	The weapon lead pipe was not the room Salon
+	Either the suspect Plum or the weapon candlestick is the room Greenhouse
+	The suspect Scarlet is the room Greenhouse
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [6][1][0])
+	Either the suspect Scarlet or the suspect Plum is the weapon candlestick
+	The weapon rope is the room Salon
+	The suspect Scarlet was not the room Library
+	Either the suspect Scarlet is the room Library or the suspect Plum is the room Salon
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [6][2][0])
+	The weapon lead pipe was not the room Salon
+	Either the suspect White is the weapon lead pipe or the suspect Scarlet is the room Salon
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon lead pipe
+	The suspect Scarlet is the room Greenhouse
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [6][3][0])
+	The weapon rope is the room Salon
+	Either the suspect White is the weapon lead pipe or the suspect White is the room Greenhouse
+	Either the suspect Scarlet or the room Library is the weapon candlestick
+	The weapon lead pipe was not the room Greenhouse
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_TRUE, 4 loops, 0th child (grid cell [6][4][0])
+	Either the suspect Scarlet is the room Salon or the weapon lead pipe is the room Library
+	The suspect White was not the weapon rope
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the room Salon
+	Either the suspect White is the weapon candlestick or the weapon rope is the room Salon
+	The weapon rope is the room Salon
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [7][1][0])
+	The suspect Plum is the weapon rope
+	The suspect Scarlet is the room Greenhouse
+	The suspect Plum is the room Salon
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [7][2][0])
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+	Either the weapon rope or the room Greenhouse is the suspect Scarlet
+	The suspect Plum is the weapon rope
+	Either the suspect Plum is the weapon candlestick or the suspect Plum is the room Salon
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING, 3 loops, 0th child (grid cell [7][3][0])
+	Either the suspect Scarlet is the weapon candlestick or the suspect White is the weapon candlestick
+	Either the suspect White is the weapon lead pipe or the weapon candlestick is the room Library
+	Either the suspect White is the weapon rope or the weapon rope is the room Salon
+	The weapon lead pipe is the room Library
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING, 4 loops, 0th child (grid cell [7][4][0])
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	Either the suspect Plum is the room Library or the suspect White is the room Library
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the room Salon
+	Either the suspect Scarlet is the weapon rope or the weapon rope is the room Salon
+	The suspect White is the weapon lead pipe
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 1 loops, 0th child (grid cell [8][1][0])
+	The suspect White was not the weapon rope
+	The weapon lead pipe is the room Library
+	Either the suspect White is the weapon rope or the suspect Scarlet is the room Greenhouse
+	Either the suspect Scarlet is the weapon rope or the weapon lead pipe is the room Library
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 2 loops, 0th child (grid cell [8][2][0])
+	The suspect Scarlet is the room Greenhouse
+	Either the suspect Plum is the weapon rope or the weapon lead pipe is the room Greenhouse
+	The suspect Scarlet was not the weapon lead pipe
+	Either the suspect Plum is the weapon candlestick or the suspect White is the room Library
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 3 loops, 0th child (grid cell [8][3][0])
+	Either the suspect Scarlet is the room Salon or the weapon lead pipe is the room Library
+	Either the suspect White is the weapon lead pipe or the weapon candlestick is the room Salon
+	The suspect Scarlet was not the weapon lead pipe
+	The suspect Plum is the weapon rope
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 1 loops, 0th child (grid cell [9][1][0])
+	The suspect Plum is the weapon rope
+	Either the suspect White is the weapon rope or the suspect Scarlet is the room Greenhouse
+	Either the suspect Scarlet is the room Library or the weapon lead pipe is the room Library
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 2 loops, 0th child (grid cell [9][2][0])
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the room Salon
+	Either the suspect Scarlet is the room Salon or the weapon lead pipe is the room Library
+	The suspect Scarlet is the weapon candlestick
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 3 loops, 0th child (grid cell [9][3][0])
+	Either the weapon candlestick is the room Library or the weapon rope is the room Salon
+	Either the suspect Plum is the weapon candlestick or the suspect White is the room Library
+	The suspect Scarlet is the weapon candlestick
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [10][1][0])
+	The suspect White was not the room Salon
+	Either the suspect Scarlet or the suspect Plum is the room Greenhouse
+	Either the suspect White is the weapon lead pipe or the suspect Scarlet is the room Library
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+	Either the suspect Scarlet is the weapon rope or the weapon lead pipe is the room Library
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [10][2][0])
+	Either the weapon candlestick or the room Salon is the suspect Scarlet
+	The weapon lead pipe was not the room Salon
+	Either the suspect Scarlet is the room Greenhouse or the weapon lead pipe is the room Salon
+	Either the suspect Plum is the room Salon or the weapon rope is the room Greenhouse
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [10][3][0])
+	Either the suspect White or the room Greenhouse is the weapon candlestick
+	Either the suspect White is the weapon lead pipe or the weapon rope is the room Library
+	The weapon rope was not the room Library
+	Either the room Greenhouse or the room Library is the suspect Scarlet
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_TRUE, 4 loops, 0th child (grid cell [10][4][0])
+	Either the suspect Scarlet is the room Greenhouse or the suspect Plum is the room Library
+	Either the suspect Plum is the room Salon or the weapon lead pipe is the room Greenhouse
+	Either the suspect Plum or the weapon candlestick is the room Greenhouse
+	The suspect Plum was not the room Greenhouse
+	The suspect Plum was not the weapon lead pipe
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [11][1][0])
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+	Either the suspect Scarlet or the suspect Plum is the room Greenhouse
+	Either the suspect White is the room Greenhouse or the weapon rope is the room Salon
+	Either the suspect White is the weapon lead pipe or the weapon rope is the room Library
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [11][2][0])
+	Either the suspect Scarlet or the weapon rope is the room Greenhouse
+	Either the weapon candlestick is the room Library or the weapon rope is the room Salon
+	Either the suspect White is the weapon lead pipe or the weapon rope is the room Library
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [11][3][0])
+	Either the suspect Scarlet is the weapon rope or the suspect Scarlet is the room Greenhouse
+	Either the weapon candlestick is the room Library or the weapon rope is the room Salon
+	Either the suspect Plum is the weapon candlestick or the suspect White is the weapon lead pipe
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_TRUE, 4 loops, 0th child (grid cell [11][4][0])
+	Either the suspect Plum is the weapon candlestick or the weapon lead pipe is the room Library
+	Either the suspect White is the weapon lead pipe or the suspect White is the room Greenhouse
+	Either the suspect White is the room Library or the weapon rope is the room Greenhouse
+	Either the weapon candlestick or the weapon lead pipe is the room Greenhouse
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [12][1][0])
+	Either the suspect Plum is the weapon rope or the suspect White is the room Salon
+	The suspect White was not the room Salon
+	Either the suspect Scarlet is the room Greenhouse or the suspect White is the room Salon
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon candlestick
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [12][2][0])
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	The suspect White was not the room Salon
+	Either the suspect Plum is the weapon lead pipe or the suspect Scarlet is the room Greenhouse
+	Either the suspect Scarlet is the room Greenhouse or the suspect White is the room Salon
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 3 loops, 0th child (grid cell [12][3][0])
+	Either the suspect Scarlet is the room Greenhouse or the suspect White is the room Salon
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon lead pipe
+	Either the suspect White is the weapon lead pipe or the suspect Scarlet is the room Salon
+	The suspect White was not the room Salon
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 4 loops, 0th child (grid cell [12][4][0])
+	Either the suspect Plum is the room Salon or the weapon candlestick is the room Library
+	Either the suspect Scarlet is the room Library or the weapon lead pipe is the room Library
+	Either the suspect White is the room Library or the weapon rope is the room Library
+	Either the weapon candlestick or the weapon lead pipe is the room Greenhouse
+	The weapon rope was not the room Library
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 2 loops, 0th child (grid cell [13][2][0])
+	The suspect White was not the weapon rope
+	Either the suspect Plum is the weapon rope or the suspect Plum is the room Library
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+	Either the weapon rope is the room Greenhouse or the weapon lead pipe is the room Library
+	Either the suspect Scarlet or the weapon rope is the room Greenhouse
+	Either the suspect Scarlet is the room Library or the weapon lead pipe is the room Library
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 3 loops, 0th child (grid cell [13][3][0])
+	The suspect White was not the weapon rope
+	Either the suspect Plum is the room Salon or the weapon candlestick is the room Salon
+	Either the weapon candlestick or the weapon rope is the room Greenhouse
+	Either the suspect White or the weapon candlestick is the room Greenhouse
+	Either the room Greenhouse or the room Salon is the suspect Scarlet
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 4 loops, 0th child (grid cell [13][4][0])
+	The suspect Plum was not the weapon lead pipe
+	Either the suspect Plum or the room Greenhouse is the weapon candlestick
+	Either the suspect Scarlet is the room Salon or the weapon lead pipe is the room Library
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the room Salon
+	Either the suspect White is the weapon candlestick or the weapon candlestick is the room Greenhouse
+	Either the room Greenhouse or the room Library is the suspect Scarlet
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [14][1][0])
+	Either the room Greenhouse or the room Library is the weapon candlestick
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+	Either the suspect Scarlet is the room Salon or the weapon lead pipe is the room Library
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the room Salon
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [14][2][0])
+	Either the suspect Scarlet or the weapon lead pipe is the room Greenhouse
+	Either the suspect Plum is the weapon rope or the suspect Scarlet is the room Library
+	Either the suspect Scarlet is the weapon lead pipe or the weapon lead pipe is the room Library
+	The suspect Scarlet was not the weapon lead pipe
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [14][3][0])
+	Either the suspect Plum is the room Salon or the weapon candlestick is the room Salon
+	Either the suspect Scarlet is the weapon lead pipe or the weapon lead pipe is the room Library
+	Either the weapon candlestick or the room Salon is the suspect Scarlet
+	The weapon candlestick was not the room Salon
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_TRUE, 4 loops, 0th child (grid cell [14][4][0])
+	Either the suspect Scarlet is the weapon rope or the weapon lead pipe is the room Library
+	Either the suspect Scarlet is the weapon rope or the suspect Scarlet is the room Greenhouse
+	Either the suspect White is the weapon rope or the suspect Scarlet is the room Greenhouse
+	The suspect White was not the weapon rope
+	The suspect White is the weapon lead pipe
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 1 loops, 0th child (grid cell [15][1][0])
+	The weapon rope is the room Salon
+	Either the suspect White is the weapon lead pipe or the weapon rope is the room Library
+	Either the room Greenhouse or the room Library is the suspect Scarlet
+	Either the suspect Plum is the room Salon or the suspect White is the room Greenhouse
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 2 loops, 0th child (grid cell [15][2][0])
+	Either the suspect White is the weapon candlestick or the weapon candlestick is the room Greenhouse
+	Either the suspect Scarlet or the suspect Plum is the weapon candlestick
+	The suspect Plum is the room Salon
+	Either the suspect White is the weapon lead pipe or the weapon rope is the room Greenhouse
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 3 loops, 0th child (grid cell [15][3][0])
+	Either the suspect White is the room Library or the weapon rope is the room Greenhouse
+	The weapon lead pipe is the room Library
+	Either the suspect Plum is the weapon candlestick or the suspect Plum is the room Salon
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [16][1][0])
+	Either the suspect Plum is the room Salon or the suspect White is the room Salon
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+	Either the suspect White is the weapon candlestick or the weapon lead pipe is the room Library
+	Either the weapon lead pipe or the room Greenhouse is the suspect Scarlet
+	The weapon rope is the room Salon
+	Either the suspect White is the room Library or the weapon lead pipe is the room Greenhouse
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [16][2][0])
+	Either the suspect White is the weapon candlestick or the suspect Plum is the room Salon
+	Either the suspect White is the room Library or the weapon lead pipe is the room Greenhouse
+	Either the suspect White is the weapon candlestick or the suspect White is the weapon lead pipe
+	Either the suspect Scarlet or the weapon rope is the room Greenhouse
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+	Either the weapon candlestick is the room Library or the weapon rope is the room Salon
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [16][3][0])
+	Either the suspect White is the room Library or the weapon candlestick is the room Library
+	Either the suspect White is the weapon rope or the suspect Plum is the room Salon
+	Either the weapon candlestick is the room Greenhouse or the weapon candlestick is the room Salon
+	Either the suspect Plum is the weapon candlestick or the weapon rope is the room Salon
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	Either the suspect Scarlet is the room Library or the weapon lead pipe is the room Library
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 4 loops, 0th child (grid cell [16][4][0])
+	Either the suspect Plum is the weapon rope or the weapon lead pipe is the room Greenhouse
+	Either the suspect Scarlet is the weapon candlestick or the suspect Scarlet is the weapon rope
+	Either the suspect Plum is the room Greenhouse or the weapon rope is the room Salon
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the room Library
+	Either the suspect Scarlet is the weapon lead pipe or the suspect White is the weapon lead pipe
+	Either the suspect Scarlet or the weapon lead pipe is the room Greenhouse
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [17][1][0])
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the room Library
+	Either the weapon candlestick is the room Greenhouse or the weapon rope is the room Greenhouse
+	The suspect Plum is the weapon rope
+	Either the room Greenhouse or the room Salon is the suspect Scarlet
+	Either the suspect Scarlet is the room Library or the weapon rope is the room Salon
+	Either the suspect White is the weapon lead pipe or the suspect Scarlet is the room Salon
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [17][2][0])
+	Either the weapon candlestick or the room Salon is the suspect Scarlet
+	Either the suspect White is the weapon lead pipe or the suspect Scarlet is the room Salon
+	Either the suspect Scarlet or the suspect White is the room Greenhouse
+	The suspect Plum is the weapon rope
+	Either the suspect Scarlet is the room Salon or the weapon lead pipe is the room Library
+	The suspect Plum is the room Salon
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [17][3][0])
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the room Greenhouse
+	Either the suspect Plum is the weapon rope or the suspect White is the room Salon
+	The suspect White is the weapon lead pipe
+	Either the suspect Scarlet is the room Salon or the suspect Plum is the room Salon
+	Either the weapon candlestick is the room Library or the weapon lead pipe is the room Library
+	Either the suspect Scarlet is the weapon lead pipe or the weapon candlestick is the room Greenhouse
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,OPENING,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [18][1][0])
+	The suspect Plum was not the weapon lead pipe
+	Either the suspect Scarlet is the room Greenhouse or the weapon rope is the room Library
+	The suspect Scarlet was not the weapon lead pipe
+	The suspect Plum was not the room Greenhouse
+	The suspect Scarlet was not the weapon rope
+	Either the suspect White is the weapon lead pipe or the weapon rope is the room Library
+	Either the weapon candlestick or the weapon rope is the room Greenhouse
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,OPENING,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [18][2][0])
+	Either the suspect Scarlet is the room Greenhouse or the weapon rope is the room Library
+	The weapon lead pipe was not the room Greenhouse
+	Either the suspect Plum or the weapon candlestick is the room Greenhouse
+	The suspect Plum was not the weapon lead pipe
+	The suspect Plum was not the room Greenhouse
+	Either the suspect Scarlet or the weapon lead pipe is the room Greenhouse
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,OPENING,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [18][3][0])
+	Either the suspect Scarlet is the room Greenhouse or the suspect Plum is the room Library
+	Either the suspect Scarlet or the suspect Plum is the weapon candlestick
+	Either the suspect Plum is the room Salon or the weapon lead pipe is the room Greenhouse
+	Either the suspect Plum or the weapon candlestick is the room Greenhouse
+	The suspect Plum was not the room Greenhouse
+	The suspect Plum was not the weapon lead pipe
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [19][1][0])
+	The suspect Scarlet is the weapon candlestick
+	Either the weapon candlestick or the weapon lead pipe is the room Greenhouse
+	Either the suspect White is the room Library or the weapon rope is the room Greenhouse
+	Either the suspect White is the weapon lead pipe or the suspect White is the room Greenhouse
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [19][2][0])
+	Either the weapon candlestick or the weapon lead pipe is the room Greenhouse
+	Either the suspect White is the weapon lead pipe or the suspect White is the room Greenhouse
+	Either the suspect White is the room Library or the weapon rope is the room Greenhouse
+	The suspect Scarlet is the weapon candlestick
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [19][3][0])
+	The suspect Scarlet is the weapon candlestick
+	Either the suspect Plum is the weapon rope or the weapon candlestick is the room Salon
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the room Library
+	Either the room Greenhouse or the room Library is the weapon candlestick
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 1 loops, 0th child (grid cell [20][1][0])
+	Either the suspect Plum is the weapon candlestick or the suspect White is the room Library
+	Either the suspect Plum or the room Greenhouse is the weapon candlestick
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+	The weapon rope is the room Salon
+	Either the suspect White or the room Greenhouse is the weapon candlestick
+	Either the suspect White is the room Library or the weapon lead pipe is the room Greenhouse
+	Either the suspect White is the weapon candlestick or the suspect White is the weapon lead pipe
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 2 loops, 0th child (grid cell [20][2][0])
+	Either the suspect White is the weapon candlestick or the weapon lead pipe is the room Library
+	Either the suspect Scarlet or the weapon rope is the room Greenhouse
+	Either the suspect Scarlet is the room Library or the suspect Plum is the room Salon
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 3 loops, 0th child (grid cell [20][3][0])
+	Either the weapon candlestick is the room Library or the weapon rope is the room Salon
+	Either the suspect Scarlet is the weapon lead pipe or the weapon rope is the room Salon
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	Either the suspect Plum is the weapon candlestick or the suspect White is the room Library
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 4 loops, 0th child (grid cell [20][4][0])
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon lead pipe
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	Either the suspect Scarlet is the weapon lead pipe or the weapon rope is the room Salon
+	The suspect Scarlet was not the weapon lead pipe
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 1 loops, 0th child (grid cell [21][1][0])
+	The suspect Scarlet was not the weapon lead pipe
+	The suspect White was not the weapon rope
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	Either the weapon candlestick is the room Library or the weapon rope is the room Salon
+	Either the room Greenhouse or the room Library is the suspect Scarlet
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 2 loops, 0th child (grid cell [21][2][0])
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	Either the weapon candlestick is the room Library or the weapon rope is the room Salon
+	Either the suspect Plum is the weapon candlestick or the suspect Plum is the room Salon
+	The suspect Scarlet was not the weapon lead pipe
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 3 loops, 0th child (grid cell [21][3][0])
+	Either the suspect Scarlet is the room Salon or the suspect Plum is the room Salon
+	The suspect Scarlet was not the weapon lead pipe
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	Either the weapon candlestick is the room Library or the weapon rope is the room Salon
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 4 loops, 0th child (grid cell [21][4][0])
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon lead pipe
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	Either the suspect Scarlet is the weapon lead pipe or the weapon rope is the room Salon
+	The suspect Scarlet was not the weapon lead pipe
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 1 loops, 0th child (grid cell [22][1][0])
+	The suspect Scarlet is the weapon candlestick
+	Either the weapon candlestick or the weapon lead pipe is the room Greenhouse
+	Either the suspect White is the room Library or the weapon rope is the room Greenhouse
+	Either the suspect White is the weapon lead pipe or the suspect White is the room Greenhouse
+	Either the suspect Scarlet is the weapon candlestick or the suspect Scarlet is the room Salon
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 2 loops, 0th child (grid cell [22][2][0])
+	Either the suspect Plum is the room Salon or the suspect White is the room Greenhouse
+	Either the suspect Plum is the room Salon or the weapon lead pipe is the room Salon
+	The weapon candlestick is the room Greenhouse
+	Either the suspect Scarlet or the suspect Plum is the room Greenhouse
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 3 loops, 0th child (grid cell [22][3][0])
+	Either the suspect White is the weapon lead pipe or the weapon candlestick is the room Salon
+	The weapon lead pipe is the room Library
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+	Either the suspect Plum or the room Greenhouse is the weapon candlestick
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [23][1][0])
+	The weapon rope is the room Salon
+	The weapon rope is the room Salon
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+	Either the suspect Scarlet is the weapon lead pipe or the suspect White is the room Library
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [23][2][0])
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+	Either the suspect Scarlet is the weapon lead pipe or the suspect White is the room Library
+	The weapon rope is the room Salon
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [23][3][0])
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+	Either the suspect Scarlet is the weapon lead pipe or the suspect White is the room Library
+	The weapon rope is the room Salon
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [24][1][0])
+	The weapon rope is the room Salon
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+	Either the suspect White is the weapon lead pipe or the weapon candlestick is the room Library
+	Either the suspect Scarlet is the room Library or the weapon rope is the room Salon
+	Either the suspect Plum is the weapon rope or the suspect Plum is the weapon lead pipe
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [24][2][0])
+	Either the weapon candlestick is the room Library or the weapon rope is the room Salon
+	Either the suspect Scarlet or the room Library is the weapon candlestick
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon candlestick
+	The weapon candlestick is the room Greenhouse
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING, 3 loops, 0th child (grid cell [24][3][0])
+	Either the suspect Scarlet is the weapon rope or the suspect White is the weapon lead pipe
+	Either the suspect White is the weapon lead pipe or the suspect White is the room Greenhouse
+	Either the suspect Plum is the room Salon or the weapon candlestick is the room Library
+	Either the weapon candlestick or the room Salon is the suspect Scarlet
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING, 4 loops, 0th child (grid cell [24][4][0])
+	Either the suspect Scarlet is the weapon rope or the weapon lead pipe is the room Library
+	Either the suspect Scarlet is the weapon rope or the suspect Scarlet is the room Greenhouse
+	Either the suspect White is the weapon rope or the suspect Scarlet is the room Greenhouse
+	The suspect White was not the weapon rope
+	The suspect White is the weapon lead pipe
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [25][1][0])
+	The weapon candlestick was not the room Salon
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+	Either the suspect Scarlet is the weapon rope or the weapon lead pipe is the room Library
+	Either the suspect White is the room Library or the weapon candlestick is the room Library
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [25][2][0])
+	Either the weapon candlestick or the weapon lead pipe is the room Greenhouse
+	Either the suspect White is the weapon lead pipe or the suspect White is the room Greenhouse
+	Either the suspect White is the room Library or the weapon rope is the room Greenhouse
+	The suspect Plum was not the room Greenhouse
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [25][3][0])
+	Either the weapon rope is the room Library or the weapon lead pipe is the room Library
+	Either the suspect Scarlet is the room Salon or the suspect Plum is the room Salon
+	The suspect Plum was not the weapon lead pipe
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon lead pipe
+	Either the room Greenhouse or the room Library is the suspect Scarlet
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [26][1][0])
+	The suspect White is the weapon lead pipe
+	Either the suspect Scarlet or the room Library is the weapon candlestick
+	Either the suspect Scarlet or the weapon rope is the room Greenhouse
+	Either the suspect White is the weapon candlestick or the suspect Plum is the room Salon
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [26][2][0])
+	The weapon rope is the room Salon
+	Either the suspect Plum or the weapon candlestick is the room Greenhouse
+	Either the suspect White is the weapon lead pipe or the weapon rope is the room Greenhouse
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [26][3][0])
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	Either the suspect White is the room Library or the weapon lead pipe is the room Greenhouse
+	The weapon rope is the room Salon
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [27][1][0])
+	The weapon rope is the room Salon
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon candlestick
+	The suspect Scarlet was not the room Library
+	Either the suspect Scarlet or the suspect Plum is the weapon candlestick
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [27][2][0])
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon candlestick
+	The weapon rope is the room Salon
+	Either the suspect Scarlet or the suspect Plum is the weapon candlestick
+	The suspect Scarlet was not the room Library
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [27][3][0])
+	Either the room Greenhouse or the room Library is the weapon candlestick
+	The suspect White was not the room Salon
+	Either the suspect Scarlet is the weapon rope or the suspect White is the weapon lead pipe
+	Either the suspect Plum or the room Greenhouse is the weapon candlestick
+	The suspect Scarlet was not the weapon lead pipe
+	The suspect Scarlet is the room Greenhouse
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT, 1 loops, 0th child (grid cell [28][1][0])
+	Either the suspect White is the room Library or the weapon candlestick is the room Library
+	The weapon lead pipe is the room Library
+	Either the suspect Plum is the weapon lead pipe or the weapon candlestick is the room Greenhouse
+	The weapon rope is the room Salon
+	The suspect Scarlet is the room Greenhouse
+	Either the suspect Plum is the weapon candlestick or the suspect Plum is the room Salon
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT, 2 loops, 0th child (grid cell [28][2][0])
+	Either the suspect Scarlet is the room Greenhouse or the weapon rope is the room Greenhouse
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the room Library
+	Either the suspect White is the room Greenhouse or the weapon rope is the room Salon
+	The suspect Plum is the weapon rope
+	Either the suspect White or the weapon candlestick is the room Greenhouse
+	Either the suspect Scarlet is the room Library or the weapon lead pipe is the room Library
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT, 3 loops, 0th child (grid cell [28][3][0])
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	Either the weapon rope or the room Greenhouse is the suspect Scarlet
+	Either the suspect Plum is the room Library or the suspect White is the room Library
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the room Salon
+	Either the suspect Scarlet is the weapon rope or the weapon rope is the room Salon
+	The suspect White is the weapon lead pipe
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 1 loops, 0th child (grid cell [29][1][0])
+	The suspect Scarlet is the room Greenhouse
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+	Either the suspect Plum or the room Greenhouse is the weapon candlestick
+	Either the room Greenhouse or the room Library is the weapon candlestick
+	The weapon lead pipe was not the room Salon
+	The suspect White was not the room Salon
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 2 loops, 0th child (grid cell [29][2][0])
+	Either the suspect Plum is the weapon rope or the weapon lead pipe is the room Salon
+	Either the weapon candlestick or the weapon rope is the room Greenhouse
+	The suspect Plum was not the weapon lead pipe
+	The suspect Scarlet is the weapon candlestick
+	Either the room Greenhouse or the room Library is the weapon candlestick
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 1 loops, 0th child (grid cell [30][1][0])
+	The suspect Plum is the room Salon
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+	Either the suspect Scarlet is the weapon lead pipe or the weapon lead pipe is the room Library
+	The suspect Plum was not the weapon candlestick
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 2 loops, 0th child (grid cell [30][2][0])
+	The suspect Scarlet was not the weapon lead pipe
+	Either the suspect Scarlet is the room Salon or the weapon lead pipe is the room Library
+	The suspect Plum is the weapon rope
+	Either the room Greenhouse or the room Library is the weapon candlestick
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 3 loops, 0th child (grid cell [30][3][0])
+	Either the suspect Plum is the weapon candlestick or the suspect Scarlet is the room Greenhouse
+	Either the suspect White is the room Salon or the weapon candlestick is the room Greenhouse
+	Either the suspect Scarlet or the suspect White is the room Greenhouse
+	The suspect White was not the room Salon
+	The weapon lead pipe is the room Library
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 1 loops, 0th child (grid cell [31][1][0])
+	The suspect Scarlet was not the room Salon
+	Either the suspect Scarlet is the weapon lead pipe or the weapon rope is the room Salon
+	Either the suspect White is the weapon lead pipe or the suspect Scarlet is the room Salon
+	Either the suspect Plum or the room Greenhouse is the weapon candlestick
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 2 loops, 0th child (grid cell [31][2][0])
+	The weapon lead pipe was not the room Greenhouse
+	The weapon candlestick was not the room Salon
+	Either the suspect White is the weapon lead pipe or the suspect Scarlet is the room Salon
+	Either the suspect Plum is the room Salon or the weapon candlestick is the room Salon
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 3 loops, 0th child (grid cell [31][3][0])
+	Either the suspect Plum is the weapon candlestick or the suspect Scarlet is the room Greenhouse
+	Either the suspect Plum is the room Salon or the weapon candlestick is the room Salon
+	The weapon candlestick was not the room Salon
+	Either the suspect White or the weapon candlestick is the room Greenhouse
+	Either the weapon candlestick is the room Library or the weapon rope is the room Salon
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 4 loops, 0th child (grid cell [31][4][0])
+	Either the suspect Scarlet is the weapon rope or the weapon lead pipe is the room Library
+	Either the suspect Scarlet is the weapon rope or the suspect Scarlet is the room Greenhouse
+	Either the suspect White is the weapon rope or the suspect Scarlet is the room Greenhouse
+	The suspect White was not the weapon rope
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 1 loops, 0th child (grid cell [32][1][0])
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+	Either the suspect Scarlet is the weapon rope or the suspect Scarlet is the room Greenhouse
+	Either the suspect Scarlet is the weapon rope or the weapon lead pipe is the room Library
+	Either the suspect Plum is the weapon rope or the weapon lead pipe is the room Salon
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 2 loops, 0th child (grid cell [32][2][0])
+	Either the suspect Plum is the weapon rope or the weapon candlestick is the room Salon
+	Either the room Greenhouse or the room Library is the weapon candlestick
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon candlestick
+	Either the suspect Scarlet is the room Salon or the suspect White is the room Library
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 3 loops, 0th child (grid cell [32][3][0])
+	Either the suspect White is the room Library or the weapon candlestick is the room Salon
+	Either the suspect Scarlet is the weapon rope or the suspect Scarlet is the room Greenhouse
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+	Either the suspect White is the weapon lead pipe or the weapon rope is the room Greenhouse
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 4 loops, 0th child (grid cell [32][4][0])
+	Either the suspect Scarlet is the room Salon or the suspect White is the room Library
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon candlestick
+	Either the room Greenhouse or the room Library is the weapon candlestick
+	Either the suspect Plum is the weapon rope or the weapon candlestick is the room Salon
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 1 loops, 0th child (grid cell [33][1][0])
+	The suspect Plum was not the weapon lead pipe
+	Either the weapon candlestick or the weapon lead pipe is the room Greenhouse
+	Either the suspect Scarlet is the room Greenhouse or the weapon rope is the room Greenhouse
+	Either the suspect Scarlet is the weapon rope or the weapon lead pipe is the room Library
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 2 loops, 0th child (grid cell [33][2][0])
+	Either the suspect Plum is the room Library or the suspect White is the room Library
+	Either the weapon candlestick or the weapon lead pipe is the room Greenhouse
+	Either the suspect Scarlet is the weapon candlestick or the weapon rope is the room Greenhouse
+	The suspect Plum was not the weapon lead pipe
+	Either the suspect Plum is the weapon candlestick or the suspect Plum is the room Salon
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 3 loops, 0th child (grid cell [33][3][0])
+	Either the suspect White is the room Library or the weapon rope is the room Library
+	Either the suspect Plum or the weapon candlestick is the room Greenhouse
+	Either the suspect Scarlet or the suspect White is the room Greenhouse
+	The weapon lead pipe was not the room Salon
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 4 loops, 0th child (grid cell [33][4][0])
+	Either the suspect Plum is the room Library or the suspect White is the room Library
+	Either the suspect Scarlet is the weapon candlestick or the weapon rope is the room Greenhouse
+	Either the weapon candlestick or the weapon lead pipe is the room Greenhouse
+	The suspect Plum was not the weapon lead pipe
+	Either the suspect Plum is the weapon candlestick or the suspect Plum is the room Salon
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [34][1][0])
+	Either the weapon lead pipe or the room Greenhouse is the suspect Scarlet
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+	Either the suspect White is the room Library or the weapon lead pipe is the room Greenhouse
+	Either the suspect Scarlet is the weapon rope or the weapon rope is the room Salon
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [34][2][0])
+	Either the suspect Plum is the weapon candlestick or the suspect White is the room Library
+	Either the weapon lead pipe or the room Greenhouse is the suspect Scarlet
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+	Either the weapon lead pipe is the room Greenhouse or the weapon lead pipe is the room Library
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [34][3][0])
+	Either the weapon rope or the room Greenhouse is the suspect Scarlet
+	Either the suspect White is the weapon rope or the weapon lead pipe is the room Library
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+	Either the weapon candlestick is the room Library or the weapon lead pipe is the room Library
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 4 loops, 0th child (grid cell [34][4][0])
+	Either the suspect Plum is the weapon rope or the suspect Scarlet is the room Library
+	Either the weapon rope or the room Greenhouse is the suspect Scarlet
+	Either the suspect White is the weapon candlestick or the weapon rope is the room Salon
+	Either the weapon candlestick is the room Library or the weapon lead pipe is the room Library
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+	Either the suspect White is the weapon rope or the weapon rope is the room Salon
+
+
+Hints for insight set APPLY_OR,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [35][1][0])
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	Either the suspect Plum or the weapon candlestick is the room Greenhouse
+	Either the weapon candlestick or the room Salon is the suspect Scarlet
+	Either the suspect White or the weapon candlestick is the room Greenhouse
+	Either the suspect Scarlet is the weapon candlestick or the weapon lead pipe is the room Salon
+	The suspect White was not the weapon rope
+	Either the suspect Plum is the weapon candlestick or the suspect White is the room Library
+
+
+Hints for insight set APPLY_OR,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [35][2][0])
+	Either the suspect Plum or the weapon candlestick is the room Greenhouse
+	Either the suspect White or the weapon candlestick is the room Greenhouse
+	The suspect White was not the weapon rope
+	Either the suspect Scarlet is the room Salon or the weapon lead pipe is the room Library
+	Either the suspect White is the weapon lead pipe or the weapon rope is the room Greenhouse
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+
+
+Hints for insight set APPLY_OR,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [35][3][0])
+	Either the suspect Plum is the weapon lead pipe or the suspect Scarlet is the room Greenhouse
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the room Greenhouse
+	Either the weapon lead pipe or the room Greenhouse is the suspect Scarlet
+	Either the weapon lead pipe is the room Greenhouse or the weapon lead pipe is the room Library
+	Either the suspect Plum or the weapon candlestick is the room Greenhouse
+	Either the suspect White is the weapon candlestick or the weapon lead pipe is the room Library
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 2 loops, 0th child (grid cell [36][2][0])
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+	Either the suspect Scarlet is the room Salon or the suspect White is the room Library
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+	Either the suspect Scarlet is the weapon rope or the suspect White is the weapon lead pipe
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 3 loops, 0th child (grid cell [36][3][0])
+	Either the suspect Scarlet is the room Salon or the weapon lead pipe is the room Library
+	Either the suspect Scarlet or the weapon rope is the room Greenhouse
+	Either the suspect White is the weapon lead pipe or the weapon candlestick is the room Salon
+	Either the room Greenhouse or the room Library is the weapon candlestick
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 4 loops, 0th child (grid cell [36][4][0])
+	Either the weapon lead pipe or the room Greenhouse is the suspect Scarlet
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	Either the suspect Plum is the weapon lead pipe or the suspect Scarlet is the room Greenhouse
+	Either the suspect Plum is the room Greenhouse or the weapon rope is the room Salon
+	Either the suspect White is the weapon candlestick or the weapon rope is the room Salon
+	Either the suspect Scarlet or the suspect Plum is the weapon candlestick
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 1 loops, 0th child (grid cell [37][1][0])
+	The suspect Plum was not the weapon lead pipe
+	Either the weapon candlestick or the weapon lead pipe is the room Greenhouse
+	Either the suspect Scarlet is the room Greenhouse or the weapon rope is the room Greenhouse
+	Either the suspect Scarlet is the weapon rope or the weapon lead pipe is the room Library
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 2 loops, 0th child (grid cell [37][2][0])
+	The suspect White was not the weapon rope
+	Either the suspect Scarlet is the room Salon or the suspect White is the room Library
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+	Either the room Greenhouse or the room Library is the weapon candlestick
+	Either the suspect Scarlet is the weapon candlestick or the suspect Scarlet is the weapon rope
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 3 loops, 0th child (grid cell [37][3][0])
+	Either the suspect Scarlet is the weapon lead pipe or the weapon rope is the room Salon
+	Either the suspect Scarlet is the weapon candlestick or the suspect Scarlet is the room Library
+	The suspect White was not the room Salon
+	Either the suspect Scarlet or the suspect Plum is the room Greenhouse
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [38][1][0])
+	The suspect Plum is the weapon rope
+	Either the suspect White is the weapon lead pipe or the suspect Plum is the room Greenhouse
+	Either the suspect Scarlet is the weapon rope or the suspect Plum is the room Salon
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+	Either the suspect White is the weapon rope or the weapon lead pipe is the room Library
+	Either the suspect Scarlet or the weapon rope is the room Greenhouse
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [38][2][0])
+	Either the suspect Plum is the weapon rope or the weapon lead pipe is the room Salon
+	The weapon lead pipe is the room Library
+	Either the weapon candlestick is the room Greenhouse or the weapon lead pipe is the room Greenhouse
+	Either the weapon lead pipe or the room Greenhouse is the suspect Scarlet
+	Either the weapon rope is the room Greenhouse or the weapon rope is the room Salon
+	Either the suspect White is the room Library or the weapon candlestick is the room Library
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [38][3][0])
+	The suspect Plum is the room Salon
+	Either the suspect White is the weapon candlestick or the weapon candlestick is the room Greenhouse
+	Either the suspect Plum is the weapon rope or the weapon candlestick is the room Salon
+	Either the suspect White is the room Library or the weapon lead pipe is the room Greenhouse
+	Either the suspect Scarlet is the room Salon or the weapon lead pipe is the room Library
+	Either the room Greenhouse or the room Library is the suspect Scarlet
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [39][1][0])
+	The suspect Plum was not the room Greenhouse
+	Either the suspect Plum or the weapon candlestick is the room Greenhouse
+	Either the suspect White is the weapon lead pipe or the weapon candlestick is the room Library
+	Either the suspect Plum is the weapon lead pipe or the suspect Plum is the room Salon
+	Either the room Greenhouse or the room Library is the suspect Scarlet
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [39][2][0])
+	Either the suspect Scarlet is the weapon rope or the weapon lead pipe is the room Library
+	The suspect White was not the weapon rope
+	Either the suspect Scarlet or the weapon rope is the room Greenhouse
+	Either the weapon candlestick or the weapon lead pipe is the room Greenhouse
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [39][3][0])
+	Either the suspect Scarlet is the room Greenhouse or the weapon rope is the room Library
+	Either the suspect Scarlet or the weapon lead pipe is the room Greenhouse
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the room Salon
+	The weapon lead pipe was not the room Greenhouse
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 4 loops, 0th child (grid cell [39][4][0])
+	Either the suspect White is the weapon lead pipe or the suspect Scarlet is the room Library
+	Either the suspect Plum is the weapon candlestick or the weapon candlestick is the room Greenhouse
+	Either the suspect White or the weapon candlestick is the room Greenhouse
+	The suspect White was not the room Greenhouse
+	Either the suspect Scarlet is the room Salon or the weapon rope is the room Salon
+
+
+Hints for insight set APPLY_OR,CROSS_OUT, 1 loops, 0th child (grid cell [40][1][0])
+	Either the suspect Plum is the weapon rope or the weapon candlestick is the room Salon
+	Either the room Greenhouse or the room Library is the weapon candlestick
+	Either the suspect White is the weapon lead pipe or the weapon rope is the room Greenhouse
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+	Either the suspect Scarlet is the room Salon or the weapon lead pipe is the room Library
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the room Salon
+
+
+Hints for insight set APPLY_OR,CROSS_OUT, 2 loops, 0th child (grid cell [40][2][0])
+	Either the suspect White is the room Library or the weapon candlestick is the room Salon
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon candlestick
+	Either the suspect White is the weapon lead pipe or the weapon rope is the room Greenhouse
+	Either the suspect Scarlet or the suspect Plum is the weapon candlestick
+	The weapon rope is the room Salon
+	Either the suspect Plum or the room Greenhouse is the weapon candlestick
+
+
+Hints for insight set APPLY_OR,CROSS_OUT, 3 loops, 0th child (grid cell [40][3][0])
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+	Either the suspect Plum is the weapon candlestick or the suspect White is the room Library
+	Either the weapon rope is the room Salon or the weapon lead pipe is the room Salon
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon rope
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+	Either the suspect White is the weapon lead pipe or the weapon candlestick is the room Library
+	Either the weapon candlestick or the room Salon is the suspect Scarlet
+
+
+Hints for insight set APPLY_OR,OPENING,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [41][1][0])
+	Either the weapon lead pipe or the room Greenhouse is the suspect Scarlet
+	Either the suspect Scarlet is the room Library or the suspect Plum is the room Salon
+	Either the room Greenhouse or the room Salon is the suspect Scarlet
+	The suspect Plum is the room Salon
+	Either the suspect Scarlet or the weapon rope is the room Greenhouse
+	Either the suspect Plum is the room Salon or the weapon lead pipe is the room Salon
+	Either the suspect Scarlet is the weapon candlestick or the suspect White is the room Greenhouse
+
+
+Hints for insight set APPLY_OR,OPENING,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [41][2][0])
+	Either the suspect Plum is the room Greenhouse or the weapon rope is the room Salon
+	Either the suspect Plum is the room Salon or the weapon lead pipe is the room Salon
+	Either the weapon lead pipe or the room Greenhouse is the suspect Scarlet
+	Either the suspect Scarlet or the room Library is the weapon candlestick
+	The weapon rope was not the room Greenhouse
+	Either the suspect Scarlet is the room Library or the suspect Plum is the room Salon
+	The suspect Plum was not the room Greenhouse
+
+
+Hints for insight set APPLY_OR,OPENING,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [41][3][0])
+	Either the suspect Plum is the weapon lead pipe or the suspect Scarlet is the room Greenhouse
+	The suspect Scarlet is the weapon candlestick
+	Either the suspect Plum or the weapon candlestick is the room Greenhouse
+	Either the suspect Scarlet or the suspect White is the room Greenhouse
+	Either the suspect Scarlet is the weapon candlestick or the suspect White is the room Salon
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the room Greenhouse
+	Either the suspect White is the weapon candlestick or the suspect Plum is the room Salon
+
+
+Hints for insight set APPLY_OR,OPENING,TRANS_ABC_TRUE, 4 loops, 0th child (grid cell [41][4][0])
+	Either the suspect Scarlet is the weapon rope or the weapon lead pipe is the room Library
+	Either the suspect Scarlet is the weapon rope or the suspect Scarlet is the room Greenhouse
+	Either the suspect White is the weapon rope or the suspect Scarlet is the room Greenhouse
+	The suspect White was not the weapon rope
+	The suspect White is the weapon lead pipe
+	Either the suspect Scarlet or the weapon lead pipe is the room Greenhouse
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [42][1][0])
+	Either the suspect White is the weapon candlestick or the suspect White is the weapon lead pipe
+	Either the suspect White or the room Greenhouse is the weapon candlestick
+	Either the suspect Scarlet or the suspect Plum is the weapon candlestick
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the room Salon
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [42][2][0])
+	Either the suspect Scarlet or the weapon rope is the room Greenhouse
+	Either the weapon candlestick or the weapon lead pipe is the room Greenhouse
+	Either the suspect White is the weapon lead pipe or the suspect White is the room Greenhouse
+	Either the suspect Plum is the room Salon or the weapon candlestick is the room Library
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [42][3][0])
+	Either the suspect Scarlet is the room Library or the weapon lead pipe is the room Library
+	Either the suspect Plum is the weapon rope or the suspect Scarlet is the room Salon
+	Either the suspect Scarlet or the weapon lead pipe is the room Greenhouse
+	Either the weapon candlestick or the weapon rope is the room Greenhouse
+
+
+Hints for insight set APPLY_OR,OPENING, 1 loops, 0th child (grid cell [43][1][0])
+	Either the suspect White is the weapon lead pipe or the suspect White is the room Salon
+	Either the suspect Plum or the room Greenhouse is the weapon candlestick
+	Either the suspect White or the room Greenhouse is the weapon candlestick
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+	The suspect White is the weapon lead pipe
+	Either the suspect Scarlet is the weapon rope or the suspect White is the weapon lead pipe
+	Either the suspect Scarlet is the room Greenhouse or the suspect White is the room Salon
+
+
+Hints for insight set APPLY_OR,OPENING, 2 loops, 0th child (grid cell [43][2][0])
+	Either the suspect Scarlet is the room Greenhouse or the suspect Plum is the room Library
+	The weapon lead pipe was not the room Greenhouse
+	Either the suspect Scarlet or the suspect Plum is the room Greenhouse
+	Either the suspect Plum is the weapon lead pipe or the suspect Plum is the room Salon
+	Either the suspect Scarlet or the weapon lead pipe is the room Greenhouse
+	Either the suspect Scarlet is the weapon rope or the suspect Scarlet is the room Greenhouse
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Scarlet is the room Greenhouse
+
+
+Hints for insight set APPLY_OR,OPENING, 3 loops, 0th child (grid cell [43][3][0])
+	Either the suspect Plum is the weapon lead pipe or the suspect Scarlet is the room Greenhouse
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the room Greenhouse
+	Either the weapon lead pipe or the room Greenhouse is the suspect Scarlet
+	Either the weapon lead pipe is the room Greenhouse or the weapon lead pipe is the room Library
+	Either the suspect Plum or the weapon candlestick is the room Greenhouse
+	Either the suspect White is the weapon candlestick or the weapon lead pipe is the room Library
+	The suspect Scarlet is the weapon candlestick
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,OPENING, 1 loops, 0th child (grid cell [44][1][0])
+	The suspect White is the room Library
+	Either the suspect Scarlet is the room Salon or the weapon lead pipe is the room Library
+	Either the suspect White is the room Library or the weapon lead pipe is the room Greenhouse
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the room Salon
+	The weapon lead pipe was not the room Salon
+	Either the suspect Scarlet is the weapon lead pipe or the weapon rope is the room Salon
+	Either the suspect Scarlet is the room Greenhouse or the weapon candlestick is the room Salon
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,OPENING, 2 loops, 0th child (grid cell [44][2][0])
+	The suspect Scarlet is the weapon candlestick
+	The suspect White was not the weapon rope
+	Either the suspect Scarlet or the suspect White is the room Greenhouse
+	Either the weapon rope or the room Greenhouse is the suspect Scarlet
+	Either the weapon rope is the room Greenhouse or the weapon rope is the room Salon
+	Either the suspect Scarlet is the weapon candlestick or the suspect White is the room Greenhouse
+	Either the suspect Plum or the room Greenhouse is the weapon candlestick
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 1 loops, 0th child (grid cell [45][1][0])
+	The suspect Scarlet is the weapon candlestick
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the room Salon
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+	Either the suspect Scarlet or the weapon lead pipe is the room Greenhouse
+	Either the weapon candlestick is the room Greenhouse or the weapon candlestick is the room Salon
+	Either the suspect Scarlet is the room Greenhouse or the weapon rope is the room Library
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 2 loops, 0th child (grid cell [45][2][0])
+	Either the suspect White is the weapon candlestick or the weapon lead pipe is the room Library
+	Either the suspect Scarlet or the weapon rope is the room Greenhouse
+	Either the suspect Scarlet is the room Library or the suspect Plum is the room Salon
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+	Either the suspect Scarlet is the weapon lead pipe or the weapon lead pipe is the room Library
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 3 loops, 0th child (grid cell [45][3][0])
+	The suspect Scarlet was not the weapon lead pipe
+	Either the weapon candlestick is the room Library or the weapon rope is the room Salon
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon lead pipe
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	Either the suspect Scarlet is the weapon lead pipe or the weapon rope is the room Salon
+
+
+Hints for insight set APPLY_OR,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [46][1][0])
+	Either the suspect Scarlet or the weapon rope is the room Greenhouse
+	Either the suspect Scarlet is the room Library or the suspect White is the room Library
+	Either the weapon candlestick or the room Salon is the suspect Scarlet
+	The suspect Plum is the weapon rope
+	Either the suspect Scarlet or the suspect White is the room Greenhouse
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+	Either the suspect Scarlet is the weapon candlestick or the suspect White is the weapon rope
+	The suspect Plum is the room Salon
+	Either the suspect Scarlet is the room Salon or the weapon lead pipe is the room Library
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_SAME_CAT, 1 loops, 0th child (grid cell [47][1][0])
+	The suspect White is the room Library
+	Either the room Greenhouse or the room Library is the weapon candlestick
+	Either the suspect Scarlet is the room Salon or the weapon lead pipe is the room Library
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the room Salon
+	Either the suspect Plum is the weapon rope or the weapon candlestick is the room Salon
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_SAME_CAT, 2 loops, 0th child (grid cell [47][2][0])
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the room Salon
+	Either the suspect Plum is the weapon rope or the weapon candlestick is the room Salon
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+	Either the room Greenhouse or the room Library is the weapon candlestick
+	The suspect White is the room Library
+	Either the suspect White is the weapon lead pipe or the weapon lead pipe is the room Greenhouse
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_SAME_CAT, 3 loops, 0th child (grid cell [47][3][0])
+	Either the suspect Scarlet is the room Greenhouse or the weapon candlestick is the room Library
+	Either the suspect Plum is the room Salon or the weapon lead pipe is the room Salon
+	Either the suspect Scarlet is the weapon lead pipe or the suspect White is the weapon lead pipe
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+	Either the suspect Plum is the room Greenhouse or the weapon rope is the room Salon
+	Either the suspect Scarlet is the weapon rope or the weapon lead pipe is the room Library
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_SAME_CAT, 4 loops, 0th child (grid cell [47][4][0])
+	Either the suspect White is the weapon rope or the weapon rope is the room Salon
+	Either the suspect White is the weapon lead pipe or the weapon candlestick is the room Library
+	Either the suspect Plum or the room Greenhouse is the weapon candlestick
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+	Either the suspect Plum is the weapon rope or the suspect Scarlet is the room Library
+	Either the suspect White is the room Library or the weapon lead pipe is the room Salon
+	Either the room Greenhouse or the room Library is the suspect Scarlet
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 2 loops, 0th child (grid cell [48][2][0])
+	Either the suspect Plum is the weapon rope or the suspect Plum is the room Library
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+	Either the suspect Scarlet is the room Library or the weapon rope is the room Salon
+	Either the suspect White is the weapon lead pipe or the weapon candlestick is the room Library
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+	Either the suspect Plum is the room Greenhouse or the suspect White is the room Library
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 3 loops, 0th child (grid cell [48][3][0])
+	Either the suspect Scarlet is the room Salon or the weapon lead pipe is the room Library
+	Either the suspect White is the weapon rope or the weapon rope is the room Salon
+	Either the suspect Scarlet or the suspect White is the room Greenhouse
+	Either the room Greenhouse or the room Library is the weapon candlestick
+	Either the suspect White is the weapon lead pipe or the weapon candlestick is the room Salon
+	Either the suspect Plum is the weapon rope or the suspect White is the room Salon
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_DIFF_CAT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 2 loops, 0th child (grid cell [49][2][0])
+	Either the suspect White is the weapon lead pipe or the weapon rope is the room Greenhouse
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+	Either the weapon candlestick is the room Salon or the weapon lead pipe is the room Library
+	Either the room Greenhouse or the room Salon is the suspect Scarlet
+	Either the suspect Plum is the room Salon or the weapon lead pipe is the room Greenhouse
+	Either the suspect Plum is the weapon rope or the suspect Plum is the weapon lead pipe
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [50][1][0])
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	Either the suspect Scarlet or the room Library is the weapon candlestick
+	The weapon rope is the room Salon
+	The suspect White was not the weapon rope
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [50][2][0])
+	Either the suspect Scarlet is the room Greenhouse or the suspect Plum is the room Library
+	The weapon lead pipe is the room Library
+	The suspect White was not the weapon rope
+	Either the suspect White or the weapon candlestick is the room Greenhouse
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [51][1][0])
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	Either the suspect Plum or the weapon candlestick is the room Greenhouse
+	Either the weapon candlestick or the room Salon is the suspect Scarlet
+	Either the suspect White or the weapon candlestick is the room Greenhouse
+	Either the suspect Scarlet is the weapon candlestick or the weapon lead pipe is the room Salon
+	The suspect White was not the weapon rope
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [51][2][0])
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+	The suspect White was not the weapon rope
+	Either the suspect Scarlet is the room Salon or the weapon lead pipe is the room Library
+	Either the suspect White is the weapon lead pipe or the weapon rope is the room Greenhouse
+	Either the suspect White or the weapon candlestick is the room Greenhouse
+	Either the weapon candlestick or the weapon rope is the room Greenhouse
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [51][3][0])
+	Either the suspect White is the room Salon or the weapon rope is the room Salon
+	Either the suspect Scarlet is the weapon candlestick or the suspect Scarlet is the weapon rope
+	The weapon rope was not the room Library
+	Either the suspect Scarlet is the weapon rope or the suspect Scarlet is the room Greenhouse
+	Either the suspect Scarlet or the room Library is the weapon candlestick
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+
+
+Hints for insight set APPLY_IS,APPLY_OR,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [52][1][0])
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+	The weapon lead pipe was not the room Salon
+	Either the suspect Plum is the weapon rope or the weapon candlestick is the room Library
+	Either the suspect Scarlet is the weapon lead pipe or the weapon rope is the room Salon
+	Either the suspect Scarlet or the weapon lead pipe is the room Greenhouse
+	The suspect Plum is the weapon rope
+	Either the suspect Plum is the weapon rope or the weapon lead pipe is the room Greenhouse
+
+
+Hints for insight set APPLY_IS,APPLY_OR,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [52][2][0])
+	Either the suspect Scarlet is the room Library or the weapon rope is the room Salon
+	Either the weapon candlestick is the room Salon or the weapon lead pipe is the room Library
+	Either the suspect Plum or the weapon candlestick is the room Greenhouse
+	Either the weapon candlestick is the room Greenhouse or the weapon rope is the room Library
+	The weapon rope is the room Salon
+	Either the suspect White is the weapon candlestick or the weapon rope is the room Salon
+	Either the suspect Plum is the weapon candlestick or the suspect Plum is the weapon rope
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [53][1][0])
+	The suspect Scarlet was not the room Salon
+	Either the suspect White is the room Library or the weapon candlestick is the room Library
+	Either the weapon candlestick or the room Salon is the suspect Scarlet
+	Either the weapon lead pipe or the room Greenhouse is the suspect Scarlet
+	Either the suspect Plum is the weapon rope or the weapon lead pipe is the room Salon
+	Either the weapon candlestick is the room Library or the weapon rope is the room Salon
+	Either the suspect White is the weapon rope or the weapon lead pipe is the room Library
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [53][2][0])
+	The suspect Scarlet was not the room Salon
+	Either the suspect White is the weapon lead pipe or the weapon rope is the room Greenhouse
+	Either the suspect White is the room Library or the weapon candlestick is the room Library
+	Either the weapon candlestick or the room Salon is the suspect Scarlet
+	Either the weapon lead pipe or the room Greenhouse is the suspect Scarlet
+	Either the suspect Plum is the weapon rope or the weapon lead pipe is the room Salon
+	Either the weapon candlestick is the room Library or the weapon rope is the room Salon
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [53][3][0])
+	Either the suspect Scarlet is the weapon rope or the suspect White is the weapon lead pipe
+	Either the suspect Scarlet is the weapon lead pipe or the suspect White is the room Library
+	Either the weapon rope is the room Salon or the weapon lead pipe is the room Salon
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+	Either the suspect White is the room Greenhouse or the weapon candlestick is the room Greenhouse
+	Either the suspect Plum is the weapon rope or the weapon lead pipe is the room Greenhouse
+	The suspect White was not the room Greenhouse
+
+
+Hints for insight set APPLY_IS,APPLY_OR,OPENING,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [54][1][0])
+	The suspect Plum was not the weapon lead pipe
+	Either the weapon lead pipe or the room Greenhouse is the suspect Scarlet
+	The weapon rope is the room Salon
+	Either the suspect White is the weapon candlestick or the weapon rope is the room Salon
+	Either the suspect Plum is the room Greenhouse or the weapon rope is the room Salon
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon candlestick
+
+
+Hints for insight set APPLY_IS,APPLY_OR,OPENING,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [54][2][0])
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+	The weapon rope was not the room Greenhouse
+	Either the weapon lead pipe or the room Greenhouse is the suspect Scarlet
+	Either the suspect Scarlet is the weapon lead pipe or the suspect White is the room Library
+	The suspect Scarlet is the weapon candlestick
+	Either the suspect White is the weapon rope or the weapon candlestick is the room Greenhouse
+
+
+Hints for insight set APPLY_IS,APPLY_OR,OPENING,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [54][3][0])
+	Either the weapon rope is the room Greenhouse or the weapon rope is the room Salon
+	Either the suspect Scarlet or the weapon rope is the room Greenhouse
+	Either the suspect Scarlet is the weapon candlestick or the suspect White is the weapon rope
+	The suspect Scarlet is the weapon candlestick
+	Either the suspect Plum is the weapon rope or the weapon rope is the room Greenhouse
+	Either the suspect Scarlet is the weapon candlestick or the suspect White is the room Greenhouse
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 1 loops, 0th child (grid cell [55][1][0])
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+	Either the suspect Plum or the room Greenhouse is the weapon candlestick
+	The weapon rope is the room Salon
+	Either the suspect White or the room Greenhouse is the weapon candlestick
+	Either the suspect White is the room Library or the weapon lead pipe is the room Greenhouse
+	Either the suspect White is the weapon candlestick or the suspect White is the weapon lead pipe
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 2 loops, 0th child (grid cell [55][2][0])
+	Either the suspect Plum is the weapon rope or the suspect Plum is the room Greenhouse
+	Either the suspect Scarlet is the weapon candlestick or the weapon lead pipe is the room Salon
+	The suspect White is the weapon lead pipe
+	Either the suspect Scarlet or the weapon rope is the room Greenhouse
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 3 loops, 0th child (grid cell [55][3][0])
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	Either the suspect Scarlet is the weapon lead pipe or the weapon rope is the room Salon
+	The weapon rope is the room Salon
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon lead pipe
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,CROSS_OUT,OPENING,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [56][1][0])
+	The weapon lead pipe was not the room Greenhouse
+	The suspect Plum is the room Salon
+	The suspect Scarlet was not the weapon lead pipe
+	The suspect Plum is the weapon rope
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [57][1][0])
+	The weapon lead pipe was not the room Greenhouse
+	Either the suspect Scarlet is the room Greenhouse or the weapon rope is the room Library
+	Either the suspect Scarlet is the weapon rope or the suspect Scarlet is the room Greenhouse
+	The suspect Plum was not the room Greenhouse
+	Either the suspect Scarlet or the weapon lead pipe is the room Greenhouse
+	The suspect Plum was not the weapon lead pipe
+	Either the suspect Plum is the weapon rope or the suspect White is the room Salon
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [57][2][0])
+	The weapon lead pipe was not the room Greenhouse
+	Either the suspect Scarlet is the room Greenhouse or the weapon rope is the room Library
+	The suspect Plum was not the weapon lead pipe
+	The suspect Plum was not the room Greenhouse
+	Either the suspect Scarlet or the weapon lead pipe is the room Greenhouse
+	Either the suspect Scarlet is the weapon rope or the suspect Scarlet is the room Greenhouse
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [57][3][0])
+	Either the suspect White is the room Greenhouse or the weapon rope is the room Salon
+	Either the suspect White is the weapon candlestick or the weapon candlestick is the room Greenhouse
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	Either the weapon rope or the room Greenhouse is the suspect Scarlet
+	Either the suspect Scarlet is the weapon lead pipe or the weapon rope is the room Salon
+	Either the suspect Plum or the room Greenhouse is the weapon candlestick
+	The suspect Scarlet was not the weapon lead pipe
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon lead pipe
+	Either the suspect Scarlet is the room Salon or the weapon rope is the room Salon
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 1 loops, 0th child (grid cell [58][1][0])
+	The weapon lead pipe is the room Library
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+	Either the weapon candlestick or the room Salon is the suspect Scarlet
+	Either the suspect White is the weapon lead pipe or the suspect Scarlet is the room Salon
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 2 loops, 0th child (grid cell [58][2][0])
+	The weapon lead pipe is the room Library
+	Either the suspect Plum is the weapon rope or the suspect Plum is the room Greenhouse
+	Either the weapon candlestick or the room Salon is the suspect Scarlet
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 3 loops, 0th child (grid cell [58][3][0])
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon candlestick
+	Either the weapon candlestick or the room Salon is the suspect Scarlet
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+	The weapon lead pipe is the room Library
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_SAME_CAT,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [59][1][0])
+	Either the suspect Scarlet or the room Library is the weapon candlestick
+	Either the suspect Scarlet or the suspect White is the room Greenhouse
+	Either the suspect Plum is the room Greenhouse or the suspect White is the room Library
+	Either the suspect Plum is the room Salon or the weapon lead pipe is the room Salon
+	Either the suspect Plum is the room Greenhouse or the weapon rope is the room Salon
+	Either the suspect Scarlet is the weapon rope or the weapon lead pipe is the room Library
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_SAME_CAT,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [59][2][0])
+	Either the suspect Plum is the weapon rope or the weapon candlestick is the room Salon
+	Either the suspect White is the room Library or the weapon lead pipe is the room Greenhouse
+	Either the suspect Scarlet is the room Salon or the weapon lead pipe is the room Library
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the room Salon
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+	Either the suspect White is the weapon candlestick or the weapon candlestick is the room Greenhouse
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_SAME_CAT,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [59][3][0])
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+	Either the suspect Plum is the weapon candlestick or the suspect White is the room Library
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon rope
+	Either the weapon rope is the room Salon or the weapon lead pipe is the room Salon
+	Either the suspect White is the weapon lead pipe or the weapon candlestick is the room Library
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_SAME_CAT,TRANS_ABC_TRUE, 4 loops, 0th child (grid cell [59][4][0])
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+	Either the weapon rope is the room Salon or the weapon lead pipe is the room Salon
+	Either the suspect Plum is the weapon candlestick or the suspect White is the room Library
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon rope
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+	Either the suspect White is the weapon lead pipe or the weapon candlestick is the room Library
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 1 loops, 0th child (grid cell [60][1][0])
+	The suspect White was not the weapon rope
+	Either the weapon candlestick or the room Salon is the suspect Scarlet
+	The weapon lead pipe is the room Library
+	Either the suspect Scarlet is the weapon candlestick or the suspect White is the room Salon
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 2 loops, 0th child (grid cell [60][2][0])
+	Either the suspect White is the weapon rope or the weapon candlestick is the room Greenhouse
+	The weapon lead pipe was not the room Salon
+	Either the suspect Scarlet or the weapon lead pipe is the room Greenhouse
+	The suspect Plum is the room Salon
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 3 loops, 0th child (grid cell [60][3][0])
+	The suspect Scarlet was not the weapon lead pipe
+	Either the suspect Plum is the weapon lead pipe or the suspect Scarlet is the room Greenhouse
+	The weapon rope is the room Salon
+	Either the suspect Plum is the room Greenhouse or the weapon candlestick is the room Greenhouse
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+
+
+Hints for insight set APPLY_IS,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 1 loops, 0th child (grid cell [61][1][0])
+	The weapon rope is the room Salon
+	The suspect White is the weapon lead pipe
+	The suspect Scarlet is the room Greenhouse
+
+
+Hints for insight set APPLY_OR,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [62][1][0])
+	Either the suspect White is the weapon lead pipe or the suspect Scarlet is the room Library
+	Either the weapon rope or the room Greenhouse is the suspect Scarlet
+	Either the suspect White or the room Greenhouse is the weapon candlestick
+	Either the weapon rope is the room Greenhouse or the weapon rope is the room Salon
+	Either the suspect White is the weapon candlestick or the suspect Plum is the room Salon
+	Either the weapon rope is the room Greenhouse or the weapon lead pipe is the room Library
+	Either the suspect Scarlet or the room Library is the weapon candlestick
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon candlestick
+
+
+Hints for insight set APPLY_OR,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [62][2][0])
+	Either the suspect White is the weapon lead pipe or the suspect Scarlet is the room Library
+	Either the weapon rope or the room Greenhouse is the suspect Scarlet
+	Either the suspect White or the room Greenhouse is the weapon candlestick
+	Either the weapon rope is the room Greenhouse or the weapon rope is the room Salon
+	Either the suspect White is the weapon candlestick or the suspect Plum is the room Salon
+	Either the weapon rope is the room Greenhouse or the weapon lead pipe is the room Library
+	Either the suspect Scarlet or the room Library is the weapon candlestick
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [63][2][0])
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Scarlet is the room Greenhouse
+	Either the suspect Scarlet is the room Salon or the suspect White is the room Library
+	The suspect Plum is the weapon rope
+	Either the suspect White is the weapon candlestick or the weapon lead pipe is the room Library
+	Either the suspect White or the weapon candlestick is the room Greenhouse
+	Either the suspect Scarlet is the room Library or the weapon rope is the room Salon
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [64][1][0])
+	The suspect White was not the room Salon
+	The suspect Scarlet is the weapon candlestick
+	Either the weapon candlestick or the room Salon is the suspect Scarlet
+	The weapon lead pipe is the room Library
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [64][2][0])
+	Either the suspect Plum or the room Greenhouse is the weapon candlestick
+	Either the suspect Scarlet is the room Library or the suspect Plum is the room Salon
+	The suspect Plum is the weapon rope
+	The suspect White was not the room Greenhouse
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [64][3][0])
+	The suspect Plum was not the room Greenhouse
+	The weapon lead pipe is the room Library
+	Either the suspect White is the weapon candlestick or the weapon candlestick is the room Greenhouse
+	Either the suspect Plum or the weapon candlestick is the room Greenhouse
+	Either the suspect Scarlet is the room Greenhouse or the suspect Plum is the room Library
+	Either the suspect Scarlet is the weapon candlestick or the suspect Scarlet is the room Salon
+
+
+Hints for insight set APPLY_IS,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [65][1][0])
+	The suspect Plum is the weapon rope
+	The suspect Scarlet is the weapon candlestick
+	The weapon rope is the room Salon
+	The weapon lead pipe is the room Library
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+
+
+Hints for insight set APPLY_IS,APPLY_OR,OPENING, 1 loops, 0th child (grid cell [66][1][0])
+	Either the suspect Scarlet is the weapon rope or the suspect Scarlet is the room Greenhouse
+	The suspect White is the weapon lead pipe
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+	Either the suspect White or the room Greenhouse is the weapon candlestick
+	Either the suspect Plum or the room Greenhouse is the weapon candlestick
+	Either the suspect White is the weapon lead pipe or the suspect White is the room Salon
+
+
+Hints for insight set APPLY_IS,APPLY_OR,OPENING, 2 loops, 0th child (grid cell [66][2][0])
+	Either the suspect Scarlet or the suspect White is the room Greenhouse
+	Either the suspect Scarlet is the weapon candlestick or the suspect Scarlet is the room Library
+	Either the suspect Scarlet is the weapon candlestick or the suspect White is the room Salon
+	The suspect Scarlet is the weapon candlestick
+	Either the suspect Plum is the weapon rope or the suspect Scarlet is the room Salon
+	The suspect Plum is the weapon rope
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 2 loops, 0th child (grid cell [67][2][0])
+	Either the suspect White is the weapon lead pipe or the weapon rope is the room Greenhouse
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+	Either the weapon candlestick is the room Salon or the weapon lead pipe is the room Library
+	Either the room Greenhouse or the room Salon is the suspect Scarlet
+	Either the suspect Plum is the room Salon or the weapon lead pipe is the room Greenhouse
+	Either the suspect Plum is the weapon rope or the suspect Plum is the weapon lead pipe
+	Either the suspect Scarlet is the room Library or the suspect Plum is the room Salon
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT, 1 loops, 0th child (grid cell [68][1][0])
+	Either the suspect Plum is the room Salon or the suspect White is the room Greenhouse
+	The suspect Plum was not the weapon lead pipe
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon candlestick
+	Either the suspect Scarlet is the room Greenhouse or the suspect Plum is the room Library
+	The weapon lead pipe is the room Library
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+	Either the suspect Scarlet is the room Greenhouse or the suspect Plum is the room Greenhouse
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the weapon lead pipe
+	Either the suspect White is the weapon rope or the weapon rope is the room Salon
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT, 2 loops, 0th child (grid cell [68][2][0])
+	The suspect Plum was not the weapon lead pipe
+	Either the suspect White is the room Library or the weapon lead pipe is the room Greenhouse
+	Either the suspect White is the weapon candlestick or the suspect Plum is the room Salon
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon candlestick
+	Either the suspect White is the weapon rope or the weapon rope is the room Salon
+	Either the suspect Scarlet is the room Greenhouse or the suspect Plum is the room Library
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the weapon lead pipe
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT, 3 loops, 0th child (grid cell [68][3][0])
+	Either the suspect Scarlet is the weapon rope or the weapon lead pipe is the room Library
+	The weapon rope was not the room Greenhouse
+	Either the suspect Plum is the weapon rope or the suspect Scarlet is the room Library
+	Either the suspect Scarlet is the room Salon or the suspect White is the room Library
+	Either the suspect Plum is the weapon candlestick or the suspect Plum is the room Salon
+	Either the suspect Scarlet is the weapon candlestick or the weapon candlestick is the room Salon
+	Either the weapon candlestick or the weapon rope is the room Greenhouse
+
+
+Hints for insight set APPLY_OR,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [69][1][0])
+	Either the weapon lead pipe or the room Greenhouse is the suspect Scarlet
+	Either the suspect Scarlet is the room Library or the suspect Plum is the room Salon
+	Either the room Greenhouse or the room Salon is the suspect Scarlet
+	The suspect Plum is the room Salon
+	Either the suspect Scarlet or the weapon rope is the room Greenhouse
+	Either the suspect Plum is the room Salon or the weapon lead pipe is the room Salon
+
+
+Hints for insight set APPLY_OR,OPENING,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [69][2][0])
+	Either the suspect Plum or the weapon candlestick is the room Greenhouse
+	Either the suspect White is the weapon candlestick or the weapon candlestick is the room Greenhouse
+	The suspect Plum was not the room Greenhouse
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon lead pipe
+	Either the suspect Scarlet is the weapon lead pipe or the weapon rope is the room Salon
+	The suspect Scarlet was not the weapon lead pipe
+	Either the suspect Scarlet or the suspect Plum is the weapon candlestick
+
+
+Hints for insight set APPLY_IS,APPLY_OR,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [70][1][0])
+	The suspect Plum is the weapon rope
+	Either the suspect Scarlet is the weapon lead pipe or the weapon rope is the room Salon
+	The weapon lead pipe was not the room Salon
+	Either the suspect Plum is the weapon rope or the weapon candlestick is the room Library
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+	Either the suspect Scarlet or the weapon lead pipe is the room Greenhouse
+
+
+Hints for insight set APPLY_IS,APPLY_OR,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [70][2][0])
+	Either the suspect Scarlet is the weapon lead pipe or the weapon rope is the room Salon
+	The suspect Plum is the weapon rope
+	The weapon lead pipe was not the room Salon
+	Either the suspect Plum is the weapon rope or the weapon candlestick is the room Library
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+	Either the suspect Scarlet or the weapon lead pipe is the room Greenhouse
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [71][1][0])
+	Either the suspect Scarlet is the weapon lead pipe or the suspect White is the room Library
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+	Either the suspect Scarlet is the weapon rope or the weapon lead pipe is the room Library
+	Either the weapon rope or the room Greenhouse is the suspect Scarlet
+	Either the suspect Plum is the weapon candlestick or the suspect Plum is the room Salon
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the weapon rope
+	Either the suspect Plum is the weapon rope or the weapon rope is the room Greenhouse
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [71][2][0])
+	Either the suspect Plum or the weapon candlestick is the room Greenhouse
+	The weapon rope is the room Salon
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the room Salon
+	The suspect Plum was not the room Greenhouse
+	The weapon lead pipe is the room Library
+	Either the suspect White is the weapon lead pipe or the suspect Scarlet is the room Library
+	Either the suspect Scarlet or the suspect Plum is the weapon candlestick
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [71][3][0])
+	Either the suspect Plum is the weapon candlestick or the weapon lead pipe is the room Library
+	Either the weapon candlestick or the weapon lead pipe is the room Greenhouse
+	Either the suspect Plum is the weapon candlestick or the suspect Plum is the room Salon
+	Either the suspect Scarlet is the weapon rope or the weapon rope is the room Salon
+	Either the suspect Plum is the weapon rope or the weapon lead pipe is the room Salon
+	Either the suspect Scarlet or the weapon rope is the room Greenhouse
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the room Library
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [72][1][0])
+	The weapon rope is the room Salon
+	The weapon candlestick was not the room Library
+	The suspect Scarlet is the weapon candlestick
+	The suspect Plum is the weapon rope
+
+
+Hints for insight set APPLY_IS,CROSS_OUT,OPENING,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [73][1][0])
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon candlestick
+	The weapon rope is the room Salon
+	The suspect Scarlet is the room Greenhouse
+	The suspect White is the weapon lead pipe
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [74][1][0])
+	Either the weapon candlestick or the weapon lead pipe is the room Greenhouse
+	Either the room Greenhouse or the room Salon is the suspect Scarlet
+	The weapon rope was not the room Library
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+	Either the suspect Plum is the room Salon or the weapon candlestick is the room Library
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [74][2][0])
+	Either the suspect Scarlet or the weapon lead pipe is the room Greenhouse
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+	The weapon lead pipe was not the room Greenhouse
+	Either the suspect Scarlet is the room Greenhouse or the weapon rope is the room Library
+	Either the suspect Plum is the weapon rope or the weapon lead pipe is the room Salon
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [74][3][0])
+	Either the suspect White is the weapon candlestick or the suspect Plum is the room Salon
+	Either the suspect Scarlet is the weapon candlestick or the suspect Scarlet is the weapon rope
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+	Either the suspect Scarlet or the room Library is the weapon candlestick
+	The weapon lead pipe was not the room Salon
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,OPENING, 1 loops, 0th child (grid cell [75][1][0])
+	The suspect Plum was not the room Greenhouse
+	Either the suspect Plum or the weapon candlestick is the room Greenhouse
+	Either the weapon lead pipe or the room Greenhouse is the suspect Scarlet
+	The suspect Plum was not the weapon lead pipe
+	Either the weapon lead pipe is the room Greenhouse or the weapon lead pipe is the room Library
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the room Greenhouse
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,OPENING, 2 loops, 0th child (grid cell [75][2][0])
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+	Either the suspect Scarlet is the weapon lead pipe or the suspect White is the room Library
+	The suspect Scarlet was not the weapon lead pipe
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon lead pipe
+	Either the suspect White is the weapon lead pipe or the suspect Scarlet is the room Salon
+	Either the suspect Plum or the room Greenhouse is the weapon candlestick
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,OPENING, 3 loops, 0th child (grid cell [75][3][0])
+	Either the suspect Scarlet is the weapon rope or the weapon lead pipe is the room Library
+	Either the weapon rope or the room Greenhouse is the suspect Scarlet
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+	Either the suspect White is the weapon rope or the suspect Scarlet is the room Greenhouse
+	The suspect White was not the weapon rope
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+	Either the suspect Plum is the room Salon or the weapon lead pipe is the room Salon
+
+
+Hints for insight set APPLY_OR, 1 loops, 0th child (grid cell [76][1][0])
+	The suspect White is the room Library
+	Either the suspect Scarlet is the room Salon or the weapon lead pipe is the room Library
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+	Either the suspect White is the room Library or the weapon lead pipe is the room Greenhouse
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the room Salon
+	The weapon lead pipe was not the room Salon
+	Either the suspect Scarlet is the weapon lead pipe or the weapon rope is the room Salon
+	Either the suspect Scarlet is the room Greenhouse or the weapon candlestick is the room Salon
+
+
+Hints for insight set APPLY_OR, 2 loops, 0th child (grid cell [76][2][0])
+	Either the suspect White is the weapon lead pipe or the suspect Scarlet is the room Library
+	Either the weapon rope or the room Greenhouse is the suspect Scarlet
+	Either the suspect White or the room Greenhouse is the weapon candlestick
+	Either the weapon rope is the room Greenhouse or the weapon rope is the room Salon
+	Either the suspect White is the weapon candlestick or the suspect Plum is the room Salon
+	Either the weapon rope is the room Greenhouse or the weapon lead pipe is the room Library
+	Either the suspect Scarlet or the room Library is the weapon candlestick
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [77][1][0])
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+	Either the suspect Scarlet is the weapon lead pipe or the suspect White is the room Library
+	Either the suspect Scarlet is the weapon rope or the weapon lead pipe is the room Library
+	Either the weapon rope or the room Greenhouse is the suspect Scarlet
+	Either the suspect Plum is the weapon candlestick or the suspect Plum is the room Salon
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the weapon rope
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,OPENING,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [78][1][0])
+	The weapon rope was not the room Greenhouse
+	Either the weapon lead pipe or the room Greenhouse is the suspect Scarlet
+	Either the suspect White is the weapon rope or the weapon candlestick is the room Greenhouse
+	The suspect Scarlet is the weapon candlestick
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+	The weapon rope was not the room Library
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,OPENING,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [78][2][0])
+	Either the suspect Plum is the weapon rope or the suspect Scarlet is the room Library
+	The weapon rope was not the room Greenhouse
+	Either the suspect Scarlet or the room Library is the weapon candlestick
+	The suspect Scarlet is the weapon candlestick
+	The weapon rope was not the room Library
+	Either the suspect White or the room Greenhouse is the weapon candlestick
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [79][2][0])
+	Either the suspect Scarlet is the weapon lead pipe or the suspect White is the room Library
+	Either the suspect White is the weapon lead pipe or the suspect Scarlet is the room Salon
+	Either the suspect Scarlet or the suspect White is the room Greenhouse
+	Either the suspect Plum or the weapon candlestick is the room Greenhouse
+	The weapon rope is the room Salon
+	Either the suspect Plum is the weapon candlestick or the suspect Plum is the weapon rope
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [80][1][0])
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+	Either the suspect Plum is the weapon candlestick or the suspect Plum is the room Salon
+	Either the suspect White or the room Greenhouse is the weapon candlestick
+	The weapon lead pipe is the room Library
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [80][2][0])
+	Either the suspect Scarlet or the room Library is the weapon candlestick
+	The suspect Plum is the room Salon
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+	Either the suspect Plum is the room Greenhouse or the suspect Plum is the room Salon
+	Either the suspect Scarlet is the weapon rope or the weapon lead pipe is the room Library
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,OPENING, 1 loops, 0th child (grid cell [81][1][0])
+	The weapon lead pipe is the room Library
+	The suspect Plum was not the room Greenhouse
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the room Greenhouse
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+	The weapon candlestick was not the room Salon
+	The suspect Plum was not the weapon lead pipe
+	The suspect Scarlet was not the weapon lead pipe
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [82][2][0])
+	Either the suspect White is the room Library or the weapon rope is the room Greenhouse
+	Either the weapon candlestick or the weapon lead pipe is the room Greenhouse
+	Either the suspect Plum or the room Greenhouse is the weapon candlestick
+	The suspect Plum was not the weapon lead pipe
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the room Salon
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 3 loops, 0th child (grid cell [82][3][0])
+	The suspect Plum was not the weapon lead pipe
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the room Salon
+	Either the suspect Scarlet is the room Salon or the weapon lead pipe is the room Library
+	Either the room Greenhouse or the room Library is the suspect Scarlet
+	Either the suspect Plum or the room Greenhouse is the weapon candlestick
+	Either the suspect Plum or the weapon candlestick is the room Greenhouse
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 1 loops, 0th child (grid cell [83][1][0])
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+	The weapon lead pipe is the room Library
+	Either the suspect Scarlet is the weapon lead pipe or the weapon lead pipe is the room Library
+	Either the weapon rope or the room Greenhouse is the suspect Scarlet
+	The suspect White was not the room Salon
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the room Greenhouse
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 2 loops, 0th child (grid cell [83][2][0])
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+	The suspect Plum is the room Salon
+	The suspect White was not the weapon rope
+	Either the suspect White or the room Greenhouse is the weapon candlestick
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT, 2 loops, 0th child (grid cell [84][2][0])
+	Either the suspect Plum is the room Salon or the suspect White is the room Greenhouse
+	The suspect Plum was not the weapon lead pipe
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon candlestick
+	Either the suspect Scarlet is the room Greenhouse or the suspect Plum is the room Library
+	The weapon lead pipe is the room Library
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+	Either the suspect Scarlet is the room Greenhouse or the suspect Plum is the room Greenhouse
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the weapon lead pipe
+
+
+Hints for insight set APPLY_NOT,OPENING, 1 loops, 0th child (grid cell [85][1][0])
+	The weapon lead pipe is the room Library
+	The suspect Plum was not the room Greenhouse
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the room Greenhouse
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+	The weapon candlestick was not the room Salon
+	The suspect Plum was not the weapon lead pipe
+	The suspect Scarlet was not the weapon lead pipe
+	Either the suspect White is the weapon lead pipe or the weapon lead pipe is the room Salon
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,OPENING,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 1 loops, 0th child (grid cell [86][1][0])
+	The suspect Plum was not the weapon lead pipe
+	The weapon candlestick was not the room Salon
+	Either the weapon candlestick or the room Library is the suspect Scarlet
+	The suspect Plum was not the room Greenhouse
+	Either the suspect Plum is the weapon rope or the suspect Plum is the room Library
+	Either the suspect White is the weapon lead pipe or the weapon lead pipe is the room Salon
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,SIMPLE_OR_SAME_CAT,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [87][2][0])
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the room Library
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the room Salon
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+	The weapon rope is the room Salon
+	Either the suspect White is the weapon lead pipe or the suspect Scarlet is the room Library
+	Either the weapon rope or the room Greenhouse is the suspect Scarlet
+
+
+Hints for insight set APPLY_NOT,CROSS_OUT,OPENING,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [88][1][0])
+	The weapon lead pipe is the room Library
+	The suspect Plum was not the room Greenhouse
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+	The weapon candlestick was not the room Salon
+	The suspect Plum was not the weapon lead pipe
+	The suspect Scarlet was not the weapon lead pipe
+	Either the suspect White is the weapon lead pipe or the weapon lead pipe is the room Salon
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,SIMPLE_OR_DIFF_CAT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 2 loops, 0th child (grid cell [89][2][0])
+	Either the suspect Plum is the room Greenhouse or the weapon rope is the room Salon
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+	Either the weapon lead pipe or the room Greenhouse is the suspect Scarlet
+	The weapon rope was not the room Greenhouse
+	Either the suspect Plum is the room Salon or the weapon lead pipe is the room Salon
+	Either the suspect Scarlet is the room Library or the weapon lead pipe is the room Library
+	Either the suspect White is the room Library or the weapon rope is the room Library
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [90][2][0])
+	Either the suspect Plum is the room Greenhouse or the weapon rope is the room Salon
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+	Either the weapon lead pipe or the room Greenhouse is the suspect Scarlet
+	The weapon rope was not the room Greenhouse
+	Either the suspect Scarlet is the room Library or the weapon lead pipe is the room Library
+	Either the suspect White is the room Library or the weapon rope is the room Library
+	Either the suspect Plum is the room Salon or the weapon candlestick is the room Library
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [91][1][0])
+	Either the suspect Plum is the room Greenhouse or the weapon rope is the room Salon
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+	Either the weapon lead pipe or the room Greenhouse is the suspect Scarlet
+	The weapon rope was not the room Greenhouse
+	Either the suspect Plum is the room Salon or the weapon lead pipe is the room Salon
+	Either the suspect Scarlet is the room Library or the weapon lead pipe is the room Library
+	Either the suspect White is the room Library or the weapon rope is the room Library
+	Either the suspect Plum is the room Salon or the weapon candlestick is the room Library
+	Either the suspect Plum is the weapon rope or the weapon rope is the room Greenhouse
+	Either the suspect Plum is the room Salon or the suspect White is the room Greenhouse
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [91][2][0])
+	Either the suspect Plum is the room Greenhouse or the weapon rope is the room Salon
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+	Either the weapon lead pipe or the room Greenhouse is the suspect Scarlet
+	The weapon rope was not the room Greenhouse
+	Either the suspect Plum is the room Salon or the weapon lead pipe is the room Salon
+	Either the suspect Scarlet is the room Library or the weapon lead pipe is the room Library
+	Either the suspect White is the room Library or the weapon rope is the room Library
+	Either the suspect Plum is the room Salon or the weapon candlestick is the room Library
+	Either the suspect Plum is the weapon rope or the weapon rope is the room Greenhouse
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [92][2][0])
+	Either the suspect Scarlet or the weapon rope is the room Greenhouse
+	Either the room Greenhouse or the room Library is the weapon candlestick
+	Either the suspect Scarlet or the weapon lead pipe is the room Greenhouse
+	The suspect Plum is the weapon rope
+	Either the suspect Scarlet is the weapon candlestick or the weapon lead pipe is the room Salon
+
+
+Hints for insight set APPLY_NOT,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [93][1][0])
+	The weapon lead pipe is the room Library
+	The suspect Plum was not the room Greenhouse
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+	The weapon candlestick was not the room Salon
+	The suspect Plum was not the weapon lead pipe
+	The suspect Scarlet was not the weapon lead pipe
+	Either the suspect White is the weapon lead pipe or the weapon lead pipe is the room Salon
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon rope
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [94][1][0])
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+	The suspect White was not the weapon rope
+	Either the weapon candlestick or the room Salon is the suspect Scarlet
+	The weapon lead pipe is the room Library
+	Either the suspect Scarlet or the suspect Plum is the room Greenhouse
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_DIFF_CAT,SIMPLE_OR_SAME_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 2 loops, 0th child (grid cell [94][2][0])
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+	The suspect White was not the weapon rope
+	Either the weapon candlestick or the room Salon is the suspect Scarlet
+	The weapon lead pipe is the room Library
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 2 loops, 0th child (grid cell [95][2][0])
+	Either the suspect White is the weapon rope or the weapon candlestick is the room Greenhouse
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon rope
+	The suspect Scarlet was not the weapon lead pipe
+	The weapon rope was not the room Library
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+	Either the suspect White is the weapon lead pipe or the weapon candlestick is the room Library
+	Either the weapon rope is the room Salon or the weapon lead pipe is the room Salon
+	Either the suspect White is the room Library or the weapon rope is the room Library
+
+
+Hints for insight set APPLY_OR,TRANS_ABC_FALSE,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [96][1][0])
+	Either the suspect Scarlet or the weapon lead pipe is the room Greenhouse
+	Either the suspect Scarlet is the weapon lead pipe or the weapon rope is the room Salon
+	The weapon lead pipe was not the room Salon
+	Either the suspect Plum is the weapon rope or the weapon candlestick is the room Library
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+	The suspect Plum is the weapon rope
+	Either the weapon lead pipe is the room Greenhouse or the weapon lead pipe is the room Library
+	Either the suspect Plum is the weapon candlestick or the suspect White is the room Library
+
+
+Hints for insight set OPENING, 1 loops, 0th child (grid cell [97][1][0])
+	The weapon lead pipe is the room Library
+	The suspect Plum was not the room Greenhouse
+	Either the room Greenhouse or the room Salon is the weapon candlestick
+	The weapon candlestick was not the room Salon
+	The suspect Plum was not the weapon lead pipe
+	The suspect Scarlet was not the weapon lead pipe
+	Either the suspect White is the weapon lead pipe or the weapon lead pipe is the room Salon
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon rope
+	Either the suspect Plum is the room Salon or the weapon lead pipe is the room Greenhouse
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_DIFF_CAT,TRANS_ABC_FALSE,TRANS_ABC_TRUE,TRANS_SETS, 3 loops, 0th child (grid cell [98][3][0])
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon candlestick
+	Either the suspect White is the room Library or the weapon candlestick is the room Salon
+	Either the suspect Plum is the room Greenhouse or the suspect White is the room Library
+	Either the suspect Plum or the room Greenhouse is the weapon candlestick
+	Either the suspect White is the weapon lead pipe or the weapon candlestick is the room Library
+	Either the suspect Plum is the weapon lead pipe or the suspect Plum is the room Salon
+
+
+Hints for insight set APPLY_NOT,APPLY_OR, 1 loops, 0th child (grid cell [99][1][0])
+	Either the suspect Plum is the room Salon or the suspect White is the room Greenhouse
+	The suspect Plum was not the weapon lead pipe
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon candlestick
+	Either the suspect Scarlet is the room Greenhouse or the suspect Plum is the room Library
+	The weapon lead pipe is the room Library
+	Either the suspect Scarlet or the room Salon is the weapon candlestick
+	Either the suspect Scarlet is the room Greenhouse or the suspect Plum is the room Greenhouse
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the weapon lead pipe
+	Either the suspect White is the weapon rope or the weapon rope is the room Salon
+	Either the suspect Scarlet or the weapon rope is the room Greenhouse
+
+
+Hints for insight set APPLY_NOT,OPENING,TRANS_ABC_TRUE, 1 loops, 0th child (grid cell [100][1][0])
+	Either the suspect White is the weapon lead pipe or the weapon rope is the room Library
+	The suspect Scarlet was not the weapon lead pipe
+	The suspect Scarlet was not the weapon rope
+	The suspect Plum was not the weapon lead pipe
+	The weapon lead pipe is the room Library
+	Either the suspect Scarlet is the room Greenhouse or the weapon rope is the room Library
+	The suspect Plum was not the room Greenhouse
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR, 1 loops, 0th child (grid cell [101][1][0])
+	The suspect White is the room Library
+	Either the suspect Scarlet is the room Salon or the weapon lead pipe is the room Library
+	Either the suspect White is the room Library or the weapon lead pipe is the room Greenhouse
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the room Salon
+	The weapon lead pipe was not the room Salon
+	Either the suspect Scarlet is the weapon lead pipe or the weapon rope is the room Salon
+	Either the suspect Scarlet is the room Greenhouse or the weapon candlestick is the room Salon
+	Either the weapon candlestick is the room Greenhouse or the weapon rope is the room Library
+
+

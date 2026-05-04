@@ -1,0 +1,886 @@
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [0][1][0])
+	The time 3 is the suspect White
+	The suspect Scarlet is at least 1 time before the suspect White
+	Either the time 2 or the time 3 is the suspect Scarlet
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [0][2][0])
+	Either the time 1 is the suspect Plum or the time 3 is the suspect Scarlet
+	The time 3 was not the suspect Scarlet
+	The suspect Scarlet is 1 times before the suspect White
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 1 loops, 0th child (grid cell [1][1][0])
+	Either the suspect Scarlet or the suspect Plum is the time 1
+	Either the time 1 is the suspect White or the time 2 is the suspect Scarlet
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 2 loops, 0th child (grid cell [1][2][0])
+	Either the time 1 is the suspect Scarlet or the time 3 is the suspect White
+	Either the suspect Plum or the suspect White is the time 1
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 3 loops, 0th child (grid cell [1][3][0])
+	Either the time 2 is the suspect White or the time 3 is the suspect White
+	Either the time 1 is the suspect Scarlet or the time 2 is the suspect Scarlet
+	Either the time 2 or the time 3 is the suspect Scarlet
+
+
+Hints for insight set APPLY_OR,CROSS_OUT, 1 loops, 0th child (grid cell [2][1][0])
+	The time 3 is the suspect White
+	The suspect Scarlet is at least 1 time before the suspect White
+	Either the time 1 is the suspect Plum or the time 3 is the suspect Scarlet
+
+
+Hints for insight set APPLY_OR,CROSS_OUT, 2 loops, 0th child (grid cell [2][2][0])
+	Either the time 1 is the suspect White or the time 2 is the suspect Scarlet
+	Either the suspect Scarlet or the suspect Plum is the time 1
+	The suspect Plum is at least 1 time before the suspect White
+
+
+Hints for insight set APPLY_OR,CROSS_OUT, 3 loops, 0th child (grid cell [2][3][0])
+	Either the time 2 is the suspect Scarlet or the time 3 is the suspect Scarlet
+	Either the time 1 is the suspect White or the time 3 is the suspect White
+	The time 1 was not the suspect White
+	The suspect Plum is at least 1 time before the suspect White
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [3][1][0])
+	The time 2 was not the suspect White
+	Either the time 1 is the suspect Plum or the time 2 is the suspect White
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [3][2][0])
+	Either the time 1 is the suspect Scarlet or the time 3 is the suspect White
+	The time 1 was not the suspect Scarlet
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 3 loops, 0th child (grid cell [3][3][0])
+	Either the time 2 is the suspect Scarlet or the time 3 is the suspect Scarlet
+	Either the time 1 is the suspect White or the time 3 is the suspect White
+	The time 1 was not the suspect White
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_SAME_CAT, 1 loops, 0th child (grid cell [4][1][0])
+	Either the time 1 or the time 2 is the suspect Scarlet
+	Either the suspect Plum or the suspect White is the time 1
+	Either the time 2 is the suspect Plum or the time 3 is the suspect White
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_SAME_CAT, 2 loops, 0th child (grid cell [4][2][0])
+	Either the time 1 is the suspect Scarlet or the time 3 is the suspect White
+	Either the suspect Plum or the suspect White is the time 1
+	Either the time 2 is the suspect Scarlet or the time 3 is the suspect Plum
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_SAME_CAT, 3 loops, 0th child (grid cell [4][3][0])
+	Either the time 2 is the suspect Scarlet or the time 3 is the suspect Scarlet
+	Either the time 1 is the suspect White or the time 3 is the suspect White
+	Either the suspect Scarlet or the suspect Plum is the time 1
+
+
+Hints for insight set APPLY_IS,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [5][1][0])
+	The time 2 is the suspect Scarlet
+	The time 3 is the suspect White
+
+
+Hints for insight set , 1 loops, 0th child (grid cell [6][1][0])
+	The time 3 is the suspect White
+	Either the suspect Plum or the suspect White is the time 1
+	The suspect Scarlet is 1 times before the suspect White
+
+
+Hints for insight set , 2 loops, 0th child (grid cell [6][2][0])
+	The suspect Scarlet is 1 times before the suspect White
+	Either the time 1 is the suspect Plum or the time 3 is the suspect Scarlet
+	The suspect Plum is at least 1 time before the suspect White
+	Either the time 1 or the time 2 is the suspect Scarlet
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT, 1 loops, 0th child (grid cell [7][1][0])
+	The time 2 was not the suspect Plum
+	Either the time 2 is the suspect White or the time 3 is the suspect White
+	Either the suspect Scarlet or the suspect Plum is the time 1
+	Either the time 2 is the suspect Scarlet or the time 2 is the suspect Plum
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT, 2 loops, 0th child (grid cell [7][2][0])
+	The suspect Scarlet is at least 1 time before the suspect White
+	Either the time 1 is the suspect Plum or the time 2 is the suspect Plum
+	Either the time 3 is the suspect Plum or the time 3 is the suspect White
+	The time 2 was not the suspect Plum
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT, 3 loops, 0th child (grid cell [7][3][0])
+	Either the time 1 is the suspect Plum or the time 2 is the suspect Plum
+	Either the time 1 is the suspect Scarlet or the time 2 is the suspect Scarlet
+	Either the time 3 is the suspect Plum or the time 3 is the suspect White
+	The time 1 was not the suspect Scarlet
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [8][1][0])
+	The time 1 is the suspect Plum
+	Either the time 1 is the suspect Plum or the time 2 is the suspect White
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [8][2][0])
+	Either the time 1 is the suspect Plum or the time 2 is the suspect White
+	The time 2 is the suspect Scarlet
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,OPENING, 1 loops, 0th child (grid cell [9][1][0])
+	The time 3 is the suspect White
+	The suspect Scarlet is 1 times before the suspect White
+	The time 2 was not the suspect White
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,OPENING, 2 loops, 0th child (grid cell [9][2][0])
+	The suspect Scarlet is 1 times before the suspect White
+	The time 3 is the suspect White
+	The time 2 was not the suspect White
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_OR,BEFORE_NOINFO,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [10][1][0])
+	Either the time 2 or the time 3 is the suspect Scarlet
+	The suspect Scarlet is 1 times before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_OR,BEFORE_NOINFO,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [10][2][0])
+	Either the time 2 is the suspect Scarlet or the time 3 is the suspect Scarlet
+	The suspect Scarlet is at least 1 time before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_OR,BEFORE_NOINFO,CROSS_OUT,OPENING, 3 loops, 0th child (grid cell [10][3][0])
+	Either the time 2 is the suspect Scarlet or the time 3 is the suspect Scarlet
+	Either the time 3 is the suspect Plum or the time 3 is the suspect White
+	The suspect Plum is at least 1 time before the suspect White
+
+
+Hints for insight set APPLY_OR, 1 loops, 0th child (grid cell [11][1][0])
+	Either the time 2 or the time 3 is the suspect Scarlet
+	Either the time 1 is the suspect Scarlet or the time 3 is the suspect White
+	The suspect Scarlet is 1 times before the suspect White
+	Either the suspect Scarlet or the suspect Plum is the time 1
+
+
+Hints for insight set APPLY_OR, 2 loops, 0th child (grid cell [11][2][0])
+	Either the time 1 is the suspect White or the time 3 is the suspect White
+	Either the suspect Scarlet or the suspect Plum is the time 1
+	The suspect Scarlet is 1 times before the suspect White
+	Either the time 2 is the suspect Scarlet or the time 2 is the suspect White
+
+
+Hints for insight set APPLY_IS,OPENING, 1 loops, 0th child (grid cell [12][1][0])
+	The time 2 is the suspect Scarlet
+	The suspect Scarlet is at least 1 time before the suspect White
+	Either the time 1 is the suspect Scarlet or the time 3 is the suspect White
+
+
+Hints for insight set APPLY_IS,OPENING, 2 loops, 0th child (grid cell [12][2][0])
+	The suspect Scarlet is at least 1 time before the suspect White
+	Either the time 1 is the suspect Scarlet or the time 3 is the suspect White
+	The suspect Scarlet is 1 times before the suspect White
+	The time 3 is the suspect White
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT, 1 loops, 0th child (grid cell [13][1][0])
+	Either the time 1 or the time 2 is the suspect Scarlet
+	The time 3 is the suspect White
+	Either the time 1 is the suspect Plum or the time 3 is the suspect Plum
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT, 2 loops, 0th child (grid cell [13][2][0])
+	Either the time 2 or the time 3 is the suspect Scarlet
+	Either the time 1 is the suspect White or the time 3 is the suspect White
+	The time 1 is the suspect Plum
+
+
+Hints for insight set OPENING, 1 loops, 0th child (grid cell [14][1][0])
+	The time 1 was not the suspect Scarlet
+	The time 3 is the suspect White
+	The suspect Scarlet is 1 times before the suspect White
+
+
+Hints for insight set OPENING, 2 loops, 0th child (grid cell [14][2][0])
+	Either the time 2 is the suspect Scarlet or the time 3 is the suspect Scarlet
+	The suspect Scarlet is 1 times before the suspect White
+	Either the time 1 or the time 2 is the suspect Scarlet
+	The time 3 is the suspect White
+
+
+Hints for insight set APPLY_IS,CROSS_OUT, 1 loops, 0th child (grid cell [15][1][0])
+	Either the time 1 or the time 2 is the suspect Scarlet
+	The suspect Scarlet is at least 1 time before the suspect White
+	The time 1 is the suspect Plum
+
+
+Hints for insight set APPLY_IS,CROSS_OUT, 2 loops, 0th child (grid cell [15][2][0])
+	The suspect Scarlet is 1 times before the suspect White
+	Either the time 2 is the suspect Scarlet or the time 3 is the suspect Plum
+	Either the suspect Scarlet or the suspect Plum is the time 1
+	The time 3 is the suspect White
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_OR, 1 loops, 0th child (grid cell [16][1][0])
+	Either the time 2 or the time 3 is the suspect Scarlet
+	The suspect Scarlet is at least 1 time before the suspect White
+	The suspect Plum is at least 1 time before the suspect White
+	Either the time 1 or the time 2 is the suspect Scarlet
+
+
+Hints for insight set APPLY_IS,APPLY_OR,OPENING, 1 loops, 0th child (grid cell [17][1][0])
+	The time 3 is the suspect White
+	Either the time 1 is the suspect Scarlet or the time 3 is the suspect White
+	The suspect Scarlet is at least 1 time before the suspect White
+
+
+Hints for insight set APPLY_IS,APPLY_OR,OPENING, 2 loops, 0th child (grid cell [17][2][0])
+	Either the time 1 is the suspect Scarlet or the time 3 is the suspect White
+	The suspect Scarlet is at least 1 time before the suspect White
+	The time 3 is the suspect White
+
+
+Hints for insight set CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [18][1][0])
+	The time 2 is the suspect Scarlet
+	The suspect Plum is at least 1 time before the suspect White
+	Either the time 2 is the suspect Scarlet or the time 3 is the suspect Plum
+
+
+Hints for insight set CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [18][2][0])
+	Either the time 2 is the suspect Scarlet or the time 3 is the suspect Scarlet
+	The suspect Scarlet is 1 times before the suspect White
+	The time 3 is the suspect White
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 1 loops, 0th child (grid cell [19][1][0])
+	Either the time 1 or the time 2 is the suspect Scarlet
+	The time 3 was not the suspect Plum
+	Either the suspect Plum or the suspect White is the time 1
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 2 loops, 0th child (grid cell [19][2][0])
+	The time 3 was not the suspect Plum
+	Either the time 1 is the suspect Scarlet or the time 3 is the suspect White
+	Either the time 1 or the time 2 is the suspect Scarlet
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [20][1][0])
+	The time 3 was not the suspect Plum
+	The time 2 is the suspect Scarlet
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_OR,BEFORE_NOINFO,OPENING, 1 loops, 0th child (grid cell [21][1][0])
+	Either the suspect Plum or the suspect White is the time 1
+	Either the time 2 or the time 3 is the suspect Scarlet
+	The suspect Scarlet is at least 1 time before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_OR,BEFORE_NOINFO,OPENING, 2 loops, 0th child (grid cell [21][2][0])
+	The suspect Scarlet is 1 times before the suspect White
+	Either the time 1 is the suspect Scarlet or the time 2 is the suspect Scarlet
+	Either the time 3 is the suspect Scarlet or the time 3 is the suspect White
+
+
+Hints for insight set APPLY_NOT, 1 loops, 0th child (grid cell [22][1][0])
+	The suspect Scarlet is at least 1 time before the suspect White
+	Either the suspect Scarlet or the suspect Plum is the time 1
+	The time 1 was not the suspect Scarlet
+	Either the time 1 is the suspect Scarlet or the time 3 is the suspect White
+
+
+Hints for insight set APPLY_NOT, 2 loops, 0th child (grid cell [22][2][0])
+	Either the time 2 is the suspect Scarlet or the time 2 is the suspect White
+	The suspect Scarlet is 1 times before the suspect White
+	The time 2 was not the suspect White
+	Either the time 1 is the suspect Plum or the time 2 is the suspect Plum
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,OPENING, 1 loops, 0th child (grid cell [23][1][0])
+	Either the time 1 or the time 2 is the suspect Scarlet
+	The time 1 was not the suspect Scarlet
+	Either the time 1 is the suspect Scarlet or the time 3 is the suspect White
+	The time 1 was not the suspect White
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,OPENING, 2 loops, 0th child (grid cell [23][2][0])
+	The time 2 was not the suspect Plum
+	Either the time 1 is the suspect Plum or the time 1 is the suspect White
+	Either the time 1 is the suspect White or the time 2 is the suspect Scarlet
+	The time 2 was not the suspect White
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_NOT,BEFORE_NOINFO,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [24][1][0])
+	The time 3 was not the suspect Plum
+	The suspect Scarlet is 1 times before the suspect White
+	The suspect Scarlet is 1 times before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_NOT,BEFORE_NOINFO,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [24][2][0])
+	The time 3 was not the suspect Plum
+	The suspect Scarlet is 1 times before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_NOT,BEFORE_NOINFO,OPENING, 1 loops, 0th child (grid cell [25][1][0])
+	The time 1 was not the suspect Scarlet
+	The suspect Scarlet is 1 times before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_NOT,BEFORE_NOINFO,OPENING, 2 loops, 0th child (grid cell [25][2][0])
+	The suspect Scarlet is 1 times before the suspect White
+	The time 2 was not the suspect White
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,CROSS_OUT, 1 loops, 0th child (grid cell [26][1][0])
+	The time 3 is the suspect White
+	The suspect Scarlet is 1 times before the suspect White
+	The suspect Plum is at least 1 time before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,CROSS_OUT, 2 loops, 0th child (grid cell [26][2][0])
+	The suspect Scarlet is 1 times before the suspect White
+	The time 3 is the suspect White
+	The suspect Plum is at least 1 time before the suspect White
+
+
+Hints for insight set APPLY_NOT,CROSS_OUT, 1 loops, 0th child (grid cell [27][1][0])
+	Either the time 1 or the time 2 is the suspect Scarlet
+	The suspect Plum is at least 1 time before the suspect White
+	The time 2 was not the suspect Plum
+	The time 3 is the suspect White
+
+
+Hints for insight set APPLY_NOT,CROSS_OUT, 2 loops, 0th child (grid cell [27][2][0])
+	Either the suspect Scarlet or the suspect Plum is the time 1
+	Either the time 2 is the suspect Scarlet or the time 3 is the suspect Plum
+	The suspect Scarlet is 1 times before the suspect White
+	The time 3 was not the suspect Plum
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_OR, 1 loops, 0th child (grid cell [28][1][0])
+	Either the time 2 is the suspect Scarlet or the time 3 is the suspect Scarlet
+	The suspect Scarlet is 1 times before the suspect White
+	The time 3 was not the suspect Scarlet
+	Either the suspect Plum or the suspect White is the time 1
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_OR, 2 loops, 0th child (grid cell [28][2][0])
+	Either the suspect Scarlet or the suspect Plum is the time 1
+	Either the time 1 or the time 2 is the suspect Scarlet
+	The suspect Scarlet is 1 times before the suspect White
+	Either the time 1 is the suspect White or the time 3 is the suspect White
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,BEFORE_NOINFO,OPENING, 1 loops, 0th child (grid cell [29][1][0])
+	The suspect Plum is at least 1 time before the suspect White
+	The time 1 is the suspect Plum
+	The suspect Scarlet is 1 times before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,BEFORE_NOINFO,OPENING, 2 loops, 0th child (grid cell [29][2][0])
+	The suspect Plum is at least 1 time before the suspect White
+	The suspect Scarlet is 1 times before the suspect White
+	Either the time 1 or the time 2 is the suspect Scarlet
+
+
+Hints for insight set APPLY_IS, 1 loops, 0th child (grid cell [30][1][0])
+	The time 2 is the suspect Scarlet
+	The time 1 is the suspect Plum
+	The suspect Scarlet is at least 1 time before the suspect White
+
+
+Hints for insight set APPLY_IS, 2 loops, 0th child (grid cell [30][2][0])
+	The suspect Scarlet is 1 times before the suspect White
+	Either the time 1 is the suspect Plum or the time 3 is the suspect Plum
+	The time 3 is the suspect White
+	Either the time 1 or the time 2 is the suspect Scarlet
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_IS,BEFORE_NOINFO,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [31][1][0])
+	The suspect Plum is at least 1 time before the suspect White
+	The time 2 is the suspect Scarlet
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,BEFORE_NOINFO,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [32][1][0])
+	The suspect Scarlet is 1 times before the suspect White
+	The suspect Plum is at least 1 time before the suspect White
+	Either the time 2 is the suspect Scarlet or the time 3 is the suspect Scarlet
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,BEFORE_NOINFO,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [32][2][0])
+	The suspect Scarlet is 1 times before the suspect White
+	The suspect Plum is at least 1 time before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT, 1 loops, 0th child (grid cell [33][1][0])
+	The time 2 is the suspect Scarlet
+	Either the suspect Plum or the suspect White is the time 1
+	The suspect Scarlet is 1 times before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT, 2 loops, 0th child (grid cell [33][2][0])
+	The suspect Plum is at least 1 time before the suspect White
+	The suspect Scarlet is 1 times before the suspect White
+	The time 3 is the suspect White
+	Either the time 1 or the time 2 is the suspect Scarlet
+
+
+Hints for insight set APPLY_NOT,OPENING, 1 loops, 0th child (grid cell [34][1][0])
+	The suspect Scarlet is 1 times before the suspect White
+	The time 1 was not the suspect Scarlet
+	Either the time 1 is the suspect Scarlet or the time 3 is the suspect White
+
+
+Hints for insight set APPLY_NOT,OPENING, 2 loops, 0th child (grid cell [34][2][0])
+	Either the time 1 or the time 2 is the suspect Scarlet
+	Either the time 2 is the suspect Plum or the time 3 is the suspect White
+	The suspect Scarlet is 1 times before the suspect White
+	The time 3 was not the suspect Plum
+
+
+Hints for insight set CROSS_OUT, 1 loops, 0th child (grid cell [35][1][0])
+	The suspect Scarlet is at least 1 time before the suspect White
+	The time 2 is the suspect Scarlet
+	Either the time 2 or the time 3 is the suspect Scarlet
+	Either the time 1 is the suspect Plum or the time 2 is the suspect Plum
+
+
+Hints for insight set CROSS_OUT, 2 loops, 0th child (grid cell [35][2][0])
+	Either the time 1 is the suspect White or the time 2 is the suspect Scarlet
+	Either the suspect Scarlet or the suspect Plum is the time 1
+	The suspect Scarlet is 1 times before the suspect White
+	The suspect Plum is at least 1 time before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_OR,BEFORE_NOINFO,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 1 loops, 0th child (grid cell [36][1][0])
+	Either the time 2 or the time 3 is the suspect Scarlet
+	The suspect Plum is at least 1 time before the suspect White
+	Either the time 1 is the suspect Plum or the time 2 is the suspect White
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_OR,BEFORE_NOINFO,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 2 loops, 0th child (grid cell [36][2][0])
+	The suspect Plum is at least 1 time before the suspect White
+	Either the time 1 is the suspect Plum or the time 3 is the suspect Scarlet
+	Either the time 2 or the time 3 is the suspect Scarlet
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_NOT,OPENING, 1 loops, 0th child (grid cell [37][1][0])
+	The time 2 was not the suspect White
+	The suspect Scarlet is 1 times before the suspect White
+	Either the time 2 is the suspect White or the time 3 is the suspect White
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_NOT,OPENING, 2 loops, 0th child (grid cell [37][2][0])
+	The suspect Scarlet is 1 times before the suspect White
+	Either the time 1 or the time 2 is the suspect Scarlet
+	The time 3 was not the suspect Plum
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_OR,CROSS_OUT, 1 loops, 0th child (grid cell [38][1][0])
+	Either the suspect Scarlet or the suspect Plum is the time 1
+	Either the time 1 is the suspect White or the time 3 is the suspect White
+	The suspect Scarlet is 1 times before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_OR,CROSS_OUT, 2 loops, 0th child (grid cell [38][2][0])
+	Either the time 1 is the suspect White or the time 3 is the suspect White
+	Either the suspect Scarlet or the suspect Plum is the time 1
+	The suspect Scarlet is 1 times before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_OR,OPENING, 1 loops, 0th child (grid cell [39][1][0])
+	Either the time 2 or the time 3 is the suspect Scarlet
+	Either the time 1 or the time 2 is the suspect Scarlet
+	The suspect Scarlet is at least 1 time before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_OR,OPENING, 2 loops, 0th child (grid cell [39][2][0])
+	Either the time 1 or the time 2 is the suspect Scarlet
+	The suspect Scarlet is at least 1 time before the suspect White
+	Either the time 2 is the suspect Scarlet or the time 3 is the suspect Scarlet
+
+
+Hints for insight set APPLY_NOT,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [40][1][0])
+	The time 3 was not the suspect Plum
+	The time 2 was not the suspect White
+	The time 2 was not the suspect Plum
+
+
+Hints for insight set APPLY_NOT,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [40][2][0])
+	Either the time 2 is the suspect Scarlet or the time 3 is the suspect Plum
+	The suspect Scarlet is 1 times before the suspect White
+	The time 3 was not the suspect Plum
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_NOT,APPLY_OR,BEFORE_NOINFO,OPENING, 1 loops, 0th child (grid cell [41][1][0])
+	The suspect Scarlet is at least 1 time before the suspect White
+	The time 3 was not the suspect Plum
+	Either the time 1 is the suspect Scarlet or the time 3 is the suspect White
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_NOT,APPLY_OR,BEFORE_NOINFO,OPENING, 2 loops, 0th child (grid cell [41][2][0])
+	Either the time 1 is the suspect Scarlet or the time 3 is the suspect White
+	The suspect Scarlet is at least 1 time before the suspect White
+	The time 2 was not the suspect White
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_OR,OPENING, 1 loops, 0th child (grid cell [42][1][0])
+	Either the time 1 is the suspect Scarlet or the time 2 is the suspect Scarlet
+	The suspect Scarlet is 1 times before the suspect White
+	Either the time 2 or the time 3 is the suspect Scarlet
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_OR,OPENING, 2 loops, 0th child (grid cell [42][2][0])
+	Either the time 3 is the suspect Scarlet or the time 3 is the suspect White
+	Either the time 1 or the time 2 is the suspect Scarlet
+	The suspect Scarlet is 1 times before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [43][1][0])
+	The time 3 is the suspect White
+	The suspect Scarlet is 1 times before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [43][2][0])
+	The suspect Scarlet is 1 times before the suspect White
+	The time 3 is the suspect White
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_NOT,APPLY_OR,BEFORE_NOINFO,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [44][1][0])
+	The suspect Plum is at least 1 time before the suspect White
+	Either the time 1 is the suspect White or the time 3 is the suspect White
+	The time 1 was not the suspect Scarlet
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_NOT,APPLY_OR,BEFORE_NOINFO,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [44][2][0])
+	The time 1 was not the suspect Scarlet
+	Either the time 1 is the suspect White or the time 3 is the suspect White
+	The suspect Plum is at least 1 time before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_NOT,OPENING, 1 loops, 0th child (grid cell [45][1][0])
+	The suspect Scarlet is at least 1 time before the suspect White
+	Either the time 1 or the time 2 is the suspect Scarlet
+	The time 1 was not the suspect Scarlet
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [46][1][0])
+	The time 3 was not the suspect Scarlet
+	The suspect Scarlet is at least 1 time before the suspect White
+	Either the suspect Plum or the suspect White is the time 1
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_OR,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [46][2][0])
+	Either the time 2 is the suspect Scarlet or the time 3 is the suspect Scarlet
+	The time 3 was not the suspect Scarlet
+	The suspect Scarlet is at least 1 time before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS,CROSS_OUT, 1 loops, 0th child (grid cell [47][1][0])
+	Either the suspect Scarlet or the suspect Plum is the time 1
+	The time 3 is the suspect White
+	The suspect Scarlet is 1 times before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS,CROSS_OUT, 2 loops, 0th child (grid cell [47][2][0])
+	The suspect Scarlet is 1 times before the suspect White
+	The time 3 is the suspect White
+	Either the time 1 is the suspect Plum or the time 2 is the suspect Plum
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_OR,CROSS_OUT, 1 loops, 0th child (grid cell [48][1][0])
+	The suspect Scarlet is at least 1 time before the suspect White
+	Either the time 1 or the time 2 is the suspect Scarlet
+	Either the suspect Plum or the suspect White is the time 1
+
+
+Hints for insight set APPLY_OR,OPENING, 1 loops, 0th child (grid cell [49][1][0])
+	Either the time 1 is the suspect Scarlet or the time 3 is the suspect White
+	The suspect Scarlet is 1 times before the suspect White
+	Either the time 2 or the time 3 is the suspect Scarlet
+
+
+Hints for insight set APPLY_OR,OPENING, 2 loops, 0th child (grid cell [49][2][0])
+	Either the time 1 is the suspect Scarlet or the time 3 is the suspect White
+	The suspect Scarlet is at least 1 time before the suspect White
+	The time 3 is the suspect White
+	Either the time 3 is the suspect Scarlet or the time 3 is the suspect White
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,OPENING, 1 loops, 0th child (grid cell [50][1][0])
+	The time 1 was not the suspect Scarlet
+	The suspect Scarlet is at least 1 time before the suspect White
+	The time 2 is the suspect Scarlet
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,OPENING, 1 loops, 0th child (grid cell [51][1][0])
+	Either the time 3 is the suspect Plum or the time 3 is the suspect White
+	The time 2 was not the suspect Plum
+	The time 2 was not the suspect White
+	The time 3 is the suspect White
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [52][1][0])
+	The time 2 was not the suspect Plum
+	The suspect Scarlet is at least 1 time before the suspect White
+	Either the time 2 is the suspect Scarlet or the time 2 is the suspect Plum
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [52][2][0])
+	The suspect Scarlet is at least 1 time before the suspect White
+	Either the time 2 is the suspect Scarlet or the time 2 is the suspect Plum
+	The time 2 was not the suspect Plum
+
+
+Hints for insight set APPLY_NOT,APPLY_OR, 1 loops, 0th child (grid cell [53][1][0])
+	Either the time 2 is the suspect Plum or the time 3 is the suspect White
+	The suspect Plum is at least 1 time before the suspect White
+	The time 2 was not the suspect White
+	Either the time 2 is the suspect Scarlet or the time 2 is the suspect White
+
+
+Hints for insight set APPLY_NOT,APPLY_OR, 2 loops, 0th child (grid cell [53][2][0])
+	The suspect Scarlet is at least 1 time before the suspect White
+	Either the time 1 or the time 2 is the suspect Scarlet
+	Either the time 2 is the suspect Scarlet or the time 2 is the suspect Plum
+	The time 2 was not the suspect Plum
+	Either the suspect Scarlet or the suspect Plum is the time 1
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_IS,OPENING, 1 loops, 0th child (grid cell [54][1][0])
+	Either the time 1 or the time 2 is the suspect Scarlet
+	The time 2 is the suspect Scarlet
+	The suspect Scarlet is at least 1 time before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS,OPENING, 1 loops, 0th child (grid cell [55][1][0])
+	The time 2 is the suspect Scarlet
+	Either the time 1 is the suspect Scarlet or the time 2 is the suspect Scarlet
+	The suspect Scarlet is 1 times before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS,OPENING, 2 loops, 0th child (grid cell [55][2][0])
+	The suspect Scarlet is 1 times before the suspect White
+	The time 3 is the suspect White
+	Either the time 1 or the time 2 is the suspect Scarlet
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_IS,CROSS_OUT, 1 loops, 0th child (grid cell [56][1][0])
+	The suspect Scarlet is at least 1 time before the suspect White
+	The time 2 is the suspect Scarlet
+	The suspect Plum is at least 1 time before the suspect White
+
+
+Hints for insight set APPLY_IS,APPLY_OR, 1 loops, 0th child (grid cell [57][1][0])
+	The time 3 is the suspect White
+	Either the time 1 is the suspect Scarlet or the time 3 is the suspect White
+	The suspect Scarlet is at least 1 time before the suspect White
+	Either the suspect Scarlet or the suspect Plum is the time 1
+
+
+Hints for insight set APPLY_IS,APPLY_OR, 2 loops, 0th child (grid cell [57][2][0])
+	Either the time 1 is the suspect Plum or the time 3 is the suspect Scarlet
+	The time 1 is the suspect Plum
+	Either the time 3 is the suspect Scarlet or the time 3 is the suspect White
+	Either the time 2 is the suspect Scarlet or the time 3 is the suspect Scarlet
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_NOT, 1 loops, 0th child (grid cell [58][1][0])
+	The time 2 was not the suspect Plum
+	Either the time 2 is the suspect Scarlet or the time 2 is the suspect Plum
+	The suspect Plum is at least 1 time before the suspect White
+	The suspect Scarlet is at least 1 time before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_IS,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [59][1][0])
+	The time 2 is the suspect Scarlet
+	The suspect Scarlet is at least 1 time before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_IS, 1 loops, 0th child (grid cell [60][1][0])
+	The time 2 is the suspect Scarlet
+	The suspect Scarlet is at least 1 time before the suspect White
+	Either the time 1 or the time 2 is the suspect Scarlet
+	The suspect Plum is at least 1 time before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_NOT,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [61][1][0])
+	The time 3 was not the suspect Plum
+	The time 3 was not the suspect Scarlet
+	The suspect Scarlet is 1 times before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_NOT,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [61][2][0])
+	The time 3 was not the suspect Scarlet
+	The suspect Scarlet is 1 times before the suspect White
+	The time 3 was not the suspect Plum
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_IS,BEFORE_NOINFO,OPENING, 1 loops, 0th child (grid cell [62][1][0])
+	Either the suspect Scarlet or the suspect Plum is the time 1
+	The suspect Scarlet is 1 times before the suspect White
+	The time 1 is the suspect Plum
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [63][1][0])
+	The suspect Scarlet is at least 1 time before the suspect White
+	The time 2 is the suspect Scarlet
+	Either the time 2 or the time 3 is the suspect Scarlet
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS, 1 loops, 0th child (grid cell [64][1][0])
+	The suspect Scarlet is at least 1 time before the suspect White
+	The time 2 is the suspect Scarlet
+	Either the suspect Plum or the suspect White is the time 1
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [65][1][0])
+	Either the time 2 or the time 3 is the suspect Scarlet
+	The time 2 is the suspect Scarlet
+	The suspect Scarlet is 1 times before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [65][2][0])
+	The suspect Scarlet is 1 times before the suspect White
+	The time 3 is the suspect White
+	The time 3 was not the suspect Plum
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,CROSS_OUT, 1 loops, 0th child (grid cell [66][1][0])
+	The suspect Scarlet is at least 1 time before the suspect White
+	The time 2 is the suspect Scarlet
+	Either the time 1 is the suspect Plum or the time 3 is the suspect Plum
+	Either the time 2 or the time 3 is the suspect Scarlet
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [67][1][0])
+	The time 3 was not the suspect Scarlet
+	The suspect Scarlet is 1 times before the suspect White
+	Either the suspect Plum or the suspect White is the time 1
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_OR,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [67][2][0])
+	Either the time 2 is the suspect Scarlet or the time 3 is the suspect Scarlet
+	The suspect Scarlet is 1 times before the suspect White
+	The time 3 was not the suspect Scarlet
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_NOT,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [68][1][0])
+	The time 2 was not the suspect Plum
+	The suspect Scarlet is at least 1 time before the suspect White
+	The time 2 was not the suspect White
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS, 1 loops, 0th child (grid cell [69][1][0])
+	Either the suspect Scarlet or the suspect Plum is the time 1
+	The time 3 is the suspect White
+	Either the time 2 is the suspect White or the time 3 is the suspect White
+	The suspect Scarlet is 1 times before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS, 2 loops, 0th child (grid cell [69][2][0])
+	The suspect Scarlet is 1 times before the suspect White
+	Either the time 1 is the suspect Plum or the time 2 is the suspect Plum
+	The time 3 is the suspect White
+	Either the time 1 is the suspect Scarlet or the time 2 is the suspect Scarlet
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_NOT,APPLY_OR,OPENING, 1 loops, 0th child (grid cell [70][1][0])
+	The suspect Scarlet is at least 1 time before the suspect White
+	Either the time 1 or the time 2 is the suspect Scarlet
+	Either the time 2 is the suspect Scarlet or the time 2 is the suspect Plum
+	The time 2 was not the suspect Plum
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_NOT,APPLY_OR,OPENING, 2 loops, 0th child (grid cell [70][2][0])
+	Either the time 2 is the suspect Scarlet or the time 2 is the suspect Plum
+	The suspect Scarlet is at least 1 time before the suspect White
+	The time 2 was not the suspect Plum
+	Either the time 3 is the suspect Plum or the time 3 is the suspect White
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_NOT,APPLY_OR,CROSS_OUT, 1 loops, 0th child (grid cell [71][1][0])
+	Either the time 1 is the suspect Plum or the time 3 is the suspect Plum
+	The time 2 was not the suspect Plum
+	The suspect Scarlet is at least 1 time before the suspect White
+	Either the time 2 is the suspect Scarlet or the time 2 is the suspect Plum
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_NOT,APPLY_OR,CROSS_OUT, 2 loops, 0th child (grid cell [71][2][0])
+	Either the time 1 is the suspect Plum or the time 3 is the suspect Plum
+	The suspect Scarlet is at least 1 time before the suspect White
+	Either the time 2 is the suspect Scarlet or the time 2 is the suspect Plum
+	The time 2 was not the suspect Plum
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_NOT,CROSS_OUT, 1 loops, 0th child (grid cell [72][1][0])
+	The time 2 was not the suspect Plum
+	The suspect Scarlet is at least 1 time before the suspect White
+	Either the time 2 is the suspect Scarlet or the time 2 is the suspect Plum
+	The time 2 was not the suspect White
+	Either the time 1 is the suspect Plum or the time 3 is the suspect Plum
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [73][1][0])
+	The suspect Scarlet is 1 times before the suspect White
+	The time 2 was not the suspect Plum
+	Either the time 2 is the suspect Scarlet or the time 2 is the suspect Plum
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [73][2][0])
+	The suspect Scarlet is 1 times before the suspect White
+	Either the time 2 is the suspect Scarlet or the time 2 is the suspect Plum
+	The time 2 was not the suspect Plum
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_NOT, 1 loops, 0th child (grid cell [74][1][0])
+	Either the time 1 or the time 2 is the suspect Scarlet
+	Either the suspect Scarlet or the suspect Plum is the time 1
+	Either the time 3 is the suspect Plum or the time 3 is the suspect White
+	The suspect Scarlet is 1 times before the suspect White
+	The time 3 was not the suspect Plum
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_NOT, 2 loops, 0th child (grid cell [74][2][0])
+	Either the time 2 is the suspect Scarlet or the time 2 is the suspect Plum
+	The suspect Scarlet is 1 times before the suspect White
+	Either the time 3 is the suspect Plum or the time 3 is the suspect White
+	Either the suspect Scarlet or the suspect Plum is the time 1
+	The time 3 was not the suspect Plum
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_NOT,APPLY_OR, 1 loops, 0th child (grid cell [75][1][0])
+	Either the time 1 is the suspect Plum or the time 3 is the suspect Plum
+	The time 2 was not the suspect Plum
+	The suspect Scarlet is at least 1 time before the suspect White
+	Either the time 2 is the suspect Scarlet or the time 2 is the suspect Plum
+	Either the time 1 or the time 2 is the suspect Scarlet
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_NOT,APPLY_OR,OPENING, 1 loops, 0th child (grid cell [76][1][0])
+	The time 2 was not the suspect Plum
+	The suspect Scarlet is 1 times before the suspect White
+	Either the time 2 is the suspect Scarlet or the time 2 is the suspect Plum
+	Either the time 2 is the suspect Scarlet or the time 2 is the suspect White
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_NOT,APPLY_OR,OPENING, 2 loops, 0th child (grid cell [76][2][0])
+	The suspect Scarlet is 1 times before the suspect White
+	Either the time 2 is the suspect Scarlet or the time 2 is the suspect Plum
+	Either the time 2 is the suspect Scarlet or the time 2 is the suspect White
+	The time 2 was not the suspect Plum
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_NOT,CROSS_OUT, 1 loops, 0th child (grid cell [77][1][0])
+	The time 3 was not the suspect Plum
+	Either the suspect Scarlet or the suspect Plum is the time 1
+	Either the time 3 is the suspect Plum or the time 3 is the suspect White
+	The suspect Scarlet is 1 times before the suspect White
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_NOT,CROSS_OUT, 2 loops, 0th child (grid cell [77][2][0])
+	The suspect Scarlet is 1 times before the suspect White
+	Either the suspect Scarlet or the suspect Plum is the time 1
+	Either the time 3 is the suspect Plum or the time 3 is the suspect White
+	The time 3 was not the suspect Plum
+
+

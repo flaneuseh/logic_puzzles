@@ -1,0 +1,336 @@
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [0][1][0])
+	The suspect White is the weapon rope
+	Either the suspect Plum is the weapon candlestick or the suspect White is the weapon rope
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [0][2][0])
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the weapon candlestick
+	The suspect White is the weapon rope
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 1 loops, 0th child (grid cell [1][1][0])
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+	Either the suspect Plum is the weapon candlestick or the suspect White is the weapon rope
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 2 loops, 0th child (grid cell [1][2][0])
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the weapon candlestick
+	Either the suspect Scarlet or the suspect Plum is the weapon candlestick
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 3 loops, 0th child (grid cell [1][3][0])
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon rope
+	Either the suspect Scarlet is the weapon candlestick or the suspect Scarlet is the weapon lead pipe
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+
+
+Hints for insight set APPLY_OR,CROSS_OUT, 1 loops, 0th child (grid cell [2][1][0])
+	Either the suspect Scarlet or the suspect Plum is the weapon candlestick
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the weapon candlestick
+	The suspect White is the weapon rope
+
+
+Hints for insight set APPLY_OR,CROSS_OUT, 2 loops, 0th child (grid cell [2][2][0])
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the weapon candlestick
+	The suspect White is the weapon rope
+	Either the suspect Scarlet or the suspect Plum is the weapon candlestick
+
+
+Hints for insight set APPLY_OR,CROSS_OUT, 3 loops, 0th child (grid cell [2][3][0])
+	Either the suspect Plum is the weapon rope or the suspect Plum is the weapon lead pipe
+	Either the suspect Scarlet is the weapon rope or the suspect White is the weapon rope
+	The suspect Scarlet was not the weapon rope
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT, 1 loops, 0th child (grid cell [3][1][0])
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+	The suspect Scarlet was not the weapon rope
+	Either the suspect Plum is the weapon rope or the suspect Plum is the weapon lead pipe
+	Either the suspect White is the weapon candlestick or the suspect White is the weapon rope
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT, 2 loops, 0th child (grid cell [3][2][0])
+	Either the suspect Scarlet is the weapon candlestick or the suspect Scarlet is the weapon lead pipe
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the weapon lead pipe
+	The suspect White was not the weapon lead pipe
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon rope
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT, 3 loops, 0th child (grid cell [3][3][0])
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon rope
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the weapon lead pipe
+	The suspect White was not the weapon lead pipe
+	Either the suspect White is the weapon candlestick or the suspect White is the weapon rope
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [4][1][0])
+	The suspect White was not the weapon lead pipe
+	Either the suspect Scarlet is the weapon candlestick or the suspect White is the weapon lead pipe
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [4][2][0])
+	Either the suspect Scarlet is the weapon candlestick or the suspect White is the weapon lead pipe
+	The suspect White was not the weapon lead pipe
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 3 loops, 0th child (grid cell [4][3][0])
+	Either the suspect Scarlet is the weapon rope or the suspect Plum is the weapon lead pipe
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the weapon lead pipe
+	The suspect White was not the weapon lead pipe
+
+
+Hints for insight set APPLY_IS,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [5][1][0])
+	The suspect Plum is the weapon lead pipe
+	The suspect White is the weapon rope
+
+
+Hints for insight set CROSS_OUT, 1 loops, 0th child (grid cell [6][1][0])
+	Either the suspect Scarlet or the suspect Plum is the weapon candlestick
+	The suspect White is the weapon rope
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the weapon candlestick
+	The suspect Plum is the weapon lead pipe
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [7][1][0])
+	The suspect Scarlet is the weapon candlestick
+	The suspect White was not the weapon lead pipe
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 1 loops, 0th child (grid cell [8][1][0])
+	The suspect White was not the weapon lead pipe
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the weapon candlestick
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 2 loops, 0th child (grid cell [8][2][0])
+	Either the suspect Scarlet is the weapon candlestick or the suspect White is the weapon candlestick
+	The suspect White was not the weapon lead pipe
+	Either the suspect Scarlet or the suspect Plum is the weapon candlestick
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT, 1 loops, 0th child (grid cell [9][1][0])
+	Either the suspect Scarlet is the weapon rope or the suspect Plum is the weapon lead pipe
+	The suspect Scarlet is the weapon candlestick
+	Either the suspect White is the weapon candlestick or the suspect White is the weapon rope
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT, 2 loops, 0th child (grid cell [9][2][0])
+	Either the suspect Plum is the weapon rope or the suspect Plum is the weapon lead pipe
+	Either the suspect Scarlet is the weapon candlestick or the suspect White is the weapon candlestick
+	The suspect White is the weapon rope
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [10][1][0])
+	Either the suspect Scarlet or the suspect Plum is the weapon candlestick
+	The suspect Scarlet is the weapon candlestick
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the weapon candlestick
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [10][2][0])
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the weapon candlestick
+	The suspect Scarlet is the weapon candlestick
+	Either the suspect Scarlet or the suspect Plum is the weapon candlestick
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,OPENING, 3 loops, 0th child (grid cell [10][3][0])
+	Either the suspect Scarlet is the weapon candlestick or the suspect White is the weapon lead pipe
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon candlestick
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+	The suspect Plum was not the weapon candlestick
+
+
+Hints for insight set APPLY_IS,OPENING, 1 loops, 0th child (grid cell [11][1][0])
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+	Either the suspect White is the weapon rope or the suspect White is the weapon lead pipe
+	The suspect White is the weapon rope
+	The suspect Scarlet is the weapon candlestick
+
+
+Hints for insight set APPLY_IS,CROSS_OUT, 1 loops, 0th child (grid cell [12][1][0])
+	The suspect Plum is the weapon lead pipe
+	The suspect White is the weapon rope
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+
+
+Hints for insight set APPLY_OR,OPENING, 1 loops, 0th child (grid cell [13][1][0])
+	The suspect Plum is the weapon lead pipe
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+	The suspect Plum was not the weapon rope
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon rope
+
+
+Hints for insight set APPLY_OR,OPENING, 2 loops, 0th child (grid cell [13][2][0])
+	The suspect Plum was not the weapon candlestick
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon rope
+	The suspect Scarlet is the weapon candlestick
+	Either the suspect Scarlet is the weapon candlestick or the suspect Scarlet is the weapon rope
+	Either the suspect Scarlet or the suspect Plum is the weapon candlestick
+
+
+Hints for insight set APPLY_OR,OPENING, 3 loops, 0th child (grid cell [13][3][0])
+	Either the suspect Scarlet is the weapon candlestick or the suspect White is the weapon lead pipe
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon candlestick
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+	The suspect Plum was not the weapon candlestick
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon rope
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_SAME_CAT, 1 loops, 0th child (grid cell [14][1][0])
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the weapon lead pipe
+	Either the suspect White is the weapon rope or the suspect White is the weapon lead pipe
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_SAME_CAT, 2 loops, 0th child (grid cell [14][2][0])
+	Either the suspect Scarlet is the weapon lead pipe or the suspect Plum is the weapon lead pipe
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon rope
+
+
+Hints for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_SAME_CAT, 3 loops, 0th child (grid cell [14][3][0])
+	Either the suspect Plum is the weapon rope or the suspect Plum is the weapon lead pipe
+	Either the suspect Scarlet is the weapon rope or the suspect White is the weapon rope
+	Either the weapon candlestick or the weapon lead pipe is the suspect Scarlet
+
+
+Hints for insight set OPENING, 1 loops, 0th child (grid cell [15][1][0])
+	The suspect White is the weapon rope
+	The suspect Plum was not the weapon candlestick
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the weapon candlestick
+	The suspect Plum was not the weapon rope
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,OPENING, 1 loops, 0th child (grid cell [16][1][0])
+	Either the suspect Scarlet is the weapon lead pipe or the suspect White is the weapon rope
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+	The suspect White was not the weapon lead pipe
+	The suspect White was not the weapon candlestick
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,OPENING, 2 loops, 0th child (grid cell [16][2][0])
+	The suspect Plum was not the weapon rope
+	Either the suspect Scarlet is the weapon candlestick or the suspect Scarlet is the weapon rope
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon candlestick
+	The suspect Plum was not the weapon candlestick
+
+
+Hints for insight set APPLY_NOT,APPLY_OR,OPENING, 3 loops, 0th child (grid cell [16][3][0])
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon rope
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon candlestick
+	The suspect Plum was not the weapon candlestick
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+
+
+Hints for insight set APPLY_NOT,APPLY_OR, 1 loops, 0th child (grid cell [17][1][0])
+	Either the suspect Scarlet is the weapon rope or the suspect Plum is the weapon lead pipe
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+	The suspect Scarlet was not the weapon rope
+	Either the suspect Scarlet is the weapon rope or the suspect White is the weapon rope
+
+
+Hints for insight set APPLY_NOT,APPLY_OR, 2 loops, 0th child (grid cell [17][2][0])
+	The suspect White was not the weapon candlestick
+	Either the suspect Scarlet is the weapon candlestick or the suspect White is the weapon lead pipe
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the weapon lead pipe
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon rope
+
+
+Hints for insight set APPLY_IS, 1 loops, 0th child (grid cell [18][1][0])
+	The suspect Scarlet is the weapon candlestick
+	The suspect Plum is the weapon lead pipe
+	The suspect White is the weapon rope
+
+
+Hints for insight set CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [19][1][0])
+	The suspect White was not the weapon lead pipe
+	Either the suspect Scarlet is the weapon candlestick or the suspect White is the weapon lead pipe
+	The suspect Scarlet is the weapon candlestick
+
+
+Hints for insight set APPLY_IS,APPLY_OR, 1 loops, 0th child (grid cell [20][1][0])
+	The suspect White was not the weapon candlestick
+	The suspect Scarlet is the weapon candlestick
+	Either the suspect Scarlet is the weapon lead pipe or the suspect White is the weapon rope
+	Either the suspect Scarlet is the weapon candlestick or the suspect White is the weapon lead pipe
+	Either the suspect Plum is the weapon rope or the suspect Plum is the weapon lead pipe
+
+
+Hints for insight set APPLY_IS,APPLY_OR, 2 loops, 0th child (grid cell [20][2][0])
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+	Either the suspect Scarlet is the weapon rope or the suspect Plum is the weapon lead pipe
+	Either the suspect Scarlet is the weapon rope or the suspect White is the weapon rope
+	The suspect Scarlet is the weapon candlestick
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,OPENING, 1 loops, 0th child (grid cell [21][1][0])
+	The suspect Scarlet is the weapon candlestick
+	Either the suspect Scarlet or the suspect Plum is the weapon candlestick
+	Either the suspect Plum is the weapon rope or the suspect White is the weapon rope
+	The suspect Plum was not the weapon rope
+
+
+Hints for insight set APPLY_IS,APPLY_OR,OPENING, 1 loops, 0th child (grid cell [22][1][0])
+	The suspect Scarlet was not the weapon lead pipe
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+	The suspect Scarlet is the weapon candlestick
+	Either the suspect Scarlet is the weapon candlestick or the suspect White is the weapon lead pipe
+
+
+Hints for insight set APPLY_IS,APPLY_OR,OPENING, 2 loops, 0th child (grid cell [22][2][0])
+	The suspect Plum was not the weapon candlestick
+	Either the suspect Scarlet is the weapon candlestick or the suspect Plum is the weapon rope
+	The suspect Scarlet is the weapon candlestick
+	Either the suspect Scarlet is the weapon candlestick or the suspect Scarlet is the weapon rope
+
+
+Hints for insight set APPLY_NOT,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [23][1][0])
+	The suspect Plum was not the weapon rope
+	The suspect White was not the weapon candlestick
+	The suspect Plum was not the weapon candlestick
+
+
+Hints for insight set , 1 loops, 0th child (grid cell [24][1][0])
+	Either the suspect Scarlet or the suspect Plum is the weapon candlestick
+	The suspect White is the weapon rope
+	Either the suspect Plum is the weapon lead pipe or the suspect White is the weapon candlestick
+	The suspect Plum is the weapon lead pipe
+	Either the suspect Scarlet or the suspect White is the weapon candlestick
+
+
+Hints for insight set APPLY_NOT,CROSS_OUT, 1 loops, 0th child (grid cell [25][1][0])
+	The suspect Scarlet was not the weapon rope
+	Either the suspect White is the weapon candlestick or the suspect White is the weapon rope
+	The suspect Plum is the weapon lead pipe
+	Either the suspect Scarlet is the weapon candlestick or the suspect Scarlet is the weapon rope
+
+
+Hints for insight set APPLY_OR, 1 loops, 0th child (grid cell [26][1][0])
+	Either the suspect Plum is the weapon candlestick or the suspect Plum is the weapon lead pipe
+	The suspect Plum was not the weapon candlestick
+	The suspect Scarlet is the weapon candlestick
+	Either the suspect Plum is the weapon candlestick or the suspect White is the weapon rope
+
+
+Hints for insight set APPLY_OR, 2 loops, 0th child (grid cell [26][2][0])
+	Either the suspect Scarlet is the weapon candlestick or the suspect White is the weapon lead pipe
+	The suspect Plum is the weapon lead pipe
+	Either the suspect White is the weapon rope or the suspect White is the weapon lead pipe
+	The suspect White was not the weapon lead pipe
+
+
+Hints for insight set APPLY_NOT,OPENING, 1 loops, 0th child (grid cell [27][1][0])
+	The suspect Scarlet was not the weapon lead pipe
+	The suspect Scarlet was not the weapon rope
+	Either the suspect Scarlet or the suspect Plum is the weapon candlestick
+	The suspect Plum was not the weapon rope
+
+
+Hints for insight set APPLY_NOT, 1 loops, 0th child (grid cell [28][1][0])
+	The suspect Plum is the weapon lead pipe
+	The suspect Scarlet was not the weapon rope
+	Either the suspect Scarlet is the weapon rope or the suspect White is the weapon rope
+	Either the weapon candlestick or the weapon rope is the suspect Scarlet
+
+

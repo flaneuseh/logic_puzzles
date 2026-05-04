@@ -5,8 +5,8 @@ from copy import deepcopy
 
 ultraimport("__dir__/../LogicPuzzles.py", package="main")
 from main.LogicPuzzles import Puzzle, Category, Insight, Solver
-from main.MapEliteGeneration import map_elite_generate
-from main.MapElitesVisualization import write_hint_files
+from SolutionMapEliteGeneration import map_elite_generate
+from SolutionMapElitesVisualization import write_hint_files
 from main.InsightProblems import get_insight_problem
 from main.HintToEnglish import hint_to_english
 from random import shuffle
@@ -99,20 +99,20 @@ if __name__ == "__main__":
     base = "GeneratedInsightProblems"
 
     # Check manually authored "APPLY_NOT" puzzle
-    catABC = Category("ABC", ["A", "B", "C"])
-    cat123 = Category("123", ["1", "2", "3"])
-    hints = [
-        {"is": [catABC, "B", cat123, "1"]},
-        {"not": [{"is": [catABC, "A", cat123, "2"]}]},
-    ]
-    puzzle = Puzzle([catABC, cat123])
-    insight_puzzle, move, err_msg = get_insight_problem(
-        puzzle, hints, Insight.APPLY_NOT
-    )
-    if err_msg != "":
-        print(err_msg)
-    assert err_msg == ""
-    print(insight_puzzle.print_grid())
+    # catABC = Category("ABC", ["A", "B", "C"])
+    # cat123 = Category("123", ["1", "2", "3"])
+    # hints = [
+    #     {"is": [catABC, "B", cat123, "1"]},
+    #     {"not": [{"is": [catABC, "A", cat123, "2"]}]},
+    # ]
+    # puzzle = Puzzle([catABC, cat123])
+    # insight_puzzle, move, err_msg = get_insight_problem(
+    #     puzzle, hints, Insight.APPLY_NOT
+    # )
+    # if err_msg != "":
+    #     print(err_msg)
+    # assert err_msg == ""
+    # print(insight_puzzle.print_grid())
 
     # # Check manually authored "BEFORE_DIFF_CAT" puzzle
     # catABC = Category("ABC", ["A", "B", "C"])
@@ -132,9 +132,7 @@ if __name__ == "__main__":
     # assert err_msg == ""
     # print(insight_puzzle.print_grid())
 
-    # insights = Insight.ALL_INSIGHTS
-    # insights = [Insight.APPLY_NOT, Insight.BEFORE_DIFF_CAT, Insight.TRANS_ABC_FALSE]
-    insights = [Insight.BEFORE_DIFF_CAT]
+    insights = Insight.ALL_INSIGHTS
 
     # TODO: Try other tree structures e.g is -> crossout -> opening
     # TODO: Try other games

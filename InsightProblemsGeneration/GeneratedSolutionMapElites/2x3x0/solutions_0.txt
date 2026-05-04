@@ -1,0 +1,468 @@
+Solution for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [0][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [0][2][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 1 loops, 0th child (grid cell [1][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 2 loops, 0th child (grid cell [1][2][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 3 loops, 0th child (grid cell [1][3][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_OR,CROSS_OUT, 1 loops, 0th child (grid cell [2][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_OR,CROSS_OUT, 2 loops, 0th child (grid cell [2][2][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_OR,CROSS_OUT, 3 loops, 0th child (grid cell [2][3][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_NOT,APPLY_OR,CROSS_OUT, 1 loops, 0th child (grid cell [3][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_NOT,APPLY_OR,CROSS_OUT, 2 loops, 0th child (grid cell [3][2][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_NOT,APPLY_OR,CROSS_OUT, 3 loops, 0th child (grid cell [3][3][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [4][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [4][2][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 3 loops, 0th child (grid cell [4][3][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_IS,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [5][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set CROSS_OUT, 1 loops, 0th child (grid cell [6][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_IS,APPLY_NOT,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [7][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 1 loops, 0th child (grid cell [8][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 2 loops, 0th child (grid cell [8][2][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_IS,APPLY_OR,CROSS_OUT, 1 loops, 0th child (grid cell [9][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_IS,APPLY_OR,CROSS_OUT, 2 loops, 0th child (grid cell [9][2][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [10][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_OR,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [10][2][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_OR,CROSS_OUT,OPENING, 3 loops, 0th child (grid cell [10][3][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_IS,OPENING, 1 loops, 0th child (grid cell [11][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_IS,CROSS_OUT, 1 loops, 0th child (grid cell [12][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_OR,OPENING, 1 loops, 0th child (grid cell [13][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_OR,OPENING, 2 loops, 0th child (grid cell [13][2][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_OR,OPENING, 3 loops, 0th child (grid cell [13][3][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_SAME_CAT, 1 loops, 0th child (grid cell [14][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_SAME_CAT, 2 loops, 0th child (grid cell [14][2][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_OR,CROSS_OUT,SIMPLE_OR_SAME_CAT, 3 loops, 0th child (grid cell [14][3][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set OPENING, 1 loops, 0th child (grid cell [15][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_NOT,APPLY_OR,OPENING, 1 loops, 0th child (grid cell [16][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_NOT,APPLY_OR,OPENING, 2 loops, 0th child (grid cell [16][2][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_NOT,APPLY_OR,OPENING, 3 loops, 0th child (grid cell [16][3][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_NOT,APPLY_OR, 1 loops, 0th child (grid cell [17][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_NOT,APPLY_OR, 2 loops, 0th child (grid cell [17][2][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_IS, 1 loops, 0th child (grid cell [18][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [19][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_IS,APPLY_OR, 1 loops, 0th child (grid cell [20][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_IS,APPLY_OR, 2 loops, 0th child (grid cell [20][2][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_IS,APPLY_NOT,OPENING, 1 loops, 0th child (grid cell [21][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_IS,APPLY_OR,OPENING, 1 loops, 0th child (grid cell [22][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_IS,APPLY_OR,OPENING, 2 loops, 0th child (grid cell [22][2][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_NOT,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [23][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set , 1 loops, 0th child (grid cell [24][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_NOT,CROSS_OUT, 1 loops, 0th child (grid cell [25][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_OR, 1 loops, 0th child (grid cell [26][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_OR, 2 loops, 0th child (grid cell [26][2][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_NOT,OPENING, 1 loops, 0th child (grid cell [27][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+
+Solution for insight set APPLY_NOT, 1 loops, 0th child (grid cell [28][1][0])
+      Sca  Plu  Whi
+    ---------------
+can|  O    X    X  |
+rop|  X    X    O  |
+lea|  X    O    X  |
+    ---------------
+
+

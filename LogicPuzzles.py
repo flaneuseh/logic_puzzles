@@ -1149,10 +1149,6 @@ class Grammar:
 #
 class Solver:
     def __init__(self, forbidden_insights=set(), allow_uncertain_moves=False):
-        expanded_forbidden_insights = set()
-        for insight in forbidden_insights:
-            # If an insight is forbidden, forbid its children as well; don't allow a more complex insight to get around the need for a simple one.
-            expanded_forbidden_insights.update(insight.sub_dag())
         self.forbidden_insights = forbidden_insights
         self.allow_uncertain_moves = allow_uncertain_moves
         return
@@ -2252,9 +2248,41 @@ class Solver:
                     print(move_diff.print_grid())
 
         return copy, is_valid, loop
+    
+    def unmissable_insights(self, puzzle, hints):
+        solver = Solver()
+        if not solver.can_solve_without_forbidden(puzzle, hints):
+            # The puzzle is incomplete; checking insight needs doesn't make any sense.
+            return set()
+
+        unmissables = set()
+        all_insights = list(Insight.ALL_INSIGHTS)
+        all_insights.sort(reverse=True)
+        for insight in all_insights:
+            # An insight is also unmissable if the puzzle is unsolvable without its subdag,
+            # excluding those insights in its subdag that are already unmissable.
+            forbidden = insight.sub_dag() - unmissables
+            solver = Solver(forbidden)
+            can_solve_without = solver.can_solve_without_forbidden(
+                puzzle, hints
+            )
+            if not can_solve_without:
+                unmissables.add(insight)
+
+        return unmissables
+
+    def can_solve_without(self, puzzle, hints, forbidden):
+        forbidden_solver = Solver(forbidden)
+        completed_puzzle, is_valid = forbidden_solver.fast_forward(puzzle, hints)
+        return completed_puzzle.is_complete() and is_valid
 
     def can_solve_without_forbidden(self, puzzle, hints):
-        completed_puzzle, is_valid = self.fast_forward(puzzle, hints)
+        expanded_forbidden_insights = set()
+        for insight in self.forbidden_insights:
+            # If an insight is forbidden, forbid its children as well; don't allow a more complex insight to get around the need for a simple one.
+            expanded_forbidden_insights.update(insight.sub_dag())
+        forbidden_solver = Solver(expanded_forbidden_insights)
+        completed_puzzle, is_valid = forbidden_solver.fast_forward(puzzle, hints)
         return completed_puzzle.is_complete() and is_valid
 
 

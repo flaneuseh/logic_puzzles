@@ -15,9 +15,19 @@ def category_to_json(cat):
 def hintset_to_json(hintset, id):
     di = {}
 
-    di["solution"] = hintset.completed_puzzle.print_grid_small()
-    di["categories"] = [category_to_json(cat) for cat in hintset.completed_puzzle.categories]
-    di["hints"] = [hint_to_english(hint) for hint in hintset.hints]
+    applied_puzzle = None
+    if hasattr(hintset, "applied_puzzle"):
+        applied_puzzle = hintset.applied_puzzle
+    else:
+        applied_puzzle = hintset.completed_puzzle
+    di["solution"] = applied_puzzle.print_grid_small()
+    di["categories"] = [category_to_json(cat) for cat in applied_puzzle.categories]
+    clues = []
+    if hasattr(hintset, "hints"):
+        clues = hintset.hints
+    else:
+        clues = hintset.clues()
+    di["hints"] = [hint_to_english(hint) for hint in clues]
     di["id"] = id 
 
     return di
