@@ -4,9 +4,11 @@ from itertools import permutations
 from collections import deque
 import jsons
 import os.path
+from pathlib import Path
 
 ultraimport("__dir__/../LogicPuzzles.py", package="main")
 from main.LogicPuzzles import Grammar, Puzzle, Category, Solver
+from util import get_puzzle_for_dimensions
 SOLVER = Solver()
 
 class ExtGenerator():
@@ -427,7 +429,7 @@ def ext_gen_cluesets__it_deep(puzzle, clues, idx_file, valid_cluesets=[], max_de
             child.append(j)
             queue.append((child, post_clues, num_unused_hints))
 
-def ext_gen_cluesets__bfs(puzzle, clues, idx_file, valid_cluesets=[], max_depth=20):
+def ext_gen_cluesets__bfs(puzzle, clues, idx_filepath, valid_cluesets=[], max_depth=20):
     queue = deque()
     N = len(clues)
     depth = 1
@@ -487,7 +489,7 @@ def ext_gen_cluesets__bfs(puzzle, clues, idx_file, valid_cluesets=[], max_depth=
                 # Found a complete set; no need to explore this branch further.
                 valid_cluesets.append(candidate_idx)
                 with open(idx_filepath, "w") as idx_file:
-                    idx_file.write(f"{jsons.dumps(valid_cluesets)},")
+                    idx_file.write(jsons.dumps(valid_cluesets, verbose=True))
                 continue
             if num_unused_hints > 2:
                 # We've added 3 consecutive hints without making any marks, consider this a dead branch.
@@ -504,102 +506,98 @@ def ext_gen_cluesets__bfs(puzzle, clues, idx_file, valid_cluesets=[], max_depth=
             child.append(j)
             queue.append((child, post_clues, num_unused_hints))
 
+def generate_cluesets(categories, size, include_only=[], include_except=[]):
+    (cat_cnt, ent_cnt, num_cnt) = size
+    puzzle = get_puzzle_for_dimensions(categories, cat_cnt, ent_cnt, num_cnt)
+    clue_type_name = "all_clues"
+    if len(include_only) > 0:
+        clue_type_name = "only_"
+        for clue_type in include_only:
+            clue_type_name += f"_{clue_type}"
+    elif len(include_except) > 0:
+        clue_type_name = "except_"
+        for clue_type in include_except:
+            clue_type_name += f"_{clue_type}"
+    
+    folder = f"ExhaustiveGeneration/isnot/{cat_cnt}x{ent_cnt}x{num_cnt}/{clue_type_name}"
+    Path(folder).mkdir(parents=True, exist_ok=True)
 
-if __name__ == "__main__":
-    # time = Category("time", ["1:00", "2:00", "3:00", "4:00", "5:00", "6:00"], True)
-    time = Category("time", ["1:00", "2:00", "3:00", "4:00"], True)
-    # time = Category("time", ["1:00", "2:00", "3:00"], True)
-    # suspect = Category(
-    #     "suspect",
-    #     [
-    #         "Scarlet",
-    #         "Plum",
-    #         "White",
-    #         "Mustard",
-    #         "Peacock",
-    #         "Green",
-    #     ],
-    # )
-    suspect = Category(
-        "suspect",
-        [
-            "Scarlet",
-            "Plum",
-            "Peacock",
-            "Green",
-        ],
-    )
-    # suspect = Category(
-    #     "suspect",
-    #     [
-    #         "Scarlet",
-    #         "Plum",
-    #         "Peacock",
-    #     ],
-    # )
-    # weapon = Category(
-    #     "weapon", ["candlestick", "rope", "lead pipe", "revolver", "poison", "polearm"]
-    # )
-    weapon = Category(
-        "weapon", ["candlestick", "rope", "lead pipe", "revolver"]
-    )
-    # room = Category(
-    #     "room", ["Greenhouse", "Library", "Salon", "Dining Room", "Kitchen", "Bedroom"]
-    # )
-    room = Category(
-        "room", ["Greenhouse", "Library", "Salon", "Dining Room"]
-    )
-    categories = [time, suspect]
-    puzzle = Puzzle(categories)
     clues_by_type = ExtGenerator.generate_nonredundant_clues(puzzle)
     for clue_type, clues in clues_by_type.items():
         print(f"{clue_type}: {len(clues)} clues found for {len(categories)} x {len(categories[0].entities)} puzzle")
+    
     solutions = ExtGenerator.generate_all_solutions(puzzle)
-    # for soln in solutions:
-    #     print(soln.print_grid())
     print(f"{len(solutions)} solutions found for {len(categories)} x {len(categories[0].entities)} puzzle")
     soln_clues_dict = ExtGenerator.generate_solution_clues_dict(clues_by_type, solutions)
-    # print(soln_clues_dict)
-    # for i, clues_by_type in enumerate(soln_clues_dict.values()):
-    #     for clue_type, clues in clues_by_type.items():
-    #         print(f"{len(clues)} {clue_type} clues found for solution {i}")
     print("Per solution: ")
     all_clues = []
     soln_clues_by_type = list(soln_clues_dict.values())[0]
     for clue_type, clues in soln_clues_by_type.items():
         print(f"   {len(clues)} {clue_type} clues")
-        if clue_type != "compound_or":
-            # compound or doubles the number of clues, which is significant in an exponential operation
+        if len(include_only) > 0:
+            if clue_type in include_only:
+                all_clues.extend(clues)
+        elif len(include_except) > 0:
+            if clue_type not in include_except:
+                all_clues.extend(clues)
+        else:
             all_clues.extend(clues)
-    clues_filepath = f"ExhaustiveGeneration/2x4/ordered_clues.json"
+    clues_filepath = f"{folder}/ordered_clues.json"
     with open(clues_filepath, "w") as clues_file:
         clues_file.write(jsons.dumps(all_clues, verbose=True))
 
     with open(clues_filepath, "r") as clues_file:
         clues_json = clues_file.read()
         all_clues = jsons.loads(clues_json)
-        
-    # idx_filepath = f"ExhaustiveGeneration/2x4/idx.txt"
-    # clues_filepath = f"ExhaustiveGeneration/2x4/clues.txt"
-    # with open(idx_filepath, "w") as idx_file:
-    #     idx_file.write("[")
-    #     with open(clues_filepath, "w") as clues_file:
-    #         clues_file.write("[")
-    num_cats = len(puzzle.categories)
-    num_ents = len(puzzle.categories[0].entities)
-    # Set max depth to the maximum number of non-redundant "not" clues, 
-    # as the "conjectured" maximum number of non-redundant and solvable clues.
-    # (because it is theoretically possible to have a long list of clues that is not ultimately solvable, due to the fact that our solver doesn't check multiple clues at once)+
     
     cluesets_so_far = []
-    idx_filepath = f"ExhaustiveGeneration/2x4/idx.json"
+    idx_filepath = f"{folder}/idx.json"
     if os.path.isfile(idx_filepath):
         with open(idx_filepath, "r") as idx_file:
             idx_json = idx_file.read()
             cluesets_so_far = jsons.loads(idx_json)
     max_nots = 0
-    for i in range(num_ents):
+    for i in range(ent_cnt):
         max_nots += i
-    max_nots *= (num_cats - 1)
+    max_nots *= (cat_cnt - 1)
     print(f"Using maximum depth of {max_nots} (maximum non-redundant NOT clues)")
-    ext_gen_cluesets(puzzle, all_clues, idx_filepath, cluesets_so_far, max_nots)
+    ext_gen_cluesets__bfs(puzzle, all_clues, idx_filepath, cluesets_so_far, max_nots)
+
+    idx_cluesets = []
+    with open(idx_filepath, "r") as idx_file:
+        idx_json = idx_file.read()
+        idx_cluesets = jsons.loads(idx_json)
+
+    full_cluesets = []
+    for idx_clueset in idx_cluesets:
+        full_clueset = []
+        for idx in idx_clueset:
+            full_clueset.append(all_clues[idx])
+        full_cluesets.append(full_clueset)
+    clueset_filepath = f"{folder}/cluesets.json"
+    with open(clueset_filepath, "w") as clueset_file:
+        clueset_file.write(jsons.dumps(full_cluesets, verbose=True))
+    
+
+if __name__ == "__main__":
+    time = Category("time", ["1:00", "2:00", "3:00", "4:00", "5:00", "6:00"], True)
+    suspect = Category(
+        "suspect",
+        [
+            "Scarlet",
+            "Plum",
+            "White",
+            "Mustard",
+            "Peacock",
+            "Green",
+        ],
+    )
+    weapon = Category(
+        "weapon", ["candlestick", "rope", "lead pipe", "revolver", "poison", "polearm"]
+    )
+    room = Category(
+        "room", ["Greenhouse", "Library", "Salon", "Dining Room", "Kitchen", "Bedroom"]
+    )
+    categories = [suspect, weapon, time, room]
+    
+    generate_cluesets(categories, (2, 3, 0), include_only=["is", "not"])
