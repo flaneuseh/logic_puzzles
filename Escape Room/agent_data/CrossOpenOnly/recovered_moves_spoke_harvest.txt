@@ -1,0 +1,501 @@
+Puzzle:
+      30  60  90  120
+    --------------------
+Pot|  *    *    *    *  |
+Gre|  *    *    *    *  |
+Egg|  *    *    *    *  |
+Bro|  *    *    *    *  |
+    --------------------
+Hints:
+0. The plant Eggplant is the days 60 
+1. The plant Green Onions is at least 1 days before the plant Eggplant 
+2. Either the plant Green Onions or the plant Potatoes is the days 120 
+
+User Move 1 (correct):       30  60  90  120
+    --------------------
+Pot|  X    *    *    *  |
+Gre|  *    *    *    *  |
+Egg|  *    *    *    *  |
+Bro|  *    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((plant, days, 'Eggplant', '60'), 'O'):0:APPLY_IS
+(loc? False) ((plant, days, 'Green Onions', '30'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '60'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '90'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '120'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '30'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '60'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '90'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '120'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '120'), 'Y'):2:APPLY_OR
+(loc? False) ((plant, days, 'Potatoes', '120'), 'Y'):2:APPLY_OR
+(loc? False) ((plant, days, 'Eggplant', '120'), 'X'):2:SIMPLE_OR_SAME_CAT
+(loc? False) ((plant, days, 'Broccoli', '120'), 'X'):2:SIMPLE_OR_SAME_CAT
+      30  60  90  120
+    --------------------
+Pot|  X    *    *    *  |
+Gre|  *    *    *    *  |
+Egg|  *    *    *    *  |
+Bro|  *    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: unknown (unknown) - None
+Likely Reasoning: unknown-correct:days:plant:30:Potatoes:X (unknown-correct)
+
+
+User Move 2 (incorrect):       30  60  90  120
+    --------------------
+Pot|  X    *    *    *  |
+Gre|  *    *    *    *  |
+Egg|  *    X    *    *  |
+Bro|  *    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((plant, days, 'Eggplant', '60'), 'O'):0:APPLY_IS
+(loc? False) ((plant, days, 'Green Onions', '30'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '60'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '90'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '120'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '30'), 'X'):1:BEFORE_NOINFO
+(loc? True) ((plant, days, 'Eggplant', '60'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '90'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '120'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '120'), 'Y'):2:APPLY_OR
+(loc? False) ((plant, days, 'Potatoes', '120'), 'Y'):2:APPLY_OR
+(loc? False) ((plant, days, 'Eggplant', '120'), 'X'):2:SIMPLE_OR_SAME_CAT
+(loc? False) ((plant, days, 'Broccoli', '120'), 'X'):2:SIMPLE_OR_SAME_CAT
+      30  60  90  120
+    --------------------
+Pot|  x    *    *    *  |
+Gre|  *    *    *    *  |
+Egg|  *    X    *    *  |
+Bro|  *    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: hint (contradiction) (violation of APPLY_IS) - "The plant Eggplant is the days 60" - None
+Likely Reasoning: unknown-incorrect:plant:days:Eggplant:60:X (unknown-incorrect)
+
+
+User Move 3 (correct):       30  60  90  120
+    --------------------
+Pot|  X    *    *    *  |
+Gre|  *    *    *    *  |
+Egg|  *    X    *    X  |
+Bro|  *    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((plant, days, 'Eggplant', '60'), 'O'):0:APPLY_IS
+(loc? False) ((plant, days, 'Green Onions', '30'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '60'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '90'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '120'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '30'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '90'), 'Y'):1:BEFORE_NOINFO
+(loc? True) ((plant, days, 'Eggplant', '120'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '120'), 'Y'):2:APPLY_OR
+(loc? False) ((plant, days, 'Potatoes', '120'), 'Y'):2:APPLY_OR
+(loc? True) ((plant, days, 'Eggplant', '120'), 'X'):2:SIMPLE_OR_SAME_CAT
+(loc? False) ((plant, days, 'Broccoli', '120'), 'X'):2:SIMPLE_OR_SAME_CAT
+      30  60  90  120
+    --------------------
+Pot|  x    *    *    *  |
+Gre|  *    *    *    *  |
+Egg|  *    x    *    X  |
+Bro|  *    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: hint - "Either the plant Green Onions or the plant Potatoes is the days 120" - SIMPLE_OR_SAME_CAT
+Likely Reasoning: hint:Either the plant Green Onions or the plant Potatoes is the days 120:SIMPLE_OR_SAME_CAT (insight)
+
+
+User Move 4 (correct):       30  60  90  120
+    --------------------
+Pot|  X    *    *    *  |
+Gre|  *    *    X    *  |
+Egg|  *    X    *    X  |
+Bro|  *    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((plant, days, 'Eggplant', '60'), 'O'):0:APPLY_IS
+(loc? False) ((plant, days, 'Green Onions', '30'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '60'), 'Y'):1:BEFORE_NOINFO
+(loc? True) ((plant, days, 'Green Onions', '90'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '120'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '30'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '90'), 'Y'):1:BEFORE_NOINFO
+(loc? True) ((plant, days, 'Green Onions', '90'), 'X'):1:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plant, days, 'Green Onions', '120'), 'Y'):2:APPLY_OR
+(loc? False) ((plant, days, 'Potatoes', '120'), 'Y'):2:APPLY_OR
+(loc? False) ((plant, days, 'Broccoli', '120'), 'X'):2:SIMPLE_OR_SAME_CAT
+      30  60  90  120
+    --------------------
+Pot|  x    *    *    *  |
+Gre|  *    *    X    *  |
+Egg|  *    x    *    x  |
+Bro|  *    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: hint - "The plant Green Onions is at least 1 days before the plant Eggplant" - BEFORE_N_SPOTS_SHIFT
+Likely Reasoning: hint:The plant Green Onions is at least 1 days before the plant Eggplant:BEFORE_N_SPOTS_SHIFT (insight)
+
+
+User Move 5 (correct):       30  60  90  120
+    --------------------
+Pot|  X    *    *    *  |
+Gre|  *    X    X    *  |
+Egg|  *    X    *    X  |
+Bro|  *    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((plant, days, 'Eggplant', '60'), 'O'):0:APPLY_IS
+(loc? False) ((plant, days, 'Green Onions', '30'), 'Y'):1:BEFORE_NOINFO
+(loc? True) ((plant, days, 'Green Onions', '60'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '120'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '30'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '90'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '120'), 'Y'):2:APPLY_OR
+(loc? False) ((plant, days, 'Potatoes', '120'), 'Y'):2:APPLY_OR
+(loc? False) ((plant, days, 'Broccoli', '120'), 'X'):2:SIMPLE_OR_SAME_CAT
+      30  60  90  120
+    --------------------
+Pot|  x    *    *    *  |
+Gre|  *    X    x    *  |
+Egg|  *    x    *    x  |
+Bro|  *    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: unknown (unknown) - None
+Likely Reasoning: unknown-correct:plant:days:Green Onions:60:X (unknown-correct)
+
+
+User Move 6 (correct):       30  60  90  120
+    --------------------
+Pot|  X    *    *    *  |
+Gre|  *    X    X    *  |
+Egg|  *    X    *    X  |
+Bro|  *    X    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((plant, days, 'Eggplant', '60'), 'O'):0:APPLY_IS
+(loc? False) ((plant, days, 'Green Onions', '30'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '120'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '30'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '90'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '120'), 'Y'):2:APPLY_OR
+(loc? False) ((plant, days, 'Potatoes', '120'), 'Y'):2:APPLY_OR
+(loc? False) ((plant, days, 'Broccoli', '120'), 'X'):2:SIMPLE_OR_SAME_CAT
+      30  60  90  120
+    --------------------
+Pot|  x    *    *    *  |
+Gre|  *    x    x    *  |
+Egg|  *    x    *    x  |
+Bro|  *    X    *    *  |
+    --------------------
+Possible Reasonings: 
+1: unknown (unknown) - None
+Likely Reasoning: unknown-correct:days:plant:60:Broccoli:X (unknown-correct)
+
+
+User Move 7 (incorrect):       30  60  90  120
+    --------------------
+Pot|  X    O    *    *  |
+Gre|  *    X    X    *  |
+Egg|  *    X    *    X  |
+Bro|  *    X    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((days, plant, '60', 'Potatoes'), 'O'):-3:OPENING
+(loc? False) ((plant, days, 'Eggplant', '60'), 'O'):0:APPLY_IS
+(loc? False) ((plant, days, 'Green Onions', '30'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '120'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '30'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '90'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '120'), 'Y'):2:APPLY_OR
+(loc? False) ((plant, days, 'Potatoes', '120'), 'Y'):2:APPLY_OR
+(loc? False) ((plant, days, 'Broccoli', '120'), 'X'):2:SIMPLE_OR_SAME_CAT
+      30  60  90  120
+    --------------------
+Pot|  x    O    *    *  |
+Gre|  *    x    x    *  |
+Egg|  *    x    *    x  |
+Bro|  *    x    *    *  |
+    --------------------
+Possible Reasonings: 
+1: transitives - OPENING
+Likely Reasoning: transitives::OPENING (insight)
+
+
+User Move 8 (incorrect):       30  60  90  120
+    --------------------
+Pot|  X    O    *    X  |
+Gre|  *    X    X    *  |
+Egg|  *    X    *    X  |
+Bro|  *    X    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((days, plant, '90', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? True) ((days, plant, '120', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((plant, days, 'Eggplant', '60'), 'O'):0:APPLY_IS
+(loc? False) ((plant, days, 'Green Onions', '30'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '120'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '30'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '90'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '120'), 'Y'):2:APPLY_OR
+(loc? True) ((plant, days, 'Potatoes', '120'), 'Y'):2:APPLY_OR
+(loc? False) ((plant, days, 'Broccoli', '120'), 'X'):2:SIMPLE_OR_SAME_CAT
+(loc? False) ((plant, days, 'Green Onions', '120'), 'O'):2:APPLY_OR
+      30  60  90  120
+    --------------------
+Pot|  x    o    *    X  |
+Gre|  *    x    x    *  |
+Egg|  *    x    *    x  |
+Bro|  *    x    *    *  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 9 (correct):       30  60  90  120
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  *    X    X    *  |
+Egg|  *    X    *    X  |
+Bro|  *    X    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((days, plant, '90', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((plant, days, 'Eggplant', '60'), 'O'):0:APPLY_IS
+(loc? False) ((plant, days, 'Green Onions', '30'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '120'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '30'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '90'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '120'), 'O'):2:APPLY_OR
+(loc? False) ((plant, days, 'Broccoli', '120'), 'X'):2:SIMPLE_OR_SAME_CAT
+      30  60  90  120
+    --------------------
+Pot|  x    o    X    x  |
+Gre|  *    x    x    *  |
+Egg|  *    x    *    x  |
+Bro|  *    x    *    *  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 10 (correct):       30  60  90  120
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  *    X    X    *  |
+Egg|  *    X    X    X  |
+Bro|  *    X    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((plant, days, 'Eggplant', '60'), 'O'):0:APPLY_IS
+(loc? False) ((plant, days, 'Green Onions', '30'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '120'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '30'), 'X'):1:BEFORE_NOINFO
+(loc? True) ((plant, days, 'Eggplant', '90'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '120'), 'O'):2:APPLY_OR
+(loc? False) ((plant, days, 'Broccoli', '120'), 'X'):2:SIMPLE_OR_SAME_CAT
+      30  60  90  120
+    --------------------
+Pot|  x    o    x    x  |
+Gre|  *    x    x    *  |
+Egg|  *    x    X    x  |
+Bro|  *    x    *    *  |
+    --------------------
+Possible Reasonings: 
+1: unknown (unknown) - None
+Likely Reasoning: unknown-correct:days:plant:90:Eggplant:X (unknown-correct)
+
+
+User Move 11 (correct):       30  60  90  120
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  *    X    X    *  |
+Egg|  *    X    X    X  |
+Bro|  *    X    O    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((days, plant, '30', 'Eggplant'), 'O'):-3:OPENING
+(loc? True) ((days, plant, '90', 'Broccoli'), 'O'):-3:OPENING
+(loc? False) ((plant, days, 'Eggplant', '60'), 'O'):0:APPLY_IS
+(loc? False) ((plant, days, 'Green Onions', '30'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '120'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '30'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '30'), 'X'):1:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plant, days, 'Green Onions', '120'), 'O'):2:APPLY_OR
+(loc? False) ((plant, days, 'Broccoli', '120'), 'X'):2:SIMPLE_OR_SAME_CAT
+      30  60  90  120
+    --------------------
+Pot|  x    o    x    x  |
+Gre|  *    x    x    *  |
+Egg|  *    x    x    x  |
+Bro|  *    x    O    *  |
+    --------------------
+Possible Reasonings: 
+1: transitives - OPENING
+Likely Reasoning: transitives::OPENING (insight)
+
+
+User Move 12 (correct):       30  60  90  120
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  *    X    X    *  |
+Egg|  *    X    X    X  |
+Bro|  *    X    O    X  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((days, plant, '30', 'Eggplant'), 'O'):-3:OPENING
+(loc? False) ((days, plant, '30', 'Broccoli'), 'X'):-2:CROSS_OUT
+(loc? True) ((days, plant, '120', 'Broccoli'), 'X'):-2:CROSS_OUT
+(loc? False) ((plant, days, 'Eggplant', '60'), 'O'):0:APPLY_IS
+(loc? False) ((plant, days, 'Green Onions', '30'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '120'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '30'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '30'), 'X'):1:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plant, days, 'Green Onions', '120'), 'O'):2:APPLY_OR
+(loc? True) ((plant, days, 'Broccoli', '120'), 'X'):2:SIMPLE_OR_SAME_CAT
+(loc? False) ((days, plant, '120', 'Green Onions'), 'O'):-3:OPENING
+      30  60  90  120
+    --------------------
+Pot|  x    o    x    x  |
+Gre|  *    x    x    *  |
+Egg|  *    x    x    x  |
+Bro|  *    x    o    X  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+2: hint - "Either the plant Green Onions or the plant Potatoes is the days 120" - SIMPLE_OR_SAME_CAT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 13 (incorrect):       30  60  90  120
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  *    X    X    O  |
+Egg|  *    X    X    X  |
+Bro|  *    X    O    X  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((days, plant, '30', 'Eggplant'), 'O'):-3:OPENING
+(loc? True) ((days, plant, '120', 'Green Onions'), 'O'):-3:OPENING
+(loc? False) ((days, plant, '30', 'Broccoli'), 'X'):-2:CROSS_OUT
+(loc? False) ((plant, days, 'Eggplant', '60'), 'O'):0:APPLY_IS
+(loc? False) ((plant, days, 'Green Onions', '30'), 'Y'):1:BEFORE_NOINFO
+(loc? True) ((plant, days, 'Green Onions', '120'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '30'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '30'), 'X'):1:BEFORE_N_SPOTS_SHIFT
+(loc? True) ((plant, days, 'Green Onions', '120'), 'O'):2:APPLY_OR
+      30  60  90  120
+    --------------------
+Pot|  x    o    x    x  |
+Gre|  *    x    x    O  |
+Egg|  *    x    x    x  |
+Bro|  *    x    o    x  |
+    --------------------
+Possible Reasonings: 
+1: transitives - OPENING
+2: hint (contradiction) (violation of BEFORE_NOINFO) - "The plant Green Onions is at least 1 days before the plant Eggplant" - None
+3: hint - "Either the plant Green Onions or the plant Potatoes is the days 120" - APPLY_OR
+Likely Reasoning: transitives::OPENING (insight)
+
+
+User Move 14 (incorrect):       30  60  90  120
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  X    X    X    O  |
+Egg|  *    X    X    X  |
+Bro|  *    X    O    X  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((days, plant, '30', 'Eggplant'), 'O'):-3:OPENING
+(loc? True) ((days, plant, '30', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((days, plant, '30', 'Broccoli'), 'X'):-2:CROSS_OUT
+(loc? False) ((plant, days, 'Eggplant', '60'), 'O'):0:APPLY_IS
+(loc? True) ((plant, days, 'Green Onions', '30'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Green Onions', '120'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '30'), 'X'):1:BEFORE_NOINFO
+(loc? True) ((plant, days, 'Green Onions', '30'), 'X'):1:BEFORE_N_SPOTS_SHIFT
+      30  60  90  120
+    --------------------
+Pot|  x    o    x    x  |
+Gre|  X    x    x    o  |
+Egg|  *    x    x    x  |
+Bro|  *    x    o    x  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+2: hint - "The plant Green Onions is at least 1 days before the plant Eggplant" - BEFORE_N_SPOTS_SHIFT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 15 (correct):       30  60  90  120
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  X    X    X    O  |
+Egg|  *    X    X    X  |
+Bro|  X    X    O    X  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((days, plant, '30', 'Eggplant'), 'O'):-3:OPENING
+(loc? True) ((days, plant, '30', 'Broccoli'), 'X'):-2:CROSS_OUT
+(loc? False) ((plant, days, 'Eggplant', '60'), 'O'):0:APPLY_IS
+(loc? False) ((plant, days, 'Green Onions', '120'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plant, days, 'Eggplant', '30'), 'X'):1:BEFORE_NOINFO
+      30  60  90  120
+    --------------------
+Pot|  x    o    x    x  |
+Gre|  x    x    x    o  |
+Egg|  *    x    x    x  |
+Bro|  X    x    o    x  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 16 (incorrect):       30  60  90  120
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  X    X    X    O  |
+Egg|  O    X    X    X  |
+Bro|  X    X    O    X  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((days, plant, '30', 'Eggplant'), 'O'):-3:OPENING
+(loc? False) ((plant, days, 'Eggplant', '60'), 'O'):0:APPLY_IS
+(loc? False) ((plant, days, 'Green Onions', '120'), 'X'):1:BEFORE_NOINFO
+(loc? True) ((plant, days, 'Eggplant', '30'), 'X'):1:BEFORE_NOINFO
+      30  60  90  120
+    --------------------
+Pot|  x    o    x    x  |
+Gre|  x    x    x    o  |
+Egg|  O    x    x    x  |
+Bro|  x    x    o    x  |
+    --------------------
+Possible Reasonings: 
+1: transitives - OPENING
+2: hint (contradiction) (violation of BEFORE_NOINFO) - "The plant Green Onions is at least 1 days before the plant Eggplant" - None
+Likely Reasoning: transitives::OPENING (insight)
+
+

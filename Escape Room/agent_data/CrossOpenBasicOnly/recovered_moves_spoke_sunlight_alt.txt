@@ -1,0 +1,629 @@
+Puzzle:
+      2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    *    *    *  |
+Spi|  *    *    *    *  |
+Cau|  *    *    *    *  |
+Pum|  *    *    *    *  |
+    --------------------
+Hints:
+0. Either the plants Pumpkin or the plants Cauliflower is the hours 2hr 
+1. The plants Pumpkin is 1 hourss before the plants Spinach 
+2. The plants Tomato is 2 hourss before the plants Spinach 
+
+User Move 1 (correct):       2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    *    *    *  |
+Spi|  *    X    *    *  |
+Cau|  *    *    *    *  |
+Pum|  *    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((plants, hours, 'Pumpkin', '2hr'), 'Y'):0:APPLY_OR
+(loc? False) ((plants, hours, 'Cauliflower', '2hr'), 'Y'):0:APPLY_OR
+(loc? False) ((plants, hours, 'Tomato', '2hr'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plants, hours, 'Spinach', '2hr'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plants, hours, 'Pumpkin', '2hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '4hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '6hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '8hr'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '2hr'), 'X'):1:BEFORE_NOINFO
+(loc? True) ((plants, hours, 'Spinach', '4hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '8hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '2hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '4hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '6hr'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '8hr'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '2hr'), 'X'):2:BEFORE_NOINFO
+(loc? True) ((plants, hours, 'Spinach', '4hr'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '8hr'), 'Y'):2:BEFORE_NOINFO
+      2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    *    *    *  |
+Spi|  *    X    *    *  |
+Cau|  *    *    *    *  |
+Pum|  *    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: hint - "The plants Tomato is 2 hourss before the plants Spinach" - BEFORE_N_SPOTS_NOINFO
+Likely Reasoning: hint:The plants Tomato is 2 hourss before the plants Spinach:BEFORE_N_SPOTS_NOINFO (insight)
+
+
+User Move 2 (correct):       2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    *    *    *  |
+Spi|  X    X    *    *  |
+Cau|  *    *    *    *  |
+Pum|  *    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((plants, hours, 'Pumpkin', '2hr'), 'Y'):0:APPLY_OR
+(loc? False) ((plants, hours, 'Cauliflower', '2hr'), 'Y'):0:APPLY_OR
+(loc? False) ((plants, hours, 'Tomato', '2hr'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? True) ((plants, hours, 'Spinach', '2hr'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plants, hours, 'Pumpkin', '2hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '4hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '6hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '8hr'), 'X'):1:BEFORE_NOINFO
+(loc? True) ((plants, hours, 'Spinach', '2hr'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '8hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '2hr'), 'X'):1:BEFORE_N_SPOTS_CROSSCHECK
+(loc? False) ((plants, hours, 'Tomato', '2hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '4hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '6hr'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '8hr'), 'X'):2:BEFORE_NOINFO
+(loc? True) ((plants, hours, 'Spinach', '2hr'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '8hr'), 'Y'):2:BEFORE_NOINFO
+      2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    *    *    *  |
+Spi|  X    x    *    *  |
+Cau|  *    *    *    *  |
+Pum|  *    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: hint - "Either the plants Pumpkin or the plants Cauliflower is the hours 2hr" - SIMPLE_OR_SAME_CAT
+2: hint - "The plants Pumpkin is 1 hourss before the plants Spinach" - BEFORE_NOINFO
+3: hint - "The plants Tomato is 2 hourss before the plants Spinach" - BEFORE_NOINFO
+Likely Reasoning: hint:Either the plants Pumpkin or the plants Cauliflower is the hours 2hr:SIMPLE_OR_SAME_CAT (insight)
+
+
+User Move 3 (incorrect):       2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    X    *    *  |
+Spi|  X    X    *    *  |
+Cau|  *    *    *    *  |
+Pum|  *    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((plants, hours, 'Pumpkin', '2hr'), 'Y'):0:APPLY_OR
+(loc? False) ((plants, hours, 'Cauliflower', '2hr'), 'Y'):0:APPLY_OR
+(loc? False) ((plants, hours, 'Tomato', '2hr'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plants, hours, 'Pumpkin', '2hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '4hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '6hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '8hr'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '8hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '2hr'), 'X'):1:BEFORE_N_SPOTS_CROSSCHECK
+(loc? False) ((plants, hours, 'Tomato', '2hr'), 'Y'):2:BEFORE_NOINFO
+(loc? True) ((plants, hours, 'Tomato', '4hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '6hr'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '8hr'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '8hr'), 'Y'):2:BEFORE_NOINFO
+      2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    X    *    *  |
+Spi|  x    x    *    *  |
+Cau|  *    *    *    *  |
+Pum|  *    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: unknown (unknown) - None
+Likely Reasoning: unknown-incorrect:hours:plants:4hr:Tomato:X (unknown-incorrect)
+
+
+User Move 4 (incorrect):       2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    X    *    *  |
+Spi|  X    X    *    *  |
+Cau|  *    *    *    *  |
+Pum|  *    *    *    O  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((plants, hours, 'Pumpkin', '2hr'), 'Y'):0:APPLY_OR
+(loc? False) ((plants, hours, 'Cauliflower', '2hr'), 'Y'):0:APPLY_OR
+(loc? False) ((plants, hours, 'Tomato', '2hr'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plants, hours, 'Pumpkin', '2hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '4hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '6hr'), 'Y'):1:BEFORE_NOINFO
+(loc? True) ((plants, hours, 'Pumpkin', '8hr'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '8hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '2hr'), 'X'):1:BEFORE_N_SPOTS_CROSSCHECK
+(loc? False) ((plants, hours, 'Tomato', '2hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '6hr'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '8hr'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '8hr'), 'Y'):2:BEFORE_NOINFO
+      2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    x    *    *  |
+Spi|  x    x    *    *  |
+Cau|  *    *    *    *  |
+Pum|  *    *    *    O  |
+    --------------------
+Possible Reasonings: 
+1: hint (contradiction) (violation of BEFORE_NOINFO) - "The plants Pumpkin is 1 hourss before the plants Spinach" - None
+Likely Reasoning: unknown-incorrect:hours:plants:8hr:Pumpkin:O (unknown-incorrect)
+
+
+User Move 5 (correct):       2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    X    *    X  |
+Spi|  X    X    *    *  |
+Cau|  *    *    *    *  |
+Pum|  *    *    *    O  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((hours, plants, '2hr', 'Pumpkin'), 'X'):-2:CROSS_OUT
+(loc? False) ((hours, plants, '4hr', 'Pumpkin'), 'X'):-2:CROSS_OUT
+(loc? False) ((hours, plants, '6hr', 'Pumpkin'), 'X'):-2:CROSS_OUT
+(loc? True) ((hours, plants, '8hr', 'Tomato'), 'X'):-2:CROSS_OUT
+(loc? False) ((hours, plants, '8hr', 'Spinach'), 'X'):-2:CROSS_OUT
+(loc? False) ((hours, plants, '8hr', 'Cauliflower'), 'X'):-2:CROSS_OUT
+(loc? False) ((plants, hours, 'Pumpkin', '2hr'), 'Y'):0:APPLY_OR
+(loc? False) ((plants, hours, 'Cauliflower', '2hr'), 'Y'):0:APPLY_OR
+(loc? False) ((plants, hours, 'Tomato', '2hr'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plants, hours, 'Pumpkin', '2hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '4hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '6hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '8hr'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '8hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '2hr'), 'X'):1:BEFORE_N_SPOTS_CROSSCHECK
+(loc? False) ((plants, hours, 'Tomato', '2hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '6hr'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? True) ((plants, hours, 'Tomato', '8hr'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '8hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((hours, plants, '6hr', 'Spinach'), 'O'):-3:OPENING
+(loc? False) ((hours, plants, '4hr', 'Cauliflower'), 'O'):-3:OPENING
+(loc? False) ((plants, hours, 'Cauliflower', '2hr'), 'O'):0:APPLY_OR
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_CROSSCHECK
+      2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    x    *    X  |
+Spi|  x    x    *    *  |
+Cau|  *    *    *    *  |
+Pum|  *    *    *    o  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+2: hint - "The plants Tomato is 2 hourss before the plants Spinach" - BEFORE_NOINFO
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 6 (incorrect):       2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    X    *    X  |
+Spi|  X    X    *    *  |
+Cau|  *    *    *    *  |
+Pum|  *    *    X    O  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((hours, plants, '2hr', 'Pumpkin'), 'X'):-2:CROSS_OUT
+(loc? False) ((hours, plants, '4hr', 'Pumpkin'), 'X'):-2:CROSS_OUT
+(loc? True) ((hours, plants, '6hr', 'Pumpkin'), 'X'):-2:CROSS_OUT
+(loc? False) ((hours, plants, '8hr', 'Spinach'), 'X'):-2:CROSS_OUT
+(loc? False) ((hours, plants, '8hr', 'Cauliflower'), 'X'):-2:CROSS_OUT
+(loc? False) ((plants, hours, 'Pumpkin', '2hr'), 'Y'):0:APPLY_OR
+(loc? False) ((plants, hours, 'Cauliflower', '2hr'), 'Y'):0:APPLY_OR
+(loc? False) ((plants, hours, 'Tomato', '2hr'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plants, hours, 'Pumpkin', '2hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '4hr'), 'Y'):1:BEFORE_NOINFO
+(loc? True) ((plants, hours, 'Pumpkin', '6hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '8hr'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '8hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '2hr'), 'X'):1:BEFORE_N_SPOTS_CROSSCHECK
+(loc? False) ((plants, hours, 'Tomato', '2hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '6hr'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '8hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((hours, plants, '6hr', 'Spinach'), 'O'):-3:OPENING
+(loc? False) ((hours, plants, '4hr', 'Cauliflower'), 'O'):-3:OPENING
+(loc? False) ((plants, hours, 'Cauliflower', '2hr'), 'O'):0:APPLY_OR
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_CROSSCHECK
+      2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    x    *    x  |
+Spi|  x    x    *    *  |
+Cau|  *    *    *    *  |
+Pum|  *    *    X    o  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 7 (correct):       2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    X    *    X  |
+Spi|  X    X    *    *  |
+Cau|  *    *    *    X  |
+Pum|  *    *    X    O  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((hours, plants, '2hr', 'Pumpkin'), 'X'):-2:CROSS_OUT
+(loc? False) ((hours, plants, '4hr', 'Pumpkin'), 'X'):-2:CROSS_OUT
+(loc? False) ((hours, plants, '8hr', 'Spinach'), 'X'):-2:CROSS_OUT
+(loc? True) ((hours, plants, '8hr', 'Cauliflower'), 'X'):-2:CROSS_OUT
+(loc? False) ((plants, hours, 'Pumpkin', '2hr'), 'Y'):0:APPLY_OR
+(loc? False) ((plants, hours, 'Cauliflower', '2hr'), 'Y'):0:APPLY_OR
+(loc? False) ((plants, hours, 'Tomato', '2hr'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plants, hours, 'Pumpkin', '2hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '4hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '8hr'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '8hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '2hr'), 'X'):1:BEFORE_N_SPOTS_CROSSCHECK
+(loc? False) ((plants, hours, 'Tomato', '2hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '6hr'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '8hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((hours, plants, '6hr', 'Spinach'), 'O'):-3:OPENING
+(loc? False) ((hours, plants, '4hr', 'Cauliflower'), 'O'):-3:OPENING
+(loc? False) ((plants, hours, 'Cauliflower', '2hr'), 'O'):0:APPLY_OR
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_CROSSCHECK
+      2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    x    *    x  |
+Spi|  x    x    *    *  |
+Cau|  *    *    *    X  |
+Pum|  *    *    x    o  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 8 (correct):       2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    X    *    X  |
+Spi|  X    X    *    *  |
+Cau|  *    *    *    X  |
+Pum|  X    *    X    O  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((hours, plants, '2hr', 'Pumpkin'), 'X'):-2:CROSS_OUT
+(loc? False) ((hours, plants, '4hr', 'Pumpkin'), 'X'):-2:CROSS_OUT
+(loc? False) ((hours, plants, '8hr', 'Spinach'), 'X'):-2:CROSS_OUT
+(loc? True) ((plants, hours, 'Pumpkin', '2hr'), 'Y'):0:APPLY_OR
+(loc? False) ((plants, hours, 'Cauliflower', '2hr'), 'Y'):0:APPLY_OR
+(loc? False) ((plants, hours, 'Tomato', '2hr'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? True) ((plants, hours, 'Pumpkin', '2hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '4hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '8hr'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '8hr'), 'Y'):1:BEFORE_NOINFO
+(loc? True) ((plants, hours, 'Pumpkin', '2hr'), 'X'):1:BEFORE_N_SPOTS_CROSSCHECK
+(loc? False) ((plants, hours, 'Tomato', '2hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '6hr'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '8hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((hours, plants, '6hr', 'Spinach'), 'O'):-3:OPENING
+(loc? False) ((hours, plants, '4hr', 'Cauliflower'), 'O'):-3:OPENING
+(loc? False) ((plants, hours, 'Cauliflower', '2hr'), 'O'):0:APPLY_OR
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_CROSSCHECK
+      2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    x    *    x  |
+Spi|  x    x    *    *  |
+Cau|  *    *    *    x  |
+Pum|  X    *    x    o  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+2: hint - "The plants Pumpkin is 1 hourss before the plants Spinach" - BEFORE_N_SPOTS_CROSSCHECK
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 9 (incorrect):       2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    X    *    X  |
+Spi|  X    X    *    X  |
+Cau|  *    *    *    X  |
+Pum|  X    *    X    O  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((hours, plants, '4hr', 'Pumpkin'), 'X'):-2:CROSS_OUT
+(loc? True) ((hours, plants, '8hr', 'Spinach'), 'X'):-2:CROSS_OUT
+(loc? False) ((plants, hours, 'Cauliflower', '2hr'), 'O'):0:APPLY_OR
+(loc? False) ((plants, hours, 'Tomato', '2hr'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plants, hours, 'Pumpkin', '4hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '8hr'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'Y'):1:BEFORE_NOINFO
+(loc? True) ((plants, hours, 'Spinach', '8hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '2hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '6hr'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'Y'):2:BEFORE_NOINFO
+(loc? True) ((plants, hours, 'Spinach', '8hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((hours, plants, '6hr', 'Spinach'), 'O'):-3:OPENING
+(loc? False) ((hours, plants, '4hr', 'Cauliflower'), 'O'):-3:OPENING
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_CROSSCHECK
+      2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    x    *    x  |
+Spi|  x    x    *    X  |
+Cau|  *    *    *    x  |
+Pum|  x    *    x    o  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 10 (correct):       2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    X    *    X  |
+Spi|  X    X    *    X  |
+Cau|  O    *    *    X  |
+Pum|  X    *    X    O  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((hours, plants, '6hr', 'Spinach'), 'O'):-3:OPENING
+(loc? False) ((hours, plants, '4hr', 'Pumpkin'), 'X'):-2:CROSS_OUT
+(loc? True) ((plants, hours, 'Cauliflower', '2hr'), 'O'):0:APPLY_OR
+(loc? False) ((plants, hours, 'Tomato', '2hr'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plants, hours, 'Pumpkin', '4hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '8hr'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '2hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '6hr'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((hours, plants, '4hr', 'Cauliflower'), 'O'):-3:OPENING
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_CROSSCHECK
+      2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    x    *    x  |
+Spi|  x    x    *    x  |
+Cau|  O    *    *    x  |
+Pum|  x    *    x    o  |
+    --------------------
+Possible Reasonings: 
+1: hint - "Either the plants Pumpkin or the plants Cauliflower is the hours 2hr" - APPLY_OR
+Likely Reasoning: hint:Either the plants Pumpkin or the plants Cauliflower is the hours 2hr:APPLY_OR (insight)
+
+
+User Move 11 (correct):       2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    X    *    X  |
+Spi|  X    X    *    X  |
+Cau|  O    *    X    X  |
+Pum|  X    *    X    O  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((hours, plants, '6hr', 'Spinach'), 'O'):-3:OPENING
+(loc? False) ((hours, plants, '4hr', 'Cauliflower'), 'X'):-2:CROSS_OUT
+(loc? True) ((hours, plants, '6hr', 'Cauliflower'), 'X'):-2:CROSS_OUT
+(loc? False) ((hours, plants, '2hr', 'Tomato'), 'X'):-2:CROSS_OUT
+(loc? False) ((hours, plants, '4hr', 'Pumpkin'), 'X'):-2:CROSS_OUT
+(loc? False) ((plants, hours, 'Pumpkin', '4hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '8hr'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '2hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '6hr'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((hours, plants, '6hr', 'Tomato'), 'O'):-3:OPENING
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_CROSSCHECK
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):2:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):2:BEFORE_N_SPOTS_CROSSCHECK
+      2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    x    *    x  |
+Spi|  x    x    *    x  |
+Cau|  o    *    X    x  |
+Pum|  x    *    x    o  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 12 (incorrect):       2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    X    *    X  |
+Spi|  X    X    O    X  |
+Cau|  O    *    X    X  |
+Pum|  X    *    X    O  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((hours, plants, '6hr', 'Spinach'), 'O'):-3:OPENING
+(loc? False) ((hours, plants, '4hr', 'Cauliflower'), 'X'):-2:CROSS_OUT
+(loc? False) ((hours, plants, '2hr', 'Tomato'), 'X'):-2:CROSS_OUT
+(loc? False) ((hours, plants, '4hr', 'Pumpkin'), 'X'):-2:CROSS_OUT
+(loc? False) ((plants, hours, 'Pumpkin', '4hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '8hr'), 'X'):1:BEFORE_NOINFO
+(loc? True) ((plants, hours, 'Spinach', '6hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '2hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '6hr'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? True) ((plants, hours, 'Spinach', '6hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((hours, plants, '6hr', 'Tomato'), 'O'):-3:OPENING
+(loc? True) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_SHIFT
+(loc? True) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_CROSSCHECK
+(loc? True) ((plants, hours, 'Spinach', '6hr'), 'X'):2:BEFORE_N_SPOTS_SHIFT
+(loc? True) ((plants, hours, 'Spinach', '6hr'), 'X'):2:BEFORE_N_SPOTS_CROSSCHECK
+      2hr  4hr  6hr  8hr
+    --------------------
+Tom|  *    x    *    x  |
+Spi|  x    x    O    x  |
+Cau|  o    *    x    x  |
+Pum|  x    *    x    o  |
+    --------------------
+Possible Reasonings: 
+1: transitives - OPENING
+2: hint (overconfident) - "The plants Pumpkin is 1 hourss before the plants Spinach" - BEFORE_NOINFO
+3: hint (overconfident) - "The plants Tomato is 2 hourss before the plants Spinach" - BEFORE_NOINFO
+4: hint (contradiction) (violation of BEFORE_N_SPOTS_SHIFT) - "The plants Pumpkin is 1 hourss before the plants Spinach" - None
+5: hint (contradiction) (violation of BEFORE_N_SPOTS_CROSSCHECK) - "The plants Pumpkin is 1 hourss before the plants Spinach" - None
+6: hint (contradiction) (violation of BEFORE_N_SPOTS_SHIFT) - "The plants Tomato is 2 hourss before the plants Spinach" - None
+7: hint (contradiction) (violation of BEFORE_N_SPOTS_CROSSCHECK) - "The plants Tomato is 2 hourss before the plants Spinach" - None
+Likely Reasoning: transitives::OPENING (insight)
+
+
+User Move 13 (correct):       2hr  4hr  6hr  8hr
+    --------------------
+Tom|  X    X    *    X  |
+Spi|  X    X    O    X  |
+Cau|  O    *    X    X  |
+Pum|  X    *    X    O  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((hours, plants, '4hr', 'Cauliflower'), 'X'):-2:CROSS_OUT
+(loc? True) ((hours, plants, '2hr', 'Tomato'), 'X'):-2:CROSS_OUT
+(loc? False) ((hours, plants, '4hr', 'Pumpkin'), 'X'):-2:CROSS_OUT
+(loc? False) ((hours, plants, '6hr', 'Tomato'), 'X'):-2:CROSS_OUT
+(loc? False) ((plants, hours, 'Pumpkin', '4hr'), 'O'):1:APPLY_BEFORE_ONE_SPOT
+(loc? False) ((plants, hours, 'Pumpkin', '4hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '8hr'), 'X'):1:BEFORE_NOINFO
+(loc? True) ((plants, hours, 'Tomato', '2hr'), 'O'):2:APPLY_BEFORE_N_SPOTS
+(loc? True) ((plants, hours, 'Tomato', '2hr'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Tomato', '6hr'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_CROSSCHECK
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):2:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):2:BEFORE_N_SPOTS_CROSSCHECK
+      2hr  4hr  6hr  8hr
+    --------------------
+Tom|  X    x    *    x  |
+Spi|  x    x    o    x  |
+Cau|  o    *    x    x  |
+Pum|  x    *    x    o  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+2: hint (contradiction) (violation of APPLY_BEFORE_N_SPOTS) - "The plants Tomato is 2 hourss before the plants Spinach" - None
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 14 (correct):       2hr  4hr  6hr  8hr
+    --------------------
+Tom|  X    X    X    X  |
+Spi|  X    X    O    X  |
+Cau|  O    *    X    X  |
+Pum|  X    *    X    O  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((hours, plants, '6hr', 'Tomato'), 'O'):-3:OPENING
+(loc? False) ((hours, plants, '4hr', 'Cauliflower'), 'X'):-2:CROSS_OUT
+(loc? False) ((hours, plants, '4hr', 'Pumpkin'), 'X'):-2:CROSS_OUT
+(loc? True) ((hours, plants, '6hr', 'Tomato'), 'X'):-2:CROSS_OUT
+(loc? False) ((plants, hours, 'Pumpkin', '4hr'), 'O'):1:APPLY_BEFORE_ONE_SPOT
+(loc? False) ((plants, hours, 'Pumpkin', '4hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '8hr'), 'X'):1:BEFORE_NOINFO
+(loc? True) ((plants, hours, 'Tomato', '6hr'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):2:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):2:BEFORE_N_SPOTS_CROSSCHECK
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_CROSSCHECK
+      2hr  4hr  6hr  8hr
+    --------------------
+Tom|  x    x    X    x  |
+Spi|  x    x    o    x  |
+Cau|  o    *    x    x  |
+Pum|  x    *    x    o  |
+    --------------------
+Possible Reasonings: 
+1: transitives (contradiction) (violation of OPENING) - None
+2: cross outs - CROSS_OUT
+3: hint - "The plants Tomato is 2 hourss before the plants Spinach" - BEFORE_N_SPOTS_NOINFO
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 15 (correct):       2hr  4hr  6hr  8hr
+    --------------------
+Tom|  X    X    X    X  |
+Spi|  X    X    O    X  |
+Cau|  O    *    X    X  |
+Pum|  X    X    X    O  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((hours, plants, '4hr', 'Cauliflower'), 'X'):-2:CROSS_OUT
+(loc? True) ((hours, plants, '4hr', 'Pumpkin'), 'X'):-2:CROSS_OUT
+(loc? True) ((plants, hours, 'Pumpkin', '4hr'), 'O'):1:APPLY_BEFORE_ONE_SPOT
+(loc? True) ((plants, hours, 'Pumpkin', '4hr'), 'Y'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Pumpkin', '8hr'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):2:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):2:BEFORE_N_SPOTS_CROSSCHECK
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_CROSSCHECK
+      2hr  4hr  6hr  8hr
+    --------------------
+Tom|  x    x    x    x  |
+Spi|  x    x    o    x  |
+Cau|  o    *    x    x  |
+Pum|  x    X    x    o  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+2: hint (contradiction) (violation of APPLY_BEFORE_ONE_SPOT) - "The plants Pumpkin is 1 hourss before the plants Spinach" - None
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 16 (incorrect):       2hr  4hr  6hr  8hr
+    --------------------
+Tom|  X    X    X    X  |
+Spi|  X    X    O    X  |
+Cau|  O    O    X    X  |
+Pum|  X    X    X    O  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((hours, plants, '4hr', 'Cauliflower'), 'O'):-3:OPENING
+(loc? True) ((hours, plants, '4hr', 'Cauliflower'), 'X'):-2:CROSS_OUT
+(loc? False) ((plants, hours, 'Pumpkin', '8hr'), 'X'):1:BEFORE_NOINFO
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):1:BEFORE_N_SPOTS_CROSSCHECK
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):2:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plants, hours, 'Spinach', '6hr'), 'X'):2:BEFORE_N_SPOTS_CROSSCHECK
+      2hr  4hr  6hr  8hr
+    --------------------
+Tom|  x    x    x    x  |
+Spi|  x    x    o    x  |
+Cau|  o    O    x    x  |
+Pum|  x    x    x    o  |
+    --------------------
+Possible Reasonings: 
+1: transitives - OPENING
+2: cross outs (contradiction) (violation of CROSS_OUT) - None
+Likely Reasoning: transitives::OPENING (insight)
+
+

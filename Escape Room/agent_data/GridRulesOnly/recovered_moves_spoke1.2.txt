@@ -1,0 +1,517 @@
+Puzzle:
+      Elb  Bow  Lin  She
+    --------------------
+1|  *    *    *    *  |
+2|  *    *    *    *  |
+3|  *    *    *    *  |
+4|  *    *    *    *  |
+    --------------------
+Hints:
+0. The shapes Shell is 2 orders before the shapes Elbow 
+1. The shapes Shell is the order 1 
+2. Either the shapes Elbow is the order 3 or the shapes Linguine is the order 2 
+
+User Move 1 (correct):       Elb  Bow  Lin  She
+    --------------------
+1|  *    *    *    *  |
+2|  X    *    *    *  |
+3|  *    *    *    *  |
+4|  *    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((shapes, order, 'Shell', '1'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '2'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '3'), 'X'):0:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((shapes, order, 'Shell', '4'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '1'), 'X'):0:BEFORE_NOINFO
+(loc? True) ((shapes, order, 'Elbow', '2'), 'X'):0:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '3'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '4'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '1'), 'O'):1:APPLY_IS
+(loc? False) ((shapes, order, 'Elbow', '3'), 'Y'):2:APPLY_OR
+(loc? False) ((shapes, order, 'Linguine', '2'), 'Y'):2:APPLY_OR
+      Elb  Bow  Lin  She
+    --------------------
+1|  *    *    *    *  |
+2|  X    *    *    *  |
+3|  *    *    *    *  |
+4|  *    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: hint - "The shapes Shell is 2 orders before the shapes Elbow" - BEFORE_N_SPOTS_NOINFO
+Likely Reasoning: hint:The shapes Shell is 2 orders before the shapes Elbow:BEFORE_N_SPOTS_NOINFO (insight)
+
+
+User Move 2 (correct):       Elb  Bow  Lin  She
+    --------------------
+1|  *    *    *    *  |
+2|  X    *    *    *  |
+3|  *    X    *    *  |
+4|  *    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((shapes, order, 'Shell', '1'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '2'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '3'), 'X'):0:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((shapes, order, 'Shell', '4'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '1'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '3'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '4'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '1'), 'O'):1:APPLY_IS
+(loc? False) ((shapes, order, 'Elbow', '3'), 'Y'):2:APPLY_OR
+(loc? False) ((shapes, order, 'Linguine', '2'), 'Y'):2:APPLY_OR
+      Elb  Bow  Lin  She
+    --------------------
+1|  *    *    *    *  |
+2|  x    *    *    *  |
+3|  *    X    *    *  |
+4|  *    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: unknown (unknown) - None
+Likely Reasoning: unknown-correct:shapes:order:Bowtie:3:X (unknown-correct)
+
+
+User Move 3 (incorrect):       Elb  Bow  Lin  She
+    --------------------
+1|  *    *    *    *  |
+2|  X    *    *    *  |
+3|  *    X    O    *  |
+4|  *    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((shapes, order, 'Shell', '1'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '2'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '3'), 'X'):0:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((shapes, order, 'Shell', '4'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '1'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '3'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '4'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '1'), 'O'):1:APPLY_IS
+(loc? False) ((shapes, order, 'Elbow', '3'), 'Y'):2:APPLY_OR
+(loc? False) ((shapes, order, 'Linguine', '2'), 'Y'):2:APPLY_OR
+      Elb  Bow  Lin  She
+    --------------------
+1|  *    *    *    *  |
+2|  x    *    *    *  |
+3|  *    x    O    *  |
+4|  *    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: unknown (unknown) - None
+Likely Reasoning: unknown-incorrect:order:shapes:3:Linguine:O (unknown-incorrect)
+
+
+User Move 4 (correct):       Elb  Bow  Lin  She
+    --------------------
+1|  *    *    *    *  |
+2|  X    *    X    *  |
+3|  *    X    O    *  |
+4|  *    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((shapes, order, 'Elbow', '3'), 'X'):-2:CROSS_OUT
+(loc? False) ((shapes, order, 'Shell', '3'), 'X'):-2:CROSS_OUT
+(loc? False) ((shapes, order, 'Linguine', '1'), 'X'):-2:CROSS_OUT
+(loc? True) ((shapes, order, 'Linguine', '2'), 'X'):-2:CROSS_OUT
+(loc? False) ((shapes, order, 'Linguine', '4'), 'X'):-2:CROSS_OUT
+(loc? False) ((shapes, order, 'Shell', '1'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '2'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '3'), 'X'):0:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((shapes, order, 'Shell', '4'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '1'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '3'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '4'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '1'), 'O'):1:APPLY_IS
+(loc? False) ((shapes, order, 'Elbow', '3'), 'Y'):2:APPLY_OR
+(loc? True) ((shapes, order, 'Linguine', '2'), 'Y'):2:APPLY_OR
+(loc? False) ((shapes, order, 'Shell', '1'), 'X'):0:BEFORE_N_SPOTS_CROSSCHECK
+      Elb  Bow  Lin  She
+    --------------------
+1|  *    *    *    *  |
+2|  x    *    X    *  |
+3|  *    x    o    *  |
+4|  *    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 5 (correct):       Elb  Bow  Lin  She
+    --------------------
+1|  *    *    X    *  |
+2|  X    *    X    *  |
+3|  *    X    O    *  |
+4|  *    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((shapes, order, 'Elbow', '3'), 'X'):-2:CROSS_OUT
+(loc? False) ((shapes, order, 'Shell', '3'), 'X'):-2:CROSS_OUT
+(loc? True) ((shapes, order, 'Linguine', '1'), 'X'):-2:CROSS_OUT
+(loc? False) ((shapes, order, 'Linguine', '4'), 'X'):-2:CROSS_OUT
+(loc? False) ((shapes, order, 'Shell', '1'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '2'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '3'), 'X'):0:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((shapes, order, 'Shell', '4'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '1'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '3'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '4'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '1'), 'O'):1:APPLY_IS
+(loc? False) ((shapes, order, 'Elbow', '3'), 'O'):2:APPLY_OR
+(loc? False) ((shapes, order, 'Shell', '1'), 'X'):0:BEFORE_N_SPOTS_CROSSCHECK
+      Elb  Bow  Lin  She
+    --------------------
+1|  *    *    X    *  |
+2|  x    *    x    *  |
+3|  *    x    o    *  |
+4|  *    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 6 (correct):       Elb  Bow  Lin  She
+    --------------------
+1|  *    *    X    *  |
+2|  X    *    X    *  |
+3|  *    X    O    X  |
+4|  *    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((shapes, order, 'Elbow', '3'), 'X'):-2:CROSS_OUT
+(loc? True) ((shapes, order, 'Shell', '3'), 'X'):-2:CROSS_OUT
+(loc? False) ((shapes, order, 'Linguine', '4'), 'X'):-2:CROSS_OUT
+(loc? False) ((shapes, order, 'Shell', '1'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '2'), 'Y'):0:BEFORE_NOINFO
+(loc? True) ((shapes, order, 'Shell', '3'), 'X'):0:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((shapes, order, 'Shell', '4'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '1'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '3'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '4'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '1'), 'O'):1:APPLY_IS
+(loc? False) ((shapes, order, 'Elbow', '3'), 'O'):2:APPLY_OR
+(loc? False) ((shapes, order, 'Shell', '1'), 'X'):0:BEFORE_N_SPOTS_CROSSCHECK
+      Elb  Bow  Lin  She
+    --------------------
+1|  *    *    x    *  |
+2|  x    *    x    *  |
+3|  *    x    o    X  |
+4|  *    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+2: hint - "The shapes Shell is 2 orders before the shapes Elbow" - BEFORE_N_SPOTS_NOINFO
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 7 (incorrect):       Elb  Bow  Lin  She
+    --------------------
+1|  *    *    X    *  |
+2|  X    *    X    *  |
+3|  *    X    O    X  |
+4|  *    *    X    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((shapes, order, 'Elbow', '3'), 'X'):-2:CROSS_OUT
+(loc? True) ((shapes, order, 'Linguine', '4'), 'X'):-2:CROSS_OUT
+(loc? False) ((shapes, order, 'Shell', '1'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '2'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '4'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '1'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '3'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '4'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '1'), 'O'):1:APPLY_IS
+(loc? False) ((shapes, order, 'Elbow', '3'), 'O'):2:APPLY_OR
+(loc? False) ((shapes, order, 'Shell', '1'), 'X'):0:BEFORE_N_SPOTS_CROSSCHECK
+      Elb  Bow  Lin  She
+    --------------------
+1|  *    *    x    *  |
+2|  x    *    x    *  |
+3|  *    x    o    x  |
+4|  *    *    X    *  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 8 (incorrect):       Elb  Bow  Lin  She
+    --------------------
+1|  *    *    X    *  |
+2|  X    *    X    *  |
+3|  X    X    O    X  |
+4|  *    *    X    *  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((shapes, order, 'Elbow', '3'), 'X'):-2:CROSS_OUT
+(loc? False) ((shapes, order, 'Shell', '1'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '2'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '4'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '1'), 'X'):0:BEFORE_NOINFO
+(loc? True) ((shapes, order, 'Elbow', '3'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '4'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '1'), 'O'):1:APPLY_IS
+(loc? True) ((shapes, order, 'Elbow', '3'), 'O'):2:APPLY_OR
+(loc? False) ((shapes, order, 'Shell', '1'), 'X'):0:BEFORE_N_SPOTS_CROSSCHECK
+      Elb  Bow  Lin  She
+    --------------------
+1|  *    *    x    *  |
+2|  x    *    x    *  |
+3|  X    x    o    x  |
+4|  *    *    x    *  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+2: hint (contradiction) (violation of APPLY_OR) - "Either the shapes Elbow is the order 3 or the shapes Linguine is the order 2" - None
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 9 (correct):       Elb  Bow  Lin  She
+    --------------------
+1|  *    *    X    *  |
+2|  X    *    X    *  |
+3|  X    X    O    X  |
+4|  X    *    X    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((shapes, order, 'Shell', '1'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '2'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '4'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '1'), 'X'):0:BEFORE_NOINFO
+(loc? True) ((shapes, order, 'Elbow', '4'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '1'), 'X'):0:BEFORE_N_SPOTS_CROSSCHECK
+(loc? False) ((shapes, order, 'Shell', '1'), 'O'):1:APPLY_IS
+      Elb  Bow  Lin  She
+    --------------------
+1|  *    *    x    *  |
+2|  x    *    x    *  |
+3|  x    x    o    x  |
+4|  X    *    x    *  |
+    --------------------
+Possible Reasonings: 
+1: unknown (unknown) - None
+Likely Reasoning: unknown-correct:shapes:order:Elbow:4:X (unknown-correct)
+
+
+User Move 10 (incorrect):       Elb  Bow  Lin  She
+    --------------------
+1|  O    *    X    *  |
+2|  X    *    X    *  |
+3|  X    X    O    X  |
+4|  X    *    X    *  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((shapes, order, 'Elbow', '1'), 'O'):-3:OPENING
+(loc? False) ((shapes, order, 'Shell', '1'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '2'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '4'), 'X'):0:BEFORE_NOINFO
+(loc? True) ((shapes, order, 'Elbow', '1'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '2'), 'X'):0:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((shapes, order, 'Shell', '1'), 'X'):0:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((shapes, order, 'Shell', '1'), 'X'):0:BEFORE_N_SPOTS_CROSSCHECK
+(loc? False) ((shapes, order, 'Shell', '2'), 'X'):0:BEFORE_N_SPOTS_CROSSCHECK
+(loc? False) ((shapes, order, 'Shell', '1'), 'O'):1:APPLY_IS
+      Elb  Bow  Lin  She
+    --------------------
+1|  O    *    x    *  |
+2|  x    *    x    *  |
+3|  x    x    o    x  |
+4|  x    *    x    *  |
+    --------------------
+Possible Reasonings: 
+1: transitives - OPENING
+2: hint (contradiction) (violation of BEFORE_NOINFO) - "The shapes Shell is 2 orders before the shapes Elbow" - None
+Likely Reasoning: transitives::OPENING (insight)
+
+
+User Move 11 (correct):       Elb  Bow  Lin  She
+    --------------------
+1|  O    X    X    *  |
+2|  X    *    X    *  |
+3|  X    X    O    X  |
+4|  X    *    X    *  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((shapes, order, 'Bowtie', '1'), 'X'):-2:CROSS_OUT
+(loc? False) ((shapes, order, 'Shell', '1'), 'X'):-2:CROSS_OUT
+(loc? False) ((shapes, order, 'Shell', '1'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '2'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '4'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '1'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '2'), 'X'):0:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((shapes, order, 'Shell', '1'), 'X'):0:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((shapes, order, 'Shell', '1'), 'X'):0:BEFORE_N_SPOTS_CROSSCHECK
+(loc? False) ((shapes, order, 'Shell', '2'), 'X'):0:BEFORE_N_SPOTS_CROSSCHECK
+(loc? False) ((shapes, order, 'Shell', '1'), 'O'):1:APPLY_IS
+      Elb  Bow  Lin  She
+    --------------------
+1|  o    X    x    *  |
+2|  x    *    x    *  |
+3|  x    x    o    x  |
+4|  x    *    x    *  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 12 (incorrect):       Elb  Bow  Lin  She
+    --------------------
+1|  O    X    X    X  |
+2|  X    *    X    *  |
+3|  X    X    O    X  |
+4|  X    *    X    *  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((shapes, order, 'Shell', '1'), 'X'):-2:CROSS_OUT
+(loc? True) ((shapes, order, 'Shell', '1'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '2'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '4'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '1'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '2'), 'X'):0:BEFORE_N_SPOTS_SHIFT
+(loc? True) ((shapes, order, 'Shell', '1'), 'X'):0:BEFORE_N_SPOTS_SHIFT
+(loc? True) ((shapes, order, 'Shell', '1'), 'X'):0:BEFORE_N_SPOTS_CROSSCHECK
+(loc? False) ((shapes, order, 'Shell', '2'), 'X'):0:BEFORE_N_SPOTS_CROSSCHECK
+(loc? True) ((shapes, order, 'Shell', '1'), 'O'):1:APPLY_IS
+      Elb  Bow  Lin  She
+    --------------------
+1|  o    x    x    X  |
+2|  x    *    x    *  |
+3|  x    x    o    x  |
+4|  x    *    x    *  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+2: hint - "The shapes Shell is 2 orders before the shapes Elbow" - BEFORE_N_SPOTS_SHIFT
+3: hint - "The shapes Shell is 2 orders before the shapes Elbow" - BEFORE_N_SPOTS_CROSSCHECK
+4: hint (contradiction) (violation of APPLY_IS) - "The shapes Shell is the order 1" - None
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 13 (incorrect):       Elb  Bow  Lin  She
+    --------------------
+1|  O    X    X    X  |
+2|  X    *    X    O  |
+3|  X    X    O    X  |
+4|  X    *    X    *  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((shapes, order, 'Shell', '2'), 'Y'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '4'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '1'), 'X'):0:BEFORE_NOINFO
+(loc? True) ((shapes, order, 'Shell', '2'), 'X'):0:BEFORE_N_SPOTS_SHIFT
+(loc? True) ((shapes, order, 'Shell', '2'), 'X'):0:BEFORE_N_SPOTS_CROSSCHECK
+(loc? False) ((shapes, order, 'Shell', '1'), 'O'):1:APPLY_IS
+      Elb  Bow  Lin  She
+    --------------------
+1|  o    x    x    x  |
+2|  x    *    x    O  |
+3|  x    x    o    x  |
+4|  x    *    x    *  |
+    --------------------
+Possible Reasonings: 
+1: hint (overconfident) - "The shapes Shell is 2 orders before the shapes Elbow" - BEFORE_NOINFO
+2: hint (contradiction) (violation of BEFORE_N_SPOTS_SHIFT) - "The shapes Shell is 2 orders before the shapes Elbow" - None
+3: hint (contradiction) (violation of BEFORE_N_SPOTS_CROSSCHECK) - "The shapes Shell is 2 orders before the shapes Elbow" - None
+Likely Reasoning: unknown-incorrect:shapes:order:Shell:2:O (unknown-incorrect)
+
+
+User Move 14 (incorrect):       Elb  Bow  Lin  She
+    --------------------
+1|  O    X    X    X  |
+2|  X    X    X    O  |
+3|  X    X    O    X  |
+4|  X    *    X    *  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((shapes, order, 'Bowtie', '2'), 'X'):-2:CROSS_OUT
+(loc? False) ((shapes, order, 'Shell', '4'), 'X'):-2:CROSS_OUT
+(loc? False) ((shapes, order, 'Shell', '4'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '1'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '2'), 'X'):0:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((shapes, order, 'Shell', '2'), 'X'):0:BEFORE_N_SPOTS_CROSSCHECK
+(loc? False) ((shapes, order, 'Shell', '1'), 'O'):1:APPLY_IS
+(loc? False) ((shapes, order, 'Bowtie', '4'), 'O'):-3:OPENING
+      Elb  Bow  Lin  She
+    --------------------
+1|  o    x    x    x  |
+2|  x    X    x    o  |
+3|  x    x    o    x  |
+4|  x    *    x    *  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 15 (correct):       Elb  Bow  Lin  She
+    --------------------
+1|  O    X    X    X  |
+2|  X    X    X    O  |
+3|  X    X    O    X  |
+4|  X    *    X    X  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((shapes, order, 'Bowtie', '4'), 'O'):-3:OPENING
+(loc? True) ((shapes, order, 'Shell', '4'), 'X'):-2:CROSS_OUT
+(loc? True) ((shapes, order, 'Shell', '4'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Elbow', '1'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '2'), 'X'):0:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((shapes, order, 'Shell', '2'), 'X'):0:BEFORE_N_SPOTS_CROSSCHECK
+(loc? False) ((shapes, order, 'Shell', '1'), 'O'):1:APPLY_IS
+      Elb  Bow  Lin  She
+    --------------------
+1|  o    x    x    x  |
+2|  x    x    x    o  |
+3|  x    x    o    x  |
+4|  x    *    x    X  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+2: hint - "The shapes Shell is 2 orders before the shapes Elbow" - BEFORE_NOINFO
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 16 (incorrect):       Elb  Bow  Lin  She
+    --------------------
+1|  O    X    X    X  |
+2|  X    X    X    O  |
+3|  X    X    O    X  |
+4|  X    O    X    X  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((shapes, order, 'Bowtie', '4'), 'O'):-3:OPENING
+(loc? False) ((shapes, order, 'Elbow', '1'), 'X'):0:BEFORE_NOINFO
+(loc? False) ((shapes, order, 'Shell', '2'), 'X'):0:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((shapes, order, 'Shell', '2'), 'X'):0:BEFORE_N_SPOTS_CROSSCHECK
+(loc? False) ((shapes, order, 'Shell', '1'), 'O'):1:APPLY_IS
+      Elb  Bow  Lin  She
+    --------------------
+1|  o    x    x    x  |
+2|  x    x    x    o  |
+3|  x    x    o    x  |
+4|  x    O    x    x  |
+    --------------------
+Possible Reasonings: 
+1: transitives - OPENING
+Likely Reasoning: transitives::OPENING (insight)
+
+

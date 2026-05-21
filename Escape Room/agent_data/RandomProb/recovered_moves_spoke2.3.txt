@@ -1,0 +1,630 @@
+Puzzle:
+      20o  40o  60o  80o
+    --------------------
+Pot|  *    *    *    *  |
+Gre|  *    *    *    *  |
+Egg|  *    *    *    *  |
+Bro|  *    *    *    *  |
+    --------------------
+Hints:
+0. Either the plant Potatoes or the plant Eggplant is the water 40oz 
+1. Either the plant Broccoli is the water 80oz or the water 80oz is the plant Eggplant 
+2. The plant Broccoli is 2 waters before the plant Green Onions 
+
+User Move 1 (correct):       20o  40o  60o  80o
+    --------------------
+Pot|  *    *    *    *  |
+Gre|  *    *    *    *  |
+Egg|  *    *    *    *  |
+Bro|  *    X    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((plant, water, 'Potatoes', '40oz'), 'Y'):0:APPLY_OR
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'Y'):0:APPLY_OR
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? True) ((plant, water, 'Broccoli', '40oz'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'Y'):1:APPLY_OR
+(loc? False) ((water, plant, '80oz', 'Eggplant'), 'Y'):1:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'Y'):2:BEFORE_NOINFO
+(loc? True) ((plant, water, 'Broccoli', '40oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Broccoli', '60oz'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '20oz'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '60oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '80oz'), 'Y'):2:BEFORE_NOINFO
+      20o  40o  60o  80o
+    --------------------
+Pot|  *    *    *    *  |
+Gre|  *    *    *    *  |
+Egg|  *    *    *    *  |
+Bro|  *    X    *    *  |
+    --------------------
+Possible Reasonings: 
+1: hint - "Either the plant Potatoes or the plant Eggplant is the water 40oz" - SIMPLE_OR_SAME_CAT
+Likely Reasoning: hint:Either the plant Potatoes or the plant Eggplant is the water 40oz:SIMPLE_OR_SAME_CAT (insight)
+
+
+User Move 2 (incorrect):       20o  40o  60o  80o
+    --------------------
+Pot|  *    *    *    *  |
+Gre|  *    *    *    *  |
+Egg|  *    *    *    X  |
+Bro|  *    X    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((plant, water, 'Potatoes', '40oz'), 'Y'):0:APPLY_OR
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'Y'):0:APPLY_OR
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'Y'):1:APPLY_OR
+(loc? True) ((water, plant, '80oz', 'Eggplant'), 'Y'):1:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Broccoli', '60oz'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '20oz'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '60oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '80oz'), 'Y'):2:BEFORE_NOINFO
+      20o  40o  60o  80o
+    --------------------
+Pot|  *    *    *    *  |
+Gre|  *    *    *    *  |
+Egg|  *    *    *    X  |
+Bro|  *    x    *    *  |
+    --------------------
+Possible Reasonings: 
+1: unknown (unknown) - None
+Likely Reasoning: unknown-incorrect:water:plant:80oz:Eggplant:X (unknown-incorrect)
+
+
+User Move 3 (incorrect):       20o  40o  60o  80o
+    --------------------
+Pot|  *    *    *    *  |
+Gre|  *    O    *    *  |
+Egg|  *    *    *    X  |
+Bro|  *    X    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((plant, water, 'Potatoes', '40oz'), 'Y'):0:APPLY_OR
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'Y'):0:APPLY_OR
+(loc? True) ((plant, water, 'Green Onions', '40oz'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'O'):1:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Broccoli', '60oz'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '20oz'), 'X'):2:BEFORE_NOINFO
+(loc? True) ((plant, water, 'Green Onions', '40oz'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '60oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '80oz'), 'Y'):2:BEFORE_NOINFO
+      20o  40o  60o  80o
+    --------------------
+Pot|  *    *    *    *  |
+Gre|  *    O    *    *  |
+Egg|  *    *    *    x  |
+Bro|  *    x    *    *  |
+    --------------------
+Possible Reasonings: 
+1: hint (contradiction) (violation of SIMPLE_OR_SAME_CAT) - "Either the plant Potatoes or the plant Eggplant is the water 40oz" - None
+2: hint (contradiction) (violation of BEFORE_N_SPOTS_NOINFO) - "The plant Broccoli is 2 waters before the plant Green Onions" - None
+Likely Reasoning: unknown-incorrect:water:plant:40oz:Green Onions:O (unknown-incorrect)
+
+
+User Move 4 (correct):       20o  40o  60o  80o
+    --------------------
+Pot|  X    *    *    *  |
+Gre|  *    O    *    *  |
+Egg|  *    *    *    X  |
+Bro|  *    X    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((water, plant, '20oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '60oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '80oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Eggplant'), 'X'):-2:CROSS_OUT
+(loc? False) ((plant, water, 'Potatoes', '40oz'), 'Y'):0:APPLY_OR
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'Y'):0:APPLY_OR
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'O'):1:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Broccoli', '60oz'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '20oz'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '60oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '80oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'O'):0:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_CROSSCHECK
+      20o  40o  60o  80o
+    --------------------
+Pot|  X    *    *    *  |
+Gre|  *    o    *    *  |
+Egg|  *    *    *    x  |
+Bro|  *    x    *    *  |
+    --------------------
+Possible Reasonings: 
+1: unknown (unknown) - None
+Likely Reasoning: unknown-correct:water:plant:20oz:Potatoes:X (unknown-correct)
+
+
+User Move 5 (correct):       20o  40o  60o  80o
+    --------------------
+Pot|  X    O    *    *  |
+Gre|  *    O    *    *  |
+Egg|  *    *    *    X  |
+Bro|  *    X    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((water, plant, '20oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '60oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '80oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? True) ((water, plant, '40oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Eggplant'), 'X'):-2:CROSS_OUT
+(loc? True) ((plant, water, 'Potatoes', '40oz'), 'Y'):0:APPLY_OR
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'Y'):0:APPLY_OR
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'O'):1:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Broccoli', '60oz'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '20oz'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '60oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '80oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'O'):0:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_CROSSCHECK
+      20o  40o  60o  80o
+    --------------------
+Pot|  x    O    *    *  |
+Gre|  *    o    *    *  |
+Egg|  *    *    *    x  |
+Bro|  *    x    *    *  |
+    --------------------
+Possible Reasonings: 
+1: cross outs (contradiction) (violation of CROSS_OUT) - None
+2: hint (overconfident) - "Either the plant Potatoes or the plant Eggplant is the water 40oz" - APPLY_OR
+Likely Reasoning: unknown-correct:plant:water:Potatoes:40oz:O (unknown-correct)
+
+
+User Move 6 (correct):       20o  40o  60o  80o
+    --------------------
+Pot|  X    O    *    *  |
+Gre|  *    O    *    *  |
+Egg|  *    *    *    X  |
+Bro|  *    X    X    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((water, plant, '60oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '80oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Eggplant'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '20oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '60oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '80oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'X'):0:APPLY_OR
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'O'):1:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'Y'):2:BEFORE_NOINFO
+(loc? True) ((plant, water, 'Broccoli', '60oz'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '20oz'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '60oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '80oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((water, plant, '80oz', 'Broccoli'), 'O'):-3:OPENING
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'O'):0:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_CROSSCHECK
+      20o  40o  60o  80o
+    --------------------
+Pot|  x    o    *    *  |
+Gre|  *    o    *    *  |
+Egg|  *    *    *    x  |
+Bro|  *    x    X    *  |
+    --------------------
+Possible Reasonings: 
+1: hint - "The plant Broccoli is 2 waters before the plant Green Onions" - BEFORE_N_SPOTS_NOINFO
+Likely Reasoning: hint:The plant Broccoli is 2 waters before the plant Green Onions:BEFORE_N_SPOTS_NOINFO (insight)
+
+
+User Move 7 (correct):       20o  40o  60o  80o
+    --------------------
+Pot|  X    O    *    *  |
+Gre|  X    O    *    *  |
+Egg|  *    *    *    X  |
+Bro|  *    X    X    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((water, plant, '60oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '80oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Eggplant'), 'X'):-2:CROSS_OUT
+(loc? True) ((water, plant, '20oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '60oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '80oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'X'):0:APPLY_OR
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'O'):1:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'X'):2:BEFORE_NOINFO
+(loc? True) ((plant, water, 'Green Onions', '20oz'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '60oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '80oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((water, plant, '60oz', 'Eggplant'), 'O'):-3:OPENING
+(loc? False) ((water, plant, '80oz', 'Broccoli'), 'O'):-3:OPENING
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'O'):0:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_CROSSCHECK
+      20o  40o  60o  80o
+    --------------------
+Pot|  x    o    *    *  |
+Gre|  X    o    *    *  |
+Egg|  *    *    *    x  |
+Bro|  *    x    x    *  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+2: hint - "The plant Broccoli is 2 waters before the plant Green Onions" - BEFORE_NOINFO
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 8 (correct):       20o  40o  60o  80o
+    --------------------
+Pot|  X    O    *    *  |
+Gre|  X    O    *    *  |
+Egg|  X    *    *    X  |
+Bro|  *    X    X    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((water, plant, '60oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '80oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Eggplant'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '60oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '80oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'X'):0:APPLY_OR
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'O'):1:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '60oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '80oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((water, plant, '60oz', 'Eggplant'), 'O'):-3:OPENING
+(loc? False) ((water, plant, '80oz', 'Broccoli'), 'O'):-3:OPENING
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'O'):0:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_CROSSCHECK
+      20o  40o  60o  80o
+    --------------------
+Pot|  x    o    *    *  |
+Gre|  x    o    *    *  |
+Egg|  X    *    *    x  |
+Bro|  *    x    x    *  |
+    --------------------
+Possible Reasonings: 
+1: unknown (unknown) - None
+Likely Reasoning: unknown-correct:water:plant:20oz:Eggplant:X (unknown-correct)
+
+
+User Move 9 (correct):       20o  40o  60o  80o
+    --------------------
+Pot|  X    O    *    *  |
+Gre|  X    O    *    *  |
+Egg|  X    *    X    X  |
+Bro|  *    X    X    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((water, plant, '20oz', 'Broccoli'), 'O'):-3:OPENING
+(loc? False) ((water, plant, '60oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '80oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Eggplant'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '60oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '80oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'X'):0:APPLY_OR
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'O'):1:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '60oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '80oz'), 'Y'):2:BEFORE_NOINFO
+(loc? True) ((water, plant, '60oz', 'Eggplant'), 'O'):-3:OPENING
+(loc? False) ((water, plant, '80oz', 'Broccoli'), 'O'):-3:OPENING
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'O'):0:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_CROSSCHECK
+      20o  40o  60o  80o
+    --------------------
+Pot|  x    o    *    *  |
+Gre|  x    o    *    *  |
+Egg|  x    *    X    x  |
+Bro|  *    x    x    *  |
+    --------------------
+Possible Reasonings: 
+1: transitives (contradiction) (violation of OPENING) - None
+Likely Reasoning: unknown-correct:plant:water:Eggplant:60oz:X (unknown-correct)
+
+
+User Move 10 (correct):       20o  40o  60o  80o
+    --------------------
+Pot|  X    O    *    X  |
+Gre|  X    O    *    *  |
+Egg|  X    *    X    X  |
+Bro|  *    X    X    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((water, plant, '40oz', 'Eggplant'), 'O'):-3:OPENING
+(loc? False) ((water, plant, '20oz', 'Broccoli'), 'O'):-3:OPENING
+(loc? False) ((water, plant, '60oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? True) ((water, plant, '80oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Eggplant'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '60oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '80oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'X'):0:APPLY_OR
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'O'):1:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '60oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '80oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((water, plant, '80oz', 'Broccoli'), 'O'):-3:OPENING
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'O'):0:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_CROSSCHECK
+      20o  40o  60o  80o
+    --------------------
+Pot|  x    o    *    X  |
+Gre|  x    o    *    *  |
+Egg|  x    *    x    x  |
+Bro|  *    x    x    *  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 11 (incorrect):       20o  40o  60o  80o
+    --------------------
+Pot|  X    O    *    X  |
+Gre|  X    O    *    *  |
+Egg|  X    O    X    X  |
+Bro|  *    X    X    *  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((water, plant, '40oz', 'Eggplant'), 'O'):-3:OPENING
+(loc? False) ((water, plant, '20oz', 'Broccoli'), 'O'):-3:OPENING
+(loc? False) ((water, plant, '60oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? True) ((water, plant, '40oz', 'Eggplant'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '60oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '80oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? True) ((plant, water, 'Eggplant', '40oz'), 'X'):0:APPLY_OR
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'O'):1:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '60oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '80oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((water, plant, '80oz', 'Broccoli'), 'O'):-3:OPENING
+(loc? True) ((plant, water, 'Eggplant', '40oz'), 'O'):0:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_CROSSCHECK
+      20o  40o  60o  80o
+    --------------------
+Pot|  x    o    *    x  |
+Gre|  x    o    *    *  |
+Egg|  x    O    x    x  |
+Bro|  *    x    x    *  |
+    --------------------
+Possible Reasonings: 
+1: transitives - OPENING
+2: cross outs (contradiction) (violation of CROSS_OUT) - None
+3: hint (contradiction) (violation of APPLY_OR) - "Either the plant Potatoes or the plant Eggplant is the water 40oz" - None
+4: hint (repair) - "Either the plant Potatoes or the plant Eggplant is the water 40oz" - APPLY_OR
+Likely Reasoning: transitives::OPENING (insight)
+
+
+User Move 12 (correct):       20o  40o  60o  80o
+    --------------------
+Pot|  X    O    *    X  |
+Gre|  X    O    *    X  |
+Egg|  X    O    X    X  |
+Bro|  *    X    X    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((water, plant, '20oz', 'Broccoli'), 'O'):-3:OPENING
+(loc? False) ((water, plant, '60oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Eggplant'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '60oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? True) ((water, plant, '80oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'X'):0:APPLY_OR
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'O'):1:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '60oz'), 'Y'):2:BEFORE_NOINFO
+(loc? True) ((plant, water, 'Green Onions', '80oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((water, plant, '80oz', 'Broccoli'), 'O'):-3:OPENING
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'O'):0:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_CROSSCHECK
+      20o  40o  60o  80o
+    --------------------
+Pot|  x    o    *    x  |
+Gre|  x    o    *    X  |
+Egg|  x    o    x    x  |
+Bro|  *    x    x    *  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 13 (correct):       20o  40o  60o  80o
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  X    O    *    X  |
+Egg|  X    O    X    X  |
+Bro|  *    X    X    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((water, plant, '20oz', 'Broccoli'), 'O'):-3:OPENING
+(loc? False) ((water, plant, '80oz', 'Broccoli'), 'O'):-3:OPENING
+(loc? True) ((water, plant, '60oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Eggplant'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '60oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'X'):0:APPLY_OR
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'O'):1:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Broccoli', '80oz'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '60oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'O'):0:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_CROSSCHECK
+      20o  40o  60o  80o
+    --------------------
+Pot|  x    o    X    x  |
+Gre|  x    o    *    x  |
+Egg|  x    o    x    x  |
+Bro|  *    x    x    *  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 14 (correct):       20o  40o  60o  80o
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  X    O    *    X  |
+Egg|  X    O    X    X  |
+Bro|  *    X    X    X  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((water, plant, '20oz', 'Broccoli'), 'O'):-3:OPENING
+(loc? False) ((water, plant, '60oz', 'Green Onions'), 'O'):-3:OPENING
+(loc? True) ((water, plant, '80oz', 'Broccoli'), 'O'):-3:OPENING
+(loc? False) ((water, plant, '60oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Eggplant'), 'X'):-2:CROSS_OUT
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'X'):0:APPLY_OR
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? True) ((plant, water, 'Broccoli', '80oz'), 'O'):1:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'Y'):2:BEFORE_NOINFO
+(loc? True) ((plant, water, 'Broccoli', '80oz'), 'X'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '60oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'O'):0:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_CROSSCHECK
+      20o  40o  60o  80o
+    --------------------
+Pot|  x    o    x    x  |
+Gre|  x    o    *    x  |
+Egg|  x    o    x    x  |
+Bro|  *    x    x    X  |
+    --------------------
+Possible Reasonings: 
+1: transitives (contradiction) (violation of OPENING) - None
+2: hint (contradiction) (violation of APPLY_OR) - "Either the plant Broccoli is the water 80oz or the water 80oz is the plant Eggplant" - None
+3: hint - "The plant Broccoli is 2 waters before the plant Green Onions" - BEFORE_NOINFO
+Likely Reasoning: hint:The plant Broccoli is 2 waters before the plant Green Onions:BEFORE_NOINFO (insight)
+
+
+User Move 15 (correct):       20o  40o  60o  80o
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  X    O    O    X  |
+Egg|  X    O    X    X  |
+Bro|  *    X    X    X  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((water, plant, '20oz', 'Broccoli'), 'O'):-3:OPENING
+(loc? True) ((water, plant, '60oz', 'Green Onions'), 'O'):-3:OPENING
+(loc? True) ((water, plant, '60oz', 'Green Onions'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Potatoes'), 'X'):-2:CROSS_OUT
+(loc? False) ((water, plant, '40oz', 'Eggplant'), 'X'):-2:CROSS_OUT
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'X'):0:APPLY_OR
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+(loc? True) ((plant, water, 'Green Onions', '60oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'O'):0:APPLY_OR
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_SHIFT
+(loc? False) ((plant, water, 'Broccoli', '20oz'), 'X'):2:BEFORE_N_SPOTS_CROSSCHECK
+      20o  40o  60o  80o
+    --------------------
+Pot|  x    o    x    x  |
+Gre|  x    o    O    x  |
+Egg|  x    o    x    x  |
+Bro|  *    x    x    x  |
+    --------------------
+Possible Reasonings: 
+1: transitives - OPENING
+2: cross outs (contradiction) (violation of CROSS_OUT) - None
+3: hint (overconfident) - "The plant Broccoli is 2 waters before the plant Green Onions" - BEFORE_NOINFO
+Likely Reasoning: transitives::OPENING (insight)
+
+
+User Move 16 (incorrect):       20o  40o  60o  80o
+    --------------------
+Pot|  X    O    X    X  |
+Gre|  X    O    O    X  |
+Egg|  X    O    X    X  |
+Bro|  X    X    X    X  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((water, plant, '20oz', 'Broccoli'), 'O'):-3:OPENING
+(loc? False) ((plant, water, 'Eggplant', '40oz'), 'X'):0:APPLY_OR
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):0:SIMPLE_OR_SAME_CAT
+(loc? True) ((plant, water, 'Broccoli', '20oz'), 'Y'):2:BEFORE_NOINFO
+(loc? False) ((plant, water, 'Green Onions', '40oz'), 'X'):2:BEFORE_N_SPOTS_NOINFO
+      20o  40o  60o  80o
+    --------------------
+Pot|  x    o    x    x  |
+Gre|  x    o    o    x  |
+Egg|  x    o    x    x  |
+Bro|  X    x    x    x  |
+    --------------------
+Possible Reasonings: 
+1: transitives (contradiction) (violation of OPENING) - None
+Likely Reasoning: unknown-incorrect:water:plant:20oz:Broccoli:X (unknown-incorrect)
+
+

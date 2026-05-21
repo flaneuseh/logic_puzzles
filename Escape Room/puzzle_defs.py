@@ -37,17 +37,17 @@ sunlight_hints_alt = [
     {
         "simple_or": [
             SUNLIGHT_PLANTS,
-            "Pumpkins",
+            "Pumpkin",
             SUNLIGHT_PLANTS,
             "Cauliflower",
             SUNLIGHT_HOURS,
-            "2h",
+            "2hr",
         ]
     },
     {
         "before": [
             SUNLIGHT_PLANTS,
-            "Pumpkins",
+            "Pumpkin",
             SUNLIGHT_PLANTS,
             "Spinach",
             SUNLIGHT_HOURS,

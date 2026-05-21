@@ -1,0 +1,456 @@
+Puzzle:
+      Elb  Bow  Lin  She
+    --------------------
+Tom|  *    *    *    *  |
+Alf|  *    *    *    *  |
+Pes|  *    *    *    *  |
+Car|  *    *    *    *  |
+    --------------------
+Hints:
+0. The shape Shell was not the sauce Tomato 
+1. Either the shape Linguine or the shape Elbow is the sauce Carbonara 
+2. The sauce Alfredo is the shape Elbow 
+
+User Move 1 (correct):       Elb  Bow  Lin  She
+    --------------------
+Tom|  *    *    *    X  |
+Alf|  *    *    *    *  |
+Pes|  *    *    *    *  |
+Car|  *    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((shape, sauce, 'Shell', 'Tomato'), 'X'):0:APPLY_NOT
+(loc? False) ((shape, sauce, 'Linguine', 'Carbonara'), 'Y'):1:APPLY_OR
+(loc? False) ((shape, sauce, 'Elbow', 'Carbonara'), 'Y'):1:APPLY_OR
+(loc? False) ((shape, sauce, 'Bowtie', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((shape, sauce, 'Shell', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((sauce, shape, 'Alfredo', 'Elbow'), 'O'):2:APPLY_IS
+      Elb  Bow  Lin  She
+    --------------------
+Tom|  *    *    *    X  |
+Alf|  *    *    *    *  |
+Pes|  *    *    *    *  |
+Car|  *    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: hint - "The shape Shell was not the sauce Tomato" - APPLY_NOT
+Likely Reasoning: hint:The shape Shell was not the sauce Tomato:APPLY_NOT (insight)
+
+
+User Move 2 (incorrect):       Elb  Bow  Lin  She
+    --------------------
+Tom|  *    *    *    X  |
+Alf|  X    *    *    *  |
+Pes|  *    *    *    *  |
+Car|  *    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((shape, sauce, 'Linguine', 'Carbonara'), 'Y'):1:APPLY_OR
+(loc? False) ((shape, sauce, 'Elbow', 'Carbonara'), 'Y'):1:APPLY_OR
+(loc? False) ((shape, sauce, 'Bowtie', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((shape, sauce, 'Shell', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? True) ((sauce, shape, 'Alfredo', 'Elbow'), 'O'):2:APPLY_IS
+      Elb  Bow  Lin  She
+    --------------------
+Tom|  *    *    *    x  |
+Alf|  X    *    *    *  |
+Pes|  *    *    *    *  |
+Car|  *    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: hint (contradiction) (violation of APPLY_IS) - "The sauce Alfredo is the shape Elbow" - None
+Likely Reasoning: unknown-incorrect:shape:sauce:Elbow:Alfredo:X (unknown-incorrect)
+
+
+User Move 3 (correct):       Elb  Bow  Lin  She
+    --------------------
+Tom|  *    *    *    X  |
+Alf|  X    X    *    *  |
+Pes|  *    *    *    *  |
+Car|  *    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((shape, sauce, 'Linguine', 'Carbonara'), 'Y'):1:APPLY_OR
+(loc? False) ((shape, sauce, 'Elbow', 'Carbonara'), 'Y'):1:APPLY_OR
+(loc? False) ((shape, sauce, 'Bowtie', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((shape, sauce, 'Shell', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((sauce, shape, 'Alfredo', 'Elbow'), 'O'):2:APPLY_IS
+      Elb  Bow  Lin  She
+    --------------------
+Tom|  *    *    *    x  |
+Alf|  x    X    *    *  |
+Pes|  *    *    *    *  |
+Car|  *    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: unknown (unknown) - None
+Likely Reasoning: unknown-correct:sauce:shape:Alfredo:Bowtie:X (unknown-correct)
+
+
+User Move 4 (incorrect):       Elb  Bow  Lin  She
+    --------------------
+Tom|  *    *    *    X  |
+Alf|  X    X    *    *  |
+Pes|  O    *    *    *  |
+Car|  *    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((shape, sauce, 'Linguine', 'Carbonara'), 'Y'):1:APPLY_OR
+(loc? False) ((shape, sauce, 'Elbow', 'Carbonara'), 'Y'):1:APPLY_OR
+(loc? False) ((shape, sauce, 'Bowtie', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((shape, sauce, 'Shell', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((sauce, shape, 'Alfredo', 'Elbow'), 'O'):2:APPLY_IS
+      Elb  Bow  Lin  She
+    --------------------
+Tom|  *    *    *    x  |
+Alf|  x    x    *    *  |
+Pes|  O    *    *    *  |
+Car|  *    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: unknown (unknown) - None
+Likely Reasoning: unknown-incorrect:shape:sauce:Elbow:Pesto:O (unknown-incorrect)
+
+
+User Move 5 (incorrect):       Elb  Bow  Lin  She
+    --------------------
+Tom|  *    *    *    X  |
+Alf|  X    X    *    *  |
+Pes|  O    *    *    X  |
+Car|  *    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((shape, sauce, 'Bowtie', 'Pesto'), 'X'):-2:CROSS_OUT
+(loc? False) ((shape, sauce, 'Linguine', 'Pesto'), 'X'):-2:CROSS_OUT
+(loc? True) ((shape, sauce, 'Shell', 'Pesto'), 'X'):-2:CROSS_OUT
+(loc? False) ((shape, sauce, 'Elbow', 'Tomato'), 'X'):-2:CROSS_OUT
+(loc? False) ((shape, sauce, 'Elbow', 'Carbonara'), 'X'):-2:CROSS_OUT
+(loc? False) ((shape, sauce, 'Linguine', 'Carbonara'), 'Y'):1:APPLY_OR
+(loc? False) ((shape, sauce, 'Elbow', 'Carbonara'), 'Y'):1:APPLY_OR
+(loc? False) ((shape, sauce, 'Bowtie', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((shape, sauce, 'Shell', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((sauce, shape, 'Alfredo', 'Elbow'), 'O'):2:APPLY_IS
+(loc? False) ((shape, sauce, 'Linguine', 'Carbonara'), 'O'):1:APPLY_OR
+      Elb  Bow  Lin  She
+    --------------------
+Tom|  *    *    *    x  |
+Alf|  x    x    *    *  |
+Pes|  o    *    *    X  |
+Car|  *    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 6 (correct):       Elb  Bow  Lin  She
+    --------------------
+Tom|  *    *    *    X  |
+Alf|  X    X    *    *  |
+Pes|  O    *    *    X  |
+Car|  X    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((shape, sauce, 'Bowtie', 'Pesto'), 'X'):-2:CROSS_OUT
+(loc? False) ((shape, sauce, 'Linguine', 'Pesto'), 'X'):-2:CROSS_OUT
+(loc? False) ((shape, sauce, 'Elbow', 'Tomato'), 'X'):-2:CROSS_OUT
+(loc? True) ((shape, sauce, 'Elbow', 'Carbonara'), 'X'):-2:CROSS_OUT
+(loc? False) ((shape, sauce, 'Linguine', 'Carbonara'), 'Y'):1:APPLY_OR
+(loc? True) ((shape, sauce, 'Elbow', 'Carbonara'), 'Y'):1:APPLY_OR
+(loc? False) ((shape, sauce, 'Bowtie', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((shape, sauce, 'Shell', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((sauce, shape, 'Alfredo', 'Elbow'), 'O'):2:APPLY_IS
+(loc? False) ((shape, sauce, 'Linguine', 'Carbonara'), 'O'):1:APPLY_OR
+      Elb  Bow  Lin  She
+    --------------------
+Tom|  *    *    *    x  |
+Alf|  x    x    *    *  |
+Pes|  o    *    *    x  |
+Car|  X    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 7 (correct):       Elb  Bow  Lin  She
+    --------------------
+Tom|  *    *    *    X  |
+Alf|  X    X    *    *  |
+Pes|  O    *    X    X  |
+Car|  X    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((shape, sauce, 'Bowtie', 'Pesto'), 'X'):-2:CROSS_OUT
+(loc? True) ((shape, sauce, 'Linguine', 'Pesto'), 'X'):-2:CROSS_OUT
+(loc? False) ((shape, sauce, 'Elbow', 'Tomato'), 'X'):-2:CROSS_OUT
+(loc? False) ((shape, sauce, 'Linguine', 'Carbonara'), 'O'):1:APPLY_OR
+(loc? False) ((shape, sauce, 'Bowtie', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((shape, sauce, 'Shell', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((sauce, shape, 'Alfredo', 'Elbow'), 'O'):2:APPLY_IS
+      Elb  Bow  Lin  She
+    --------------------
+Tom|  *    *    *    x  |
+Alf|  x    x    *    *  |
+Pes|  o    *    X    x  |
+Car|  x    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 8 (correct):       Elb  Bow  Lin  She
+    --------------------
+Tom|  *    *    *    X  |
+Alf|  X    X    *    *  |
+Pes|  O    X    X    X  |
+Car|  X    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((shape, sauce, 'Bowtie', 'Pesto'), 'X'):-2:CROSS_OUT
+(loc? False) ((shape, sauce, 'Elbow', 'Tomato'), 'X'):-2:CROSS_OUT
+(loc? False) ((shape, sauce, 'Linguine', 'Carbonara'), 'O'):1:APPLY_OR
+(loc? False) ((shape, sauce, 'Bowtie', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((shape, sauce, 'Shell', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((sauce, shape, 'Alfredo', 'Elbow'), 'O'):2:APPLY_IS
+      Elb  Bow  Lin  She
+    --------------------
+Tom|  *    *    *    x  |
+Alf|  x    x    *    *  |
+Pes|  o    X    x    x  |
+Car|  x    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 9 (correct):       Elb  Bow  Lin  She
+    --------------------
+Tom|  X    *    *    X  |
+Alf|  X    X    *    *  |
+Pes|  O    X    X    X  |
+Car|  X    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((shape, sauce, 'Elbow', 'Tomato'), 'X'):-2:CROSS_OUT
+(loc? False) ((shape, sauce, 'Linguine', 'Carbonara'), 'O'):1:APPLY_OR
+(loc? False) ((shape, sauce, 'Bowtie', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((shape, sauce, 'Shell', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((sauce, shape, 'Alfredo', 'Elbow'), 'O'):2:APPLY_IS
+      Elb  Bow  Lin  She
+    --------------------
+Tom|  X    *    *    x  |
+Alf|  x    x    *    *  |
+Pes|  o    x    x    x  |
+Car|  x    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 10 (correct):       Elb  Bow  Lin  She
+    --------------------
+Tom|  X    *    *    X  |
+Alf|  X    X    *    X  |
+Pes|  O    X    X    X  |
+Car|  X    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((shape, sauce, 'Linguine', 'Carbonara'), 'O'):1:APPLY_OR
+(loc? False) ((shape, sauce, 'Bowtie', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((shape, sauce, 'Shell', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((sauce, shape, 'Alfredo', 'Elbow'), 'O'):2:APPLY_IS
+      Elb  Bow  Lin  She
+    --------------------
+Tom|  x    *    *    x  |
+Alf|  x    x    *    X  |
+Pes|  o    x    x    x  |
+Car|  x    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: unknown (unknown) - None
+Likely Reasoning: unknown-correct:sauce:shape:Alfredo:Shell:X (unknown-correct)
+
+
+User Move 11 (incorrect):       Elb  Bow  Lin  She
+    --------------------
+Tom|  X    *    *    X  |
+Alf|  X    X    O    X  |
+Pes|  O    X    X    X  |
+Car|  X    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((shape, sauce, 'Linguine', 'Alfredo'), 'O'):-3:OPENING
+(loc? False) ((shape, sauce, 'Shell', 'Carbonara'), 'O'):-3:OPENING
+(loc? False) ((shape, sauce, 'Linguine', 'Carbonara'), 'O'):1:APPLY_OR
+(loc? False) ((shape, sauce, 'Bowtie', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((shape, sauce, 'Shell', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((sauce, shape, 'Alfredo', 'Elbow'), 'O'):2:APPLY_IS
+      Elb  Bow  Lin  She
+    --------------------
+Tom|  x    *    *    x  |
+Alf|  x    x    O    x  |
+Pes|  o    x    x    x  |
+Car|  x    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: transitives - OPENING
+Likely Reasoning: transitives::OPENING (insight)
+
+
+User Move 12 (correct):       Elb  Bow  Lin  She
+    --------------------
+Tom|  X    *    X    X  |
+Alf|  X    X    O    X  |
+Pes|  O    X    X    X  |
+Car|  X    *    *    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((shape, sauce, 'Shell', 'Carbonara'), 'O'):-3:OPENING
+(loc? True) ((shape, sauce, 'Linguine', 'Tomato'), 'X'):-2:CROSS_OUT
+(loc? False) ((shape, sauce, 'Linguine', 'Carbonara'), 'X'):-2:CROSS_OUT
+(loc? False) ((shape, sauce, 'Linguine', 'Carbonara'), 'O'):1:APPLY_OR
+(loc? False) ((shape, sauce, 'Bowtie', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((shape, sauce, 'Shell', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((sauce, shape, 'Alfredo', 'Elbow'), 'O'):2:APPLY_IS
+(loc? False) ((shape, sauce, 'Bowtie', 'Tomato'), 'O'):-3:OPENING
+(loc? False) ((shape, sauce, 'Elbow', 'Carbonara'), 'O'):1:APPLY_OR
+      Elb  Bow  Lin  She
+    --------------------
+Tom|  x    *    X    x  |
+Alf|  x    x    o    x  |
+Pes|  o    x    x    x  |
+Car|  x    *    *    *  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 13 (incorrect):       Elb  Bow  Lin  She
+    --------------------
+Tom|  X    *    X    X  |
+Alf|  X    X    O    X  |
+Pes|  O    X    X    X  |
+Car|  X    *    X    *  |
+    --------------------
+
+Available Moves: 
+(loc? False) ((shape, sauce, 'Bowtie', 'Tomato'), 'O'):-3:OPENING
+(loc? False) ((shape, sauce, 'Shell', 'Carbonara'), 'O'):-3:OPENING
+(loc? True) ((shape, sauce, 'Linguine', 'Carbonara'), 'X'):-2:CROSS_OUT
+(loc? True) ((shape, sauce, 'Linguine', 'Carbonara'), 'O'):1:APPLY_OR
+(loc? False) ((shape, sauce, 'Bowtie', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((shape, sauce, 'Shell', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((sauce, shape, 'Alfredo', 'Elbow'), 'O'):2:APPLY_IS
+(loc? False) ((shape, sauce, 'Elbow', 'Carbonara'), 'O'):1:APPLY_OR
+      Elb  Bow  Lin  She
+    --------------------
+Tom|  x    *    x    x  |
+Alf|  x    x    o    x  |
+Pes|  o    x    x    x  |
+Car|  x    *    X    *  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+2: hint (contradiction) (violation of APPLY_OR) - "Either the shape Linguine or the shape Elbow is the sauce Carbonara" - None
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+
+User Move 14 (correct):       Elb  Bow  Lin  She
+    --------------------
+Tom|  X    O    X    X  |
+Alf|  X    X    O    X  |
+Pes|  O    X    X    X  |
+Car|  X    *    X    *  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((shape, sauce, 'Bowtie', 'Tomato'), 'O'):-3:OPENING
+(loc? False) ((shape, sauce, 'Shell', 'Carbonara'), 'O'):-3:OPENING
+(loc? False) ((shape, sauce, 'Elbow', 'Carbonara'), 'O'):1:APPLY_OR
+(loc? False) ((shape, sauce, 'Bowtie', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((shape, sauce, 'Shell', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((sauce, shape, 'Alfredo', 'Elbow'), 'O'):2:APPLY_IS
+      Elb  Bow  Lin  She
+    --------------------
+Tom|  x    O    x    x  |
+Alf|  x    x    o    x  |
+Pes|  o    x    x    x  |
+Car|  x    *    x    *  |
+    --------------------
+Possible Reasonings: 
+1: transitives - OPENING
+Likely Reasoning: transitives::OPENING (insight)
+
+
+User Move 15 (incorrect):       Elb  Bow  Lin  She
+    --------------------
+Tom|  X    O    X    X  |
+Alf|  X    X    O    X  |
+Pes|  O    X    X    X  |
+Car|  X    *    X    O  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((shape, sauce, 'Shell', 'Carbonara'), 'O'):-3:OPENING
+(loc? False) ((shape, sauce, 'Bowtie', 'Carbonara'), 'X'):-2:CROSS_OUT
+(loc? False) ((shape, sauce, 'Elbow', 'Carbonara'), 'O'):1:APPLY_OR
+(loc? False) ((shape, sauce, 'Bowtie', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? True) ((shape, sauce, 'Shell', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((sauce, shape, 'Alfredo', 'Elbow'), 'O'):2:APPLY_IS
+      Elb  Bow  Lin  She
+    --------------------
+Tom|  x    o    x    x  |
+Alf|  x    x    o    x  |
+Pes|  o    x    x    x  |
+Car|  x    *    x    O  |
+    --------------------
+Possible Reasonings: 
+1: transitives - OPENING
+2: hint (contradiction) (violation of SIMPLE_OR_SAME_CAT) - "Either the shape Linguine or the shape Elbow is the sauce Carbonara" - None
+Likely Reasoning: transitives::OPENING (insight)
+
+
+User Move 16 (correct):       Elb  Bow  Lin  She
+    --------------------
+Tom|  X    O    X    X  |
+Alf|  X    X    O    X  |
+Pes|  O    X    X    X  |
+Car|  X    X    X    O  |
+    --------------------
+
+Available Moves: 
+(loc? True) ((shape, sauce, 'Bowtie', 'Carbonara'), 'X'):-2:CROSS_OUT
+(loc? False) ((shape, sauce, 'Elbow', 'Carbonara'), 'O'):1:APPLY_OR
+(loc? True) ((shape, sauce, 'Bowtie', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((shape, sauce, 'Shell', 'Carbonara'), 'X'):1:SIMPLE_OR_SAME_CAT
+(loc? False) ((sauce, shape, 'Alfredo', 'Elbow'), 'O'):2:APPLY_IS
+      Elb  Bow  Lin  She
+    --------------------
+Tom|  x    o    x    x  |
+Alf|  x    x    o    x  |
+Pes|  o    x    x    x  |
+Car|  x    X    x    o  |
+    --------------------
+Possible Reasonings: 
+1: cross outs - CROSS_OUT
+2: hint - "Either the shape Linguine or the shape Elbow is the sauce Carbonara" - SIMPLE_OR_SAME_CAT
+Likely Reasoning: cross outs::CROSS_OUT (insight)
+
+

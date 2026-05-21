@@ -560,7 +560,8 @@ class Puzzle:
 
         and there are no truth violations
         """
-        if self.is_valid():
+        copy = deepcopy(self)
+        if copy.is_valid():
             applied = True
             is_valid = True
             solver = Solver({Insight.TRANS_ABC_FALSE})
@@ -568,7 +569,7 @@ class Puzzle:
             while applied and is_valid:
                 i += 1
                 assert i < 1000  # Break the infinite loop, if there is one.
-                contradiction, solver_moves = solver.find_transitives(self, True)
+                contradiction, solver_moves = solver.find_transitives(copy, True)
                 if contradiction:
                     is_valid = False
                 if len(solver_moves) == 0:
@@ -577,13 +578,13 @@ class Puzzle:
                 return False
 
             solved = True
-            for cat1 in self.left_right:
-                for cat2 in self.top_bottom:
-                    grid_a = self.get_grid(cat1, cat2)
-                    grid_b = self.get_grid(cat2, cat1)
-                    if grid_a and not self._grid_is_complete(grid_a):
+            for cat1 in copy.left_right:
+                for cat2 in copy.top_bottom:
+                    grid_a = copy.get_grid(cat1, cat2)
+                    grid_b = copy.get_grid(cat2, cat1)
+                    if grid_a and not copy._grid_is_complete(grid_a):
                         solved = False
-                    if grid_b and not self._grid_is_complete(grid_b):
+                    if grid_b and not copy._grid_is_complete(grid_b):
                         solved = False
 
             return solved
@@ -854,6 +855,7 @@ Insight.BEFORE_DIFF_CAT = Insight(
     {Insight.APPLY_BEFORE_UNDEFINED_SPOTS, Insight.TRANS_ABC_FALSE},
     {"superceded_by": [Insight.BEFORE_N_SPOTS_SHIFT, Insight.TRANS_SETS, Insight.TRANS_ABC_TRUE]}, validate__before_diff_cat
 )
+Insight.USER_INSIGHT = Insight("USER_INSIGHT", 100)
 
 # ## Hint Grammar
 #
@@ -1991,7 +1993,7 @@ class Solver:
 
         o_contradiction, o_moves = self.apply_opening(puzzle)
         for move in o_moves:
-            move["hint_idx"] = -1
+            move["hint_idx"] = -3
         contradiction = self.extend_solver_moves(
             o_contradiction, o_moves, contradiction, available_moves
         )
@@ -2003,7 +2005,7 @@ class Solver:
         )
         t_contradiction, t_moves = self.find_transitives(puzzle)
         for move in t_moves:
-            move["hint_idx"] = -3
+            move["hint_idx"] = -1
         contradiction = self.extend_solver_moves(
             t_contradiction, t_moves, contradiction, available_moves
         )
