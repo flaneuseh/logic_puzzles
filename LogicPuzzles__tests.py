@@ -342,7 +342,7 @@ if __name__ == "__main__":
     assert (applied, is_valid, complete, insights) == (False, False, False, set())
 
 # %%
-# Test find_transitives
+# Test apply_transitives
 if __name__ == "__main__":
     print("Test find transitives")
     # A -> B and B -> C, so A -> C
@@ -352,7 +352,7 @@ if __name__ == "__main__":
     print(puzzle.print_grid())
 
     print("Scarlet -> 1:00 and 1:00 -> Study so Scarlet -> Study")
-    applied, is_valid, complete, insights = find_transitives(puzzle)
+    applied, is_valid, complete, insights = apply_transitives(puzzle)
     print(puzzle.print_grid())
     print(
         "(Applied, Is Valid, Complete, Insights): ",
@@ -373,7 +373,7 @@ if __name__ == "__main__":
     print(puzzle.print_grid())
 
     print("Scarlet -> 1:00 and 1:00 -> Study but Scarlet !> Study => contradiction")
-    applied, is_valid, complete, insights = find_transitives(puzzle)
+    applied, is_valid, complete, insights = apply_transitives(puzzle)
     print(puzzle.print_grid())
     print(
         "(Applied, Is Valid, Complete, Insights): ",
@@ -388,7 +388,7 @@ if __name__ == "__main__":
     print(puzzle.print_grid())
 
     print("Scarlet -> 1:00 and 1:00 !> Study so Scarlet !> Study")
-    applied, is_valid, complete, insights = find_transitives(puzzle)
+    applied, is_valid, complete, insights = apply_transitives(puzzle)
     print(
         "(Applied, Is Valid, Complete, Insights): ",
         (applied, is_valid, complete, insights),
@@ -409,7 +409,7 @@ if __name__ == "__main__":
     print(puzzle.print_grid())
 
     print("Scarlet -> 1:00 and 1:00 !> Study but Scarlet !> Study => contradiction")
-    applied, is_valid, complete, insights = find_transitives(puzzle)
+    applied, is_valid, complete, insights = apply_transitives(puzzle)
     print(
         "(Applied, Is Valid, Complete, Insights): ",
         (applied, is_valid, complete, insights),
@@ -424,7 +424,7 @@ if __name__ == "__main__":
     print(puzzle.print_grid())
 
     print("Scarlet -> 1:00 and Scarlet -> Study so 1:00 -> Study")
-    applied, is_valid, complete, insights = find_transitives(puzzle)
+    applied, is_valid, complete, insights = apply_transitives(puzzle)
     print(
         "(Applied, Is Valid, Complete, Insights): ",
         (applied, is_valid, complete, insights),
@@ -445,7 +445,7 @@ if __name__ == "__main__":
     print(puzzle.print_grid())
 
     print("Scarlet -> 1:00 and Scarlet -> Study but 1:00 !> Study => contradiction")
-    applied, is_valid, complete, insights = find_transitives(puzzle)
+    applied, is_valid, complete, insights = apply_transitives(puzzle)
     print(
         "(Applied, Is Valid, Complete, Insights): ",
         (applied, is_valid, complete, insights),
@@ -460,7 +460,7 @@ if __name__ == "__main__":
     print(puzzle.print_grid())
 
     print("Scarlet -> 1:00 and Scarlet !> Study so 1:00 !> Study")
-    applied, is_valid, complete, insights = find_transitives(puzzle)
+    applied, is_valid, complete, insights = apply_transitives(puzzle)
     print(
         "(Applied, Is Valid, Complete, Insights): ",
         (applied, is_valid, complete, insights),
@@ -481,7 +481,7 @@ if __name__ == "__main__":
     print(puzzle.print_grid())
 
     print("Scarlet -> 1:00 and Scarlet !> Study but 1:00 -> Study => contradiction")
-    applied, is_valid, complete, insights = find_transitives(puzzle)
+    applied, is_valid, complete, insights = apply_transitives(puzzle)
     print(puzzle.print_grid())
     print(
         "(Applied, Is Valid, Complete, Insights): ",
@@ -496,7 +496,7 @@ if __name__ == "__main__":
     print(puzzle.print_grid())
 
     print("Scarlet !> 1:00 and 1:00 -> Study so Scarlet !> Study")
-    applied, is_valid, complete, insights = find_transitives(puzzle)
+    applied, is_valid, complete, insights = apply_transitives(puzzle)
     print(
         "(Applied, Is Valid, Complete, Insights): ",
         (applied, is_valid, complete, insights),
@@ -517,7 +517,7 @@ if __name__ == "__main__":
     print(puzzle.print_grid())
 
     print("Scarlet !> 1:00 and 1:00 -> Study, but Scarlet !> Study => contradiction")
-    applied, is_valid, complete, insights = find_transitives(puzzle)
+    applied, is_valid, complete, insights = apply_transitives(puzzle)
     print(
         "(Applied, Is Valid, Complete, Insights): ",
         (applied, is_valid, complete, insights),
@@ -532,7 +532,7 @@ if __name__ == "__main__":
     print(puzzle.print_grid())
 
     print("Scarlet !> 1:00 and Scarlet -> Study so 1:00 !> Study")
-    applied, is_valid, complete, insights = find_transitives(puzzle)
+    applied, is_valid, complete, insights = apply_transitives(puzzle)
     print(
         "(Applied, Is Valid, Complete, Insights): ",
         (applied, is_valid, complete, insights),
@@ -553,7 +553,7 @@ if __name__ == "__main__":
     print(puzzle.print_grid())
 
     print("Scarlet !> 1:00 and Scarlet -> Study, but 1:00 !> Study => contradiction")
-    applied, is_valid, complete, insights = find_transitives(puzzle)
+    applied, is_valid, complete, insights = apply_transitives(puzzle)
     print(
         "(Applied, Is Valid, Complete, Insights): ",
         (applied, is_valid, complete, insights),
@@ -572,7 +572,7 @@ if __name__ == "__main__":
 
     ## Neither Scarlet nor Rope has a O time
     print("Scarlet and Rope don't share any compatible times, so Scarlet !> Rope")
-    applied, is_valid, complete, insights = find_transitives(puzzle)
+    applied, is_valid, complete, insights = apply_transitives(puzzle)
     print(
         "(Applied, Is Valid, Complete, Insights): ",
         (applied, is_valid, complete, insights),
@@ -592,7 +592,7 @@ if __name__ == "__main__":
     print(puzzle.print_grid())
 
     print("Ballroom and 1:00 don't share any compatible suspects, so Ballroom != 1:00")
-    applied, is_valid, complete, insights = find_transitives(puzzle)
+    applied, is_valid, complete, insights = apply_transitives(puzzle)
     print(puzzle.print_grid())
     print(
         "(Applied, Is Valid, Complete, Insights): ",
@@ -1319,5 +1319,5 @@ if __name__ == "__main__":
         print("Apply: ", (applied, is_valid, complete, insights))
         if applied:
             print("Openings: ", find_openings(puzzle))
-            print("Transitives: ", find_transitives(puzzle))
+            print("Transitives: ", apply_transitives(puzzle))
         print(puzzle.print_grid())

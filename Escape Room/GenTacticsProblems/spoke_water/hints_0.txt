@@ -1,0 +1,85 @@
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS,BEFORE_NOINFO,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [0][1][0])
+	The plants Green Onions is 1 amountss before the plants Carrots
+	The plants Carrots is 1 amountss before the plants Kale
+	The plants Potatoes is the amounts 80oz
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS,BEFORE_NOINFO,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [0][2][0])
+	The plants Green Onions is at least 1 amounts before the plants Carrots
+	The plants Kale is 1 amountss before the plants Potatoes
+	The plants Potatoes is the amounts 80oz
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,BEFORE_NOINFO,OPENING, 1 loops, 0th child (grid cell [1][1][0])
+	The plants Green Onions is 1 amountss before the plants Carrots
+	The plants Kale is 1 amountss before the plants Potatoes
+	The plants Carrots is 1 amountss before the plants Kale
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,BEFORE_NOINFO,OPENING, 2 loops, 0th child (grid cell [1][2][0])
+	The plants Carrots is 1 amountss before the plants Kale
+	The plants Kale is at least 1 amounts before the plants Potatoes
+	The plants Green Onions is 1 amountss before the plants Carrots
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS,APPLY_NOT,BEFORE_NOINFO,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [2][1][0])
+	The plants Potatoes is the amounts 80oz
+	The plants Kale was not the amounts 20oz
+	The plants Green Onions is 1 amountss before the plants Carrots
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS,APPLY_NOT,BEFORE_NOINFO,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [2][2][0])
+	The plants Potatoes is the amounts 80oz
+	The plants Kale was not the amounts 20oz
+	The plants Green Onions is 1 amountss before the plants Carrots
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,BEFORE_NOINFO,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [3][1][0])
+	The plants Green Onions is at least 1 amounts before the plants Potatoes
+	The plants Green Onions is 1 amountss before the plants Carrots
+	The plants Carrots is 1 amountss before the plants Kale
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,BEFORE_NOINFO,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [3][2][0])
+	The plants Green Onions is at least 1 amounts before the plants Potatoes
+	The plants Green Onions is 1 amountss before the plants Carrots
+	The plants Carrots is 1 amountss before the plants Kale
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,BEFORE_NOINFO,CROSS_OUT,OPENING, 3 loops, 0th child (grid cell [3][3][0])
+	The plants Carrots is 1 amountss before the plants Kale
+	The plants Green Onions is 1 amountss before the plants Carrots
+	The plants Carrots is at least 1 amounts before the plants Potatoes
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_NOT,BEFORE_NOINFO,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [4][1][0])
+	The plants Green Onions is at least 1 amounts before the plants Potatoes
+	The plants Green Onions is 1 amountss before the plants Carrots
+	The plants Green Onions is at least 1 amounts before the plants Kale
+	The plants Potatoes was not the amounts 60oz
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_NOT,BEFORE_NOINFO,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [4][2][0])
+	The plants Green Onions is 1 amountss before the plants Carrots
+	The plants Carrots is 1 amountss before the plants Kale
+	The plants Potatoes was not the amounts 20oz
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_IS,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [5][1][0])
+	The plants Carrots is the amounts 40oz
+	The plants Carrots is 1 amountss before the plants Kale
+	The plants Kale is at least 1 amounts before the plants Potatoes
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_IS,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [5][2][0])
+	The plants Carrots is 1 amountss before the plants Kale
+	The plants Carrots is the amounts 40oz
+	The plants Carrots is at least 1 amounts before the plants Potatoes
+
+
+Hints for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_IS,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [6][1][0])
+	The plants Carrots is 2 amountss before the plants Potatoes
+	The plants Carrots is the amounts 40oz
+	The plants Carrots is 1 amountss before the plants Kale
+
+

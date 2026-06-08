@@ -1,0 +1,47 @@
+----------------------------------------
+GENERATION 0
+--------------------------------------------------------------------------------
+Infeasible
+(0.9666666666666668, <insights.SolutionEvolution.HintSet object at 0x31a052210>)
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c
+    ----------------------------------------
+Bea|  X    X    O    X  | X    X    O    X  |
+Pas|  *    X    X    *  | *    *    X    X  |
+Tom|  *    X    X    *  | *    *    X    X  |
+Car|  X    O    X    X  | X    X    X    O  |
+    ----------------------------------------
+1 c|  X    X    X    O  |
+2 c|  O    X    X    X  |
+3 c|  X    X    O    X  |
+4 c|  X    O    X    X  |
+    --------------------
+
+0
+Reasons for infeasible: {'no_hints': 0, 'not_valid': 0, 'not_complete': 997, 'not_follows_insight_reqs': 3, 'not_insight_validate': 3, 'cant_solve_without_forbidden': 3, 'can_solve_without_required': 0}
+feasible:Stats:
+	 Height:0
+	 Total pop:0
+------------------------------------------------------------------------------------------------------------------------
+GENERATION 50
+--------------------------------------------------------------------------------
+Infeasible
+(0.9666666666666668, <insights.SolutionEvolution.HintSet object at 0x31a052210>)
+      1st  2nd  3rd  4th  1 c  2 c  3 c  4 c
+    ----------------------------------------
+Bea|  X    X    O    X  | X    X    O    X  |
+Pas|  *    X    X    *  | *    *    X    X  |
+Tom|  *    X    X    *  | *    *    X    X  |
+Car|  X    O    X    X  | X    X    X    O  |
+    ----------------------------------------
+1 c|  X    X    X    O  |
+2 c|  O    X    X    X  |
+3 c|  X    X    O    X  |
+4 c|  X    O    X    X  |
+    --------------------
+
+0
+Reasons for infeasible: {'no_hints': 2, 'not_valid': 0, 'not_complete': 1049, 'not_follows_insight_reqs': 49, 'not_insight_validate': 49, 'cant_solve_without_forbidden': 49, 'can_solve_without_required': 0}
+feasible:Stats:
+	 Height:0
+	 Total pop:0
+--------------------------------------------------------------------------------

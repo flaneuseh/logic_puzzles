@@ -18,7 +18,9 @@ import math
 import numpy.random as npr
 import pickle
 from itertools import combinations
-from SolutionEvolution import random_clue_set, ClueBank
+
+ultraimport("__dir__/./SolutionEvolution.py", package="insights")
+from insights.SolutionEvolution import random_clue_set, ClueBank
 
 
 # %%

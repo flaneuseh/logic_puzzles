@@ -1,0 +1,140 @@
+Solution for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS,BEFORE_NOINFO,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [0][1][0])
+      Gre  Car  Kal  Pot
+    --------------------
+20o|  O    X    X    X  |
+40o|  X    O    X    X  |
+60o|  X    X    O    X  |
+80o|  X    X    X    O  |
+    --------------------
+
+
+Solution for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS,BEFORE_NOINFO,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [0][2][0])
+      Gre  Car  Kal  Pot
+    --------------------
+20o|  O    X    X    X  |
+40o|  X    O    X    X  |
+60o|  X    X    O    X  |
+80o|  X    X    X    O  |
+    --------------------
+
+
+Solution for insight set APPLY_BEFORE_ONE_SPOT,BEFORE_NOINFO,OPENING, 1 loops, 0th child (grid cell [1][1][0])
+      Gre  Car  Kal  Pot
+    --------------------
+20o|  O    X    X    X  |
+40o|  X    O    X    X  |
+60o|  X    X    O    X  |
+80o|  X    X    X    O  |
+    --------------------
+
+
+Solution for insight set APPLY_BEFORE_ONE_SPOT,BEFORE_NOINFO,OPENING, 2 loops, 0th child (grid cell [1][2][0])
+      Gre  Car  Kal  Pot
+    --------------------
+20o|  O    X    X    X  |
+40o|  X    O    X    X  |
+60o|  X    X    O    X  |
+80o|  X    X    X    O  |
+    --------------------
+
+
+Solution for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS,APPLY_NOT,BEFORE_NOINFO,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [2][1][0])
+      Gre  Car  Kal  Pot
+    --------------------
+20o|  O    X    X    X  |
+40o|  X    O    X    X  |
+60o|  X    X    O    X  |
+80o|  X    X    X    O  |
+    --------------------
+
+
+Solution for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS,APPLY_NOT,BEFORE_NOINFO,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [2][2][0])
+      Gre  Car  Kal  Pot
+    --------------------
+20o|  O    X    X    X  |
+40o|  X    O    X    X  |
+60o|  X    X    O    X  |
+80o|  X    X    X    O  |
+    --------------------
+
+
+Solution for insight set APPLY_BEFORE_ONE_SPOT,BEFORE_NOINFO,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [3][1][0])
+      Gre  Car  Kal  Pot
+    --------------------
+20o|  O    X    X    X  |
+40o|  X    O    X    X  |
+60o|  X    X    O    X  |
+80o|  X    X    X    O  |
+    --------------------
+
+
+Solution for insight set APPLY_BEFORE_ONE_SPOT,BEFORE_NOINFO,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [3][2][0])
+      Gre  Car  Kal  Pot
+    --------------------
+20o|  O    X    X    X  |
+40o|  X    O    X    X  |
+60o|  X    X    O    X  |
+80o|  X    X    X    O  |
+    --------------------
+
+
+Solution for insight set APPLY_BEFORE_ONE_SPOT,BEFORE_NOINFO,CROSS_OUT,OPENING, 3 loops, 0th child (grid cell [3][3][0])
+      Gre  Car  Kal  Pot
+    --------------------
+20o|  O    X    X    X  |
+40o|  X    O    X    X  |
+60o|  X    X    O    X  |
+80o|  X    X    X    O  |
+    --------------------
+
+
+Solution for insight set APPLY_BEFORE_ONE_SPOT,APPLY_NOT,BEFORE_NOINFO,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [4][1][0])
+      Gre  Car  Kal  Pot
+    --------------------
+20o|  O    X    X    X  |
+40o|  X    O    X    X  |
+60o|  X    X    O    X  |
+80o|  X    X    X    O  |
+    --------------------
+
+
+Solution for insight set APPLY_BEFORE_ONE_SPOT,APPLY_NOT,BEFORE_NOINFO,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [4][2][0])
+      Gre  Car  Kal  Pot
+    --------------------
+20o|  O    X    X    X  |
+40o|  X    O    X    X  |
+60o|  X    X    O    X  |
+80o|  X    X    X    O  |
+    --------------------
+
+
+Solution for insight set APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_IS,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [5][1][0])
+      Gre  Car  Kal  Pot
+    --------------------
+20o|  O    X    X    X  |
+40o|  X    O    X    X  |
+60o|  X    X    O    X  |
+80o|  X    X    X    O  |
+    --------------------
+
+
+Solution for insight set APPLY_BEFORE_ONE_SPOT,APPLY_BEFORE_UNDEFINED_SPOTS,APPLY_IS,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [5][2][0])
+      Gre  Car  Kal  Pot
+    --------------------
+20o|  O    X    X    X  |
+40o|  X    O    X    X  |
+60o|  X    X    O    X  |
+80o|  X    X    X    O  |
+    --------------------
+
+
+Solution for insight set APPLY_BEFORE_N_SPOTS,APPLY_BEFORE_ONE_SPOT,APPLY_IS,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [6][1][0])
+      Gre  Car  Kal  Pot
+    --------------------
+20o|  O    X    X    X  |
+40o|  X    O    X    X  |
+60o|  X    X    O    X  |
+80o|  X    X    X    O  |
+    --------------------
+
+

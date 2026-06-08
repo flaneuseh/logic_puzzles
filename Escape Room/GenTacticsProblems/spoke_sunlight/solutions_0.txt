@@ -1,0 +1,40 @@
+Solution for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [0][1][0])
+      2hr  4hr  6hr  8hr
+    --------------------
+Tom|  O    X    X    X  |
+Spi|  X    O    X    X  |
+Cau|  X    X    O    X  |
+Pum|  X    X    X    O  |
+    --------------------
+
+
+Solution for insight set APPLY_IS,APPLY_NOT,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 1 loops, 0th child (grid cell [1][1][0])
+      2hr  4hr  6hr  8hr
+    --------------------
+Tom|  O    X    X    X  |
+Spi|  X    O    X    X  |
+Cau|  X    X    O    X  |
+Pum|  X    X    X    O  |
+    --------------------
+
+
+Solution for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [2][1][0])
+      2hr  4hr  6hr  8hr
+    --------------------
+Tom|  O    X    X    X  |
+Spi|  X    O    X    X  |
+Cau|  X    X    O    X  |
+Pum|  X    X    X    O  |
+    --------------------
+
+
+Solution for insight set APPLY_NOT,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 1 loops, 0th child (grid cell [3][1][0])
+      2hr  4hr  6hr  8hr
+    --------------------
+Tom|  O    X    X    X  |
+Spi|  X    O    X    X  |
+Cau|  X    X    O    X  |
+Pum|  X    X    X    O  |
+    --------------------
+
+

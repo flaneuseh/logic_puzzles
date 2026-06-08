@@ -1,0 +1,20 @@
+Solution for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [0][1][0])
+      Elb  Bow  Lin  Pen
+    --------------------
+Tom|  O    X    X    X  |
+Alf|  X    X    X    O  |
+Pes|  X    O    X    X  |
+Car|  X    X    O    X  |
+    --------------------
+
+
+Solution for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [1][1][0])
+      Elb  Bow  Lin  Pen
+    --------------------
+Tom|  O    X    X    X  |
+Alf|  X    X    X    O  |
+Pes|  X    O    X    X  |
+Car|  X    X    O    X  |
+    --------------------
+
+

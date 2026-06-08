@@ -1,0 +1,12 @@
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [0][1][0])
+	The shapes Bowtie is the sauces Pesto
+	Either the shapes Elbow or the shapes Bowtie is the sauces Tomato
+	The shapes Penne was not the sauces Carbonara
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [1][1][0])
+	Either the sauces Tomato or the sauces Alfredo is the shapes Elbow
+	The shapes Linguine is the sauces Carbonara
+	The shapes Penne is the sauces Alfredo
+
+

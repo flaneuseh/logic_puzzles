@@ -1,0 +1,19 @@
+----------------------------------------
+GENERATION 0
+--------------------------------------------------------------------------------
+Infeasible
+(0.9500000000000001, <insights.SolutionEvolution.HintSet object at 0x325529a90>)
+      10g  15g  20g  25g
+    --------------------
+Fis|  X    X    O    X  |
+Egg|  *    *    X    X  |
+Tof|  *    *    X    X  |
+Pea|  X    X    X    O  |
+    --------------------
+
+0
+Reasons for infeasible: {'no_hints': 0, 'not_valid': 0, 'not_complete': 888, 'not_follows_insight_reqs': 112, 'not_insight_validate': 107, 'cant_solve_without_forbidden': 110, 'can_solve_without_required': 0}
+feasible:Stats:
+	 Height:0
+	 Total pop:0
+--------------------------------------------------------------------------------

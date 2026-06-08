@@ -1,0 +1,381 @@
+{
+    "overall": {
+        "pct_moves_labelled": 0,
+        "pct_insight_of_labelled": {
+            "APPLY_OR": 0
+        },
+        "correct_moves": {
+            "pct_moves_labelled": 0,
+            "pct_insight_of_labelled": {
+                "APPLY_OR": 0
+            }
+        },
+        "incorrect_moves": {
+            "pct_moves_labelled": 0,
+            "pct_insight_of_labelled": {
+                "APPLY_OR": 0
+            }        
+        }
+    },
+    "per_trace": {
+        "overall": {
+            "avg_pct_moves_labelled": 0,
+            "avg_pct_insight_of_labelled": {
+                "APPLY_OR": 0
+            },
+            "correct_moves": {
+                "avg_pct_moves_labelled": 0,
+                "avg_pct_insight_of_labelled": {
+                    "APPLY_OR": 0
+                }
+            },
+            "incorrect_moves": {
+                "avg_pct_moves_labelled": 0,
+                "avg_pct_insight_of_labelled": {
+                    "APPLY_OR": 0
+                }
+            }
+        },
+        "successful_traces": {
+            "avg_pct_moves_labelled": 0,
+            "avg_pct_insight_of_labelled": {
+                "APPLY_OR": 0
+            },
+            "correct_moves": {
+                "avg_pct_moves_labelled": 0,
+                "avg_pct_insight_of_labelled": {
+                    "APPLY_OR": 0
+                }
+            },
+            "incorrect_moves": {
+                "avg_pct_moves_labelled": 0,
+                "avg_pct_insight_of_labelled": {
+                    "APPLY_OR": 0
+                }
+            }
+        },
+        "conceding": {
+            "avg_pct_moves_labelled": 0,
+            "avg_pct_insight_of_labelled": {
+                "APPLY_OR": 0
+            },
+            "correct_moves": {
+                "avg_pct_moves_labelled": 0,
+                "avg_pct_insight_of_labelled": {
+                    "APPLY_OR": 0
+                }
+            },
+            "incorrect_moves": {
+                "avg_pct_moves_labelled": 0,
+                "avg_pct_insight_of_labelled": {
+                    "APPLY_OR": 0
+                }
+            }
+        },
+        "per_puzzle": {
+            "overall":{
+                "avg_avg_insight_agreement": 0
+            },
+            "by_group": {
+                "hub": {
+                    "overall": {
+                        "avg_avg_pct_moves_labelled": 0,
+                        "avg_avg_pct_insight_of_labelled": {
+                            "APPLY_OR": 0
+                        },
+                        "correct_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        },
+                        "incorrect_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        }
+                    },
+                    "successful_traces": {
+                        "avg_avg_pct_moves_labelled": 0,
+                        "avg_avg_pct_insight_of_labelled": {
+                            "APPLY_OR": 0
+                        },
+                        "avg_avg_insight_agreement": 0,
+                        "correct_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        },
+                        "incorrect_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        }
+                    },
+                    "conceding_traces": {
+                        "avg_avg_pct_moves_labelled": 0,
+                        "avg_avg_pct_insight_of_labelled": {
+                            "APPLY_OR": 0
+                        },
+                        "correct_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        },
+                        "incorrect_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        }
+                    }
+                },
+                "spoke": {
+                    "overall": {
+                        "avg_avg_pct_moves_labelled": 0,
+                        "avg_avg_pct_insight_of_labelled": {
+                            "APPLY_OR": 0
+                        },
+                        "correct_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        },
+                        "incorrect_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        }
+                    },
+                    "successful": {
+                        "avg_avg_pct_moves_labelled": 0,
+                        "avg_avg_pct_insight_of_labelled": {
+                            "APPLY_OR": 0
+                        },
+                        "avg_avg_insight_agreement": 0,
+                        "correct_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        },
+                        "incorrect_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        }
+                    },
+                    "conceding": {
+                        "avg_avg_pct_moves_labelled": 0,
+                        "avg_avg_pct_insight_of_labelled": {
+                            "APPLY_OR": 0
+                        },
+                        "correct_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        },
+                        "incorrect_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        }
+                    }
+                },
+                "online": {
+                    "overall": {
+                        "avg_avg_pct_moves_labelled": 0,
+                        "avg_avg_pct_insight_of_labelled": {
+                            "APPLY_OR": 0
+                        },
+                        "correct_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        },
+                        "incorrect_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        }
+                    },
+                    "successful": {
+                        "avg_avg_pct_moves_labelled": 0,
+                        "avg_avg_pct_insight_of_labelled": {
+                            "APPLY_OR": 0
+                        },
+                        "avg_avg_insight_agreement": 0,
+                        "correct_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        },
+                        "incorrect_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        }
+                    },
+                    "conceding": {
+                        "avg_avg_pct_moves_labelled": 0,
+                        "avg_avg_pct_insight_of_labelled": {
+                            "APPLY_OR": 0
+                        },
+                        "correct_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        },
+                        "incorrect_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        }
+                    }
+                },
+                "vr": {
+                    "overall": {
+                        "avg_avg_pct_moves_labelled": 0,
+                        "avg_avg_pct_insight_of_labelled": {
+                            "APPLY_OR": 0
+                        },
+                        "correct_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        },
+                        "incorrect_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        }
+                    },
+                    "successful_traces": {
+                        "avg_avg_pct_moves_labelled": 0,
+                        "avg_avg_pct_insight_of_labelled": {
+                            "APPLY_OR": 0
+                        },
+                        "avg_avg_insight_agreement": 0,
+                        "correct_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        },
+                        "incorrect_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        }
+                    },
+                    "conceding_traces": {
+                        "avg_avg_pct_moves_labelled": 0,
+                        "avg_avg_pct_insight_of_labelled": {
+                            "APPLY_OR": 0
+                        },
+                        "correct_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        },
+                        "incorrect_moves": {
+                            "avg_avg_pct_moves_labelled": 0,
+                            "avg_avg_pct_insight_of_labelled": {
+                                "APPLY_OR": 0
+                            }
+                        }
+                    }
+                }
+            },
+            "hub2.0": {
+                "overall": {
+                    "avg_pct_moves_labelled": 0,
+                    "avg_pct_insight_of_labelled": {
+                        "APPLY_OR": 0
+                    },
+                    "correct_moves": {
+                        "avg_pct_moves_labelled": 0,
+                        "avg_pct_insight_of_labelled": {
+                            "APPLY_OR": 0
+                        }
+                    },
+                    "incorrect_moves": {
+                        "avg_pct_moves_labelled": 0,
+                        "avg_pct_insight_of_labelled": {
+                            "APPLY_OR": 0
+                        }
+                    }
+                },
+                "successful_traces": {
+                    "avg_pct_moves_labelled": 0,
+                    "avg_pct_insight_of_labelled": {
+                        "APPLY_OR": 0
+                    },
+                    "avg_insight_agreement": 0,
+                    "correct_moves": {
+                        "avg_pct_moves_labelled": 0,
+                        "avg_pct_insight_of_labelled": {
+                            "APPLY_OR": 0
+                        }
+                    },
+                    "incorrect_moves": {
+                        "avg_pct_moves_labelled": 0,
+                        "avg_pct_insight_of_labelled": {
+                            "APPLY_OR": 0
+                        }
+                    }
+                },
+                "conceding_traces": {
+                    "avg_pct_moves_labelled": 0,
+                    "avg_pct_insight_of_labelled": {
+                        "APPLY_OR": 0
+                    },
+                    "correct_moves": {
+                        "avg_pct_moves_labelled": 0,
+                        "avg_pct_insight_of_labelled": {
+                            "APPLY_OR": 0
+                        }
+                    },
+                    "incorrect_moves": {
+                        "avg_pct_moves_labelled": 0,
+                        "avg_pct_insight_of_labelled": {
+                            "APPLY_OR": 0
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+{
+    "puzzleid": [
+        "userid": {
+            "end_state": "success",
+            "label_counts": {
+                "APPLY_OR": 0,
+                "unknown": 0,
+            }
+        }
+    ]
+}

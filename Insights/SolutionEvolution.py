@@ -35,7 +35,8 @@ from main.LogicPuzzles import (
     Insight,
 )
 
-from ExhaustiveGeneration import ExtGenerator
+ultraimport("__dir__/./ExhaustiveGeneration.py", package="insights")
+from insights.ExhaustiveGeneration import ExtGenerator
 
 # from DataVisualization import plot_history
 import random
@@ -84,8 +85,11 @@ class ClueBank:
     def get_solution_clues_by_idx(self, solution, clue_idx):
         clues = []
         for i in clue_idx:
-            clues.append(self.clues_by_solution[solution][i])
+            clues.append(self.get_solution_clue_by_idx(solution, i))
         return clues
+
+    def get_solution_clue_by_idx(self, solution, clue_idx):
+        return self.clues_by_solution[solution][clue_idx]
 
 
 # %%
@@ -93,7 +97,7 @@ class HintSet:
     def __init__(
         self,
         puzzle,
-        solution, 
+        solution,
         clue_bank,
         clue_idx,
         required_insights=set(),
@@ -121,9 +125,31 @@ class HintSet:
             print(self.applied_puzzle.print_grid())
         assert len(self.clues()) == 0 or self.valid
 
+        if len(self.clues()) > 0 and self.applied_puzzle.is_complete():
+            self.eliminate_redundant_clues()
+
+    def eliminate_redundant_clues(self):
+        clue_idx = set(self.clue_idx)
+        new_clue_idx = deepcopy(clue_idx)
+        for i in clue_idx:
+            new_clue_idx = new_clue_idx - {i}
+            new_applied_puzzle, _, _ = SOLVER.apply_hints(
+                self.blank_puzzle,
+                self.clue_bank.get_solution_clues_by_idx(self.solution, new_clue_idx),
+            )
+            if not new_applied_puzzle.is_complete():
+                new_clue_idx = new_clue_idx | {i}
+
+        ord_clue_idx = []
+        for i in self.clue_idx:
+            if i in new_clue_idx:
+                ord_clue_idx.append(i)
+
+        self.clue_idx = ord_clue_idx
+
     def clues(self):
         return self.clue_bank.get_solution_clues_by_idx(self.solution, self.clue_idx)
-    
+
     def size(self):
         return len(self.clue_idx)
 
@@ -132,22 +158,26 @@ class HintSet:
         # and should not be solvable without the required insights
         if not (self.requires_insight or self.forbids_insight):
             return True
-        for insight in self.required_insights:
-            if not insight.validate(
-                insight.requirements, self.blank_puzzle, self.clues()
-            ):
-                return False
+        # for insight in self.required_insights:
+        #     if not insight.validate(
+        #         insight.requirements, self.blank_puzzle, self.clues()
+        #     ):
+        #         return False
         if not self.valid or not self.applied_puzzle.is_complete():
             return True
         can_solve_without_required = False
         can_solve_without_forbidden = True
+        forbidden_solver = Solver(self.forbidden_insights)
         if len(self.required_insights) > 0:
-            required_solver = Solver(self.required_insights | self.forbidden_insights)
-            can_solve_without_required = required_solver.can_solve_without_forbidden(
+            unmissable_insights = forbidden_solver.unmissable_insights(
                 self.blank_puzzle, self.clues()
             )
+            for required_insight in self.required_insights:
+                can_solve_without_required = (
+                    can_solve_without_required
+                    or required_insight not in unmissable_insights
+                )
         if len(self.forbidden_insights) > 0:
-            forbidden_solver = Solver(self.forbidden_insights)
             can_solve_without_forbidden = forbidden_solver.can_solve_without_forbidden(
                 self.blank_puzzle, self.clues()
             )
@@ -162,6 +192,9 @@ class HintSet:
         clue_copy = deepcopy(self.clue_idx)
         roll = random.random()
         if ((roll < add_rate) and len(clue_copy) <= 20) or len(clue_copy) <= 0:
+            if len(clue_copy) > 0 and self.applied_puzzle.is_complete():
+                index = random.randint(0, len(clue_copy) - 1)
+                del clue_copy[index]
             i = 0
             idx = -1
             while (i == 0 or idx in clue_copy) and i < 100:
@@ -205,14 +238,14 @@ class HintSet:
             self.clue_bank,
             clue_idx[0:threshold],
             self.required_insights,
-            self.forbidden_insights
+            self.forbidden_insights,
         ), HintSet(
             self.blank_puzzle,
             self.solution,
             self.clue_bank,
             clue_idx[threshold : len(clue_idx)],
             self.required_insights,
-            self.forbidden_insights
+            self.forbidden_insights,
         )
 
     def get_clue_counts(self):
@@ -387,7 +420,9 @@ def evolve(
     clue_bank = ClueBank(puzzle)
     # Create initial population
     for _ in range(pop_size):
-        clues = random_clue_set(puzzle, clue_bank, solution, required_insights, forbidden_insights)
+        clues = random_clue_set(
+            puzzle, clue_bank, solution, required_insights, forbidden_insights
+        )
         _add_child(clues, feasible, infeasible)
         print(f"added child with clues {clues}")
 

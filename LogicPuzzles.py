@@ -569,10 +569,10 @@ class Puzzle:
             while applied and is_valid:
                 i += 1
                 assert i < 1000  # Break the infinite loop, if there is one.
-                contradiction, solver_moves = solver.find_transitives(copy, True)
+                contradiction, multi_moves = solver.apply_transitives(copy, True)
                 if contradiction:
                     is_valid = False
-                if len(solver_moves) == 0:
+                if len(multi_moves) == 0:
                     applied = False
             if not is_valid:
                 return False
@@ -1155,29 +1155,47 @@ class Solver:
         self.allow_uncertain_moves = allow_uncertain_moves
         return
 
-    def add_solver_move(self, puzzle, move, insight, solver_moves, contradiction):
-        loc = move[0]
-        new_sy = move[1]
-        old_sy = puzzle.get_symbol(*loc)
-        move_contradiction = False
-        if old_sy == new_sy:
-            return contradiction
-        if old_sy in CONFIDENT_MARKS:
-            move_contradiction = True
-        contradiction = contradiction or move_contradiction
-        solver_move = {
-            "insight": insight,
-            "move": move,
-            "repair": move_contradiction,
-        }
-        solver_moves.append(solver_move)
+    def add_multi_move(self, puzzle, moves, insight, multi_moves, contradiction):
+        deduped_moves = []
+        for move in moves:
+            loc = move[0]
+            new_sy = move[1]
+            old_sy = puzzle.get_symbol(*loc)
+            move_contradiction = False
+            if old_sy == new_sy:
+                continue
+            deduped_moves.append(move)
+            if old_sy in CONFIDENT_MARKS:
+                move_contradiction = True
+            contradiction = contradiction or move_contradiction
+        
+        if len(deduped_moves) > 0:
+            multi_move = {
+                "insight": insight,
+                "moves": moves,
+            }
+            multi_moves.append(multi_move)
         return contradiction
+    
+    def apply_multi_moves(self, puzzle, multi_moves):
+        applied = False
+        for move in multi_moves:
+            if self.apply_multi_move(puzzle, move):
+                applied = True
+        return applied
 
-    def extend_solver_moves(
-        self, mo_contradiction, mo_moves, contradiction, solver_moves
+    def apply_multi_move(self, puzzle, multi_move):
+        applied = False
+        for move in multi_move["moves"]:
+            if puzzle.answer(*move):
+                applied = True
+        return applied
+
+    def extend_multi_moves(
+        self, mo_contradiction, mo_moves, contradiction, multi_moves
     ):
         contradiction = contradiction or mo_contradiction
-        solver_moves.extend(mo_moves)
+        multi_moves.extend(mo_moves)
         return contradiction
 
     def cross_out(self, puzzle, loc, apply=False):
@@ -1187,36 +1205,36 @@ class Solver:
         contradiction = False
 
         insight = Insight.CROSS_OUT
-        solver_moves = []
+        multi_moves = []
 
         cat1, cat2, ent1, ent2 = loc
 
+        cat1_insight_marks = []
         # x out the cross sections
         for ent in cat1.entities:
             if ent != ent1:
-                move = ((cat1, cat2, ent, ent2), "X")
-                contradiction = self.add_solver_move(
-                    puzzle, move, insight, solver_moves, contradiction
-                )
+                cat1_insight_marks.append(((cat1, cat2, ent, ent2), "X"))
+        contradiction = self.add_multi_move(
+            puzzle, cat1_insight_marks, insight, multi_moves, contradiction
+        )
 
+        cat2_insight_marks = []
         for ent in cat2.entities:
             if ent != ent2:
-                move = ((cat1, cat2, ent1, ent), "X")
-                contradiction = self.add_solver_move(
-                    puzzle, move, insight, solver_moves, contradiction
-                )
+                cat2_insight_marks.append(((cat1, cat2, ent1, ent), "X"))
+        contradiction = self.add_multi_move(
+            puzzle, cat2_insight_marks, insight, multi_moves, contradiction
+        )
 
         if apply:
-            for s_move in solver_moves:
-                puzzle.answer(*s_move["move"])
+            self.apply_multi_moves(puzzle)
 
-        return contradiction, solver_moves
+        return contradiction, multi_moves
 
     # remove errors (discrepancies between the current puzzle and the canonical solution)
     def repair(self, puzzle, solution, apply=False):
-        solver_moves = []
+        multi_moves = []
         contradiction = False  # If this is true, then there is a mark that doesn't match the solution
-
         for cat1 in puzzle.left_right:
             for cat2 in puzzle.top_bottom:
                 for ent1 in cat1.entities:
@@ -1227,16 +1245,15 @@ class Solver:
                         if curr_sy in CONFIDENT_MARKS and curr_sy != soln_sy:
                             # The puzzle value does not match the canonical solution; unset subgrid and mark repair as applied
                             insight = None
-                            contradiction = self.add_solver_move(
-                                puzzle, (loc, "*"), insight, solver_moves, contradiction
+                            contradiction = self.add_multi_move(
+                                puzzle, [(loc, "*")], insight, multi_moves, contradiction
                             )
                             assert (
                                 contradiction
                             ), "Repair moves should ALWAYS be a contradiction"
         if apply:
-            for s_move in solver_moves:
-                puzzle.answer(*s_move["move"])
-        return contradiction, solver_moves
+            self.apply_multi_moves(puzzle, multi_moves)
+        return contradiction, multi_moves
 
     def apply_is(self, puzzle, terms, apply=False):
         """
@@ -1245,7 +1262,7 @@ class Solver:
         terms: the terms making up the is hint's grammar
         return: applied, is_valid, complete
         """
-        solver_moves = []
+        multi_moves = []
         contradiction = False
 
         cat1 = terms[0]
@@ -1255,14 +1272,13 @@ class Solver:
 
         insight = Insight.APPLY_IS
         loc = (cat1, cat2, ent1, ent2)
-        contradiction = self.add_solver_move(
-            puzzle, (loc, "O"), insight, solver_moves, contradiction
+        contradiction = self.add_multi_move(
+            puzzle, [(loc, "O")], insight, multi_moves, contradiction
         )
 
         if apply:
-            for s_move in solver_moves:
-                puzzle.answer(*s_move["move"])
-        return contradiction, solver_moves
+            self.apply_multi_moves(puzzle, multi_moves)
+        return contradiction, multi_moves
 
     def apply_not(self, puzzle, terms, apply=False):
         """
@@ -1271,7 +1287,7 @@ class Solver:
         terms: the terms making up the is hint's grammar
         return: applied, is_valid, complete
         """
-        solver_moves = []
+        multi_moves = []
         contradiction = False
 
         cat1 = terms[0]
@@ -1281,19 +1297,18 @@ class Solver:
 
         insight = Insight.APPLY_NOT
         loc = (cat1, cat2, ent1, ent2)
-        contradiction = self.add_solver_move(
-            puzzle, (loc, "X"), insight, solver_moves, contradiction
+        contradiction = self.add_multi_move(
+            puzzle, [(loc, "X")], insight, multi_moves, contradiction
         )
 
         if apply:
-            for s_move in solver_moves:
-                puzzle.answer(*s_move["move"])
-        return contradiction, solver_moves
+            self.apply_multi_moves(puzzle, multi_moves)
+        return contradiction, multi_moves
 
     # If a row/column has 1 O then fill the rest with X.
     # If a row/column has more than one O then contradiction.
     def apply_cross_out(self, puzzle, apply=False):
-        solver_moves = []
+        multi_moves = []
         contradiction = False
         # For every combination of categories:
         for cat1 in puzzle.categories:
@@ -1314,10 +1329,10 @@ class Solver:
                             ent1 = cat1.entities[os[0]]
                             ent2 = cat2.entities[i]
                             loc = (cat1, cat2, ent1, ent2)
-                            contradiction = self.extend_solver_moves(
+                            contradiction = self.extend_multi_moves(
                                 *self.cross_out(puzzle, loc),
                                 contradiction,
-                                solver_moves,
+                                multi_moves,
                             )
 
                     # For each column:
@@ -1337,21 +1352,20 @@ class Solver:
                             ent2 = cat2.entities[os[0]]
 
                             loc = (cat1, cat2, ent1, ent2)
-                            contradiction = self.extend_solver_moves(
+                            contradiction = self.extend_multi_moves(
                                 *self.cross_out(puzzle, loc),
                                 contradiction,
-                                solver_moves,
+                                multi_moves,
                             )
 
         if apply:
-            for s_move in solver_moves:
-                puzzle.answer(*s_move["move"])
-        return contradiction, solver_moves
+            self.apply_multi_moves(puzzle, multi_moves)
+        return contradiction, multi_moves
 
     # If a row/column has 1 * and the rest are X then fill out a O there.
     # If a row/column is all X or has more than one O then contradiction.
     def apply_opening(self, puzzle, apply=False):
-        solver_moves = []
+        multi_moves = []
         contradiction = False
 
         # For every combination of categories:
@@ -1380,8 +1394,8 @@ class Solver:
                             loc = (cat1, cat2, ent1, ent2)
 
                             # Answer it as 0.
-                            contradiction = self.add_solver_move(
-                                puzzle, (loc, "O"), insight, solver_moves, contradiction
+                            contradiction = self.add_multi_move(
+                                puzzle, [(loc, "O")], insight, multi_moves, contradiction
                             )
 
                     # For each column:
@@ -1409,14 +1423,13 @@ class Solver:
                             loc = (cat1, cat2, ent1, ent2)
 
                             # Answer it as 0.
-                            contradiction = self.add_solver_move(
-                                puzzle, (loc, "O"), insight, solver_moves, contradiction
+                            contradiction = self.add_multi_move(
+                                puzzle, [(loc, "O")], insight, multi_moves, contradiction
                             )
 
         if apply:
-            for s_move in solver_moves:
-                puzzle.answer(*s_move["move"])
-        return contradiction, solver_moves
+            self.apply_multi_moves(puzzle, multi_moves)
+        return contradiction, multi_moves
 
     def apply_move(self, puzzle, move):
         diff = move["move_diff"]
@@ -1441,8 +1454,8 @@ class Solver:
     # If A is B and B is C then A is C
     # If A is B and B is not C then A is not C
     # ...
-    def find_transitives(self, puzzle, apply=False):
-        solver_moves = []
+    def apply_transitives(self, puzzle, apply=False):
+        multi_moves = []
         contradiction = False
 
         # For every pair of related entities:
@@ -1475,8 +1488,8 @@ class Solver:
                         # A -> B and B -> C, so A -> C
                         loc = (catA, catC, entA, entC)
                         insight = Insight.TRANS_ABC_TRUE
-                        contradiction = self.add_solver_move(
-                            puzzle, (loc, "O"), insight, solver_moves, contradiction
+                        contradiction = self.add_multi_move(
+                            puzzle, [(loc, "O")], insight, multi_moves, contradiction
                         )
                         # For all false values for B in category C
                         for entC in catC_relations["false"]:
@@ -1485,8 +1498,8 @@ class Solver:
                             # A -> B and B !> C, so A !> C
                             insight = Insight.TRANS_ABC_FALSE
                             loc = (catA, catC, entA, entC)
-                            contradiction = self.add_solver_move(
-                                puzzle, (loc, "X"), insight, solver_moves, contradiction
+                            contradiction = self.add_multi_move(
+                                puzzle, [(loc, "X")], insight, multi_moves, contradiction
                             )
 
         # For every pair of entities:
@@ -1529,18 +1542,17 @@ class Solver:
                                     # A and B don't share any possibilities; A != B
                                     loc = (catA, catB, entA, entB)
                                     insight = Insight.TRANS_SETS
-                                    contradiction = self.add_solver_move(
+                                    contradiction = self.add_multi_move(
                                         puzzle,
-                                        (loc, "X"),
+                                        [(loc, "X")],
                                         insight,
-                                        solver_moves,
+                                        multi_moves,
                                         contradiction,
                                     )
 
         if apply:
-            for s_move in solver_moves:
-                puzzle.answer(*s_move["move"])
-        return contradiction, solver_moves
+            self.apply_multi_moves(puzzle, multi_moves)
+        return contradiction, multi_moves
 
     def apply_before(self, puzzle, terms, apply=False):
         """
@@ -1550,7 +1562,7 @@ class Solver:
         return_steps: return each mark/insight as a separate move
         return: applied, is_valid, complete
         """
-        solver_moves = []
+        multi_moves = []
         contradiction = False
         numbered = len(terms) == 6
 
@@ -1569,8 +1581,8 @@ class Solver:
         if bef_cat != aft_cat:
             loc = (bef_cat, aft_cat, bef_ent, aft_ent)
             insight = Insight.BEFORE_DIFF_CAT
-            contradiction = self.add_solver_move(
-                puzzle, (loc, "X"), insight, solver_moves, contradiction
+            contradiction = self.add_multi_move(
+                puzzle, [(loc, "X")], insight, multi_moves, contradiction
             )
 
         # Get all the current symbols for the two entities in the num category
@@ -1622,26 +1634,31 @@ class Solver:
             elif len(pos_aft_index) == 1:
                 aft_index = pos_aft_index[0]
                 loc = (aft_cat, num_cat, aft_ent, num_cat.entities[aft_index])
-                contradiction = self.add_solver_move(
-                    puzzle, (loc, "O"), insight, solver_moves, contradiction
+                contradiction = self.add_multi_move(
+                    puzzle, [(loc, "O")], insight, multi_moves, contradiction
                 )
             else:
+                assert insight == Insight.APPLY_BEFORE_UNDEFINED_SPOTS
+                marks = []
                 for i in range(0, bef_index + 1):
                     loc = (aft_cat, num_cat, aft_ent, num_cat.entities[i])
-                    assert insight == Insight.APPLY_BEFORE_UNDEFINED_SPOTS
-                    contradiction = self.add_solver_move(
-                        puzzle, (loc, "X"), insight, solver_moves, contradiction
-                    )
+                    marks.append((loc, "X"))
+                
+                contradiction = self.add_multi_move(
+                    puzzle, marks, insight, multi_moves, contradiction
+                )
 
                 if self.allow_uncertain_moves:
+                    marks = []
                     for i in pos_aft_index:
                         # Make an uncertain mark for possible answers.
                         loc = (aft_cat, num_cat, aft_ent, num_cat.entities[i])
                         sy = puzzle.get_symbol(*loc)
                         if sy == "*":
-                            contradiction = self.add_solver_move(
-                                puzzle, (loc, "Y"), insight, solver_moves, contradiction
-                            )
+                            marks.append((loc, "Y"))
+                    contradiction = self.add_multi_move(
+                        puzzle, marks, insight, multi_moves, contradiction
+                    )
 
         # determine the possible before entities if the after entity is solved
         if "O" in after_symbols:
@@ -1666,17 +1683,20 @@ class Solver:
             elif len(pos_bef_index) == 1:
                 bef_index = pos_bef_index[0]
                 loc = (bef_cat, num_cat, bef_ent, num_cat.entities[bef_index])
-                contradiction = self.add_solver_move(
-                    puzzle, (loc, "O"), insight, solver_moves, contradiction
+                contradiction = self.add_multi_move(
+                    puzzle, [(loc, "O")], insight, multi_moves, contradiction
                 )
             else:
+                assert insight == Insight.APPLY_BEFORE_UNDEFINED_SPOTS
+                marks = []
                 for i in range(aft_index, len(before_symbols)):
                     loc = (bef_cat, num_cat, bef_ent, num_cat.entities[i])
-                    assert insight == Insight.APPLY_BEFORE_UNDEFINED_SPOTS
-                    contradiction = self.add_solver_move(
-                        puzzle, (loc, "X"), insight, solver_moves, contradiction
-                    )
+                    marks.append((loc, "X"))
+                contradiction = self.add_multi_move(
+                    puzzle, marks, insight, multi_moves, contradiction
+                )
                 if self.allow_uncertain_moves:
+                    marks = []
                     for i in pos_bef_index:
                         # Make an uncertain mark for possible answers.
                         loc = (aft_cat, num_cat, bef_ent, num_cat.entities[i])
@@ -1684,71 +1704,57 @@ class Solver:
                             aft_cat, num_cat, bef_ent, num_cat.entities[i]
                         )
                         if sy == "*":
-                            contradiction = self.add_solver_move(
-                                puzzle, (loc, "Y"), insight, solver_moves, contradiction
-                            )
+                            marks.append((loc, "Y"))
+                    contradiction = self.add_multi_move(
+                        puzzle, marks, insight, multi_moves, contradiction
+                    )
 
         # Narrow down possiblities with no information for entities yet
         # The before entity can't be in the last num spots (or there won't be room for the after entity)
-        for i in range(0, len(before_symbols) - num):
-            insight = Insight.BEFORE_NOINFO
-            loc = (bef_cat, num_cat, bef_ent, num_cat.entities[i])
-            sy = puzzle.get_symbol(*loc)
-            if sy == "*" and self.allow_uncertain_moves:
-                contradiction = self.add_solver_move(
-                    puzzle, (loc, "Y"), insight, solver_moves, contradiction
-                )
-
+        before_1_marks = []
+        before_n_marks = []
         for i in range(len(before_symbols) - num, len(before_symbols)):
-            insight = Insight.BEFORE_NOINFO
-            if i < len(before_symbols) - 1:
-                insight = Insight.BEFORE_N_SPOTS_NOINFO
-
             loc = (bef_cat, num_cat, bef_ent, num_cat.entities[i])
-            contradiction = self.add_solver_move(
-                puzzle, (loc, "X"), insight, solver_moves, contradiction
-            )
+            
+            if i < len(before_symbols) - 1:
+                before_1_marks.append((loc, "X"))      
+            
+            before_n_marks.append((loc, "X"))
 
         # And the inverse is true for the after entity
         for i in range(0, num):
-            insight = Insight.BEFORE_NOINFO
-            if i > 0:
-                insight = Insight.BEFORE_N_SPOTS_NOINFO
             loc = (aft_cat, num_cat, aft_ent, num_cat.entities[i])
-            contradiction = self.add_solver_move(
-                puzzle, (loc, "X"), insight, solver_moves, contradiction
-            )
-        for i in range(num, len(after_symbols)):
-            loc = (aft_cat, num_cat, aft_ent, num_cat.entities[i])
-            sy = puzzle.get_symbol(*loc)
-            if sy == "*" and self.allow_uncertain_moves:
-                insight = Insight.BEFORE_NOINFO
-                contradiction = self.add_solver_move(
-                    puzzle, (loc, "Y"), insight, solver_moves, contradiction
-                )
+
+            if i == 0:
+                before_1_marks.append((loc, "X"))
+            before_n_marks.append((loc, "X"))
+            
+        contradiction = self.add_multi_move(puzzle, before_1_marks, Insight.BEFORE_NOINFO, multi_moves, contradiction)
+        contradiction = self.add_multi_move(
+            puzzle, before_n_marks, Insight.BEFORE_N_SPOTS_NOINFO, multi_moves, contradiction
+        )
 
         # Determine possible answers with constraints on either entity
         if "X" in before_symbols or "X" in after_symbols:
             # A streak of Xs at the beginning/end forces the first available position for the other entity to shift.
+            shift_marks = []
+            
             for i in range(len(before_symbols) - num):
                 if before_symbols[i] != "X":
                     break
 
                 loc = (aft_cat, num_cat, aft_ent, num_cat.entities[i + num])
-
-                insight = Insight.BEFORE_N_SPOTS_SHIFT
-                contradiction = self.add_solver_move(
-                    puzzle, (loc, "X"), insight, solver_moves, contradiction
-                )
-
+                shift_marks.append((loc, "X"))
+            
             for i in range(len(after_symbols) - 1, num - 1, -1):
                 if after_symbols[i] != "X":
                     break
                 loc = (bef_cat, num_cat, bef_ent, num_cat.entities[i - num])
-                insight = Insight.BEFORE_N_SPOTS_SHIFT
-                contradiction = self.add_solver_move(
-                    puzzle, (loc, "X"), insight, solver_moves, contradiction
-                )
+                shift_marks.append((loc, "X"))
+
+            contradiction = self.add_multi_move(
+                puzzle, shift_marks, Insight.BEFORE_N_SPOTS_SHIFT, multi_moves, contradiction
+            )
 
             if numbered:
                 # All Xs for the before entity where the index is valid (i+num exists).
@@ -1765,24 +1771,23 @@ class Solver:
                 ]
 
                 # For a position to be a valid answer, the corresponding position +/- num must be valid for the other entity
+                xcheck_marks = []
                 for i in before_Xs:
                     loc = (aft_cat, num_cat, aft_ent, num_cat.entities[i + num])
-                    insight = Insight.BEFORE_N_SPOTS_CROSSCHECK
-                    contradiction = self.add_solver_move(
-                        puzzle, (loc, "X"), insight, solver_moves, contradiction
-                    )
+                    xcheck_marks.append((loc, "X"))
 
                 for i in after_Xs:
                     loc = (bef_cat, num_cat, bef_ent, num_cat.entities[i - num])
                     insight = Insight.BEFORE_N_SPOTS_CROSSCHECK
-                    contradiction = self.add_solver_move(
-                        puzzle, (loc, "X"), insight, solver_moves, contradiction
-                    )
+                    xcheck_marks.append((loc, "X"))
+
+                contradiction = self.add_multi_move(
+                    puzzle, xcheck_marks, Insight.BEFORE_N_SPOTS_CROSSCHECK, multi_moves, contradiction
+                )
 
         if apply:
-            for s_move in solver_moves:
-                puzzle.answer(*s_move["move"])
-        return contradiction, solver_moves
+            self.apply_multi_moves(puzzle, multi_moves)
+        return contradiction, multi_moves
 
     def apply_simple_or(self, puzzle, terms, apply=False):
         """
@@ -1791,7 +1796,7 @@ class Solver:
         return_steps: return each mark as its own move with the insight
         return: applied, is_valid, complete
         """
-        solver_moves = []
+        multi_moves = []
         contradiction = False
 
         pos_cat1 = terms[0]
@@ -1814,50 +1819,52 @@ class Solver:
                 contradiction = True
             else:
                 # This rule is finished
-                return contradiction, solver_moves
+                return contradiction, multi_moves
 
         if pos_symb1 in CONFIDENT_MARKS or pos_symb2 in CONFIDENT_MARKS:
             insight = Insight.APPLY_OR
             if pos_symb1 == "O":
                 # hint says that ent2 cannot be the answer ent
-                contradiction = self.add_solver_move(
-                    puzzle, (loc2, "X"), insight, solver_moves, contradiction
+                contradiction = self.add_multi_move(
+                    puzzle, [(loc2, "X")], insight, multi_moves, contradiction
                 )
             elif pos_symb1 == "X":
                 # hint says that ent2 must be the answer ent
-                contradiction = self.add_solver_move(
-                    puzzle, (loc2, "O"), insight, solver_moves, contradiction
+                contradiction = self.add_multi_move(
+                    puzzle, [(loc2, "O")], insight, multi_moves, contradiction
                 )
             elif pos_symb2 == "O":
                 # hint says ent1 is not ans_ent
-                contradiction = self.add_solver_move(
-                    puzzle, (loc1, "X"), insight, solver_moves, contradiction
+                contradiction = self.add_multi_move(
+                    puzzle, [(loc1, "X")], insight, multi_moves, contradiction
                 )
             elif pos_symb2 == "X":
                 # hint says ent1 is ans_ent and we can change this
-                contradiction = self.add_solver_move(
-                    puzzle, (loc1, "O"), insight, solver_moves, contradiction
+                contradiction = self.add_multi_move(
+                    puzzle, [(loc1, "O")], insight, multi_moves, contradiction
                 )
         else:
             # Both are uncertain
             # we can't apply hint yet (don't have enough information)
+            uncertain_marks = []
             insight = Insight.APPLY_OR
             if pos_symb1 == "*" and self.allow_uncertain_moves:
-                contradiction = self.add_solver_move(
-                    puzzle, (loc1, "Y"), insight, solver_moves, contradiction
-                )
+                uncertain_marks.append((loc1, "Y"))
+                
             if pos_symb2 == "*" and self.allow_uncertain_moves:
-                contradiction = self.add_solver_move(
-                    puzzle, (loc2, "Y"), insight, solver_moves, contradiction
-                )
+                uncertain_marks.append((loc2, "Y"))
+            
+            contradiction = self.add_multi_move(
+                puzzle, uncertain_marks, insight, multi_moves, contradiction
+            )
 
         if pos_cat1 != pos_cat2:
             # A and B are in different categories
             # If A or B is C then A is not B
             insight = Insight.SIMPLE_OR_DIFF_CAT
             loc = (pos_cat1, pos_cat2, pos_ent1, pos_ent2)
-            contradiction = self.add_solver_move(
-                puzzle, (loc, "X"), insight, solver_moves, contradiction
+            contradiction = self.add_multi_move(
+                puzzle, [(loc, "X")], insight, multi_moves, contradiction
             )
         else:
             # A and B are in the same category
@@ -1866,21 +1873,20 @@ class Solver:
             for ent in pos_cat1.entities:
                 if ent not in [pos_ent1, pos_ent2]:
                     loc = (pos_cat1, ans_cat, ent, ans_ent)
-                    contradiction = self.add_solver_move(
-                        puzzle, (loc, "X"), insight, solver_moves, contradiction
+                    contradiction = self.add_multi_move(
+                        puzzle, [(loc, "X")], insight, multi_moves, contradiction
                     )
 
         if apply:
-            for s_move in solver_moves:
-                puzzle.answer(*s_move["move"])
-        return contradiction, solver_moves
+            self.apply_multi_moves(puzzle, multi_moves)
+        return contradiction, multi_moves
 
     def apply_compound_or(self, puzzle, options, apply=False):
         """
         Apply the compound or rule to puzzle, will be incomplete if not enough information is known
         return: applied, is_valid, complete
         """
-        solver_moves = []
+        multi_moves = []
         contradiction = False
 
         optionA = options[0]
@@ -1899,45 +1905,72 @@ class Solver:
         locB = (catB1, catB2, entB1, entB2)
         currentB = puzzle.get_symbol(*locB)
 
+        # Convert to simple or if any entities are repeated.
+        ans_cat = None
+        ans_ent = None
+        pos_cat1 = None
+        pos_ent1 = None
+        pos_cat2 = None
+        pos_ent2 = None
+        if entA1 in [entB1, entB2] or entA2 in [entB1, entB2]:
+            if entA1 in [entB1, entB2]:
+                ans_cat = catA1
+                ans_ent = entA1
+                pos_cat1 = catA2
+                pos_ent1 = entA2
+            else:
+                ans_cat = catA2
+                ans_ent = entA2
+                pos_cat1 = catA1
+                pos_ent1 = entA1
+                
+            if ans_ent == entB1:
+                pos_cat2 = catB2
+                pos_ent2 = entB2
+            else:
+                pos_cat2 = catB1
+                pos_ent2 = entB1
+        if ans_ent != None:
+            return self.apply_simple_or(puzzle, [pos_cat1, pos_ent1, pos_cat2, pos_ent2, ans_cat, ans_ent], apply)
+
         if currentA in CONFIDENT_MARKS and currentB in CONFIDENT_MARKS:
             if currentA == currentB:
                 contradiction = True
-            return contradiction, solver_moves
+            return contradiction, multi_moves
 
         if currentA in CONFIDENT_MARKS or currentB in CONFIDENT_MARKS:
             insight = Insight.APPLY_OR
 
             if currentA == "X":
-                contradiction = self.add_solver_move(
-                    puzzle, (locB, "O"), insight, solver_moves, contradiction
+                contradiction = self.add_multi_move(
+                    puzzle, [(locB, "O")], insight, multi_moves, contradiction
                 )
             elif currentB == "X":
-                contradiction = self.add_solver_move(
-                    puzzle, (locA, "O"), insight, solver_moves, contradiction
+                contradiction = self.add_multi_move(
+                    puzzle, [(locA, "O")], insight, multi_moves, contradiction
                 )
             elif currentA == "O":
-                contradiction = self.add_solver_move(
-                    puzzle, (locB, "X"), insight, solver_moves, contradiction
+                contradiction = self.add_multi_move(
+                    puzzle, [(locB, "X")], insight, multi_moves, contradiction
                 )
             elif currentB == "O":
-                contradiction = self.add_solver_move(
-                    puzzle, (locA, "X"), insight, solver_moves, contradiction
+                contradiction = self.add_multi_move(
+                    puzzle, [(locA, "X")], insight, multi_moves, contradiction
                 )
         elif self.allow_uncertain_moves:
-            insight = Insight.APPLY_OR
+            uncertain_marks = []
             if currentA == "*":
-                contradiction = self.add_solver_move(
-                    puzzle, (locA, "Y"), insight, solver_moves, contradiction
-                )
+                uncertain_marks.append((locA, "Y"))
             if currentB == "*":
-                contradiction = self.add_solver_move(
-                    puzzle, (locB, "Y"), insight, solver_moves, contradiction
-                )
+                uncertain_marks.append((locB, "Y"))
+            
+            contradiction = self.add_multi_move(
+                puzzle, uncertain_marks, Insight.APPLY_OR, multi_moves, contradiction
+            )
 
         if apply:
-            for s_move in solver_moves:
-                puzzle.answer(*s_move["move"])
-        return contradiction, solver_moves
+            self.apply_multi_moves(puzzle, multi_moves)
+        return contradiction, multi_moves
 
     def apply_hint(self, puzzle, hint, apply=False):
         """
@@ -1953,22 +1986,22 @@ class Solver:
         insights = the insights required for the move
         """
         contradiction = False
-        solver_moves = []
+        multi_moves = []
 
         rule = list(hint.keys())[0]
         terms = hint[rule]
         if rule == "simple_hint":
             rule = list(hint.keys())[0]
         if rule == "is":
-            contradiction, solver_moves = self.apply_is(puzzle, terms, apply)
+            contradiction, multi_moves = self.apply_is(puzzle, terms, apply)
         elif rule == "not":
-            contradiction, solver_moves = self.apply_not(puzzle, terms[0]["is"], apply)
+            contradiction, multi_moves = self.apply_not(puzzle, terms[0]["is"], apply)
         elif rule == "before":
-            contradiction, solver_moves = self.apply_before(puzzle, terms, apply)
+            contradiction, multi_moves = self.apply_before(puzzle, terms, apply)
         elif rule == "simple_or":
-            contradiction, solver_moves = self.apply_simple_or(puzzle, terms, apply)
+            contradiction, multi_moves = self.apply_simple_or(puzzle, terms, apply)
         elif rule == "compound_or":
-            contradiction, solver_moves = self.apply_compound_or(
+            contradiction, multi_moves = self.apply_compound_or(
                 puzzle, [terms[0]["is"], terms[1]["is"]], apply
             )
         else:
@@ -1977,7 +2010,7 @@ class Solver:
                 + Grammar.str_hint(hint)
             )
 
-        return contradiction, solver_moves
+        return contradiction, multi_moves
 
     def get_available_moves(self, puzzle, hints, include_forbidden=False):
         """
@@ -1990,30 +2023,29 @@ class Solver:
         """
         available_moves = []
         contradiction = False
-
         o_contradiction, o_moves = self.apply_opening(puzzle)
         for move in o_moves:
             move["hint_idx"] = -3
-        contradiction = self.extend_solver_moves(
+        contradiction = self.extend_multi_moves(
             o_contradiction, o_moves, contradiction, available_moves
         )
         c_contradiction, c_moves = self.apply_cross_out(puzzle)
         for move in c_moves:
             move["hint_idx"] = -2
-        contradiction = self.extend_solver_moves(
+        contradiction = self.extend_multi_moves(
             c_contradiction, c_moves, contradiction, available_moves
         )
-        t_contradiction, t_moves = self.find_transitives(puzzle)
+        t_contradiction, t_moves = self.apply_transitives(puzzle)
         for move in t_moves:
             move["hint_idx"] = -1
-        contradiction = self.extend_solver_moves(
+        contradiction = self.extend_multi_moves(
             t_contradiction, t_moves, contradiction, available_moves
         )
         for idx, hint in enumerate(hints):
             h_contradiction, h_moves = self.apply_hint(puzzle, hint)
             for move in h_moves:
                 move["hint_idx"] = idx
-            contradiction = self.extend_solver_moves(
+            contradiction = self.extend_multi_moves(
                 h_contradiction, h_moves, contradiction, available_moves
             )
 
@@ -2109,7 +2141,7 @@ class Solver:
             applied = False
             for move in available_moves:
                 if move["insight"] not in self.forbidden_insights:
-                    if copy.answer(*move["move"]):
+                    if self.apply_multi_move(copy, move):
                         applied = True
             if contradiction:
                 is_valid = False
@@ -2141,25 +2173,25 @@ class Solver:
             i += 1
             assert i < 1000
             # Apply openings and transitives as many times as you can.
-            contradiction, solver_moves = self.apply_opening(copy, True)
-            a_2 = len(solver_moves) > 0
+            contradiction, multi_moves = self.apply_opening(copy, True)
+            a_2 = len(multi_moves) > 0
             if contradiction:
                 if print_soln:
                     print("not valid at first apply_opening")
                 is_valid = False
 
-            contradiction, solver_moves = self.apply_cross_out(copy, True)
-            a_3 = len(solver_moves) > 0
+            contradiction, multi_moves = self.apply_cross_out(copy, True)
+            a_3 = len(multi_moves) > 0
             if contradiction:
                 if print_soln:
                     print("not valid at first apply_cross_out")
                 is_valid = False
 
-            contradiction, solver_moves = self.find_transitives(copy, True)
-            a_4 = len(solver_moves) > 0
+            contradiction, multi_moves = self.apply_transitives(copy, True)
+            a_4 = len(multi_moves) > 0
             if contradiction:
                 if print_soln:
-                    print("not valid at first find_transitives")
+                    print("not valid at first apply_transitives")
                 is_valid = False
 
             if a_2 or a_3 or a_4:
@@ -2186,8 +2218,8 @@ class Solver:
             for hint in hints:
                 str_hint = hint_to_english(hint)
                 og = deepcopy(copy)
-                contradiction, solver_moves = self.apply_hint(copy, hint, True)
-                a = len(solver_moves) > 0
+                contradiction, multi_moves = self.apply_hint(copy, hint, True)
+                a = len(multi_moves) > 0
                 applied = applied or a
                 if not applied and print_soln:
                     print(f"did not apply hint {str_hint}")
@@ -2210,25 +2242,25 @@ class Solver:
                     i += 1
                     assert i < 1000
                     # Apply openings and transitives as many times as you can.
-                    contradiction, solver_moves = self.apply_opening(copy, True)
-                    a_2 = len(solver_moves) > 0
+                    contradiction, multi_moves = self.apply_opening(copy, True)
+                    a_2 = len(multi_moves) > 0
                     if contradiction:
                         if print_soln:
                             print(f"not valid at apply_opening after hint {str_hint}")
                         is_valid = False
 
-                    contradiction, solver_moves = self.apply_cross_out(copy, True)
-                    a_3 = len(solver_moves) > 0
+                    contradiction, multi_moves = self.apply_cross_out(copy, True)
+                    a_3 = len(multi_moves) > 0
                     if contradiction:
                         if print_soln:
                             print(f"not valid at apply_cross_out after hint {str_hint}")
                         is_valid = False
 
-                    contradiction, solver_moves = self.find_transitives(copy, True)
-                    a_4 = len(solver_moves) > 0
+                    contradiction, multi_moves = self.apply_transitives(copy, True)
+                    a_4 = len(multi_moves) > 0
                     if contradiction:
                         if print_soln or i > 1000:
-                            print(f"not valid at find_transitives after hint {str_hint}")
+                            print(f"not valid at apply_transitives after hint {str_hint}")
                         is_valid = False
 
                     if a_2 or a_3 or a_4:
@@ -2252,8 +2284,7 @@ class Solver:
         return copy, is_valid, loop
     
     def unmissable_insights(self, puzzle, hints):
-        solver = Solver()
-        if not solver.can_solve_without_forbidden(puzzle, hints):
+        if not self.can_solve_without_forbidden(puzzle, hints):
             # The puzzle is incomplete; checking insight needs doesn't make any sense.
             return set()
 
@@ -2264,7 +2295,7 @@ class Solver:
             # An insight is also unmissable if the puzzle is unsolvable without its subdag,
             # excluding those insights in its subdag that are already unmissable.
             forbidden = insight.sub_dag() - unmissables
-            solver = Solver(forbidden)
+            solver = Solver(forbidden | self.forbidden_insights)
             can_solve_without = solver.can_solve_without_forbidden(
                 puzzle, hints
             )
@@ -2279,12 +2310,12 @@ class Solver:
         return completed_puzzle.is_complete() and is_valid
 
     def can_solve_without_forbidden(self, puzzle, hints):
-        expanded_forbidden_insights = set()
-        for insight in self.forbidden_insights:
-            # If an insight is forbidden, forbid its children as well; don't allow a more complex insight to get around the need for a simple one.
-            expanded_forbidden_insights.update(insight.sub_dag())
-        forbidden_solver = Solver(expanded_forbidden_insights)
-        completed_puzzle, is_valid = forbidden_solver.fast_forward(puzzle, hints)
+        # expanded_forbidden_insights = set()
+        # for insight in self.forbidden_insights:
+        #     # If an insight is forbidden, forbid its children as well; don't allow a more complex insight to get around the need for a simple one.
+        #     expanded_forbidden_insights.update(insight.sub_dag())
+        # forbidden_solver = Solver(expanded_forbidden_insights)
+        completed_puzzle, is_valid = self.fast_forward(puzzle, hints)
         return completed_puzzle.is_complete() and is_valid
 
 

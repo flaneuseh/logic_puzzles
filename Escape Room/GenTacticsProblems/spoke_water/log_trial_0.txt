@@ -1,0 +1,20 @@
+----------------------------------------
+GENERATION 0
+--------------------------------------------------------------------------------
+Infeasible
+(0.9500000000000001, <insights.SolutionEvolution.HintSet object at 0x324dfc6d0>)
+      Gre  Car  Kal  Pot
+    --------------------
+20o|  O    X    X    X  |
+40o|  X    *    *    X  |
+60o|  X    *    *    X  |
+80o|  X    X    X    O  |
+    --------------------
+
+0
+Reasons for infeasible: {'no_hints': 0, 'not_valid': 0, 'not_complete': 872, 'not_follows_insight_reqs': 127, 'not_insight_validate': 127, 'cant_solve_without_forbidden': 125, 'can_solve_without_required': 0}
+feasible:Stats:
+	 Height:1
+	 Total pop:1
+['-1', '-1', '3.0', '-1', '-1', '-1', '-1', '-1', '-1', '-1']
+--------------------------------------------------------------------------------

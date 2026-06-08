@@ -1,0 +1,27 @@
+Hints for insight set APPLY_IS,APPLY_NOT,APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [0][1][0])
+	Either the plants Tomato or the plants Pumpkin is the hours 2hr
+	The hours 6hr was not the plants Spinach
+	The hours 8hr is the plants Pumpkin
+
+
+Hints for insight set APPLY_IS,APPLY_NOT,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 1 loops, 0th child (grid cell [1][1][0])
+	The hours 6hr was not the plants Spinach
+	Either the hours 2hr or the hours 4hr is the plants Tomato
+	Either the plants Tomato or the plants Cauliflower is the hours 2hr
+	The hours 8hr is the plants Pumpkin
+
+
+Hints for insight set APPLY_IS,APPLY_OR,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [2][1][0])
+	Either the plants Tomato or the plants Cauliflower is the hours 2hr
+	The hours 4hr is the plants Spinach
+	The hours 6hr is the plants Cauliflower
+
+
+Hints for insight set APPLY_NOT,CROSS_OUT,OPENING,SIMPLE_OR_SAME_CAT, 1 loops, 0th child (grid cell [3][1][0])
+	The hours 8hr was not the plants Spinach
+	The hours 6hr was not the plants Spinach
+	Either the plants Tomato or the plants Cauliflower is the hours 2hr
+	The hours 8hr was not the plants Cauliflower
+	Either the plants Tomato or the plants Spinach is the hours 2hr
+
+

@@ -1,0 +1,40 @@
+Solution for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS,APPLY_NOT,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [0][1][0])
+      10g  15g  20g  25g
+    --------------------
+Fis|  X    X    O    X  |
+Egg|  X    O    X    X  |
+Tof|  O    X    X    X  |
+Pea|  X    X    X    O  |
+    --------------------
+
+
+Solution for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS,APPLY_NOT,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [0][2][0])
+      10g  15g  20g  25g
+    --------------------
+Fis|  X    X    O    X  |
+Egg|  X    O    X    X  |
+Tof|  O    X    X    X  |
+Pea|  X    X    X    O  |
+    --------------------
+
+
+Solution for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [1][1][0])
+      10g  15g  20g  25g
+    --------------------
+Fis|  X    X    O    X  |
+Egg|  X    O    X    X  |
+Tof|  O    X    X    X  |
+Pea|  X    X    X    O  |
+    --------------------
+
+
+Solution for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [1][2][0])
+      10g  15g  20g  25g
+    --------------------
+Fis|  X    X    O    X  |
+Egg|  X    O    X    X  |
+Tof|  O    X    X    X  |
+Pea|  X    X    X    O  |
+    --------------------
+
+

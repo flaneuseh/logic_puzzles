@@ -3,8 +3,10 @@ import random
 import ultraimport
 
 ultraimport("__dir__/../LogicPuzzles.py", package="main")
-from SolutionMapElites import evolve
 from main.LogicPuzzles import Solver
+
+ultraimport("__dir__/./SolutionMapElites.py", package="insights")
+from insights.SolutionMapElites import evolve
 
 # Todo: create a pool for a solution, and evolve with only hints for that solution
 # Entities can be shuffled to create comparable puzzles for different solutions,

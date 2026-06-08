@@ -1,0 +1,24 @@
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS,APPLY_NOT,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [0][1][0])
+	The grams 15g was not the food Tofu
+	The grams 20g is the food Fish
+	The food Fish is 1 gramss before the food Peanuts
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS,APPLY_NOT,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [0][2][0])
+	The food Fish is 1 gramss before the food Peanuts
+	The grams 15g was not the food Tofu
+	The grams 20g is the food Fish
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS,CROSS_OUT,OPENING, 1 loops, 0th child (grid cell [1][1][0])
+	The food Fish is 1 gramss before the food Peanuts
+	The grams 25g is the food Peanuts
+	The grams 10g is the food Tofu
+
+
+Hints for insight set APPLY_BEFORE_ONE_SPOT,APPLY_IS,CROSS_OUT,OPENING, 2 loops, 0th child (grid cell [1][2][0])
+	The food Fish is 1 gramss before the food Peanuts
+	The grams 25g is the food Peanuts
+	The grams 10g is the food Tofu
+
+

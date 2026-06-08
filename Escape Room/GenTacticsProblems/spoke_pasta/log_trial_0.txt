@@ -1,0 +1,21 @@
+----------------------------------------
+GENERATION 0
+--------------------------------------------------------------------------------
+Infeasible
+(0.9500000000000001, <insights.SolutionEvolution.HintSet object at 0x325608190>)
+      Elb  Bow  Lin  Pen
+    --------------------
+Tom|  O    X    X    X  |
+Alf|  X    *    X    *  |
+Pes|  X    *    X    *  |
+Car|  X    X    O    X  |
+    --------------------
+
+0
+Reasons for infeasible: {'no_hints': 0, 'not_valid': 0, 'not_complete': 968, 'not_follows_insight_reqs': 9, 'not_insight_validate': 7, 'cant_solve_without_forbidden': 2, 'can_solve_without_required': 0}
+feasible:Stats:
+	 Height:2
+	 Total pop:2
+['-1', '3.0', '-1', '-1', '-1', '-1', '-1', '-1', '-1', '-1']
+['-1', '3.0', '-1', '-1', '-1', '-1', '-1', '-1', '-1', '-1']
+--------------------------------------------------------------------------------

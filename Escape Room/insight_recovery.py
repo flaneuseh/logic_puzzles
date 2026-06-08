@@ -49,6 +49,16 @@ from insights.PuzzleAgent import PuzzleAgent
 SOLVER = Solver(set(), True)
 
 
+def get_move_list_value(curr_state, moves, solution):
+    value = "neutral"
+    for move in moves:
+        move_value = get_move_value(curr_state, move, solution)
+        if move_value == "incorrect" or value == "neutral":
+            # incorrect > correct > neutral
+            value = move_value
+    return value
+
+
 # Determine whether move is correct, incorrect, or neutral,
 # with respect to the solution grid (not the solution-blind insights)
 def get_move_value(curr_state, move, solution):
@@ -116,110 +126,29 @@ def get_grid_id(puzzle_id, state):
     return grid_id
 
 
-def get_composite_moves(puzzle_id, curr_state, solution, s_moves):
+def get_composite_moves(puzzle_id, curr_state, solution, multi_moves):
     # Moves that reach the same grid state are collapsed to only the move that is the highest in the insight DAG / lowest in the insight ordering
     collapsed_moves = {}
-    for s_move in s_moves:
-        move = s_move["move"]
+    for multi_move in multi_moves:
         move_state = deepcopy(curr_state)
-        move_state.answer(*move)
+        SOLVER.apply_multi_move(move_state, multi_move)
 
         grid_id = get_grid_id(puzzle_id, move_state)
-        insight = s_move["insight"]
+        insight = multi_move["insight"]
         comparison_insight = None
         if grid_id in collapsed_moves:
             comparison_insight = collapsed_moves[grid_id]["insight"]
         if grid_id not in collapsed_moves or insight < comparison_insight:
             # Keep the move with the lowest ranked insight, as before
-            grid_value = get_move_value(curr_state, move, solution)
+            grid_value = get_move_list_value(curr_state, multi_move["moves"], solution)
             collapsed_moves[grid_id] = {
-                "hint_idx": s_move["hint_idx"],
-                "insight": s_move["insight"],
+                "hint_idx": multi_move["hint_idx"],
+                "insight": multi_move["insight"],
                 "state": move_state,
                 "grid_value": grid_value,
-                "move": move,
+                "moves": multi_move["moves"],
             }
-            if s_move["repair"]:
-                collapsed_moves[grid_id]["solver_value"] = "repair"
-            else:
-                collapsed_moves[grid_id]["solver_value"] = "insight"
-
-    for c_move in collapsed_moves.copy().values():
-        # Find alternative states by setting the changed symbol to the other options.
-        # This is either overconfidence (e.g. marking O when the solver would mark Y),
-        # uncertainty (e.g. marking Y when the solver would mark O), or
-        # contradiction (e.g. marking X when the solver would mark O).
-        move = c_move["move"]
-        loc, og_sy = move
-        alt_moves = {}
-        # if og_sy == "O":
-            # alt_moves["X"] = "contradiction"
-            # alt_moves["Y"] = "uncertain"
-            # alt_moves["N"] = "contradiction"
-        # elif og_sy == "X":
-            # alt_moves["O"] = "contradiction"
-            # alt_moves["Y"] = "contradiction"
-            # alt_moves["N"] = "uncertain"
-        # elif og_sy == "Y":
-            # alt_moves["O"] = "overconfident"
-            # Since this is an uncertain move, don't mark a contradiction.
-        # elif og_sy == "N":
-            # Currently, the solver never marks "N", but include this case for completeness
-            # alt_moves["X"] = "overconfident"
-            # Since this is an uncertain move, don't mark a contradiction.
-
-        for alt_sy, solver_value in alt_moves.items():
-            # Create a full copy of the collapsed move and replace relevant values with alternates.
-            alt_move = deepcopy(c_move)
-            alt_move["move"] = (loc, alt_sy)
-            alt_move["og_sy"] = og_sy
-            grid_value = get_move_value(curr_state, alt_move["move"], solution)
-            alt_move["solver_value"] = solver_value
-            alt_move["grid_value"] = grid_value
-
-            alt_state = deepcopy(curr_state)
-            alt_state.answer(*alt_move["move"])
-            grid_id = get_grid_id(puzzle_id, alt_state)
-            if grid_id not in collapsed_moves:
-                collapsed_moves[grid_id] = alt_move
-            else:
-                # Collapse equivalent grid ids, taking into account the confidence of the respective moves
-                # as well as their insight rankings.
-                ex_move = collapsed_moves[grid_id]
-                ex_solver_value = ex_move["solver_value"]
-                alt_solver_value = alt_move["solver_value"]
-                ex_insight = ex_move["insight"]
-                alt_insight = alt_move["insight"]
-                if "og_sy" in ex_move:
-                    # The comparison move is also an alternative.
-                    if og_sy == ex_move["og_sy"] or alt_solver_value == ex_solver_value:
-                        # The moves are the same symbol, or they have the same confidence;
-                        # take the lower-depth insight.
-                        if alt_insight < ex_insight:
-                            collapsed_moves[grid_id] = alt_move
-                            continue
-                    else:
-                        # Different og_sy and different solver_values.
-                        if (
-                            alt_solver_value in ["overconfident", "uncertain"]
-                            and ex_solver_value == "contradiction"
-                        ):
-                            # ex_solver_value must be "contradiction", as they have the same symbol (uncertain marks may not be overconfident; X and O cannot be uncertain)
-                            # Contradictions always "lose".
-                            collapsed_moves[grid_id] = alt_move
-                            continue
-                else:
-                    # The alternative matches one of the moves suggested by the solver.
-                    if alt_sy in CONFIDENT_MARKS:
-                        # The move matches an insight already discovered by the solver, give credit to that insight.
-                        continue
-
-                    if alt_solver_value == "uncertain":
-                        # When the solver and the move are both uncertain, use the lowest ranked insight.
-                        if alt_insight.value < ex_insight.value:
-                            collapsed_moves[grid_id] = alt_move
-                            continue
-                    # Otherwise, the solver is uncertain and the move is a contradiction; contradictions always "lose".
+            collapsed_moves[grid_id]["solver_value"] = "insight"
 
     # Find collapsed moves that are equivalent (same type, insight, hint, and solver_value, different grid ids)
     composite_moves = {}
@@ -239,38 +168,67 @@ def get_composite_moves(puzzle_id, curr_state, solution, s_moves):
             }
         composite_moves[comp_id]["moves"][grid_id] = {
             "grid_value": c_move["grid_value"],
-            "move": c_move["move"],
+            "moves": c_move["moves"],
         }
         grid_id_to_comp_id[grid_id] = comp_id
 
     return composite_moves, grid_id_to_comp_id
 
 
-def dedupe_moves(moves):
+def dedupe_moves(multi_moves):
     dedupe_moves = []
-    for move in moves:
+    for multi_move in multi_moves:
         duplicate = False
-        for d_move in dedupe_moves:
+        for dd_move in dedupe_moves:
             if (
-                d_move["hint_idx"] == move["hint_idx"]
-                and d_move["insight"] == move["insight"]
-                and d_move["move"] == move["move"]
+                dd_move["hint_idx"] == multi_move["hint_idx"]
+                and dd_move["insight"] == multi_move["insight"]
             ):
                 duplicate = True
-                break
+                for m_move in multi_move["moves"]:
+                    dupe_found = False
+                    for d_move in dd_move["moves"]:
+                        if moves_are_equal(m_move, d_move):
+                            dupe_found = True
+                            break
+                    if not dupe_found:
+                        duplicate = False
+                        break
+                if duplicate:
+                    break
         if not duplicate:
-            dedupe_moves.append(move)
+            dedupe_moves.append(multi_move)
     return dedupe_moves
 
 
+def all_x(moves):
+    for move in moves:
+        _, sy = move
+        if sy != "X":
+            return False
+    return True
+
+
 def get_solver_moves(puzzle, hints):
-    # Get all conceivable moves for the puzzle state. Include moves from the "opened"(crossed out) version of the puzzle,
-    # as the user could be holding this information in their head (particularly if they are in a puzzle that doesn't allow X marks or a very easy puzzle), and we want to catch as many possible insights as we can.
+    # Get all conceivable moves for the puzzle state.
+    # Include moves from the "opened"(crossed out) version of the puzzle,
+    # as the user could be holding this information in their head
+    # (particularly if they are in a puzzle that doesn't allow X marks or a very easy puzzle),
+    # and we want to catch as many possible insights as we can.
     opened_puzzle = deepcopy(puzzle)
     SOLVER.apply_cross_out(opened_puzzle, True)
     _, s_moves = SOLVER.get_available_moves(puzzle, hints)
     _, opened_moves = SOLVER.get_available_moves(opened_puzzle, hints)
     s_moves.extend(opened_moves)
+    for move in s_moves:
+        if all_x(move["moves"]):
+            # Also, if a move of xs creates an opening, the user may skip ahead to that O.
+            applied_puzzle = deepcopy(puzzle)
+            SOLVER.apply_multi_move(applied_puzzle, move)
+            _, applied_openings = SOLVER.apply_opening(applied_puzzle, True)
+            for o_move in applied_openings:
+                o_move["hint_idx"] = -3
+            s_moves.extend(applied_openings)
     d_moves = dedupe_moves(s_moves)
     return d_moves
 
@@ -289,80 +247,136 @@ def loc_are_equal(loc_a, loc_b):
     return False
 
 
-def get_possible_moves(puzzle, move, available_moves):
+def moves_are_equal(move_a, move_b):
+    loc_a, sy_a = move_a
+    loc_b, sy_b = move_b
+    if loc_are_equal(loc_a, loc_b) and sy_a == sy_b:
+        return True
+    return False
+
+
+def choose_likeliest_move(moves):
+    best_move = moves[0]
+    for move in moves:
+        if best_move["insight"] == None and move["insight"] != None:
+            # Prefer labeling moves.
+            best_move = move
+        elif move["insight"] and best_move["insight"]:
+            if len(move["min_moves"]) > len(best_move["min_moves"]):
+                # Prefer longer move sequences.
+                best_move = move
+            elif (
+                len(move["min_moves"]) == len(best_move["min_moves"])
+                and move["insight"] < best_move["insight"]
+            ):
+                # Prefer insights lower in the DAG.
+                best_move = move
+    return best_move
+
+
+# When checking a move, it could label that move + up to n future moves.
+# How to account for this? We get available moves at a certain move,
+# and replace n moves ONLY IF THEY ALL MATCH...then we must skip those moves.
+def get_possible_labeled_moves_at_state(
+    curr_state, u_move_idx, available_moves, match_on_one=False
+):
     possible_moves = []
     recovered = False
 
-    changed, _ = puzzle.answer(*move)
-    (u_loc, u_sy) = move
+    u_moves, i = u_move_idx
+    (_, _, next_rec_moves) = u_moves[i]
 
-    for s_move in available_moves:
-        (s_loc, s_sy) = s_move["move"]
+    for s_multi_move in available_moves:
+        changed = False
+        update = deepcopy(curr_state)
+        s_moves = s_multi_move["moves"]
+        real_s_moves = []
+        for s_move in s_moves:
+            s_changed, _ = update.answer(*s_move)
+            changed = changed or s_changed
+            if s_changed:
+                real_s_moves.append(s_move)
+        if not changed:
+            continue
+        if len(next_rec_moves) > 1 and len(real_s_moves) != len(next_rec_moves):
+            continue
 
-        if loc_are_equal(s_loc, u_loc):
-            # The moves affect the same grid location and have symbols in the same "sign"
-            if (
-                (u_sy in YES_MARKS and s_sy in YES_MARKS)
-                or (u_sy in NO_MARKS and s_sy in NO_MARKS)
-                or (u_sy in BLANK_MARKS and s_sy in BLANK_MARKS)
-            ):
-                poss_move = {
-                    "hint_idx": s_move["hint_idx"],
-                    "insight": s_move["insight"],
-                    "repair": s_move["repair"],
-                    "move": move,
-                    "violation": False,
-                    "confidence": "confident",
-                }
-                if u_sy in TENTATIVE_MARKS or s_sy in TENTATIVE_MARKS:
-                    # At least one of the two marked a tentative mark, so the insight is tentative.
-                    poss_move["confidence"] = "tentative"
-                    if u_sy not in TENTATIVE_MARKS:
-                        # The user marked a confident mark, while the solver was tentative.
-                        poss_move["confidence"] = "overconfident"
-                    elif s_sy not in TENTATIVE_MARKS:
-                        # The user marked a tentative mark, while the solver was certain.
-                        poss_move["confidence"] = "uncertain"
-                if "indexed_hint" in s_move:
-                    poss_move["indexed_hint"] = s_move["indexed_hint"]
-                if u_sy in BLANK_MARKS and s_sy in BLANK_MARKS:
-                    print("POSSIBLE ERASE INSIGHT FOUND")
-                    print(poss_move)
-                possible_moves.append(poss_move)
-                recovered = True
-            elif u_sy not in BLANK_MARKS and s_sy in CONFIDENT_MARKS:
-                # The user made a move that contradicts the solver.
-                poss_move = {
-                    "hint_idx": s_move["hint_idx"],
-                    "insight": None,
-                    "repair": False,
-                    "violation": True,
-                    "violated_insight": s_move["insight"],
-                    "move": move,
-                    "confidence": "contradiction",
-                }
-                if "indexed_hint" in s_move:
-                    poss_move["indexed_hint"] = s_move["indexed_hint"]
-                possible_moves.append(poss_move)
-                recovered = True
+        check_moves_ok = True
+        check_moves = []
+        if len(next_rec_moves) > 1:
+            check_moves = next_rec_moves
+        else:
+            if i + len(real_s_moves) > len(u_moves) - 1:
+                continue
+            for m in range(i, i + len(real_s_moves)):
+                (_, _, rec_moves) = u_moves[m]
+                if len(rec_moves) > 1:
+                    check_moves_ok = False
+                    break
+                check_moves.append(rec_moves[0])
+        if not check_moves_ok:
+            continue
+
+        match_all = True
+        num_matches = 0
+        for u_move in check_moves:
+            match_found = False
+            for s_move in real_s_moves:
+                if moves_are_equal(s_move, u_move):
+                    match_found = True
+                    num_matches += 1
+                    break
+            if not match_found:
+                match_all = False
+                break
+
+        if num_matches == 0 or (not match_all and not match_on_one):
+            continue
+
+        # the sequence of user moves starting at i (or the recorded moves for one user move) matches the sequence of solver moves
+
+        next_u_moves = []
+        if len(next_rec_moves) > 1:
+            next_u_moves = [u_moves[i]]
+        else:
+            next_u_moves = u_moves[i : i + num_matches]
+
+        poss_move = {
+            "hint_idx": s_multi_move["hint_idx"],
+            "insight": s_multi_move["insight"],
+            "full_moves": next_u_moves,
+            "min_moves": check_moves,
+            "violation": False,
+            "confidence": "confident",
+            "result": update,
+        }
+        if "indexed_hint" in s_multi_move:
+            poss_move["indexed_hint"] = s_multi_move["indexed_hint"]
+        else:
+            poss_move["indexed_hint"] = None
+        possible_moves.append(poss_move)
+        recovered = True
     if not recovered:
+        (_, _, next_rec_moves) = u_moves[i]
+        update = deepcopy(curr_state)
+        SOLVER.apply_multi_move(update, {"moves": next_rec_moves})
         possible_moves.append({
             "hint_idx": -100,
             "insight": None,
-            "repair": False,
-            "move": move,
+            "full_moves": [u_moves[i]],
+            "min_moves": next_rec_moves,
             "violation": False,
             "confidence": "unknown",
+            "result": update,
         })
 
-    return changed, possible_moves
+    return possible_moves
 
 
 def get_insight_node_id(
     user_history, curr_grid_value, puzzle_id, node_df, state_to_node_id, curr_move_id
 ):
     # Sort all the hint insights the user has made so that users reaching insights in different orders are considered to reach the same state.
-
     move_ids = {curr_move_id}
     for move_id, _ in user_history.values():
         if (
@@ -389,8 +403,8 @@ def get_insight_node_id(
     return state_to_node_id[state]
 
 
-def get_diff_loc_str(diff_loc):
-    (cat1, cat2, ent1_idx, ent2_idx) = diff_loc
+def get_loc_str(loc):
+    (cat1, cat2, ent1_idx, ent2_idx) = loc
     return f"{cat1.title}:{cat2.title}:{ent1_idx}:{ent2_idx}"
 
 
@@ -405,6 +419,39 @@ def get_type_str(hint_idx):
     elif hint_idx == -1:
         typestr = "openings"
     return typestr
+
+
+# Only keep user moves that change the puzzle state.
+def dedupe_user_moves(puzzle, u_moves):
+    blank_puzzle = deepcopy(puzzle)
+    result = deepcopy(puzzle)
+    deduped_u_moves = []
+    for time, raw_str, rec_moves in u_moves:
+        deduped_rec_moves = []
+        for rec_move in rec_moves:
+            changed = False
+            loc, sy = rec_move
+            if loc == None and sy == "*":
+                # clear move
+                result = deepcopy(blank_puzzle)
+                _, changed = SOLVER.get_move_diff(puzzle, result)
+            else:
+                _, changed = result.answer(*rec_move)
+
+            if changed:
+                deduped_rec_moves.append(rec_move)
+        if len(deduped_rec_moves) > 0:
+            deduped_u_moves.append((time, raw_str, deduped_rec_moves))
+    return deduped_u_moves
+
+
+def get_move_list_str(moves):
+    move_str = ""
+    for move in moves:
+        loc, sy = move
+        loc_str = get_loc_str(loc)
+        move_str += f"({loc_str}, {sy}),"
+    return move_str[:-1]
 
 
 # Analyze user data to hypothesize which insights participants used.
@@ -423,7 +470,10 @@ def recover_moves(
     action_json,
     session_id,
     session_outcome_json,
+    match_on_one=False,
 ):
+    u_moves = dedupe_user_moves(puzzle, u_moves)
+
     # The history of which insights and composite moves are associated with which moves for this user.
     user_history = {}
 
@@ -447,126 +497,114 @@ def recover_moves(
 
     r_moves = []
     mi = 0
-    for time, raw_str, rec_moves in u_moves:
+    i = 0
+    while i < len(u_moves):
+        # for i, (time, raw_str, rec_moves) in enumerate(u_moves):
         # Copy that will have moves applied.
         result = deepcopy(puzzle)
-        for rec_move in rec_moves:
-            available_moves = get_solver_moves(puzzle, hints)  # All solver-aware moves
-            composite_moves, grid_id_to_comp_id = get_composite_moves(
-                puzzle_id, puzzle, solution, available_moves
-            )  # Available solver moves collapsed into individual insights
+        available_moves = get_solver_moves(puzzle, hints)  # All solver-aware moves
+        composite_moves, _ = get_composite_moves(
+            puzzle_id, puzzle, solution, available_moves
+        )  # Available solver moves collapsed into individual insights
 
-            possible_moves = []
-            move_value = "neutral"
+        possible_moves = []
+        move_value = "neutral"
 
-            loc, sy = rec_move
-            if loc == None and sy == "*":
-                # This is a "clear" move; reset progress
-                target_id = source_id
-                user_history = {}
-                edge_row = [
-                    source_id,
-                    target_id,
-                    user_id,
-                    mi,
-                    u_success,
-                    "unknown-neutral",
-                    "neutral",
-                    prompt_mode,
-                    level_mode,
-                ]
-                mi = mi + 1
-                edge_df.loc[len(edge_df)] = edge_row  # adding a row
-                source_id = target_id
-                possible_moves = [{
-                    "hint_idx": -100,
-                    "insight": None,
-                    "repair": False,
-                    "move": rec_move,
-                    "violation": False,
-                    "confidence": "unknown",
-                }]
-                result = deepcopy(blank_puzzle)
-                _, changed = SOLVER.get_move_diff(puzzle, result)
-                if not changed:
-                    # Skip moves that don't change the puzzle state
-                    continue
-                board_state = result.print_grid()
-                r_move = {
-                    "puzzle_state": deepcopy(result),
-                    "board_state": board_state,
-                    "move": rec_move,
-                    "possible_moves": possible_moves,
-                    "value": move_value,
-                    "likely_move_str": f"clear",
-                    "likely_move": None,
-                }
-
-                r_moves.append((time, raw_str, r_move))
-                continue
-
-            changed, possible_moves = get_possible_moves(
-                result, rec_move, available_moves
-            )
-            move_value = get_move_value(puzzle, rec_move, solution)
-
-            if not changed:
-                # Skip moves that don't change the puzzle state
-                continue
+        (time, raw_str, rec_moves) = u_moves[i]
+        loc, sy = rec_moves[0]
+        if loc == None and sy == "*":
+            # This is a "clear" move; reset progress
+            target_id = source_id
+            user_history = {}
+            edge_row = [
+                source_id,
+                target_id,
+                user_id,
+                mi,
+                u_success,
+                "unknown-neutral",
+                "neutral",
+                "unknown",
+                prompt_mode,
+                level_mode,
+            ]
+            mi = mi + 1
+            edge_df.loc[len(edge_df)] = edge_row  # adding a row
+            source_id = target_id
+            possible_moves = [{
+                "hint_idx": -100,
+                "insight": None,
+                "repair": False,
+                "move": rec_moves[0],
+                "violation": False,
+                "confidence": "unknown",
+            }]
+            result = deepcopy(blank_puzzle)
             board_state = result.print_grid()
             r_move = {
                 "puzzle_state": deepcopy(result),
                 "board_state": board_state,
-                "move": rec_move,
+                "move": rec_moves[0],
+                "possible_moves": possible_moves,
+                "value": move_value,
+                "likely_move_str": f"clear",
+                "likely_move": None,
+            }
+
+            r_moves.append((time, raw_str, r_move))
+            i += 1
+            continue
+
+        possible_moves = get_possible_labeled_moves_at_state(
+            result, (u_moves, i), available_moves, match_on_one=match_on_one
+        )
+        likely_move = choose_likeliest_move(possible_moves)
+
+        for t, raw_s, rec_moves in likely_move["full_moves"]:
+            move_value = get_move_list_value(result, rec_moves, solution)
+            SOLVER.apply_multi_move(result, {"moves": rec_moves})
+            r_move = {
+                "puzzle_state": deepcopy(result),
+                "board_state": result.print_grid(),
+                "u_moves": rec_moves,
                 "possible_moves": possible_moves,
                 "value": move_value,
             }
 
-            r_moves.append((time, raw_str, r_move))
-
-            grid_id = get_grid_id(puzzle_id, result)
+            r_moves.append((t, raw_s, r_move))
 
             solver_value = f"unknown-{move_value}"
 
-            diff_loc, diff_sy = rec_move
-            diff_loc_str = get_diff_loc_str(diff_loc)
-            move_id = f"{solver_value}:{diff_loc_str}:{diff_sy}"
+            move_str = get_move_list_str(rec_moves)
+            move_id = f"{solver_value}:{move_str}"
+
             # Move index from action json
             move_idx = 0
-            for i, move_data in enumerate(action_json[session_id]):
-                if move_data["time"] == time:
-                    move_idx = i
+            for m, move_data in enumerate(action_json[session_id]):
+                if move_data["time"] == t:
+                    move_idx = m
                     break
-            likely_move = None
-            if grid_id in grid_id_to_comp_id:
-                comp_id = grid_id_to_comp_id[grid_id]
-                likely_move = composite_moves[comp_id]
-                # In the future, consider the case of the same hint having the same insight applied multiple times
-                # A "composite grid" in that case is defined to be the total of all moves that can be applied with
-                # the current insight and hint, *including moves that may have already been applied in an earlier state*
-                # composite_grid = get_composite_grid(composite)
+
+            action_json[session_id][move_idx]["insight"] = None
+            likely_insight = None
+            if likely_move != None:
                 hint_idx = likely_move["hint_idx"]
                 typestr = get_type_str(hint_idx)
-                insight_str = f"{likely_move['insight']}"
+                likely_insight = likely_move["insight"]
+                insight_str = f"{likely_insight}"
                 hint_str = ""
                 if typestr == "hint":
                     hint = hints[hint_idx]
                     hint_str = hint_to_english(hint)
-                if likely_move["solver_value"] != "contradiction":
-                    solver_value = likely_move["solver_value"]
-                    if solver_value in ["uncertain", "overconfident"]:
-                        solver_value = f"insight-{solver_value}"
+                if likely_insight != None:
+                    solver_value = "insight"
 
-                    action_json[session_id][move_idx]["insight"] = insight_str
-                    move_id = f"{typestr}:{hint_str}:{insight_str}"
-                else:
-                    move_id = f"{typestr}:{hint_str}:unknown"
-                    action_json[session_id][move_idx]["violated_insight"] = likely_move[
-                        "violated_insight"
-                    ]
+                action_json[session_id][move_idx]["insight"] = insight_str
+                move_id = f"{typestr}:{hint_str}:{insight_str}"
 
             r_move["likely_move_str"] = f"{move_id} ({solver_value})"
             r_move["likely_move"] = likely_move
+            r_move["likely_insight"] = likely_insight
             action_json[session_id][move_idx]["solver_value"] = solver_value
             action_json[session_id][move_idx]["move_value"] = move_value
 
@@ -575,13 +613,11 @@ def recover_moves(
             if contradiction:
                 curr_grid_value = "incorrect"
 
-            diff_loc_str = f"diff_loc"
-            if diff_loc_str in user_history:
-                _, h_sy = user_history[diff_loc_str]
-                if h_sy != diff_sy:
-                    user_history[diff_loc_str] = (move_id, diff_sy)
-            else:
-                user_history[diff_loc_str] = (move_id, diff_sy)
+            for move in likely_move["min_moves"]:
+                loc, sy = move
+                loc_str = get_loc_str(loc)
+                user_history[loc_str] = (move_id, sy)
+
             target_id = get_insight_node_id(
                 user_history,
                 curr_grid_value,
@@ -599,6 +635,7 @@ def recover_moves(
                 u_success,
                 solver_value,
                 r_move["value"],
+                likely_insight,
                 prompt_mode,
                 level_mode,
             ]
@@ -607,6 +644,7 @@ def recover_moves(
             source_id = target_id
 
             puzzle = deepcopy(result)
+            i += 1
 
     target_id = ""
     if u_success == "success":
@@ -623,6 +661,7 @@ def recover_moves(
         u_success,
         "",
         "",
+        "",
         prompt_mode,
         level_mode,
     ]
@@ -632,7 +671,7 @@ def recover_moves(
     if u_success != "success":
         # If the user was successful, ignore any optional insights.
         available_moves = get_solver_moves(puzzle, hints)  # All solver-aware moves
-        composite_moves, grid_id_to_comp_id = get_composite_moves(
+        composite_moves, _ = get_composite_moves(
             puzzle_id, puzzle, solution, available_moves
         )  # Available solver moves collapsed into individual insights
         for s_move in composite_moves.values():
@@ -644,7 +683,7 @@ def recover_moves(
     }
 
     edge_df.loc[len(edge_df)] = edge_row
-    return r_moves
+    return u_success, r_moves
 
 
 def clean_vr_data(raw_df, start_time):
@@ -794,14 +833,16 @@ def _clean_vr_moves__spoke_pasta(raw_moves):
             entities = raw_move.split("Pasta Bowl  - ")
 
         ordered_moves = []
+        reset_move = []
         for sauce in PASTA_SAUCES.entities:
-            ordered_moves.append((
-                time,
-                f"{raw_move} ({entities[0]}, {sauce}, *)",
-                [((PASTA_SHAPES, PASTA_SAUCES, entities[0], sauce), "*")],
-            ))
+            reset_move.append(((PASTA_SHAPES, PASTA_SAUCES, entities[0], sauce), "*"))
+        ordered_moves.append((
+            time,
+            f"{raw_move} (reset)",
+            reset_move,
+        ))
         if entities[1] != "Reset":
-            non_os = []
+            xout = []
             for sauce in PASTA_SAUCES.entities:
                 loc = (PASTA_SHAPES, PASTA_SAUCES, entities[0], sauce)
                 if sauce == entities[1]:
@@ -810,10 +851,8 @@ def _clean_vr_moves__spoke_pasta(raw_moves):
                     )
                 else:
                     # Each pasta can only have one sauce at a time.
-                    non_os.append(
-                        (time, f"{raw_move} ({entities[0]}, {sauce}, X)", [(loc, "X")])
-                    )
-            ordered_moves.extend(non_os)
+                    xout.append((loc, "X"))
+            ordered_moves.append((time, f"{raw_move} (cross out)", xout))
             for i, move in enumerate(ordered_moves):
                 move = list(move)
                 time = move[0]
@@ -850,14 +889,16 @@ def _clean_vr_moves__spoke_sunlight(raw_moves):
             continue
 
         ordered_moves = []
+        reset_move = []
         for h in SUNLIGHT_HOURS.entities:
-            ordered_moves.append((
-                time,
-                f"{raw_move} ({h}, {plant}, *)",
-                [((SUNLIGHT_HOURS, SUNLIGHT_PLANTS, h, plant), "*")],
-            ))
+            reset_move.append(((SUNLIGHT_HOURS, SUNLIGHT_PLANTS, h, plant), "*"))
+        ordered_moves.append((
+            time,
+            f"{raw_move} (reset)",
+            reset_move,
+        ))
         if len(plant_parts) != 3:
-            non_os = []
+            xout = []
             for h in SUNLIGHT_HOURS.entities:
                 loc = (SUNLIGHT_HOURS, SUNLIGHT_PLANTS, h, plant)
                 if h == hr:
@@ -865,8 +906,8 @@ def _clean_vr_moves__spoke_sunlight(raw_moves):
                         (time, f"{raw_move} ({h}, {plant}, O)", [(loc, "O")])
                     )
                 else:
-                    non_os.append((time, f"{raw_move} ({h}, {plant}, X)", [(loc, "X")]))
-            ordered_moves.extend(non_os)
+                    xout.append((loc, "X"))
+            ordered_moves.append((time, f"{raw_move} (cross out)", xout))
         for i, move in enumerate(ordered_moves):
             move = list(move)
             time = move[0]
@@ -912,13 +953,15 @@ def _clean_vr_moves__spoke_water(raw_moves):
             case _:
                 continue
         ordered_moves = []
+        reset_move = []
         for o in ["20oz", "40oz", "60oz", "80oz"]:
-            ordered_moves.append((
-                time,
-                f"{raw_move} ({plant}, {o}, *)",
-                [((WATER_PLANTS, WATER_OZ, plant, o), "*")],
-            ))
-        non_os = []
+            reset_move.append(((WATER_PLANTS, WATER_OZ, plant, o), "*"))
+        ordered_moves.append((
+            time,
+            f"{raw_move} (reset)",
+            reset_move,
+        ))
+        xout = []
         for o in ["20oz", "40oz", "60oz", "80oz"]:
             loc = (WATER_PLANTS, WATER_OZ, plant, o)
             if o == oz:
@@ -926,8 +969,8 @@ def _clean_vr_moves__spoke_water(raw_moves):
                     (time, f"{raw_move} ({plant}, {o}, O)", [(loc, "O")])
                 )
             else:
-                non_os.append((time, f"{raw_move} ({plant}, {o}, X)", [(loc, "X")]))
-        ordered_moves.extend(non_os)
+                xout.append((loc, "X"))
+        ordered_moves.append((time, f"{raw_move} (cross out)", xout))
         for i, move in enumerate(ordered_moves):
             move = list(move)
             time = move[0]
@@ -1061,27 +1104,20 @@ def print_moves(file, puzzle, hints, moves, insight_contexts):
             file.write(f"{time}: User Move {idx+1} (Wrong, Ignored): {raw_state}\n")
         else:
             file.write(f"User Move {idx+1} ({move['value']}): {raw_state}\n")
-            loc, sy = move["move"]
+            loc, sy = move["u_moves"][0]
             if loc == None and sy == "*":
                 post = deepcopy(puzzle)
             else:
-                post.answer(*move["move"])
+                SOLVER.apply_multi_move(post, {"moves": move["u_moves"]})
 
-            opened_puzzle = deepcopy(pre)
-            SOLVER.apply_cross_out(opened_puzzle, True)
-            move_diff, _ = SOLVER.get_move_diff(pre, post, False)
-            _, s_moves = SOLVER.get_available_moves(pre, hints)
-            _, opened_moves = SOLVER.get_available_moves(opened_puzzle, hints)
-            s_moves.extend(opened_moves)
-            s_moves = dedupe_moves(s_moves)
+            s_multi_moves = get_solver_moves(pre, hints)
             file.write("Available Moves: \n")
-            for s_move in s_moves:
-                s_loc, _ = s_move["move"]
-                u_loc, _ = move["move"]
+            for s_multi_move in s_multi_moves:
                 file.write(
-                    f"(loc? {loc_are_equal(s_loc, u_loc)}) {s_move['move']}:{s_move['hint_idx']}:{s_move['insight']}\n"
+                    f"{s_multi_move['hint_idx']}:{s_multi_move['insight']} - {s_multi_move['moves']}"
                 )
 
+            move_diff, _ = SOLVER.get_move_diff(pre, post, changes_only=False)
             pre = deepcopy(post)
             board_str = move_diff.print_grid().splitlines()
             for line in board_str:
@@ -1089,23 +1125,12 @@ def print_moves(file, puzzle, hints, moves, insight_contexts):
             file.write("Possible Reasonings: \n")
             for i, poss_move in enumerate(move["possible_moves"]):
                 typestr = get_type_str(poss_move["hint_idx"])
-                if poss_move["repair"]:
-                    typestr += " (repair)"
-                if poss_move["confidence"] != "confident":
-                    typestr += f" ({poss_move['confidence']})"
-                if poss_move["violation"]:
-                    typestr += f" (violation of {poss_move['violated_insight']})"
 
                 if "hint" in typestr:
                     typestr += f" - \"{hint_to_english(hints[poss_move['hint_idx']])}\""
                 insight = poss_move["insight"]
                 file.write(f"{i+1}: {typestr} - {insight}\n")
-                if (
-                    poss_move["repair"]
-                    or poss_move["confidence"] != "confident"
-                    or poss_move["violation"]
-                ):
-                    continue
+
                 if insight != None:
                     if insight.name not in insight_contexts:
                         insight_contexts[insight.name] = {}
@@ -1113,12 +1138,6 @@ def print_moves(file, puzzle, hints, moves, insight_contexts):
                             insight_contexts[insight.name][o_insight.name] = 0
                     insights_seen = {insight}
                     for o_move in move["possible_moves"]:
-                        if (
-                            o_move["repair"]
-                            or o_move["confidence"] != "confident"
-                            or o_move["violation"]
-                        ):
-                            continue
                         o_insight = o_move["insight"]
                         if o_insight != None and o_insight not in insights_seen:
                             insights_seen.add(o_insight)
@@ -1350,33 +1369,10 @@ def load_online_data(dir):
 
 
 def gen_data_views(dir, edge_df, node_df):
-    # user_success_vals = set(edge_df["UserSuccess"].unique())
-    # user_success_vals.add(None)
-    # prompt_mode_vals = set(edge_df["PromptMode"].unique())
-    # prompt_mode_vals.add(None)
-    # level_mode_vals = set(edge_df["LevelMode"].unique())
-    # level_mode_vals.add(None)
-
-    # for u in user_success_vals:
-    #     for p in prompt_mode_vals:
-    #         for l in level_mode_vals:
+    print("generating data views")
+    print(edge_df)
     edge_view = edge_df.copy()
     view_name = "ALL"
-    # if u != None:
-    #     view_name += f"_endstate={u}"
-    #     edge_view = edge_view[edge_view["UserSuccess"] == u]
-    # else:
-    #     view_name += "_endstate=all"
-    # if p != None:
-    #     view_name += f"_prompts={p}"
-    #     edge_view = edge_view[edge_view["PromptMode"] == p]
-    # else:
-    #     view_name += "_prompts=all"
-    # if l != None:
-    #     view_name += f"_levels={l}"
-    #     edge_view = edge_view[edge_view["LevelMode"] == l]
-    # else:
-    #     view_name += "_levels=all"
     node_view_name = f"nodegraph{view_name}"
     edge_nodes = list(edge_view["Source"])
     edge_nodes.extend(list(edge_view["Target"]))
@@ -1387,9 +1383,7 @@ def gen_data_views(dir, edge_df, node_df):
 
     user_success_lookup = {}
 
-    # if u == None and p == None and l == None:
     combined_view = pd.merge(edge_view, node_view, left_on="Target", right_on="Id")
-    # % successful, % concede, % success but failed at least once, % concede while partially correct
 
     puzzle_ids = list(combined_view["PuzzleId"].unique())
 
@@ -1403,12 +1397,11 @@ def gen_data_views(dir, edge_df, node_df):
 
         pg_all = pg_view["UserId"].unique()
         pg_view = pg_view[pg_view["UserId"].isin(real_moves["UserId"])]
-        pg_real = pg_view["UserId"].unique()
+        p_users = pg_view["UserId"].unique()
         for user in pg_all:
-            if user not in pg_real:
+            if user not in p_users:
                 print(f"{user} not in {pid}")
 
-        p_users = pg_view["UserId"].unique()
         print(f"Num users for {pid}: {len(p_users)}")
 
         user_view = pg_view.copy()
@@ -1429,9 +1422,6 @@ def gen_data_views(dir, edge_df, node_df):
             user_success_lookup[pid][p_user] = success
 
         user_move_correctness = pg_view.copy()
-        user_move_correctness = user_move_correctness.drop_duplicates(
-            ["UserId", "UserSuccess", "GridValue"]
-        )
 
         success_and_incorrect = user_move_correctness[
             user_move_correctness["UserSuccess"] == "success"
@@ -2009,12 +1999,6 @@ def gen_data_views(dir, edge_df, node_df):
             "stats_by_group": stats_by_group,
             "statlists_by_group": statlists_by_group,
         }
-        # if u != None:
-        #     stats["endstate"] = u
-        # if p != None:
-        #     stats["prompts"] = p
-        # if l != None:
-        #     stats["levels"] = l
 
         with open(f"{dir}/stats{view_name}.json", "w") as f:
             json.dump(stats, f)
@@ -2055,7 +2039,7 @@ def inc_insight_counts(insight_counts, puzzle_id, success, moves):
             }
     insights_seen = set()
     for move in moves:
-        if "insight" in move:
+        if "insight" in move and move["insight"] != "None":
             insight = move["insight"]
             if insight in insights_seen:
                 # Only increment insights once per session.
@@ -2064,7 +2048,11 @@ def inc_insight_counts(insight_counts, puzzle_id, success, moves):
             insight_counts[puzzle_id][insight][success] += 1
 
 
-def insight_recovery__vr(vr_dir):
+def insight_recovery__vr(vr_dir, match_on_one=False):
+    howmany = "many"
+    if match_on_one:
+        howmany = "one"
+    counts = {}
     insight_contexts = {}
     vr_node_df = pd.DataFrame(
         columns=["Id", "PuzzleId", "State", "GridValue", "MoveIds"]
@@ -2078,28 +2066,32 @@ def insight_recovery__vr(vr_dir):
             "UserSuccess",
             "SolverValue",
             "MoveValue",
+            "LabeledInsight",
             "PromptMode",
             "LevelMode",
         ]
     )
     vr_state_to_node_id = {}
-    vr_label_to_grid = {}
     vr_users = [f.name for f in os.scandir("user_data/vr_study") if f.is_dir()]
     vr_session_outcome_json = {}
     vr_action_json = {}
-    for user in vr_users:
+    for user in vr_users[:2]:
         print(user)
         userfile = f"{vr_dir}/{user}/{user}_PuzzleLogs.csv"
         raw_df, start_time = load_vr_data(userfile)
 
         vr_clean_data = clean_vr_data(raw_df, start_time)
         for puzzle_id, session in vr_clean_data.items():
+            if puzzle_id not in counts:
+                counts[puzzle_id] = {"user_stats": {}}
+            if user not in counts[puzzle_id]:
+                counts[puzzle_id]["user_stats"][user] = {}
             session_id = f"{user}:{puzzle_id}"
             print(session_id)
             vr_action_json[session_id] = action_json_movelist_from_moves(
                 session["moves"]
             )
-            recovered_moves = recover_moves(
+            u_success, recovered_moves = recover_moves(
                 puzzle_id,
                 session["puzzle"],
                 session["hints"],
@@ -2114,8 +2106,15 @@ def insight_recovery__vr(vr_dir):
                 vr_action_json,
                 session_id,
                 vr_session_outcome_json,
+                match_on_one=match_on_one,
             )
-            output_path = f"{vr_dir}/{user}/recovered_moves_{puzzle_id}.txt"
+            assert "end_state" not in counts[puzzle_id]["user_stats"][user]
+            counts[puzzle_id]["user_stats"][user]["end_state"] = u_success
+            counts[puzzle_id]["user_stats"][user]["counts"] = get_counts(
+                recovered_moves
+            )
+
+            output_path = f"{vr_dir}/{user}/recovered_moves_{puzzle_id}_{howmany}.txt"
             output_file = Path(output_path)
             output_file.parent.mkdir(exist_ok=True, parents=True)
             move_file = open(output_path, "w")
@@ -2128,25 +2127,25 @@ def insight_recovery__vr(vr_dir):
             )
 
     vr_dir = "user_data/vr_study"
-    vr_edge_df.to_csv(f"{vr_dir}/edgegraph.csv", index=False)
-    vr_node_df.to_csv(f"{vr_dir}/nodegraph.csv", index=False)
+    vr_edge_df.to_csv(f"{vr_dir}/edgegraph_{howmany}.csv", index=False)
+    vr_node_df.to_csv(f"{vr_dir}/nodegraph_{howmany}.csv", index=False)
     vr_action_json = reformat_vr_action_json(vr_action_json)
-    with open(f"{vr_dir}/updated_action_data.json", "w") as f:
+    with open(f"{vr_dir}/updated_action_data_{howmany}.json", "w") as f:
         json.dump(vr_action_json, f)
-    with open(f"{vr_dir}/session_outcome.json", "w") as f:
+    with open(f"{vr_dir}/session_outcome_{howmany}.json", "w") as f:
         json.dump(vr_session_outcome_json, f)
-    vr_edge_df = pd.read_csv(f"{vr_dir}/edgegraph.csv")
-    vr_node_df = pd.read_csv(f"{vr_dir}/nodegraph.csv")
+    vr_edge_df = pd.read_csv(f"{vr_dir}/edgegraph_{howmany}.csv")
+    vr_node_df = pd.read_csv(f"{vr_dir}/nodegraph_{howmany}.csv")
     vr_success_lookup = gen_data_views(vr_dir, vr_edge_df, vr_node_df)
     with open(f"{vr_dir}/insight_contexts.json", "w") as f:
         json.dump(insight_contexts, f)
     vr_action_json = None
     vr_session_outcome_json = None
 
-    with open(f"{vr_dir}/updated_action_data.json") as f:
+    with open(f"{vr_dir}/updated_action_data_{howmany}.json") as f:
         vr_action_json = json.load(f)
 
-    with open(f"{vr_dir}/session_outcome.json") as f:
+    with open(f"{vr_dir}/session_outcome_{howmany}.json") as f:
         vr_session_outcome_json = json.load(f)
 
     insight_counts = {}
@@ -2163,14 +2162,21 @@ def insight_recovery__vr(vr_dir):
             success = vr_session_outcome_json[session_id]["outcome"]
             inc_insight_counts(insight_counts, puzzle_id, success, moves)
             available_at_end = vr_session_outcome_json[session_id]["available_insights"]
+            counts[puzzle_id]["user_stats"][user]["available_at_end"] = available_at_end
             for insight in available_at_end:
-                insight_counts[puzzle_id][insight]["available_at_concede"] += 1
-    with open(f"{vr_dir}/insight_counts.json", "w") as f:
+                insight_counts[puzzle_id]["user_stats"][insight][
+                    "available_at_concede"
+                ] += 1
+    with open(f"{vr_dir}/insight_counts_{howmany}.json", "w") as f:
         json.dump(insight_counts, f)
-    return
+    return counts
 
 
-def insight_recovery__online(online_dir):
+def insight_recovery__online(online_dir, match_on_one=False):
+    counts = {}
+    howmany = "many"
+    if match_on_one:
+        howmany = "one"
     insight_contexts = {}
     on_clean_data, on_action_json = load_online_data(online_dir)
     on_session_outcome_json = {}
@@ -2186,6 +2192,7 @@ def insight_recovery__online(online_dir):
             "UserSuccess",
             "SolverValue",
             "MoveValue",
+            "LabeledInsight",
             "PromptMode",
             "LevelMode",
         ]
@@ -2195,7 +2202,11 @@ def insight_recovery__online(online_dir):
         print(user_id)
         for puzzle_id, session in user_data["puzzles"].items():
             print(f"{user_id}:{puzzle_id}")
-            recovered_moves = recover_moves(
+            if puzzle_id not in counts:
+                counts[puzzle_id] = {"user_stats": {}}
+            if user_id not in counts[puzzle_id]:
+                counts[puzzle_id]["user_stats"][user_id] = {}
+            u_success, recovered_moves = recover_moves(
                 puzzle_id,
                 session["puzzle"],
                 session["hints"],
@@ -2210,8 +2221,14 @@ def insight_recovery__online(online_dir):
                 on_action_json,
                 session["session_id"],
                 on_session_outcome_json,
+                match_on_one=match_on_one,
             )
-            output_path = f"{online_dir}/recovered_moves/{user_id}/recovered_moves_{puzzle_id}.txt"
+            assert "end_state" not in counts[puzzle_id]["user_stats"][user_id]
+            counts[puzzle_id]["user_stats"][user_id]["end_state"] = u_success
+            counts[puzzle_id]["user_stats"][user_id]["counts"] = get_counts(
+                recovered_moves
+            )
+            output_path = f"{online_dir}/recovered_moves/{user_id}/recovered_moves_{puzzle_id}_{howmany}.txt"
             output_file = Path(output_path)
             output_file.parent.mkdir(exist_ok=True, parents=True)
             move_file = open(output_path, "w")
@@ -2222,17 +2239,17 @@ def insight_recovery__online(online_dir):
                 recovered_moves,
                 insight_contexts,
             )
-    with open(f"{online_dir}/updated_action_data.json", "w") as f:
+    with open(f"{online_dir}/updated_action_data_{howmany}.json", "w") as f:
         json.dump(on_action_json, f)
-    with open(f"{online_dir}/session_outcome.json", "w") as f:
+    with open(f"{online_dir}/session_outcome_{howmany}.json", "w") as f:
         json.dump(on_session_outcome_json, f)
-    with open(f"{online_dir}/insight_contexts.json", "w") as f:
+    with open(f"{online_dir}/insight_contexts_{howmany}.json", "w") as f:
         json.dump(insight_contexts, f)
 
-    on_edge_df.to_csv(f"{online_dir}/edgegraph.csv", index=False)
-    on_node_df.to_csv(f"{online_dir}/nodegraph.csv", index=False)
-    on_edge_df = pd.read_csv(f"{online_dir}/edgegraph.csv")
-    on_node_df = pd.read_csv(f"{online_dir}/nodegraph.csv")
+    on_edge_df.to_csv(f"{online_dir}/edgegraph_{howmany}.csv", index=False)
+    on_node_df.to_csv(f"{online_dir}/nodegraph_{howmany}.csv", index=False)
+    on_edge_df = pd.read_csv(f"{online_dir}/edgegraph_{howmany}.csv")
+    on_node_df = pd.read_csv(f"{online_dir}/nodegraph_{howmany}.csv")
     on_success_lookup = gen_data_views(online_dir, on_edge_df, on_node_df)
     on_action_json = None
     on_session_outcome_json = None
@@ -2248,20 +2265,32 @@ def insight_recovery__online(online_dir):
                 continue
             moves = on_action_json[session_id]
             success = on_session_outcome_json[session_id]["outcome"]
+            moves = list(
+                filter(
+                    lambda rm: rm["type"] == "cellChange"
+                    or (rm["type"] == "button" and rm["button"] == "clear"),
+                    moves,
+                )
+            )
             inc_insight_counts(insight_counts, puzzle_id, success, moves)
             available_at_end = on_session_outcome_json[session_id]["available_insights"]
+            counts[puzzle_id]["user_stats"][user_id][
+                "available_at_end"
+            ] = available_at_end
             insights_seen = set()
             for insight in available_at_end:
                 if insight in insights_seen:
                     continue
                 insights_seen.add(insight)
-                insight_counts[puzzle_id][insight]["available_at_concede"] += 1
-    with open(f"{online_dir}/insight_counts.json", "w") as f:
+                insight_counts[puzzle_id]["user_stats"][insight][
+                    "available_at_concede"
+                ] += 1
+    with open(f"{online_dir}/insight_counts_{howmany}.json", "w") as f:
         json.dump(insight_counts, f)
-    return
+    return counts
 
 
-def insight_recovery__agents(agent_dir, agents, puzzles):
+def insight_recovery__agents(agent_dir, agents, puzzles, match_on_one=False):
     ground_truth = {}
     for agent in agents:
         ground_truth[agent.name] = {}
@@ -2270,9 +2299,12 @@ def insight_recovery__agents(agent_dir, agents, puzzles):
                 puzzle_info["puzzle"], puzzle_info["solution"], puzzle_info["hints"]
             )
             ground_truth[agent.name][puzzle_id] = moves
-    insight_recovery__ground_truth_data(agent_dir, ground_truth, puzzles)
+    insight_recovery__ground_truth_data(
+        agent_dir, ground_truth, puzzles, match_on_one=match_on_one
+    )
 
-def insight_recovery__experts(expert_dir, experts, puzzles):
+
+def insight_recovery__experts(expert_dir, experts, puzzles, match_on_one=False):
     ground_truth = {}
     for expert in experts:
         ground_truth[expert] = {}
@@ -2305,9 +2337,17 @@ def insight_recovery__experts(expert_dir, experts, puzzles):
                 }
                 trace.append(move)
             ground_truth[expert][puzzle_id] = trace
-    insight_recovery__ground_truth_data(expert_dir, ground_truth, puzzles)
+    insight_recovery__ground_truth_data(
+        expert_dir, ground_truth, puzzles, match_on_one=match_on_one
+    )
 
-def insight_recovery__ground_truth_data(ground_dir, ground_truth, puzzles):
+
+def insight_recovery__ground_truth_data(
+    ground_dir, ground_truth, puzzles, match_on_one=False
+):
+    howmany = "many"
+    if match_on_one:
+        howmany = "one"
     insight_contexts = {}
     g_session_outcome_json = {}
     g_node_df = pd.DataFrame(
@@ -2332,19 +2372,19 @@ def insight_recovery__ground_truth_data(ground_dir, ground_truth, puzzles):
     for insight in Insight.ALL_INSIGHTS:
         blank_by_insight[insight.name] = 0
     blank_recovery_data = {
-            "cnt_total_moves": 0, 
-            "cnt_total_moves_recovered": 0,
-            "pct_total_moves_recovered": 0,
-            "cnt_random_moves": 0,
-            "cnt_random_moves_recovered": 0,
-            "pct_random_moves_recovered": 0,
-            "cnt_insight_moves": 0,
-            "cnt_insight_moves_recovered": 0,
-            "pct_insight_moves_recovered": 0,
-            "cnt_moves_by_insight": deepcopy(blank_by_insight),
-            "cnt_moves_by_insight_recovered": deepcopy(blank_by_insight),
-            "pct_moves_by_insight_recovered": deepcopy(blank_by_insight),
-        }
+        "cnt_total_moves": 0,
+        "cnt_total_moves_recovered": 0,
+        "pct_total_moves_recovered": 0,
+        "cnt_random_moves": 0,
+        "cnt_random_moves_recovered": 0,
+        "pct_random_moves_recovered": 0,
+        "cnt_insight_moves": 0,
+        "cnt_insight_moves_recovered": 0,
+        "pct_insight_moves_recovered": 0,
+        "cnt_moves_by_insight": deepcopy(blank_by_insight),
+        "cnt_moves_by_insight_recovered": deepcopy(blank_by_insight),
+        "pct_moves_by_insight_recovered": deepcopy(blank_by_insight),
+    }
     for agent_name, agent_data in ground_truth.items():
         print(f"recovering data for {agent_name}")
         recovery_data = {"totals": deepcopy(blank_recovery_data)}
@@ -2359,10 +2399,8 @@ def insight_recovery__ground_truth_data(ground_dir, ground_truth, puzzles):
             for i, move in enumerate(moves):
                 curr_state.answer(*move["move"])
                 clean_moves.append((f"{i}", curr_state.print_grid(), [move["move"]]))
-            
-            g_action_json[session_id] = action_json_movelist_from_moves(
-                clean_moves
-            )
+
+            g_action_json[session_id] = action_json_movelist_from_moves(clean_moves)
 
             contradiction, _ = SOLVER.repair(curr_state, solution, False)
             correct = not contradiction
@@ -2373,7 +2411,7 @@ def insight_recovery__ground_truth_data(ground_dir, ground_truth, puzzles):
                 else:
                     agent_success = "partial"
 
-            recovered_moves = recover_moves(
+            _, recovered_moves = recover_moves(
                 puzzle_id,
                 puzzle_info["puzzle"],
                 puzzle_info["hints"],
@@ -2388,9 +2426,12 @@ def insight_recovery__ground_truth_data(ground_dir, ground_truth, puzzles):
                 g_action_json,
                 session_id,
                 g_session_outcome_json,
+                match_on_one=match_on_one,
             )
 
-            output_path = f"{ground_dir}/{agent_name}/recovered_moves_{puzzle_id}.txt"
+            output_path = (
+                f"{ground_dir}/{agent_name}/recovered_moves_{puzzle_id}_{howmany}.txt"
+            )
             output_file = Path(output_path)
             output_file.parent.mkdir(exist_ok=True, parents=True)
             move_file = open(output_path, "w")
@@ -2411,15 +2452,19 @@ def insight_recovery__ground_truth_data(ground_dir, ground_truth, puzzles):
                     if compare_to == None:
                         recovered = True
                         recovery_data[puzzle_id]["cnt_random_moves_recovered"] += 1
-                
+
                 elif compare_to != None:
-                    recovery_data[puzzle_id]["cnt_moves_by_insight"][ground_truth["insight"].name] += 1
+                    recovery_data[puzzle_id]["cnt_moves_by_insight"][
+                        ground_truth["insight"].name
+                    ] += 1
                     if (
                         compare_to["insight"] == ground_truth["insight"]
                         and compare_to["hint_idx"] == ground_truth["hint_idx"]
                     ):
                         recovered = True
-                        recovery_data[puzzle_id]["cnt_moves_by_insight_recovered"][ground_truth["insight"].name] += 1
+                        recovery_data[puzzle_id]["cnt_moves_by_insight_recovered"][
+                            ground_truth["insight"].name
+                        ] += 1
 
                 if not recovered:
                     print(f"Ground truth: {ground_truth}")
@@ -2428,53 +2473,93 @@ def insight_recovery__ground_truth_data(ground_dir, ground_truth, puzzles):
 
             for insight in Insight.ALL_INSIGHTS:
                 if recovery_data[puzzle_id]["cnt_moves_by_insight"][insight.name] > 0:
-                    recovery_data[puzzle_id]["pct_moves_by_insight_recovered"][insight.name] = recovery_data[puzzle_id]["cnt_moves_by_insight_recovered"][insight.name] / recovery_data[puzzle_id]["cnt_moves_by_insight"][insight.name]
+                    recovery_data[puzzle_id]["pct_moves_by_insight_recovered"][
+                        insight.name
+                    ] = (
+                        recovery_data[puzzle_id]["cnt_moves_by_insight_recovered"][
+                            insight.name
+                        ]
+                        / recovery_data[puzzle_id]["cnt_moves_by_insight"][insight.name]
+                    )
 
-                recovery_data["totals"]["cnt_moves_by_insight"][insight.name] += recovery_data[puzzle_id]["cnt_moves_by_insight"][insight.name]
-                recovery_data["totals"]["cnt_moves_by_insight_recovered"][insight.name] += recovery_data[puzzle_id]["cnt_moves_by_insight_recovered"][insight.name]
-            
-            recovery_data[puzzle_id]["cnt_insight_moves"] = sum(recovery_data[puzzle_id]["cnt_moves_by_insight"].values())
-            recovery_data[puzzle_id]["cnt_insight_moves_recovered"] = sum(recovery_data[puzzle_id]["cnt_moves_by_insight_recovered"].values())
+                recovery_data["totals"]["cnt_moves_by_insight"][
+                    insight.name
+                ] += recovery_data[puzzle_id]["cnt_moves_by_insight"][insight.name]
+                recovery_data["totals"]["cnt_moves_by_insight_recovered"][
+                    insight.name
+                ] += recovery_data[puzzle_id]["cnt_moves_by_insight_recovered"][
+                    insight.name
+                ]
 
-            recovery_data[puzzle_id]["cnt_total_moves"] = recovery_data[puzzle_id]["cnt_random_moves"] + recovery_data[puzzle_id]["cnt_insight_moves"]
-            recovery_data[puzzle_id]["cnt_total_moves_recovered"] = recovery_data[puzzle_id]["cnt_random_moves_recovered"] + recovery_data[puzzle_id]["cnt_insight_moves_recovered"]
+            recovery_data[puzzle_id]["cnt_insight_moves"] = sum(
+                recovery_data[puzzle_id]["cnt_moves_by_insight"].values()
+            )
+            recovery_data[puzzle_id]["cnt_insight_moves_recovered"] = sum(
+                recovery_data[puzzle_id]["cnt_moves_by_insight_recovered"].values()
+            )
+
+            recovery_data[puzzle_id]["cnt_total_moves"] = (
+                recovery_data[puzzle_id]["cnt_random_moves"]
+                + recovery_data[puzzle_id]["cnt_insight_moves"]
+            )
+            recovery_data[puzzle_id]["cnt_total_moves_recovered"] = (
+                recovery_data[puzzle_id]["cnt_random_moves_recovered"]
+                + recovery_data[puzzle_id]["cnt_insight_moves_recovered"]
+            )
 
             for move_type in ["total", "random", "insight"]:
                 if recovery_data[puzzle_id][f"cnt_{move_type}_moves"] > 0:
-                    recovery_data[puzzle_id][f"pct_{move_type}_moves_recovered"] = recovery_data[puzzle_id][f"cnt_{move_type}_moves_recovered"] /recovery_data[puzzle_id][f"cnt_{move_type}_moves"]
+                    recovery_data[puzzle_id][f"pct_{move_type}_moves_recovered"] = (
+                        recovery_data[puzzle_id][f"cnt_{move_type}_moves_recovered"]
+                        / recovery_data[puzzle_id][f"cnt_{move_type}_moves"]
+                    )
 
-                recovery_data["totals"][f"cnt_{move_type}_moves"] += recovery_data[puzzle_id][f"cnt_{move_type}_moves"]
-                recovery_data["totals"][f"cnt_{move_type}_moves_recovered"] += recovery_data[puzzle_id][f"cnt_{move_type}_moves_recovered"]
+                recovery_data["totals"][f"cnt_{move_type}_moves"] += recovery_data[
+                    puzzle_id
+                ][f"cnt_{move_type}_moves"]
+                recovery_data["totals"][
+                    f"cnt_{move_type}_moves_recovered"
+                ] += recovery_data[puzzle_id][f"cnt_{move_type}_moves_recovered"]
 
         for insight in Insight.ALL_INSIGHTS:
             if recovery_data["totals"]["cnt_moves_by_insight"][insight.name] > 0:
-                recovery_data["totals"]["pct_moves_by_insight_recovered"][insight.name] = recovery_data["totals"]["cnt_moves_by_insight_recovered"][insight.name] / recovery_data["totals"]["cnt_moves_by_insight"][insight.name]
+                recovery_data["totals"]["pct_moves_by_insight_recovered"][
+                    insight.name
+                ] = (
+                    recovery_data["totals"]["cnt_moves_by_insight_recovered"][
+                        insight.name
+                    ]
+                    / recovery_data["totals"]["cnt_moves_by_insight"][insight.name]
+                )
 
         for move_type in ["total", "random", "insight"]:
             if recovery_data["totals"][f"cnt_{move_type}_moves"] > 0:
-                recovery_data["totals"][f"pct_{move_type}_moves_recovered"] = recovery_data["totals"][f"cnt_{move_type}_moves_recovered"] /recovery_data["totals"][f"cnt_{move_type}_moves"]
-        
-        with open(f"{ground_dir}/{agent_name}/recovery_data.json", "w") as f:
+                recovery_data["totals"][f"pct_{move_type}_moves_recovered"] = (
+                    recovery_data["totals"][f"cnt_{move_type}_moves_recovered"]
+                    / recovery_data["totals"][f"cnt_{move_type}_moves"]
+                )
+
+        with open(f"{ground_dir}/{agent_name}/recovery_data_{howmany}.json", "w") as f:
             json.dump(recovery_data, f)
 
     g_action_json = reformat_vr_action_json(g_action_json)
-    with open(f"{ground_dir}/updated_action_data.json", "w") as f:
+    with open(f"{ground_dir}/updated_action_data_{howmany}.json", "w") as f:
         json.dump(g_action_json, f)
-    with open(f"{ground_dir}/session_outcome.json", "w") as f:
+    with open(f"{ground_dir}/session_outcome_{howmany}.json", "w") as f:
         json.dump(g_session_outcome_json, f)
-    with open(f"{ground_dir}/insight_contexts.json", "w") as f:
+    with open(f"{ground_dir}/insight_contexts_{howmany}.json", "w") as f:
         json.dump(insight_contexts, f)
 
-    g_edge_df.to_csv(f"{ground_dir}/edgegraph.csv", index=False)
-    g_node_df.to_csv(f"{ground_dir}/nodegraph.csv", index=False)
-    g_edge_df = pd.read_csv(f"{ground_dir}/edgegraph.csv")
-    g_node_df = pd.read_csv(f"{ground_dir}/nodegraph.csv")
+    g_edge_df.to_csv(f"{ground_dir}/edgegraph_{howmany}.csv", index=False)
+    g_node_df.to_csv(f"{ground_dir}/nodegraph_{howmany}.csv", index=False)
+    g_edge_df = pd.read_csv(f"{ground_dir}/edgegraph_{howmany}.csv")
+    g_node_df = pd.read_csv(f"{ground_dir}/nodegraph_{howmany}.csv")
     g_success_lookup = gen_data_views(ground_dir, g_edge_df, g_node_df)
     g_action_json = None
     g_session_outcome_json = None
-    with open(f"{ground_dir}/updated_action_data.json") as f:
+    with open(f"{ground_dir}/updated_action_data_{howmany}.json") as f:
         g_action_json = json.load(f)
-    with open(f"{ground_dir}/session_outcome.json") as f:
+    with open(f"{ground_dir}/session_outcome_{howmany}.json") as f:
         g_session_outcome_json = json.load(f)
     insight_counts = {}
     for agent in ground_truth.keys():
@@ -2492,17 +2577,728 @@ def insight_recovery__ground_truth_data(ground_dir, ground_truth, puzzles):
                     continue
                 insights_seen.add(insight)
                 insight_counts[puzzle_id][insight]["available_at_concede"] += 1
-    with open(f"{ground_dir}/insight_counts.json", "w") as f:
+    with open(f"{ground_dir}/insight_counts_{howmany}.json", "w") as f:
         json.dump(insight_counts, f)
 
     return
+
+
+def new_stat_block():
+    new_stat_block = {
+        "total_moves": 0,
+        "cnt_labelled": 0,
+        "cnt_unlabelled": 0,
+        "label_breakdown": {},
+    }
+    for insight in Insight.ALL_INSIGHTS:
+        new_stat_block["label_breakdown"][f"cnt_{insight.name}"] = 0
+    return new_stat_block
+
+
+move_values = ["correct", "incorrect", "neutral"]
+end_states = ["success", "concede", "partial"]
+
+
+def get_counts(moves):
+    counts = new_stat_block()
+    for val in move_values:
+        counts[val] = new_stat_block()
+        counts[f"cnt_{val}"] = 0
+        for insight in Insight.ALL_INSIGHTS:
+            counts[val]["label_breakdown"][f"cnt_{insight.name}"] = 0
+    for _, _, move in moves:
+        insight = move["likely_insight"]
+        if insight == None:
+            counts[move["value"]]["cnt_unlabelled"] += 1
+        else:
+            counts[move["value"]]["label_breakdown"][f"cnt_{insight.name}"] += 1
+    return counts
+
+
+def div0(num, den):
+    if den > 0:
+        return num / den
+    else:
+        return None
+
+
+def gen_stats(stats, dir, match_on_one=False):
+    howmany = "many"
+    if match_on_one:
+        howmany = "one"
+    for puzzle, puzzle_stats in deepcopy(stats).items():
+        puzzle_stats["counts"] = new_stat_block()
+        puzzle_counts = puzzle_stats["counts"]
+        puzzle_counts["success"] = new_stat_block()
+        puzzle_counts["concede"] = new_stat_block()
+        puzzle_stats["agg_counts"] = {
+            "cnt_success": 0,
+            "cnt_concede": 0,
+            "insight_agreement": {
+                "success": {},
+                "concede": {},
+                "available_at_concede": {},
+            },
+        }
+        puzzle_agg_counts = puzzle_stats["agg_counts"]
+        puzzle_user_stats = puzzle_stats["user_stats"]
+        for user, user_stats in deepcopy(puzzle_user_stats).items():
+            user_counts = user_stats["counts"]
+            for key, key_counts in deepcopy(user_counts).items():
+                if key not in move_values:
+                    continue
+                key_counts["cnt_labelled"] = sum(key_counts["label_breakdown"].values())
+                key_counts["total_moves"] = (
+                    key_counts["cnt_unlabelled"] + key_counts["cnt_labelled"]
+                )
+                user_counts["total_moves"] += key_counts["total_moves"]
+                user_counts[f"cnt_{key}"] = key_counts["total_moves"]
+                user_counts[f"cnt_unlabelled"] += key_counts["cnt_unlabelled"]
+                user_counts[f"cnt_labelled"] += key_counts["cnt_labelled"]
+                for insight, insight_count in deepcopy(
+                    key_counts["label_breakdown"]
+                ).items():
+                    stat_name = insight.removeprefix("cnt_")
+                    key_counts["label_breakdown"][f"pct_{stat_name}"] = div0(
+                        insight_count, key_counts["cnt_labelled"]
+                    )
+                    user_counts["label_breakdown"][insight] += insight_count
+                for label, cnt in deepcopy(key_counts).items():
+                    if label.startswith("cnt_"):
+                        stat_name = label.removeprefix("cnt_")
+                        key_counts[f"pct_{stat_name}"] = div0(
+                            cnt, key_counts["total_moves"]
+                        )
+                user_counts[key] = key_counts
+
+            end_state = user_stats["end_state"]
+            if end_state != "success":
+                end_state = "concede"
+            puzzle_agg_counts[f"cnt_{end_state}"] += 1
+            for key, key_counts in deepcopy(user_counts).items():
+                if key in move_values:
+                    if key not in puzzle_counts:
+                        puzzle_counts[key] = new_stat_block()
+                        puzzle_counts["success"][key] = new_stat_block()
+                        puzzle_counts["concede"][key] = new_stat_block()
+                    for label, cnt in deepcopy(key_counts).items():
+                        if label.startswith("cnt_") or label.startswith("total_"):
+                            puzzle_counts[key][label] += cnt
+                            puzzle_counts[end_state][key][label] += cnt
+                    for insight, insight_count in deepcopy(
+                        key_counts["label_breakdown"]
+                    ).items():
+                        if insight.startswith("cnt_"):
+                            puzzle_counts[key]["label_breakdown"][
+                                insight
+                            ] += insight_count
+                            puzzle_counts[end_state]["label_breakdown"][
+                                insight
+                            ] += insight_count
+                            puzzle_counts[end_state][key]["label_breakdown"][
+                                insight
+                            ] += insight_count
+                else:
+                    if key.startswith("cnt_") or key.startswith("total_"):
+                        if key not in puzzle_counts:
+                            puzzle_counts[key] = 0
+                        if key not in puzzle_counts[end_state]:
+                            puzzle_counts[end_state][key] = 0
+                        puzzle_counts[key] += key_counts
+                        puzzle_counts[end_state][key] += key_counts
+                        if key.startswith("cnt"):
+                            stat_name = key.removeprefix("cnt_")
+                            user_counts[f"pct_{stat_name}"] = (
+                                key_counts / user_counts["total_moves"]
+                            )
+
+            for insight, insight_count in deepcopy(
+                user_counts["label_breakdown"]
+            ).items():
+                stat_name = insight.removeprefix("cnt_")
+                if insight.startswith("cnt_"):
+                    puzzle_counts["label_breakdown"][insight] += insight_count
+                    user_counts["label_breakdown"][f"pct_{stat_name}"] = div0(
+                        insight_count, user_counts["cnt_labelled"]
+                    )
+                if insight_count > 0:
+                    if (
+                        stat_name
+                        not in puzzle_agg_counts["insight_agreement"][end_state]
+                    ):
+                        puzzle_agg_counts["insight_agreement"][end_state][insight] = 0
+                    puzzle_agg_counts["insight_agreement"][end_state][insight] += 1
+
+            puzzle_user_stats[user] = user_stats
+
+        puzzle_stats["user_stats"] = puzzle_user_stats
+
+        for key, val in deepcopy(puzzle_counts).items():
+            if key.startswith("cnt_"):
+                stat_name = key.removeprefix("cnt_")
+                puzzle_counts[f"pct_{stat_name}"] = div0(
+                    val, puzzle_counts["total_moves"]
+                )
+            elif key in move_values or key in end_states or key == "label_breakdown":
+                for key2, val2 in deepcopy(val).items():
+                    if key2.startswith("cnt_"):
+                        total_moves = 0
+                        if key == "label_breakdown":
+                            total_moves = puzzle_counts["cnt_labelled"]
+                        else:
+                            total_moves = val["total_moves"]
+                        stat_name = key2.removeprefix("cnt_")
+                        puzzle_counts[key][f"pct_{stat_name}"] = div0(val2, total_moves)
+                    elif key2 in move_values or key2 == "label_breakdown":
+                        for key3, val3 in deepcopy(val2).items():
+                            if key3.startswith("cnt_"):
+                                total_moves = 0
+                                if key2 == "label_breakdown":
+                                    total_moves = val["cnt_labelled"]
+                                else:
+                                    total_moves = val2["total_moves"]
+                                stat_name = key3.removeprefix("cnt_")
+                                puzzle_counts[key][key2][f"pct_{stat_name}"] = div0(
+                                    val3, total_moves
+                                )
+                            elif key3 == "label_breakdown":
+                                for key4, val4 in deepcopy(val3).items():
+                                    if key4.startswith("cnt_"):
+                                        stat_name = key4.removeprefix("cnt_")
+                                        puzzle_counts[key][key2][key3][
+                                            f"pct_{stat_name}"
+                                        ] = div0(val4, val2["cnt_labelled"])
+
+        puzzle_agg_counts["total_users"] = (
+            puzzle_agg_counts["cnt_success"] + puzzle_agg_counts["cnt_concede"]
+        )
+        for key, cnt in deepcopy(puzzle_agg_counts).items():
+            if key.startswith("cnt_"):
+                stat_name = key.removeprefix("cnt_")
+                puzzle_agg_counts[f"pct_{stat_name}"] = div0(
+                    cnt, puzzle_agg_counts["total_users"]
+                )
+
+        for user, user_stats in puzzle_user_stats.items():
+            end_state = user_stats["end_state"]
+            user_counts = user_stats["counts"]
+            for key, val in user_counts.items():
+                if key.startswith("pct_"):
+                    if f"calc_{key}" not in puzzle_agg_counts:
+                        puzzle_agg_counts[f"calc_{key}"] = {"num": 0, "den": 0}
+                    if f"calc_{key}" not in puzzle_agg_counts[end_state]:
+                        puzzle_agg_counts[end_state][f"calc_{key}"] = {
+                            "num": 0,
+                            "den": 0,
+                        }
+                    if val != None:
+                        puzzle_agg_counts[f"calc_{key}"]["num"] += val
+                        puzzle_agg_counts[end_state][f"calc_{key}"]["num"] += val
+                        puzzle_agg_counts[f"calc_{key}"]["den"] += 1
+                        puzzle_agg_counts[end_state][f"calc_{key}"]["den"] += 1
+                elif key in move_values:
+                    for label, cnt in val.items():
+                        if label.startswith("pct_"):
+                            if key not in puzzle_agg_counts:
+                                puzzle_agg_counts[key] = {}
+                            if f"calc_{label}" not in puzzle_agg_counts[key]:
+                                puzzle_agg_counts[key][f"calc_{label}"] = {
+                                    "num": 0,
+                                    "den": 0,
+                                }
+                            if end_state not in puzzle_agg_counts:
+                                puzzle_agg_counts[end_state] = {}
+                            if key not in puzzle_agg_counts[end_state]:
+                                puzzle_agg_counts[end_state][key] = {}
+                            if f"calc_{label}" not in puzzle_agg_counts[end_state][key]:
+                                puzzle_agg_counts[end_state][key][f"calc_{label}"] = {
+                                    "num": 0,
+                                    "den": 0,
+                                }
+                            if cnt != None:
+                                puzzle_agg_counts[key][f"calc_{label}"]["num"] += cnt
+                                puzzle_agg_counts[end_state][key][f"calc_{label}"][
+                                    "num"
+                                ] += cnt
+                                puzzle_agg_counts[key][f"calc_{label}"]["den"] += 1
+                                puzzle_agg_counts[end_state][key][f"calc_{label}"][
+                                    "den"
+                                ] += 1
+                    for insight, insight_count in val["label_breakdown"].items():
+                        if insight.startswith("pct_"):
+                            if "label_breakdown" not in puzzle_agg_counts[key]:
+                                puzzle_agg_counts[key]["label_breakdown"] = {}
+                            if (
+                                f"calc_{insight}"
+                                not in puzzle_agg_counts[key]["label_breakdown"]
+                            ):
+                                puzzle_agg_counts[key]["label_breakdown"][
+                                    f"calc_{insight}"
+                                ] = {"num": 0, "den": 0}
+
+                            if end_state not in puzzle_agg_counts:
+                                puzzle_agg_counts[end_state] = {}
+                            if key not in puzzle_agg_counts[end_state]:
+                                puzzle_agg_counts[end_state][key] = {}
+                            if (
+                                "label_breakdown"
+                                not in puzzle_agg_counts[end_state][key]
+                            ):
+                                puzzle_agg_counts[end_state][key][
+                                    "label_breakdown"
+                                ] = {}
+                            if (
+                                f"calc_{insight}"
+                                not in puzzle_agg_counts[end_state][key][
+                                    "label_breakdown"
+                                ]
+                            ):
+                                puzzle_agg_counts[end_state][key]["label_breakdown"][
+                                    f"calc_{insight}"
+                                ] = {"num": 0, "den": 0}
+
+                            if insight_count != None:
+                                puzzle_agg_counts[key]["label_breakdown"][
+                                    f"calc_{insight}"
+                                ]["num"] += insight_count
+                                puzzle_agg_counts[end_state][key]["label_breakdown"][
+                                    f"calc_{insight}"
+                                ]["num"] += insight_count
+                                puzzle_agg_counts[key]["label_breakdown"][
+                                    f"calc_{insight}"
+                                ]["den"] += 1
+                                puzzle_agg_counts[end_state][key]["label_breakdown"][
+                                    f"calc_{insight}"
+                                ]["den"] += 1
+
+            for insight, insight_count in user_counts["label_breakdown"].items():
+                if insight.startswith("pct_"):
+                    if "label_breakdown" not in puzzle_agg_counts:
+                        puzzle_agg_counts["label_breakdown"] = {}
+                    if f"calc_{insight}" not in puzzle_agg_counts["label_breakdown"]:
+                        puzzle_agg_counts["label_breakdown"][f"calc_{insight}"] = {
+                            "num": 0,
+                            "den": 0,
+                        }
+
+                    if "label_breakdown" not in puzzle_agg_counts[end_state]:
+                        puzzle_agg_counts[end_state]["label_breakdown"] = {}
+                    if (
+                        f"calc_{insight}"
+                        not in puzzle_agg_counts[end_state]["label_breakdown"]
+                    ):
+                        puzzle_agg_counts[end_state]["label_breakdown"][
+                            f"calc_{insight}"
+                        ] = {"num": 0, "den": 0}
+                    puzzle_agg_counts[end_state]["label_breakdown"][f"calc_{insight}"][
+                        "num"
+                    ] += insight_count
+                    puzzle_agg_counts["label_breakdown"][f"calc_{insight}"][
+                        "num"
+                    ] += insight_count
+                    puzzle_agg_counts[end_state]["label_breakdown"][f"calc_{insight}"][
+                        "den"
+                    ] += 1
+                    puzzle_agg_counts["label_breakdown"][f"calc_{insight}"]["den"] += 1
+
+        for key, val in deepcopy(puzzle_agg_counts).items():
+            if key.startswith("calc_"):
+                stat_name = key.removeprefix("calc_")
+                puzzle_agg_counts[f"avg_{stat_name}"] = div0(val["num"], val["den"])
+            elif key in move_values or key in end_states:
+                for label, cnt in val.items():
+                    if label.startswith("calc_"):
+                        stat_name = label.removeprefix("calc_")
+                        puzzle_agg_counts[key][f"avg_{stat_name}"] = div0(
+                            cnt["num"], cnt["den"]
+                        )
+                    elif label in move_values:
+                        for sub_label, sub_cnt in cnt.items():
+                            if sub_label.startswith("calc_"):
+                                stat_name = sub_label.removeprefix("calc_")
+                                puzzle_agg_counts[key][label][f"avg_{stat_name}"] = (
+                                    div0(sub_cnt["num"], sub_cnt["den"])
+                                )
+                        for insight, insight_count in cnt["label_breakdown"].items():
+                            if insight.startswith("calc_"):
+                                stat_name = insight.removeprefix("calc_")
+                                puzzle_agg_counts[key][label]["label_breakdown"][
+                                    f"avg_{stat_name}"
+                                ] = div0(insight_count["num"], insight_count["den"])
+                for insight, insight_count in val["label_breakdown"].items():
+                    if insight.startswith("calc_"):
+                        stat_name = insight.removeprefix("calc_")
+                        puzzle_agg_counts[key]["label_breakdown"][
+                            f"avg_{stat_name}"
+                        ] = div0(insight_count["num"], insight_count["den"])
+
+        for insight, insight_count in deepcopy(
+            puzzle_agg_counts["label_breakdown"]
+        ).items():
+            if insight.startswith("calc_"):
+                stat_name = insight.removeprefix("calc_")
+                puzzle_agg_counts["label_breakdown"][f"avg_{stat_name}"] = div0(
+                    insight_count["num"], insight_count["den"]
+                )
+
+        for end_state, insight_agreement in deepcopy(
+            puzzle_agg_counts["insight_agreement"]
+        ).items():
+            insight_agreement["calc_pct"] = {"num": 0, "den": 0}
+            for insight, insight_count in deepcopy(insight_agreement).items():
+                if insight.startswith("cnt_"):
+                    stat_name = insight.removeprefix("cnt_")
+                    insight_agreement[f"pct_{stat_name}"] = div0(
+                        insight_count, puzzle_agg_counts[f"cnt_{end_state}"]
+                    )
+                    if insight_agreement[f"pct_{stat_name}"] != None:
+                        insight_agreement["calc_pct"]["num"] += insight_agreement[
+                            f"pct_{stat_name}"
+                        ]
+                        insight_agreement["calc_pct"]["den"] += 1
+            insight_agreement["avg_pct"] = div0(
+                insight_agreement["calc_pct"]["num"],
+                insight_agreement["calc_pct"]["den"],
+            )
+            puzzle_agg_counts["insight_agreement"][end_state] = insight_agreement
+
+        puzzle_stats["agg_counts"] = puzzle_agg_counts
+        stats[puzzle] = puzzle_stats
+
+    stats["agg"] = {}
+    for puzzle, puzzle_stats in deepcopy(stats).items():
+        if puzzle == "agg":
+            continue
+        puzzle_counts = puzzle_stats["counts"]
+        puzzle_agg_counts = puzzle_stats["agg_counts"]
+        for key, val in puzzle_counts.items():
+            if key.startswith("cnt_") or key.startswith("total_"):
+                if key not in stats["agg"]:
+                    stats["agg"][key] = 0
+                stats["agg"][key] += val
+            elif key.startswith("pct_"):
+                if f"calc_{key}" not in stats["agg"]:
+                    stats["agg"][f"calc_{key}"] = {
+                        "num": 0,
+                        "den": 0,
+                    }
+                if val != None:
+                    stats["agg"][f"calc_{key}"]["num"] += val
+                    stats["agg"][f"calc_{key}"]["den"] += 1
+            elif key in move_values or key in end_states:
+                for key2, val2 in val.items():
+                    if key2.startswith("cnt_") or key2.startswith("total_"):
+                        if key not in stats["agg"]:
+                            stats["agg"][key] = {}
+                        if key2 not in stats["agg"][key]:
+                            stats["agg"][key][key2] = 0
+                        stats["agg"][key][key2] += val2
+                    elif key2.startswith("pct_"):
+                        if key not in stats["agg"]:
+                            stats["agg"][key] = {}
+                        if f"calc_{key2}" not in stats["agg"][key]:
+                            stats["agg"][key][f"calc_{key2}"] = {
+                                "num": 0,
+                                "den": 0,
+                            }
+                            if val2 != None:
+                                stats["agg"][key][f"calc_{key2}"]["num"] += val2
+                                stats["agg"][key][f"calc_{key2}"]["den"] += 1
+                    elif key2 in move_values:
+                        for key3, val3 in val2.items():
+                            if key3.startswith("cnt_") or key3.startswith("total_"):
+                                if key not in stats["agg"]:
+                                    stats["agg"][key] = {}
+                                if key2 not in stats["agg"][key]:
+                                    stats["agg"][key][key2] = {}
+                                if key3 not in stats["agg"][key][key2]:
+                                    stats["agg"][key][key2][key3] = 0
+                                stats["agg"][key][key2][key3] += val3
+                            elif key3.startswith("pct_"):
+                                if key not in stats["agg"]:
+                                    stats["agg"][key] = {}
+                                if key2 not in stats["agg"][key]:
+                                    stats["agg"][key][key2] = {}
+                                if f"calc_{key3}" not in stats["agg"][key][key2]:
+                                    stats["agg"][key][key2][f"calc_{key3}"] = {
+                                        "num": 0,
+                                        "den": 0,
+                                    }
+                                if val3 != None:
+                                    stats["agg"][key][key2][f"calc_{key3}"][
+                                        "num"
+                                    ] += val3
+                                    stats["agg"][key][key2][f"calc_{key3}"][
+                                        "den"
+                                    ] += val3
+                        for key3, val3 in val2["label_breakdown"].items():
+                            if key3.startswith("cnt_"):
+                                if key not in stats["agg"]:
+                                    stats["agg"][key] = {}
+                                if key2 not in stats["agg"][key]:
+                                    stats["agg"][key][key2] = {}
+                                if "label_breakdown" not in stats["agg"][key][key2]:
+                                    stats["agg"][key][key2]["label_breakdown"] = {}
+                                if (
+                                    key3
+                                    not in stats["agg"][key][key2]["label_breakdown"]
+                                ):
+                                    stats["agg"][key][key2]["label_breakdown"][key3] = 0
+                                stats["agg"][key][key2]["label_breakdown"][key3] += val3
+                            elif key3.startswith("pct_"):
+                                if key not in stats["agg"]:
+                                    stats["agg"][key] = {}
+                                if key2 not in stats["agg"][key]:
+                                    stats["agg"][key][key2] = {}
+                                if "label_breakdown" not in stats["agg"][key][key2]:
+                                    stats["agg"][key][key2]["label_breakdown"] = {}
+                                if (
+                                    f"calc_{key3}"
+                                    not in stats["agg"][key][key2]["label_breakdown"]
+                                ):
+                                    stats["agg"][key][key2]["label_breakdown"][
+                                        f"calc_{key3}"
+                                    ] = {"num": 0, "den": 0}
+                                if val3 != None:
+                                    stats["agg"][key][key2]["label_breakdown"][
+                                        f"calc_{key3}"
+                                    ]["num"] += val3
+                                    stats["agg"][key][key2]["label_breakdown"][
+                                        f"calc_{key3}"
+                                    ]["den"] += 1
+                for key2, val2 in val["label_breakdown"].items():
+                    if key2.startswith("cnt_"):
+                        if key not in stats["agg"]:
+                            stats["agg"][key] = {}
+                        if "label_breakdown" not in stats["agg"][key]:
+                            stats["agg"][key]["label_breakdown"] = {}
+                        if key2 not in stats["agg"][key]["label_breakdown"]:
+                            stats["agg"][key]["label_breakdown"][key2] = 0
+                        stats["agg"][key]["label_breakdown"][key2] += val2
+                    elif key2.startswith("pct_"):
+                        if key not in stats["agg"]:
+                            stats["agg"][key] = {}
+                        if "label_breakdown" not in stats["agg"][key]:
+                            stats["agg"][key]["label_breakdown"] = {}
+                        if f"calc_{key2}" not in stats["agg"][key]["label_breakdown"]:
+                            stats["agg"][key]["label_breakdown"][f"calc_{key2}"] = {
+                                "num": 0,
+                                "den": 0,
+                            }
+                        if val2 != None:
+                            stats["agg"][key]["label_breakdown"][f"calc_{key2}"][
+                                "num"
+                            ] += val2
+                            stats["agg"][key]["label_breakdown"][f"calc_{key2}"][
+                                "den"
+                            ] += val2
+        for key, val in puzzle_counts["label_breakdown"].items():
+            if key.startswith("cnt_"):
+                if "label_breakdown" not in stats["agg"]:
+                    stats["agg"]["label_breakdown"] = {}
+                if key not in stats["agg"]["label_breakdown"]:
+                    stats["agg"]["label_breakdown"][key] = 0
+                stats["agg"]["label_breakdown"][key] += val
+            elif key.startswith("pct_"):
+                if "label_breakdown" not in stats["agg"]:
+                    stats["agg"]["label_breakdown"] = {}
+                if f"calc_{key}" not in stats["agg"]["label_breakdown"]:
+                    stats["agg"]["label_breakdown"][f"calc_{key}"] = {
+                        "num": 0,
+                        "den": 0,
+                    }
+                if val != None:
+                    stats["agg"]["label_breakdown"][f"calc_{key}"]["num"] += val
+                    stats["agg"]["label_breakdown"][f"calc_{key}"]["den"] += 1
+        for key, val in puzzle_agg_counts.items():
+            if key.startswith("cnt_"):
+                if key not in stats["agg"]:
+                    stats["agg"][key] = 0
+                stats["agg"][key] += val
+            elif key.startswith("pct_") or key.startswith("avg_"):
+                if f"calc_{key}" not in stats["agg"]:
+                    stats["agg"][f"calc_{key}"] = {
+                        "num": 0,
+                        "den": 0,
+                    }
+                if val != None:
+                    stats["agg"][f"calc_{key}"]["num"] += val
+                    stats["agg"][f"calc_{key}"]["den"] += 1
+            elif key in end_states or key in move_values or key == "label_breakdown":
+                if key not in stats["agg"]:
+                    stats["agg"][key] = {}
+                for key2, val2 in val.items():
+                    if key2.startswith("avg_"):
+                        if f"calc_{key2}" not in stats["agg"][key]:
+                            stats["agg"][key][f"calc_{key2}"] = {
+                                "num": 0,
+                                "den": 0,
+                            }
+                        if val2 != None:
+                            stats["agg"][key][f"calc_{key2}"]["num"] += val2
+                            stats["agg"][key][f"calc_{key2}"]["den"] += 1
+                    elif key2 in move_values or key2 == "label_breakdown":
+                        if key2 not in stats["agg"][key]:
+                            stats["agg"][key][key2] = {}
+                        for key3, val3 in val2.items():
+                            if key3.startswith("avg_"):
+                                if f"calc_{key3}" not in stats["agg"][key][key2]:
+                                    stats["agg"][key][key2][f"calc_{key3}"] = {
+                                        "num": 0,
+                                        "den": 0,
+                                    }
+                                if val3 != None:
+                                    stats["agg"][key][key2][f"calc_{key3}"][
+                                        "num"
+                                    ] += val3
+                                    stats["agg"][key][key2][f"calc_{key3}"]["den"] += 1
+                            elif key3 == "label_breakdown":
+                                if key3 not in stats["agg"][key]:
+                                    stats["agg"][key][key2][key3] = {}
+                                for key4, val4 in val3.items():
+                                    if key4.startswith("avg_"):
+                                        if (
+                                            f"calc_{key4}"
+                                            not in stats["agg"][key][key2][key3]
+                                        ):
+                                            stats["agg"][key][key2][key3][
+                                                f"calc_{key4}"
+                                            ] = {
+                                                "num": 0,
+                                                "den": 0,
+                                            }
+                                        if val4 != None:
+                                            stats["agg"][key][key2][key3][
+                                                f"calc_{key4}"
+                                            ]["num"] += val4
+                                            stats["agg"][key][key2][key3][
+                                                f"calc_{key4}"
+                                            ]["den"] += 1
+
+        if "insight_agreement" not in stats["agg"]:
+            stats["agg"]["insight_agreement"] = {}
+        for key, vals in puzzle_agg_counts["insight_agreement"].items():
+            if key not in stats["agg"]["insight_agreement"]:
+                stats["agg"]["insight_agreement"][key] = {}
+            for key2, val2 in vals.items():
+                if key2.startswith("cnt_"):
+                    if key2 not in stats["agg"]["insight_agreement"][key]:
+                        stats["agg"]["insight_agreement"][key][key2] = 0
+                    stats["agg"]["insight_agreement"][key][key2] += val2
+                elif key2.startswith("avg"):
+                    if f"calc_{key2}" not in stats["agg"]["insight_agreement"][key]:
+                        stats["agg"]["insight_agreement"][key][f"calc_{key2}"] = {
+                            "num": 0,
+                            "den": 0,
+                        }
+                    if val2 != None:
+                        stats["agg"]["insight_agreement"][key][f"calc_{key2}"][
+                            "num"
+                        ] += val2
+                        stats["agg"]["insight_agreement"][key][f"calc_{key2}"][
+                            "den"
+                        ] += 1
+
+    for key, val in deepcopy(stats["agg"]).items():
+        if key.startswith("cnt_"):
+            stat_name = key.removeprefix("cnt_")
+            stats["agg"][f"pct_{stat_name}"] = div0(val, stats["agg"]["total_moves"])
+        elif key.startswith("calc_"):
+            stat_name = key.removeprefix("calc_")
+            stats["agg"][f"avg_{stat_name}"] = div0(val["num"], val["den"])
+        elif key in move_values or key in end_states or key == "label_breakdown":
+            for key2, val2 in val.items():
+                if key2.startswith("cnt_"):
+                    stat_name = key2.removeprefix("cnt_")
+                    total_moves = 0
+                    if key == "label_breakdown":
+                        total_moves = stats["agg"]["cnt_labelled"]
+                    else:
+                        total_moves = stats["agg"][key]["total_moves"]
+                    stats["agg"][key][f"pct_{stat_name}"] = div0(val2, total_moves)
+                elif key2.startswith("calc_"):
+                    stat_name = key2.removeprefix("calc_")
+                    stats["agg"][key][f"avg_{stat_name}"] = div0(
+                        val2["num"], val2["den"]
+                    )
+                elif key2 in move_values or key2 == "label_breakdown":
+                    for key3, val3 in val2.items():
+                        if key3.startswith("cnt_"):
+                            total_moves = 0
+                            if key2 == "label_breakdown":
+                                total_moves = stats["agg"][key]["cnt_labelled"]
+                            else:
+                                total_moves = stats["agg"][key][key2]["total_moves"]
+                            stat_name = key3.removeprefix("cnt_")
+                            stats["agg"][key][key2][f"pct_{stat_name}"] = div0(
+                                val3, total_moves
+                            )
+                        elif key3.startswith("calc_"):
+                            stat_name = key3.removeprefix("calc_")
+                            stats["agg"][key][key2][f"avg_{stat_name}"] = div0(
+                                val3["num"], val3["den"]
+                            )
+                        elif key3 == "label_breakdown":
+                            for key4, val4 in val3.items():
+                                if key4.startswith("cnt_"):
+                                    total_moves = 0
+                                    if key3 == "label_breakdown":
+                                        total_moves = stats["agg"][key][key2][
+                                            "cnt_labelled"
+                                        ]
+                                    else:
+                                        total_moves = stats["agg"][key][key2][key3][
+                                            "total_moves"
+                                        ]
+                                    stat_name = key4.removeprefix("cnt_")
+                                    stats["agg"][key][key2][key3][
+                                        f"pct_{stat_name}"
+                                    ] = div0(val4, total_moves)
+                                elif key4.startswith("calc_"):
+                                    stat_name = key4.removeprefix("calc_")
+                                    stats["agg"][key][key2][key3][
+                                        f"avg_{stat_name}"
+                                    ] = div0(val4["num"], val4["den"])
+
+    for end_state, vals in deepcopy(stats["agg"]["insight_agreement"]).items():
+        for key, val in vals.items():
+            if key.startswith("cnt_"):
+                stat_name = key.removeprefix("cnt_")
+                stats["agg"]["insight_agreement"][end_state][f"pct_{stat_name}"] = div0(
+                    val, stats["agg"][f"cnt_{end_state}"]
+                )
+            elif key.startswith("avg"):
+                if f"calc_{key}" not in stats["agg"]["insight_agreement"][end_state]:
+                    stats["agg"]["insight_agreement"][end_state][f"calc_{key}"] = {
+                        "num": 0,
+                        "den": 0,
+                    }
+                if val != None:
+                    stats["agg"]["insight_agreement"][end_state][f"calc_{key}"][
+                        "num"
+                    ] += val
+                    stats["agg"]["insight_agreement"][end_state][f"calc_{key}"][
+                        "den"
+                    ] += 1
+
+    for end_state, vals in deepcopy(stats["agg"]["insight_agreement"]).items():
+        for key, val in vals.items():
+            if key.startswith("calc_"):
+                stat_name = key.removeprefix("calc_")
+                stats["agg"]["insight_agreement"][end_state][f"avg_{stat_name}"] = div0(
+                    val["num"], val["den"]
+                )
+
+    with open(f"{dir}/stats_{howmany}.json", "w") as f:
+        json.dump(stats, f)
+
 
 if __name__ == "__main__":
     vr_dir = "user_data/vr_study"
     online_dir = "user_data/online_puzzle_study"
     agent_dir = "agent_data"
     expert_dir = "expert_data"
-    
+
     agents = PuzzleAgent.Agents.values()
     experts = ["e1_kf"]
 
@@ -2511,7 +3307,34 @@ if __name__ == "__main__":
         solution, _, _ = SOLVER.apply_hints(puzzle_info["puzzle"], puzzle_info["hints"])
         puzzles[puzzle_id]["solution"] = solution
 
-    insight_recovery__experts(expert_dir, experts, puzzles)
-    # insight_recovery__agents(agent_dir, agents, puzzles)
-    # insight_recovery__vr(vr_dir)                        
-    # insight_recovery__online(online_dir)
+    expert_many_counts = insight_recovery__experts(
+        expert_dir, experts, puzzles, match_on_one=False
+    )
+    gen_stats(expert_many_counts, match_on_one=False)
+
+    expert_one_counts = insight_recovery__experts(
+        expert_dir, experts, puzzles, match_on_one=True
+    )
+    gen_stats(expert_one_counts, match_on_one=True)
+
+    agent_many_counts = insight_recovery__agents(
+        agent_dir, agents, puzzles, match_on_one=False
+    )
+    gen_stats(agent_many_counts, match_on_one=False)
+
+    agent_one_counts = insight_recovery__agents(
+        agent_dir, agents, puzzles, match_on_one=True
+    )
+    gen_stats(agent_one_counts, match_on_one=True)
+
+    vr_many_counts = insight_recovery__vr(vr_dir, match_on_one=False)
+    gen_stats(vr_many_counts, vr_dir, match_on_one=False)
+
+    vr_one_counts = insight_recovery__vr(vr_dir, match_on_one=True)
+    gen_stats(vr_one_counts, vr_dir, match_on_one=True)
+
+    online_many_counts = insight_recovery__online(online_dir, match_on_one=False)
+    gen_stats(online_many_counts, online_dir, match_on_one=False)
+
+    online_one_counts = insight_recovery__online(online_dir, match_on_one=True)
+    gen_stats(online_one_counts, online_dir, match_on_one=True)

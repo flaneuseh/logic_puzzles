@@ -29,7 +29,7 @@ class PuzzleAgent:
             _, available_moves = self.solver.get_available_moves(curr_state, hints)
             chosen_move = self.choose(available_moves, curr_state, solution)
             history.append(chosen_move)
-            curr_state.answer(*chosen_move["move"])
+            curr_state.apply_multi_move(chosen_move)
             i += 1
             pct_complete, _ = curr_state.percent_complete()
         pct_complete, _ = curr_state.percent_complete()
